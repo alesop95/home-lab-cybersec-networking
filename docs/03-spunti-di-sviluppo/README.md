@@ -1,0 +1,26 @@
+# [TBC] Spunti di sviluppo e implementazione
+
+## Contenuti
+
+- [Storage non di rete](01-storage-non-di-rete/README.md)
+- [Storage di rete (NAS)](02-storage-di-rete-nas/README.md)
+- [Server](03-server/README.md)
+- [RMM management (MeshCentral self-hosted - open-source)](04-rmm-management-meshcentral-self-hosted-open-source/README.md)
+- [Strategia di backup](05-strategia-di-backup/README.md)
+- [File storage e handling](06-file-storage-e-handling/README.md)
+- [Further protection](07-further-protection/README.md)
+- [Malware analysis (free open source solutions)](08-malware-analysis-free-open-source-solutions/README.md)
+- [Monitoraggio](09-monitoraggio/README.md)
+- [Firewall (before the switch)](10-firewall-before-the-switch/README.md)
+- [Server DNS secondario privato](11-server-dns-secondario-privato/README.md)
+- [VPN](12-vpn/README.md)
+- [Switch](13-switch/README.md)
+- [Access Point (AP)](14-access-point-ap.md)
+- [VLAN segmentation](15-vlan-segmentation.md)
+- [VA e pentesting](16-va-e-pentesting/README.md)
+- [Generazione e gestione dei certificati per la comunicazione sicura tra componenti](17-generazione-e-gestione-dei-certificati-per-la-comunicazione.md)
+- [Telefono VoIP con linea fissa Fastweb](18-telefono-voip-con-linea-fissa-fastweb.md)
+- [Comprare un rack con le misure giuste](19-comprare-un-rack-con-le-misure-giuste.md)
+- [Telecamere IP da esterno](20-telecamere-ip-da-esterno.md)
+- [Idee setup da profili LinkedIn interessanti](21-idee-setup-da-profili-linkedin-interessanti/README.md)
+- [Sviluppi interni aggiuntivi](22-sviluppi-interni-aggiuntivi/README.md)

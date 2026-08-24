@@ -41,3 +41,11 @@ desktop.ini
 # Privati
 CLAUDE.local.md
 .claude/settings.local.json
+
+# Anonimizzazione: i valori reali non si versionano mai (vedi .claude/rules/anonymization.md)
+tools/redactions.json
+
+# Nota. Le esclusioni per tipo qui sopra non toccano i .md ne' i .py, quindi la
+# documentazione sotto docs/ e gli strumenti sotto tools/ e scripts/ sono tracciati
+# senza bisogno di eccezioni. Le immagini estratte in docs/**/assets/ restano invece
+# escluse da *.png e *.jpeg, che e' il comportamento voluto.

@@ -1,0 +1,13 @@
+{
+  "_commento": "Banner iniettati dal convertitore subito dopo il titolo del file indicato. La chiave e' il percorso relativo alla cartella docs/. Sono l'unico modo lecito di aggiungere testo curato dentro l'albero generato: una modifica a mano di un file di docs/ verrebbe persa alla rigenerazione successiva.",
+
+  "README.md": "> Questa e' la conversione verbatim del documento sorgente, generata da `tools/docx-to-md.py` e rigenerabile. Non modificare a mano nessun file sotto `docs/`: si corregge il sorgente, oppure il sidecar di redazione, e si rigenera. Il punto di ingresso ragionato alla documentazione e' `DEVELOPMENT.md`; il registro di cio' che resta aperto e' `pendenze-aperte.md`.",
+
+  "06-progetto-rete-domestica-effettivamente-implementato/README.md": "> SEZIONE VUOTA NEL SORGENTE. Questa macrosezione esiste come intestazione ma non ha ancora contenuto: e' il posto dove andra' descritta la rete effettivamente realizzata, quando lo sara'. Fino ad allora la documentazione del progetto e' progettazione, non stato di fatto. Vedi `../pendenze-aperte.md`.",
+
+  "03-spunti-di-sviluppo/04-rmm-management-meshcentral-self-hosted-open-source/02-implementazione-con-ip-dinamico-aborted.md": "> PERCORSO ABBANDONATO, conservato come riferimento. L'ipotesi di esporre MeshCentral con IP pubblico dinamico e Dynamic DNS e' decaduta con l'assegnazione dell'IP statico da parte dell'operatore, confermata il 05/03/2026. L'analisi resta valida come descrizione dei limiti di un IP dinamico. Vedi ADR-004 in `.claude/memory/decisions.md`.",
+
+  "03-spunti-di-sviluppo/10-firewall-before-the-switch/04-tbc-l-alternativa-ulteriore-nethsecurity8.md": "> ALTERNATIVA NON APPROFONDITA. Citata per completezza del confronto fra distribuzioni firewall, non valutata. La scelta e' su OPNsense: vedi ADR-002 in `.claude/memory/decisions.md`.",
+
+  "05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md": "> CENSIMENTO INCOMPLETO E ANONIMIZZATO. Diverse voci hanno solo l'intestazione; i nomi macchina, gli identificativi di dispositivo e i numeri di serie sono segnaposto secondo `.claude/rules/anonymization.md` e i valori reali vivono in `_notes/.anonymization-map.md`, non versionato. Vedi `../pendenze-aperte.md` per l'elenco delle voci da completare."
+}

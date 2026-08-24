@@ -1,0 +1,14 @@
+# Distinzione dei cavi fisici
+
+In generale come specifiche tecniche il Cat 6 Supporta fino a 1 Gbit/s a 100 m e 10 Gbit/s fino a 55 m con frequenza nominale 250 MHz. È lo standard pratico per reti domestiche e uffici: economico, flessibile, compatibile con tutto ed è la scelta corretta dato che non si sta cablando un datacenter. Il resto è marketing travestito da progresso tecnologico.
+
+Per margine futuro sarebbe addirittura meglio un Cat 6A ma per i cavi cat 6a bisogna fare attenzione che sono più rigidi e difficili da far passare, quindi cat6 è la scelta. Dato il  contesto (FTTH 2,5 Gbps), è necessario supportare 10 Gbit/s con buon controllo di diafonia (alien crosstalk). E soprattutto usando RJ45 standard con  nessun problema di compatibilità e copre oggi (2,5 GbE) e domani (5/10 GbE) senza rifare il cablaggio.
+
+Quando si parla di cavi Ethernet Cat 6, ci sono due varianti di conduttore interno:
+
+- Rame solido (Solid Copper): lo standard da impianto strutturato. Ogni conduttore è un singolo filo di rame pieno. Questo offre minore attenuazione e migliore integrità del segnale su distanze lunghe, è più rigido rispetto ai cavi con fili intrecciati ed è quello da preferire per tratte fisse muro → muro / piano terra → primo piano.
+- CCA (Copper Clad Aluminum): questo è alluminio rivestito di rame. Economico, ma ha resistenza elettrica più alta e può limitare velocità e distanza reale in condizioni non ideali causando maggiore perdita di potenza nei PoE e più calore su tratti lunghi.
+
+per il cablaggio fisso, con lunghezze potenzialmente elevate e uso Cat 6, è bene scegliere sempre cavo con rame solido. Su Amazon questo di solito è specificato nella descrizione: “23 AWG Solid Copper” o “solid core”.
+
+La differenza rame solido vs CCA non dipende dalla categoria del cavo ma dal materiale e dalla fisica del conduttore, quindi dagli stessi identici fenomeni elettrici: resistenza ohmica, attenuazione, dissipazione termica e comportamento in PoE. Un cavo Cat 6 in rame solido (solid copper) mantiene minore attenuazione, maggiore margine di diafonia e migliore stabilità su tratte fisse rispetto a un Cat 6 CCA, soprattutto quando la lunghezza cresce, quando l’ambiente non è ideale o quando si veicola alimentazione PoE; viceversa, un Cat 6 CCA resta elettricamente peggiore di un Cat 6 in rame pieno, anche se sulla carta rispetta una categoria nominale. La categoria (Cat 6 vs Cat 6A) definisce banda e limiti di diafonia, non migliora magicamente un materiale scadente: un Cat 6A CCA rimane un conduttore con resistenza più alta e comportamento termico peggiore rispetto a un Cat 6 solid copper. In un cablaggio strutturato fisso, muro-muro o piano-piano, la scelta corretta e univoca è sempre rame solido, sia Cat 6 sia Cat 6A; il CCA è una scorciatoia economica accettabile solo per patch temporanee corte e non critiche, non per un impianto progettato con criteri professionali.

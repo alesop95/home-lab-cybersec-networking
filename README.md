@@ -1,15 +1,60 @@
-# Home Lab Cybersecurity e Networking
+# Home lab di rete e cybersecurity
 
-Questo repository raccoglie il materiale di pianificazione per un home lab di rete e cybersecurity: non è ancora un progetto scritto in codice, ma la base di conoscenza che precede la costruzione vera e propria di una rete domestica segmentata con un'appliance firewall dedicata. Il lavoro qui dentro serve a decidere cosa costruire prima di mettere mano a cavi, VLAN e regole del firewall.
+Progettazione documentata di una rete domestica segmentata: firewall dedicato, VLAN, monitoraggio di sicurezza e servizi self-hosted, costruiti sopra una linea in fibra il cui operatore non consente di sostituire il proprio modem. Il repository non contiene il software del lab, contiene la sua documentazione e gli strumenti che la producono e la verificano.
 
-## Stato del progetto
+Tutto cio' che vi si legge e' anonimizzato: indirizzi pubblici, ubicazione, identificativi di apparato, numeri di serie, nomi macchina e nomi di persona sono segnaposto. La convenzione e il controllo automatico che la fa rispettare sono descritti in `.claude/rules/anonymization.md`.
 
-Il repository è nella fase di raccolta riferimenti e progettazione, non nella fase di implementazione. Non ci sono ancora regole firewall, configurazioni di segmentazione VLAN, stack di monitoraggio o script committati: quello che c'è è materiale di studio e di riferimento, insieme a una bozza di schema di rete da finalizzare. Chi legge questo repository aspettandosi un lab funzionante troverebbe solo l'impalcatura di pianificazione, il che è intenzionale nello stato attuale.
+## Stato reale
 
-## Materiale raccolto
+Quasi tutto e' progettazione, non stato di fatto, e vale la pena dirlo prima di ogni altra cosa perche' e' l'errore piu' facile da fare leggendo la documentazione tecnica.
 
-La cartella `OPNsense/` contiene un whitepaper sulle funzionalità del firewall OPNsense, scelto come appliance di riferimento per il lab, insieme a un documento di consultazione rapida sulle stesse funzionalità. La cartella `Diagram/` contiene una bozza di schema di rete, collegata a un file esterno draw.io più alcuni appunti scritti a mano, ancora da finalizzare nello strumento di disegno. Un elenco comparativo (`privacy pack.txt`) confronta alternative rispettose della privacy ai principali servizi cloud, dall'email allo storage alle mappe alla messaggistica: materiale utile per decidere quali servizi ospitare localmente nel lab piuttosto che affidare a terzi. È presente anche un link a un articolo di terze parti su una piccola rete in stile enterprise, preso come riferimento di progettazione, e un documento Word (`PROGETTO rete e networking domestica.docx`) che abbozza per esteso l'intero progetto di rete domestica.
+| Componente | Stato |
+|---|---|
+| Indirizzo pubblico statico dall'operatore | ottenuto |
+| Sistema operativo del firewall | installato il 16/01/2026, rete non configurata |
+| Assegnazione delle interfacce a WAN, LAN e DMZ | da fare |
+| Switch gestito | scelto, non acquistato |
+| Access point a valle del firewall | da acquistare |
+| Virtualizzazione, DNS interno, monitoraggio, storage | pianificati |
 
-## Cosa manca
+## Il vincolo che determina tutta l'architettura
 
-Manca tutto ciò che rende un home lab operativo: le regole del firewall OPNsense, la segmentazione VLAN vera e propria, uno stack di monitoraggio per la sicurezza di base, e lo schema di rete finale (oggi solo bozza). Il repository documenta l'intenzione di cablare una rete domestica con firewall dedicato e monitoraggio di sicurezza di base, ma quella fase non è ancora iniziata.
+Il terminale ottico dell'operatore accetta traffico solo dall'indirizzo hardware del modem fornito in comodato, e quel modem non espone alcuna modalita' bridge o passthrough. Una prova sul campo e la conferma esplicita dell'assistenza convergono sullo stesso esito: il firewall non puo' essere l'apparato di frontiera.
+
+Ne discende la topologia adottata, con il firewall a valle del modem invece che al suo posto.
+
+```
+fibra -> PTO -> ONT -> MODEM operatore -> FIREWALL -> SWITCH -> access point
+                       (IP pubblico,      (unico punto  (L2,      (tutto il
+                        primo NAT,         di decisione  trunk     wireless
+                        Wi-Fi fuori        L3, tre       802.1Q)   passa dal
+                        dal perimetro)     zone)                   firewall)
+```
+
+Le due conseguenze accettate sono il doppio NAT, strutturale e non eliminabile, e la rete wireless del modem che resta fuori dal perimetro del firewall finche' non viene sostituita da access point a valle. La seconda non e' un dettaglio: e' la ragione per cui gli access point non sono un accessorio del progetto ma il suo completamento.
+
+## Da dove si comincia a leggere
+
+`docs/DEVELOPMENT.md` e' l'hub: spiega come e' organizzato l'albero e propone i percorsi di lettura per argomento. `docs/pendenze-aperte.md` dice che cosa e' dichiarato incompleto, con cinquanta voci rilevate automaticamente sulle intestazioni. `docs/verbale-installazione-opnsense.md` e' l'unico documento che descrive qualcosa di realmente accaduto, ricavato dalle trentuno fotografie della sessione di installazione.
+
+Le decisioni architetturali, con le alternative scartate e il motivo, stanno in `.claude/memory/decisions.md`. La topologia disegnata sta in `.claude/context/diagrams/topologia-di-rete.md`.
+
+## Che cosa contiene la documentazione
+
+L'albero `docs/` e' la conversione di un documento sorgente da 338 sezioni, distribuita in 120 file. Copre la linea in fibra e l'apparato dell'operatore fin nel dettaglio dell'interfaccia di gestione, il firewall OPNsense dal confronto con le alternative fino all'installazione passo per passo e alla stima del consumo elettrico, lo switch con le due alternative scartate, lo storage di rete, la virtualizzazione, la gestione endpoint, il DNS interno come punto di controllo, le VPN, il monitoraggio con SIEM e sonda di rete, l'analisi dei campioni sospetti, i fondamenti di livello 2 e 3, il cablaggio fisico e il censimento dei dispositivi domestici.
+
+## Come si rigenera
+
+L'albero non si scrive a mano: si genera dal documento Word sorgente, che resta locale e non e' versionato.
+
+```bash
+python tools/docx-to-md.py "PROGETTO rete e networking domestica.docx" --out docs --clean
+```
+
+La conversione e' deterministica, verifica da sola che tutti i titoli del sorgente siano stati scritti, e applica le sostituzioni di anonimizzazione anche ai titoli, quindi agli slug dei file. Modificare a mano un file generato e' sempre sbagliato: la modifica sparisce alla rigenerazione successiva. La procedura completa, con i tre controlli che la seguono, e' in `.claude/context/deployment.md`.
+
+Una conseguenza voluta di questo impianto: chi clona il repository puo' leggere tutta la documentazione ma non puo' rigenerarla, perche' il sorgente e il materiale di anonimizzazione restano privati.
+
+## Licenza e ambito
+
+Documentazione di un progetto personale, pubblicata come materiale di studio. Le procedure descritte riguardano una rete privata di proprieta' di chi scrive; nulla di quanto documentato e' pensato per essere applicato a infrastrutture di terzi.
