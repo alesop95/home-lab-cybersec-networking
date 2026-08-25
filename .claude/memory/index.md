@@ -6,9 +6,9 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: e897797
-Data snapshot:         2026-08-24
-Remoto:                origin, gia' collegato e gia' pushato fino a e897797
+Commit di riferimento: 494b45e
+Data snapshot:         2026-08-25
+Remoto:                origin, allineato
 ```
 
 ## Avvertenza sul remoto, da leggere prima di scrivere qualunque cosa
@@ -29,16 +29,16 @@ Il vincolo che determina l'intera architettura e' che l'ONT dell'operatore accet
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| `context/STACK.md` | e897797 | aggiornata |
-| `context/design-and-security.md` | e897797 | aggiornata |
-| `context/deployment.md` | e897797 | aggiornata |
-| `context/dev-testing.md` | e897797 | aggiornata |
-| `context/current-work.md` | e897797 | aggiornata |
-| `context/roadmap.md` | e897797 | aggiornata |
-| `context/diagrams/topologia-di-rete.md` | e897797 | aggiornata |
-| `context/diagrams/monitoraggio-open-source.md` | e897797 | aggiornata |
+| `context/STACK.md` | 494b45e | aggiornata |
+| `context/design-and-security.md` | 494b45e | aggiornata |
+| `context/deployment.md` | 494b45e | aggiornata |
+| `context/dev-testing.md` | 494b45e | aggiornata |
+| `context/current-work.md` | 494b45e | aggiornata |
+| `context/roadmap.md` | 494b45e | aggiornata |
+| `context/diagrams/topologia-di-rete.md` | 494b45e | aggiornata |
+| `context/diagrams/monitoraggio-open-source.md` | 494b45e | aggiornata |
 
-Tutte le schede sono state scritte nella sessione del 24/08/2026 contro il commit indicato, che e' l'ultimo commit del repository prima della riorganizzazione. Il commit che introdurra' la riorganizzazione stessa non esiste ancora al momento della scrittura: alla prima esecuzione della skill di sincronizzazione dopo quel commit, le schede risulteranno da riverificare, ed e' corretto che sia cosi'.
+Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il commit indicato, che e' quello in cui la documentazione ha assunto la forma attuale. Da qui in avanti la skill di sincronizzazione le segnalera' come da riverificare appena HEAD si muove, ed e' il comportamento voluto: una scheda vale finche' qualcuno l'ha confrontata con lo stato reale.
 
 ## Documentazione generata
 
@@ -61,7 +61,7 @@ tools/redactions.json                   sostituzioni della prima stesura, oggi r
 
 ## Punto di ripresa
 
-I quattro controlli sono stati eseguiti il 25/08/2026 e sono verdi: albero coerente con 126 documenti su 126 raggiungibili e zero collegamenti rotti, formattazione conforme, nessun comando di shell spezzato, nessun riscontro bloccante di anonimizzazione. Resta da fare il commit e il push, che sono operazioni manuali dell'utente e che l'agente non esegue.
+Il lavoro documentale e' chiuso, committato e pushato: l'albero e' allineato al remoto e i quattro controlli sono verdi (126 documenti su 126 raggiungibili, zero collegamenti rotti, formattazione conforme, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione). Non c'e' una feature documentale da riprendere: vedi `.claude/context/current-work.md`.
 
 Da decidere a parte, e non in una sessione di lavoro ordinaria: se bonificare la storia gia' pubblicata dai due valori descritti sopra, e se il repository su GitHub debba essere pubblico o privato, cosa che al momento non risulta verificata da nessuna parte del progetto.
 

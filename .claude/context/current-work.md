@@ -1,46 +1,37 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 494b45e
 generated-from-branch: main
-generated-date: 2026-08-24
+generated-date: 2026-08-25
 covers-paths:
   - docs/**
-  - tools/**
-  - scripts/**
-last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
+  - .claude/**
+last-verified-commit: 494b45e
 ---
 
 # Lavoro corrente
 
 > Scheda tecnica della feature attiva. Va riletta a inizio sessione e riscritta quando la feature cambia, non accresciuta all'infinito: il registro storico e' `.claude/memory/progress.md`, questa scheda descrive solo cio' che e' aperto adesso.
 
-## Feature attiva
+## Nessuna feature documentale aperta
 
-Riorganizzazione completa del materiale scritto a mano in documentazione versionata e anonimizzata, e messa in sicurezza del repository in vista del primo push su un remoto pubblico.
+Il lavoro sulla documentazione e' chiuso e committato. Il repository contiene la documentazione completa del progetto, anonimizzata, coerente e verificata, e il modello di manutenzione e' quello definitivo: si scrive a mano qui dentro, non si genera piu' da nulla.
 
-## Perche' adesso
+Chi apre una sessione ora non ha una feature documentale da riprendere. Ha due possibilita': lavorare sulla rete, che e' la fase 2 della roadmap, oppure aggiungere materiale di studio alla documentazione, che non e' una feature ma l'uso normale del progetto.
 
-Il materiale esisteva come un documento Word di ventuno megabyte, una cartella di fotografie, due file di appunti, un output diagnostico e due collegamenti, tutti alla radice del progetto e tutti esclusi dal versionamento per tipo di file. Il repository conteneva quindi un `README.md` che descriveva il materiale senza contenerlo, e chi lo avesse clonato non avrebbe ottenuto nulla di utile.
+## Il prossimo lavoro, quando si decide di farlo
 
-Va corretta una premessa che la documentazione precedente dava per buona: il remoto non era da collegare, esisteva gia' ed era gia' pushato. L'anonimizzazione si fa quindi in anticipo su cio' che si sta per pubblicare adesso, che e' la quasi totalita' del contenuto tecnico, mentre per i due valori gia' finiti nella storia in un commit precedente vale la procedura descritta in `design-and-security.md`, cioe' segnalazione e bonifica pianificata a parte.
+Fase 2 della roadmap: identificare fisicamente le tre schede di rete del firewall dalla console e assegnarle ai tre ruoli. E' la prima azione che cambia lo stato della rete invece che la sua descrizione, e sblocca sette delle pendenze aperte.
 
-## Che cosa e' stato fatto
+Si fa alla macchina, non al repository. L'agente puo' assistere sulla sequenza dei comandi e sull'interpretazione dell'output, ma l'esecuzione e' manuale. A valle si scrive un documento trasversale nuovo sotto `docs/`, sul modello di `verbale-installazione-opnsense.md`, e lo si collega da `docs/README.md`.
 
-L'allineamento del sistema di progetto al template di riferimento, che era indietro di alcuni commit e a cui mancavano il pacchetto di normalizzazione Markdown e il linter dei comandi.
+Attenzione a un punto che puo' costare l'accesso alla macchina: dopo l'assegnazione, OPNsense crea una regola permissiva sulla sola LAN, mentre WAN e la zona esposta partono chiuse in ingresso. Un abbinamento sbagliato chiude fuori dall'interfaccia di gestione oppure espone l'interfaccia sbagliata. La mappatura fisica con la verifica a LED e' un prerequisito, non una raffinatezza.
 
-L'impianto di anonimizzazione, composto dalla regola `anonymization.md`, dalla mappa privata dei segnaposto, dal file privato dei pattern, dal sidecar di redazione applicato in fase di conversione e dal guard-rail eseguibile. Il censimento dei dati reali ha prodotto ventidue voci fra ubicazione, indirizzamento pubblico, identificativi di apparato, identificativi macchina, numeri di serie, nomi di persona e riferimenti contrattuali.
+## Due decisioni sospese, non tecniche
 
-La conversione del documento sorgente in un albero di 120 file Markdown, con tutti i 338 titoli preservati e cinquantaquattro sostituzioni di anonimizzazione applicate, di cui cinque su titoli e quindi anche su slug e nomi di cartella. Il convertitore e' stato modificato per applicare la redazione ai titoli, che nella versione di origine non la riceveva: senza quella modifica due nomi propri sarebbero finiti nei percorsi dei file.
+Se bonificare la storia gia' pubblicata dai due valori descritti in `.claude/memory/index.md`. Se il repository su GitHub debba essere pubblico o privato, cosa che non risulta verificata da nessuna parte del progetto e che oggi si assume pubblica per prudenza.
 
-Il layer curato sopra l'albero generato, cioe' l'hub di navigazione, il verbale fotografico dell'installazione, la trascrizione degli appunti sulle alternative privacy, l'inventario delle fonti, il registro delle pendenze, i due diagrammi, le schede tecniche e la memoria di progetto.
-
-## Che cosa resta da fare in questa feature
-
-Eseguire il guard-rail di anonimizzazione con i file aggiunti all'indice, perche' finche' non sono tracciati lo script non li esamina. Verificare la convenzione di formattazione su tutti i Markdown nuovi. Verificare i blocchi di comando con il linter. Poi il primo commit e la creazione del remoto, che sono operazioni manuali dell'utente.
-
-## Definizione di fatto
-
-La feature e' chiusa quando un clone del repository, senza accesso al materiale locale, permette a un lettore tecnico di capire la topologia della rete, il vincolo che la determina, le scelte di componente con le alternative scartate e il loro motivo, lo stato reale di avanzamento, e cio' che resta da fare, senza incontrare un solo dato che identifichi l'abitazione, la linea o le persone.
+Nessuna delle due si decide in una sessione di lavoro ordinaria e nessuna delle due blocca la fase 2.
 
 ## Confine da non superare
 
-Questa feature riguarda la documentazione, non la rete. Non si configura nulla sul firewall, non si acquista nulla, non si modifica lo stato del lab. Le sezioni marcate come da chiarire restano tali: il compito era censirle, non chiuderle. Chiuderle e' il lavoro successivo, ed e' descritto nella roadmap.
+L'agente non esegue operazioni git e non tocca lo stato della rete. Prepara file e propone comandi.

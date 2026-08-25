@@ -1,12 +1,12 @@
 ---
 generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
 generated-from-branch: main
-generated-date: 2026-08-24
+generated-date: 2026-08-25
 covers-paths:
   - tools/**
   - scripts/**
   - docs/_CONVERSION-REPORT.md
-last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
+last-verified-commit: 494b45e
 ---
 
 # Verifica e casi limite
