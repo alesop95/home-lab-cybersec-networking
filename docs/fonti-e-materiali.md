@@ -13,7 +13,7 @@ Vivono alla radice del progetto o in sottocartelle, e sono esclusi dal versionam
 | Materiale | Che cos'e' | Perche' non e' versionato |
 |---|---|---|
 | `OPNsense/OPNsense-Whitepaper-features-NIEUW.pdf` | whitepaper ufficiale sulle funzionalita' di OPNsense, scaricato dal sito del progetto | documento di terzi, ridistribuibile solo alle condizioni dell'editore; si riscarica dalla fonte |
-| `OPNsense/quickprint.docx` | documento di consultazione rapida sulle stesse funzionalita', composto da tre sole immagini e nessun testo | e' una stampa per immagini, quindi il suo contenuto non e' estraibile come testo |
+| `OPNsense/quickprint.docx` | esaminato il 24/08/2026: contiene soltanto due loghi OPNsense e l'illustrazione della release 25.7, nessun contenuto tecnico | privo di informazione, non c'e' nulla da trascrivere |
 | `QuickShare_2601161748/` | trentuno fotografie della sessione di installazione del 16/01/2026, circa 190 MB | immagini di schermate reali con seriali e identificativi; trascritte e anonimizzate in `verbale-installazione-opnsense.md` |
 | `DxDiag asus X513EAN (sysinfo).txt` | output completo di `dxdiag` sul portatile Windows del censimento, circa 96 KB | contiene nome macchina e identificativo di sistema; la porzione utile e' gia' nel censimento sotto `05-analisi-del-caso/`, anonimizzata |
 | `Open-Source Security Monitoring Workflow.png` | schema del flusso di monitoraggio open source | immagine; ridisegnata come diagramma testuale in `../.claude/context/diagrams/monitoraggio-open-source.md` |
@@ -21,7 +21,7 @@ Vivono alla radice del progetto o in sottocartelle, e sono esclusi dal versionam
 | `privacy pack.txt` | confronto fra servizi mainstream e alternative | riportato per intero in `alternative-privacy-oriented.md` |
 | `_notes/` | estratti temporanei, mappa dei segnaposto, pattern del guard-rail | contiene i valori reali per intero: e' il materiale piu' sensibile del progetto |
 
-Il documento `quickprint.docx` merita una nota: e' composto da cinque paragrafi vuoti e tre immagini, quindi non contiene testo estraibile. Chi cerca il contenuto di quel file deve aprirlo, e non lo trovera' descritto altrove. Non e' stato trascritto perche' duplica materiale gia' presente nel whitepaper ufficiale.
+Il documento `quickprint.docx` merita una nota, perche' il suo nome promette piu' di quello che contiene. E' composto da cinque paragrafi vuoti e tre immagini, quindi non ha testo estraibile, e le tre immagini, esaminate il 24/08/2026, sono due varianti del logo OPNsense e l'illustrazione promozionale della release 25.7. Non contiene alcuna informazione tecnica: e' la stampa dell'intestazione grafica di una pagina web, non una guida rapida. Puo' essere eliminato senza perdita.
 
 ## Appunti sullo strumento di disegno della rete
 
