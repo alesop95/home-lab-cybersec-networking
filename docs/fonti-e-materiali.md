@@ -4,22 +4,25 @@
 
 ## Il documento sorgente
 
-`PROGETTO rete e networking domestica.docx` alla radice del progetto e' la fonte primaria: 1906 paragrafi, 338 titoli fino al nono livello di annidamento, 74 immagini incorporate, circa 250 mila caratteri di testo al netto degli spazi. Non e' versionato, perche' il `.gitignore` esclude i documenti Word e perche' contiene in chiaro i valori reali che l'albero `docs/` porta invece anonimizzati. E' la fonte di rigenerazione: senza di esso l'albero `docs/` resta leggibile ma non piu' aggiornabile, quindi il file va conservato e incluso nei backup personali con la stessa cura del repository.
+`_notes/sorgenti/PROGETTO rete e networking domestica.docx` e' la fonte primaria: 1906 paragrafi, 338 titoli fino al nono livello di annidamento, 74 immagini incorporate, circa 250 mila caratteri di testo al netto degli spazi. Non e' versionato, perche' il `.gitignore` esclude sia i documenti Word sia l'intera cartella `_notes/`, e perche' contiene in chiaro i valori reali che l'albero `docs/` porta invece anonimizzati. E' la fonte di rigenerazione: senza di esso l'albero `docs/` resta leggibile ma non piu' aggiornabile, quindi il file va conservato e incluso nei backup personali con la stessa cura del repository.
+
+Il 25/08/2026 e' stata verificata la completezza della conversione con un confronto paragrafo per paragrafo fra sorgente e albero generato, su testo normalizzato e con le stesse redazioni applicate al sorgente: 1591 paragrafi su 1591 ritrovati, zero mancanti. Le uniche righe volutamente non riportate sono i segnaposto di corpo composti da una lettera ripetuta, rimossi dall'opzione di pulizia.
 
 ## Materiali locali non versionati
 
-Vivono alla radice del progetto o in sottocartelle, e sono esclusi dal versionamento per tipo di file.
+Vivevano alla radice del progetto e dal 25/08/2026 sono raccolti sotto `_notes/sorgenti/`, che ha un proprio indice. Sono esclusi dal versionamento sia per tipo di file sia perche' `_notes/` e' ignorata per intero.
 
 | Materiale | Che cos'e' | Perche' non e' versionato |
 |---|---|---|
 | `OPNsense/OPNsense-Whitepaper-features-NIEUW.pdf` | whitepaper ufficiale sulle funzionalita' di OPNsense, scaricato dal sito del progetto | documento di terzi, ridistribuibile solo alle condizioni dell'editore; si riscarica dalla fonte |
 | `OPNsense/quickprint.docx` | esaminato il 24/08/2026: contiene soltanto due loghi OPNsense e l'illustrazione della release 25.7, nessun contenuto tecnico | privo di informazione, non c'e' nulla da trascrivere |
-| `QuickShare_2601161748/` | trentuno fotografie della sessione di installazione del 16/01/2026, circa 190 MB | immagini di schermate reali con seriali e identificativi; trascritte e anonimizzate in `verbale-installazione-opnsense.md` |
+| `QuickShare_2601161748-originali/` | trentuno fotografie della sessione di installazione del 16/01/2026, 187 MB | immagini di schermate reali con seriali e identificativi; trascritte e anonimizzate in `verbale-installazione-opnsense.md` |
 | `DxDiag asus X513EAN (sysinfo).txt` | output completo di `dxdiag` sul portatile Windows del censimento, circa 96 KB | contiene nome macchina e identificativo di sistema; la porzione utile e' gia' nel censimento sotto `05-analisi-del-caso/`, anonimizzata |
 | `Open-Source Security Monitoring Workflow.png` | schema del flusso di monitoraggio open source | immagine; ridisegnata come diagramma testuale in `../.claude/context/diagrams/monitoraggio-open-source.md` |
 | `Diagram/Notes.txt` | appunti sulla scelta dello strumento di disegno della rete | riportato per intero qui sotto |
 | `privacy pack.txt` | confronto fra servizi mainstream e alternative | riportato per intero in `alternative-privacy-oriented.md` |
-| `_notes/` | estratti temporanei, mappa dei segnaposto, pattern del guard-rail | contiene i valori reali per intero: e' il materiale piu' sensibile del progetto |
+
+Accanto a `_notes/sorgenti/` vivono, sempre sotto `_notes/` e sempre ignorate, la copia leggibile delle fotografie in `verbale-installazione-opnsense/`, ridotta da 187 a 7,5 MB senza perdere leggibilita', gli estratti temporanei del documento sorgente, e i due file dell'anonimizzazione, che sono il materiale piu' sensibile del progetto perche' rendono reversibile ogni segnaposto.
 
 Il documento `quickprint.docx` merita una nota, perche' il suo nome promette piu' di quello che contiene. E' composto da cinque paragrafi vuoti e tre immagini, quindi non ha testo estraibile, e le tre immagini, esaminate il 24/08/2026, sono due varianti del logo OPNsense e l'illustrazione promozionale della release 25.7. Non contiene alcuna informazione tecnica: e' la stampa dell'intestazione grafica di una pagina web, non una guida rapida. Puo' essere eliminato senza perdita.
 
@@ -33,7 +36,7 @@ Lo schema finale non e' stato ancora disegnato in quello strumento. Nel frattemp
 
 ## Riferimenti esterni raccolti come segnalibri
 
-Alla radice del progetto ci sono due collegamenti Internet salvati come file `.url`, anch'essi non versionati perche' il `.gitignore` esclude quell'estensione. Se ne riportano qui gli indirizzi, che sono l'unica informazione che contengono.
+Sotto `_notes/sorgenti/` ci sono due collegamenti Internet salvati come file `.url`, anch'essi non versionati. Se ne riportano qui gli indirizzi, che sono l'unica informazione che contengono.
 
 Lo strumento di disegno, https://www.drawio.com/, dal file `Diagram/drawio (per editare schema finale).url`.
 

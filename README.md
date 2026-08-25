@@ -48,7 +48,7 @@ L'albero `docs/` e' la conversione di un documento sorgente da 338 sezioni, dist
 L'albero non si scrive a mano: si genera dal documento Word sorgente, che resta locale e non e' versionato.
 
 ```bash
-python tools/docx-to-md.py "PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
 ```
 
 La conversione e' deterministica, verifica da sola che tutti i titoli del sorgente siano stati scritti, e applica le sostituzioni di anonimizzazione anche ai titoli, quindi agli slug dei file. Modificare a mano un file generato e' sempre sbagliato: la modifica sparisce alla rigenerazione successiva. La procedura completa, con i tre controlli che la seguono, e' in `.claude/context/deployment.md`.

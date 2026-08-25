@@ -136,7 +136,7 @@ Sostituzioni deterministiche (sidecar `tools/redactions.json`) per neutralizzare
 
 Rimozione deterministica di rumore ereditato dal sorgente: emoji, trattini lunghi normalizzati in trattini brevi, righe segnaposto (es. 'aaaa'). Divergenza voluta dal testo verbatim.
 
-- Righe segnaposto rimosse: 68
+- Righe segnaposto rimosse: 61
 - Trattini normalizzati: 212
 - Emoji rimosse: 1
 

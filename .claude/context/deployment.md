@@ -15,18 +15,18 @@ last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
 
 ## Prerequisiti
 
-Python 3 sul PATH e il pacchetto `python-docx` installato. Il documento sorgente `PROGETTO rete e networking domestica.docx` presente alla radice del progetto: senza di esso il convertitore non ha nulla da leggere e l'albero `docs/` resta all'ultima versione generata. Il file `tools/redactions.json` presente: senza di esso la conversione gira ugualmente ma produce un albero con i valori reali in chiaro, che non va assolutamente committato. Il file `_notes/.anonymization-patterns.json` presente: senza di esso il guard-rail si ferma con codice 2 invece di dare un verde non calcolato.
+Python 3 sul PATH e il pacchetto `python-docx` installato, piu' `Pillow` se si rigenerano le copie ridotte delle fotografie. Il documento sorgente presente in `_notes/sorgenti/`, dove e' stato archiviato il 25/08/2026 insieme al resto del materiale grezzo: senza di esso il convertitore non ha nulla da leggere e l'albero `docs/` resta all'ultima versione generata. Il file `tools/redactions.json` presente: senza di esso la conversione gira ugualmente ma produce un albero con i valori reali in chiaro, che non va assolutamente committato. Il file `_notes/.anonymization-patterns.json` presente: senza di esso il guard-rail si ferma con codice 2 invece di dare un verde non calcolato.
 
 Nessuno dei due file privati e' nel repository, per costruzione. Su una macchina nuova vanno ricostruiti a partire da `_notes/.anonymization-map.md`, che a sua volta non e' versionato: in pratica un clone del repository puo' leggere la documentazione ma non puo' rigenerarla anonimizzata senza il materiale privato dell'autore. E' una conseguenza voluta.
 
 ## Rigenerare l'albero della documentazione
 
 ```powershell
-python tools/docx-to-md.py "PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
 ```
 
 ```bash
-python tools/docx-to-md.py "PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
 ```
 
 Il comando e' idempotente e sovrascrive i file che produce. L'opzione `--clean` rimuove il rumore ereditato dal sorgente, cioe' emoji, trattini lunghi normalizzati in trattini brevi e righe segnaposto composte da una sola lettera ripetuta; senza quell'opzione la conversione e' strettamente verbatim.

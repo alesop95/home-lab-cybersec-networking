@@ -422,6 +422,8 @@ nfatti anche la mia wifi nn passa per il firewall però nel mio caso nn è essen
 
 Io perchè ho la mia FTTH Fastweb con il modem Seven, però l'ho comunque sempre dovuto acquistare da contratto con la solita cosa a rate. In più siccome non ho molto tempo questo periodo ho preso anche l'extender wi-fi (casa è su 4 piani) intanto per sopravvivere di sotto. Quindi mi confermi che è impossibile
 
+#### Aaaa
+
 #### Bbbb
 
 #### cccc
