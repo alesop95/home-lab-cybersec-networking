@@ -1,12 +1,12 @@
 ---
 generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
 generated-from-branch: main
-generated-date: 2026-08-24
+generated-date: 2026-08-25
 covers-paths:
   - docs/02-ftth-fastweb/**
   - docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/**
   - docs/03-spunti-di-sviluppo/13-switch/**
-last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
+last-verified-commit: 494b45e
 ---
 
 # Topologia della rete

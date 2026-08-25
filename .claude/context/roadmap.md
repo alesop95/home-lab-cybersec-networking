@@ -1,10 +1,10 @@
 ---
 generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
 generated-from-branch: main
-generated-date: 2026-08-24
+generated-date: 2026-08-25
 covers-paths:
   - docs/**
-last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
+last-verified-commit: 494b45e
 ---
 
 # Roadmap
@@ -17,9 +17,9 @@ Durata effettiva dal gennaio al marzo 2026, con code successive. Ha prodotto il 
 
 L'esito architetturale della fase e' uno solo e vale tutto il resto: il firewall non puo' essere l'apparato di frontiera, quindi la topologia e' a cascata dietro il modem dell'operatore, con doppio NAT e wireless inizialmente scoperto.
 
-## Fase 1, in corso: documentazione versionata e pubblicabile
+## Fase 1, conclusa il 25/08/2026: documentazione versionata e pubblicabile
 
-E' la feature descritta in `current-work.md`. Chiude quando il repository e' su un remoto pubblico con il guard-rail di anonimizzazione verde.
+Il materiale scritto a mano e' diventato documentazione versionata, anonimizzata e verificata, e il repository e' allineato al remoto con i quattro controlli verdi. Il modello di manutenzione e' definitivo: la documentazione si scrive a mano nel repository, non si genera piu' da un documento esterno (ADR-010).
 
 ## Fase 2: configurazione del firewall
 

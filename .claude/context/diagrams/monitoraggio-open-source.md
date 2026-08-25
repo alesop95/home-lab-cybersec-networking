@@ -1,11 +1,11 @@
 ---
 generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
 generated-from-branch: main
-generated-date: 2026-08-24
+generated-date: 2026-08-25
 covers-paths:
   - docs/03-spunti-di-sviluppo/09-monitoraggio/**
   - docs/03-spunti-di-sviluppo/08-malware-analysis-free-open-source-solutions/**
-last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
+last-verified-commit: 494b45e
 ---
 
 # Workflow di monitoraggio e analisi

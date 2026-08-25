@@ -1,14 +1,14 @@
 ---
 generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
 generated-from-branch: main
-generated-date: 2026-08-24
+generated-date: 2026-08-25
 covers-paths:
   - docs/02-ftth-fastweb/**
   - docs/03-spunti-di-sviluppo/**
   - docs/04-concetti-generali/**
   - .claude/rules/anonymization.md
   - scripts/Test-Anonymization.py
-last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
+last-verified-commit: 494b45e
 ---
 
 # Paradigmi di progettazione e di sicurezza
