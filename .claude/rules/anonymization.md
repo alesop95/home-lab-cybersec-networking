@@ -30,9 +30,13 @@ Il segnaposto va scelto una volta e riusato sempre: se lo stesso indirizzo o la 
 
 La traduzione da segnaposto a valore reale non si scrive mai in un file tracciato: vive in `_notes/.anonymization-map.md`, ignorato da git, e si estende con nuove voci mano a mano che si anonimizza altro materiale. Chi opera davvero sulla rete consulta quel file in locale per tradurre. Questa e' la ragione per cui la mappa stessa e' il dato piu' sensibile del progetto, piu' di qualunque singolo valore che contiene: chi la legge puo' invertire ogni anonimizzazione fatta altrove, quindi non va mai citata per estratto in un file tracciato, nemmeno in un work-log, nemmeno per un solo esempio.
 
-## Come si applica alla conversione del documento sorgente
+## Quando si applica: mentre si scrive
 
-L'albero `docs/` non si scrive a mano ma si genera da `_notes/sorgenti/PROGETTO rete e networking domestica.docx` con `tools/docx-to-md.py`, quindi l'anonimizzazione non puo' essere una revisione manuale del testo prodotto: verrebbe annullata alla rigenerazione successiva. Vive invece in `tools/redactions.json`, il sidecar di redazione del convertitore, ignorato da git perche' contiene i valori reali da cercare. Ogni voce e' una sostituzione con espressione regolare applicata al testo finale, e il convertitore ne riporta il conteggio nel `_CONVERSION-REPORT.md`, che e' il modo per accorgersi se una sostituzione ha smesso di trovare riscontri perche' il sorgente e' cambiato. Correggere a mano un file dentro `docs/` e' quindi sempre sbagliato: si corregge la redazione e si rigenera.
+Fino al 25/08/2026 l'albero `docs/` si generava dal documento Word e l'anonimizzazione era una regola di generazione, applicata a ogni corsa dal sidecar `tools/redactions.json`. Da quando l'albero e' passato a manutenzione manuale, quel meccanismo non gira piu': il contenuto nuovo si scrive gia' anonimizzato, e non c'e' nessuna sostituzione automatica che rimedi a un valore reale digitato per distrazione.
+
+E' un cambiamento che sposta responsabilita' e non protezione, perche' la parte che protegge davvero e' sempre stata il guard-rail: il sidecar sostituiva i valori che qualcuno gli aveva insegnato, il guard-rail verifica il risultato. Quello che cambia e' l'ordine dei gesti. Prima di scrivere un valore reale nuovo si aggiunge la voce a `_notes/.anonymization-map.md`, per ricordarsi la traduzione, e a `_notes/.anonymization-patterns.json`, perche' il controllo lo sappia cercare; poi si scrive il segnaposto nel testo. Fare il contrario significa affidarsi al fatto che il guard-rail indovini un valore che nessuno gli ha descritto, e per i numeri di serie e i nomi propri non indovina.
+
+Il sidecar `tools/redactions.json` si conserva come registro di cio' che e' stato sostituito nella prima stesura, ed e' la fonte da cui ricostruire la mappa se andasse persa. Resta inoltre attivo se un giorno si convertisse un altro documento verso una destinazione nuova.
 
 ## Il controllo automatico, e perche' non basta la buona volonta'
 

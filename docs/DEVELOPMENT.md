@@ -1,6 +1,6 @@
 # Guida alla documentazione del lab
 
-> Punto di ingresso ragionato all'albero `docs/`. Questo file e' scritto a mano e non viene toccato dalla rigenerazione; tutto il resto sotto `docs/`, con l'eccezione degli altri documenti curati elencati piu' sotto, e' prodotto da `tools/docx-to-md.py` a partire dal documento sorgente e va considerato di sola lettura.
+> Percorsi di lettura per argomento. L'indice dell'albero e' `README.md`; questo file dice da dove cominciare a seconda della domanda che ci si sta ponendo. Tutto l'albero e' scritto e manutenuto a mano: la struttura viene da una conversione iniziale del documento Word, il contenuto si aggiorna qui.
 
 ## Che cos'e' questo progetto, in una riga
 
@@ -49,12 +49,16 @@ Questi file stanno dentro `docs/` ma non sono generati: raccolgono il materiale 
 | `fonti-e-materiali.md` | inventario delle fonti, distinguendo quelle pubbliche raggiungibili da quelle locali non versionate |
 | `pendenze-aperte.md` | vista consolidata delle sezioni marcate come da chiarire, abbandonate o rimaste segnaposto |
 
-## Perche' non si modifica a mano l'albero generato
+## Come si scrive dentro l'albero
 
-La conversione e' deterministica e ripetibile: si rilancia con `python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean` e riscrive tutto. Una correzione applicata direttamente a un file generato sopravvive fino alla prima rigenerazione e poi sparisce senza lasciare traccia, il che e' peggio di non averla fatta, perche' nel frattempo qualcuno ci avra' fatto affidamento.
+L'albero si modifica direttamente. Il documento Word da cui e' nato e' archiviato in `../_notes/sorgenti/` e non e' piu' una fonte: modificarlo non cambia niente qui, e rigenerare sopra `docs/` e' impedito da un timbro nel convertitore, che si rifiuta di sovrascrivere un albero scritto a mano.
 
-Il convertitore sovrascrive i file che produce ma non svuota la cartella, quindi i documenti curati elencati sopra sopravvivono a una rigenerazione. Cio' che non sopravvive a un cambio di titolo nel sorgente e' il file generato con il vecchio slug, che resta orfano: quando si rigenera dopo aver rinominato una sezione si cancellano prima le sole cartelle numerate e il `README.md` di radice, mai l'intera cartella `docs/`, perche' li' dentro vivono anche i documenti scritti a mano. Le tre vie legittime per intervenire sono correggere il documento sorgente, aggiungere un banner in `tools/annotations.json`, oppure aggiungere una sostituzione in `tools/redactions.json` quando si tratta di anonimizzazione. Il `_CONVERSION-REPORT.md` in fondo all'albero riporta a ogni corsa i conteggi di titoli, immagini e sostituzioni, ed e' il modo per accorgersi che qualcosa e' cambiato senza volerlo.
+Un elemento di studio nuovo e' un file dentro l'area pertinente, quasi sempre `03-spunti-di-sviluppo/`, aggiunto all'indice della sua cartella. Un dispositivo nuovo e' un sottotitolo dentro `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, senza creare file. Un intervento eseguito davvero e' un documento trasversale nuovo, sul modello del verbale di installazione, collegato da `README.md`.
+
+Due vincoli che non sono stilistici. I prefissi numerici sono nomi stabili, quindi per inserire si usa il primo numero libero e non si rinumera, perche' rinumerare rompe tutti i collegamenti. I valori reali si anonimizzano mentre si scrive, secondo `../.claude/rules/anonymization.md`, perche' non c'e' piu' nessuna sostituzione automatica a valle.
+
+Dopo ogni modifica, `python tools/check-docs-tree.py` verifica che non restino documenti scollegati dagli indici ne' collegamenti che puntano nel vuoto. Il `_CONVERSION-REPORT.md` resta come documento storico della conversione iniziale, con i conteggi che ne provano la completezza, e non descrive piu' lo stato corrente.
 
 ## Le immagini
 
-Il sorgente contiene settantaquattro immagini, estratte in cartelle `assets/` accanto ai documenti che le citano. Non sono versionate, perche' sono screenshot di interfacce reali che mostrano indirizzi, seriali e stati della linea, e perche' il `.gitignore` esclude i formati immagine per scelta. Chi clona il repository vede quindi i riferimenti alle immagini ma non le immagini: per ottenerle rigenera l'albero dal `.docx` sorgente, che resta locale. La mappa completa immagine-percorso e' nel report di conversione.
+L'albero cita settantaquattro immagini in cartelle `assets/`, estratte dal documento Word durante la conversione iniziale. Non sono versionate, perche' sono schermate di interfacce reali che mostrano indirizzi, seriali e stati della linea, e perche' il `.gitignore` esclude i formati immagine per scelta. Chi clona il repository vede quindi i riferimenti ma non le immagini. Le copie locali restano sul disco dell'autore accanto ai documenti; la mappa completa immagine-percorso e' nel report di conversione.

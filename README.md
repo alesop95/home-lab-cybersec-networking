@@ -43,17 +43,17 @@ Le decisioni architetturali, con le alternative scartate e il motivo, stanno in 
 
 L'albero `docs/` e' la conversione di un documento sorgente da 338 sezioni, distribuita in 120 file. Copre la linea in fibra e l'apparato dell'operatore fin nel dettaglio dell'interfaccia di gestione, il firewall OPNsense dal confronto con le alternative fino all'installazione passo per passo e alla stima del consumo elettrico, lo switch con le due alternative scartate, lo storage di rete, la virtualizzazione, la gestione endpoint, il DNS interno come punto di controllo, le VPN, il monitoraggio con SIEM e sonda di rete, l'analisi dei campioni sospetti, i fondamenti di livello 2 e 3, il cablaggio fisico e il censimento dei dispositivi domestici.
 
-## Come si rigenera
+## Come si mantiene
 
-L'albero non si scrive a mano: si genera dal documento Word sorgente, che resta locale e non e' versionato.
+L'albero e' nato da una conversione deterministica di un documento Word, verificata paragrafo per paragrafo: 1591 su 1591 ritrovati, zero mancanti. Da quel momento il Word e' un archivio e la documentazione si scrive direttamente qui, sessione dopo sessione. Il convertitore resta nel repository ma si rifiuta di sovrascrivere l'albero, protetto da un timbro.
+
+Prima di ogni commit girano quattro controlli: coerenza dell'albero, convenzione di formattazione, comandi di shell copiabili, e il guard-rail che verifica che non sia rimasto nessun dato reale.
 
 ```bash
-python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi
 ```
 
-La conversione e' deterministica, verifica da sola che tutti i titoli del sorgente siano stati scritti, e applica le sostituzioni di anonimizzazione anche ai titoli, quindi agli slug dei file. Modificare a mano un file generato e' sempre sbagliato: la modifica sparisce alla rigenerazione successiva. La procedura completa, con i tre controlli che la seguono, e' in `.claude/context/deployment.md`.
-
-Una conseguenza voluta di questo impianto: chi clona il repository puo' leggere tutta la documentazione ma non puo' rigenerarla, perche' il sorgente e il materiale di anonimizzazione restano privati.
+L'ultimo dei quattro ha bisogno di materiale che resta privato, quindi chi clona il repository puo' leggere e modificare la documentazione ma non puo' verificarne l'anonimizzazione. E' una conseguenza voluta. La procedura completa e' in `.claude/context/deployment.md`.
 
 ## Licenza e ambito
 

@@ -6,8 +6,7 @@
 
 Innanzitutto, anche se *Seven* supporta Wi-Fi 7 e teoricamente velocità wireless elevate, le velocità effettive sul Wi-Fi sono inferiori alla porta cablata 2,5 Gbit/s per via di limiti dei client e delle condizioni RF.
 
-Con Fastweb Wi-Fi 7 dual band con tecnologia Multi-Link Operation (MLO): combina le bande 2.4GHz e 5GHz per darti connessioni più stabili e veloci, anche in condizioni estreme.
-Copertura estesa, segnale costante in ogni angolo della casa [https://www.fastweb.it/myfastweb/seven/](https://www.fastweb.it/myfastweb/seven/).
+Con Fastweb Wi-Fi 7 dual band con tecnologia Multi-Link Operation (MLO): combina le bande 2.4GHz e 5GHz per darti connessioni più stabili e veloci, anche in condizioni estreme. Copertura estesa, segnale costante in ogni angolo della casa [https://www.fastweb.it/myfastweb/seven/](https://www.fastweb.it/myfastweb/seven/).
 
 Sul link dicono esplicitamente che “il livello massimo della velocità e segnale wireless è dato dalle specifiche dello standard IEEE 802.11. La velocità effettiva e la copertura wireless potrebbero variare e subire rallentamenti a causa di condizioni della rete e fattori ambientali, tra cui il volume del traffico di rete, limitazioni dei dispositivi collegati (es. numero di antenne), e struttura del fabbricato.”.
 
@@ -23,8 +22,7 @@ A quel punto in alto a destra c’è scritto esplicitamente (es. in questo caso 
 
 Questa è la velocità di link negoziata tra la scheda e lo switch/router. In Ubuntu / Linux basta andare nel terminale (CTRL+ALT+T) e, se non si sa l’interfaccia, alternativamente *uno dei due* comandi:
 
-**ip link
-nmcli device show**
+**ip link nmcli device show**
 
 una volta letta qual è l’interfaccia:
 
@@ -99,13 +97,7 @@ System Information
        System DPI Setting: 120 DPI (125 percent)
           DWM DPI Scaling: UnKnown
                  Miracast: Available, with HDCP
-Microsoft Graphics Hybrid: **Not** Supported
- DirectX Database Version: 1.7.7
-   Auto Super Res Version: Unknown
-       System Mux Support: Mux Support Inactive - Ok
-           Mux Target GPU: dGPU
-    Mux Incompatible List:
-           DxDiag Version: 10.00.26100.7309 64bit Unicode
+Microsoft Graphics Hybrid: **Not** Supported DirectX Database Version: 1.7.7 Auto Super Res Version: Unknown System Mux Support: Mux Support Inactive - Ok Mux Target GPU: dGPU Mux Incompatible List: DxDiag Version: 10.00.26100.7309 64bit Unicode
 
 ###### Pulizia dei “problemi”
 
@@ -113,9 +105,7 @@ Lanciato in data 19/01/2025, L’output WER9 indica che Windows ha registrato un
 
 Per risolvere in modo concreto e definitivo il problema segnalato da WindowsWcpOtherFailure3 con errore 0x800F0983, devi intervenire sul Component Store (WinSxS) perché l’errore indica chiaramente che Windows non riesce ad aprire uno dei file interni dei componenti di sistema, molto probabilmente perché è corrotto, mancante o incoerente rispetto alla struttura prevista. In ordine logico e con la procedura più efficace possibile, aprire Prompt dei comandi come amministratore ed eseguire questi tre comandi nell’ordine esatto:
 
-DISM /Online /Cleanup-Image /CheckHealth
-DISM /Online /Cleanup-Image /ScanHealth
-DISM /Online /Cleanup-Image /RestoreHealth
+DISM /Online /Cleanup-Image /CheckHealth DISM /Online /Cleanup-Image /ScanHealth DISM /Online /Cleanup-Image /RestoreHealth
 
 Il terzo comando è quello che effettivamente ripara i file corrotti mancanti nel WinSxS usando copie locali oppure Windows Update. Inoltre, il classico comando:
 
