@@ -67,13 +67,21 @@ def slugify(text, fallback="sezione"):
 
 # --- pulizia opzionale (--clean): rumore ereditato dal sorgente -------------
 # Rimuove emoji, normalizza i trattini lunghi in trattini brevi ed elimina le
-# righe segnaposto composte da una sola lettera ripetuta (es. "aaaa", "### Aaaa").
+# righe segnaposto di corpo composte da una sola lettera ripetuta (es. "aaaa").
 # Preserva simboli tecnici come Omega (impedenza) e la freccia -> (implicazione).
+#
+# Divergenza voluta rispetto al pacchetto di origine: l'espressione originale
+# accettava anche il prefisso di intestazione (`#{0,7}`) e quindi cancellava i titoli
+# segnaposto insieme al corpo. Su questo sorgente l'effetto era che sette sezioni il
+# cui titolo e' una lettera ripetuta diventavano file completamente vuoti, mentre il
+# report continuava a dichiararle preservate verbatim. Un titolo, anche se segnaposto,
+# e' struttura del documento e va conservato: e' l'unica traccia che quella sezione
+# esiste ed e' da scrivere. Si rimuovono quindi solo le righe di corpo.
 _EMOJI_RE = re.compile(
     "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U00002B00-\U00002BFF\U0000FE00-\U0000FE0F]",
     flags=re.UNICODE)
 _DASH_RE = re.compile("[‐-―−]")
-_PLACEHOLDER_RE = re.compile(r"(?m)^[ \t]*#{0,7}[ \t]*[Aa]{3,}\.?[ \t]*$\n?")
+_PLACEHOLDER_RE = re.compile(r"(?m)^[ \t]*[Aa]{3,}\.?[ \t]*$\n?")
 
 
 def cleanup_text(content):

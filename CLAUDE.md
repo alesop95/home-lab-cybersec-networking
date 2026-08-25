@@ -25,11 +25,11 @@ Il remoto `origin` e' collegato e la storia e' gia' pushata: non c'e' una finest
 ## Come si rigenera la documentazione
 
 ```powershell
-python tools/docx-to-md.py "PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
 ```
 
 ```bash
-python tools/docx-to-md.py "PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
 ```
 
 Il convertitore sovrascrive i file che produce ma non svuota la cartella, quindi i documenti curati dentro `docs/` sopravvivono. Se si sono rinominate sezioni nel sorgente vanno cancellate prima le sole cartelle numerate e il `README.md` di radice, mai l'intera cartella `docs/`. La procedura completa, con i controlli che la seguono, e' in `.claude/context/deployment.md`.

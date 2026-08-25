@@ -42,7 +42,9 @@ Tutte le schede sono state scritte nella sessione del 24/08/2026 contro il commi
 
 ## Documentazione generata
 
-L'albero `docs/` e' prodotto da `tools/docx-to-md.py` a partire dal documento sorgente non versionato. Ultima generazione: 24/08/2026, 120 file, 338 titoli su 338, 74 immagini estratte e non versionate, 54 sostituzioni di anonimizzazione. Il report di ogni corsa e' in `docs/_CONVERSION-REPORT.md`.
+L'albero `docs/` e' prodotto da `tools/docx-to-md.py` a partire dal documento sorgente non versionato, che dal 25/08/2026 vive in `_notes/sorgenti/`. Ultima generazione: 25/08/2026, 120 file, 338 titoli su 338, 74 immagini estratte e non versionate, 54 sostituzioni di anonimizzazione, 61 righe segnaposto rimosse dalla pulizia. Il report di ogni corsa e' in `docs/_CONVERSION-REPORT.md`.
+
+La completezza non e' affidata al solo conteggio dei titoli: il 25/08/2026 un confronto paragrafo per paragrafo fra sorgente e albero ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono descritti in `progress.md`.
 
 I file curati dentro `docs/`, cioe' `DEVELOPMENT.md`, `verbale-installazione-opnsense.md`, `alternative-privacy-oriented.md`, `fonti-e-materiali.md` e `pendenze-aperte.md`, sono scritti a mano e non vanno cancellati quando si rigenera l'albero.
 
@@ -51,11 +53,12 @@ I file curati dentro `docs/`, cioe' `DEVELOPMENT.md`, `verbale-installazione-opn
 Senza questi file il progetto si legge ma non si rigenera in modo sicuro.
 
 ```
-PROGETTO rete e networking domestica.docx   fonte della conversione
-tools/redactions.json                       sostituzioni di anonimizzazione
-_notes/.anonymization-map.md                traduzione segnaposto -> valore reale
-_notes/.anonymization-patterns.json         cosa deve cercare il guard-rail
-QuickShare_2601161748/                      fotografie della sessione di installazione
+_notes/sorgenti/                     tutto il materiale grezzo, con il suo LEGGIMI.md
+_notes/sorgenti/PROGETTO ... .docx   fonte della conversione
+tools/redactions.json                sostituzioni di anonimizzazione
+_notes/.anonymization-map.md         traduzione segnaposto -> valore reale
+_notes/.anonymization-patterns.json  cosa deve cercare il guard-rail
+_notes/verbale-installazione-opnsense/  fotografie leggibili della sessione
 ```
 
 ## Punto di ripresa
