@@ -6,8 +6,7 @@ Il modem Fastweb Seven è infatti un dispositivo ibrido con connettività mobile
 
 Infatti, nella stessa schermata compare:
 
-Interfaccia GPON - tipo cu.ax - stato Down - IP 0.0.0.0
-Interfaccia LTE/MBB1 - tipo dhcp - stato Up - IP 203.0.113.10
+Interfaccia GPON - tipo cu.ax - stato Down - IP 0.0.0.0 Interfaccia LTE/MBB1 - tipo dhcp - stato Up - IP 203.0.113.10
 
 Questo significa che, nel momento in cui è stata catturata la schermata, il traffico Internet non stava transitando sulla fibra GPON ma sulla connessione mobile di backup. Il valore “Up time di connessione 10 giorni” rafforza questo dato (ed effettivamente era così, quello era il momento in cui si era appena modificato il parametro da parte dell’operatore). Non è quindi possibile dedurre da questi parametri quale sia il protocollo di accesso della linea FTTH, perché in quel momento la FTTH non era la connessione attiva.
 

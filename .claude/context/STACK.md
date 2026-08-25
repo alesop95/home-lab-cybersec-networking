@@ -20,24 +20,32 @@ Questo repository non contiene il software del lab: contiene la sua documentazio
 
 ## Stack del repository
 
-Python 3 per tutti gli strumenti, senza gestore di pacchetti dedicato e senza ambiente virtuale: le dipendenze sono minime e si installano a livello di interprete. L'unica dipendenza esterna e' `python-docx`, usata dal convertitore per leggere il documento Word; tutto il resto usa la libreria standard. L'interprete verificato su questa macchina e' Python 3.13 con `python-docx` 1.2.0.
+Python 3 per tutti gli strumenti, senza gestore di pacchetti dedicato e senza ambiente virtuale: le dipendenze sono minime e si installano a livello di interprete. I quattro controlli in esercizio usano soltanto la libreria standard, quindi per lavorare sulla documentazione basta un interprete. Le due dipendenze esterne servono a strumenti ormai occasionali: `python-docx` al convertitore archiviato, `Pillow` al ridimensionamento delle fotografie. L'interprete verificato su questa macchina e' Python 3.13.
 
 Non esistono test automatici propri del progetto, con l'eccezione della suite che accompagna lo strumento di normalizzazione Markdown nel pacchetto di origine sotto `.claude/templates/md-unwrap/tests/`. La verifica del progetto e' fatta da tre controlli deterministici, descritti nella scheda `dev-testing.md`.
 
 ## Gli strumenti e il loro ruolo architetturale
 
+Gli strumenti in esercizio sono quattro, e sono tutti controlli: nessuno genera piu' documentazione, perche' dal 25/08/2026 la documentazione si scrive a mano.
+
 | File | Ruolo |
 |---|---|
-| `tools/docx-to-md.py` | converte il documento sorgente nell'albero `docs/`, applica le redazioni e produce il report di conversione; e' il generatore di quasi tutta la documentazione |
-| `tools/redactions.json` | sidecar privato, non versionato: le sostituzioni che anonimizzano il testo e i titoli in fase di generazione |
-| `tools/annotations.json` | banner curati iniettati nei file generati; e' l'unico modo lecito di aggiungere testo dentro l'albero generato |
+| `tools/check-docs-tree.py` | verifica che l'albero regga come struttura navigabile: nessun documento scollegato dagli indici, nessun collegamento relativo che punti nel vuoto |
 | `tools/md-unwrap.py` | riunisce le righe di continuazione nei file Markdown, attuando la convenzione di un paragrafo per riga sorgente; rifiuta di scrivere se il rendering cambierebbe |
 | `tools/lint-md-commands.py` | percorre i blocchi di shell nei file Markdown e segnala comandi spezzati su piu' righe, che `md-unwrap` per contratto non tocca |
 | `scripts/Test-Anonymization.py` | guard-rail: passa i file tracciati e segnala valori reali residui; e' l'ultimo controllo prima di un commit di documentazione |
+
+Accanto a questi vivono lo strumento archiviato e i file privati che alimentano il guard-rail.
+
+| File | Ruolo |
+|---|---|
+| `tools/docx-to-md.py` | ha convertito il documento Word nell'albero; resta come strumento e come storia, ma si rifiuta di scrivere in una cartella priva del timbro `.generato-da-docx`, quindi non puo' sovrascrivere `docs/` |
+| `tools/redactions.json` | privato, non versionato: le sostituzioni applicate nella prima stesura; oggi registro, non piu' meccanismo attivo |
+| `tools/annotations.json` | storico: i banner iniettati durante la generazione, che ora sono testo dentro i file |
 | `_notes/.anonymization-map.md` | privato: traduzione da segnaposto a valore reale |
 | `_notes/.anonymization-patterns.json` | privato: alimenta il guard-rail, che senza di esso si ferma invece di dare verde |
 
-Il flusso che li lega e' lineare e va ricordato in quest'ordine: si modifica il documento sorgente, si rigenera l'albero con il convertitore, si normalizzano i Markdown scritti a mano con `md-unwrap`, si controllano i blocchi di comando con il linter, si esegue il guard-rail di anonimizzazione, e solo allora si committa.
+Il flusso che li lega e' lineare e va ricordato in quest'ordine: si modifica un file, si verifica la coerenza dell'albero, si normalizza la formattazione, si controllano i blocchi di comando, si esegue il guard-rail di anonimizzazione, e solo allora si committa.
 
 ## Stack del lab, come progettato
 

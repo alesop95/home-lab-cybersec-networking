@@ -88,7 +88,7 @@ Conseguenze accettate. La regola di uscita sul firewall e' parte integrante dell
 
 ## ADR-008, la documentazione si genera, non si scrive due volte
 
-Data: 24/08/2026. Stato: accettata, attuata.
+Data: 24/08/2026. Stato: superata da ADR-010 il 25/08/2026. Resta valida la parte sull'ingestione iniziale, cioe' che il contenuto e' entrato nel repository per conversione deterministica e non per riscrittura; non vale piu' la parte sulla rigenerazione continua.
 
 Contesto. La base documentale e' un unico documento Word molto grande, che l'autore continua a modificare. Riscrivere a mano il suo contenuto nel repository creerebbe due verita' destinate a divergere.
 
@@ -109,3 +109,21 @@ Alternative considerate. Revisione manuale del testo generato, scartata perche' 
 Decisione. Le sostituzioni vivono in un sidecar privato applicato dal convertitore, i valori reali in una mappa privata, e un guard-rail eseguibile controlla tutti i file tracciati prima di ogni commit. La redazione si applica anche ai titoli, perche' dal titolo discendono lo slug del file e il nome della cartella: senza questa estensione due nomi propri sarebbero finiti nei percorsi di file tracciati, dove nessuna redazione del corpo li avrebbe raggiunti. Il convertitore e' stato modificato di conseguenza rispetto alla versione del pacchetto di origine.
 
 Conseguenze accettate. Restano reali per decisione motivata i nomi di operatore e vendor, i modelli di apparato, il piano di indirizzamento privato, gli indirizzi di gestione di fabbrica, gli indirizzi pubblici di transito di un traceroute, i contatti istituzionali di un registro regionale e i prezzi di listino pubblici. Il razionale di ciascuna eccezione e' scritto nella regola, perche' un'eccezione non motivata diventa una crepa.
+
+Aggiornamento del 25/08/2026. Con ADR-010 l'albero non si rigenera piu', quindi il sidecar di redazione non viene piu' applicato a ogni corsa: il contenuto nuovo si scrive gia' anonimizzato. Il presidio resta il guard-rail eseguibile, che e' sempre stato la parte che conta, perche' il sidecar sostituiva i valori noti mentre il guard-rail verifica il risultato. Il sidecar si conserva come registro di cio' che e' stato sostituito nella prima stesura, e va comunque tenuto allineato alla mappa insieme al file dei pattern.
+
+## ADR-010, la fonte diventa il repository, non piu' il documento Word
+
+Data: 25/08/2026. Stato: accettata, attuata. Supera ADR-008.
+
+Contesto. Con la conversione completata e verificata, tenere il documento Word come fonte viva ha smesso di avere senso e ha cominciato ad avere costi. E' un binario da ventun megabyte, non diffabile, modificabile solo dentro un elaboratore di testi fuori dalla portata dell'agente, che per essere letto richiede la disciplina della disclosure progressiva e che per essere aggiornato impone un ciclo di rigenerazione dell'intero albero. Il modo in cui il lavoro procede davvero, invece, e' aprire una sessione nuova sul repository e continuare da dove si era rimasti.
+
+Il punto non e' l'eleganza del formato ma dove vive la continuita'. Se la fonte e' il Word, una sessione nuova deve prima ricostruirsi il contesto da un binario; se la fonte e' il repository, la continuita' e' gia' scritta nei file che la sessione legge comunque all'avvio, cioe' l'indice di memoria, le schede di contesto e l'albero.
+
+Alternative considerate. Tenere entrambe le fonti vive, scartata subito perche' produrrebbe due verita' destinate a divergere, che e' esattamente il problema che ADR-008 voleva evitare. Continuare con il Word come fonte e usare il repository come sola vetrina, scartata perche' e' lo stato che si sta abbandonando. Reimportare occasionalmente da un Word aggiornato, scartata perche' incompatibile con la manutenzione a mano: una reimportazione sovrascriverebbe il lavoro fatto nel frattempo.
+
+Decisione. L'albero `docs/` passa a manutenzione manuale. Il documento Word resta in `_notes/sorgenti/` come archivio della prima stesura e prova di provenienza, non come fonte. Il convertitore resta nel repository perche' e' lo strumento che ha prodotto l'albero e la sua storia va conservata, ma non va piu' eseguito su `docs/`.
+
+Attuazione. Il lucchetto non e' una raccomandazione scritta ma un controllo nel codice: il convertitore scrive nella cartella di destinazione un timbro `.generato-da-docx`, e si rifiuta di scrivere in una cartella che contiene gia' documenti senza quel timbro. Congelare l'albero e' consistito nel rimuovere il timbro. Chi dovesse insistere ha l'opzione esplicita `--forza`, che il messaggio di errore nomina insieme alla conseguenza. La ragione per cui serve un controllo e non una nota e' che la procedura di rigenerazione era scritta in quattro file diversi, e una sessione futura che ne legge uno la eseguirebbe in buona fede.
+
+Conseguenze. I marcatori che escludevano l'albero dalla normalizzazione Markdown sono stati rimossi e l'albero e' stato normalizzato: non e' piu' testo verbatim di una fonte esterna, e' documentazione del progetto come tutto il resto. Il sidecar delle annotazioni non viene piu' applicato e i suoi banner sono ormai testo dentro i file. La coerenza dell'albero, che prima era garantita per costruzione dalla struttura dei titoli del sorgente, ora va verificata, e per questo esiste `tools/check-docs-tree.py`. I prefissi numerici di cartelle e file restano come nomi stabili e non si rinumerano piu': per inserire qualcosa si usa il primo numero libero.

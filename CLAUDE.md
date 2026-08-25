@@ -6,7 +6,7 @@
 
 La progettazione documentata di una rete domestica segmentata con firewall dedicato, monitoraggio di sicurezza e servizi self-hosted, costruita sopra una linea in fibra il cui operatore non consente di sostituire il proprio modem. Il repository non contiene il software del lab: contiene la sua documentazione e gli strumenti che la producono e la verificano.
 
-La documentazione ha due layer. Uno generato, l'albero `docs/`, prodotto in modo deterministico dal documento Word sorgente e mai modificato a mano. Uno curato, scritto a mano, composto dai documenti trasversali dentro `docs/`, dalle schede sotto `.claude/context/` e dalla memoria sotto `.claude/memory/`.
+La documentazione si scrive e si mantiene qui dentro, a mano, sessione dopo sessione. L'albero `docs/` e' nato da una conversione deterministica di un documento Word, ma dal 25/08/2026 quel documento e' un archivio e non una fonte: la continuita' del lavoro sta nel repository, non altrove. Il razionale e' in ADR-010.
 
 ## Avvertenza sullo stato reale
 
@@ -16,25 +16,25 @@ Quasi tutto cio' che si legge e' progettazione, non stato di fatto. Di realizzat
 
 Leggere per primo `.claude/memory/index.md`, che fotografa branch, commit di riferimento, stato delle schede e punto di ripresa. Leggere poi `.claude/context/current-work.md` se c'e' una feature attiva. Invocare la skill `sync-context` per verificare il disallineamento fra schede e stato del repository. Leggere solo le schede pertinenti al task, mai tutte insieme.
 
-Per orientarsi nella documentazione tecnica si parte da `docs/DEVELOPMENT.md`, che e' l'hub scritto a mano, e da `docs/pendenze-aperte.md`, che dice che cosa e' dichiarato incompleto. Per il documento sorgente, che e' voluminoso, vale la disclosure progressiva descritta in `token-economy.md`: si parte dallo scheletro, si scende nelle sezioni pertinenti, e si legge una sezione intera solo per rispondere a una domanda precisa. Gli estratti temporanei stanno sotto `_notes/.tmp-doc-progetto-rete/`.
+Per orientarsi nella documentazione tecnica si parte da `docs/README.md`, che e' l'indice, e poi da `docs/DEVELOPMENT.md`, che propone i percorsi di lettura per argomento, e da `docs/pendenze-aperte.md`, che dice che cosa e' dichiarato incompleto. L'albero e' fatto di file piccoli per sezione: si legge quello pertinente al task, non l'area intera.
 
 ## Il repository e' gia' su un remoto pubblico
 
 Il remoto `origin` e' collegato e la storia e' gia' pushata: non c'e' una finestra in cui correggere prima della pubblicazione, c'e' solo il commit successivo. E' la cosa che vincola di piu' il modo di lavorare. Prima di ogni commit che tocchi documentazione va eseguito `python scripts/Test-Anonymization.py`, che passa tutti i file tracciati e fallisce se trova valori reali; quando il commit introduce file nuovi si aggiunge `--includi-nuovi`, altrimenti l'esito e' verde su un insieme che non comprende cio' che si sta per pubblicare. La regola completa e' `.claude/rules/anonymization.md`, da caricare sempre. Le due cose da non fare mai: scrivere un valore reale in un file tracciato, e citare in un file tracciato la corrispondenza fra un segnaposto e il suo valore, che renderebbe reversibile ogni anonimizzazione fatta altrove.
 
-## Come si rigenera la documentazione
+## Come si modifica la documentazione
 
-```powershell
-python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
-```
+Si modifica il file, direttamente. Non c'e' generazione, non c'e' un sorgente altrove da tenere allineato, e il convertitore non va eseguito su `docs/`: e' protetto da un timbro e si rifiuta di sovrascrivere.
+
+Tre regole, tutte conseguenza del fatto che l'albero e' navigabile e pubblico. Un file nuovo va collegato dall'indice della sua cartella. Un file rinominato o spostato lascia collegamenti rotti, che vanno sistemati nello stesso commit. Un valore reale va anonimizzato mentre lo si scrive, aggiungendolo prima alla mappa e al file dei pattern, perche' nessuna sostituzione automatica gira piu' al posto tuo.
+
+I prefissi numerici di cartelle e file sono nomi stabili ereditati dalla generazione iniziale: per inserire qualcosa si usa il primo numero libero, non si rinumera.
+
+Prima di ogni commit girano quattro controlli, descritti in `.claude/context/deployment.md`.
 
 ```bash
-python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi
 ```
-
-Il convertitore sovrascrive i file che produce ma non svuota la cartella, quindi i documenti curati dentro `docs/` sopravvivono. Se si sono rinominate sezioni nel sorgente vanno cancellate prima le sole cartelle numerate e il `README.md` di radice, mai l'intera cartella `docs/`. La procedura completa, con i controlli che la seguono, e' in `.claude/context/deployment.md`.
-
-Un file generato non si corregge mai a mano: la correzione sparirebbe alla rigenerazione successiva. Si corregge il documento sorgente, oppure si aggiunge un banner in `tools/annotations.json`, oppure una sostituzione in `tools/redactions.json` se si tratta di anonimizzazione.
 
 ## Indice dei file satellite tracciati
 
@@ -51,7 +51,7 @@ Schede tecniche, sotto `.claude/context/`, con frontmatter di riconciliazione.
 ```
 .claude/context/STACK.md                       stack del repository e stack del lab, tenuti distinti
 .claude/context/design-and-security.md         zone, contratto fra zone, sicurezza del repository
-.claude/context/deployment.md                  rigenerazione della documentazione e controlli
+.claude/context/deployment.md                  manutenzione della documentazione e i quattro controlli
 .claude/context/dev-testing.md                 che cosa i controlli garantiscono e che cosa no
 .claude/context/current-work.md                feature attiva e definizione di fatto
 .claude/context/roadmap.md                     fasi in ordine di dipendenza
@@ -59,15 +59,16 @@ Schede tecniche, sotto `.claude/context/`, con frontmatter di riconciliazione.
 .claude/context/diagrams/monitoraggio-open-source.md  flusso SIEM e percorso di analisi
 ```
 
-Documentazione, sotto `docs/`. Le sei cartelle numerate sono generate, i cinque file elencati sono scritti a mano.
+Documentazione, sotto `docs/`. Le sei cartelle numerate raccolgono il contenuto per area, i file elencati sono trasversali. Tutto e' scritto a mano.
 
 ```
-docs/DEVELOPMENT.md                     hub di navigazione, da leggere per primo
+docs/README.md                          indice dell'albero, punto di ingresso
+docs/DEVELOPMENT.md                     percorsi di lettura per argomento
 docs/pendenze-aperte.md                 cio' che e' dichiarato incompleto, cinquanta voci
 docs/verbale-installazione-opnsense.md  che cosa e' stato realmente fatto il 16/01/2026
 docs/fonti-e-materiali.md               inventario delle fonti, versionate e non
 docs/alternative-privacy-oriented.md    che cosa si vorrebbe self-hostare, e perche'
-docs/_CONVERSION-REPORT.md              conteggi dell'ultima generazione
+docs/_CONVERSION-REPORT.md              conteggi della conversione iniziale, storico
 ```
 
 Regole modulari, sotto `.claude/rules/`.
@@ -85,12 +86,13 @@ Regole modulari, sotto `.claude/rules/`.
 Strumenti, sotto `tools/` e `scripts/`.
 
 ```
-tools/docx-to-md.py           genera l'albero docs/ dal documento sorgente
-tools/annotations.json        banner curati iniettati nei file generati
-tools/redactions.json         sostituzioni di anonimizzazione (privato, non versionato)
+tools/check-docs-tree.py      orfani e collegamenti rotti nell'albero; primo dei quattro controlli
 tools/md-unwrap.py            attua la convenzione di un paragrafo per riga sorgente
 tools/lint-md-commands.py     segnala comandi di shell spezzati dentro i blocchi di codice
-scripts/Test-Anonymization.py guard-rail sui file tracciati, prima di ogni commit
+scripts/Test-Anonymization.py guard-rail sui file tracciati, ultimo controllo prima del commit
+tools/docx-to-md.py           archiviato: ha prodotto l'albero, non va eseguito su docs/
+tools/annotations.json        storico: banner della generazione, ora testo dentro i file
+tools/redactions.json         sostituzioni della prima stesura (privato, non versionato)
 ```
 
 Skill richiamabili, sotto `.claude/skills/`.

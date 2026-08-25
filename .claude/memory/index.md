@@ -42,28 +42,26 @@ Tutte le schede sono state scritte nella sessione del 24/08/2026 contro il commi
 
 ## Documentazione generata
 
-L'albero `docs/` e' prodotto da `tools/docx-to-md.py` a partire dal documento sorgente non versionato, che dal 25/08/2026 vive in `_notes/sorgenti/`. Ultima generazione: 25/08/2026, 120 file, 338 titoli su 338, 74 immagini estratte e non versionate, 54 sostituzioni di anonimizzazione, 61 righe segnaposto rimosse dalla pulizia. Il report di ogni corsa e' in `docs/_CONVERSION-REPORT.md`.
+L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 126 documenti, tutti raggiungibili dalla home, zero collegamenti rotti.
 
-La completezza non e' affidata al solo conteggio dei titoli: il 25/08/2026 un confronto paragrafo per paragrafo fra sorgente e albero ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono descritti in `progress.md`.
+La completezza dell'ingestione iniziale non e' affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
-I file curati dentro `docs/`, cioe' `DEVELOPMENT.md`, `verbale-installazione-opnsense.md`, `alternative-privacy-oriented.md`, `fonti-e-materiali.md` e `pendenze-aperte.md`, sono scritti a mano e non vanno cancellati quando si rigenera l'albero.
+## Materiale privato, non versionato
 
-## Materiale privato necessario e non versionato
-
-Senza questi file il progetto si legge ma non si rigenera in modo sicuro.
+Il progetto si legge e si modifica senza, ma non si verifica: il guard-rail di anonimizzazione ha bisogno del file dei pattern e si ferma se manca, invece di dare un verde non calcolato.
 
 ```
-_notes/sorgenti/                     tutto il materiale grezzo, con il suo LEGGIMI.md
-_notes/sorgenti/PROGETTO ... .docx   fonte della conversione
-tools/redactions.json                sostituzioni di anonimizzazione
-_notes/.anonymization-map.md         traduzione segnaposto -> valore reale
-_notes/.anonymization-patterns.json  cosa deve cercare il guard-rail
+_notes/sorgenti/                        materiale grezzo archiviato, con il suo LEGGIMI.md
+_notes/sorgenti/PROGETTO ... .docx      prima stesura, archivio e non fonte
+_notes/.anonymization-map.md            traduzione segnaposto -> valore reale
+_notes/.anonymization-patterns.json     cosa deve cercare il guard-rail
 _notes/verbale-installazione-opnsense/  fotografie leggibili della sessione
+tools/redactions.json                   sostituzioni della prima stesura, oggi registro
 ```
 
 ## Punto di ripresa
 
-I tre controlli sono stati eseguiti il 24/08/2026 e sono verdi: formattazione conforme su 124 file curati, nessun comando di shell spezzato, nessun riscontro bloccante di anonimizzazione su 355 file fra tracciati e nuovi. Resta da fare il commit e il push, che sono operazioni manuali dell'utente e che l'agente non esegue.
+I quattro controlli sono stati eseguiti il 25/08/2026 e sono verdi: albero coerente con 126 documenti su 126 raggiungibili e zero collegamenti rotti, formattazione conforme, nessun comando di shell spezzato, nessun riscontro bloccante di anonimizzazione. Resta da fare il commit e il push, che sono operazioni manuali dell'utente e che l'agente non esegue.
 
 Da decidere a parte, e non in una sessione di lavoro ordinaria: se bonificare la storia gia' pubblicata dai due valori descritti sopra, e se il repository su GitHub debba essere pubblico o privato, cosa che al momento non risulta verificata da nessuna parte del progetto.
 

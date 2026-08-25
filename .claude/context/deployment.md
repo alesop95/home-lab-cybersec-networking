@@ -9,47 +9,43 @@ covers-paths:
 last-verified-commit: e89779723cb1ed715b781763011255a81a82700e
 ---
 
-# Esecuzione e rigenerazione
+# Esecuzione e manutenzione della documentazione
 
-> Scheda tecnica. Descrive le procedure eseguibili di questo repository. Qui non si distribuisce software: si rigenera documentazione e si verifica che sia pubblicabile. La sequenza va rispettata nell'ordine indicato, perche' ogni passo assume l'esito del precedente.
+> Scheda tecnica. Descrive le procedure eseguibili di questo repository. Qui non si distribuisce software: si scrive documentazione e si verifica che sia coerente e pubblicabile. La sequenza va rispettata nell'ordine indicato, perche' ogni passo assume l'esito del precedente.
+
+## Il modello, dal 25/08/2026
+
+L'albero `docs/` si scrive e si modifica a mano. Non si rigenera piu' dal documento Word, che resta in `_notes/sorgenti/` come archivio della prima stesura. Il razionale e' in ADR-010; qui conta la conseguenza operativa, che e' semplice: si apre una sessione, si modifica un file Markdown, si eseguono i controlli, si committa.
+
+Il convertitore `tools/docx-to-md.py` resta nel repository come strumento che ha prodotto l'albero, ma non va eseguito su `docs/`. Non e' una raccomandazione affidata alla memoria: il convertitore scrive nella destinazione un timbro `.generato-da-docx` e si rifiuta di scrivere in una cartella che contiene documenti senza quel timbro. Su `docs/` il timbro e' stato rimosso, quindi una corsa accidentale si ferma con codice 2 e un messaggio che spiega perche'. Resta utilizzabile su una destinazione nuova, per esempio se un giorno servisse convertire un altro documento.
 
 ## Prerequisiti
 
-Python 3 sul PATH e il pacchetto `python-docx` installato, piu' `Pillow` se si rigenerano le copie ridotte delle fotografie. Il documento sorgente presente in `_notes/sorgenti/`, dove e' stato archiviato il 25/08/2026 insieme al resto del materiale grezzo: senza di esso il convertitore non ha nulla da leggere e l'albero `docs/` resta all'ultima versione generata. Il file `tools/redactions.json` presente: senza di esso la conversione gira ugualmente ma produce un albero con i valori reali in chiaro, che non va assolutamente committato. Il file `_notes/.anonymization-patterns.json` presente: senza di esso il guard-rail si ferma con codice 2 invece di dare un verde non calcolato.
+Python 3 sul PATH. Per i soli controlli non serve altro. Il pacchetto `python-docx` serve unicamente al convertitore, che ormai non si usa; `Pillow` serve solo se si rigenerano le copie ridotte delle fotografie.
 
-Nessuno dei due file privati e' nel repository, per costruzione. Su una macchina nuova vanno ricostruiti a partire da `_notes/.anonymization-map.md`, che a sua volta non e' versionato: in pratica un clone del repository puo' leggere la documentazione ma non puo' rigenerarla anonimizzata senza il materiale privato dell'autore. E' una conseguenza voluta.
+Il file `_notes/.anonymization-patterns.json` deve esistere, altrimenti il guard-rail si ferma con codice 2 invece di dare un verde non calcolato. Non e' nel repository per costruzione, e su una macchina nuova va ricostruito da `_notes/.anonymization-map.md`, anch'esso non versionato. In pratica un clone del repository puo' leggere e modificare la documentazione, ma non puo' verificarne l'anonimizzazione senza il materiale privato dell'autore. E' una conseguenza voluta.
 
-## Rigenerare l'albero della documentazione
+## Modificare la documentazione
+
+Non c'e' una procedura: si modifica il file. Contano tre regole, e sono tutte conseguenze del fatto che l'albero e' navigabile e pubblico.
+
+Un file nuovo va collegato dall'indice della sua cartella, altrimenti esiste ma nessuno lo trova. Un file spostato o rinominato lascia collegamenti rotti altrove, che vanno sistemati nello stesso commit. Un contenuto nuovo che contiene un valore reale va anonimizzato mentre lo si scrive, aggiungendo prima la voce alla mappa e al file dei pattern: il sidecar di redazione non gira piu', quindi nessuno lo fa piu' al posto tuo.
+
+I prefissi numerici di cartelle e file vengono dalla generazione iniziale e ora sono soltanto nomi stabili. Non si rinumerano per inserire qualcosa in mezzo: si usa il primo numero libero, anche se rompe l'ordine alfabetico, perche' rinumerare significa rinominare file e rompere ogni collegamento che li citava.
+
+## I quattro controlli, prima di ogni commit
+
+Il primo verifica che l'albero regga come struttura navigabile: nessun documento scollegato dagli indici, nessun collegamento relativo che punti a un percorso inesistente.
 
 ```powershell
-python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/check-docs-tree.py
 ```
 
 ```bash
-python tools/docx-to-md.py "_notes/sorgenti/PROGETTO rete e networking domestica.docx" --out docs --clean
+python tools/check-docs-tree.py
 ```
 
-Il comando e' idempotente e sovrascrive i file che produce. L'opzione `--clean` rimuove il rumore ereditato dal sorgente, cioe' emoji, trattini lunghi normalizzati in trattini brevi e righe segnaposto composte da una sola lettera ripetuta; senza quell'opzione la conversione e' strettamente verbatim.
-
-Attenzione a un punto che puo' costare lavoro. Il convertitore non svuota la cartella di destinazione, quindi i documenti curati che vivono in `docs/` sopravvivono. Cio' che non sopravvive a un cambio di titolo nel sorgente e' il file generato con il vecchio slug, che resta orfano accanto al nuovo. Quando si rigenera dopo aver rinominato una sezione si cancellano le sole cartelle numerate e il `README.md` di radice, mai l'intera cartella `docs/`, perche' li' dentro vivono anche `DEVELOPMENT.md`, `pendenze-aperte.md`, `fonti-e-materiali.md`, `alternative-privacy-oriented.md` e `verbale-installazione-opnsense.md`.
-
-## Verificare l'esito della conversione
-
-Il file `docs/_CONVERSION-REPORT.md` riporta i conteggi di ogni corsa. I due numeri da guardare sono il rapporto fra titoli scritti e titoli nel sorgente, che deve essere pari, e il totale delle sostituzioni di redazione, che deve restare stabile o crescere. Un calo improvviso delle sostituzioni significa quasi sempre che una regola ha smesso di trovare riscontri perche' il testo sorgente e' cambiato, e quindi che un valore reale potrebbe essere passato in una forma diversa.
-
-Il report elenca anche le sezioni marcate dall'autore e la mappa completa delle immagini estratte, che sono la base con cui si aggiorna `docs/pendenze-aperte.md`.
-
-## Normalizzare i file Markdown scritti a mano
-
-```powershell
-python tools/md-unwrap.py .
-```
-
-```bash
-python tools/md-unwrap.py .
-```
-
-Attua la convenzione di un paragrafo per riga sorgente descritta in `interaction-style.md`. Lo strumento rifiuta di scrivere un file il cui rendering cambierebbe, quindi e' sicuro da lanciare sull'intero albero. La verifica non distruttiva, adatta a un controllo prima del commit, esce con codice diverso da zero se qualcosa non rispetta la convenzione.
+Il secondo attua la convenzione di formattazione, cioe' un paragrafo per riga sorgente. Lo strumento rifiuta di scrivere un file il cui rendering cambierebbe, quindi e' sicuro da lanciare sull'intero albero; con `--check` non scrive e segnala soltanto.
 
 ```powershell
 python tools/md-unwrap.py --check .
@@ -59,7 +55,7 @@ python tools/md-unwrap.py --check .
 python tools/md-unwrap.py --check .
 ```
 
-## Controllare i comandi dentro i blocchi di codice
+Il terzo copre il punto cieco del secondo, che per contratto non entra nei blocchi recintati, e segnala i comandi di shell spezzati su piu' righe.
 
 ```powershell
 python tools/lint-md-commands.py .
@@ -69,9 +65,7 @@ python tools/lint-md-commands.py .
 python tools/lint-md-commands.py .
 ```
 
-Esiste perche' lo strumento precedente per contratto non tocca il contenuto dei blocchi recintati, quindi un comando spezzato su piu' righe dentro un blocco di codice non lo corregge nessuno. Il linter e' in sola lettura ed esce 0 se non trova niente.
-
-## Il guard-rail di anonimizzazione, prima di ogni commit
+Il quarto e' quello che decide se il commit e' pubblicabile.
 
 ```powershell
 python scripts/Test-Anonymization.py
@@ -97,7 +91,25 @@ L'opzione aggiunge all'elenco i file non tracciati ma non ignorati dal `.gitigno
 
 ## La sequenza completa
 
-Si modifica il documento sorgente, si rigenera l'albero, si legge il report, si normalizzano i Markdown, si controllano i blocchi di comando, si aggiunge all'indice, si esegue il guard-rail, si committa e si pusha. Le ultime due operazioni sono manuali dell'utente e l'agente non le esegue.
+Si modifica un file, si collega dall'indice se e' nuovo, si esegue il controllo di coerenza, si normalizza la formattazione, si controllano i blocchi di comando, si aggiunge all'indice di git, si esegue il guard-rail con l'opzione sui file nuovi, si committa e si pusha. Le ultime due operazioni sono manuali dell'utente e l'agente non le esegue.
+
+```bash
+python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi
+```
+
+## Rigenerare da un documento Word, se un giorno servisse
+
+Non su `docs/`, che e' protetto dal timbro. Su una destinazione nuova, per confrontare o per importare un documento diverso.
+
+```powershell
+python tools/docx-to-md.py "percorso/del/documento.docx" --out cartella-nuova --clean
+```
+
+```bash
+python tools/docx-to-md.py "percorso/del/documento.docx" --out cartella-nuova --clean
+```
+
+L'opzione `--clean` rimuove il rumore ereditato dal sorgente, cioe' emoji, trattini lunghi normalizzati in trattini brevi e righe segnaposto di corpo composte da una sola lettera ripetuta; senza quell'opzione la conversione e' strettamente verbatim. Il report scritto nella destinazione riporta i conteggi, e il rapporto fra titoli scritti e titoli del sorgente deve risultare pari. Il sidecar `tools/redactions.json`, se presente, viene ancora applicato: su un documento nuovo con dati reali va aggiornato prima, non dopo.
 
 ## Non c'e' distribuzione
 

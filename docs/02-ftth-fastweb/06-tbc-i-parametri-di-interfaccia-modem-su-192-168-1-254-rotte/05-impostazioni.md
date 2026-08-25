@@ -12,14 +12,11 @@ In questa pagina è possibile configurare gli indirizzi IPv4 della tua rete loca
 
 ### Impostazioni di rete
 
-Indirizzo IP del Gateway
-(caselle con valori: *192 - 168 - 1 - 254*)
+Indirizzo IP del Gateway (caselle con valori: *192 - 168 - 1 - 254*)
 
-Subnet Mask
-(caselle con valori: *255 - 255 - 255 - 0*)
+Subnet Mask (caselle con valori: *255 - 255 - 255 - 0*)
 
-Server DHCP
-(interruttore ON/OFF)
+Server DHCP (interruttore ON/OFF)
 
 ### Parametri del server DHCP
 

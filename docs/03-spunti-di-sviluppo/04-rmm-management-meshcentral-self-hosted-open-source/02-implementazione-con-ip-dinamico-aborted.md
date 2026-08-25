@@ -18,10 +18,7 @@ Lato sicurezza, si può limitare l’accesso al server MeshCentral esponendo sol
 
 Nel tuo case study concreto. Hai un host fisico con Proxmox. Sopra crei una VM Debian minimale. In quella VM installi Docker e docker-compose. Ora definisci uno stack chiamato ad esempio “meshcentral”. Nel file compose dichiari:
 
-un servizio meshcentral basato su una specifica immagine con tag di versione preciso, ad esempio meshcentral:1.x.y, così eviti aggiornamenti impliciti;
-un volume persistente montato, ad esempio /opt/meshcentral-data, dove risiedono database, certificati TLS e configurazione;
-una rete docker bridge dedicata, isolata dagli altri container;
-le porte esposte verso la VM, tipicamente 443.
+un servizio meshcentral basato su una specifica immagine con tag di versione preciso, ad esempio meshcentral:1.x.y, così eviti aggiornamenti impliciti; un volume persistente montato, ad esempio /opt/meshcentral-data, dove risiedono database, certificati TLS e configurazione; una rete docker bridge dedicata, isolata dagli altri container; le porte esposte verso la VM, tipicamente 443.
 
 Quando fai “docker compose up -d”, l’intero stack viene creato in modo coerente. Se domani aggiorni versione, modifichi solo il tag dell’immagine nel file, rilanci il deploy, e Docker ricrea il container mantenendo intatti i volumi. Se qualcosa non funziona, ripristini il tag precedente e fai nuovamente deploy. Il rollback è deterministico perché il dato applicativo è separato dal codice dell’immagine.
 

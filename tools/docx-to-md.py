@@ -39,6 +39,11 @@ A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
 
 SPLIT_LEVEL = 5  # i titoli di livello <= 5 aprono un nuovo file/cartella
 
+# Timbro scritto nella cartella di destinazione a fine corsa. La sua assenza in una
+# cartella che contiene gia' documenti significa che quei documenti sono scritti a mano
+# e non vanno sovrascritti: e' il lucchetto che protegge l'albero congelato.
+STAMP = ".generato-da-docx"
+
 # Nomi di cartella fissi per le sezioni di primo livello (H3), per ordine di comparsa.
 # Vuoto = i nomi si derivano automaticamente dallo slug del titolo, con prefisso numerico
 # (es. "01-<slug>"). Popolalo se vuoi nomi di cartella stabili e leggibili, es.:
@@ -374,7 +379,28 @@ def main():
     ap.add_argument("--clean", action="store_true",
                     help="rimuove emoji, normalizza i trattini lunghi ed elimina le righe "
                          "segnaposto (es. 'aaaa') ereditate dal sorgente")
+    ap.add_argument("--forza", action="store_true",
+                    help="sovrascrive anche una cartella di destinazione scritta a mano; "
+                         "distrugge il lavoro che non viene dal sorgente")
     args = ap.parse_args()
+
+    # Lucchetto sull'albero congelato. Se la destinazione contiene gia' documenti ma non
+    # il timbro di generazione, quei documenti sono scritti a mano: sovrascriverli
+    # cancellerebbe lavoro che il sorgente non contiene e che nessuno potrebbe rigenerare.
+    # E' il caso di questo progetto dal 25/08/2026, quando l'albero e' passato a
+    # manutenzione manuale (vedi ADR-010 in .claude/memory/decisions.md).
+    if os.path.isdir(args.out) and not os.path.exists(os.path.join(args.out, STAMP)):
+        gia_scritti = any(f.endswith(".md")
+                          for _r, _d, fs in os.walk(args.out) for f in fs)
+        if gia_scritti and not args.forza:
+            sys.stderr.write(
+                "La cartella '%s' contiene documenti ma non il timbro '%s': e' un albero\n"
+                "scritto a mano, non generato. Rigenerarlo sopra cancellerebbe il lavoro\n"
+                "che non viene dal documento sorgente.\n"
+                "Per convertire comunque, scegliere un'altra destinazione con --out,\n"
+                "oppure passare --forza se si vuole davvero sovrascrivere.\n"
+                % (args.out, STAMP))
+            return 2
 
     # Annotazioni curate (es. banner LEGACY) iniettate nei file generati senza rompere
     # l'idempotenza: i marcatori vivono nel sidecar JSON, non nei file generati.
@@ -708,19 +734,13 @@ def main():
     with io.open(report_path, "w", encoding="utf-8") as fh:
         fh.write(report_text)
 
-    # --- marcatori di esclusione per md-unwrap ----------------------------
-    # Le cartelle generate contengono testo verbatim di una fonte esterna, che per la
-    # regola interaction-style conserva la formattazione della fonte e non va normalizzato.
-    # Il marcatore protegge il sottoalbero da una passata di md-unwrap sull'intero
-    # repository, lasciando invece controllabili i documenti curati scritti a mano che
-    # vivono accanto, nella radice di docs/.
-    marker_note = ("# Sottoalbero generato da tools/docx-to-md.py: testo verbatim della fonte,\n"
-                   "# escluso dalla normalizzazione Markdown. Vedi .claude/rules/interaction-style.md.\n")
-    for name in sorted(os.listdir(out_dir)):
-        sub = os.path.join(out_dir, name)
-        if os.path.isdir(sub):
-            with io.open(os.path.join(sub, ".md-unwrap-ignore"), "w", encoding="utf-8") as fh:
-                fh.write(marker_note)
+    # Timbro che dichiara l'albero come generato. Finche' esiste, una corsa successiva
+    # puo' sovrascrivere senza chiedere; se manca, l'albero e' passato a manutenzione
+    # manuale e il convertitore si rifiuta di scriverci sopra (vedi il controllo in testa
+    # a main). Non si rimuove a mano: rimuoverlo e' il gesto con cui si congela l'albero.
+    with io.open(os.path.join(out_dir, STAMP), "w", encoding="utf-8") as fh:
+        fh.write("Albero generato da tools/docx-to-md.py. Se questo file non c'e', l'albero\n"
+                 "e' scritto a mano e il convertitore non deve sovrascriverlo.\n")
 
     # --- corpus testuale per verifica no-content-loss ---------------------
     src_text = []
@@ -740,7 +760,8 @@ def main():
     print("Immagini estratte:", len(image_records))
     print("Caratteri testo sorgente (no spazi):", len(src_norm))
     print("Report:", report_path)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
