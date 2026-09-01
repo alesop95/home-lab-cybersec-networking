@@ -42,6 +42,11 @@ desktop.ini
 CLAUDE.local.md
 .claude/settings.local.json
 
+# Consolidamento NAS: documento di lavoro con credenziali e nomi reali delle quattro
+# macchine dismesse. Non e' materiale da pubblicare e non lo copre nessuna esclusione per
+# estensione, perche' e' un .md (vedi .claude/rules/anonymization.md).
+nas-consolidation/HANDOFF.md
+
 # Anonimizzazione: i valori reali non si versionano mai (vedi .claude/rules/anonymization.md)
 tools/redactions.json
 
