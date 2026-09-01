@@ -1,24 +1,28 @@
 ---
 generated-from-commit: 494b45e
 generated-from-branch: main
-generated-date: 2026-08-25
+generated-date: 2026-09-01
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: 494b45e
+last-verified-commit: eb2f6c3
 ---
 
 # Lavoro corrente
 
 > Scheda tecnica della feature attiva. Va riletta a inizio sessione e riscritta quando la feature cambia, non accresciuta all'infinito: il registro storico e' `.claude/memory/progress.md`, questa scheda descrive solo cio' che e' aperto adesso.
 
-## Nessuna feature documentale aperta
+## Feature attiva: assemblaggio del NAS per lo storage di rete
 
-Il lavoro sulla documentazione e' chiuso e committato. Il repository contiene la documentazione completa del progetto, anonimizzata, coerente e verificata, e il modello di manutenzione e' quello definitivo: si scrive a mano qui dentro, non si genera piu' da nulla.
+Dal 01/09/2026 c'e' un lavoro aperto, e non e' documentale: l'assemblaggio della macchina che coprira' lo storage di rete della fase 4, ricavata da quattro postazioni desktop dismesse. La progettazione e' chiusa e sta in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md`; il materiale operativo con i valori reali, escluso da git per nome, e' in `nas-consolidation/HANDOFF.md`.
 
-Chi apre una sessione ora non ha una feature documentale da riprendere. Ha due possibilita': lavorare sulla rete, che e' la fase 2 della roadmap, oppure aggiungere materiale di studio alla documentazione, che non e' una feature ma l'uso normale del progetto.
+La definizione di fatto per questa feature e' una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e TrueNAS installato e raggiungibile su un mirror di avvio composto dai due SSD SATA. Non comprende la creazione del pool dei dati, che dipende da un acquisto non ancora deciso ed e' l'unico passo che quella decisione blocca.
 
-## Il prossimo lavoro, quando si decide di farlo
+Il punto che conta per non perdere tempo: la scelta fra dischi meccanici e NVMe in mirror non e' un prerequisito dell'assemblaggio. Una versione precedente del piano la metteva al primo posto come se lo fosse. Montaggio, firmware, test di stabilita' e installazione si eseguono tutti prima, con una spesa di circa venticinque euro per un adattatore PCIe verso M.2 e una scheda di rete Intel.
+
+A valle dell'assemblaggio si scrive un verbale sul modello di `docs/verbale-installazione-opnsense.md`, che descriva cio' che e' realmente accaduto invece della progettazione, e lo si collega dalla home dell'albero.
+
+## Il lavoro sulla rete, quando si decide di farlo
 
 Fase 2 della roadmap: identificare fisicamente le tre schede di rete del firewall dalla console e assegnarle ai tre ruoli. E' la prima azione che cambia lo stato della rete invece che la sua descrizione, e sblocca sette delle pendenze aperte.
 
@@ -35,3 +39,5 @@ Nessuna delle due si decide in una sessione di lavoro ordinaria e nessuna delle 
 ## Confine da non superare
 
 L'agente non esegue operazioni git e non tocca lo stato della rete. Prepara file e propone comandi.
+
+Sull'assemblaggio il confine e' lo stesso: l'agente ragiona sulle compatibilita', verifica le affermazioni contro i manuali dei costruttori invece di dedurle, e interpreta l'esito dei test, ma il montaggio e i test li esegue una persona. Se serve un riscontro visivo che l'agente non puo' ottenere da se', per esempio la schermata del firmware o l'esito del test di memoria, si applica la regola sugli screenshot manuali.

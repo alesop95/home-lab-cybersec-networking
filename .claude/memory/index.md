@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 494b45e
-Data snapshot:         2026-08-25
+Commit di riferimento: eb2f6c3
+Data snapshot:         2026-09-01
 Remoto:                origin, allineato
 ```
 
@@ -42,7 +42,7 @@ Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il com
 
 ## Documentazione generata
 
-L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 126 documenti, tutti raggiungibili dalla home, zero collegamenti rotti.
+L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 127 documenti, tutti raggiungibili dalla home, zero collegamenti rotti.
 
 La completezza dell'ingestione iniziale non e' affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
@@ -59,9 +59,19 @@ _notes/verbale-installazione-opnsense/  fotografie leggibili della sessione
 tools/redactions.json                   sostituzioni della prima stesura, oggi registro
 ```
 
+## Il consolidamento NAS, e cosa ha insegnato sul guard-rail
+
+Dal 01/09/2026 il repository contiene la scheda del consolidamento di quattro desktop dismessi in un NAS, sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`, che e' l'hardware candidato allo storage di rete della fase 4. Le quattro macchine non appartengono alla rete domestica e hanno segnaposto propri, registrati nella mappa privata.
+
+Il materiale di lavoro con i valori reali vive in `nas-consolidation/HANDOFF.md`, escluso da git per nome. L'esclusione e' per nome e non per cartella, perche' i cinque script di censimento nella stessa cartella sono puliti e versionati: se quel file viene rinominato o spostato, l'esclusione non lo segue.
+
+La lezione che vale oltre questo caso riguarda il guard-rail. Su un file con sei password in chiaro e quattro nomi propri dichiarava zero riscontri bloccanti, perche' la categoria dei segreti letterali aveva la lista vuota e i nomi non erano registrati. Il controllo verifica cio' che gli e' stato insegnato: un esito verde su materiale nuovo non e' una garanzia finche' i valori di quel materiale non sono entrati nel file dei pattern. E' il motivo per cui la regola prescrive di aggiornare mappa e pattern prima di scrivere, non dopo.
+
 ## Punto di ripresa
 
-Il lavoro documentale e' chiuso, committato e pushato: l'albero e' allineato al remoto e i quattro controlli sono verdi (126 documenti su 126 raggiungibili, zero collegamenti rotti, formattazione conforme, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione). Non c'e' una feature documentale da riprendere: vedi `.claude/context/current-work.md`.
+L'albero e' allineato al remoto e i controlli sono verdi: 127 documenti su 127 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
+
+C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS descritto in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md`. Vedi `.claude/context/current-work.md`.
 
 Da decidere a parte, e non in una sessione di lavoro ordinaria: se bonificare la storia gia' pubblicata dai due valori descritti sopra, e se il repository su GitHub debba essere pubblico o privato, cosa che al momento non risulta verificata da nessuna parte del progetto.
 
