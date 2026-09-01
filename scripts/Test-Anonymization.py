@@ -35,6 +35,16 @@ import re
 import subprocess
 import sys
 
+# La console di Windows apre stdout in cp1252, che non sa rappresentare gli emoji e i simboli
+# fuori dal latino-1 presenti nei file esaminati. Senza questo la stampa di un riscontro che li
+# contiene interrompe il controllo con una traccia di errore invece di darne l'esito, cioe'
+# proprio sul file che aveva qualcosa da segnalare. Si forza UTF-8 sostituendo l'inrappresentabile.
+for _flusso in (sys.stdout, sys.stderr):
+    try:
+        _flusso.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 PATTERNS_FILE = os.path.join("_notes", ".anonymization-patterns.json")
 SKIP_EXT = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".pdf", ".docx", ".doc",
             ".xlsx", ".xls", ".zip", ".7z", ".ico", ".drawio", ".pyc"}
