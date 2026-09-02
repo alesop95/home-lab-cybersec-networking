@@ -10,6 +10,7 @@ Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come e' organizz
 - [Pendenze aperte](pendenze-aperte.md)
 - [Verbale dell'installazione di OPNsense](verbale-installazione-opnsense.md)
 - [Fonti e materiali del progetto](fonti-e-materiali.md)
+- [Fonti web consultate, per sessione](fonti-web-consultate.md)
 - [Alternative rispettose della privacy](alternative-privacy-oriented.md)
 - [Report della conversione iniziale](_CONVERSION-REPORT.md)
 
