@@ -111,7 +111,11 @@ Nel firmware si verifica che siano riconosciuti trentadue gigabyte in doppio can
 
 Il test di stabilità precede l'installazione e non è opzionale, per il motivo detto sopra sull'assenza di ECC. Si esegue almeno un ciclo completo di test della memoria, e meglio una notte intera, perché i moduli sono usati e provengono da due macchine diverse; se emerge un errore si isola il modulo escludendone uno per volta e si scarta, perché ventiquattro gigabyte sani valgono più di trentadue con un modulo guasto. In parallelo si lancia il test SMART lungo su ogni disco e si rilegge l'esito dopo alcune ore.
 
-L'installazione mette il sistema sul mirror dei due SSD SATA, tenendo l'avvio separato dai dati. Dopo l'installazione si creano le condivisioni e si attivano le istantanee periodiche e la verifica mensile dell'integrità del pool, che non sono attive per impostazione predefinita e sono precisamente la ragione per cui si è scelto ZFS; si configurano infine le notifiche sugli errori del pool, perché un errore che nessuno legge equivale a un errore non rilevato. La creazione del pool dei dati è l'unico passo che attende la decisione sull'acquisto dei dischi.
+L'installazione mette il sistema sul mirror dei due SSD SATA, tenendo l'avvio separato dai dati. I due dischi vanno selezionati entrambi già nella schermata di scelta del dispositivo di installazione, e non uno solo con l'intenzione di aggiungere il secondo dopo: l'operazione di aggancio successivo pretende che il disco nuovo sia almeno grande quanto quello esistente, quindi partire dal maggiore dei due renderebbe impossibile agganciare il minore. Se per qualche ragione si installa su un disco solo, si installa sul minore.
+
+Dopo l'installazione si creano le condivisioni e si verifica lo stato dei compiti periodici, ed è qui che conviene sapere cosa il sistema fa da sé e cosa no. Alla creazione di un pool viene generato automaticamente un compito di verifica dell'integrità, con cadenza e soglia di trentacinque giorni: non va creato di nuovo, va guardato, ed eventualmente portato a una cadenza mensile. Le istantanee periodiche invece non esistono fino a quando qualcuno non le definisce, ed è la parte che si dimentica. Restano infine le notifiche sugli errori del pool, che sono la vera lacuna delle configurazioni predefinite: una verifica che gira regolarmente, trova un errore e non avvisa nessuno equivale a una verifica che non è mai girata.
+
+La creazione del pool dei dati è l'unico passo che attende la decisione sull'acquisto dei dischi.
 
 ## Che cosa resta come scorta
 
