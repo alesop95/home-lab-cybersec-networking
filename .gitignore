@@ -47,6 +47,11 @@ CLAUDE.local.md
 # estensione, perche' e' un .md (vedi .claude/rules/anonymization.md).
 nas-consolidation/HANDOFF.md
 
+# Consolidamento NAS, materiale operativo con i dati reali dell'hardware: nomi macchina,
+# seriali dei dischi, credenziali. Esclusione per CARTELLA e non per nome, cosi' che
+# sopravviva a un rinomino dei file al suo interno (vedi .claude/rules/anonymization.md).
+nas-consolidation/_privato/
+
 # Anonimizzazione: i valori reali non si versionano mai (vedi .claude/rules/anonymization.md)
 tools/redactions.json
 
