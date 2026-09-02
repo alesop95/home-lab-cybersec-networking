@@ -163,11 +163,22 @@ def analizza(pat, files, escludi):
                 for m in regex.finditer(riga):
                     aggiungi(cat, f, ln, riga, m.group(0)[:60])
 
+            # Confronto sensibile alle maiuscole: un seriale e un numero di telefono
+            # si scrivono in una forma sola, e un'occorrenza in forma diversa e' piu'
+            # probabilmente un falso positivo che una fuga.
             for valore, cat in ([(s, "SERIALE/ID MACCHINA") for s in seriali] +
-                                [(u, "UBICAZIONE") for u in ubicazione] +
-                                [(o, "ORGANIZZAZIONE PRIVATA") for o in organizzazioni] +
                                 [(t, "TELEFONO") for t in telefoni]):
                 if valore and valore in riga:
+                    aggiungi(cat, f, ln, riga, "<valore oscurato>")
+
+            # Confronto INSENSIBILE alle maiuscole: una ragione sociale e un frammento
+            # di indirizzo sono testo, non codici. La stessa organizzazione compare in
+            # maiuscolo sui documenti ufficiali e in forma mista nella prosa, e un
+            # controllo che ne intercetta una grafia sola non protegge da niente.
+            riga_bassa = riga.lower()
+            for valore, cat in ([(u, "UBICAZIONE") for u in ubicazione] +
+                                [(o, "ORGANIZZAZIONE PRIVATA") for o in organizzazioni]):
+                if valore and valore.lower() in riga_bassa:
                     aggiungi(cat, f, ln, riga, "<valore oscurato>")
 
             for s in segreti:
