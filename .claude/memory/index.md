@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: eb2f6c3
-Data snapshot:         2026-09-01
+Commit di riferimento: 05cc896
+Data snapshot:         2026-09-03
 Remoto:                origin, allineato
 ```
 
@@ -67,11 +67,27 @@ Il materiale di lavoro con i valori reali vive in `_notes/nas-consolidation/HAND
 
 La lezione che vale oltre questo caso riguarda il guard-rail. Su un file con sei password in chiaro e quattro nomi propri dichiarava zero riscontri bloccanti, perche' la categoria dei segreti letterali aveva la lista vuota e i nomi non erano registrati. Il controllo verifica cio' che gli e' stato insegnato: un esito verde su materiale nuovo non e' una garanzia finche' i valori di quel materiale non sono entrati nel file dei pattern. E' il motivo per cui la regola prescrive di aggiornare mappa e pattern prima di scrivere, non dopo.
 
+## Il consolidamento NAS e' in esecuzione, non piu' in progetto
+
+Dal 03/09/2026 questo e' il lavoro attivo, ed e' la prima cosa del progetto che tocca hardware invece di documentazione. Chi apre una sessione riprende da qui.
+
+La guida operativa e' `_notes/nas-consolidation/GUIDA-PASSO-A-PASSO.md`, non versionata perche' porta i valori reali delle quattro macchine, ed e' il documento da leggere per sapere dove si e' arrivati: ogni passo concluso porta un timbro con la data. Le sue controparti pubblicabili sono le tre schede sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`, che portano l'analisi, la sequenza di assemblaggio e il calcolo dei consumi con i segnaposto al posto dei nomi macchina.
+
+Lo stato fisico in questo momento e' che le quattro macchine sono **spente, con l'interruttore dell'alimentatore su aperto**, etichettate, e **nessun case e' ancora stato aperto**. Il passo successivo apre il primo case.
+
+Due cose da non rifare, perche' sono gia' state fatte e in sessione si e' perso tempo a scoprirlo. Il censimento hardware delle quattro macchine esiste dal 31/08 e dall'01/09 in `nas-consolidation/scripts/`, e i suoi valori sono gia' trascritti nelle tabelle di identificazione della guida. La cartella `_censimento-hardware` sul NAS di backup e' una copia parziale e ridondante di quei file, non una fonte: le mancano i due report delle macchine Linux.
+
+Una cosa che il censimento software non puo' dare, e che quindi resta da fare a mano a case aperti: i dati degli alimentatori. Un alimentatore ATX non ha interfaccia dati verso la scheda madre, quindi l'etichetta e' la sola fonte.
+
 ## Punto di ripresa
 
 L'albero e' allineato al remoto e i controlli sono verdi: 127 documenti su 127 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
 
-C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS descritto in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md`. Vedi `.claude/context/current-work.md`.
+C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS. Lo stato di avanzamento vive nella guida operativa sotto `_notes/nas-consolidation/`, dove ogni passo concluso porta un timbro con la data, e la feature e' descritta in `.claude/context/current-work.md`.
+
+**Punto esatto in cui la sessione del 03/09/2026 si e' interrotta.** Giorno zero chiuso. Passo 1.1 chiuso: le quattro macchine sono spente con l'interruttore dell'alimentatore su aperto e il cavo inserito, etichettate, e nessun case e' aperto. **Il passo successivo e' il 1.2 della guida: si apre soltanto `PC-DESKTOP-B` e si prelevano i due moduli di memoria da 8 GB dagli slot A1 e B1, che non sono adiacenti.** Da quella macchina escono tre dei cinque pezzi, ed e' per questo che e' la prima.
+
+Resta aperto in parallelo, e non blocca nulla, il Passo 0.3: l'ordine dell'adattatore da PCIe a M.2 e della scheda di rete Intel. Servono al montaggio, ai passi 2.5 e 2.6, non ai prelievi.
 
 Da decidere a parte, e non in una sessione di lavoro ordinaria: se bonificare la storia gia' pubblicata dai due valori descritti sopra, e se il repository su GitHub debba essere pubblico o privato, cosa che al momento non risulta verificata da nessuna parte del progetto.
 
