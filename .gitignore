@@ -42,14 +42,15 @@ desktop.ini
 CLAUDE.local.md
 .claude/settings.local.json
 
-# Consolidamento NAS: documento di lavoro con credenziali e nomi reali delle quattro
-# macchine dismesse. Non e' materiale da pubblicare e non lo copre nessuna esclusione per
-# estensione, perche' e' un .md (vedi .claude/rules/anonymization.md).
+# Rete di sicurezza residua sul consolidamento NAS. Il materiale privato di quel lavoro
+# e' stato consolidato sotto _notes/nas-consolidation/, che e' la sede canonica prescritta
+# dalla sezione 3 di PROJECT-SYSTEM.md: e' tracciato cio' che un contributore deve poter
+# recuperare da un clone ed e' sicuro pubblicare, sta in _notes/ cio' che e' narrativo,
+# transitorio o operativamente sensibile. Queste due righe non coprono piu' nessun file
+# esistente e restano solo perche' un .md sotto nas-consolidation/ non e' escluso da
+# nessuna regola per estensione, quindi un file ricreato li' per errore sarebbe esposto.
 nas-consolidation/HANDOFF.md
 
-# Consolidamento NAS, materiale operativo con i dati reali dell'hardware: nomi macchina,
-# seriali dei dischi, credenziali. Esclusione per CARTELLA e non per nome, cosi' che
-# sopravviva a un rinomino dei file al suo interno (vedi .claude/rules/anonymization.md).
 nas-consolidation/_privato/
 
 # Anonimizzazione: i valori reali non si versionano mai (vedi .claude/rules/anonymization.md)
