@@ -14,7 +14,7 @@ last-verified-commit: eb2f6c3
 
 ## Feature attiva: assemblaggio del NAS per lo storage di rete
 
-Dal 01/09/2026 c'e' un lavoro aperto, e non e' documentale: l'assemblaggio della macchina che coprira' lo storage di rete della fase 4, ricavata da quattro postazioni desktop dismesse. La progettazione e' chiusa e sta in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md`; il materiale operativo con i valori reali, escluso da git per nome, e' in `nas-consolidation/HANDOFF.md`.
+Dal 01/09/2026 c'e' un lavoro aperto, e non e' documentale: l'assemblaggio della macchina che coprira' lo storage di rete della fase 4, ricavata da quattro postazioni desktop dismesse. La progettazione e' chiusa e sta in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md`; il materiale operativo con i valori reali, escluso da git per nome, e' in `_notes/nas-consolidation/HANDOFF.md`.
 
 La definizione di fatto per questa feature e' una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e TrueNAS installato e raggiungibile su un mirror di avvio composto dai due SSD SATA. Non comprende la creazione del pool dei dati, che dipende da un acquisto non ancora deciso ed e' l'unico passo che quella decisione blocca.
 

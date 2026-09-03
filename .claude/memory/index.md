@@ -63,7 +63,7 @@ tools/redactions.json                   sostituzioni della prima stesura, oggi r
 
 Dal 01/09/2026 il repository contiene la scheda del consolidamento di quattro desktop dismessi in un NAS, sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`, che e' l'hardware candidato allo storage di rete della fase 4. Le quattro macchine non appartengono alla rete domestica e hanno segnaposto propri, registrati nella mappa privata.
 
-Il materiale di lavoro con i valori reali vive in `nas-consolidation/HANDOFF.md`, escluso da git per nome. L'esclusione e' per nome e non per cartella, perche' i cinque script di censimento nella stessa cartella sono puliti e versionati: se quel file viene rinominato o spostato, l'esclusione non lo segue.
+Il materiale di lavoro con i valori reali vive in `_notes/nas-consolidation/HANDOFF.md`, escluso da git per nome. L'esclusione e' per nome e non per cartella, perche' i cinque script di censimento nella stessa cartella sono puliti e versionati: se quel file viene rinominato o spostato, l'esclusione non lo segue.
 
 La lezione che vale oltre questo caso riguarda il guard-rail. Su un file con sei password in chiaro e quattro nomi propri dichiarava zero riscontri bloccanti, perche' la categoria dei segreti letterali aveva la lista vuota e i nomi non erano registrati. Il controllo verifica cio' che gli e' stato insegnato: un esito verde su materiale nuovo non e' una garanzia finche' i valori di quel materiale non sono entrati nel file dei pattern. E' il motivo per cui la regola prescrive di aggiornare mappa e pattern prima di scrivere, non dopo.
 
