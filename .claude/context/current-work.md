@@ -5,7 +5,7 @@ generated-date: 2026-09-03
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: 05cc896
+last-verified-commit: 517eeee
 ---
 
 # Lavoro corrente
@@ -16,19 +16,29 @@ last-verified-commit: 05cc896
 
 Dal 01/09/2026 c'e' un lavoro aperto, e dal 03/09 e' passato dalla progettazione all'esecuzione: e' la prima attivita' del progetto che tocca hardware invece di documentazione. Copre lo storage di rete della fase 4 della roadmap, ricavato da quattro postazioni desktop dismesse.
 
-La progettazione, anonimizzata e pubblicabile, sta in tre schede sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`: l'analisi con le decisioni, la guida all'assemblaggio, e il calcolo dei consumi con la finestra di accensione. Il materiale operativo con i valori reali delle quattro macchine sta fuori dall'albero versionato, sotto `_notes/nas-consolidation/`, e comprende la guida passo a passo che porta lo stato di avanzamento, l'analisi dei consumi con i dati di bolletta, le credenziali e l'handoff originale.
+La progettazione, anonimizzata e pubblicabile, sta in quattro schede sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`: l'analisi con le decisioni, la guida all'assemblaggio, il calcolo dei consumi con la finestra di accensione, e dal 08/09/2026 l'inventario di cio' che resta nelle macchine di scorta dopo il consolidamento. Il materiale operativo con i valori reali sta fuori dall'albero versionato, sotto `_notes/nas-consolidation/`, e comprende la guida passo a passo che porta lo stato di avanzamento, il runbook cronologico dello smontaggio, l'inventario privato da cui la scheda pubblica deriva, l'analisi dei consumi con i dati di bolletta, le credenziali e l'handoff originale.
+
+Fra quei documenti la fonte di verita' sull'avanzamento e' una sola, la guida passo a passo, perche' e' l'unica che porta i timbri. Il runbook cronologico ne e' la condensazione da banco e ne omette deliberatamente i timbri, cosi' che non esistano due registri in disaccordo: quando i due dicono cose diverse su un gesto, come e' accaduto sulla chiusura del primo case, si allinea la guida e non si tengono entrambe le versioni.
 
 ## Dove si e' arrivati
 
-La fonte di verita' sull'avanzamento e' la guida operativa, dove ogni passo concluso porta un timbro con la data. Al 03/09/2026 lo stato e' il seguente.
+La fonte di verita' sull'avanzamento e' la guida operativa, dove ogni passo concluso porta un timbro con la data. Al 08/09/2026 lo stato e' il seguente.
 
 E' chiusa la fase preparatoria. I salvataggi delle due macchine Linux sono stati verificati per ripristino effettivo e non soltanto prodotti, l'assenza di dati da conservare e' confermata su tutte e quattro, le immagini di installazione sono scaricate e verificate per somma di controllo contro il valore pubblicato dalla fonte, la finestra di accensione e' decisa e registrata come ADR-011, e le etichette sono stampate e attaccate ai quattro case dopo riverifica degli indirizzi.
 
-E' chiuso il primo passo dello smontaggio. Le quattro macchine sono spente, con l'interruttore dell'alimentatore in posizione aperta e il cavo lasciato inserito: e' una scelta migliore dello scollegare, perche' il conduttore di terra non passa dall'interruttore e quindi il telaio resta il riferimento su cui scaricare la statica mentre le linee di alimentazione sono morte. Nessun case e' ancora stato aperto.
+E' chiuso il primo passo dello smontaggio. Le quattro macchine sono spente, con l'interruttore dell'alimentatore in posizione aperta e il cavo lasciato inserito: e' una scelta migliore dello scollegare, perche' il conduttore di terra non passa dall'interruttore e quindi il telaio resta il riferimento su cui scaricare la statica mentre le linee di alimentazione sono morte.
+
+E' aperto il primo case, quello di `PC-DESKTOP-B`, e i suoi tre pezzi sono usciti ed etichettati: i due moduli di memoria da otto gigabyte e l'SSD SATA che diventera' la seconda meta' dell'insieme di avvio in mirror. Il prelievo e' avvenuto nella sessione interrotta dal crash del 04/09 e non era registrato da nessuna parte fino al 08/09, perche' il materiale che lo documenta vive sotto `_notes/`, che non essendo tracciato non lascia traccia nemmeno in `git status`.
+
+Tre letture di quella fase sono state saltate e restano da recuperare prima di richiudere il case, che e' l'unica ragione per cui il case e' ancora aperto: il codice data dei due moduli, l'etichetta dell'alimentatore, che non ha nessuna altra fonte, e i due accessori del disco, cioe' il cavo dati uscito con esso e la slitta da due pollici e mezzo a tre e mezzo su cui e' avvitato. Il cavo cambia il piano dello smontaggio, perche' prelevarlo qui rende superfluo prelevarne uno da `linux-desktop-B`.
 
 ## Il passo successivo, esattamente
 
-Si apre soltanto `PC-DESKTOP-B` e si prelevano i due moduli di memoria da otto gigabyte dagli alloggiamenti A1 e B1, che sono in posizioni non adiacenti. Da quella macchina escono tre dei cinque pezzi da recuperare, ed e' la ragione per cui e' la prima ad aprirsi; la macchina base si apre per ultima, perche' una volta aperta ci si lavora dentro fino alla fine.
+Si chiude il primo case dopo le tre letture in sospeso, e sul fianco si scrive che cosa gli manca. La macchina si richiude assemblata e non si cannibalizza oltre i pezzi gia' usciti: condivide con la base socket, generazione di memoria e modello di processore, quindi finche' resta intera il guasto della scheda madre del NAS si risolve con un trapianto dentro un telaio gia' pronto, mentre da un mucchio di componenti sciolti si risolve ricostruendo una macchina.
+
+Poi si apre `linux-desktop-A`, che e' il Passo 1.4 della guida, e si preleva soltanto il suo NVMe. La memoria resta dentro, perche' e' l'unico kit DDR4 libero del magazzino ed e' cio' che rende quella macchina la scorta pronta all'uso a cui manca solo un disco. La confusione piu' probabile dell'intero lavoro sta in questo passo e in quello successivo: i due NVMe da prelevare sono modelli Crucial diversi che si distinguono per un carattere nel codice prodotto, e vanno in due posizioni diverse della base, uno nell'alloggiamento della scheda madre e uno sull'adattatore. Si verifica il modello sull'etichetta prima di svitare e si etichetta il pezzo prima di appoggiarlo.
+
+La macchina base si apre per ultima, perche' una volta aperta ci si lavora dentro fino alla fine.
 
 Resta aperto in parallelo, e non blocca nulla, l'ordine dell'adattatore da PCIe verso M.2 e della scheda di rete Intel: servono al montaggio e non ai prelievi, quindi l'intera fase di smontaggio si esegue senza di essi.
 

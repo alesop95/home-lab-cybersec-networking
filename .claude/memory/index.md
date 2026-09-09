@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 05cc896
-Data snapshot:         2026-09-03
+Commit di riferimento: 517eeee
+Data snapshot:         2026-09-08
 Remoto:                origin, allineato
 ```
 
@@ -33,7 +33,7 @@ Il vincolo che determina l'intera architettura e' che l'ONT dell'operatore accet
 | `context/design-and-security.md` | 494b45e | aggiornata |
 | `context/deployment.md` | 494b45e | aggiornata |
 | `context/dev-testing.md` | 494b45e | aggiornata |
-| `context/current-work.md` | 494b45e | aggiornata |
+| `context/current-work.md` | 517eeee | aggiornata |
 | `context/roadmap.md` | 494b45e | aggiornata |
 | `context/diagrams/topologia-di-rete.md` | 494b45e | aggiornata |
 | `context/diagrams/monitoraggio-open-source.md` | 494b45e | aggiornata |
@@ -42,7 +42,7 @@ Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il com
 
 ## Documentazione generata
 
-L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 127 documenti, tutti raggiungibili dalla home, zero collegamenti rotti.
+L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 131 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era fermo a 127 fino al 08/09/2026, perche' le schede aggiunte fra l'01/09 e il 02/09 non erano state contate di nuovo.
 
 La completezza dell'ingestione iniziale non e' affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
@@ -73,7 +73,11 @@ Dal 03/09/2026 questo e' il lavoro attivo, ed e' la prima cosa del progetto che 
 
 La guida operativa e' `_notes/nas-consolidation/GUIDA-PASSO-A-PASSO.md`, non versionata perche' porta i valori reali delle quattro macchine, ed e' il documento da leggere per sapere dove si e' arrivati: ogni passo concluso porta un timbro con la data. Le sue controparti pubblicabili sono le tre schede sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`, che portano l'analisi, la sequenza di assemblaggio e il calcolo dei consumi con i segnaposto al posto dei nomi macchina.
 
-Lo stato fisico in questo momento e' che le quattro macchine sono **spente, con l'interruttore dell'alimentatore su aperto**, etichettate, e **nessun case e' ancora stato aperto**. Il passo successivo apre il primo case.
+Lo stato fisico in questo momento e' che le quattro macchine sono **spente, con l'interruttore dell'alimentatore su aperto** ed etichettate; il **primo case e' aperto** e i suoi tre pezzi sono usciti, cioe' i due moduli di memoria e l'SSD SATA, etichettati sul tavolo. Gli altri due case di scorta non sono stati toccati.
+
+Accanto alla guida vivono altri due documenti privati, scritti il 04/09. `SMONTAGGIO-CRONOLOGICO.md` e' la condensazione da banco dei passi da 1.2 a 1.7, riordinata nell'ordine dei gesti, e non porta timbri di proposito, cosi' che non esistano due registri in disaccordo. `INVENTARIO-SCORTE.md` fotografa che cosa resta disponibile dopo il consolidamento, e la sua controparte pubblicabile e' la scheda 06 della cartella NAS sotto `docs/`.
+
+Esiste inoltre una quinta macchina, censita il 04/09, in esercizio e fuori dal consolidamento. Al NAS non porta niente, ma la sua scheda madre e' la gemella di quella della base, stesso modello e stesso lotto: cambia la gerarchia dei ricambi anche se non e' disponibile, ed e' un'informazione da ricordare il giorno di un guasto.
 
 Due cose da non rifare, perche' sono gia' state fatte e in sessione si e' perso tempo a scoprirlo. Il censimento hardware delle quattro macchine esiste dal 31/08 e dall'01/09 in `nas-consolidation/scripts/`, e i suoi valori sono gia' trascritti nelle tabelle di identificazione della guida. La cartella `_censimento-hardware` sul NAS di backup e' una copia parziale e ridondante di quei file, non una fonte: le mancano i due report delle macchine Linux.
 
@@ -81,11 +85,13 @@ Una cosa che il censimento software non puo' dare, e che quindi resta da fare a 
 
 ## Punto di ripresa
 
-L'albero e' allineato al remoto e i controlli sono verdi: 127 documenti su 127 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
+I controlli sono verdi al 08/09/2026: 131 documenti su 131 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione su 360 file fra tracciati e nuovi. Il verde del guard-rail vale piu' di quelli precedenti su questo materiale, perche' fino al 08/09 non conosceva nessuno dei seriali hardware ne' due dei cinque nomi host delle macchine del consolidamento: ora li conosce, e la voce di quella data nel work-log dice quali e perche' gli altri tre erano intercettati solo di rimbalzo. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
 
 C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS. Lo stato di avanzamento vive nella guida operativa sotto `_notes/nas-consolidation/`, dove ogni passo concluso porta un timbro con la data, e la feature e' descritta in `.claude/context/current-work.md`.
 
-**Punto esatto in cui la sessione del 03/09/2026 si e' interrotta.** Giorno zero chiuso. Passo 1.1 chiuso: le quattro macchine sono spente con l'interruttore dell'alimentatore su aperto e il cavo inserito, etichettate, e nessun case e' aperto. **Il passo successivo e' il 1.2 della guida: si apre soltanto `PC-DESKTOP-B` e si prelevano i due moduli di memoria da 8 GB dagli slot A1 e B1, che non sono adiacenti.** Da quella macchina escono tre dei cinque pezzi, ed e' per questo che e' la prima.
+**Punto esatto in cui la sessione del 08/09/2026 si e' chiusa.** Giorno zero chiuso, Passo 1.1 chiuso. Passi 1.2 e 1.3 chiusi: da `PC-DESKTOP-B` sono usciti i due moduli di memoria da 8 GB e l'SSD SATA, etichettati, e il suo case e' ancora aperto. **Restano da recuperare su quel case, prima di richiuderlo, tre letture saltate al momento del prelievo**: il codice data dei due moduli, l'etichetta dell'alimentatore, e i due accessori del disco, cioe' il cavo dati uscito con esso e la slitta da 2,5 a 3,5 pollici. Il cavo cambia il piano, perche' prelevarlo qui rende superfluo prelevarne uno da `linux-desktop-B`, che quindi non va toccata oltre il suo NVMe.
+
+Il case si richiude **dopo** quelle letture, e sul fianco si scrive che cosa gli manca: quella macchina resta un ricambio pronto e non un donatore di pezzi, perche' e' la sola che puo' sostituire la base con un trapianto invece che con una ricostruzione. **Il passo successivo e' il 1.4 della guida: si apre `linux-desktop-A` e si preleva soltanto il suo NVMe**, mentre la memoria resta dentro perche' e' l'unico kit DDR4 libero del magazzino. La confusione piu' probabile dell'intero lavoro sta li': i due NVMe da prelevare sono modelli Crucial diversi che si distinguono per un carattere nel codice prodotto, e vanno in due posizioni diverse della base.
 
 Resta aperto in parallelo, e non blocca nulla, il Passo 0.3: l'ordine dell'adattatore da PCIe a M.2 e della scheda di rete Intel. Servono al montaggio, ai passi 2.5 e 2.6, non ai prelievi.
 
