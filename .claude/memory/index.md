@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 517eeee
-Data snapshot:         2026-09-08
+Commit di riferimento: 4001c71
+Data snapshot:         2026-09-14
 Remoto:                origin, allineato
 ```
 
@@ -42,7 +42,7 @@ Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il com
 
 ## Documentazione generata
 
-L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 131 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era fermo a 127 fino al 08/09/2026, perche' le schede aggiunte fra l'01/09 e il 02/09 non erano state contate di nuovo.
+L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 132 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era fermo a 127 fino al 08/09/2026, perche' le schede aggiunte fra l'01/09 e il 02/09 non erano state contate di nuovo.
 
 La completezza dell'ingestione iniziale non e' affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
@@ -83,9 +83,19 @@ Due cose da non rifare, perche' sono gia' state fatte e in sessione si e' perso 
 
 Una cosa che il censimento software non puo' dare, e che quindi resta da fare a mano a case aperti: i dati degli alimentatori. Un alimentatore ATX non ha interfaccia dati verso la scheda madre, quindi l'etichetta e' la sola fonte.
 
+## Che cosa ha aggiunto la sessione del 14/09/2026, e perche' non tocca l'avanzamento fisico
+
+Sessione interamente documentale: il filo del NAS e' rimasto fermo dov'era, e il punto di ripresa fisico descritto piu' sotto e' quello del 08/09 senza modifiche.
+
+Sono entrate due testimonianze esterne, lette da immagine e trasformate in schede. La prima e' in coda a `docs/03-spunti-di-sviluppo/21-idee-setup-da-profili-linkedin-interessanti/02-home-lab-cybersecurity-infrastructure-autore-linkedin-b.md` e riguarda il confronto fra cio' che si puo' fare dentro una LAN di casa e cio' che sta facendo questo progetto. Il suo riscontro principale e' che la strozzatura sulla WAN si presenta identica su una linea di un altro operatore, quindi il doppio NAT non e' una peculiarita' di questa linea ma la forma normale di un firewall personale dietro un ONT in comodato. Resta una testimonianza di terzi non verificata qui, ed e' dichiarata come tale.
+
+La seconda e' la scheda nuova `docs/03-spunti-di-sviluppo/03-server/03-stack-linux-domestico-con-soli-strumenti-open-source.md`, che descrive lo stack a cinque strati di una macchina Linux domestica con soli strumenti open source e lo lega al doppio NAT: con un proxy inverso davanti, ai due apparati in serie serve una regola di inoltro sola invece di una per servizio.
+
+La cosa da ricordare per le sessioni future sta nella differenza fra le due architetture. Il modello del laboratorio isolato, cioe' casa sul modem e dietro il firewall solo il segmento cablato, e' senza modifiche la configurazione in cui questo progetto si trovera' il giorno dopo la fase 2: e' uno stato utilizzabile e non uno stato incompleto, e non va attraversato in fretta solo perche' gli access point non sono ancora arrivati.
+
 ## Punto di ripresa
 
-I controlli sono verdi al 08/09/2026: 131 documenti su 131 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione su 360 file fra tracciati e nuovi. Il verde del guard-rail vale piu' di quelli precedenti su questo materiale, perche' fino al 08/09 non conosceva nessuno dei seriali hardware ne' due dei cinque nomi host delle macchine del consolidamento: ora li conosce, e la voce di quella data nel work-log dice quali e perche' gli altri tre erano intercettati solo di rimbalzo. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
+I controlli sono verdi al 14/09/2026: 132 documenti su 132 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione sui file tracciati e nuovi. Il verde del guard-rail vale piu' di quelli precedenti su questo materiale, perche' fino al 08/09 non conosceva nessuno dei seriali hardware ne' due dei cinque nomi host delle macchine del consolidamento: ora li conosce, e la voce di quella data nel work-log dice quali e perche' gli altri tre erano intercettati solo di rimbalzo. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
 
 C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS. Lo stato di avanzamento vive nella guida operativa sotto `_notes/nas-consolidation/`, dove ogni passo concluso porta un timbro con la data, e la feature e' descritta in `.claude/context/current-work.md`.
 
