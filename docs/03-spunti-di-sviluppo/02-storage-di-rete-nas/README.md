@@ -8,3 +8,4 @@
 - [Guida all'assemblaggio e all'installazione di TrueNAS](04-guida-assemblaggio-e-installazione-truenas.md)
 - [Consumo elettrico del NAS e finestra di accensione](05-consumo-elettrico-e-finestra-di-accensione.md)
 - [Inventario delle scorte dopo il consolidamento](06-inventario-delle-scorte-dopo-il-consolidamento.md)
+- [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md)

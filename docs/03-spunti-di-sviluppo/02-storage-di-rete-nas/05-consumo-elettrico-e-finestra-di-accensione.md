@@ -50,7 +50,10 @@ C'è inoltre una circostanza che aiuta e che è specifica di questa architettura
 | Perdita di conversione dell'alimentatore | +20-30% | vedi la sezione dedicata |
 | **Alla presa, senza dischi meccanici** | **40-55 W** | stima centrale 48 W |
 | Due dischi meccanici da 3,5 pollici in rotazione | +11-16 W | 4-6 W ciascuno, più la perdita di conversione |
+| Tre dischi meccanici in rotazione (config. decisa) | +17-24 W | vedi la nota sotto |
 | **Alla presa, configurazione completa** | **52-70 W** | stima centrale 60 W |
+
+La riga a tre dischi sostituisce quella a due come configurazione di riferimento, ed è la conseguenza della decisione presa in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md): due dischi nel mirror del pool più uno di riserva a caldo, che nel funzionamento normale gira anch'esso. La stima centrale alla presa passa così dai 60 W a una cifra fra 65 e 72 W. C'è un margine facile su cui tornare a macchina accesa: mettere in sospensione il solo disco di riserva, che non viene mai letto finché non c'è un guasto, vale circa 5 W continui, cioè una trentina di kilowattora e otto euro l'anno. Non è la sospensione aggressiva dei dischi del pool discussa più avanti, che produrrebbe cicli di avvio e arresto frequenti: qui si tratta di un disco che nel funzionamento normale resta fermo alla lettura.
 
 ## L'alimentatore, e un fatto controintuitivo sull'efficienza
 
@@ -111,6 +114,8 @@ Ne risultano centodiciotto ore di accensione a settimana, cioè circa il **setta
 | Incremento sul consumo di casa | +50% | **+35%** | |
 
 Il risparmio è di **quaranta euro all'anno**, cioè il **trenta per cento** del costo di esercizio. Va detto con precisione perché una valutazione preliminare, fatta ipotizzando quattro ore di accensione al giorno, aveva indicato un fattore sei: con una finestra di sedici o diciassette ore quel fattore non si realizza, e il risparmio reale è di un terzo. Resta un risparmio vero, ma di un ordine di grandezza diverso da quello ipotizzato prima di avere gli orari.
+
+La tabella è calcolata sulla stima centrale di 60 W valida per due dischi meccanici. Con la configurazione decisa a tre dischi la stima centrale sale verso i 68 W, e la spesa annua sulla finestra passa di conseguenza da circa 95 a circa 110 euro: sono quindici euro l'anno in più, a fronte di quattro terabyte grezzi non pagati, e il confronto giusto è con il prezzo di due dischi nuovi, non con lo zero. La sospensione del solo disco di riserva, descritta sopra, ne recupera circa otto.
 
 Ci sono inoltre due benefici non monetari che non compaiono in tabella. Duemilaseicento ore all'anno in meno di funzionamento su ogni componente, dischi meccanici compresi, e nessun rumore di ventole e di dischi durante la notte, che su una macchina collocata in un ambiente abitato non è irrilevante.
 

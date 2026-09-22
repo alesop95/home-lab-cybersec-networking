@@ -35,6 +35,8 @@ Le due conseguenze accettate sono il doppio NAT, strutturale e non eliminabile, 
 
 ## Da dove si comincia a leggere
 
+Il [nuovo studio integrato](docs/03-spunti-di-sviluppo/23-studio-home-lab/README.md), del 22/09/2026, raccoglie diagrammi, servizi gratuiti, confronto switch/AP Zyxel e inventario documentale. Le fonti hanno un [registro unico](SOURCES.md) e [note di lettura](docs/fonti/index-fonti.md). E' un filone di progettazione parallelo all'assemblaggio NAS, non un verbale di configurazioni eseguite.
+
 `docs/DEVELOPMENT.md` e' l'hub: spiega come e' organizzato l'albero e propone i percorsi di lettura per argomento. `docs/pendenze-aperte.md` dice che cosa e' dichiarato incompleto, con cinquanta voci rilevate automaticamente sulle intestazioni. `docs/verbale-installazione-opnsense.md` e' l'unico documento che descrive qualcosa di realmente accaduto, ricavato dalle trentuno fotografie della sessione di installazione.
 
 Le decisioni architetturali, con le alternative scartate e il motivo, stanno in `.claude/memory/decisions.md`. La topologia disegnata sta in `.claude/context/diagrams/topologia-di-rete.md`.

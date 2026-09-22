@@ -1,5 +1,7 @@
 # Fonti web consultate, per sessione
 
+Dal 22/09/2026 il punto di ingresso canonico e' [SOURCES.md](../SOURCES.md), con [note di lettura](fonti/index-fonti.md) e censimento degli URL pubblici. Questo registro conserva le letture storiche e il contesto NAS; le nuove fonti del filone rete sono registrate nel punto unico. Le fonti aggiunte qui dalla sessione NAS vengono intercettate dal censimento senza alterarne le annotazioni.
+
 > Registro delle fonti esterne consultate durante il lavoro, con la data e l'affermazione che ciascuna sostiene. Nasce dal principio già enunciato in [Fonti e materiali del progetto](fonti-e-materiali.md): le affermazioni ancorate a un indirizzo di documentazione ufficiale sono verificate, quelle senza ancoraggio sono ragionamenti plausibili che nessuno ha messo alla prova. Questo file rende quell'ancoraggio consultabile invece che implicito, così che chi rilegge una scheda tecnica possa risalire a che cosa la sostiene e con quale grado di affidabilità.
 
 ## Come si legge, e i tre gradi di affidabilità

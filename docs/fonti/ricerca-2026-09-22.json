@@ -1,0 +1,19 @@
+{
+  "data": "2026-09-22",
+  "scopo": "Diario degli URL di pagine e risultati conservati durante la ricerca. Candidati non automaticamente letti; stato autorevole in SOURCES.md. Esclusi link di navigazione interni alle pagine. Non rappresenta una scansione dei dispositivi.",
+  "urls": [
+    "https://canyouseeme.org/",
+    "https://cheat.sh/",
+    "https://community.zyxel.com/en/discussion/1150/gs1900-8hp-poe-budget",
+    "https://github.com/usestrix/strix",
+    "https://novascm.polariscore.it/",
+    "https://support.zyxel.eu/hc/en-us/articles/4416989548178-Access-Point-NWA50-55AXEE-90AX-110AX-210AX-Differences-in-Hardware-and-Features",
+    "https://www.cloudflare.com/vi-vn/application-services/products/waf/",
+    "https://www.raffaelechiatto.com/installazione-e-configurazione-base-di-adguard-home-su-ubuntu-server-26-04-con-docker-compose/",
+    "https://www.reddit.com/r/HomeNetworking/comments/16oxkl1",
+    "https://www.reddit.com/r/HomeNetworking/comments/1g9e16m",
+    "https://www.reddit.com/r/HomeNetworking/comments/1g9ej0j",
+    "https://www.zyxel.com/global/en/products/switch/gs1915-series",
+    "https://www.zyxel.com/us/en-us/products/wireless/nwa50ax"
+  ]
+}

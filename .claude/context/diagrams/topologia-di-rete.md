@@ -42,7 +42,7 @@ Questa e' la catena imposta dal vincolo dell'operatore, non una scelta di proget
               [ FIREWALL OPNsense 25.7 ]
 ```
 
-Il modem non puo' essere messo in bridge: l'interfaccia non espone modalita' bridge, ne' passthrough PPPoE, ne' passthrough VLAN. L'ONT accetta traffico solo dal MAC del modem dell'operatore, quindi non si puo' nemmeno superarlo collegandosi direttamente. Le due cose insieme rendono il doppio NAT strutturale e non eliminabile senza cambiare contratto o apparato.
+Il modem non puo' essere messo in bridge: l'interfaccia non espone modalita' bridge, ne' passthrough PPPoE, ne' passthrough VLAN. Per la linea concreta in esame l'assistenza ha escluso il collegamento diretto dell'OPNsense all'ONT e una prova di terzi ha riferito un rifiuto del nuovo apparato; la documentazione pubblica Fastweb, pero', descrive anche scenari con apparato proprio e non dichiara in modo generale un vincolo MAC dell'ONT. Il progetto tratta quindi il collegamento diretto come non verificato e non supportato per questa linea, mantenendo il percorso ONT -> Seven -> OPNsense. Il doppio NAT e' il vincolo operativo di progetto.
 
 ## Il firewall e la segmentazione interna, come sara'
 
@@ -95,7 +95,7 @@ Il piano a VLAN 10, 20 e 30 compare in due varianti nel documento sorgente, una 
 
 ## Il buco noto
 
-Nella configurazione attuale, con il firewall a valle del modem, la Wi-Fi generata dal modem e' interna alla LAN del modem stesso e non attraversa il firewall. Ogni dispositivo wireless connesso a quella rete e' quindi fuori dal perimetro controllato, e continuera' a esserlo finche' gli access point a valle dello switch non saranno installati e la radio del modem non sara' spenta o ridotta a rete ospite. Questo e' il motivo per cui gli access point non sono un accessorio del progetto ma la sua chiusura: senza di essi la segmentazione copre il cablato e lascia scoperto il wireless, che e' il segmento con la superficie d'attacco piu' ampia.
+Nella configurazione attuale, con il firewall a valle del modem, la Wi-Fi generata dal modem e' interna alla LAN del modem stesso e non attraversa il firewall. Ogni dispositivo wireless connesso a quella rete e' quindi fuori dal perimetro controllato, e continuera' a esserlo finche' gli access point a valle dello switch non saranno installati e la radio del modem non sara' spenta o ridotta a rete ospite. Questa rete upstream puo' essere tollerata temporaneamente per dispositivi ordinari o legacy, ma non va presentata come copertura di sicurezza dell'intera abitazione. Gli access point a valle dello switch chiudono il buco: senza di essi la segmentazione copre il cablato e lascia scoperto il wireless.
 
 ## Diagramma della sequenza di decisione sulla WAN
 
@@ -109,8 +109,9 @@ Il modem si puo' mettere in bridge?
         v
 Il firewall si puo' collegare direttamente all'ONT?
         |
-        +-- NO (l'ONT e' vincolato al MAC del modem;
-        |       confermato dall'assistenza e da una prova di terzi)
+        +-- NON VERIFICATO SULLA LINEA (assistenza e prova di terzi
+        |       indicano un rifiuto; le pagine pubbliche non provano
+        |       un vincolo MAC generale)
         |
         v
 Allora il modem resta l'apparato di frontiera.
@@ -124,6 +125,6 @@ Servono i parametri di accesso WAN (protocollo e VLAN ID) ?
         v
 Che cosa serve sapere, allora?
         |
-        +-- Solo l'indirizzo LAN del modem: 192.168.1.254/24.
-                E' il gateway della WAN del firewall.
+        +-- L'indirizzo LAN effettivo del Seven e la prenotazione
+                DHCP della WAN del firewall, da rilevare prima del collaudo.
 ```

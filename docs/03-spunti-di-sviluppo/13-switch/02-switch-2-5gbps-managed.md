@@ -1,5 +1,7 @@
 # Switch 2,5Gbps managed
 
+> Analisi storica riferita a un solo AP. Dal 22/09/2026 il confronto di riferimento e' lo [studio switch e due o tre AP Zyxel](../23-studio-home-lab/03-switch-e-access-point-zyxel.md). Correzione verificata sulle specifiche del produttore: XMG1915 dispone anche di routing statico; usarlo come solo switch L2 e' una scelta progettuale. Il testo sottostante conserva il ragionamento iniziale e non costituisce un preventivo aggiornato.
+
 ## Introduzione
 
 Uno switch 2,5 Gbps a 8 porte unmanaged è un dispositivo plug-and-play che opera a livello 2 con configurazione fissa: negozia automaticamente velocità e duplex, apprende le MAC address table e inoltra i frame senza possibilità di intervento. Non espone interfacce di gestione, quindi non puoi creare VLAN, priorità QoS, mirroring, limitazioni di banda o controlli sul traffico; l’obiettivo è solo fornire connettività multi-gigabit stabile tra i dispositivi domestici.

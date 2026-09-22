@@ -1,10 +1,12 @@
 # Fonti e materiali del progetto
 
+Dal 22/09/2026 il [registro unico](../SOURCES.md) censisce anche i riferimenti esterni gia' presenti nei documenti e i tre screenshot forniti come voci esplicite. Le [note collegate](fonti/index-fonti.md) ne spiegano l'impiego. Questo documento resta il catalogo dei materiali locali.
+
 > Documento curato, non generato. Inventario di tutto il materiale su cui si regge la documentazione, distinguendo cio' che chi clona il repository puo' raggiungere da solo da cio' che resta sul disco di chi lavora al progetto. Serve a rendere esplicito che una parte della base documentale non e' versionata, e a dire dov'e' e perche'.
 
 ## Il documento sorgente
 
-`_notes/sorgenti/PROGETTO rete e networking domestica.docx` e' la fonte primaria: 1906 paragrafi, 338 titoli fino al nono livello di annidamento, 74 immagini incorporate, circa 250 mila caratteri di testo al netto degli spazi. Non e' versionato, perche' il `.gitignore` esclude sia i documenti Word sia l'intera cartella `_notes/`, e perche' contiene in chiaro i valori reali che l'albero `docs/` porta invece anonimizzati. E' la fonte di rigenerazione: senza di esso l'albero `docs/` resta leggibile ma non piu' aggiornabile, quindi il file va conservato e incluso nei backup personali con la stessa cura del repository.
+`_notes/sorgenti/PROGETTO rete e networking domestica.docx` e' l'archivio della prima stesura: 1906 paragrafi, 338 titoli fino al nono livello di annidamento, 74 immagini incorporate, circa 250 mila caratteri di testo al netto degli spazi. Non e' versionato perche' contiene valori reali ed e' sotto `_notes/`. Dal 25/08/2026, per ADR-010, i documenti si aggiornano direttamente nel repository: il Word non e' piu' una fonte di rigenerazione e la sua assenza non impedisce la manutenzione. Resta materiale storico da includere nei backup personali.
 
 Il 25/08/2026 e' stata verificata la completezza della conversione con un confronto paragrafo per paragrafo fra sorgente e albero generato, su testo normalizzato e con le stesse redazioni applicate al sorgente: 1591 paragrafi su 1591 ritrovati, zero mancanti. Le uniche righe volutamente non riportate sono i segnaposto di corpo composti da una lettera ripetuta, rimossi dall'opzione di pulizia.
 

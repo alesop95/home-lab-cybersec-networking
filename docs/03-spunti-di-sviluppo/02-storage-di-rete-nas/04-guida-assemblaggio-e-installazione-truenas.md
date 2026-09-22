@@ -125,6 +125,8 @@ Sull'acquisto dei dischi resta la trappola che su ZFS è più severa che altrove
 
 Con due dischi la scelta è il mirror, perché raidz1 richiede tre dischi. Grazie all'espansione un disco alla volta e alla riscrittura di ribilanciamento disponibili nella versione corrente, la crescita successiva non richiede di rifare il pool, che era il vincolo su cui la scheda di analisi si esprimeva con cautela.
 
+Dal 22/09/2026 la scelta dei dischi non è più aperta: il pool si costruisce sui quattro dischi da 2 TB recuperati dal NAS QNAP dismesso, analizzati in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md), che chiude anche il perché della composizione. In sintesi operativa: `mirror-0` accoppia il Toshiba e uno dei tre Samsung, che sono l'unica coppia del gruppo con guasto davvero indipendente; un secondo Samsung resta come riserva a caldo su una porta SATA; il terzo esce dal NAS verso una scorta. Resta una porta SATA libera per la crescita. La forma del pool non è quindi più il mirror obbligato per mancanza di dischi, ma un mirror scelto per massimizzare l'indipendenza dei guasti su supporti di recupero. La sola cosa che ancora attende la creazione del pool è la misura dell'occupato del QNAP, che decide se la riserva a caldo resta tale o rientra come secondo mirror: il cancello è in quella scheda. Prima di creare il pool, i dischi vanno qualificati con il protocollo `badblocks` e `smartctl` descritto lì, non semplicemente cancellati.
+
 Un ultimo numero da tenere presente: un pool ZFS degrada sensibilmente oltre l'ottanta per cento di riempimento. La capacità utile da pianificare non è quella nominale, ma l'ottanta per cento di essa.
 
 ## Fase 8, dopo il pool

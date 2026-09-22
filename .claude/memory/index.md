@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 4001c71
-Data snapshot:         2026-09-14
+Commit di riferimento: e91a133
+Data snapshot:         2026-09-22
 Remoto:                origin, allineato
 ```
 
@@ -23,7 +23,7 @@ Non si riscrive la storia di propria iniziativa: e' un'operazione pianificata, c
 
 La documentazione di questo progetto e' quasi tutta progettazione. Di realizzato c'e' l'installazione del sistema operativo del firewall del 16/01/2026, senza configurazione di rete, e l'ottenimento dell'indirizzo pubblico statico dall'operatore. Lo switch non e' acquistato, gli access point non esistono, nessun servizio interno e' in esercizio. Chi legge le schede tecniche senza questo avvertimento le scambia per descrizione di uno stato di fatto, e sbaglia.
 
-Il vincolo che determina l'intera architettura e' che l'ONT dell'operatore accetta traffico solo dal modem in comodato, e il modem non si puo' mettere in bridge. Da li' discendono il doppio NAT e il wireless inizialmente fuori dal perimetro del firewall.
+Il vincolo operativo della linea concreta e' che l'assistenza ha escluso il collegamento diretto dell'OPNsense all'ONT e il modem non si puo' mettere in bridge. La documentazione pubblica non prova un vincolo MAC generale dell'ONT, quindi il progetto registra l'evidenza come locale e non la generalizza. Da li' discendono la baseline ONT -> Seven -> OPNsense, il doppio NAT e il wireless Seven inizialmente fuori dal perimetro del firewall.
 
 ## Stato di verifica delle schede
 
@@ -33,7 +33,7 @@ Il vincolo che determina l'intera architettura e' che l'ONT dell'operatore accet
 | `context/design-and-security.md` | 494b45e | aggiornata |
 | `context/deployment.md` | 494b45e | aggiornata |
 | `context/dev-testing.md` | 494b45e | aggiornata |
-| `context/current-work.md` | 517eeee | aggiornata |
+| `context/current-work.md` | e91a133 | aggiornata |
 | `context/roadmap.md` | 494b45e | aggiornata |
 | `context/diagrams/topologia-di-rete.md` | 494b45e | aggiornata |
 | `context/diagrams/monitoraggio-open-source.md` | 494b45e | aggiornata |
@@ -42,7 +42,7 @@ Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il com
 
 ## Documentazione generata
 
-L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 132 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era fermo a 127 fino al 08/09/2026, perche' le schede aggiunte fra l'01/09 e il 02/09 non erano state contate di nuovo.
+L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 146 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era 132 nello snapshot del 14/09/2026; la differenza sono i documenti dello studio home lab e delle note fonti aggiunti il 22/09 in una sessione parallela, piu' le tre schede nuove del 22/09, cioe' lo studio dei dischi recuperati dal QNAP, la scheda didattica su dischi e SSD per uso continuo e la scheda METATRON.
 
 La completezza dell'ingestione iniziale non e' affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
@@ -93,9 +93,19 @@ La seconda e' la scheda nuova `docs/03-spunti-di-sviluppo/03-server/03-stack-lin
 
 La cosa da ricordare per le sessioni future sta nella differenza fra le due architetture. Il modello del laboratorio isolato, cioe' casa sul modem e dietro il firewall solo il segmento cablato, e' senza modifiche la configurazione in cui questo progetto si trovera' il giorno dopo la fase 2: e' uno stato utilizzabile e non uno stato incompleto, e non va attraversato in fretta solo perche' gli access point non sono ancora arrivati.
 
+## Che cosa ha aggiunto la sessione del 22/09/2026, e perche' il filo fisico resta fermo
+
+Sessione documentale che chiude una decisione, ma non muove l'assemblaggio: nessun disco e' stato spostato, il punto di ripresa fisico resta quello dell'08/09. Sono diventati disponibili quattro dischi da 2 TB gratuiti da un QNAP TS-410U aziendale in dismissione, e la sessione li ha analizzati e destinati. La decisione, registrata come ADR-013, e' che il pool dati nasce da questi dischi invece che da un acquisto: uno specchio Toshiba piu' un Samsung, un secondo Samsung come riserva a caldo, il terzo Samsung verso la scorta con la sola rete Intel. Il motivo per cui non si fanno due specchi con tutti e quattro e' che i tre Samsung hanno seriali consecutivi e ore identiche, cioe' sono dello stesso lotto e il loro guasto non e' indipendente: uno specchio di due di loro sarebbe ridondanza solo sulla carta.
+
+Cade cosi' il vincolo dominante del magazzino, i zero dischi dichiarati dall'inventario, ma senza lasciare una scorta di dischi: il disco disponibile e' speso per riaccendere la scorta a cui mancava solo quello. Resta aperto un solo nodo, il dimensionamento, che si chiude misurando l'occupato del QNAP prima di creare il pool.
+
+Due schede nuove oltre allo studio applicato: la scheda didattica generale su dischi e SSD per uso continuo contro uso generico sotto `docs/04-concetti-generali/10-hardware-soluzioni-tecnologie/`, che il caso applicato richiama invece di ripetere la teoria, e la scheda METATRON sotto `docs/03-spunti-di-sviluppo/16-va-e-pentesting/`, aggiunta al filo del pentesting in home lab. Aggiornati i quattro documenti pubblici della cartella NAS e i due privati, con il nuovo Passo 4.4 di qualificazione dei dischi nella guida passo a passo.
+
+Sul piano dell'anonimizzazione la sessione ha applicato la lezione gia' registrata due volte: i quattro seriali dei dischi sono entrati nei pattern come primo gesto, prima della scrittura, non dopo. E' la terza volta che il punto si presenta, e la prima in cui e' stato rispettato senza doverlo scoprire a posteriori.
+
 ## Punto di ripresa
 
-I controlli sono verdi al 14/09/2026: 132 documenti su 132 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione sui file tracciati e nuovi. Il verde del guard-rail vale piu' di quelli precedenti su questo materiale, perche' fino al 08/09 non conosceva nessuno dei seriali hardware ne' due dei cinque nomi host delle macchine del consolidamento: ora li conosce, e la voce di quella data nel work-log dice quali e perche' gli altri tre erano intercettati solo di rimbalzo. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
+I controlli sono verdi al 22/09/2026: 146 documenti su 146 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione sui file tracciati e nuovi, e nessun riferimento di fonte non registrato. I quattro seriali dei dischi recuperati dal QNAP sono stati inseriti nei pattern del guard-rail prima di scrivere la scheda che li riguarda, ed e' verificato che i seriali reali non compaiono su nessun file tracciato mentre i segnaposto compaiono. Il verde del guard-rail vale piu' di quelli precedenti su questo materiale, perche' fino al 08/09 non conosceva nessuno dei seriali hardware ne' due dei cinque nomi host delle macchine del consolidamento: ora li conosce, e la voce di quella data nel work-log dice quali e perche' gli altri tre erano intercettati solo di rimbalzo. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
 
 C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS. Lo stato di avanzamento vive nella guida operativa sotto `_notes/nas-consolidation/`, dove ogni passo concluso porta un timbro con la data, e la feature e' descritta in `.claude/context/current-work.md`.
 
@@ -107,4 +117,4 @@ Resta aperto in parallelo, e non blocca nulla, il Passo 0.3: l'ordine dell'adatt
 
 Da decidere a parte, e non in una sessione di lavoro ordinaria: se bonificare la storia gia' pubblicata dai due valori descritti sopra, e se il repository su GitHub debba essere pubblico o privato, cosa che al momento non risulta verificata da nessuna parte del progetto.
 
-Il lavoro successivo alla pubblicazione e' la fase 2 della roadmap, cioe' l'identificazione fisica delle tre interfacce del firewall dalla console e la loro assegnazione ai tre ruoli, che e' il primo passo che cambia lo stato della rete e non solo della sua descrizione.
+Il lavoro successivo alla pubblicazione e' la fase 2 della roadmap, cioe' l'identificazione fisica delle tre interfacce del firewall dalla console e la loro assegnazione ai tre ruoli, che e' il primo passo che cambia lo stato della rete e non solo della sua descrizione. La catena da predisporre e' Seven LAN 2,5 GbE -> WAN OPNsense; la guida operativa di casa e' `docs/03-spunti-di-sviluppo/23-studio-home-lab/05-guida-configurazione-opnsense-in-casa.md`.

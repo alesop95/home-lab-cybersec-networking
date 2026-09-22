@@ -24,3 +24,4 @@
 - [Telecamere IP da esterno](20-telecamere-ip-da-esterno.md)
 - [Idee setup da profili LinkedIn interessanti](21-idee-setup-da-profili-linkedin-interessanti/README.md)
 - [Sviluppi interni aggiuntivi](22-sviluppi-interni-aggiuntivi/README.md)
+- [Studio integrato home lab, servizi gratuiti e rete Zyxel](23-studio-home-lab/README.md)
