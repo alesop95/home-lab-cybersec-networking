@@ -150,6 +150,10 @@ Il censimento include le citazioni storiche e i risultati individuati durante la
 | H-a00xbabxd44x080 | https://support.zyxel.eu/hc/en-us/articles/4416989548178-Access-Point-NWA50-55AXEE-90AX-110AX-210AX-Differences-in-Hardware-and-Features | `docs/fonti/ricerca-2026-09-22.json` | censita; lettura e contenuto da verificare |
 | H-c26x4b5xd33x96d | https://syslinuxos.com/ | `docs/03-spunti-di-sviluppo/09-monitoraggio/01-nodo-di-analisi-e-diagnostica-rete.md` | censita; lettura e contenuto da verificare |
 | H-428x1f6x761x931 | https://tailscale.com/compare/pritunl | `docs/03-spunti-di-sviluppo/12-vpn/05-comparazione-pritunl-e-tailscale.md` | censita; lettura e contenuto da verificare |
+| H-b6bx6b2x535xe38 | https://tailscale.com/docs/reference/syntax/policy-file | `docs/03-spunti-di-sviluppo/23-studio-home-lab/06-accesso-remoto-vpn.md` | censita; lettura e contenuto da verificare |
+| H-95bx246x1fcx34e | https://tailscale.com/kb/1017/install/ | `docs/03-spunti-di-sviluppo/23-studio-home-lab/06-accesso-remoto-vpn.md` | censita; lettura e contenuto da verificare |
+| H-f66x0b7x9e8x1cc | https://tailscale.com/kb/1080/cli | `docs/03-spunti-di-sviluppo/23-studio-home-lab/06-accesso-remoto-vpn.md` | censita; lettura e contenuto da verificare |
+| H-2dbx332xd79x2fd | https://tailscale.com/kb/1103/exit-nodes/ | `docs/03-spunti-di-sviluppo/23-studio-home-lab/06-accesso-remoto-vpn.md` | censita; lettura e contenuto da verificare |
 | H-a01x990xf16x444 | https://wazuh.com/ | `docs/03-spunti-di-sviluppo/21-idee-setup-da-profili-linkedin-interessanti/02-home-lab-cybersecurity-infrastructure-autore-linkedin-b.md` | censita; lettura e contenuto da verificare |
 | H-273xd0bxeedxb41 | https://www.7-zip.org/download.html | `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/02-soluzione-professionale-con-opnsense-25-7.md` | censita; lettura e contenuto da verificare |
 | H-b77xae1x9b5xb08 | https://www.alldatasheet.com/datasheet-pdf/pdf/1480326/KINGSTON/SDCIT2/32GB.html | `docs/03-spunti-di-sviluppo/01-storage-non-di-rete/01-micro-sd-robuste.md` | censita; lettura e contenuto da verificare |
