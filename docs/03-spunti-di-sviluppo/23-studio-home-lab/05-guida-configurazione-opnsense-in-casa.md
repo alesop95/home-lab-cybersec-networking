@@ -20,7 +20,7 @@ ONT Fastweb
   -> access point Zyxel
 ```
 
-Il risultato e' un doppio NAT. La Wi-Fi del Seven si trova sul lato upstream, insieme alla WAN di OPNsense, e non attraversa il firewall. Un client Wi-Fi Seven puo' avere Internet senza poter entrare nella LAN di OPNsense, salvo port forwarding, regole WAN permissive o errori di configurazione; OPNsense non puo' pero' filtrare il traffico fra client che restano sul Seven.
+Il risultato e' un doppio NAT. Soltanto i client collegati alla radio integrata del Seven si trovano sul lato upstream, insieme alla WAN di OPNsense, e non attraversano il firewall. Gli access point collegati allo switch sono invece a valle di OPNsense: i loro SSID, VLAN e client vengono gestiti dalle interfacce e dalle regole del firewall. Un client Wi-Fi Seven puo' avere Internet senza poter entrare nella LAN di OPNsense, salvo port forwarding, regole WAN permissive o errori di configurazione; OPNsense non puo' pero' filtrare il traffico fra client che restano sulla radio del Seven.
 
 ## Preparazione e sicurezza del cambio
 
@@ -32,7 +32,7 @@ Il primo collaudo usa una sola LAN piatta. Le VLAN si aggiungono dopo aver prova
 
 Si collega una porta LAN 2,5 GbE del Seven alla WAN di OPNsense. Sul Seven si lascia attivo il DHCP e, se l'interfaccia lo consente, si crea una prenotazione per l'indirizzo WAN di OPNsense. Il port forwarding si aggiunge solo per servizi realmente necessari, per esempio la porta UDP di WireGuard; non si espone l'interfaccia di amministrazione di OPNsense.
 
-La Wi-Fi Seven puo' restare temporaneamente per telefoni, televisori o dispositivi legacy. Si abilita la rete ospiti e l'isolamento client quando disponibili, si evita di usare quella rete per host di laboratorio e si annota nel verbale che il traffico non e' ispezionato da OPNsense. La migrazione finale consiste nel portare gli SSID necessari sugli access point a valle e spegnere o restringere la radio del Seven.
+La radio Wi-Fi integrata nel Seven puo' restare temporaneamente per telefoni, televisori o dispositivi legacy. Si abilita la rete ospiti e l'isolamento client quando disponibili, si evita di usare quella rete per host di laboratorio e si annota nel verbale che quel traffico non e' ispezionato da OPNsense. Gli SSID pubblicati dagli access point a valle sono invece parte della rete protetta e segmentata dal firewall. La migrazione finale consiste nel portare gli SSID necessari sugli access point a valle e spegnere o restringere la radio del Seven.
 
 ## Assegnazione delle interfacce OPNsense
 

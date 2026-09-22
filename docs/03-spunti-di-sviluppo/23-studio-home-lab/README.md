@@ -12,6 +12,7 @@ La raccomandazione di partenza e' OPNsense a valle del Fastweb Seven, con uno sw
 | [Piano di lavoro](04-piano-di-lavoro.md) | fasi, dipendenze e criteri di completamento |
 | [Guida configurazione OPNsense](05-guida-configurazione-opnsense-in-casa.md) | percorso Seven -> OPNsense, VLAN, Wi-Fi upstream, prove e rollback |
 | [Memo acquisti e configurazione](ACQUISTI-E-CONFIGURAZIONE-DA-FINIRE.md) | promemoria operativo copiato anche sul Desktop |
+| [Accesso remoto VPN](06-accesso-remoto-vpn.md) | confronto Tailscale/WireGuard, subnet router e collaudo |
 | [Inventario canonico](../../05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md) | dispositivi gia' citati, lacune e acquisti previsti |
 | [Registro fonti](../../../SOURCES.md) | tutte le fonti consegnate, curate e censite |
 | [Mappa di lettura](../../fonti/index-fonti.md) | screenshot, AdGuard, Strix, NovaSCM e riscontri di community |

@@ -8,7 +8,7 @@ Ritorno allo [studio](README.md). Stato e vincoli derivano dal [verbale OPNsense
 
 ## Stato documentato e bersaglio
 
-E' documentata la linea con modem operatore obbligato, l'IP pubblico statico e l'installazione del firewall su i3 di settima generazione, 8 GB RAM, SSD 120 GB, una NIC Gigabit e due TP-Link TX201 a 2,5 GbE. La catena di riferimento diventa ONT -> Seven -> OPNsense: il collegamento diretto ONT -> firewall resta non verificato sulla linea reale e non costituisce il percorso di base. Non e' documentato un collaudo del firewall in transito. Il doppio NAT resta il vincolo locale di progetto, senza estenderlo a tutte le linee FTTH. Il Wi-Fi del Seven e' esterno al perimetro OPNsense finche' non viene migrato agli access point a valle.
+E' documentata la linea con modem operatore obbligato, l'IP pubblico statico e l'installazione del firewall su i3 di settima generazione, 8 GB RAM, SSD 120 GB, una NIC Gigabit e due TP-Link TX201 a 2,5 GbE. La catena di riferimento diventa ONT -> Seven -> OPNsense: il collegamento diretto ONT -> firewall resta non verificato sulla linea reale e non costituisce il percorso di base. Non e' documentato un collaudo del firewall in transito. Il doppio NAT resta il vincolo locale di progetto, senza estenderlo a tutte le linee FTTH. Soltanto la radio integrata nel Seven e' esterna al perimetro OPNsense; gli access point collegati allo switch stanno a valle del firewall e le loro reti Wi-Fi sono filtrate e instradate da OPNsense.
 
 ```mermaid
 flowchart TD
