@@ -83,7 +83,7 @@ I quattro moduli DDR4 sono il pezzo più fungibile del magazzino, ed è su di lo
 
 ### Dischi disponibili
 
-Nessuno, ed è il vincolo dominante del magazzino. Tutti e quattro i dischi delle quattro macchine finiscono nel NAS e nessuna scorta ne conserva uno.
+Fino al 22/09/2026 nessuno, ed era il vincolo dominante del magazzino: tutti e quattro i dischi delle quattro macchine finivano nel NAS e nessuna scorta ne conservava uno. Quel vincolo è caduto con il recupero dei quattro dischi da 2 TB del NAS QNAP dismesso, analizzati in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md). La loro destinazione risolve il problema alla radice: due entrano nel pool dati del NAS come specchio, uno resta nel NAS come riserva a caldo, e il terzo Samsung va alla scorta con la sola rete Intel, quella descritta sopra come l'unica a cui manca soltanto un disco. Dopo quella distribuzione il magazzino torna senza dischi liberi, ma per una ragione opposta a prima: non perché non ce ne siano, ma perché quello disponibile è stato speso per riaccendere la scorta giusta. La decisione sull'eventuale quarto disco resta legata alla misura dell'occupato del QNAP, secondo il cancello descritto in quella scheda.
 
 ### Unità ottiche disponibili
 

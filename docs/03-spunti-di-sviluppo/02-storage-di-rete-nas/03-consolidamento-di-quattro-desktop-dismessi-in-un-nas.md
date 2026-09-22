@@ -115,7 +115,7 @@ L'installazione mette il sistema sul mirror dei due SSD SATA, tenendo l'avvio se
 
 Dopo l'installazione si creano le condivisioni e si verifica lo stato dei compiti periodici, ed è qui che conviene sapere cosa il sistema fa da sé e cosa no. Alla creazione di un pool viene generato automaticamente un compito di verifica dell'integrità, con cadenza e soglia di trentacinque giorni: non va creato di nuovo, va guardato, ed eventualmente portato a una cadenza mensile. Le istantanee periodiche invece non esistono fino a quando qualcuno non le definisce, ed è la parte che si dimentica. Restano infine le notifiche sugli errori del pool, che sono la vera lacuna delle configurazioni predefinite: una verifica che gira regolarmente, trova un errore e non avvisa nessuno equivale a una verifica che non è mai girata.
 
-La creazione del pool dei dati è l'unico passo che attende la decisione sull'acquisto dei dischi.
+La creazione del pool dei dati è l'unico passo che attende la decisione sui dischi. Dal 22/09/2026 quella decisione è presa e non passa più per un acquisto: il pool si costruisce sui quattro dischi da 2 TB recuperati dal NAS QNAP dismesso, secondo l'analisi in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md). Resta da chiudere sul posto solo il dimensionamento, legato alla misura dell'occupato del vecchio NAS, ma la forma e i dischi non sono più aperti.
 
 ## Che cosa resta come scorta
 
@@ -125,7 +125,7 @@ Ogni pezzo messo da parte va etichettato con tipo, socket e provenienza. A dista
 
 ## Pendenze
 
-Restano aperte la decisione sull'acquisto dei dischi meccanici, che condiziona la sola creazione del pool dei dati; il conteggio a case aperto degli slot fisicamente liberi, per escludere un ingombro meccanico che il firmware non vede; e la verifica di quale versione di OpenZFS accompagni la release di TrueNAS al momento dell'installazione, da cui dipende la disponibilità dell'espansione di un raidz un disco alla volta.
+La decisione sui dischi meccanici, che era la prima pendenza, è chiusa dal 22/09/2026 con i quattro dischi recuperati dal NAS QNAP dismesso: resta la sola misura dell'occupato del vecchio NAS, che decide il dimensionamento del pool. Restano aperte il conteggio a case aperto degli slot e degli alloggiamenti da 3,5 pollici fisicamente liberi, per escludere un ingombro meccanico che il firmware non vede e per sapere se la gabbia regge tre dischi; e la verifica di quale versione di OpenZFS accompagni la release di TrueNAS al momento dell'installazione, da cui dipende la disponibilità dell'espansione di un raidz un disco alla volta.
 
 [^1]: *NAS*, Network Attached Storage - apparato dedicato che espone spazio disco in rete tramite protocolli standard di condivisione, invece di offrire dischi a un singolo computer.
 

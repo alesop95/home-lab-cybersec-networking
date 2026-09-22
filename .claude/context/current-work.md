@@ -5,7 +5,7 @@ generated-date: 2026-09-03
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: 517eeee
+last-verified-commit: e91a133
 ---
 
 # Lavoro corrente
@@ -44,7 +44,7 @@ Resta aperto in parallelo, e non blocca nulla, l'ordine dell'adattatore da PCIe 
 
 ## Definizione di fatto
 
-Una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e il sistema installato e raggiungibile su un insieme di avvio in mirror composto dai due dischi a stato solido SATA. Non comprende la creazione del pool dei dati, che dipende da un acquisto non ancora deciso ed e' l'unico passo che quella decisione blocca.
+Una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e il sistema installato e raggiungibile su un insieme di avvio in mirror composto dai due dischi a stato solido SATA. Comprende ora anche la qualificazione dei quattro dischi recuperati dal QNAP dismesso, cioe' il passaggio a `badblocks` seguito da `smartctl` con scarto su qualunque valore diverso da zero negli attributi 5, 197, 198 e 199, e la creazione del pool dei dati nella forma decisa dall'ADR-013: uno specchio Toshiba piu' Samsung, un Samsung come riserva a caldo, il terzo Samsung alla scorta. La decisione sui dischi, che fino al 22/09/2026 era l'unica cosa che la creazione del pool attendeva, e' presa: non dipende piu' da un acquisto, e resta aperto soltanto il dimensionamento, che si chiude misurando l'occupato del QNAP prima di creare il pool.
 
 A valle si scrive un verbale sotto `docs/`, sul modello di `docs/verbale-installazione-opnsense.md`, che descriva cio' che e' realmente accaduto invece della progettazione, e lo si collega dalla home dell'albero.
 

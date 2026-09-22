@@ -6,6 +6,9 @@ Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come e' organizz
 
 ## Documenti trasversali
 
+- [Studio integrato home lab: servizi, diagrammi, acquisti Zyxel e inventario](03-spunti-di-sviluppo/23-studio-home-lab/README.md)
+- [Registro unico delle fonti](../SOURCES.md)
+- [Mappa e note di lettura](fonti/index-fonti.md)
 - [Guida alla documentazione del lab](DEVELOPMENT.md)
 - [Pendenze aperte](pendenze-aperte.md)
 - [Verbale dell'installazione di OPNsense](verbale-installazione-opnsense.md)
