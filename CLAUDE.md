@@ -107,6 +107,13 @@ Skill richiamabili, sotto `.claude/skills/`.
 
 Il materiale scritto a mano vive alla radice ed e' escluso dal versionamento per tipo di file: il documento Word sorgente, le fotografie della sessione di installazione, il whitepaper del firewall, l'output diagnostico, i due file di appunti e i due collegamenti. L'inventario completo, con l'indicazione di dove il loro contenuto e' confluito, e' in `docs/fonti-e-materiali.md`. La cartella `_notes/` raccoglie estratti temporanei e materiale privato, ed e' ignorata.
 
+Norme caricate su richiesta, una riga per situazione con le parole con cui si presenta, così che il caricamento non dipenda dal ricordare che la norma esista.
+
+- `git worktree list` mostra più di un albero, se ne crea o se ne rimuove uno, si deve decidere da dove leggere la memoria versionata: skill `alberi-di-lavoro`.
+- Un recupero web fallisce con 403 o con una pagina di verifica anti-bot, la fonte sta su Reddit o su Discord, serve la trascrizione di un video, si sta per annotare una fonte non letta: skill `fonti-non-recuperabili`.
+- Si scrive o si valuta una prova automatica, si chiude un difetto, una verifica manuale smentisce una suite verde, si sta per dichiarare completo un intervento il cui scopo era un effetto misurabile: skill `prove-che-misurano`.
+- Si inizializza o si allinea il progetto, oppure cambia il modo in cui si prova e si rilascia, e va deciso come separare test e produzione: skill `separazione-ambienti`.
+
 ## Vincoli di team
 
 Le operazioni di `git add`, commit e push restano sempre manuali dell'utente: l'agente prepara i file e propone i comandi, non committa. I comandi si consegnano nel formato definito da `git-commands-format.md`, cioe' un comando per riga, mai spezzato, in due blocchi separati per PowerShell e per bash. L'identita' git e' locale al repository, profilo personale, secondo `git-identity-and-repo.md`. Lo standard di sistema completo e' in `.claude/PROJECT-SYSTEM.md`.
