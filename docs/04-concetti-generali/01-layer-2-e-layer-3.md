@@ -1,6 +1,6 @@
 # Layer 2 e layer 3
 
-In FTTH l’ONT è un bridge layer 2 puro: converte GPON in Ethernet senza fare routing. Il primo dispositivo layer 3 può essere proprio OPNsense. Bisogna configurare la WAN del firewall in DHCP su Ethernet oppure su VLAN 835 se la linea Fastweb la richiede. NAT, firewalling, DHCP server e policy routing li gestisce OPNsense.
+In FTTH l’ONT è un bridge layer 2[^1] puro: converte GPON in Ethernet senza fare routing. Il primo dispositivo layer 3[^2] può essere proprio OPNsense. Bisogna configurare la WAN del firewall in DHCP su Ethernet oppure su VLAN 835 se la linea Fastweb la richiede. NAT, firewalling, DHCP server e policy routing li gestisce OPNsense.
 
 Il concetto corretto da fissare è questo: VLAN e routing sono due funzioni distinte che operano su livelli diversi del modello OSI[1]. Una VLAN segmenta il dominio Layer 2, cioè Ethernet, mentre il routing collega domini Layer 3, cioè IP. Il fatto che uno switch supporti VLAN non implica automaticamente che sappia instradare traffico tra esse. Significa soltanto che sa classificare, separare e inoltrare frame Ethernet[2] in base a un identificatore VLAN inserito nel frame tramite standard IEEE 802.1Q[3].
 
@@ -291,3 +291,7 @@ Note:
 [18] Stateful firewall: firewall che mantiene traccia dello stato delle connessioni di rete per consentire o bloccare traffico in modo contestuale.
 
 [19] Double NAT: doppia traduzione degli indirizzi IP tra due dispositivi di rete, che complica port forwarding e tracciamento delle connessioni.
+
+[^1]: Layer 2 è il livello “collegamento dati” del modello OSI. Qui si scambiano frame Ethernet identificati da indirizzi MAC, senza alcuna consapevolezza di IP o routing. Uno switch layer 2, ad esempio, deciderebbe dove inoltrare un frame guardando la tabella MAC, restando dentro la stessa rete logica, cioè lo stesso dominio di broadcast.
+
+[^2]: Layer 3 è il livello “rete”. Qui si parla di indirizzi IP, subnet e gateway. Un dispositivo layer 3, come OPNsense, prende decisioni di routing tra reti diverse, applica NAT e policy firewall, e instrada i pacchetti verso altre subnet o verso Internet in base alla tabella di routing.

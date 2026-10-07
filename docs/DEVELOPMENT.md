@@ -51,7 +51,7 @@ Questi file stanno dentro `docs/` ma non sono generati: raccolgono il materiale 
 
 ## Come si scrive dentro l'albero
 
-L'albero si modifica direttamente. Il documento Word da cui e' nato e' archiviato in `../_notes/sorgenti/` e non e' piu' una fonte: modificarlo non cambia niente qui, e rigenerare sopra `docs/` e' impedito da un timbro nel convertitore, che si rifiuta di sovrascrivere un albero scritto a mano.
+L'albero si modifica direttamente. Il documento Word da cui e' nato e' stato eliminato il 07/10/2026 dopo la verifica di ADR-019, dopo aver verificato che ogni paragrafo, nota, immagine e collegamento fosse qui: questo albero e' l'unica fonte. Il convertitore resta archiviato e rifiuta comunque di sovrascrivere un albero scritto a mano.
 
 Un elemento di studio nuovo e' un file dentro l'area pertinente, quasi sempre `03-spunti-di-sviluppo/`, aggiunto all'indice della sua cartella. Un dispositivo nuovo e' un sottotitolo dentro `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, senza creare file. Un intervento eseguito davvero e' un documento trasversale nuovo, sul modello del verbale di installazione, collegato da `README.md`.
 

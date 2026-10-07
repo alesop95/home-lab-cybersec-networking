@@ -106,7 +106,7 @@ Skill richiamabili, sotto `.claude/skills/`.
 
 ## Materiali e dati locali
 
-Il materiale scritto a mano vive alla radice ed e' escluso dal versionamento per tipo di file: il documento Word sorgente, le fotografie della sessione di installazione, il whitepaper del firewall, l'output diagnostico, i due file di appunti e i due collegamenti. L'inventario completo, con l'indicazione di dove il loro contenuto e' confluito, e' in `docs/fonti-e-materiali.md`. La cartella `_notes/` raccoglie estratti temporanei e materiale privato, ed e' ignorata.
+Il materiale grezzo vive in `_notes/sorgenti/`, ignorato da git. Dal 07/10/2026 (ADR-019) il documento Word, i due file di appunti, i due collegamenti e `quickprint.docx` sono eliminati dopo la verifica che `docs/` ne contenga tutto; restano le fotografie della sessione di installazione, lo schema del monitoraggio, il whitepaper del firewall e l'output diagnostico. L'inventario completo, con l'indicazione di dove il loro contenuto e' confluito, e' in `docs/fonti-e-materiali.md`. La cartella `_notes/` raccoglie estratti temporanei e materiale privato, ed e' ignorata.
 
 Norme caricate su richiesta, una riga per situazione con le parole con cui si presenta, così che il caricamento non dipenda dal ricordare che la norma esista.
 

@@ -42,7 +42,7 @@ Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il com
 
 ## Documentazione generata
 
-L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, oggi archiviato in `_notes/sorgenti/`, ma non si rigenera piu': il convertitore si rifiuta di sovrascriverlo. Consistenza attuale: 146 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era 132 nello snapshot del 14/09/2026; la differenza sono i documenti dello studio home lab e delle note fonti aggiunti il 22/09 in una sessione parallela, piu' le tre schede nuove del 22/09, cioe' lo studio dei dischi recuperati dal QNAP, la scheda didattica su dischi e SSD per uso continuo e la scheda METATRON.
+L'albero `docs/` e' scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, eliminato il 07/10/2026 dopo la verifica di ADR-019: `docs/` e' l'unica fonte. Consistenza attuale: 146 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era 132 nello snapshot del 14/09/2026; la differenza sono i documenti dello studio home lab e delle note fonti aggiunti il 22/09 in una sessione parallela, piu' le tre schede nuove del 22/09, cioe' lo studio dei dischi recuperati dal QNAP, la scheda didattica su dischi e SSD per uso continuo e la scheda METATRON.
 
 La completezza dell'ingestione iniziale non e' affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
@@ -52,7 +52,6 @@ Il progetto si legge e si modifica senza, ma non si verifica: il guard-rail di a
 
 ```
 _notes/sorgenti/                        materiale grezzo archiviato, con il suo LEGGIMI.md
-_notes/sorgenti/PROGETTO ... .docx      prima stesura, archivio e non fonte
 _notes/.anonymization-map.md            traduzione segnaposto -> valore reale
 _notes/.anonymization-patterns.json     cosa deve cercare il guard-rail
 _notes/verbale-installazione-opnsense/  fotografie leggibili della sessione

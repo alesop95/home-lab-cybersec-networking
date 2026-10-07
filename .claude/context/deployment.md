@@ -15,7 +15,7 @@ last-verified-commit: 6769dc4
 
 ## Il modello, dal 25/08/2026
 
-L'albero `docs/` si scrive e si modifica a mano. Non si rigenera piu' dal documento Word, che resta in `_notes/sorgenti/` come archivio della prima stesura. Il razionale e' in ADR-010; qui conta la conseguenza operativa, che e' semplice: si apre una sessione, si modifica un file Markdown, si eseguono i controlli, si committa.
+L'albero `docs/` si scrive e si modifica a mano. Non si rigenera piu' dal documento Word, che e' stato eliminato il 07/10/2026 dopo la verifica di ADR-019: `docs/` e' l'unica fonte. Il razionale e' in ADR-010; qui conta la conseguenza operativa, che e' semplice: si apre una sessione, si modifica un file Markdown, si eseguono i controlli, si committa.
 
 Il convertitore `tools/docx-to-md.py` resta nel repository come strumento che ha prodotto l'albero, ma non va eseguito su `docs/`. Non e' una raccomandazione affidata alla memoria: il convertitore scrive nella destinazione un timbro `.generato-da-docx` e si rifiuta di scrivere in una cartella che contiene documenti senza quel timbro. Su `docs/` il timbro e' stato rimosso, quindi una corsa accidentale si ferma con codice 2 e un messaggio che spiega perche'. Resta utilizzabile su una destinazione nuova, per esempio se un giorno servisse convertire un altro documento.
 

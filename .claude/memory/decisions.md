@@ -238,3 +238,13 @@ Decisione. I due AP stanno al terzo e al secondo piano, collegati ciascuno con u
 Alternative considerate. Mesh radio con un solo AP cablato: inutile, i cavi ci sono. PS5 sullo switch nella VLAN IoT con UPnP o NAT statico su OPNsense: scartata dall'utente, perche' la console non naviga, non le serve il perimetro e occuperebbe una porta dello switch. FRITZ!Box dietro o al posto del Seven: terza traduzione nel primo caso, configurazione libera della linea non validata nel secondo.
 
 Conseguenze. La porta 4 dello switch va a un client cablato. La copertura del piano terra dall'AP del secondo piano va misurata. Sul Seven, per la PS5, si preferiscono inoltri statici verso l'indirizzo della console a UPnP, che aprirebbe porte a ogni dispositivo del Seven. Il ragionamento didattico e' in `docs/03-spunti-di-sviluppo/23-studio-home-lab/07-doppio-nat-dietro-modem-in-comodato.md`.
+
+## ADR-019, `docs/` unica fonte: eliminati i testi dell'autore gia' ingeriti
+
+Data: 07/10/2026. Stato: accettata. Decisione dell'utente, eseguita dopo verifica.
+
+Contesto. ADR-010 aveva tolto al documento Word il ruolo di fonte di rigenerazione ma lo aveva tenuto come archivio in `_notes/sorgenti/`, insieme agli appunti e ai collegamenti da cui erano nati alcuni documenti. L'utente ha chiesto una sola fonte di verita': ingerire tutto nel punto giusto e poi cancellare i testi scritti da lui, conservando immagini e materiale di contesto.
+
+Decisione. Verificato il contenuto del Word contro `docs/` per paragrafi, note a pie' di pagina, immagini e collegamenti, e corretta la lacuna trovata, cioe' le 53 note mai convertite, sono stati spostati nel Cestino di Windows il documento Word, `privacy pack.txt`, `Diagram/Notes.txt`, i due file `.url` e `quickprint.docx`. Restano in `_notes/sorgenti/` le 31 fotografie originali, lo schema PNG del monitoraggio, il whitepaper OPNsense e l'output DxDiag, quest'ultimo in attesa di una decisione dell'utente perche' non e' testo suo e contiene identificativi della macchina.
+
+Conseguenze. `docs/` e' l'unica fonte di quel contenuto, e un errore li' non si corregge piu' risalendo al Word. La ricostruzione della mappa di anonimizzazione resta possibile da `tools/redactions.json`, che non dipendeva dal Word. Il Cestino e' l'ultima via di recupero finche' non viene svuotato. Il metodo e i numeri della verifica sono in `docs/fonti-e-materiali.md`.

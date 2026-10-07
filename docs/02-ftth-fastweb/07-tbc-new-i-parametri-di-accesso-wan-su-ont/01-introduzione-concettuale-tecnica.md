@@ -31,7 +31,7 @@ ONT → WAN modem Fastweb → LAN modem → WAN OPNsense
 
 ### Double-NAT
 
-Con le informazioni disponibili dall’interfaccia del modem Fastweb Seven e dalle voci di menu fornite, non compare alcuna opzione che consenta una modalità bridge reale della WAN, né funzionalità equivalenti come PPPoE passthrough o VLAN passthrough quindi uno deve assumere che, in assenza di queste capacità, il modem rimane necessariamente il dispositivo che stabilisce la sessione WAN con l’ISP e quindi il primo punto di NAT della rete. Se una di queste due funzioni fosse presente, l’architettura potrebbe essere diversa. In quel caso il firewall potrebbe diventare il dispositivo che stabilisce la sessione WAN reale. Il flusso diventerebbe, concettualmente:
+Con le informazioni disponibili dall’interfaccia del modem Fastweb Seven e dalle voci di menu fornite, non compare alcuna opzione che consenta una modalità bridge reale della WAN, né funzionalità equivalenti come PPPoE passthrough[^1] o VLAN passthrough[^2] quindi uno deve assumere che, in assenza di queste capacità, il modem rimane necessariamente il dispositivo che stabilisce la sessione WAN con l’ISP e quindi il primo punto di NAT della rete. Se una di queste due funzioni fosse presente, l’architettura potrebbe essere diversa. In quel caso il firewall potrebbe diventare il dispositivo che stabilisce la sessione WAN reale. Il flusso diventerebbe, concettualmente:
 
 ONT → firewall OPNsense → modem (solo Wi-Fi o switch)
 
@@ -91,3 +91,7 @@ Per determinare come configurare correttamente la WAN su OPNsense dietro ONT ser
 Questi cinque elementi sono gli unici necessari per capire se un firewall collegato direttamente all’ONT possa funzionare e come dovrebbe essere configurata la sua interfaccia WAN. Tutti gli altri parametri dell’interfaccia del modem non influenzano questa decisione architetturale.
 
 Tuttavia, per quanto riguarda la VLAN, nel menu che è stato riportato non compare alcuna voce dove sia visibile un VLAN ID della WAN. Questo significa che, con l’interfaccia mostrata, tale parametro non è esposto nella configurazione utente del modem. Non è quindi possibile leggerlo da quelle schermate.
+
+[^1]: PPPoE passthrough significa che il modem non termina la sessione PPPoE ma lascia passare i pacchetti PPPoE provenienti dalla LAN verso la WAN. PPPoE significa Point-to-Point Protocol over Ethernet, un protocollo di autenticazione molto usato nelle reti DSL e FTTH. In presenza di PPPoE passthrough un dispositivo interno, per esempio OPNsense, può creare direttamente la propria sessione PPPoE verso l’ISP. In pratica il modem diventa un semplice ponte Ethernet tra LAN e rete dell’operatore per quel traffico.
+
+[^2]: VLAN passthrough è un concetto simile ma riguarda il livello Ethernet. VLAN significa Virtual LAN, definita dallo standard IEEE 802.1Q. In alcune reti FTTH l’accesso Internet esiste solo dentro una VLAN specifica. Se un modem consente VLAN passthrough significa che lascia transitare verso la WAN i frame Ethernet con quel tag VLAN provenienti dalla LAN, senza rimuoverli o sostituirli. Questo permette a un router interno di creare direttamente la propria interfaccia WAN VLAN-taggata verso l’ONT.

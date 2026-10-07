@@ -1,6 +1,6 @@
 # Progetto rete domestica
 
-> Home della documentazione. Dal 25/08/2026 questo albero e' scritto e manutenuto a mano: non si rigenera piu' dal documento Word, che resta in `../_notes/sorgenti/` come archivio della prima stesura. Si modifica direttamente qui, si verifica con i controlli descritti in `../.claude/context/deployment.md`, si committa. Il razionale della scelta e' in ADR-010, `../.claude/memory/decisions.md`.
+> Home della documentazione. Dal 25/08/2026 questo albero e' scritto e manutenuto a mano: non si rigenera piu' dal documento Word, che e' stato eliminato il 07/10/2026 dopo la verifica di ADR-019: questo albero e' l'unica fonte. Si modifica direttamente qui, si verifica con i controlli descritti in `../.claude/context/deployment.md`, si committa. Il razionale della scelta e' in ADR-010, `../.claude/memory/decisions.md`.
 
 Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come e' organizzato l'albero e propone i percorsi di lettura per argomento. Per sapere che cosa manca, `pendenze-aperte.md`.
 

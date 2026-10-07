@@ -63,7 +63,7 @@ Una domanda naturale è come si fa a vedere dentro Ubuntu o Windows la velocità
 
 ![](assets/img-0072.png)
 
-A quel punto in alto a destra c’è scritto esplicitamente (es. in questo caso Realtek Gaming 2.5GbE Family Controller). Altrimenti c’è un comando powershell:
+A quel punto in alto a destra c’è scritto esplicitamente (es. in questo caso Realtek Gaming 2.5GbE Family Controller[^1]). Altrimenti c’è un comando powershell:
 
 **Get**-NetAdapter | **Select** Name, LinkSpeed
 
@@ -274,3 +274,4 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 #### Analisi specifiche
 
+[^1]: È una scheda di rete Ethernet a 2,5 Gbit/s basata su chip Realtek RTL8125 (o variante). È integrata in molte motherboard “gaming”, ma è una normale NIC 2.5GbE, non ha nulla di speciale legato al gaming. Significa che il PC può negoziare fino a 2,5 Gbit/s se collegato a una porta 2.5G e con cavo adeguato (Cat5e di buona qualità o superiore).

@@ -8,7 +8,7 @@ Ci sono dei requisiti impliciti come multimedia (Plex/Emby), condivisione file, 
 
 Alcuni modelli consigliati potrebbero essere:
 
-- QNAP TS-464 (4-bay) - dual 2.5GbE: buon bilanciamento CPU, 2×2.5GbE built-in (possono essere aggregate/uso separato per VLAN), ottimo supporto Plex, container, espandibilità PCIe (se si vuole segmentazione, QTS gestisce VLAN e più interfacce) [https://www.qnap.com/en/product/ts-464](https://www.qnap.com/en/product/ts-464), [https://www.qnap.com/en-in/performance/model/ts-464](https://www.qnap.com/en-in/performance/model/ts-464)
+- QNAP TS-464 (4-bay[^1]) - dual 2.5GbE: buon bilanciamento CPU, 2×2.5GbE built-in (possono essere aggregate/uso separato per VLAN), ottimo supporto Plex, container, espandibilità PCIe (se si vuole segmentazione, QTS gestisce VLAN e più interfacce) [https://www.qnap.com/en/product/ts-464](https://www.qnap.com/en/product/ts-464), [https://www.qnap.com/en-in/performance/model/ts-464](https://www.qnap.com/en-in/performance/model/ts-464)
 - Synology DS925+ / DS925 (modelli Synology con 2×2.5GbE nelle revisioni recenti) eccellente UX, Synology Drive, Video Station/Plex; [https://www.synology.com/en-af/products/DS925%2B](https://www.synology.com/en-af/products/DS925%2B)
 - Synology
 - TerraMaster F2-425 (2-bay) - 2.5GbE: solida opzione economica per NAS domestico o studio, CPU N5095, buono per Plex e backup; versione 2-bay se non servono 4 bay. (buon rapporto prezzo/prestazioni) [https://www.techradar.com/computing/terramaster-f2-425-nas-review](https://www.techradar.com/computing/terramaster-f2-425-nas-review), [https://www.neowin.net/reviews/terramaster-f2-425-review-a-low-cost-local-cloud-backup-and-streaming-nas/](https://www.neowin.net/reviews/terramaster-f2-425-review-a-low-cost-local-cloud-backup-and-streaming-nas/)
@@ -65,3 +65,4 @@ Dopodiché OMV PUO' ospitare servizi, ma sempre come estensione dello storage, n
 
 Ma OMV NON NASCE come hypervisor, application server o piattaforma DevOps. Se lo si usa così, si forza il modello.
 
+[^1]: In ambito NAS, un “bay” è semplicemente lo spazio fisico dove inserisci un disco rigido o un SSD. Più bay significa più capacità totale, più possibilità di RAID (ridondanza o striping) e più flessibilità per storage o backup. Ad esempio: un NAS 4-bay può essere configurato in RAID 5 (uno spazio ridondante) o RAID 10 (per prestazioni + ridondanza), mentre un 2-bay ha meno opzioni: RAID 1 o JBOD.

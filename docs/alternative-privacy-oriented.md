@@ -1,6 +1,6 @@
 # Alternative rispettose della privacy ai servizi mainstream
 
-> Documento curato, non generato dal documento sorgente. Riporta integralmente il contenuto di `privacy pack.txt`, il file di appunti alla radice del progetto, che non e' versionato perche' il `.gitignore` esclude i `.txt`. E' materiale di orientamento, non una configurazione: dice quali servizi si vorrebbero sottrarre a un fornitore terzo, e quindi quali carichi il lab dovra' eventualmente ospitare.
+> Documento curato, non generato dal documento sorgente. Riporta integralmente il contenuto di `privacy pack.txt`, il file di appunti dell'autore, eliminato il 07/10/2026 dopo la verifica di ADR-019: questo documento ne e' l'unica copia. E' materiale di orientamento, non una configurazione: dice quali servizi si vorrebbero sottrarre a un fornitore terzo, e quindi quali carichi il lab dovra' eventualmente ospitare.
 
 ## A che cosa serve in questo progetto
 

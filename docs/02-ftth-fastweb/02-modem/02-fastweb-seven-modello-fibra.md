@@ -23,7 +23,7 @@ Dal link ufficiale di fastweb lo presentano così in termini di feature e caratt
    - eMSLR, STR (con Fastweb Seven)
 - Porte fisiche
    - 1 porta WAN Ethernet a 2,5 Gbps (sulla versione FTTH).
-      - La porta WAN 2,5G è quella che riceve fisicamente la connessione dalla fibra (la limitazione a 1 Gbit/s per singolo dispositivo non si applica a Seven)
+      - La porta WAN 2,5G è quella che riceve fisicamente la connessione dalla fibra (la limitazione a 1 Gbit/s per singolo dispositivo non si applica a Seven[^1])
    - 1 porta LAN a 2,5 Gbps
       - La porta LAN 2,5 G è una uscita di rete in grado di trasferire traffico a 2,5 Gbit/s verso *un singolo dispositivo compatibile cablato*.
    - 2 porte LAN a 1 Gbps nella versione fibra FTTH.
@@ -40,7 +40,7 @@ Dal link ufficiale di fastweb lo presentano così in termini di feature e caratt
 - Funzioni incluse riguardo la gestione
    - Gestione fino a ~128 dispositivi Wi-Fi contemporanei con assegnazione dinamica di banda e risorse.
    - Modalità Eco per riduzione consumi: Light e Deep con vari livelli di disattivazione servizi.
-   - Gestione avanzata tramite app MyFastweb o interfaccia web (configurazione SSID, password, rete ospite, Eco-mode, ecc.)
+   - Gestione avanzata tramite app MyFastweb o interfaccia web (configurazione SSID[^2], password, rete ospite, Eco-mode, ecc.)
 
 Il modem è progettato con packaging sostenibile con plastica riciclata al 95 %.
 
@@ -52,4 +52,14 @@ La gestione di subnet multiple e VLAN su *Seven* *non* è documentata come una f
 
 Seven Booster è semplicemente un extender mesh Wi-Fi 7 progettato per lavorare esclusivamente in accoppiata con il modem Internet Box Seven.
 
-Il Seven crea una rete Wi-Fi 7 con tecnologia MLO (Multi-Link Operation) e il Booster è un nodo aggiuntivo che si collega in modalità mesh al Seven usando lo stesso Wi-Fi 7 ad alta capacità. Questo permette di estendere la copertura in casa senza creare reti separate, mantenendo roaming continuo, stessa SSID, stessa gestione QoS, stesso controller integrato nel modem. Non è un modem, non è uno switch, non aumenta la velocità della fibra. Serve solo per copertura Wi-Fi estesa e stabile con le stesse prestazioni radio del modem principale.
+Il Seven crea una rete Wi-Fi 7 con tecnologia MLO (Multi-Link Operation) e il Booster è un nodo aggiuntivo che si collega in modalità mesh[^3] al Seven usando lo stesso Wi-Fi 7 ad alta capacità. Questo permette di estendere la copertura in casa senza creare reti separate, mantenendo roaming continuo, stessa SSID, stessa gestione QoS[^4], stesso controller integrato nel modem[^5]. Non è un modem, non è uno switch, non aumenta la velocità della fibra. Serve solo per copertura Wi-Fi estesa e stabile con le stesse prestazioni radio del modem principale.
+
+[^1]: Con i modem precedenti (NeXXt/FASTGate) tutte le LAN erano 1 Gbit/s e nessun singolo dispositivo poteva superare 1 Gbit/s.
+
+[^2]: SSID è il nome della rete Wi-Fi ed è praticamente quello che si vede quando ci si connette ("Casa-2.4G", "MyWiFi", ecc.). Ad esempio, il Seven e il Booster usano lo stesso SSID per fare roaming continuo. Questo significa che un dispositivo Wi-Fi può spostarsi da un punto della casa all’altro passando automaticamente da un nodo all’altro della rete senza disconnessione: il passaggio avviene in modo trasparente e immediato, mantenendo la stessa sessione di rete (videochiamate, streaming, VPN restano attivi).
+
+[^3]: Modalità mesh significa che modem e Booster formano un’unica rete Wi-Fi distribuita, con un’unica configurazione e roaming automatico. I dispositivi si spostano da un nodo all’altro senza disconnessioni. Le alternative non mesh sono due: extender Wi-Fi tradizionali che creano una seconda rete separata (SSID diverso, prestazioni peggiori), oppure access point cablati che creano Wi-Fi “manuale” ma richiedono configurazioni separate e non offrono roaming automatico.
+
+[^4]: QoS (Quality of Service) è il sistema che dà priorità al traffico. Il modem decide chi ha precedenza: ad esempio videoconferenze, streaming o gaming prima dei download massivi. È un controllo su banda, latenza e jitter. In una rete domestica il QoS lo gestisce il modem/router. Nei dispositivi Fastweb tipo il Seven o il Booster, il modem principale ha un controller integrato che decide le priorità del traffico: assegna banda e priorità ai vari tipi di dati (videoconferenze, streaming, gaming, download) in base alle regole interne o a quelle eventualmente configurate dall’utente. Non c’è un “server centrale”: tutto avviene localmente sul modem/router, che monitora e instrada il traffico in tempo reale.
+
+[^5]: Significa che è il modem Seven a “comandare” tutta la rete Wi-Fi mesh: decide potenza, canali, roaming, priorità, configurazioni: il Booster non è autonomo, è solo un nodo slave gestito centralmente dal master.

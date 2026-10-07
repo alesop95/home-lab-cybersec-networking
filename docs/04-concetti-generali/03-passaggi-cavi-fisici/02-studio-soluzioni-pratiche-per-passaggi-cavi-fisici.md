@@ -24,7 +24,7 @@ Bisogna evitare extra lunghezze troppo eccessive (es. 50 m → 30 m più patch p
 
 - Cat6A certificato / 500 MHz o superiore
 - Solid copper / rame solido” nel titolo o nella descrizione
-- Schermatura S/FTP o F/FTP (meglio degli UTP base)
+- Schermatura S/FTP[^1] o F/FTP (meglio degli UTP base)
 
 Così si evitano i prodotti solo nominalmente Cat6A ma che in realtà non rispettano i requisiti per 10 Gbps [https://www.reddit.com/r/Ubiquiti/comments/1au5zm2/how_bad_did_i_mess_up/](https://www.reddit.com/r/Ubiquiti/comments/1au5zm2/how_bad_did_i_mess_up/).
 
@@ -37,3 +37,5 @@ Ad esempio, come prestazioni attese nella pratica si può avere su ~30 m, una co
 Per un cavo Cat 6A, passaggio esterno alle pareti fino al piano superiore, estetica ordinata e possibilità di rimuovere tutto senza danni: canaline adesive rimovibili con copertura [https://www.amazon.it/gp/product/B0F1LLNDMH/ref=ewc_pr_img_1?smid=AXJYC9MH9K5LP&psc=1](https://www.amazon.it/gp/product/B0F1LLNDMH/ref=ewc_pr_img_1?smid=AXJYC9MH9K5LP&psc=1). Economiche, pulite, modulabili, compatibili con più cavi se serve. Perfette per reti FTTH fino a 2,5 Gbps e oltre.
 
 Sono fatte di plastica/PVC autoadesiva (es. D-Line, AiQInu, Electronio). La larghezza minima 25-40 mm per un singolo Cat 6A, più larga se prevedi più cavi. Copertura con coperchio chiudibile: protegge il cavo e dà un aspetto pulito.
+
+[^1]: Ogni coppia è schermata e vi è in più una schermatura complessiva. Questo aiuta a ridurre interferenze quando corri il cavo lungo muri/soffitti con altri impianti elettrici.

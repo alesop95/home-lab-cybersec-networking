@@ -8,7 +8,7 @@ Nel momento in cui si utilizzano anche le altre 2 porte LAN a 1 Gbps nella versi
 
 Con VLAN tagging (segmentazione logica) invece si possono creare VLAN separate per ogni “rete logica” (es. VLAN 10 per NAS/media, VLAN 20 per LAN PC, VLAN 30 per IoT).
 
-In generale la separazione logica non dipende dalla velocità: ad esempio anche se ci si affida ad una soluzione senza switch 2.5G (alternativa più semplice) il NAS può entrare comunque anche lui da solo dentro la 2,5Gbps e le porte 1Gbps possono far parte di reti *logiche* diverse se è possibile configurare VLAN nel router poi la velocità massima reale per ogni device rimane quella fisica: 2,5Gbps porta 2,5 Gbps; porte 1Gbps → 1Gbps. Quindi faccio fare a quel router lo "switch" l'importante è che sia il NAS che il router taggano come VLAN.
+In generale la separazione logica non dipende dalla velocità[^1]: ad esempio anche se ci si affida ad una soluzione senza switch 2.5G (alternativa più semplice) il NAS può entrare comunque anche lui da solo dentro la 2,5Gbps e le porte 1Gbps possono far parte di reti *logiche* diverse se è possibile configurare VLAN nel router poi la velocità massima reale per ogni device rimane quella fisica: 2,5Gbps porta 2,5 Gbps; porte 1Gbps → 1Gbps. Quindi faccio fare a quel router lo "switch" l'importante è che sia il NAS che il router taggano come VLAN.
 
 Anche usando solo il Fastweb Seven, NAS su 2,5 Gbps e dispositivi su 1 Gbps possono essere messi in reti logiche diverse tramite VLAN, a condizione che router e NAS supportino 802.1Q e si configuri configuri il tagging correttamente per costruire una rete ordinata senza toccare la parte fisica.
 
@@ -16,7 +16,7 @@ La configurazione di rete base che vorrei installare è mettere il Seven collega
 
 La rete ruota attorno al Fastweb Seven come gateway principale. Dallo Seven esce un uplink verso uno switch managed 2.5 Gbps. Lo switch gestisce delle VLAN, quindi:
 
-- VLAN 10: rete principale (192.168.10.0/24): PC, PS5, dispositivi cablati. DHCP attivo.
+- VLAN 10: rete principale (192.168.10.0/24): PC, PS5[^2], dispositivi cablati. DHCP attivo.
 - VLAN 20: IoT / Smart (192.168.20.0/24): TV, dispositivi domotici. DHCP attivo.
 - VLAN 30: storage/Server (192.168.30.0/24): NAS con IP statico (192.168.30.10).
 - Guest Wi-Fi: rimane in VLAN separata (può essere VLAN 40 se lo switch lo supporta) con solo DHCP, niente accesso laterale alle altre reti. La rete Guest usa un pool DHCP isolato con accesso solo a Internet.
@@ -29,4 +29,10 @@ La topologia fisica (base) è:
 - NAS / Server multimediale (static IP)
 - PC-Gaming / SmartTV / IoT (varie subnet)
 
-Se il Fastweb Seven non supporta trunk 802.1Q: allora solo la LAN principale passa direttamente, e tutte le VLAN vengono gestite da un router proprio a valle.
+Se il Fastweb Seven non supporta trunk 802.1Q[^3]: allora solo la LAN principale passa direttamente, e tutte le VLAN vengono gestite da un router proprio a valle.
+
+[^1]: La porta può essere 1 Gbps o 2,5 Gbps, ma la VLAN è un marcatore logico sul frame Ethernet. È indipendente dalla velocità.
+
+[^2]: La PS5 finisce nella VLAN 10, così sfrutta la banda piena e non viene segregata come IoT. Superata il 07/10/2026 da ADR-018: la PS5 va su una porta LAN da 1 GbE del Seven, fuori dal perimetro di OPNsense, con un NAT solo.
+
+[^3]: Un trunk 802.1Q è un tipo di collegamento tra due dispositivi di rete (di solito router ↔ switch o switch ↔ switch) che porta più VLAN sulla stessa porta Ethernet, grazie a un “tag” inserito nei frame per indicare a quale VLAN appartengono. E’ una singola porta che trasporta più VLAN.
