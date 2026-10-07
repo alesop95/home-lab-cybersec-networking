@@ -1,5 +1,5 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
@@ -8,7 +8,7 @@ covers-paths:
   - docs/04-concetti-generali/**
   - .claude/rules/anonymization.md
   - scripts/Test-Anonymization.py
-last-verified-commit: 494b45e
+last-verified-commit: 6769dc4
 ---
 
 # Paradigmi di progettazione e di sicurezza
@@ -59,15 +59,17 @@ Il repository e' destinato a un remoto pubblico, e questo cambia la natura di og
 
 Il presidio non e' la buona volonta' ma un controllo eseguibile, `scripts/Test-Anonymization.py`, che passa tutti i file tracciati e fallisce se trova indirizzi reali, identificativi macchina, numeri di serie, nomi propri, frammenti di ubicazione o contatti personali. Lo script e' versionato e non contiene alcun valore reale: cio' che deve cercare vive in un file privato accanto alla mappa dei segnaposto, e se quel file manca lo script si ferma invece di restituire un verde non calcolato.
 
-Due proprieta' di questo impianto meritano di essere capite. La prima e' che l'anonimizzazione dell'albero generato non e' una revisione del testo ma una regola di generazione, perche' una correzione a mano verrebbe cancellata alla rigenerazione successiva. La seconda e' che la redazione si applica anche ai titoli, non solo al corpo, perche' dal titolo discendono lo slug del file e il nome della cartella: un nome proprio lasciato in un titolo finisce nel percorso di un file tracciato, dove nessuna redazione del corpo lo raggiungerebbe.
+Due proprieta' di questo impianto meritano di essere capite. La prima e' che, dal 25/08/2026, l'anonimizzazione non e' piu' una regola di generazione ma un gesto di scrittura: l'albero si scrive a mano, nessuna sostituzione automatica rimedia a un valore reale digitato per distrazione, e per questo la voce va aggiunta alla mappa e ai pattern privati prima di scrivere il segnaposto. Il guard-rail cerca le organizzazioni a parola intera, come i nomi propri, e ammette per costruzione le caselle su domini riservati dagli RFC 2606 e 6761, che compaiono negli esempi e nei test del template. La seconda e' che la redazione si applica anche ai titoli, non solo al corpo, perche' dal titolo discendono lo slug del file e il nome della cartella: un nome proprio lasciato in un titolo finisce nel percorso di un file tracciato, dove nessuna redazione del corpo lo raggiungerebbe.
 
-## Un'esposizione preesistente nella storia gia' pubblicata
+## Un'esposizione nella storia pubblicata, bonificata il 07/10/2026
 
 Va detto perche' cambia il quadro rispetto a quanto la documentazione precedente lasciava intendere. Il remoto non e' da collegare: esiste ed e' gia' pushato fino al commit di riferimento. Nella regola sull'identita' git, prima dell'allineamento al template del 24/08/2026, comparivano in chiaro la casella di posta di lavoro e il nome dell'organizzazione di lavoro dell'autore. L'allineamento li ha sostituiti con segnaposto, quindi da questo commit in avanti l'albero e' pulito, ma la storia li conserva.
 
 La casella personale e l'utente GitHub, che comparivano nello stesso file, non costituiscono un'esposizione aggiuntiva perche' coincidono con i metadati di autore di ogni commit: anonimizzarli nel testo non avrebbe alcun effetto protettivo. La casella di lavoro e il nome dell'organizzazione sono invece un'esposizione reale e non necessaria, ed e' esattamente il caso previsto dalla regola: si segnala, si corregge nel file corrente, si registrano i valori nel file privato dei pattern perche' il guard-rail li intercetti se rientrassero, e si annota la bonifica della storia come lavoro a parte, da pianificare con backup e non da improvvisare a valle di una sessione.
 
-Resta inoltre non verificata la visibilita' del repository su GitHub. Tutta l'impostazione di questo progetto assume che sia pubblico, il che e' la postura prudente; se fosse privato, le regole non cambierebbero, perche' un repository privato oggi puo' diventare pubblico domani e la storia si porterebbe dietro tutto.
+La bonifica e' stata decisa dall'autore ed eseguita il 07/10/2026. Una scansione di ogni oggetto della storia con i pattern privati ha trovato i valori di lavoro in quattro versioni storiche di due file e in nessun metadato; la storia e' stata riscritta in un clone separato, sostituendo i valori con segnaposto, con l'albero dell'ultimo commit identico all'originale, e pubblicata con un push forzato dopo un backup completo. La casella personale resta negli autori dei commit per scelta dell'autore. I commit precedenti restano raggiungibili per hash sulla piattaforma finche' questa non li elimina, e una rimozione garantita passa da una richiesta al suo supporto. Gli hash citati nei documenti scritti prima di quella data si riferiscono alla storia originale.
+
+La visibilita' del repository e' verificata il 07/10/2026 dall'interfaccia pubblica della piattaforma: e' pubblico, senza fork. L'impostazione del progetto lo assumeva gia' per prudenza, e non cambierebbe se diventasse privato, perche' un repository privato oggi puo' tornare pubblico domani con tutta la sua storia.
 
 ## Perimetro delle operazioni git
 

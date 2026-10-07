@@ -1,12 +1,12 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - tools/**
   - scripts/**
   - docs/_CONVERSION-REPORT.md
-last-verified-commit: 494b45e
+last-verified-commit: 6769dc4
 ---
 
 # Verifica e casi limite
@@ -48,6 +48,8 @@ Vale la pena registrarli perche' sono la dimostrazione che un controllo va esegu
 La ricerca dei nomi propri era a sottostringa e non a confine di parola, quindi uno dei nomi di battesimo censiti veniva trovato dentro parole italiane comuni che lo contengono come sequenza di lettere, e produceva riscontri bloccanti su testo del tutto innocuo. Corretto passando a una ricerca con confini di parola. Il nome non si riporta qui, e la ragione e' la stessa regola: scriverlo accanto alla descrizione del suo segnaposto renderebbe reversibile l'anonimizzazione, ed e' un caso che il controllo ha effettivamente intercettato su una prima stesura di questo paragrafo. Il caso limite residuo e' il nome che compare legittimamente in un contesto estraneo al progetto, per esempio la citazione di un autore pubblico dentro un file del pacchetto template: si gestisce con la lista delle eccezioni di contesto nel file dei pattern, non allargando o restringendo la ricerca.
 
 L'espressione che riconosce gli importi accettava un simbolo di valuta seguito da un punto, quindi segnalava come importo la fine di una frase che terminava con il simbolo. Corretta richiedendo almeno una cifra, e nell'occasione estesa alla forma con il simbolo posposto, che prima sfuggiva del tutto: gli importi scritti come cifra seguita dal simbolo non venivano rilevati affatto, il che e' il difetto piu' grave dei due perche' era un mancato rilevamento e non un falso positivo.
+
+Altri due difetti dello stesso genere sono emersi il 07/10/2026, quando il controllo, eseguito sull'intero albero dopo un allineamento al template, ha dato nove riscontri bloccanti tutti falsi. La ricerca delle organizzazioni private era a sottostringa, come lo era stata quella dei nomi, e una ragione sociale di cinque lettere combaciava dentro i numerali italiani in «centonovanta-»: corretta passando ai confini di parola. E le caselle di posta d'esempio nei test e negli esempi del template, su domini riservati dagli RFC 2606 e 6761, risultavano personali: ora quei domini si ammettono per costruzione, mentre una casella d'esempio su un dominio reale si aggiunge alle ammesse nel file privato. La prova che misura e' stata fatta su un file costruito, verificando che il nome dell'organizzazione scritto come parola e una casella sul suo dominio reale restino intercettati. Gli allineamenti fra il 24 e il 30/09/2026 erano stati committati con quel rosso, che nessuno aveva letto come falso: un controllo che segnala troppo smette di essere guardato.
 
 ## Il controllo di coerenza dell'albero
 

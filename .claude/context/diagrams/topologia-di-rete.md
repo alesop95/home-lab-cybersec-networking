@@ -1,12 +1,13 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - docs/02-ftth-fastweb/**
   - docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/**
   - docs/03-spunti-di-sviluppo/13-switch/**
-last-verified-commit: 494b45e
+  - docs/03-spunti-di-sviluppo/23-studio-home-lab/**
+last-verified-commit: 6769dc4
 ---
 
 # Topologia della rete
@@ -67,18 +68,18 @@ Tre interfacce fisiche, tre zone. La disposizione delle velocita' non e' vincola
         |                               dalla WAN, nessun
         |                               accesso verso la LAN
         |
-  [ SWITCH Zyxel XMG1915-10E ]  managed L2, 8 porte 2,5 GbE + 2 SFP+ 10 Gbps
+  [ SWITCH Zyxel XMG1915-10EP ]  8 porte 2,5 GbE PoE + 2 SFP+ 10 Gbps
         |            |              |               |
-    porta access  porta access  porta access    porta PoE via
-    VLAN 10       VLAN 10       VLAN 30         iniettore Cudy PoE200H
-        |            |              |               |
-      PC/NAS      workstation    storage        [ ACCESS POINT ]
-                                                 piano inferiore
+    porta access  porta access  porta access    porte PoE dello
+    VLAN 10       VLAN 10       VLAN 30         switch (10E + iniettore
+        |            |              |            se l'AP resta uno)
+      PC/NAS      workstation    storage        [ DUE O TRE AP Zyxel ]
+                                                 anche al piano inferiore
                                                  tutto il Wi-Fi passa
                                                  dal firewall
 ```
 
-Lo switch non instrada: e' di livello 2 e trasporta soltanto. La porta che va al firewall e' configurata come trunk 802.1Q, le porte verso i dispositivi come access, e il firewall crea un'interfaccia logica per ogni VLAN sopra l'unica interfaccia fisica che lo collega allo switch. Il routing fra VLAN, il NAT verso Internet e ogni regola di sicurezza vivono solo sul firewall. L'assenza di routing di livello 3 sullo switch non e' un limite in questo scenario, perche' non esiste traffico fra VLAN che debba evitare il firewall.
+La variante dello switch e' una scelta aperta dal 22/09/2026, documentata nello [studio switch e AP](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/03-switch-e-access-point-zyxel.md): la 10EP con PoE integrato e' il candidato principale per due o tre AP, la 10E senza PoE con un iniettore resta sensata se l'AP e' uno solo. Il diagramma mostra la prima. Lo switch non instrada: e' di livello 2 e trasporta soltanto. La porta che va al firewall e' configurata come trunk 802.1Q, le porte verso i dispositivi come access, e il firewall crea un'interfaccia logica per ogni VLAN sopra l'unica interfaccia fisica che lo collega allo switch. Il routing fra VLAN, il NAT verso Internet e ogni regola di sicurezza vivono solo sul firewall. L'assenza di routing di livello 3 sullo switch non e' un limite in questo scenario, perche' non esiste traffico fra VLAN che debba evitare il firewall.
 
 ## Il piano di indirizzamento previsto
 

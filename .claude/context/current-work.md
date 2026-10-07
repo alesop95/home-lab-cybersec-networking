@@ -1,75 +1,41 @@
 ---
-generated-from-commit: 494b45e
+generated-from-commit: 4245e21
 generated-from-branch: main
-generated-date: 2026-09-03
+generated-date: 2026-10-07
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: e91a133
+last-verified-commit: 6769dc4
 ---
 
 # Lavoro corrente
 
-> Scheda tecnica della feature attiva. Va riletta a inizio sessione e riscritta quando la feature cambia, non accresciuta all'infinito: il registro storico e' `.claude/memory/progress.md`, questa scheda descrive solo cio' che e' aperto adesso.
+> Scheda tecnica del lavoro aperto. Va riletta a inizio sessione e riscritta quando il lavoro cambia, non accresciuta all'infinito: il registro storico e' `.claude/memory/progress.md`, questa scheda descrive solo cio' che e' aperto adesso. Riscritta il 07/10/2026.
 
-## Feature attiva: assemblaggio del NAS per lo storage di rete
+## Due fili, uno attivo e uno in pausa
 
-Dal 01/09/2026 c'e' un lavoro aperto, e dal 03/09 e' passato dalla progettazione all'esecuzione: e' la prima attivita' del progetto che tocca hardware invece di documentazione. Copre lo storage di rete della fase 4 della roadmap, ricavato da quattro postazioni desktop dismesse.
+Dal 07/10/2026 il filo attivo e' la progettazione della rete domestica e della sua topologia. Il filo del NAS e' in pausa, in un punto preciso e per una ragione sola: manca l'adattatore da PCIe a M.2 che ospita il secondo NVMe, e l'utente non puo' ordinarlo subito. La pausa non lascia nulla a meta' sul banco: i prelievi sono chiusi e il montaggio non e' cominciato.
 
-La progettazione, anonimizzata e pubblicabile, sta in quattro schede sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`: l'analisi con le decisioni, la guida all'assemblaggio, il calcolo dei consumi con la finestra di accensione, e dal 08/09/2026 l'inventario di cio' che resta nelle macchine di scorta dopo il consolidamento. Il materiale operativo con i valori reali sta fuori dall'albero versionato, sotto `_notes/nas-consolidation/`, e comprende la guida passo a passo che porta lo stato di avanzamento, il runbook cronologico dello smontaggio, l'inventario privato da cui la scheda pubblica deriva, l'analisi dei consumi con i dati di bolletta, le credenziali e l'handoff originale.
+## Filo attivo: progettazione della rete e della topologia
 
-Fra quei documenti la fonte di verita' sull'avanzamento e' una sola, la guida passo a passo, perche' e' l'unica che porta i timbri. Il runbook cronologico ne e' la condensazione da banco e ne omette deliberatamente i timbri, cosi' che non esistano due registri in disaccordo: quando i due dicono cose diverse su un gesto, come e' accaduto sulla chiusura del primo case, si allinea la guida e non si tengono entrambe le versioni.
+La baseline e' ONT, poi il modem dell'operatore, poi la WAN di OPNsense, poi la LAN di OPNsense in trunk verso lo switch Zyxel, poi gli access point. La Wi-Fi del modem resta a monte e fuori dal perimetro del firewall finche' gli access point non sono installati, e non va descritta come protetta. Il collegamento diretto di OPNsense all'ONT non e' la baseline, perche' sulla linea concreta non e' stato validato. Il ragionamento e' in `docs/03-spunti-di-sviluppo/23-studio-home-lab/`, a partire da `01-architettura.md`, con la guida operativa in `05-guida-configurazione-opnsense-in-casa.md` e il riepilogo degli acquisti in `ACQUISTI-E-CONFIGURAZIONE-DA-FINIRE.md`.
 
-## Dove si e' arrivati
+Le decisioni aperte del filo sono di progetto e non di esecuzione. La prima e' il numero di access point, da cui dipende lo switch: uno solo rende sensato lo XMG1915-10E con un iniettore PoE a 2,5 GbE, due o tre rendono piu' ordinato lo XMG1915-10EP. Prima di chiuderla vanno rilevati i dati fisici della casa, cioe' piani, percorso dei cavi, posizione degli access point, numero di client cablati e prese disponibili. La seconda e' il piano delle VLAN, proposto in `01-architettura.md` con i segmenti 10, 30, 40, 50, 60 e 99, e il contratto fra zone che lo accompagna. La terza e' la collocazione del NAS nella topologia, che ora e' una macchina reale con un indirizzo e un ruolo e non piu' un'ipotesi: va deciso in quale segmento sta e quali zone lo raggiungono.
 
-La fonte di verita' sull'avanzamento e' la guida operativa, dove ogni passo concluso porta un timbro con la data. Al 08/09/2026 lo stato e' il seguente.
+Il primo passo che cambia lo stato della rete e non solo la sua descrizione resta la fase 2 della roadmap, cioe' l'identificazione fisica delle tre schede di rete del firewall dalla console e la loro assegnazione ai ruoli. Si fa alla macchina, non al repository, e un abbinamento sbagliato puo' chiudere fuori dall'interfaccia di gestione: la mappatura fisica con la verifica a LED e' un prerequisito.
 
-E' chiusa la fase preparatoria. I salvataggi delle due macchine Linux sono stati verificati per ripristino effettivo e non soltanto prodotti, l'assenza di dati da conservare e' confermata su tutte e quattro, le immagini di installazione sono scaricate e verificate per somma di controllo contro il valore pubblicato dalla fonte, la finestra di accensione e' decisa e registrata come ADR-011, e le etichette sono stampate e attaccate ai quattro case dopo riverifica degli indirizzi.
+## Filo in pausa: assemblaggio del NAS
 
-E' chiuso il primo passo dello smontaggio. Le quattro macchine sono spente, con l'interruttore dell'alimentatore in posizione aperta e il cavo lasciato inserito: e' una scelta migliore dello scollegare, perche' il conduttore di terra non passa dall'interruttore e quindi il telaio resta il riferimento su cui scaricare la statica mentre le linee di alimentazione sono morte.
+La fonte di verita' sull'avanzamento e' la guida privata `_notes/nas-consolidation/GUIDA-PASSO-A-PASSO.md`, l'unica con i timbri; le fotografie di ogni passo sono in `_notes/nas-consolidation/foto/` con un indice per data e passo.
 
-E' aperto il primo case, quello di `PC-DESKTOP-B`, e i suoi tre pezzi sono usciti ed etichettati: i due moduli di memoria da otto gigabyte e l'SSD SATA che diventera' la seconda meta' dell'insieme di avvio in mirror. Il prelievo e' avvenuto nella sessione interrotta dal crash del 04/09 e non era registrato da nessuna parte fino al 08/09, perche' il materiale che lo documenta vive sotto `_notes/`, che non essendo tracciato non lascia traccia nemmeno in `git status`.
+Al 07/10/2026 sono chiusi il giorno zero e tutti i prelievi, dal Passo 1.1 al 1.7. Sul tavolo ci sono i due moduli di memoria e l'SSD SATA con cavo e slitta della prima macchina, l'NVMe P2 della seconda e l'NVMe P3 della terza, tutti etichettati e verificati contro il censimento. Le tre macchine donatrici sono richiuse ed etichettate con cio' che manca, e restano scorte intere. L'alimentatore resta quello gia' montato nella base (ADR-016), con tre condizioni di accettazione ancora da verificare durante il montaggio. Il NAS parte senza dischi meccanici, con i due NVMe in specchio come unico pool di dati e applicazioni (ADR-014 e ADR-015).
 
-Tre letture di quella fase sono state saltate e restano da recuperare prima di richiudere il case, che e' l'unica ragione per cui il case e' ancora aperto: il codice data dei due moduli, l'etichetta dell'alimentatore, che non ha nessuna altra fonte, e i due accessori del disco, cioe' il cavo dati uscito con esso e la slitta da due pollici e mezzo a tre e mezzo su cui e' avvitato. Il cavo cambia il piano dello smontaggio, perche' prelevarlo qui rende superfluo prelevarne uno da `linux-desktop-B`.
+Quando si riprende: Passo 1.6, inventario sul tavolo e confronto dei codici data della memoria, che comprende la lettura dell'etichetta dei due moduli gia' montati nella base; poi il montaggio dal Passo 2.1. Il montaggio puo' anche cominciare senza adattatore: il P3 resta sul tavolo e il pool nasce con un disco solo, ma senza copia dei dati finche' l'adattatore non arriva. Il prodotto indicato e' AXAGON PCEM2-N, registrato come fonte S54.
 
-## Il passo successivo, esattamente
+## Definizione di fatto del NAS
 
-Si chiude il primo case dopo le tre letture in sospeso, e sul fianco si scrive che cosa gli manca. La macchina si richiude assemblata e non si cannibalizza oltre i pezzi gia' usciti: condivide con la base socket, generazione di memoria e modello di processore, quindi finche' resta intera il guasto della scheda madre del NAS si risolve con un trapianto dentro un telaio gia' pronto, mentre da un mucchio di componenti sciolti si risolve ricostruendo una macchina.
-
-Poi si apre `linux-desktop-A`, che e' il Passo 1.4 della guida, e si preleva soltanto il suo NVMe. La memoria resta dentro, perche' e' l'unico kit DDR4 libero del magazzino ed e' cio' che rende quella macchina la scorta pronta all'uso a cui manca solo un disco. La confusione piu' probabile dell'intero lavoro sta in questo passo e in quello successivo: i due NVMe da prelevare sono modelli Crucial diversi che si distinguono per un carattere nel codice prodotto, e vanno in due posizioni diverse della base, uno nell'alloggiamento della scheda madre e uno sull'adattatore. Si verifica il modello sull'etichetta prima di svitare e si etichetta il pezzo prima di appoggiarlo.
-
-La macchina base si apre per ultima, perche' una volta aperta ci si lavora dentro fino alla fine.
-
-Resta aperto in parallelo, e non blocca nulla, l'ordine dell'adattatore da PCIe verso M.2 e della scheda di rete Intel: servono al montaggio e non ai prelievi, quindi l'intera fase di smontaggio si esegue senza di essi.
-
-## Definizione di fatto
-
-Una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e il sistema installato e raggiungibile su un insieme di avvio in mirror composto dai due dischi a stato solido SATA. Il pool dei dati non ha dischi: quelli del QNAP non si libereranno, e ADR-014 ha superato ADR-013 il 07/10/2026. Finche' non si sceglie fra acquisto di due dischi CMR in specchio e avvio con i soli due NVMe in specchio, la definizione di fatto comprende il pool applicazioni e non il pool dati, e le schede pubbliche della cartella NAS vanno riscritte per non descrivere un pool che non verra' costruito.
-
-A valle si scrive un verbale sotto `docs/`, sul modello di `docs/verbale-installazione-opnsense.md`, che descriva cio' che e' realmente accaduto invece della progettazione, e lo si collega dalla home dell'albero.
-
-## Due cose che sono gia' state fatte e non vanno rifatte
-
-Il censimento hardware delle quattro macchine esiste dal 31/08 e dall'01/09 in `nas-consolidation/scripts/`, e i suoi valori sono gia' trascritti nelle tabelle di identificazione della guida. In sessione si e' perso tempo a riproporne la raccolta, ed e' un errore da non ripetere.
-
-La cartella `_censimento-hardware` sul NAS di backup non e' una fonte ma una copia parziale e ridondante degli stessi file, priva dei due report delle macchine Linux. L'handoff originale la citava in un modo che la faceva sembrare una fonte.
-
-Resta invece da fare a mano, a case aperti, la sola cosa che il censimento software non puo' dare: i dati degli alimentatori. Un alimentatore ATX non ha interfaccia dati verso la scheda madre, quindi non esiste una classe da interrogare e l'etichetta e' la sola fonte.
-
-## Il lavoro sulla rete, quando si decide di farlo
-
-Fase 2 della roadmap: identificare fisicamente le tre schede di rete del firewall dalla console e assegnarle ai tre ruoli. E' la prima azione che cambia lo stato della rete invece che la sua descrizione, e sblocca sette delle pendenze aperte.
-
-Si fa alla macchina, non al repository. L'agente puo' assistere sulla sequenza dei comandi e sull'interpretazione dell'output, ma l'esecuzione e' manuale. A valle si scrive un documento trasversale nuovo sotto `docs/`, sul modello di `verbale-installazione-opnsense.md`, e lo si collega da `docs/README.md`.
-
-Attenzione a un punto che puo' costare l'accesso alla macchina: dopo l'assegnazione, OPNsense crea una regola permissiva sulla sola LAN, mentre WAN e la zona esposta partono chiuse in ingresso. Un abbinamento sbagliato chiude fuori dall'interfaccia di gestione oppure espone l'interfaccia sbagliata. La mappatura fisica con la verifica a LED e' un prerequisito, non una raffinatezza.
-
-## Due decisioni sospese, non tecniche
-
-Entrambe decise il 07/10/2026. La storia si bonifica: la versione riscritta e' pronta e attende il push forzato dell'utente. Il repository e' pubblico, verificato con l'API di GitHub.
+Una macchina montata, con trentadue gigabyte verificati da una notte di test della memoria, i dischi passati al test SMART lungo, il sistema installato e raggiungibile su un insieme di avvio in mirror sui due SSD SATA, e il pool dei due NVMe in specchio. Le tre condizioni di ADR-016 sull'alimentatore verificate. A valle si scrive un verbale sotto `docs/`, sul modello di `docs/verbale-installazione-opnsense.md`, collegato dalla home dell'albero.
 
 ## Confine da non superare
 
-L'agente non esegue operazioni git e non tocca lo stato della rete. Prepara file e propone comandi.
-
-Sull'assemblaggio il confine e' lo stesso: l'agente ragiona sulle compatibilita', verifica le affermazioni contro i manuali dei costruttori invece di dedurle, e interpreta l'esito dei test, ma il montaggio e i test li esegue una persona. Se serve un riscontro visivo che l'agente non puo' ottenere da se', per esempio la schermata del firmware o l'esito del test di memoria, si applica la regola sugli screenshot manuali.
+L'agente non esegue operazioni git e non tocca lo stato della rete: prepara file e propone comandi, e il commit passa da `chiudi`. Sul banco l'agente ragiona sulle compatibilita', verifica contro i manuali e interpreta le fotografie e gli esiti dei test, ma montaggio e test li esegue l'utente.

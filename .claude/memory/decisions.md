@@ -204,3 +204,15 @@ Decisione. Il NAS parte con l'insieme di avvio in specchio sui due SSD SATA e co
 
 Conseguenze. La capacita' utile e' di circa 1 TB, da pianificare attorno agli 800 GB per la regola dell'ottanta per cento. I connettori SATA di alimentazione necessari scendono a due, quelli dei due SSD, e il picco all'accensione non ha piu' motori da avviare: stimato sotto i 120 W, non misurato. Il consumo di riferimento torna alla riga senza dischi meccanici della scheda 05, stima centrale 48 W alla presa, e con la finestra di ADR-011 la spesa annua stimata scende da circa 95 euro (60 W) a circa 76, con lo stesso costo marginale di 0,256 euro per kilowattora; il perimetro del calcolo e' dichiarato nella scheda. Il Passo 4.4 di qualificazione dei dischi del QNAP decade, la sezione del pool e i Passi 7.x della guida privata sono riscritti, la scheda 07 diventa storica. La scorta con la sola rete Intel torna senza disco. L'uso degli NVMe per i dati resta lo spreco di velocita' che l'analisi descrive quando lo si sceglie: qui e' accettato perche' e' l'unica forma possibile con i pezzi disponibili, ed e' reversibile.
 
+## ADR-016, l'alimentatore del NAS resta quello della base, con quattro controlli di accettazione
+
+Data: 07/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. ADR-012 chiedeva di scegliere fra gli alimentatori disponibili, preferendo il piu' piccolo. Le etichette lette il 07/10/2026 danno quattro unita' fra 500 e 600 W, nessuna con certificazione stampata: tutte circa dieci volte sopra il fabbisogno del NAS senza dischi meccanici, quindi la potenza non le distingue in modo utile. Le distinguono qualita' ed eta': la base monta un'unita' modulare di marca di fascia alta, prodotta con buona probabilita' nel 2006 secondo il seriale; la prima macchina di scorta ne monta una economica di circa il 2022.
+
+Alternative considerate. Spostare nella base l'unita' piu' recente e mettere l'altra nella macchina di scorta: scartata dall'utente per il lavoro che richiede, a fronte di un rischio che si puo' verificare invece di supporre. L'unita' da 500 W, la piu' piccola: scartata perche' di marca generica economica, cioe' il componente che piu' probabilmente cede in una macchina che custodisce dati.
+
+Decisione. Resta l'alimentatore gia' montato nella base, a quattro condizioni di accettazione: ispezione visiva senza condensatori gonfi, macchie o odore, eseguita dall'utente il 07/10/2026 con esito positivo; ventola senza rumori al primo avvio; tensione a +12 V fra 11,4 e 12,6 V letta dal firmware; test della memoria di una notte senza errori ne' riavvii. Se una condizione fallisce si passa all'unita' piu' recente, che resta montata nella macchina di scorta e si scambia in mezz'ora.
+
+Conseguenze. Nessuno spostamento di alimentatori. L'eta' resta un rischio dichiarato e non nascosto: l'invecchiamento dei condensatori dipende dalle ore di funzionamento e dal calore, che per questa unita' non sono noti. Un guasto, su questa architettura, spegne la macchina senza perdita di dati, grazie al file system transazionale e ai dischi in specchio.
+

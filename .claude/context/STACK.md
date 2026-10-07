@@ -1,5 +1,5 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
@@ -7,7 +7,7 @@ covers-paths:
   - scripts/**
   - docs/**
   - .claude/rules/**
-last-verified-commit: 494b45e
+last-verified-commit: 6769dc4
 ---
 
 # Stack del progetto
@@ -22,7 +22,7 @@ Questo repository non contiene il software del lab: contiene la sua documentazio
 
 Python 3 per tutti gli strumenti, senza gestore di pacchetti dedicato e senza ambiente virtuale: le dipendenze sono minime e si installano a livello di interprete. I quattro controlli in esercizio usano soltanto la libreria standard, quindi per lavorare sulla documentazione basta un interprete. Le due dipendenze esterne servono a strumenti ormai occasionali: `python-docx` al convertitore archiviato, `Pillow` al ridimensionamento delle fotografie. L'interprete verificato su questa macchina e' Python 3.13.
 
-Non esistono test automatici propri del progetto, con l'eccezione della suite che accompagna lo strumento di normalizzazione Markdown nel pacchetto di origine sotto `.claude/templates/md-unwrap/tests/`. La verifica del progetto e' fatta da tre controlli deterministici, descritti nella scheda `dev-testing.md`.
+Non esistono test automatici propri del progetto, con l'eccezione della suite che accompagna lo strumento di normalizzazione Markdown nel pacchetto di origine sotto `.claude/templates/md-unwrap/tests/`. La verifica del progetto e' fatta da quattro controlli deterministici, descritti nella scheda `dev-testing.md`.
 
 ## Gli strumenti e il loro ruolo architetturale
 
@@ -34,6 +34,7 @@ Gli strumenti in esercizio sono quattro, e sono tutti controlli: nessuno genera 
 | `tools/md-unwrap.py` | riunisce le righe di continuazione nei file Markdown, attuando la convenzione di un paragrafo per riga sorgente; rifiuta di scrivere se il rendering cambierebbe |
 | `tools/lint-md-commands.py` | percorre i blocchi di shell nei file Markdown e segnala comandi spezzati su piu' righe, che `md-unwrap` per contratto non tocca |
 | `scripts/Test-Anonymization.py` | guard-rail: passa i file tracciati e segnala valori reali residui; e' l'ultimo controllo prima di un commit di documentazione |
+| `tools/source-register.py` | aggiorna e con `--check` verifica il blocco derivato di `SOURCES.md` che censisce i riferimenti pubblici citati nei documenti; non tocca le voci curate e non accede alla rete |
 
 Accanto a questi vivono lo strumento archiviato e i file privati che alimentano il guard-rail.
 
@@ -57,13 +58,13 @@ Nessuno di questi componenti e' in esercizio, tranne dove indicato. La colonna d
 | Apparato di frontiera | modem dell'operatore, con Wi-Fi 7 e fonia VoIP | in esercizio, non sostituibile |
 | Firewall e router interno | OPNsense 25.7 su x86 dedicato | sistema installato il 16/01/2026, non configurato |
 | Hardware del firewall | i3 di settima generazione, 8 GB RAM, SSD SATA 120 GB, NIC integrata 1 GbE piu' due TP-Link TX201 a 2,5 Gbps su chipset Realtek RTL8125B | assemblato |
-| Switch | Zyxel XMG1915-10E, managed L2, 8 porte 2,5 GbE piu' 2 SFP+ a 10 Gbps, senza PoE | scelto, non acquistato |
-| Access point | modello Wi-Fi 7 alimentato via iniettore PoE Cudy PoE200H | ipotizzato |
+| Switch | Zyxel XMG1915, managed, 8 porte 2,5 GbE piu' 2 SFP+ a 10 Gbps: variante 10EP con PoE per due o tre AP come candidato principale, variante 10E senza PoE con un iniettore se l'AP resta uno | scelta fra le due varianti aperta dal 22/09/2026, non acquistato |
+| Access point | due o tre AP Zyxel Wi-Fi 7, NWA50BE Pro o NWA130BE, alimentati dallo switch | ipotizzato |
 | Virtualizzazione | Proxmox VE, edizione gratuita | pianificato |
 | Gestione endpoint | MeshCentral self-hosted, in container | pianificato |
 | DNS interno | Pi-hole come motore di policy davanti a Unbound come resolver ricorsivo con DNSSEC | pianificato |
 | Monitoraggio | Wazuh al centro, Snort per il traffico, stack ELK per l'indicizzazione | pianificato |
-| Storage di rete | NAS commerciale con doppia porta 2,5 GbE, oppure OpenMediaVault su hardware proprio | in valutazione |
+| Storage di rete | TrueNAS SCALE su hardware proprio ricavato da quattro desktop dismessi; unico pool sui due NVMe da 1 TB in specchio, senza dischi meccanici (ADR-014, ADR-015); alimentatore della base tenuto con condizioni di accettazione (ADR-016) | in assemblaggio: prelievi chiusi il 07/10/2026, montaggio fermo in attesa dell'adattatore da PCIe a M.2 per il secondo NVMe |
 | VPN | Tailscale per la semplicita', oppure Pritunl per il controllo | in valutazione, nessuna delle due adottata |
 | Backup | agente di backup incrementale su disco esterno, con copia su due servizi cloud diversi | parzialmente in uso |
 
@@ -75,4 +76,4 @@ Un mini-PC generico di importazione come piattaforma firewall e' stato scartato 
 
 ## Vincoli che nessuna scelta tecnica puo' aggirare
 
-L'ONT accetta traffico solo dal MAC del modem dell'operatore, e il modem non espone bridge ne' passthrough. Ne discende che il doppio NAT e' strutturale e che la Wi-Fi del modem resta fuori dal firewall finche' non la si sostituisce con access point a valle. L'indirizzo pubblico statico, ottenuto senza costi su una linea residenziale, e' cio' che rende sensato esporre un servizio dalla DMZ; e' un dato di contratto, non una proprieta' dell'apparato, e va trattato come tale.
+Il modem non espone bridge ne' passthrough, e per questa linea l'assistenza ha escluso il collegamento diretto del firewall all'ONT; la documentazione pubblica dell'operatore non prova un vincolo MAC generale dell'ONT, quindi l'evidenza resta locale e non si generalizza. Ne discende che il doppio NAT e' strutturale e che la Wi-Fi del modem resta fuori dal firewall finche' non la si sostituisce con access point a valle. L'indirizzo pubblico statico, ottenuto senza costi su una linea residenziale, e' cio' che rende sensato esporre un servizio dalla DMZ; e' un dato di contratto, non una proprieta' dell'apparato, e va trattato come tale.

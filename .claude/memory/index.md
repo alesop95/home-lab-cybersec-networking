@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: b3676eb (storia bonificata), template 74b6f6b
+Commit di riferimento: 6769dc4, template c668b85
 Data snapshot:         2026-10-07
 Remoto:                origin, allineato
 ```
@@ -29,14 +29,14 @@ Il vincolo operativo della linea concreta e' che l'assistenza ha escluso il coll
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| `context/STACK.md` | 494b45e | aggiornata |
-| `context/design-and-security.md` | 494b45e | aggiornata |
-| `context/deployment.md` | 494b45e | aggiornata |
-| `context/dev-testing.md` | 494b45e | aggiornata |
-| `context/current-work.md` | e91a133 | aggiornata |
-| `context/roadmap.md` | 494b45e | aggiornata |
-| `context/diagrams/topologia-di-rete.md` | 494b45e | aggiornata |
-| `context/diagrams/monitoraggio-open-source.md` | 494b45e | aggiornata |
+| `context/STACK.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/design-and-security.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/deployment.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/dev-testing.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/current-work.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/roadmap.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/diagrams/topologia-di-rete.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/diagrams/monitoraggio-open-source.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
 
 Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il commit indicato, che e' quello in cui la documentazione ha assunto la forma attuale. Da qui in avanti la skill di sincronizzazione le segnalera' come da riverificare appena HEAD si muove, ed e' il comportamento voluto: una scheda vale finche' qualcuno l'ha confrontata con lo stato reale.
 
@@ -73,7 +73,7 @@ Dal 03/09/2026 questo e' il lavoro attivo, ed e' la prima cosa del progetto che 
 
 La guida operativa e' `_notes/nas-consolidation/GUIDA-PASSO-A-PASSO.md`, non versionata perche' porta i valori reali delle quattro macchine, ed e' il documento da leggere per sapere dove si e' arrivati: ogni passo concluso porta un timbro con la data. Le sue controparti pubblicabili sono le tre schede sotto `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/`, che portano l'analisi, la sequenza di assemblaggio e il calcolo dei consumi con i segnaposto al posto dei nomi macchina.
 
-Lo stato fisico in questo momento e' che le quattro macchine sono **spente, con l'interruttore dell'alimentatore su aperto** ed etichettate; il **primo case e' aperto** e i suoi tre pezzi sono usciti, cioe' i due moduli di memoria e l'SSD SATA, etichettati sul tavolo. Gli altri due case di scorta non sono stati toccati.
+Lo stato fisico al 07/10/2026 e' che tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7: i pezzi sono sul tavolo, etichettati e verificati contro il censimento, e le tre macchine donatrici sono richiuse ed etichettate come scorte intere. Il montaggio sulla base non e' cominciato, in attesa dell'adattatore da PCIe a M.2. Il paragrafo che qui descriveva il primo case aperto dell'08/09 e' superato.
 
 Accanto alla guida vivono altri due documenti privati, scritti il 04/09. `SMONTAGGIO-CRONOLOGICO.md` e' la condensazione da banco dei passi da 1.2 a 1.7, riordinata nell'ordine dei gesti, e non porta timbri di proposito, cosi' che non esistano due registri in disaccordo. `INVENTARIO-SCORTE.md` fotografa che cosa resta disponibile dopo il consolidamento, e la sua controparte pubblicabile e' la scheda 06 della cartella NAS sotto `docs/`.
 
@@ -95,6 +95,8 @@ La cosa da ricordare per le sessioni future sta nella differenza fra le due arch
 
 ## Che cosa ha aggiunto la sessione del 22/09/2026, e perche' il filo fisico resta fermo
 
+Superata il 07/10/2026: i dischi del QNAP non si sono resi disponibili, e la decisione che questa sezione descrive e' stata sostituita da ADR-014 e ADR-015, con il NAS che parte senza dischi meccanici. La sezione resta come storia.
+
 Sessione documentale che chiude una decisione, ma non muove l'assemblaggio: nessun disco e' stato spostato, il punto di ripresa fisico resta quello dell'08/09. Sono diventati disponibili quattro dischi da 2 TB gratuiti da un QNAP TS-410U aziendale in dismissione, e la sessione li ha analizzati e destinati. La decisione, registrata come ADR-013, e' che il pool dati nasce da questi dischi invece che da un acquisto: uno specchio Toshiba piu' un Samsung, un secondo Samsung come riserva a caldo, il terzo Samsung verso la scorta con la sola rete Intel. Il motivo per cui non si fanno due specchi con tutti e quattro e' che i tre Samsung hanno seriali consecutivi e ore identiche, cioe' sono dello stesso lotto e il loro guasto non e' indipendente: uno specchio di due di loro sarebbe ridondanza solo sulla carta.
 
 Cade cosi' il vincolo dominante del magazzino, i zero dischi dichiarati dall'inventario, ma senza lasciare una scorta di dischi: il disco disponibile e' speso per riaccendere la scorta a cui mancava solo quello. Resta aperto un solo nodo, il dimensionamento, che si chiude misurando l'occupato del QNAP prima di creare il pool.
@@ -105,20 +107,14 @@ Sul piano dell'anonimizzazione la sessione ha applicato la lezione gia' registra
 
 ## Che cosa ha aggiunto la sessione del 07/10/2026
 
-Allineamento al template `4f4f9d0`, senza conflitti, e guard-rail riportato al verde: i nove riscontri bloccanti erano falsi positivi ereditati dagli allineamenti di fine settembre, cioe' un nome di organizzazione corto che combaciava dentro parole comuni e caselle d'esempio su domini riservati. Lo script ora cerca le organizzazioni a parola intera e ammette i domini riservati; il dettaglio e la prova sono nel work-log. Il filo fisico del NAS e' fermo dove l'aveva lasciato l'08/09.
+Allineamento al template `4f4f9d0`, senza conflitti, e guard-rail riportato al verde: i nove riscontri bloccanti erano falsi positivi ereditati dagli allineamenti di fine settembre, cioe' un nome di organizzazione corto che combaciava dentro parole comuni e caselle d'esempio su domini riservati. Lo script ora cerca le organizzazioni a parola intera e ammette i domini riservati; il dettaglio e la prova sono nel work-log. Il filo fisico del NAS e' fermo dove l'aveva lasciato l'08/09. Nella stessa giornata: storia bonificata e pubblicata, allineamento al template fino a `c668b85`, NAS senza dischi meccanici, costo d'esercizio ricalcolato con il motore delle bollette, prelievi chiusi al banco e alimentatore della base confermato.
 
 ## Punto di ripresa
 
-I controlli sono verdi al 22/09/2026: 146 documenti su 146 raggiungibili, zero collegamenti rotti, nessun comando spezzato, nessun riscontro bloccante di anonimizzazione sui file tracciati e nuovi, e nessun riferimento di fonte non registrato. I quattro seriali dei dischi recuperati dal QNAP sono stati inseriti nei pattern del guard-rail prima di scrivere la scheda che li riguarda, ed e' verificato che i seriali reali non compaiono su nessun file tracciato mentre i segnaposto compaiono. Il verde del guard-rail vale piu' di quelli precedenti su questo materiale, perche' fino al 08/09 non conosceva nessuno dei seriali hardware ne' due dei cinque nomi host delle macchine del consolidamento: ora li conosce, e la voce di quella data nel work-log dice quali e perche' gli altri tre erano intercettati solo di rimbalzo. Il secondo controllo ha una riserva nota, descritta nella voce del 01/09/2026 del work-log: il comando documentato percorre tutto l'albero di lavoro invece dei soli file tracciati, quindi resta rosso per materiale grezzo non versionato sotto `_notes/`, mentre sui 238 documenti tracciati e' pulito.
+Al 07/10/2026, commit `6769dc4` piu' le scritture di chiusura di questa sessione. Storia bonificata e pubblicata; repository pubblico; progetto allineato al template `c668b85`, con `chiudi` utilizzabile e il guard-rail di anonimizzazione fra i suoi controlli. Le ancore delle schede, che puntavano a commit di prima della riscrittura, sono state riportate sugli equivalenti della storia attuale con la tabella di corrispondenza privata `_notes/bonifica-2026-10-07-commit-map.txt`; gli hash citati in prosa nel work-log prima del 07/10 sono quelli vecchi, e si traducono con la stessa tabella.
 
-C'e' un lavoro aperto, ed e' fisico: l'assemblaggio del NAS. Lo stato di avanzamento vive nella guida operativa sotto `_notes/nas-consolidation/`, dove ogni passo concluso porta un timbro con la data, e la feature e' descritta in `.claude/context/current-work.md`.
+Il filo attivo e' la progettazione della rete e della topologia, descritto in `.claude/context/current-work.md` con le tre decisioni aperte: numero di access point e quindi modello di switch, piano delle VLAN con il contratto fra zone, collocazione del NAS nella topologia. Prima della prima decisione servono i dati fisici della casa.
 
-**Punto esatto in cui la sessione del 08/09/2026 si e' chiusa.** Giorno zero chiuso, Passo 1.1 chiuso. Passi 1.2 e 1.3 chiusi: da `PC-DESKTOP-B` sono usciti i due moduli di memoria da 8 GB e l'SSD SATA, etichettati, e il suo case e' ancora aperto. **Restano da recuperare su quel case, prima di richiuderlo, tre letture saltate al momento del prelievo**: il codice data dei due moduli, l'etichetta dell'alimentatore, e i due accessori del disco, cioe' il cavo dati uscito con esso e la slitta da 2,5 a 3,5 pollici. Il cavo cambia il piano, perche' prelevarlo qui rende superfluo prelevarne uno da `linux-desktop-B`, che quindi non va toccata oltre il suo NVMe.
+Il filo del NAS e' in pausa in attesa dell'adattatore da PCIe a M.2. Tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7, e il montaggio non e' cominciato; la ripresa e' il Passo 1.6 della guida privata. Decisioni del giorno: ADR-014 e ADR-015 sul pool senza dischi meccanici, ADR-016 sull'alimentatore della base.
 
-Il case si richiude **dopo** quelle letture, e sul fianco si scrive che cosa gli manca: quella macchina resta un ricambio pronto e non un donatore di pezzi, perche' e' la sola che puo' sostituire la base con un trapianto invece che con una ricostruzione. **Il passo successivo e' il 1.4 della guida: si apre `linux-desktop-A` e si preleva soltanto il suo NVMe**, mentre la memoria resta dentro perche' e' l'unico kit DDR4 libero del magazzino. La confusione piu' probabile dell'intero lavoro sta li': i due NVMe da prelevare sono modelli Crucial diversi che si distinguono per un carattere nel codice prodotto, e vanno in due posizioni diverse della base.
-
-Resta aperto in parallelo, e non blocca nulla, il Passo 0.3: l'ordine dell'adattatore da PCIe a M.2 e della scheda di rete Intel. Servono al montaggio, ai passi 2.5 e 2.6, non ai prelievi.
-
-Da decidere a parte, e non in una sessione di lavoro ordinaria: se bonificare la storia gia' pubblicata dai due valori descritti sopra, e se il repository su GitHub debba essere pubblico o privato, cosa che al momento non risulta verificata da nessuna parte del progetto.
-
-Il lavoro successivo alla pubblicazione e' la fase 2 della roadmap, cioe' l'identificazione fisica delle tre interfacce del firewall dalla console e la loro assegnazione ai tre ruoli, che e' il primo passo che cambia lo stato della rete e non solo della sua descrizione. La catena da predisporre e' Seven LAN 2,5 GbE -> WAN OPNsense; la guida operativa di casa e' `docs/03-spunti-di-sviluppo/23-studio-home-lab/05-guida-configurazione-opnsense-in-casa.md`.
+Il lavoro che cambia lo stato della rete resta la fase 2 della roadmap, cioe' l'identificazione fisica delle tre schede di rete del firewall dalla console. Si fa alla macchina, non al repository.

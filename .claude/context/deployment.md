@@ -1,12 +1,12 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - tools/**
   - scripts/**
   - docs/**
-last-verified-commit: 494b45e
+last-verified-commit: 6769dc4
 ---
 
 # Esecuzione e manutenzione della documentazione
@@ -45,7 +45,7 @@ python tools/check-docs-tree.py
 python tools/check-docs-tree.py
 ```
 
-Il secondo attua la convenzione di formattazione, cioe' un paragrafo per riga sorgente. Lo strumento rifiuta di scrivere un file il cui rendering cambierebbe, quindi e' sicuro da lanciare sull'intero albero; con `--check` non scrive e segnala soltanto.
+Il secondo attua la convenzione di formattazione, cioe' un paragrafo per riga sorgente. Lo strumento rifiuta di scrivere un file il cui rendering cambierebbe, quindi e' sicuro da lanciare sull'intero albero; con `--check` non scrive e segnala soltanto. Lanciato su `.` percorre anche il materiale ignorato sotto `_notes/` e li' trova righe da unire, che non sono un difetto pubblicabile: l'opzione `--only-tracked` limita il controllo ai file tracciati, ed e' la forma che usa `chiudi`. Dal 07/10/2026 quell'opzione salta i file tracciati ma cancellati nell'albero di lavoro, cosi' un commit che rimuove un documento non si ferma piu' su questo controllo.
 
 ```powershell
 python tools/md-unwrap.py --check .
@@ -92,6 +92,8 @@ L'opzione aggiunge all'elenco i file non tracciati ma non ignorati dal `.gitigno
 ## La sequenza completa
 
 Si modifica un file, si collega dall'indice se e' nuovo, si esegue il controllo di coerenza, si normalizza la formattazione, si controllano i blocchi di comando, si aggiunge all'indice di git, si esegue il guard-rail con l'opzione sui file nuovi, si committa e si pusha. Le ultime due operazioni sono manuali dell'utente e l'agente non le esegue.
+
+Dal 07/10/2026 la via ordinaria per committare e' `chiudi`, lanciato dall'utente nel proprio terminale con il messaggio che l'agente prepara in `_notes/COMMIT-MSG.txt`. Esegue i controlli istanziati del template, fra cui `md-unwrap --only-tracked`, `lint-md-commands` e il guard-rail, che il template cerca anche in `scripts/`; si ferma prima del commit se uno fallisce. Non conosce `tools/check-docs-tree.py`, che e' proprio di questo progetto: dopo uno spostamento o un file nuovo nell'albero quel controllo si lancia a mano prima di `chiudi`.
 
 ```bash
 python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi

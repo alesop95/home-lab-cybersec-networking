@@ -1,11 +1,11 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - docs/03-spunti-di-sviluppo/09-monitoraggio/**
   - docs/03-spunti-di-sviluppo/08-malware-analysis-free-open-source-solutions/**
-last-verified-commit: 494b45e
+last-verified-commit: 6769dc4
 ---
 
 # Workflow di monitoraggio e analisi
@@ -48,6 +48,8 @@ Il flusso ha un centro chiaro, Wazuh, che raccoglie dagli endpoint e correla, e 
 ```
 
 La lettura corretta e' che Wazuh e' l'unico componente indispensabile per iniziare, perche' da solo copre SIEM, rilevamento sull'host e controllo di integrita' dei file, ed e' piu' leggero di OSSIM e piu' completo di Snort da solo. Snort aggiunge la visibilita' sul traffico, che Wazuh non ha; lo stack ELK aggiunge la capacita' di interrogare grandi volumi, che serve solo quando i volumi ci sono; Sagan e MozDef sono raffinamenti che hanno senso quando esistono gia' piu' sorgenti da correlare e incidenti da gestire come tali. Adottarli tutti insieme in una rete domestica sarebbe sovradimensionato, e il documento sorgente lo dice esplicitamente.
+
+Sulla sonda di rete i documenti divergono, e la differenza va tenuta presente. L'analisi del monitoraggio sotto `09-monitoraggio/` ragiona su Snort come componente separato; lo studio home lab del 22/09/2026, nei servizi gratuiti, indica invece Suricata integrato in OPNsense, in sola rilevazione prima di qualunque blocco e solo dopo test prestazionali sul firewall. La seconda strada non aggiunge una macchina e usa il motore che il firewall gia' include, quindi e' quella da cui partire; la scelta definitiva resta alla fase 5.
 
 ## Il posto del monitoraggio nella rete
 

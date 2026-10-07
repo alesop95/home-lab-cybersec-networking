@@ -1,10 +1,10 @@
 ---
-generated-from-commit: e89779723cb1ed715b781763011255a81a82700e
+generated-from-commit: 86b5c8a61a55a48997d7757592aa4d91da9e8581
 generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - docs/**
-last-verified-commit: 494b45e
+last-verified-commit: 6769dc4
 ---
 
 # Roadmap
@@ -13,7 +13,7 @@ last-verified-commit: 494b45e
 
 ## Fase 0, conclusa: raccolta e studio
 
-Durata effettiva dal gennaio al marzo 2026, con code successive. Ha prodotto il documento sorgente nella sua estensione attuale, il ticket all'operatore con la conferma del vincolo sull'ONT, la richiesta e l'ottenimento dell'indirizzo pubblico statico, il confronto fra le distribuzioni firewall, la scelta dello switch con le due alternative scartate, e l'installazione del sistema operativo del firewall il 16 gennaio 2026.
+Durata effettiva dal gennaio al marzo 2026, con code successive. Ha prodotto il documento sorgente nella sua estensione attuale, il ticket all'operatore con l'esclusione del collegamento diretto del firewall all'ONT per questa linea, evidenza locale e non generalizzata, la richiesta e l'ottenimento dell'indirizzo pubblico statico, il confronto fra le distribuzioni firewall, la scelta dello switch con le due alternative scartate, e l'installazione del sistema operativo del firewall il 16 gennaio 2026.
 
 L'esito architetturale della fase e' uno solo e vale tutto il resto: il firewall non puo' essere l'apparato di frontiera, quindi la topologia e' a cascata dietro il modem dell'operatore, con doppio NAT e wireless inizialmente scoperto.
 
@@ -33,7 +33,7 @@ Resta da riverificare, prima di considerare chiusa la fase, l'avviso sulla gener
 
 Dipende dalla fase 2, perche' senza le interfacce del firewall configurate non c'e' nulla a cui collegare il trunk.
 
-Si acquista e si configura lo switch gestito, definendo le VLAN e quali porte sono di accesso e quale e' il trunk verso il firewall. Si portano gli access point a valle dello switch, alimentati via iniettore, e si spegne o si degrada a rete ospiti la radio del modem. La fase chiude il buco strutturale del progetto, cioe' il wireless fuori dal perimetro, ed e' per questo che non e' facoltativa.
+Si acquista e si configura lo switch gestito, definendo le VLAN e quali porte sono di accesso e quale e' il trunk verso il firewall. Si portano gli access point a valle dello switch, alimentati dallo switch se si sceglie la variante con PoE per due o tre AP, oppure da un iniettore se l'AP resta uno, scelta aperta dal 22/09/2026 e documentata nello studio home lab; poi si spegne o si degrada a rete ospiti la radio del modem. La fase chiude il buco strutturale del progetto, cioe' il wireless fuori dal perimetro, ed e' per questo che non e' facoltativa.
 
 Il passaggio del cavo verso il piano inferiore e' la parte materialmente piu' difficile e ha una sua analisi dedicata nel documento sorgente, con la preferenza per un unico cavo continuo in rame solido invece che tratte accoppiate, e con la nota che la presa esistente a parete e' cablata come telefonica su cavo dati, quindi non utilizzabile come presa Ethernet finche' non viene riterminata su tutte e quattro le coppie.
 
@@ -42,6 +42,8 @@ Il passaggio del cavo verso il piano inferiore e' la parte materialmente piu' di
 Dipende dalla fase 3 per la segmentazione, perche' ogni servizio va collocato in una zona e non in una rete piatta.
 
 Nell'ordine di dipendenza: l'hypervisor sull'hardware disponibile, poi il resolver DNS interno con il motore di policy davanti, che e' il servizio con il maggior rapporto fra beneficio e sforzo e che richiede la regola di uscita sul firewall per essere reale; poi lo storage di rete, poi la gestione endpoint, ora nella variante con indirizzo statico dato che l'indirizzo dinamico e' decaduto.
+
+Lo storage di rete e' l'eccezione all'ordine, per una ragione materiale: il suo hardware si assembla senza toccare la rete, quindi dal 03/09/2026 procede in parallelo alle fasi 2 e 3, ricavato da quattro desktop dismessi. Al 07/10/2026 i prelievi sono chiusi, l'unico pool e' lo specchio dei due NVMe senza dischi meccanici (ADR-015) e il montaggio attende l'adattatore da PCIe a M.2. Cio' che dipende dalla segmentazione e' soltanto la sua collocazione in una zona, che resta in questa fase.
 
 ## Fase 5: monitoraggio
 
