@@ -1,6 +1,6 @@
 {
-    "template_commit": "74b6f6bea4de10132bf88efa321176d37669802a",
-    "template_albero_claude": "4c582de1f6f0be9a998208690609570cae6ae54d",
+    "template_commit": "c668b85b581d811f982b0b5d0c85ae9103c82118",
+    "template_albero_claude": "dcd5c947835c7f08d914698037fea220754c1d90",
     "data_commit_template": "2026-10-07",
     "allineato_il": "2026-10-07",
     "strumento": "allinea-dal-template.py"

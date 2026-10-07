@@ -115,16 +115,20 @@ Ne risultano centodiciotto ore di accensione a settimana, cioè circa il **setta
 
 Il risparmio è di **quaranta euro all'anno**, cioè il **trenta per cento** del costo di esercizio. Va detto con precisione perché una valutazione preliminare, fatta ipotizzando quattro ore di accensione al giorno, aveva indicato un fattore sei: con una finestra di sedici o diciassette ore quel fattore non si realizza, e il risparmio reale è di un terzo. Resta un risparmio vero, ma di un ordine di grandezza diverso da quello ipotizzato prima di avere gli orari.
 
-La tabella è calcolata sulla stima centrale di 60 W valida per due dischi meccanici, ed è quella su cui è stata decisa la finestra. Dal 07/10/2026 la macchina parte senza dischi meccanici, e alla stima centrale di 48 W gli stessi conti danno quanto segue. Il perimetro è lo stesso della tabella sopra: costo marginale di 0,256 euro per kilowattora, 730 ore al mese in continuo e 513 con la finestra, consumo di casa di 87 kilowattora al mese; i 48 W sono una stima per componenti e non una misura alla presa.
+La tabella è calcolata sulla stima centrale di 60 W valida per due dischi meccanici, ed è quella su cui è stata decisa la finestra. Dal 07/10/2026 la macchina parte senza dischi meccanici, e il conto alla stima centrale di 48 W è stato rifatto il 07/10/2026 con un metodo più preciso del costo marginale medio: il motore di calcolo privato con cui si analizzano le bollette della fornitura, che ricostruisce voce per voce il costo annuo con le formule del contratto, le tariffe regolate dell'ultimo trimestre e il prezzo all'ingrosso medio per fascia oraria di gennaio-agosto 2026. Il costo del NAS è la differenza fra il costo annuo della casa con e senza la macchina, quindi comprende perdite di rete, dispacciamento, oneri, accisa e imposta. Il motore passa le proprie prove automatiche su dati e formule.
 
-| | Continuo | Con la finestra | Differenza |
+Il metodo aggiunge una cosa che il costo marginale medio non vede: le ore del NAS cadono in fasce diverse da quelle della casa. In continuo la macchina consuma 55 ore settimanali in F1, 41 in F2 e 72 in F3; con la finestra ne restano 55, 38 e 25, perché le ore spente sono quasi tutte notturne e quindi in F3, la fascia meno cara. Per questo il costo per kilowattora con la finestra è un po' più alto che in continuo.
+
+| A 48 W, condizioni contrattuali attuali | Continuo | Con la finestra | Differenza |
 |---|---|---|---|
-| Consumo a 48 W | 35,0 kWh | 24,6 kWh | -10,4 kWh |
-| Spesa mensile | 8,97 € | 6,30 € | **-2,67 €** |
-| Spesa annua | 107,64 € | 75,64 € | **-32,00 €** |
-| Incremento sul consumo di casa | +40% | **+28%** | |
+| Ore accese a settimana | 168 | 118 | -50 |
+| Consumo mensile | 35,0 kWh | 24,6 kWh | -10,4 kWh |
+| Costo per kWh in più | 0,268 € | 0,271 € | |
+| Spesa mensile | 9,39 € | 6,66 € | **-2,73 €** |
+| Spesa annua | 112,69 € | 79,93 € | **-32,76 €** |
+| Incremento sul consumo di casa | +42% | **+29%** | |
 
-Sull'intervallo da 40 a 55 W la spesa annua con la finestra va da circa 63 a circa 87 euro. Il risparmio della finestra scende in assoluto, perché si spegne una macchina che consuma meno, ma resta il trenta per cento, che dipende soltanto dalle ore e non dai watt. Il piano del 22/09 a tre dischi, che portava la stima centrale verso i 68 W e la spesa annua sulla finestra verso i 110 euro, è decaduto con i dischi.
+L'incremento è calcolato sugli 84 kilowattora al mese medi di gennaio-luglio 2026. Con le condizioni migliori ipotizzate nello studio delle bollette, che tolgono l'accisa e una quota di gestione, il costo per kilowattora scende a 0,243 in continuo e 0,246 con la finestra, e la spesa annua con la finestra a 72,56 euro. Sull'intervallo da 40 a 55 W la spesa annua con la finestra va da 66,61 a 91,59 euro alle condizioni attuali. Il risparmio della finestra resta il ventinove per cento, che dipende quasi soltanto dalle ore e non dai watt. Il piano del 22/09 a tre dischi, che portava la stima centrale verso i 68 W e la spesa annua sulla finestra verso i 110 euro, è decaduto con i dischi.
 
 Ci sono inoltre due benefici non monetari che non compaiono in tabella. Duemilaseicento ore all'anno in meno di funzionamento su ogni componente, dischi meccanici compresi, e nessun rumore di ventole e di dischi durante la notte, che su una macchina collocata in un ambiente abitato non è irrilevante.
 
