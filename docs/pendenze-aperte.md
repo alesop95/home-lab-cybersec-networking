@@ -65,7 +65,13 @@ Sotto `02-ftth-fastweb/`.
 
 Sotto `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, che e' marcato da chiarire nel suo insieme. Delle voci presenti, sei postazioni fisse e quattro portatili piu' console, televisore, telefoni e tablet, molte hanno la sola intestazione e la sottosezione sulle schede di rete lasciata a segnaposto. Le voci con contenuto reale sono la postazione fissa numero quattro, i portatili due e tre, e la console; le altre sono da compilare. Due voci di dispositivo hanno il titolo composto da soli punti, quindi non e' possibile sapere a che cosa si riferiscano senza chiederlo all'autore.
 
+Dal 07/10/2026 il censimento ha un obiettivo in piu', chiesto dall'utente: per ogni client dire se sara' cablato o restera' in Wi-Fi, e su quale porta o SSID finira'. Si fa per categoria e con i segnaposto nei file tracciati. E' anche la misura che dira' se le otto porte dello switch bastano.
+
 Il censimento e' meno accessorio di quanto sembri: e' la fonte che dice quale endpoint puo' realmente saturare una porta a 2,5 Gbps e quale no, e senza di esso il dimensionamento dello switch e la scelta di dove portare le porte veloci restano decisioni prese a intuito.
+
+## Rilevazioni del Seven da ripetere
+
+Dal 07/10/2026, con la lettura tecnica in `02-ftth-fastweb/08-il-seven-nel-progetto-di-rete-voce-per-voce.md`. Le schermate dello stato WAN sono state catturate con la GPON giu' e la connessione mobile su, quindi vanno rifatte con la fibra attiva, verificando che l'indirizzo pubblico statico sia lo stesso sui due collegamenti. Vanno fotografate per la prima volta lo stato LAN, la sezione LAN switch, il Port Triggering, il Filtro MAC, Easy Mesh, l'Analizzatore e la modalita' ECO, che nel censimento hanno il solo titolo.
 
 ## Sezioni censite ma dichiarate non rilevanti
 

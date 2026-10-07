@@ -3,7 +3,8 @@
 ## Topologia di riferimento
 
 ```text
-ONT -> Fastweb Seven -> WAN OPNsense -> LAN OPNsense -> switch Zyxel -> AP al piano inferiore
+ONT -> Fastweb Seven -> WAN OPNsense -> LAN OPNsense -> switch Zyxel -> due AP ai piani 3 e 2
+Fastweb Seven -> LAN 1 GbE -> PS5, fuori dal perimetro
 ```
 
 La Wi-Fi del Seven resta fuori da OPNsense finche' gli access point a valle non sono installati. Non collegare OPNsense direttamente all'ONT come baseline: sulla linea concreta il percorso non e' stato validato.
@@ -20,11 +21,11 @@ La Wi-Fi del Seven resta fuori da OPNsense finche' gli access point a valle non 
 | 4 | cablaggio | Cat6/Cat6A, etichette e patch | misurare il percorso verso il piano inferiore prima della posa |
 | 5 | continuita' | UPS dimensionato | valutare dopo aver rilevato consumi reali |
 
-Non comprare ora i dischi NAS: il loro inserimento e' previsto non prima dell'inizio 2027.
+Non comprare ora i dischi NAS: il loro inserimento e' previsto non prima dell'inizio 2027. Facoltativa e senza urgenza: una scheda di rete Intel da 2,5 GbE per il NAS, che oggi lavora a 1 GbE. Non si acquista un FRITZ!Box: non migliora la topologia, il ragionamento e' nel [documento sul doppio NAT](07-doppio-nat-dietro-modem-in-comodato.md).
 
 ## Prima dell'ordine
 
-Rilevare numero di piani, percorso cavi, posizione degli AP, numero di client cablati, disponibilita' di prese e budget. Chiudere inoltre il numero di AP: un solo AP rende sensato XMG1915-10E con iniettore, due o tre AP rendono piu' ordinato XMG1915-10EP.
+Il numero di AP e' deciso il 07/10/2026: due, alimentati dallo switch XMG1915-10EP, quindi le righe dello XMG1915-10E e dell'iniettore restano solo come storia della scelta. Resta aperto il modello degli AP. Prima dell'ordine vanno ancora rilevati numero di piani, percorso cavi, posizione dei due AP, numero di client cablati, disponibilita' di prese e budget.
 
 ## Sequenza di configurazione
 

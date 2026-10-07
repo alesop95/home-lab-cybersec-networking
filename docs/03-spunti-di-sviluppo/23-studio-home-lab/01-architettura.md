@@ -17,11 +17,11 @@ flowchart TD
   SEVEN --> CASA[Wi-Fi Seven: rete upstream fuori da OPNsense]
   SEVEN -->|LAN 2.5 GbE| FW[WAN OPNsense: secondo NAT e firewall del lab]
   FW -. "acquisto e configurazione" .-> SW[Switch gestito Zyxel]
-  SW -. "acquisto e posa cavi" .-> AP[Due AP e possibile terzo]
+  SW -. "acquisto, cavi gia' posati" .-> AP[Due AP cablati e PoE, piani 3 e 2]
   SW -. "integrazione dopo collaudo" .-> NAS[NAS in assemblaggio nella sessione dedicata]
 ```
 
-Nel diagramma operativo proposto la rete essenziale e' indipendente dal NAS. Le linee rappresentano collegamenti e funzioni desiderati, non una distribuzione gia' attiva.
+Nel diagramma operativo proposto la rete essenziale e' indipendente dal NAS. Le scelte del 07/10/2026 che lo hanno aggiornato sono nella sezione che segue. Le linee rappresentano collegamenti e funzioni desiderati, non una distribuzione gia' attiva.
 
 ```mermaid
 flowchart TB
@@ -32,20 +32,31 @@ flowchart TB
   F -->|NIC separata 1 GbE| D[DMZ 192.168.20.0/24: futura, inizialmente vuota]
   S -->|trunk e PoE| A1[AP 1]
   S -->|trunk e PoE| A2[AP 2]
-  S -. "trunk e PoE se necessario" .-> A3[AP 3]
   S -->|access VLAN 10| PC[Client fidati]
   S -->|access VLAN 30| H[Host sempre acceso: da individuare]
-  S -->|access VLAN 30| N[NAS a orario: dati e backup]
+  S -->|access VLAN 30| N[NAS a orario: dati e backup, 1 GbE oggi]
   H --> DNS[AdGuard opzionale / monitoraggio leggero]
   H -. "solo dopo dimensionamento" .-> LAB[VM LAB isolate sulla VLAN 60]
   A1 --> WIFI[SSID CASA / IOT / OSPITI: a valle di OPNsense]
   A2 --> WIFI
-  A3 -.-> WIFI
   M -. "temporanea, non ispezionata da OPNsense" .-> OLDWIFI[Client Wi-Fi Seven]
+  M -->|LAN 1 GbE, NAT singolo| PS5[PS5 fuori perimetro]
   ADM[Postazione amministrativa / VPN] -. "regole dedicate" .-> F
 ```
 
 La DMZ e' qui una porta fisica separata e non viene contemporaneamente duplicata come VLAN 20 sul trunk. Un eventuale consolidamento futuro sullo switch richiede una revisione esplicita. Per l'host con VM LAB si usa un trunk limitato alle VLAN necessarie e bridge virtuali distinti; la porta access disegnata rappresenta il caso iniziale con soli servizi. Non collegare una VM bersaglio contemporaneamente al bridge fidato. La Wi-Fi del Seven resta una rete upstream: OPNsense non ne vede i flussi e non puo' applicare le sue policy a quei client. E' una scelta transitoria accettabile per dispositivi ordinari o legacy, non una protezione completa dell'intera abitazione.
+
+## Decisioni del 07/10/2026
+
+La casa si sviluppa in altezza su quattro piani. Al piano piu' alto stanno il Seven e lo switch, e con ogni probabilita' il firewall, che va collegato a entrambi con cavi corti: la collocazione del firewall e' da confermare. I due access point stanno ai due piani centrali, il terzo e il secondo, e il piano terra non ne ha. I cavi sono gia' predisposti: due cavi RJ45 partono da due porte dello switch e arrivano ciascuno a un AP, che ne prende anche l'alimentazione PoE. Lo switch e' quindi lo XMG1915-10EP (ADR-017).
+
+L'utente vuole i due AP in mesh. Con il collegamento cablato a entrambi, il requisito si traduce in una sola rete Wi-Fi con roaming fra i due AP, cioe' stessi SSID, stesse chiavi e assistenza al passaggio del client da un AP all'altro, e non in un collegamento radio fra AP: il mesh senza fili serve agli AP che il cavo non raggiunge e dimezza la banda disponibile, mentre qui il cavo c'e'. I nomi delle funzioni Zyxel che lo realizzano, in modalita' Nebula o autonoma, e il supporto dei protocolli di roaming 802.11k, v e r sul modello scelto vanno verificati sulla scheda tecnica. La copertura del piano terra dall'AP del secondo piano e' da misurare dopo l'installazione; un terzo AP resta la risposta solo se la misura la smentisce.
+
+La rete ospiti resta separata dalla rete di casa anche sugli AP: l'SSID OSPITI e' legato alla VLAN 50, l'AP isola i client fra loro e OPNsense nega dalla VLAN 50 ogni rete privata e le proprie interfacce, salvo DNS e DHCP. La Wi-Fi del Seven puo' restare accesa come rete esterna al perimetro, se all'utente serve: in quel caso la si dichiara fuori perimetro e non la si confonde con la rete ospiti, e sulla WAN di OPNsense non devono rispondere ne' l'interfaccia di gestione ne' altri servizi.
+
+La PS5 si collega direttamente a una porta LAN del Seven, fuori dal perimetro di OPNsense: ha un NAT solo e non occupa una porta dello switch. Il Seven ha una porta LAN da 2,5 GbE, riservata alla WAN di OPNsense, e altre porte da 1 GbE, una delle quali va alla console. Il ragionamento, compreso il costo di UPnP sul Seven, e' nel [documento sul doppio NAT](07-doppio-nat-dietro-modem-in-comodato.md). Un FRITZ!Box non si acquista: in nessuna posizione della catena migliora la topologia.
+
+Il NAS resta nella VLAN 30 a 1 GbE, che per l'uso previsto non e' un limite. Una scheda di rete Intel da 2,5 GbE e' un'aggiunta economica possibile in un secondo momento, nello stesso slot previsto per la scheda Intel da 1 GbE della guida di montaggio. Il firewall ha tre porte secondo il verbale e l'utente lo ricorda verificato da terminale; l'identificazione con `pciconf -lv` e `ifconfig` resta comunque il primo passo della fase 2. Resta da fare il censimento dei client, distinguendo quelli che saranno cablati da quelli che resteranno in Wi-Fi.
 
 ## Segmenti proposti
 

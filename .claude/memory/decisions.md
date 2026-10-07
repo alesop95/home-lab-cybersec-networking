@@ -216,3 +216,25 @@ Decisione. Resta l'alimentatore gia' montato nella base, a quattro condizioni di
 
 Conseguenze. Nessuno spostamento di alimentatori. L'eta' resta un rischio dichiarato e non nascosto: l'invecchiamento dei condensatori dipende dalle ore di funzionamento e dal calore, che per questa unita' non sono noti. Un guasto, su questa architettura, spegne la macchina senza perdita di dati, grazie al file system transazionale e ai dischi in specchio.
 
+
+## ADR-017, switch con PoE integrato e due access point
+
+Data: 07/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. La scelta dello switch dipendeva dal numero di access point: uno solo rendeva sensato lo XMG1915-10E con un iniettore PoE a 2,5 GbE, due o tre rendevano piu' ordinato lo XMG1915-10EP. Il rilievo fisico della casa non e' ancora stato fatto, ma l'utente ha fissato il fabbisogno: uno switch PoE e due access point.
+
+Decisione. Lo switch e' lo Zyxel XMG1915-10EP, otto porte 2,5 GbE PoE++ con budget di 130 W e due SFP+. Gli access point sono due, entrambi alimentati dallo switch e collegati in trunk; il terzo AP non e' previsto e la porta 4 che gli era riservata passa a un client cablato. Il modello degli AP resta aperto fra NWA130BE, che porta 802.1X/RADIUS e SNMP, e NWA50BE Pro, piu' economico. Con due NWA130BE l'assorbimento di targa e' 48 W, ampiamente dentro il budget.
+
+Conseguenze. L'iniettore PoE esce dalla lista degli acquisti. La posizione dei due AP, e quindi la lunghezza e il percorso dei cavi, resta legata al rilievo della casa. Spenta la radio del Seven dopo il collaudo dei due AP, tutto il wireless di casa passa da OPNsense: e' la differenza dichiarata rispetto al modello di Autore-LinkedIn-B, che tiene la casa sul modem.
+
+## ADR-018, AP cablati ai piani centrali, PS5 sul Seven, niente FRITZ!Box
+
+Data: 07/10/2026. Stato: accettata. Decisioni dell'utente.
+
+Contesto. Dopo ADR-017 restavano da fissare la collocazione fisica degli AP, il posto dei dispositivi che non hanno bisogno del perimetro e l'eventuale acquisto di un router di terze parti. La casa si sviluppa su quattro piani, con Seven e switch al piano piu' alto.
+
+Decisione. I due AP stanno al terzo e al secondo piano, collegati ciascuno con un cavo gia' posato a una porta dello switch, da cui prendono l'alimentazione PoE; il requisito di mesh si realizza come roaming fra due AP cablati, non come collegamento radio fra AP. La PS5 si collega a una porta LAN da 1 GbE del Seven, fuori dal perimetro, con un NAT solo. Non si acquista un FRITZ!Box. Il NAS resta nella VLAN 30 a 1 GbE, con una scheda da 2,5 GbE come aggiunta facoltativa futura. La Wi-Fi del Seven puo' restare accesa come rete esterna dichiarata; la decisione definitiva e' rimandata.
+
+Alternative considerate. Mesh radio con un solo AP cablato: inutile, i cavi ci sono. PS5 sullo switch nella VLAN IoT con UPnP o NAT statico su OPNsense: scartata dall'utente, perche' la console non naviga, non le serve il perimetro e occuperebbe una porta dello switch. FRITZ!Box dietro o al posto del Seven: terza traduzione nel primo caso, configurazione libera della linea non validata nel secondo.
+
+Conseguenze. La porta 4 dello switch va a un client cablato. La copertura del piano terra dall'AP del secondo piano va misurata. Sul Seven, per la PS5, si preferiscono inoltri statici verso l'indirizzo della console a UPnP, che aprirebbe porte a ogni dispositivo del Seven. Il ragionamento didattico e' in `docs/03-spunti-di-sviluppo/23-studio-home-lab/07-doppio-nat-dietro-modem-in-comodato.md`.

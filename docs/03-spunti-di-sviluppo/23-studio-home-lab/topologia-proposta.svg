@@ -1,92 +1,202 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="900" viewBox="0 0 1280 900" role="img" aria-labelledby="title desc">
-  <title id="title">Home lab: topologia proposta del 22 settembre 2026</title>
-  <desc id="desc">Modem ISP verso firewall OPNsense, switch Zyxel con due access point e un terzo opzionale, client, host sempre acceso e NAS a orario. DMZ su porta fisica separata. VLAN con routing sul firewall. Progetto, non rete collaudata.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Topologia di rete del 07/10/2026</title>
+  <desc id="desc">ONT, modem Fastweb Seven obbligato con primo NAT, Wi-Fi e PS5 fuori perimetro, OPNsense con secondo NAT e routing fra VLAN, switch Zyxel XMG1915-10EP con due access point cablati in PoE ai piani 3 e 2, NAS in VLAN 30. Progetto, non rete collaudata. Indirizzo pubblico in segnaposto RFC 5737.</desc>
   <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#64748b"/></marker>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#64748b"/></marker>
     <style>
-      text { font-family: sans-serif; fill: #172b45; }
-      .title { font-size: 28px; font-weight: 700; }
-      .sub { font-size: 16px; fill: #52647b; }
-      .name { font-size: 18px; font-weight: 700; }
-      .label { font-size: 14px; fill: #52647b; }
-      .small { font-size: 13px; fill: #52647b; }
-      .existing { fill: #e9f6ee; stroke: #4c9770; stroke-width: 2; }
-      .planned { fill: #eef4ff; stroke: #4d76b8; stroke-width: 2; }
-      .optional { fill: #f6f7fb; stroke: #8b96a8; stroke-width: 2; stroke-dasharray: 7 5; }
-      .wire { fill: none; stroke: #64748b; stroke-width: 2; marker-end: url(#arrow); }
-      .dash { stroke-dasharray: 7 5; }
-      .zone { fill: #ffffff; stroke: #c5d0df; }
+      text { font-family: "Segoe UI", sans-serif; fill: #172b45; font-size: 13px; }
+      .t { font-size: 26px; font-weight: 700; }
+      .s { font-size: 15px; fill: #52647b; }
+      .n { font-size: 15px; font-weight: 700; }
+      .m { font-size: 12px; fill: #52647b; }
+      .h { font-size: 14px; font-weight: 700; }
+      .ok { fill: #e9f6ee; stroke: #4c9770; stroke-width: 2; }
+      .plan { fill: #eef4ff; stroke: #4d76b8; stroke-width: 2; }
+      .opt { fill: #f6f7fb; stroke: #8b96a8; stroke-width: 2; stroke-dasharray: 7 5; }
+      .out { fill: #fdecec; stroke: #c0392b; stroke-width: 2; stroke-dasharray: 7 5; }
+      .note { fill: #ffffff; stroke: #c5d0df; stroke-width: 1.5; }
+      .w { fill: none; stroke: #64748b; stroke-width: 2.5; marker-end: url(#a); }
+      .wd { fill: none; stroke: #64748b; stroke-width: 2; stroke-dasharray: 6 4; marker-end: url(#a); }
+      .trunk { fill: none; stroke: #4d76b8; stroke-width: 5; }
+      .per { fill: #fbfdff; stroke: #4c9770; stroke-width: 2; stroke-dasharray: 12 6; }
     </style>
   </defs>
-  <rect width="1280" height="900" fill="#f8fafc"/>
-  <text x="42" y="51" class="title">Home lab / rete e servizi</text>
-  <text x="42" y="80" class="sub">Proposta del 22/09/2026 · Nessuna configurazione o copertura radio attestata</text>
-  <rect x="445" y="110" width="390" height="72" rx="12" class="existing"/>
-  <text x="640" y="139" text-anchor="middle" class="name">Internet → ONT / modem operatore</text>
-  <text x="640" y="163" text-anchor="middle" class="label">Primo NAT · fonia · apparati documentati</text>
-  <path d="M640 182V227" class="wire"/>
-  <text x="654" y="208" class="small">2,5 GbE · transito da configurare</text>
-  <rect x="40" y="120" width="285" height="76" rx="12" class="optional"/>
-  <text x="182" y="150" text-anchor="middle" class="name">Wi-Fi del modem</text>
-  <text x="182" y="176" text-anchor="middle" class="label">Fuori dal perimetro OPNsense</text>
-  <path d="M445 146H325" class="wire dash"/>
-  <rect x="430" y="230" width="420" height="94" rx="12" class="existing"/>
-  <text x="640" y="260" text-anchor="middle" class="name">Firewall OPNsense esistente</text>
-  <text x="640" y="285" text-anchor="middle" class="label">OS installato; rete e aggiornamento da verificare</text>
-  <text x="640" y="308" text-anchor="middle" class="label">Routing VLAN · DHCP · Unbound · VPN proposti</text>
-  <rect x="953" y="235" width="280" height="86" rx="12" class="optional"/>
-  <text x="1093" y="265" text-anchor="middle" class="name">DMZ futura</text>
-  <text x="1093" y="291" text-anchor="middle" class="label">192.168.20.0/24 · inizialmente vuota</text>
-  <path d="M850 274H953" class="wire dash"/>
-  <text x="869" y="259" class="small">NIC 1G</text>
-  <path d="M640 324V379" class="wire"/>
-  <text x="654" y="354" class="small">Trunk 802.1Q · 2,5 GbE</text>
-  <rect x="410" y="382" width="460" height="82" rx="12" class="planned"/>
-  <text x="640" y="413" text-anchor="middle" class="name">Zyxel XMG1915-10EP · da acquistare</text>
-  <text x="640" y="440" text-anchor="middle" class="label">8 RJ45 2,5G + 2 SFP+ · PoE · routing sul firewall</text>
-  <path d="M500 464V494H182V530" class="wire"/>
-  <path d="M575 464V511H481V530" class="wire"/>
-  <path d="M705 464V511H788V530" class="wire"/>
-  <path d="M780 464V494H1092V530" class="wire"/>
-  <rect x="40" y="534" width="285" height="120" rx="12" class="planned"/>
-  <text x="182" y="564" text-anchor="middle" class="name">Due AP Zyxel cablati</text>
-  <text x="182" y="590" text-anchor="middle" class="label">NWA130BE / opzione 50BE Pro</text>
-  <text x="182" y="614" text-anchor="middle" class="label">Terzo AP solo dopo misure</text>
-  <text x="182" y="637" text-anchor="middle" class="small">Trunk VLAN + alimentazione PoE</text>
-  <rect x="347" y="534" width="270" height="120" rx="12" class="planned"/>
-  <text x="482" y="564" text-anchor="middle" class="name">Client e workstation</text>
-  <text x="482" y="590" text-anchor="middle" class="label">Inventario da confermare sul posto</text>
-  <text x="482" y="614" text-anchor="middle" class="label">Contare porte cablate simultanee</text>
-  <text x="482" y="637" text-anchor="middle" class="small">VLAN 10 / altre secondo ruolo</text>
-  <rect x="645" y="534" width="286" height="120" rx="12" class="planned"/>
-  <text x="788" y="564" text-anchor="middle" class="name">Host sempre acceso</text>
-  <text x="788" y="590" text-anchor="middle" class="label">Hardware ancora da individuare</text>
-  <text x="788" y="614" text-anchor="middle" class="label">AdGuard opzionale · monitoraggio</text>
-  <text x="788" y="637" text-anchor="middle" class="small">VLAN 30; VM LAB isolate in seguito</text>
-  <rect x="953" y="534" width="280" height="120" rx="12" class="optional"/>
-  <text x="1093" y="564" text-anchor="middle" class="name">NAS a orario</text>
-  <text x="1093" y="590" text-anchor="middle" class="label">Assemblaggio nella sessione dedicata</text>
-  <text x="1093" y="614" text-anchor="middle" class="label">Dati / backup dopo il collaudo</text>
-  <text x="1093" y="637" text-anchor="middle" class="small">Non ospita l'unico DNS della casa</text>
-  <text x="42" y="704" class="name">Segmentazione proposta · nuovi flussi fra zone negati salvo eccezioni</text>
-  <rect x="40" y="723" width="187" height="67" rx="8" class="zone"/>
-  <text x="133" y="750" text-anchor="middle" class="name">10 · Client</text>
-  <text x="133" y="774" text-anchor="middle" class="small">192.168.10.0/24</text>
-  <rect x="242" y="723" width="187" height="67" rx="8" class="zone"/>
-  <text x="335" y="750" text-anchor="middle" class="name">30 · Servizi</text>
-  <text x="335" y="774" text-anchor="middle" class="small">192.168.30.0/24</text>
-  <rect x="444" y="723" width="187" height="67" rx="8" class="zone"/>
-  <text x="537" y="750" text-anchor="middle" class="name">40 · IoT</text>
-  <text x="537" y="774" text-anchor="middle" class="small">192.168.40.0/24</text>
-  <rect x="646" y="723" width="187" height="67" rx="8" class="zone"/>
-  <text x="739" y="750" text-anchor="middle" class="name">50 · Ospiti</text>
-  <text x="739" y="774" text-anchor="middle" class="small">192.168.50.0/24</text>
-  <rect x="848" y="723" width="187" height="67" rx="8" class="zone"/>
-  <text x="941" y="750" text-anchor="middle" class="name">60 · LAB</text>
-  <text x="941" y="774" text-anchor="middle" class="small">192.168.60.0/24</text>
-  <rect x="1050" y="723" width="183" height="67" rx="8" class="zone"/>
-  <text x="1141" y="750" text-anchor="middle" class="name">99 · Gestione</text>
-  <text x="1141" y="774" text-anchor="middle" class="small">192.168.99.0/24</text>
-  <text x="42" y="832" class="label">Verde: apparati documentati · Blu: configurazione/acquisto proposti · Tratteggio: opzione o integrazione da completare</text>
-  <text x="42" y="860" class="small">DMZ separata dal trunk iniziale. Subnet di progetto. Dettagli, fonti e prove: 01-architettura.md e SOURCES.md.</text>
+  <rect width="1400" height="1100" fill="#f8fafc"/>
+  <text x="40" y="44" class="t">Rete di casa: topologia di riferimento</text>
+  <text x="40" y="70" class="s">07/10/2026 · piano 4: Seven, switch e firewall · piano 3: AP 1 · piano 2: AP 2 · piano terra: nessun AP · nulla è ancora collaudato</text>
+
+  <!-- catena WAN -->
+  <rect x="60" y="95" width="320" height="44" rx="8" class="opt"/>
+  <text x="220" y="122" text-anchor="middle" class="n">Internet · rete Fastweb</text>
+  <path d="M220 139 V180" class="w"/>
+  <text x="232" y="166" class="m">fibra GPON → PTO → bretella</text>
+
+  <rect x="60" y="182" width="320" height="76" rx="8" class="ok"/>
+  <text x="76" y="206" class="n">ONT Zyxel PM5100-T1</text>
+  <text x="76" y="226">FTTH fino a 2,5 Gbps</text>
+  <text x="76" y="245" class="m">in comodato, non sostituibile né aggirabile</text>
+  <path d="M220 258 V298" class="w"/>
+  <text x="232" y="284" class="m">RJ45 2,5 GbE</text>
+
+  <rect x="60" y="300" width="320" height="140" rx="8" class="ok"/>
+  <text x="76" y="324" class="n">Fastweb Seven (obbligato)</text>
+  <text x="76" y="345">WAN 2,5G · IP statico 203.0.113.10</text>
+  <text x="76" y="364">NAT n. 1 · fonia VoIP · LAN 192.168.1.254</text>
+  <text x="76" y="383">LAN: una porta 2,5G, le altre 1G</text>
+  <text x="76" y="402" class="m">niente bridge, PPPoE o VLAN passthrough</text>
+  <text x="76" y="420" class="m">inoltro in ingresso: solo UDP WireGuard</text>
+
+  <rect x="440" y="292" width="310" height="76" rx="8" class="out"/>
+  <text x="456" y="314" class="n">Wi-Fi 7 del Seven</text>
+  <text x="456" y="334">fuori perimetro: OPNsense non la vede</text>
+  <text x="456" y="354" class="m">può restare come rete esterna, dichiarata tale</text>
+  <path d="M380 330 H436" class="wd"/>
+
+  <rect x="440" y="378" width="310" height="66" rx="8" class="out"/>
+  <text x="456" y="400" class="n">PS5 · porta LAN 1G del Seven</text>
+  <text x="456" y="420">fuori perimetro, NAT singolo</text>
+  <text x="456" y="437" class="m">tipo di NAT sistemato sul Seven</text>
+  <path d="M380 410 H436" class="w"/>
+
+  <!-- riquadro doppio NAT -->
+  <rect x="790" y="95" width="570" height="362" rx="10" class="note"/>
+  <text x="810" y="122" class="h">Doppio NAT: perché c'è e che cosa costa</text>
+  <text x="810" y="148">Il Seven termina la sessione con l'operatore e non va in bridge:</text>
+  <text x="810" y="167">OPNsense sta dietro di lui, con la WAN nella rete 192.168.1.0/24.</text>
+  <text x="810" y="196" class="h">Uscita</text>
+  <text x="810" y="216">Tradotta due volte, prima da OPNsense e poi dal Seven.</text>
+  <text x="810" y="235">Non tocca né la navigazione né il traffico fra le VLAN interne.</text>
+  <text x="810" y="264" class="h">Ingresso</text>
+  <text x="810" y="284">Due inoltri in serie: il Seven passa la sola porta UDP di</text>
+  <text x="810" y="303">WireGuard alla WAN di OPNsense, che termina il tunnel.</text>
+  <text x="810" y="322">Alternativa: Exposed Host del Seven verso la WAN del firewall.</text>
+  <text x="810" y="341">Tailcat e Tailscale escono in uscita: nessun inoltro necessario.</text>
+  <text x="810" y="370" class="h">Il riscontro di Autore-LinkedIn-B</text>
+  <text x="810" y="390">Stessa catena su un altro operatore: lui tiene la casa sul modem</text>
+  <text x="810" y="409">e mette solo il lab dietro il firewall. Qui invece la casa entra</text>
+  <text x="810" y="428">nel perimetro con i due AP. Niente FRITZ!Box: non cambierebbe</text>
+  <text x="810" y="447">nulla di questa catena.</text>
+
+  <!-- perimetro -->
+  <rect x="40" y="474" width="1320" height="556" rx="14" class="per"/>
+  <text x="250" y="498" class="h" fill="#2f7a52">Perimetro di OPNsense: tutto ciò che sta qui dentro, cablato e wireless, passa dal firewall per cambiare zona</text>
+  <path d="M220 440 V516" class="w"/>
+  <text x="232" y="464" class="m">LAN 2,5G del Seven → WAN OPNsense</text>
+
+  <rect x="60" y="518" width="380" height="150" rx="8" class="ok"/>
+  <text x="76" y="542" class="n">OPNsense · installato il 16/01, non configurato</text>
+  <text x="76" y="562">i3 7a gen · 8 GB · SSD 120 GB</text>
+  <text x="76" y="581">NAT n. 2 · firewall · DHCP · DNS · WireGuard</text>
+  <text x="76" y="600">routing fra VLAN: è il solo che instrada</text>
+  <text x="76" y="622" class="m">WAN: TX201 2,5G · DHCP prenotato nella rete del Seven</text>
+  <text x="76" y="640" class="m">LAN: TX201 2,5G, trunk 802.1Q verso lo switch</text>
+  <text x="76" y="658" class="m">DMZ: NIC integrata 1G · porte da identificare in console</text>
+
+  <path d="M440 576 H516" class="wd"/>
+  <text x="452" y="568" class="m">1 GbE</text>
+  <rect x="520" y="526" width="300" height="84" rx="8" class="opt"/>
+  <text x="536" y="550" class="n">DMZ 192.168.20.0/24</text>
+  <text x="536" y="570">vuota finché non nasce un servizio</text>
+  <text x="536" y="589" class="m">pubblico; nessun accesso verso le altre zone</text>
+
+  <rect x="520" y="624" width="320" height="56" rx="8" class="note"/>
+  <text x="532" y="646" class="m">Da misurare, non da presumere: NAT a 2,5G sull'i3</text>
+  <text x="532" y="664" class="m">con NIC Realtek; il trunk è condiviso fra WAN e VLAN</text>
+
+  <!-- tabella VLAN -->
+  <rect x="870" y="516" width="470" height="180" rx="8" class="note"/>
+  <text x="886" y="540" class="h">Segmenti sul trunk (gateway su OPNsense)</text>
+  <text x="886" y="564">VLAN 10  192.168.10.0/24  client fidati, SSID CASA</text>
+  <text x="886" y="584">VLAN 30  192.168.30.0/24  servizi e storage, NAS</text>
+  <text x="886" y="604">VLAN 40  192.168.40.0/24  IoT e legacy, SSID IOT</text>
+  <text x="886" y="624">VLAN 50  192.168.50.0/24  ospiti isolati, SSID OSPITI</text>
+  <text x="886" y="644">VLAN 60  192.168.60.0/24  esperimenti e LAB</text>
+  <text x="886" y="664">VLAN 99  192.168.99.0/24  gestione switch e AP</text>
+  <text x="886" y="685" class="m">Di default fra zone si nega; si apre solo porta per porta.</text>
+
+  <!-- trunk e switch -->
+  <path d="M220 668 V726" class="trunk"/>
+  <text x="232" y="694" class="m" fill="#4d76b8">porta 1 · trunk 2,5 GbE</text>
+  <text x="232" y="710" class="m" fill="#4d76b8">VLAN 10/30/40/50/60/99</text>
+  <rect x="60" y="726" width="1280" height="70" rx="8" class="plan"/>
+  <text x="76" y="752" class="n">Zyxel XMG1915-10EP · da acquistare (ADR-017)</text>
+  <text x="76" y="774">8 porte 2,5 GbE PoE++, budget 130 W · 2 SFP+ non usate · il routing di livello 3 c'è ma non si usa: lo switch trasporta le VLAN, le zone le decide OPNsense</text>
+
+  <!-- porte 2..8 -->
+  <g class="m">
+    <text x="153" y="816">porta 2</text>
+    <text x="333" y="816">porta 3</text>
+    <text x="513" y="816">porta 4</text>
+    <text x="693" y="816">porta 5</text>
+    <text x="873" y="816">porta 6</text>
+    <text x="1053" y="816">porta 7</text>
+    <text x="1233" y="816">porta 8</text>
+  </g>
+  <path d="M145 796 V862" class="w"/>
+  <path d="M325 796 V862" class="w"/>
+  <path d="M505 796 V862" class="w"/>
+  <path d="M685 796 V862" class="w"/>
+  <path d="M865 796 V862" class="wd"/>
+  <path d="M1045 796 V862" class="w"/>
+  <path d="M1225 796 V862" class="wd"/>
+
+  <rect x="60" y="864" width="170" height="150" rx="8" class="plan"/>
+  <text x="72" y="887" class="n">AP 1 · piano 3</text>
+  <text x="72" y="907">trunk e PoE, cavo posato</text>
+  <text x="72" y="926">SSID CASA → VLAN 10</text>
+  <text x="72" y="945">SSID IOT → VLAN 40</text>
+  <text x="72" y="964">SSID OSPITI → 50</text>
+  <text x="72" y="984" class="m">gestione in VLAN 99</text>
+  <text x="72" y="1001" class="m">modello da scegliere</text>
+
+  <rect x="240" y="864" width="170" height="150" rx="8" class="plan"/>
+  <text x="252" y="887" class="n">AP 2 · piano 2</text>
+  <text x="252" y="907">trunk e PoE, cavo posato</text>
+  <text x="252" y="926">stessi SSID di AP 1</text>
+  <text x="252" y="945">roaming fra i due AP</text>
+  <text x="252" y="984" class="m">piano terra coperto da qui:</text>
+  <text x="252" y="1001" class="m">da misurare</text>
+
+  <rect x="420" y="864" width="170" height="150" rx="8" class="plan"/>
+  <text x="432" y="887" class="n">Client cablato</text>
+  <text x="432" y="907">access VLAN 10</text>
+  <text x="432" y="984" class="m">quale client lo dirà</text>
+  <text x="432" y="1001" class="m">il censimento</text>
+
+  <rect x="600" y="864" width="170" height="150" rx="8" class="plan"/>
+  <text x="612" y="887" class="n">NAS</text>
+  <text x="612" y="907">access VLAN 30</text>
+  <text x="612" y="926">IP statico 192.168.30.x</text>
+  <text x="612" y="945">TrueNAS · 1 GbE oggi</text>
+  <text x="612" y="964">2,5 GbE possibile poi</text>
+  <text x="612" y="984" class="m">da VLAN 10: SMB, HTTPS</text>
+  <text x="612" y="1001" class="m">gestione solo da VLAN 99</text>
+
+  <rect x="780" y="864" width="170" height="150" rx="8" class="opt"/>
+  <text x="792" y="887" class="n">Host servizi</text>
+  <text x="792" y="907">access VLAN 30</text>
+  <text x="792" y="926">sempre acceso</text>
+  <text x="792" y="945">AdGuard, monitoraggio</text>
+  <text x="792" y="1001" class="m">macchina da individuare</text>
+
+  <rect x="960" y="864" width="170" height="150" rx="8" class="plan"/>
+  <text x="972" y="887" class="n">Workstation</text>
+  <text x="972" y="907">access VLAN 10</text>
+  <text x="972" y="926">porta 2,5G se la NIC</text>
+  <text x="972" y="945">la supporta</text>
+
+  <rect x="1140" y="864" width="190" height="150" rx="8" class="opt"/>
+  <text x="1152" y="887" class="n">Recupero / admin</text>
+  <text x="1152" y="907">access VLAN 99</text>
+  <text x="1152" y="926">solo in manutenzione</text>
+  <text x="1152" y="984" class="m">via d'accesso se un'altra</text>
+  <text x="1152" y="1001" class="m">regola chiude fuori</text>
+
+  <!-- legenda -->
+  <rect x="60" y="1050" width="18" height="14" class="ok"/><text x="84" y="1062" class="m">esiste</text>
+  <rect x="150" y="1050" width="18" height="14" class="plan"/><text x="174" y="1062" class="m">deciso, da acquistare o configurare</text>
+  <rect x="400" y="1050" width="18" height="14" class="opt"/><text x="424" y="1062" class="m">futuro o facoltativo</text>
+  <rect x="560" y="1050" width="18" height="14" class="out"/><text x="584" y="1062" class="m">fuori perimetro</text>
+  <text x="720" y="1062" class="m">PoE: 2 AP da 24 W = 48 W su 130 W di budget · ospiti isolati sull'AP e sul firewall</text>
+  <text x="60" y="1086" class="m">Indirizzo pubblico in segnaposto RFC 5737. Gli indirizzi 192.168.x sono scelte di progetto. La porta 1 dello switch è l'uplink verso OPNsense.</text>
 </svg>

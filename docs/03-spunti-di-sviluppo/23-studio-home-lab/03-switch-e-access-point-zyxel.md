@@ -44,20 +44,28 @@ Riferimenti diretti: [50BE Pro](https://www.zyxel.com/global/en/products/wireles
 
 Questi sono calcoli dai dati di targa, non consumi misurati. La riserva del 25% e' un criterio di progetto, non una prescrizione Zyxel, e non sostituisce verifica di perdite sui cavi e allocazione PoE per classe. Tre dispositivi PoE+ che riservano 30 W ciascuno impegnerebbero 90 W: rientrano comunque nei 130 W. Il 60 W del GS1915-8EP non garantisce tre 130BE e non va confrontato solo con l'idle. Altri dispositivi PoE, come telecamere, vanno aggiunti al conto prima dell'acquisto. Accensione simultanea e reset alimentazione per porta entrano nel collaudo.
 
+## Livello 2 e livello 3: perche' lo switch non instrada
+
+Uno switch di livello 2 inoltra i frame Ethernet in base all'indirizzo MAC di destinazione, dentro la stessa VLAN: sa a quale porta sta collegato ciascun dispositivo e vi consegna il frame, senza guardare gli indirizzi IP. Una VLAN e' per lui un'etichetta che separa i domini, e un frame con l'etichetta 10 non esce mai da una porta della VLAN 30. Passare da una VLAN all'altra e' un lavoro di livello 3, cioe' di instradamento IP: qualcuno deve ricevere il pacchetto sulla rete `192.168.10.0/24` e rispedirlo sulla `192.168.30.0/24`.
+
+Lo XMG1915-10EP sa farlo: le [specifiche Zyxel](https://www.zyxel.com/global/en/products/switch/xmg1915-series/specifications) gli attribuiscono interfacce IP per VLAN e rotte statiche, quindi e' uno switch di livello 2 con funzioni di livello 3 limitate. La scelta di progetto e' non usarle. Se lo switch instradasse fra le VLAN, il traffico fra zone resterebbe dentro lo switch e non passerebbe dal firewall: verrebbe filtrato al piu' da liste di accesso senza stato, senza registrazione utile e senza ispezione, e il contratto fra zone di OPNsense diventerebbe aggirabile. Con lo switch solo di livello 2, ogni VLAN ha il suo gateway su OPNsense, e ogni pacchetto che cambia zona sale sul trunk, attraversa le regole del firewall e ridiscende.
+
+Il prezzo e' la banda del trunk. Il traffico fra due VLAN percorre lo stesso cavo due volte, in salita e in discesa, e condivide i 2,5 Gbps per verso con il traffico verso Internet. Con il NAS a 1 GbE e una linea che solo raramente satura i 2,5 Gbps il compromesso e' favorevole; il traffico dentro la stessa VLAN, per esempio fra due PC della VLAN 10, resta comunque sullo switch e non tocca il firewall.
+
 ## Otto porte sono abbastanza?
 
 | Porta rame | Assegnazione proposta | Modalita' |
 |---|---|---|
 | 1 | uplink verso OPNsense | trunk con sole VLAN necessarie |
-| 2 | AP 1 | trunk e PoE |
-| 3 | AP 2 | trunk e PoE |
-| 4 | AP 3 eventuale | riserva; trunk e PoE solo quando attivato |
+| 2 | AP 1, terzo piano | trunk e PoE, cavo gia' posato |
+| 3 | AP 2, secondo piano | trunk e PoE, cavo gia' posato |
+| 4 | client cablato | access VLAN 10; dal 07/10/2026 non e' piu' riservata a un terzo AP |
 | 5 | NAS | access VLAN 30; velocita' dettata dalla NIC effettiva |
 | 6 | host servizi | access VLAN 30; trunk solo se ospita VM di zone distinte |
 | 7 | workstation | access VLAN 10 |
 | 8 | porta per recupero o altro client | access VLAN 99 durante manutenzione, da documentare |
 
-Con tre AP, firewall, NAS, host e workstation sono gia' sette porte occupate. PS5, TV e ulteriori desktop cablati consumerebbero la riserva: otto porte bastano al nucleo, non necessariamente a tutta la casa. La [tabella dispositivi](../../05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md) deve produrre il conteggio delle connessioni simultanee. Un'espansione gestita su SFP+ e' possibile come progetto futuro, ma implica un secondo apparato e costo. Non si presume un NAS 10G non ancora previsto.
+Con due AP, firewall, NAS, host e workstation sono sei porte occupate, piu' il client della porta 4 e la porta di recupero. La PS5 non occupa una porta dello switch perche' va sul Seven (07/10/2026). TV e ulteriori desktop cablati andrebbero oltre: otto porte bastano al nucleo, non necessariamente a tutta la casa, e lo dira' il censimento dei client cablati. La [tabella dispositivi](../../05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md) deve produrre il conteggio delle connessioni simultanee. Un'espansione gestita su SFP+ e' possibile come progetto futuro, ma implica un secondo apparato e costo. Non si presume un NAS 10G non ancora previsto.
 
 ## Costi indicativi e alternativa senza PoE
 
