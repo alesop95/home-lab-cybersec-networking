@@ -44,7 +44,7 @@ Resta aperto in parallelo, e non blocca nulla, l'ordine dell'adattatore da PCIe 
 
 ## Definizione di fatto
 
-Una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e il sistema installato e raggiungibile su un insieme di avvio in mirror composto dai due dischi a stato solido SATA. Comprende ora anche la qualificazione dei quattro dischi recuperati dal QNAP dismesso, cioe' il passaggio a `badblocks` seguito da `smartctl` con scarto su qualunque valore diverso da zero negli attributi 5, 197, 198 e 199, e la creazione del pool dei dati nella forma decisa dall'ADR-013: uno specchio Toshiba piu' Samsung, un Samsung come riserva a caldo, il terzo Samsung alla scorta. La decisione sui dischi, che fino al 22/09/2026 era l'unica cosa che la creazione del pool attendeva, e' presa: non dipende piu' da un acquisto, e resta aperto soltanto il dimensionamento, che si chiude misurando l'occupato del QNAP prima di creare il pool.
+Una macchina montata, con trentadue gigabyte verificati da un ciclo completo di test della memoria, i dischi passati al test SMART lungo, e il sistema installato e raggiungibile su un insieme di avvio in mirror composto dai due dischi a stato solido SATA. Il pool dei dati non ha dischi: quelli del QNAP non si libereranno, e ADR-014 ha superato ADR-013 il 07/10/2026. Finche' non si sceglie fra acquisto di due dischi CMR in specchio e avvio con i soli due NVMe in specchio, la definizione di fatto comprende il pool applicazioni e non il pool dati, e le schede pubbliche della cartella NAS vanno riscritte per non descrivere un pool che non verra' costruito.
 
 A valle si scrive un verbale sotto `docs/`, sul modello di `docs/verbale-installazione-opnsense.md`, che descriva cio' che e' realmente accaduto invece della progettazione, e lo si collega dalla home dell'albero.
 
@@ -66,9 +66,7 @@ Attenzione a un punto che puo' costare l'accesso alla macchina: dopo l'assegnazi
 
 ## Due decisioni sospese, non tecniche
 
-Se bonificare la storia gia' pubblicata dai due valori descritti in `.claude/memory/index.md`. Se il repository su GitHub debba essere pubblico o privato, cosa che non risulta verificata da nessuna parte del progetto e che oggi si assume pubblica per prudenza.
-
-Nessuna delle due si decide in una sessione di lavoro ordinaria e nessuna delle due blocca la fase 2.
+Entrambe decise il 07/10/2026. La storia si bonifica: la versione riscritta e' pronta e attende il push forzato dell'utente. Il repository e' pubblico, verificato con l'API di GitHub.
 
 ## Confine da non superare
 

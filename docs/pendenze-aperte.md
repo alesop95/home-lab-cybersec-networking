@@ -58,6 +58,7 @@ Sotto `02-ftth-fastweb/`.
 | `03-spunti-di-sviluppo/12-vpn/` | contestualizzare Tailscale alla rete domestica, e la questione del cambio di profilo sul piano gratuito |
 | `03-spunti-di-sviluppo/04-rmm-management-.../` | l'implementazione con IP statico, che e' lo scenario diventato attuale dopo l'assegnazione dell'indirizzo fisso; e una verifica su una distribuzione candidata come host |
 | `03-spunti-di-sviluppo/02-storage-di-rete-nas/` | compatibilita' con un lettore audio via USB, verifica non fatta |
+| `03-spunti-di-sviluppo/02-storage-di-rete-nas/` | eventuale acquisto futuro di due dischi CMR da uso continuo in specchio, come secondo pool accanto ai due NVMe: dal 07/10/2026 il NAS parte senza dischi meccanici (ADR-014, ADR-015) e le schede della cartella sono riallineate; resta da fare solo se la capacita' di circa 1 TB non basta |
 | `03-spunti-di-sviluppo/10-firewall-.../04-...nethsecurity8.md` | alternativa citata e non valutata |
 
 ## Lavoro residuo sul censimento dei dispositivi

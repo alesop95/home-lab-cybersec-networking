@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 3205229 (piu' allineamento a template 4f4f9d0 da committare)
+Commit di riferimento: b3676eb (storia bonificata), template 74b6f6b
 Data snapshot:         2026-10-07
 Remoto:                origin, allineato
 ```
@@ -17,7 +17,7 @@ Il remoto non e' da collegare: esiste gia', e la storia fino a `e897797` e' gia'
 
 Nel commit `2d3dc2c` la regola sull'identita' git conteneva, in chiaro, la casella di posta di lavoro e il nome dell'organizzazione di lavoro dell'autore, oltre alla casella personale e all'utente GitHub. L'allineamento al template del 24/08/2026 li ha sostituiti con segnaposto nell'albero di lavoro, quindi da questo commit in avanti il tree e' pulito, ma la storia li conserva e resta consultabile. La casella personale e l'utente GitHub coincidono con i metadati di ogni commit e non sono quindi un'esposizione aggiuntiva; la casella di lavoro e il nome dell'organizzazione lo sono.
 
-Non si riscrive la storia di propria iniziativa: e' un'operazione pianificata, con backup, e va decisa dall'autore. Nel frattempo i due valori sono registrati nel file privato dei pattern, cosi' che il guard-rail li intercetti se dovessero rientrare.
+Il 07/10/2026 la storia e' stata bonificata e pubblicata con push forzato: i valori sono sostituiti da segnaposto e l'albero di HEAD e' rimasto identico. Il backup mirror dell'originale e' in `E:/_backup-git/`. I vecchi commit restano raggiungibili per hash su GitHub finche' la piattaforma non li elimina. Il repository risulta pubblico all'API di GitHub, con zero fork. Il dettaglio e' nel work-log del 07/10/2026.
 
 ## La cosa da sapere prima di ogni altra
 

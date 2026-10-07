@@ -48,12 +48,12 @@ C'è inoltre una circostanza che aiuta e che è specifica di questa architettura
 | Ventole | 2-5 W | |
 | **Somma in continua** | **29-46 W** | |
 | Perdita di conversione dell'alimentatore | +20-30% | vedi la sezione dedicata |
-| **Alla presa, senza dischi meccanici** | **40-55 W** | stima centrale 48 W |
+| **Alla presa, senza dischi meccanici (config. di partenza)** | **40-55 W** | stima centrale 48 W |
 | Due dischi meccanici da 3,5 pollici in rotazione | +11-16 W | 4-6 W ciascuno, più la perdita di conversione |
-| Tre dischi meccanici in rotazione (config. decisa) | +17-24 W | vedi la nota sotto |
+| Tre dischi meccanici in rotazione (piano del 22/09, decaduto) | +17-24 W | vedi la nota sotto |
 | **Alla presa, configurazione completa** | **52-70 W** | stima centrale 60 W |
 
-La riga a tre dischi sostituisce quella a due come configurazione di riferimento, ed è la conseguenza della decisione presa in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md): due dischi nel mirror del pool più uno di riserva a caldo, che nel funzionamento normale gira anch'esso. La stima centrale alla presa passa così dai 60 W a una cifra fra 65 e 72 W. C'è un margine facile su cui tornare a macchina accesa: mettere in sospensione il solo disco di riserva, che non viene mai letto finché non c'è un guasto, vale circa 5 W continui, cioè una trentina di kilowattora e otto euro l'anno. Non è la sospensione aggressiva dei dischi del pool discussa più avanti, che produrrebbe cicli di avvio e arresto frequenti: qui si tratta di un disco che nel funzionamento normale resta fermo alla lettura.
+Dal 07/10/2026 la configurazione di riferimento è la prima riga in grassetto, quella senza dischi meccanici: il NAS parte con i soli due SSD SATA di avvio e i due NVMe in mirror, perché nel magazzino non ci sono dischi meccanici e i quattro recuperati da un NAS QNAP dismesso, che avevano portato a riferimento la riga a tre dischi, non si sono resi disponibili ([Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md)). La stima centrale alla presa scende quindi a 48 W, con l'intervallo da 40 a 55 W. Le righe con i dischi meccanici restano come riferimento per il giorno in cui se ne aggiungeranno due in mirror: con quei due la stima centrale torna a 60 W.
 
 ## L'alimentatore, e un fatto controintuitivo sull'efficienza
 
@@ -73,7 +73,7 @@ La prima fase è documentale e si fa leggendo le etichette. Serve la potenza nom
 
 Il criterio di selezione, in ordine di importanza, è dunque la **potenza nominale più bassa** che copra il picco con margine, poi la **certificazione più alta**, poi la **data più recente**, e infine la disponibilità dei connettori necessari.
 
-Il picco da coprire non è il consumo a riposo. All'accensione i dischi meccanici assorbono da venti a venticinque watt ciascuno per qualche secondo, mentre i motori raggiungono la velocità di regime. Con due dischi meccanici, i due SSD e il resto della macchina, il picco realistico sta fra centocinquanta e duecento watt: un alimentatore da trecento watt è già abbondante, uno da cinquecento è sovradimensionato di un fattore due e mezzo, e ogni watt di sovradimensionamento peggiora il rendimento nella zona in cui la macchina lavora per il resto del tempo.
+Il picco da coprire non è il consumo a riposo. All'accensione i dischi meccanici assorbono da venti a venticinque watt ciascuno per qualche secondo, mentre i motori raggiungono la velocità di regime. Con due dischi meccanici, i due SSD e il resto della macchina, il picco realistico sta fra centocinquanta e duecento watt; nella configurazione di partenza, senza motori da avviare, il picco è quello del solo processore e della scheda all'avvio, che stimo sotto i centoventi watt senza averlo misurato, e i connettori SATA di alimentazione necessari scendono a due, quelli dei due SSD: un alimentatore da trecento watt è già abbondante, uno da cinquecento è sovradimensionato di un fattore due e mezzo, e ogni watt di sovradimensionamento peggiora il rendimento nella zona in cui la macchina lavora per il resto del tempo.
 
 La seconda fase è la misura, ed è quella che decide. Con un misuratore di consumo da presa si legge l'assorbimento alla presa della macchina a riposo, si spegne, si sostituisce l'alimentatore con un altro candidato, e si rilegge nella stessa condizione. **La differenza fra le due letture è direttamente la differenza di rendimento fra i due alimentatori**, misurata sul carico reale invece che dedotta da una certificazione ottenuta a un carico diverso. È un confronto che nessuna scheda tecnica può darti, e si fa con dieci euro di strumento.
 
@@ -115,7 +115,16 @@ Ne risultano centodiciotto ore di accensione a settimana, cioè circa il **setta
 
 Il risparmio è di **quaranta euro all'anno**, cioè il **trenta per cento** del costo di esercizio. Va detto con precisione perché una valutazione preliminare, fatta ipotizzando quattro ore di accensione al giorno, aveva indicato un fattore sei: con una finestra di sedici o diciassette ore quel fattore non si realizza, e il risparmio reale è di un terzo. Resta un risparmio vero, ma di un ordine di grandezza diverso da quello ipotizzato prima di avere gli orari.
 
-La tabella è calcolata sulla stima centrale di 60 W valida per due dischi meccanici. Con la configurazione decisa a tre dischi la stima centrale sale verso i 68 W, e la spesa annua sulla finestra passa di conseguenza da circa 95 a circa 110 euro: sono quindici euro l'anno in più, a fronte di quattro terabyte grezzi non pagati, e il confronto giusto è con il prezzo di due dischi nuovi, non con lo zero. La sospensione del solo disco di riserva, descritta sopra, ne recupera circa otto.
+La tabella è calcolata sulla stima centrale di 60 W valida per due dischi meccanici, ed è quella su cui è stata decisa la finestra. Dal 07/10/2026 la macchina parte senza dischi meccanici, e alla stima centrale di 48 W gli stessi conti danno quanto segue. Il perimetro è lo stesso della tabella sopra: costo marginale di 0,256 euro per kilowattora, 730 ore al mese in continuo e 513 con la finestra, consumo di casa di 87 kilowattora al mese; i 48 W sono una stima per componenti e non una misura alla presa.
+
+| | Continuo | Con la finestra | Differenza |
+|---|---|---|---|
+| Consumo a 48 W | 35,0 kWh | 24,6 kWh | -10,4 kWh |
+| Spesa mensile | 8,97 € | 6,30 € | **-2,67 €** |
+| Spesa annua | 107,64 € | 75,64 € | **-32,00 €** |
+| Incremento sul consumo di casa | +40% | **+28%** | |
+
+Sull'intervallo da 40 a 55 W la spesa annua con la finestra va da circa 63 a circa 87 euro. Il risparmio della finestra scende in assoluto, perché si spegne una macchina che consuma meno, ma resta il trenta per cento, che dipende soltanto dalle ore e non dai watt. Il piano del 22/09 a tre dischi, che portava la stima centrale verso i 68 W e la spesa annua sulla finestra verso i 110 euro, è decaduto con i dischi.
 
 Ci sono inoltre due benefici non monetari che non compaiono in tabella. Duemilaseicento ore all'anno in meno di funzionamento su ogni componente, dischi meccanici compresi, e nessun rumore di ventole e di dischi durante la notte, che su una macchina collocata in un ambiente abitato non è irrilevante.
 

@@ -1,5 +1,7 @@
 # Quattro dischi recuperati da un NAS QNAP dismesso, e che cosa se ne fa
 
+> Scheda storica dal 07/10/2026. I quattro dischi non si sono resi disponibili e non lo saranno: la configurazione descritta qui non verra' costruita, e il NAS parte senza dischi meccanici, con i due NVMe in specchio come unico pool (ADR-014 e ADR-015 nel registro delle decisioni, e la sezione sull'architettura dello storage in [l'analisi del consolidamento](03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md)). Restano validi come metodo, per qualunque disco usato che entri in futuro in un pool, il ragionamento sul lotto unico e sull'indipendenza dei guasti e il protocollo di qualificazione con `badblocks` e `smartctl`.
+
 Studio del 22/09/2026, basato sulle fonti U07-U08 e S50-S52 del [registro](../../../SOURCES.md). Chiude la decisione che [l'analisi del consolidamento](03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md) e la [guida all'assemblaggio](04-guida-assemblaggio-e-installazione-truenas.md) lasciavano aperta in tre punti identici, cioe' quali dischi meccanici comporranno il pool dei dati. I valori di stato riportati qui sono stati letti dall'interfaccia di gestione del NAS[^1] di provenienza e non da `smartctl` su una macchina di laboratorio: sono quindi da riverificare a dischi collegati alla base, e il protocollo di qualificazione descritto piu' avanti e' esattamente il modo in cui quella verifica si fa. Nessuno di questi dischi e' stato ancora spostato, nessun dato e' stato ancora migrato, e il NAS di provenienza e' in esercizio nel momento in cui questo documento viene scritto.
 
 ## Da dove vengono
@@ -100,7 +102,7 @@ Il criterio di scarto e' netto e non ammette interpretazione. Si guardano il con
 
 Il momento in cui fare tutto questo e' dopo la prova della memoria e prima della creazione del pool, cioe' dentro la finestra in cui la macchina e' gia' montata e TrueNAS e' gia' installato sull'insieme di avvio ma non ospita ancora nulla.
 
-## La configurazione decisa
+## La configurazione che era stata decisa
 
 Nel pool dei dati entrano il Toshiba e il primo Samsung come unico gruppo in specchio. E' l'unica coppia possibile fra questi quattro dischi i cui due elementi non condividono lotto, marca, generazione, velocita' di rotazione e storia di carico, ed e' quindi l'unica in cui la ridondanza corrisponde a quello che promette. La disomogeneita' fra un disco a 5400 giri e uno a 7200 fa lavorare lo specchio alla velocita' del piu' lento in scrittura, il che significa circa centodieci megabyte al secondo, cioe' esattamente il tetto della rete a un gigabit: non si perde niente che sarebbe arrivato al client.
 
