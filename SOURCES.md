@@ -86,6 +86,7 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S51 | https://sourceforge.net/p/smartmontools/mailman/message/27378703/ | lista di supporto smartmontools, risultati di ricerca letti | difetto del firmware 1AQ10001 dell'HD204UI su IDENTIFY/SMART durante NCQ e correttivo che non cambia versione; studio dischi QNAP |
 | S52 | https://www.truenas.com/community/resources/hard-drive-burn-in-testing.92/ | risorsa di community TrueNAS, risultati di ricerca letti | protocollo di collaudo dischi con badblocks -wsv e smartctl -t long, e attributi 5/197/198/199 come criterio di scarto; studio dischi QNAP |
 | S53 | https://github.com/sooryathejas/METATRON | repository del progetto, presentazione consegnata dall'utente; codice non eseguito | assistente di pentesting con modello linguistico locale su Parrot OS; scheda VA e pentesting. Descrizione degli autori, non provata in laboratorio |
+| S54 | https://www.axagon.eu/en/produkty/pcem2-n | scheda prodotto del costruttore, letta il 07/10/2026 | adattatore AXAGON PCEM2-N: PCIe x4, solo M.2 NVMe chiave M, lunghezze fino a 2280, staffa standard e staffa a basso profilo nella confezione; candidato per il secondo NVMe del NAS |
 
 ## Materiali locali che non devono sparire dal quadro
 
