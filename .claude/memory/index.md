@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 6769dc4, template c668b85
+Commit di riferimento: 6f8baa2, template c668b85
 Data snapshot:         2026-10-07
 Remoto:                origin, allineato
 ```

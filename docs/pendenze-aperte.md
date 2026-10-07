@@ -73,6 +73,14 @@ Il censimento e' meno accessorio di quanto sembri: e' la fonte che dice quale en
 
 Dal 07/10/2026, con la lettura tecnica in `02-ftth-fastweb/08-il-seven-nel-progetto-di-rete-voce-per-voce.md`. Le schermate dello stato WAN sono state catturate con la GPON giu' e la connessione mobile su, quindi vanno rifatte con la fibra attiva, verificando che l'indirizzo pubblico statico sia lo stesso sui due collegamenti. Vanno fotografate per la prima volta lo stato LAN, la sezione LAN switch, il Port Triggering, il Filtro MAC, Easy Mesh, l'Analizzatore e la modalita' ECO, che nel censimento hanno il solo titolo.
 
+## Metodo del censimento dei dispositivi
+
+Richiesta dell'utente del 07/10/2026: decidere un modo per caratterizzare in maniera completa e omogenea tutti i dispositivi della rete. La proposta e' una scheda a campi fissi per dispositivo e una raccolta in sola lettura per sistema operativo, da approvare prima di compilare il censimento.
+
+## Strumenti del template non attivi in questo progetto
+
+Dal 07/10/2026: regole e skill del progetto citano sedici volte strumenti `tools/...` che vivono solo in `.claude/templates/tools/`, fra cui la verifica di ripresa, i controlli di tabelle, tipografia e prosa e la verifica delle schede. Finche' non sono istanziati, quei presidi non girano, e due di loro lanciati dalla cartella del template danno un verde non calcolato. La scelta fra istanziarli con il meccanismo di allineamento del template e correggere il template spetta all'utente.
+
 ## Sezioni censite ma dichiarate non rilevanti
 
 Undici sottosezioni dell'interfaccia del modem sono marcate `not-of-interest-here`: panoramica dei dispositivi connessi, telefono, l'intero ramo Wi-Fi, USB, condivisione contenuti, condivisione stampante, LAN switch, modalita' a risparmio energetico, stato della fonia, e le tre sezioni di dettaglio e statistica su IPv6 e IPv4 della WAN. Una sezione, lo stato LAN, e' marcata come mancante, cioe' l'autore ha annotato che avrebbe dovuto catturarla e non l'ha fatta.

@@ -92,7 +92,7 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 
 ## Materiali locali che non devono sparire dal quadro
 
-Gli originali gia' censiti in [Fonti e materiali](docs/fonti-e-materiali.md) restano registrati: Word iniziale, whitepaper OPNsense, `quickprint.docx`, 31 fotografie di installazione, DxDiag del portatile, diagramma del monitoraggio, appunti draw.io, privacy pack e due segnalibri. Il Word, gli appunti draw.io, il privacy pack, i due segnalibri e `quickprint.docx` sono stati eliminati il 07/10/2026 dopo la verifica di ADR-019: il loro contenuto vive solo in `docs/`. I report hardware e i documenti privati del consolidamento NAS restano sotto il controllo della sessione NAS: si citano le controparti pubbliche, senza duplicare valori reali o stato del banco.
+Gli originali gia' censiti in [Fonti e materiali](docs/fonti-e-materiali.md) restano registrati: Word iniziale, whitepaper OPNsense, `quickprint.docx`, 31 fotografie di installazione, DxDiag del portatile, diagramma del monitoraggio, appunti draw.io, privacy pack e due segnalibri. Il Word, gli appunti draw.io, il privacy pack, i due segnalibri `quickprint.docx` e il DxDiag sono stati eliminati il 07/10/2026 dopo la verifica di ADR-019: il loro contenuto vive solo in `docs/`. I report hardware e i documenti privati del consolidamento NAS restano sotto il controllo della sessione NAS: si citano le controparti pubbliche, senza duplicare valori reali o stato del banco.
 
 I tre screenshot U01-U03 sono stati letti nella cartella locale Screenpresso; i loro originali non sono pubblicati. Tutto il contenuto tecnico identificabile e' riportato nella nota collegata. Non si deducono nome del video, autore, sito aggregatore o strumenti fuori inquadratura.
 
