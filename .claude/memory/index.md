@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: e91a133
-Data snapshot:         2026-09-22
+Commit di riferimento: 3205229 (piu' allineamento a template 4f4f9d0 da committare)
+Data snapshot:         2026-10-07
 Remoto:                origin, allineato
 ```
 
@@ -102,6 +102,10 @@ Cade cosi' il vincolo dominante del magazzino, i zero dischi dichiarati dall'inv
 Due schede nuove oltre allo studio applicato: la scheda didattica generale su dischi e SSD per uso continuo contro uso generico sotto `docs/04-concetti-generali/10-hardware-soluzioni-tecnologie/`, che il caso applicato richiama invece di ripetere la teoria, e la scheda METATRON sotto `docs/03-spunti-di-sviluppo/16-va-e-pentesting/`, aggiunta al filo del pentesting in home lab. Aggiornati i quattro documenti pubblici della cartella NAS e i due privati, con il nuovo Passo 4.4 di qualificazione dei dischi nella guida passo a passo.
 
 Sul piano dell'anonimizzazione la sessione ha applicato la lezione gia' registrata due volte: i quattro seriali dei dischi sono entrati nei pattern come primo gesto, prima della scrittura, non dopo. E' la terza volta che il punto si presenta, e la prima in cui e' stato rispettato senza doverlo scoprire a posteriori.
+
+## Che cosa ha aggiunto la sessione del 07/10/2026
+
+Allineamento al template `4f4f9d0`, senza conflitti, e guard-rail riportato al verde: i nove riscontri bloccanti erano falsi positivi ereditati dagli allineamenti di fine settembre, cioe' un nome di organizzazione corto che combaciava dentro parole comuni e caselle d'esempio su domini riservati. Lo script ora cerca le organizzazioni a parola intera e ammette i domini riservati; il dettaglio e la prova sono nel work-log. Il filo fisico del NAS e' fermo dove l'aveva lasciato l'08/09.
 
 ## Punto di ripresa
 

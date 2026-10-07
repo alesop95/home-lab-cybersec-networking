@@ -68,6 +68,11 @@ IBAN = re.compile(r"\bIT\d{2}[A-Z0-9]{20,25}\b")
 PIVA = re.compile(r"\b(?:P\.?\s?IVA|partita iva|cod\.?\s?fisc|codice fiscale)\b[^\n]{0,40}\d{11,16}", re.I)
 # Segnaposto legittimi per la posta: persona-a@, autore-linkedin-a@, e simili.
 MAIL_PLACEHOLDER = re.compile(r"^(persona|autore|referente|collaboratore|consulente)-", re.I)
+# Domini riservati dagli RFC 2606 e 6761: non possono appartenere a nessuno, quindi una
+# casella su di essi e' per costruzione un esempio, tipicamente nei test degli strumenti.
+MAIL_DOMINIO_RISERVATO = re.compile(
+    r"@(?:[a-z0-9-]+\.)*(?:example\.(?:com|net|org)|[a-z0-9-]+\.(?:example|invalid|test|localhost))$",
+    re.I)
 
 
 def carica_pattern():
@@ -149,7 +154,8 @@ def analizza(pat, files, escludi):
 
             for m in EMAIL.finditer(riga):
                 mail = m.group(0)
-                if mail.lower() in mail_ok or MAIL_PLACEHOLDER.match(mail.split("@")[0]):
+                if (mail.lower() in mail_ok or MAIL_PLACEHOLDER.match(mail.split("@")[0])
+                        or MAIL_DOMINIO_RISERVATO.search(mail)):
                     continue
                 aggiungi("EMAIL PERSONALE", f, ln, riga, mail)
 
@@ -175,11 +181,16 @@ def analizza(pat, files, escludi):
             # di indirizzo sono testo, non codici. La stessa organizzazione compare in
             # maiuscolo sui documenti ufficiali e in forma mista nella prosa, e un
             # controllo che ne intercetta una grafia sola non protegge da niente.
+            # L'organizzazione si cerca a parola intera, come i nomi propri: una ragione
+            # sociale corta compare come sottostringa di parole comuni, e il 07/10/2026 una
+            # di cinque lettere combaciava dentro i numerali in "centonovanta-".
             riga_bassa = riga.lower()
-            for valore, cat in ([(u, "UBICAZIONE") for u in ubicazione] +
-                                [(o, "ORGANIZZAZIONE PRIVATA") for o in organizzazioni]):
-                if valore and valore.lower() in riga_bassa:
-                    aggiungi(cat, f, ln, riga, "<valore oscurato>")
+            for u in ubicazione:
+                if u and u.lower() in riga_bassa:
+                    aggiungi("UBICAZIONE", f, ln, riga, "<valore oscurato>")
+            for o in organizzazioni:
+                if o and re.search(r"\b" + re.escape(o) + r"\b", riga, re.I):
+                    aggiungi("ORGANIZZAZIONE PRIVATA", f, ln, riga, "<valore oscurato>")
 
             for s in segreti:
                 if s and s in riga:

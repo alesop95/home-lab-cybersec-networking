@@ -77,6 +77,8 @@ Regole modulari, sotto `.claude/rules/`.
 .claude/rules/interaction-style.md      stile di documentazione e di risposta (caricare sempre)
 .claude/rules/anonymization.md          segnaposto e guard-rail, repo pubblico (caricare sempre)
 .claude/rules/token-economy.md          pratiche di risparmio di contesto (caricare sempre)
+.claude/rules/chat-non-e-memoria.md     persistenza su disco a ogni giro e recap a campi fissi (caricare sempre)
+.claude/rules/documenti-personali.md    documenti personali mai letti senza richiesta espressa (caricare sempre)
 .claude/rules/git-commands-format.md    formato dei comandi git consegnati all'utente
 .claude/rules/git-identity-and-repo.md  profili SSH, identita' git, bootstrap del remoto
 .claude/rules/manual-screenshots.md     flusso di cattura screenshot per verifica visiva
