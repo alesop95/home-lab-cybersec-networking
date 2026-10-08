@@ -26,7 +26,7 @@ La 25.10 porta OpenZFS 2.3.4, e questo risolve una riserva che la scheda di anal
 | Cosa | Nota |
 |---|---|
 | Adattatore PCIe verso M.2 NVMe | la scheda base ha un solo alloggiamento M.2 e vanno montati due NVMe |
-| Scheda di rete Intel gigabit PCIe | la Realtek integrata resta come seconda interfaccia |
+| Scheda di rete Intel PCIe, facoltativa | non blocca il montaggio: il NAS parte sulla Realtek integrata a 1 GbE; se si compra, meglio da 2,5 GbE (vedi `23-studio-home-lab/ACQUISTI-E-CONFIGURAZIONE-DA-FINIRE.md`) |
 | Chiavetta USB da almeno 8 GB | per l'immagine di installazione, il cui contenuto viene distrutto |
 | Immagine di TrueNAS 25.10 e la sua somma di controllo | la somma va confrontata, non solo scaricata |
 | Immagine di `memtest86+` avviabile | serve per il test che precede l'installazione |
@@ -63,8 +63,10 @@ Il primo NVMe va nell'alloggiamento M.2 della scheda. Il secondo va sull'adattat
 |---|---|---|
 | `PCIEX16_1` | x16 | libero |
 | `PCIEX16_2` | max x4 | adattatore PCIe verso M.2 |
-| `PCIEX1_1` | x1 | scheda di rete Intel |
+| `PCIEX1_1` | x1 | scheda di rete Intel, se e quando si compra |
 | `PCIEX1_2` | x1 | libero |
+
+La posizione fisica è stata verificata sulla scheda della base il 08/10/2026, leggendo la serigrafia. Dall'alto: lo slot x1 accanto alla rete integrata, l'alloggiamento M.2 con il connettore sul lato del chipset, `PCIEX16_1` sotto la scritta del modello, poi `PCIEX16_2` con il fermo sul lato destro, subito sopra la scritta «CrossFireX Ready», e in fondo i due PCI legacy `PCI1` e `PCI2`, più corti e spostati verso il bordo posteriore. Nella base così com'è il cavo di alimentazione del processore scende dall'angolo superiore sinistro in diagonale sopra gli slot, e i fili del pannello frontale sono raccolti sopra la stessa zona: entrambi vanno spostati, il primo dietro il pannello della scheda madre, prima di inserire l'adattatore. Per il case tower della base serve la staffa ad altezza piena.
 
 Prima di chiudere il case conviene contare gli slot fisicamente utilizzabili invece di fidarsi del conteggio del firmware. Il firmware elenca gli slot che esistono elettricamente, non quelli che un dissipatore, un fascio di cavi o una gabbia dischi rendono raggiungibili.
 
