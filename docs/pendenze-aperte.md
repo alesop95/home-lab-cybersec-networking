@@ -67,6 +67,8 @@ Sotto `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, che è marca
 
 Dal 07/10/2026 il censimento ha un obiettivo in più, chiesto dall'utente: per ogni client dire se sarà cablato o resterà in Wi-Fi, e su quale porta o SSID finirà. Si fa per categoria e con i segnaposto nei file tracciati. È anche la misura che dirà se le otto porte dello switch bastano.
 
+Dall'8/10/2026 il metodo è deciso (ADR-021) ed è descritto in `05-analisi-del-caso/02-scheda-dispositivo.md`, con gli strumenti di raccolta. Restano da fare le raccolte, PC per PC, e due verifiche: la prima corsa vera dello script Linux, controllata a campione, e l'ID del PC su cui è stato provato lo script Windows, che il censimento non elenca.
+
 Il censimento è meno accessorio di quanto sembri: è la fonte che dice quale endpoint può realmente saturare una porta a 2,5 Gbps e quale no, e senza di esso il dimensionamento dello switch e la scelta di dove portare le porte veloci restano decisioni prese a intuito.
 
 ## Rilevazioni del Seven da ripetere

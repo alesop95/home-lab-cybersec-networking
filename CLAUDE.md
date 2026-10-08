@@ -108,6 +108,8 @@ tools/lint-ui.py              come sopra per le interfacce; istanziato perché l
 tools/sync-codex-skills.py    adattatori .agents/skills per Codex
 tools/latest-screenshot.ps1   screenshot più recente, per la regola manual-screenshots
 tools/test-documenti-personali.py  prova della regola documenti-personali; gira solo nel template
+tools/raccolta-dispositivo.ps1  raccolta in sola lettura di un PC Windows per la scheda dispositivo (anche .sh per Linux)
+tools/scheda-da-raccolta.py   scheda dispositivo anonimizzata dalla raccolta, con autotest
 ```
 
 Skill richiamabili, sotto `.claude/skills/`.
