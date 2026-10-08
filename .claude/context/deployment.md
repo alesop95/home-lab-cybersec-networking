@@ -68,35 +68,25 @@ python tools/lint-md-commands.py .
 Il quarto e' quello che decide se il commit e' pubblicabile.
 
 ```powershell
-python scripts/Test-Anonymization.py
+python tools/Test-Anonymization.py
 ```
 
 ```bash
-python scripts/Test-Anonymization.py
+python tools/Test-Anonymization.py
 ```
 
-Passa tutti i file tracciati da git ed esce con codice diverso da zero se trova riscontri nelle categorie bloccanti. Le categorie non bloccanti raccolgono cio' che va guardato da un umano, tipicamente indirizzi pubblici di transito e cifre che somigliano a importi. Va eseguito sull'intero albero e non sui soli file toccati.
+Passa tutti i file tracciati da git, e quelli nuovi non ancora aggiunti, ed esce con codice diverso da zero se trova riscontri nelle categorie bloccanti. Le categorie non bloccanti raccolgono cio' che va guardato da un umano, tipicamente indirizzi pubblici di transito e cifre che somigliano a importi. Va eseguito sull'intero albero e non sui soli file toccati.
 
-Quando il commit introduce file nuovi, non ancora aggiunti all'indice, va eseguito con l'opzione che li comprende, altrimenti l'esito sarebbe verde su un insieme che non contiene cio' che si sta per pubblicare.
-
-```powershell
-python scripts/Test-Anonymization.py --includi-nuovi
-```
-
-```bash
-python scripts/Test-Anonymization.py --includi-nuovi
-```
-
-L'opzione aggiunge all'elenco i file non tracciati ma non ignorati dal `.gitignore`, cioe' esattamente quelli che un `git add` porterebbe dentro. Non tocca l'indice e non modifica nulla.
+Dal 08/10/2026 lo strumento e' `tools/Test-Anonymization.py`, la versione del pacchetto del template con le estensioni di questo progetto (ADR-022): esamina per impostazione predefinita i file tracciati piu' quelli non tracciati e non ignorati, cioe' tutto cio' che un `git add` porterebbe dentro, quindi l'opzione `--includi-nuovi` della copia precedente non serve piu' e non esiste. Con `--autotest` prova i propri riconoscitori di IBAN e carte di pagamento, ed e' la prova che `chiudi` esegue a ogni commit.
 
 ## La sequenza completa
 
-Si modifica un file, si collega dall'indice se e' nuovo, si esegue il controllo di coerenza, si normalizza la formattazione, si controllano i blocchi di comando, si aggiunge all'indice di git, si esegue il guard-rail con l'opzione sui file nuovi, si committa e si pusha. Le ultime due operazioni sono manuali dell'utente e l'agente non le esegue.
+Si modifica un file, si collega dall'indice se e' nuovo, si esegue il controllo di coerenza, si normalizza la formattazione, si controllano i blocchi di comando, si aggiunge all'indice di git, si esegue il guard-rail, si committa e si pusha. Le ultime due operazioni sono manuali dell'utente e l'agente non le esegue.
 
-Dal 07/10/2026 la via ordinaria per committare e' `chiudi`, lanciato dall'utente nel proprio terminale con il messaggio che l'agente prepara in `_notes/COMMIT-MSG.txt`. Esegue i controlli istanziati del template, fra cui `md-unwrap --only-tracked`, `lint-md-commands` e il guard-rail, che il template cerca anche in `scripts/`; si ferma prima del commit se uno fallisce. Non conosce `tools/check-docs-tree.py`, che e' proprio di questo progetto: dopo uno spostamento o un file nuovo nell'albero quel controllo si lancia a mano prima di `chiudi`.
+Dal 07/10/2026 la via ordinaria per committare e' `chiudi`, lanciato dall'utente nel proprio terminale con il messaggio che l'agente prepara in `_notes/COMMIT-MSG.txt`. Esegue i controlli istanziati del template, fra cui `md-unwrap --only-tracked`, `lint-md-commands` e il guard-rail con il suo autotest; si ferma prima del commit se uno fallisce. Non conosce `tools/check-docs-tree.py`, che e' proprio di questo progetto: dopo uno spostamento o un file nuovo nell'albero quel controllo si lancia a mano prima di `chiudi`.
 
 ```bash
-python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi
+python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python tools/Test-Anonymization.py
 ```
 
 ## Rigenerare da un documento Word, se un giorno servisse

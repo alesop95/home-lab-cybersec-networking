@@ -57,6 +57,17 @@ Uso, dalla radice del progetto:
 Codice di uscita: 0 se non ci sono riscontri nelle categorie bloccanti, 1 altrimenti. Le
 categorie non bloccanti raccolgono ciò che va guardato da un umano e che è spesso un
 falso positivo, per esempio un numero di versione che somiglia a un indirizzo.
+
+Estensioni di questo progetto (home-lab-cybersec-networking), dal 2026-10-08. La base è la
+versione del pacchetto `anonymization` del template; le aggiunte, marcate nel codice con
+"estensione del progetto", vengono dalla copia che il progetto teneva in `scripts/` e che
+conosceva dati che il template non cerca. Sono sei: le categorie bloccanti SERIALE/ID
+MACCHINA, UBICAZIONE e ORGANIZZAZIONE PRIVATA lette dalle chiavi `seriali_e_id`, `ubicazione`
+e `organizzazioni_private`; i `telefoni_reali` e il formato del cellulare italiano; gli importi
+non bloccanti, con la chiave `importi_ammessi`, perché la regola del progetto lascia in chiaro
+i prezzi di listino; i nomi propri cercati a parola intera; i domini riservati `.invalid`,
+`.test` e `.localhost` ammessi come esempi; la chiave `percorsi_esclusi`, per non scandire le
+copie dei pacchetti del template, che non contengono dati del progetto.
 """
 
 import argparse
@@ -84,7 +95,21 @@ LIMITE_BYTE = 5 * 1024 * 1024
 
 # Categorie che fanno fallire il controllo: sono valori reali, non ambiguità.
 BLOCCANTI = {"IP REALE", "MAC REALE", "NOME PROPRIO", "SEGRETO LETTERALE",
-             "EMAIL PERSONALE", "TELEFONO", "IBAN", "CARTA DI PAGAMENTO", "PIVA/CF", "IMPORTO"}
+             "EMAIL PERSONALE", "TELEFONO", "IBAN", "CARTA DI PAGAMENTO", "PIVA/CF",
+             # estensione del progetto: i tre dati che identificano la casa e chi la abita
+             "SERIALE/ID MACCHINA", "UBICAZIONE", "ORGANIZZAZIONE PRIVATA"}
+# Estensione del progetto: la regola `.claude/rules/anonymization.md` lascia in chiaro i prezzi
+# di listino e le tariffe usate nei calcoli, quindi un importo è da valutare e non bloccante.
+# Gli importi già valutati si elencano in `importi_ammessi` e non si ristampano.
+CATEGORIA_IMPORTO = "IMPORTO da valutare"
+# Estensione del progetto: il cellulare italiano a dieci cifre, riconoscibile senza sapere nulla
+# del progetto. Le nove cifre di qualche numero storico restano fuori, perche' combaciano con
+# troppi identificativi, compreso il caso di prova dell'autotest qui sotto; i numeri reali noti
+# si cercano comunque alla lettera con la chiave `telefoni_reali`.
+PHONE_IT = re.compile(r"(?<![\d.+])(?:\+39[\s.]?)?3\d{2}[\s.-]?\d{3}[\s.-]?\d{4}(?![\d.])")
+# Estensione del progetto: gli importi anche nella forma cifra seguita dal simbolo, "45 €", che
+# il riconoscitore del template non vede.
+MONEY_PROGETTO = re.compile(r"(?:€\s?\d[\d.,]*|\b\d[\d.,]*\s?€|\b[\d.]+[,.]\d{2}\s?(?:€|euro|EUR)\b|\b\d+(?:[.,]\d+)?\s?euro\b)", re.I)
 
 IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b")
 MAC = re.compile(r"\b(?:[0-9A-Fa-f]{2}[:-]){5}[0-9A-Fa-f]{2}\b")
@@ -171,7 +196,9 @@ PIVA =re.compile(r"\b(?:P\.?\s?IVA|partita iva|cod\.?\s?fisc|codice fiscale)\b[^
 # indirizzi di RFC 5737, e la sua assenza era un'asimmetria: senza di essa ogni documento
 # che usa un indirizzo di esempio produce un riscontro bloccante, e chi scrive documentazione
 # impara a ignorare l'esito del controllo.
-DOMINI_DOC = ("example.com", "example.org", "example.net", "example.edu", ".example")
+DOMINI_DOC = ("example.com", "example.org", "example.net", "example.edu", ".example",
+              # estensione del progetto: gli altri domini riservati da RFC 2606 e 6761
+              ".invalid", ".test", ".localhost")
 
 # Segnaposto legittimi per la posta: persona-a@, referente-esempio-1@, e simili.
 MAIL_PLACEHOLDER = re.compile(r"^(persona|referente|collaboratore|consulente|tirocinante)-", re.I)
@@ -280,9 +307,20 @@ def analizza(pat, files):
     nomi = pat["nomi_propri"]
     nomi_ctx = pat.get("nomi_ammessi_in_contesto", [])
     segreti = pat.get("segreti_letterali", [])
+    # estensione del progetto
+    nomi_rx = [(n, re.compile(r"\b" + re.escape(n) + r"\b", re.I)) for n in nomi if n]
+    seriali = pat.get("seriali_e_id", [])
+    telefoni = pat.get("telefoni_reali", [])
+    ubicazione = pat.get("ubicazione", [])
+    organizzazioni = [(o, re.compile(r"\b" + re.escape(o) + r"\b", re.I))
+                      for o in pat.get("organizzazioni_private", []) if o]
+    importi_ok = set(pat.get("importi_ammessi", []))
+    esclusi = tuple(pat.get("percorsi_esclusi", []))
 
     for f, origine in files:
         if os.path.splitext(f)[1].lower() in SKIP_EXT:
+            continue
+        if esclusi and f.replace("\\", "/").startswith(esclusi):
             continue
         try:
             if os.path.getsize(f) > LIMITE_BYTE:
@@ -322,9 +360,31 @@ def analizza(pat, files):
                     continue
                 aggiungi("EMAIL PERSONALE", f, ln, riga, mail, origine)
 
-            for regex, cat in ((phone, "TELEFONO"), (MONEY, "IMPORTO"), (PIVA, "PIVA/CF")):
+            for regex, cat in ((phone, "TELEFONO"), (PHONE_IT, "TELEFONO"), (PIVA, "PIVA/CF")):
                 for m in regex.finditer(riga):
                     aggiungi(cat, f, ln, riga, m.group(0)[:60], origine)
+
+            # estensione del progetto: importi non bloccanti, quelli già valutati si saltano
+            for m in MONEY_PROGETTO.finditer(riga):
+                if re.sub(r"[^\d.,]", "", m.group(0)) in importi_ok:
+                    continue
+                aggiungi(CATEGORIA_IMPORTO, f, ln, riga, m.group(0)[:60], origine)
+
+            # estensione del progetto: seriali e telefoni si scrivono in una forma sola, quindi
+            # il confronto è sensibile alle maiuscole; ubicazione e organizzazioni sono testo,
+            # e una ragione sociale corta si cerca a parola intera per non combaciare dentro
+            # parole comuni, come accadde il 07/10/2026 dentro un numerale.
+            for valore, cat in ([(v, "SERIALE/ID MACCHINA") for v in seriali] +
+                                [(t, "TELEFONO") for t in telefoni]):
+                if valore and valore in riga:
+                    aggiungi(cat, f, ln, riga, "<valore oscurato>", origine)
+            riga_bassa = riga.lower()
+            for u in ubicazione:
+                if u and u.lower() in riga_bassa:
+                    aggiungi("UBICAZIONE", f, ln, riga, "<valore oscurato>", origine)
+            for o, rx in organizzazioni:
+                if rx.search(riga):
+                    aggiungi("ORGANIZZAZIONE PRIVATA", f, ln, riga, "<valore oscurato>", origine)
 
             for m in IBAN_CANDIDATO.finditer(riga):
                 if iban_valido(m.group(0)):
@@ -339,13 +399,14 @@ def analizza(pat, files):
                     aggiungi("SEGRETO LETTERALE", f, ln, riga, "<valore oscurato>", origine)
 
             bassa = riga.lower()
-            for n in nomi:
-                if n.lower() not in bassa:
+            # estensione del progetto: a parola intera, e il nome non si stampa
+            for n, rx in nomi_rx:
+                if not rx.search(riga):
                     continue
                 # un nome dentro la ragione sociale legale è ammesso per decisione
                 if any(c.lower() in bassa for c in nomi_ctx):
                     continue
-                aggiungi("NOME PROPRIO", f, ln, riga, n, origine)
+                aggiungi("NOME PROPRIO", f, ln, riga, "<valore oscurato>", origine)
 
     return trovati, saltati
 
@@ -464,8 +525,9 @@ def main():
     trovati, saltati = analizza(pat, files)
     conteggio = collections.Counter(origine for _, origine in files)
 
-    ordine = ["IP REALE", "MAC REALE", "SEGRETO LETTERALE", "NOME PROPRIO", "EMAIL PERSONALE",
-              "TELEFONO", "IBAN", "CARTA DI PAGAMENTO", "PIVA/CF", "IMPORTO",
+    ordine = ["IP REALE", "MAC REALE", "SERIALE/ID MACCHINA", "UBICAZIONE",
+              "ORGANIZZAZIONE PRIVATA", "SEGRETO LETTERALE", "NOME PROPRIO", "EMAIL PERSONALE",
+              "TELEFONO", "IBAN", "CARTA DI PAGAMENTO", "PIVA/CF", CATEGORIA_IMPORTO,
               "IP privato fuori schema", "IP pubblico da valutare"]
 
     bloccanti = 0

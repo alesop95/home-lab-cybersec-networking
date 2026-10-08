@@ -33,7 +33,7 @@ Gli strumenti in esercizio sono quattro, e sono tutti controlli: nessuno genera 
 | `tools/check-docs-tree.py` | verifica che l'albero regga come struttura navigabile: nessun documento scollegato dagli indici, nessun collegamento relativo che punti nel vuoto |
 | `tools/md-unwrap.py` | riunisce le righe di continuazione nei file Markdown, attuando la convenzione di un paragrafo per riga sorgente; rifiuta di scrivere se il rendering cambierebbe |
 | `tools/lint-md-commands.py` | percorre i blocchi di shell nei file Markdown e segnala comandi spezzati su piu' righe, che `md-unwrap` per contratto non tocca |
-| `scripts/Test-Anonymization.py` | guard-rail: passa i file tracciati e segnala valori reali residui; e' l'ultimo controllo prima di un commit di documentazione |
+| `tools/Test-Anonymization.py` | guard-rail: passa i file tracciati e segnala valori reali residui; e' l'ultimo controllo prima di un commit di documentazione |
 | `tools/source-register.py` | aggiorna e con `--check` verifica il blocco derivato di `SOURCES.md` che censisce i riferimenti pubblici citati nei documenti; non tocca le voci curate e non accede alla rete |
 
 Accanto a questi vivono lo strumento archiviato e i file privati che alimentano il guard-rail.

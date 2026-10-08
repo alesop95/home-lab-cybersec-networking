@@ -21,7 +21,7 @@ Il secondo e' `tools/md-unwrap.py --check`, che verifica la convenzione di forma
 
 Il terzo e' `tools/lint-md-commands.py`, che copre esattamente quel punto cieco, cioe' i comandi di shell spezzati su piu' righe dentro un blocco di codice.
 
-Il quarto e' `scripts/Test-Anonymization.py`, che passa i file tracciati alla ricerca di valori reali. E' quello che decide se il repository e' pubblicabile.
+Il quarto e' `tools/Test-Anonymization.py`, che passa i file tracciati e quelli nuovi non ancora aggiunti alla ricerca di valori reali. E' quello che decide se il repository e' pubblicabile.
 
 ## La prova di completezza, fatta una volta
 
@@ -39,7 +39,7 @@ Il caso limite piu' insidioso e' la reversibilita'. Il guard-rail cerca i valori
 
 ## Il caso limite del file non ancora tracciato
 
-Lo script legge l'elenco dei file da git, quindi in modalita' predefinita un file nuovo e non ancora aggiunto all'indice non verrebbe esaminato. E' esattamente la situazione di un primo commit che introduce molti file, cioe' la situazione di questo progetto il 24/08/2026, e per questo lo script ha l'opzione `--includi-nuovi`, che aggiunge all'elenco i file non tracciati ma non ignorati, cioe' esattamente quelli che un `git add` porterebbe dentro. E' la modalita' da usare prima di un commit che introduce file nuovi; senza di essa l'esito sarebbe verde su un insieme che non comprende cio' che si sta per pubblicare.
+Lo script legge l'elenco dei file da git, quindi in modalita' predefinita un file nuovo e non ancora aggiunto all'indice non verrebbe esaminato. E' esattamente la situazione di un primo commit che introduce molti file, cioe' la situazione di questo progetto il 24/08/2026, e per questo la copia di allora aveva l'opzione `--includi-nuovi`. Dal 08/10/2026 la versione in uso, `tools/Test-Anonymization.py`, comprende quei file per impostazione predefinita, e l'opzione non esiste piu'.
 
 ## Due difetti trovati eseguendo il controllo, e corretti
 

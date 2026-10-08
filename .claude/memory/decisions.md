@@ -248,3 +248,29 @@ Contesto. ADR-010 aveva tolto al documento Word il ruolo di fonte di rigenerazio
 Decisione. Verificato il contenuto del Word contro `docs/` per paragrafi, note a pie' di pagina, immagini e collegamenti, e corretta la lacuna trovata, cioe' le 53 note mai convertite, sono stati spostati nel Cestino di Windows il documento Word, `privacy pack.txt`, `Diagram/Notes.txt`, i due file `.url` e `quickprint.docx`. Restano in `_notes/sorgenti/` le 31 fotografie originali, lo schema PNG del monitoraggio e il whitepaper OPNsense. L'output DxDiag, tenuto in un primo momento perche' non era testo dell'utente, e' stato spostato nel Cestino lo stesso giorno su sua indicazione; la parte utile era gia' nel censimento.
 
 Conseguenze. `docs/` e' l'unica fonte di quel contenuto, e un errore li' non si corregge piu' risalendo al Word. La ricostruzione della mappa di anonimizzazione resta possibile da `tools/redactions.json`, che non dipendeva dal Word. Il Cestino e' l'ultima via di recupero finche' non viene svuotato. Il metodo e i numeri della verifica sono in `docs/fonti-e-materiali.md`.
+
+## ADR-020, i documenti dell'autore si riscrivono al loro posto, con verifica di copertura
+
+Data: 07/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. La trasformazione della documentazione dell'autore in documentazione tecnica di progetto poteva produrre un documento nuovo accanto all'originale, come e' stato fatto per il Seven, oppure riscrivere l'originale. Con ADR-019 l'utente ha chiesto una sola fonte di verita'.
+
+Decisione. Ogni documento dell'autore si riscrive al suo posto come documento tecnico. Dopo ogni riscrittura si verifica con il confronto paragrafo per paragrafo che ogni contenuto dell'autore sia ancora presente, oppure tolto con una ragione scritta nel work-log. Il documento sul Seven scritto come file separato si riassorbe nel censimento delle voci di menu. L'utente chiede che tutto sia tracciato: ogni riscrittura passa da work-log, pendenze, fonti e snapshot nello stesso giro.
+
+Conseguenze. Nessun documento tecnico duplica un originale. La copertura diventa una misura dichiarata per ogni area, con il suo perimetro.
+
+## ADR-021, scheda dispositivo a campi fissi e raccolta in sola lettura
+
+Data: 07/10/2026. Stato: accettata. Decisione dell'utente.
+
+Decisione. Ogni dispositivo della rete ha una scheda con gli stessi campi: identita' (codice segnaposto, categoria, proprietario per ruolo), sistema (sistema operativo, versione, supporto), rete cablata (chip, velocita' massima), Wi-Fi (standard, bande, WPA3, 802.1X), collocazione (cablato o Wi-Fi, piano, porta o SSID, VLAN) ed esposizione (servizi offerti, inoltri, sensibilita' dei dati). I dati si raccolgono con uno script PowerShell di sola lettura su Windows, con `ip`, `ethtool` e `lshw` su Linux, e a mano dalle schermate di impostazione per telefoni, televisori e console. I dati grezzi stanno in `_notes/`; nel repository va la sola scheda anonimizzata. Si parte dal censimento esistente in `docs/05-analisi-del-caso/`.
+
+## ADR-022, il template e' l'autorita': adozione dei pacchetti con il gate, aggiornamento con l'allineamento
+
+Data: 07/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. Sedici riferimenti di regole e skill puntavano a strumenti `tools/...` che il progetto non aveva istanziato, quindi i presidi di prosa, tipografia, tabelle, ripresa e schede non giravano.
+
+Decisione. Il template e' l'autorita' e il progetto ne eredita le funzionalita'; non si propongono modifiche al template per adattarlo al progetto. Si adottano tutti gli strumenti del template utili a questo progetto, compresi quelli di prosa e tipografia, istanziandoli dai pacchetti secondo i loro README; da li' in poi li aggiorna `allinea-dal-template.py`. Restano fuori gli strumenti che servono solo al template o a funzioni che il progetto non usa.
+
+Conseguenze. Il 07/10/2026 l'allineamento ha aggiornato nove file e ne ha aggiunto uno, senza conflitti. Il guard-rail di anonimizzazione del progetto, in `scripts/`, non e' sostituibile alla cieca: legge chiavi del file dei pattern (seriali, ubicazione, organizzazioni private, importi ammessi, telefoni reali) che la versione del template non conosce, mentre gli manca `--autotest`, che `chiudi` ora richiede. Il 08/10/2026, su scelta dell'utente, la riconciliazione e' fatta: `tools/Test-Anonymization.py` e' la versione del template con sei estensioni del progetto marcate nel codice, registrata come risolta in `.claude/allineamento-risolti.json`, e la copia in `scripts/` e' tolta.

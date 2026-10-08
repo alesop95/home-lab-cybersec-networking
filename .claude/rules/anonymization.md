@@ -40,17 +40,13 @@ Il sidecar `tools/redactions.json` si conserva come registro di cio' che e' stat
 
 ## Il controllo automatico, e perche' non basta la buona volonta'
 
-`scripts/Test-Anonymization.py` passa tutti i file tracciati da git e riporta indirizzi reali, MAC reali, nomi propri di persona, caselle di posta personali, numeri di serie e identificativi macchina noti, numeri di telefono, IBAN e partite IVA. Si lancia dalla radice del progetto, esce con codice diverso da zero se trova qualcosa nelle categorie bloccanti, e va eseguito prima di ogni commit che tocchi documentazione.
+`tools/Test-Anonymization.py` passa tutti i file tracciati da git, e quelli nuovi non ancora aggiunti, e riporta indirizzi reali, MAC reali, nomi propri di persona, caselle di posta personali, numeri di serie e identificativi macchina noti, numeri di telefono, IBAN, carte di pagamento e partite IVA. Si lancia dalla radice del progetto, esce con codice diverso da zero se trova qualcosa nelle categorie bloccanti, e va eseguito prima di ogni commit che tocchi documentazione.
 
 ```powershell
-python scripts/Test-Anonymization.py
+python tools/Test-Anonymization.py
 ```
 
-Quando il commit introduce file nuovi, non ancora aggiunti all'indice, si aggiunge l'opzione che li comprende, altrimenti l'esito sarebbe verde su un insieme che non contiene cio' che si sta per pubblicare.
-
-```powershell
-python scripts/Test-Anonymization.py --includi-nuovi
-```
+I file nuovi, non ancora aggiunti all'indice, sono compresi per impostazione predefinita: sono quelli che stanno per essere pubblicati. Con `--autotest` lo strumento prova i propri riconoscitori, ed e' la prova che `chiudi` esegue a ogni commit.
 
 Lo script e' versionato e non contiene nessun valore reale: cio' che deve cercare vive in `_notes/.anonymization-patterns.json`, ignorato da git accanto alla mappa dei segnaposto. Se quel file manca lo script si ferma e lo dichiara, invece di restituire un esito verde che non ha calcolato. Quando la mappa cresce, cresce anche quel file: sono due facce dello stesso dato, e vanno aggiornati insieme.
 

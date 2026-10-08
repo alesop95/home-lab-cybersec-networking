@@ -52,7 +52,7 @@ L'albero e' nato da una conversione deterministica di un documento Word, verific
 Prima di ogni commit girano quattro controlli: coerenza dell'albero, convenzione di formattazione, comandi di shell copiabili, e il guard-rail che verifica che non sia rimasto nessun dato reale.
 
 ```bash
-python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi
+python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python tools/Test-Anonymization.py
 ```
 
 L'ultimo dei quattro ha bisogno di materiale che resta privato, quindi chi clona il repository puo' leggere e modificare la documentazione ma non puo' verificarne l'anonimizzazione. E' una conseguenza voluta. La procedura completa e' in `.claude/context/deployment.md`.

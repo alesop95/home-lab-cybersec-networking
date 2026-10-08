@@ -7,7 +7,7 @@ covers-paths:
   - docs/03-spunti-di-sviluppo/**
   - docs/04-concetti-generali/**
   - .claude/rules/anonymization.md
-  - scripts/Test-Anonymization.py
+  - tools/Test-Anonymization.py
 last-verified-commit: 6769dc4
 ---
 
@@ -57,7 +57,7 @@ La regola che rende reale questo controllo e' una sola e sta sul firewall: il tr
 
 Il repository e' destinato a un remoto pubblico, e questo cambia la natura di ogni informazione che vi si scrive. La materia e' governata dalla regola `anonymization.md`, che qui si riassume nel suo principio: un progetto di home lab, se pubblicato integralmente, descrive dove si trova una casa, come raggiungerla da Internet, che cosa c'e' dentro e con quale sistema operativo. Ognuno di questi dati preso da solo e' innocuo, l'insieme no.
 
-Il presidio non e' la buona volonta' ma un controllo eseguibile, `scripts/Test-Anonymization.py`, che passa tutti i file tracciati e fallisce se trova indirizzi reali, identificativi macchina, numeri di serie, nomi propri, frammenti di ubicazione o contatti personali. Lo script e' versionato e non contiene alcun valore reale: cio' che deve cercare vive in un file privato accanto alla mappa dei segnaposto, e se quel file manca lo script si ferma invece di restituire un verde non calcolato.
+Il presidio non e' la buona volonta' ma un controllo eseguibile, `tools/Test-Anonymization.py`, che passa tutti i file tracciati e quelli nuovi e fallisce se trova indirizzi reali, identificativi macchina, numeri di serie, nomi propri, frammenti di ubicazione o contatti personali. Lo script e' versionato e non contiene alcun valore reale: cio' che deve cercare vive in un file privato accanto alla mappa dei segnaposto, e se quel file manca lo script si ferma invece di restituire un verde non calcolato.
 
 Due proprieta' di questo impianto meritano di essere capite. La prima e' che, dal 25/08/2026, l'anonimizzazione non e' piu' una regola di generazione ma un gesto di scrittura: l'albero si scrive a mano, nessuna sostituzione automatica rimedia a un valore reale digitato per distrazione, e per questo la voce va aggiunta alla mappa e ai pattern privati prima di scrivere il segnaposto. Il guard-rail cerca le organizzazioni a parola intera, come i nomi propri, e ammette per costruzione le caselle su domini riservati dagli RFC 2606 e 6761, che compaiono negli esempi e nei test del template. La seconda e' che la redazione si applica anche ai titoli, non solo al corpo, perche' dal titolo discendono lo slug del file e il nome della cartella: un nome proprio lasciato in un titolo finisce nel percorso di un file tracciato, dove nessuna redazione del corpo lo raggiungerebbe.
 

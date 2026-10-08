@@ -79,7 +79,7 @@ Richiesta dell'utente del 07/10/2026: decidere un modo per caratterizzare in man
 
 ## Strumenti del template non attivi in questo progetto
 
-Dal 07/10/2026: regole e skill del progetto citano sedici volte strumenti `tools/...` che vivono solo in `.claude/templates/tools/`, fra cui la verifica di ripresa, i controlli di tabelle, tipografia e prosa e la verifica delle schede. Finche' non sono istanziati, quei presidi non girano, e due di loro lanciati dalla cartella del template danno un verde non calcolato. La scelta fra istanziarli con il meccanismo di allineamento del template e correggere il template spetta all'utente.
+Dal 07/10/2026: regole e skill del progetto citano sedici volte strumenti `tools/...` che vivono solo in `.claude/templates/tools/`, fra cui la verifica di ripresa, i controlli di tabelle, tipografia e prosa e la verifica delle schede. Finche' non sono istanziati, quei presidi non girano, e due di loro lanciati dalla cartella del template danno un verde non calcolato. Deciso con ADR-022: si istanziano dai pacchetti, e da li' li aggiorna l'allineamento. Il guard-rail di anonimizzazione e' riconciliato il 08/10/2026 in `tools/Test-Anonymization.py`. Resta da installare il resto degli strumenti.
 
 ## Sezioni censite ma dichiarate non rilevanti
 

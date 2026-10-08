@@ -20,7 +20,7 @@ Per orientarsi nella documentazione tecnica si parte da `docs/README.md`, che e'
 
 ## Il repository e' gia' su un remoto pubblico
 
-Il remoto `origin` e' collegato e la storia e' gia' pushata: non c'e' una finestra in cui correggere prima della pubblicazione, c'e' solo il commit successivo. E' la cosa che vincola di piu' il modo di lavorare. Prima di ogni commit che tocchi documentazione va eseguito `python scripts/Test-Anonymization.py`, che passa tutti i file tracciati e fallisce se trova valori reali; quando il commit introduce file nuovi si aggiunge `--includi-nuovi`, altrimenti l'esito e' verde su un insieme che non comprende cio' che si sta per pubblicare. La regola completa e' `.claude/rules/anonymization.md`, da caricare sempre. Le due cose da non fare mai: scrivere un valore reale in un file tracciato, e citare in un file tracciato la corrispondenza fra un segnaposto e il suo valore, che renderebbe reversibile ogni anonimizzazione fatta altrove.
+Il remoto `origin` e' collegato e la storia e' gia' pushata: non c'e' una finestra in cui correggere prima della pubblicazione, c'e' solo il commit successivo. E' la cosa che vincola di piu' il modo di lavorare. Prima di ogni commit che tocchi documentazione va eseguito `python tools/Test-Anonymization.py`, che passa tutti i file tracciati e quelli nuovi non ancora aggiunti, e fallisce se trova valori reali. La regola completa e' `.claude/rules/anonymization.md`, da caricare sempre. Le due cose da non fare mai: scrivere un valore reale in un file tracciato, e citare in un file tracciato la corrispondenza fra un segnaposto e il suo valore, che renderebbe reversibile ogni anonimizzazione fatta altrove.
 
 ## Come si modifica la documentazione
 
@@ -33,7 +33,7 @@ I prefissi numerici di cartelle e file sono nomi stabili ereditati dalla generaz
 Prima di ogni commit girano quattro controlli, descritti in `.claude/context/deployment.md`.
 
 ```bash
-python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python scripts/Test-Anonymization.py --includi-nuovi
+python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python tools/Test-Anonymization.py
 ```
 
 ## Indice dei file satellite tracciati
@@ -90,7 +90,7 @@ Strumenti, sotto `tools/` e `scripts/`.
 tools/check-docs-tree.py      orfani e collegamenti rotti nell'albero; primo dei quattro controlli
 tools/md-unwrap.py            attua la convenzione di un paragrafo per riga sorgente
 tools/lint-md-commands.py     segnala comandi di shell spezzati dentro i blocchi di codice
-scripts/Test-Anonymization.py guard-rail sui file tracciati, ultimo controllo prima del commit
+tools/Test-Anonymization.py   guard-rail sui file tracciati e nuovi, ultimo controllo prima del commit
 tools/docx-to-md.py           archiviato: ha prodotto l'albero, non va eseguito su docs/
 tools/annotations.json        storico: banner della generazione, ora testo dentro i file
 tools/redactions.json         sostituzioni della prima stesura (privato, non versionato)
