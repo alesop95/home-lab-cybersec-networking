@@ -314,3 +314,21 @@ Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
 Contesto. L'utente ha chiesto di valutare OpenMediaVault. La valutazione, in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/08-valutazione-openmediavault.md`, ha mostrato che OpenMediaVault porta ZFS solo con un plugin legato al kernel e non prevede l'avvio in specchio dall'installatore.
 
 Decisione. Resta TrueNAS SCALE, con l'avvio in specchio sui due SSD SATA e il pool ZFS in specchio sui due NVMe (ADR-015). L'analisi dell'hardware vecchio continua con le foto dell'interno di altri due PC, per riallocare le risorse se serve.
+
+## ADR-027, eliminati i contenuti sugli strumenti di monitoraggio scartati
+
+Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. Il piano unificato ha verificato che dello schema di monitoraggio della prima stesura MozDef è archiviato, OSSIM e Apache Metron sono ritirati, Sagan è fermo, Snort non è integrato in OPNsense ed ELK separato duplica l'indicizzatore di Wazuh. L'utente ha chiesto di cancellare dal progetto ciò che riguarda questi componenti.
+
+Decisione. Tolte le sezioni dello studio SIEM su OSSIM, ELK con Elasticsearch, Apache Metron, MozDef, Sagan e Snort; tolta l'immagine dello schema dall'albero e lo schema PNG dal materiale privato, nel Cestino; tolta dalla scheda del monitoraggio la trascrizione dello schema. Restano, perché sono il registro della scelta e non contenuto sugli strumenti, le righe del piano unificato e delle decisioni che dicono perché ciascun componente è scartato, con le fonti. Resta la sezione su Splunk Free, non valutata come scarto e marcata come non open source.
+
+Conseguenze. È un'eccezione dichiarata ad ADR-020: contenuto dell'autore tolto per decisione dell'autore, con la ragione scritta. La storia git conserva il testo eliminato.
+
+## ADR-028, il flusso di monitoraggio adottato: Wazuh con Suricata in OPNsense
+
+Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
+
+Decisione. Wazuh, con server, indicizzatore e dashboard sulla stessa macchina virtuale del server Proxmox, è il centro del monitoraggio. Suricata, integrato in OPNsense, rileva sul traffico, prima in sola rilevazione. Il plugin os-wazuh-agent porta a Wazuh i log del firewall e gli allarmi di Suricata; switch, AP e NAS mandano syslog; i PC hanno l'agente. La dashboard ascolta nella VLAN 99. La risposta attiva resta spenta all'inizio. Il dettaglio tecnico, con porte, regole, ripiego e ordine di messa in opera, è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/11-monitoraggio-wazuh-suricata.md`.
+
+Conseguenze. Snort è sostituito da Suricata. La pendenza sull'integrazione fra Suricata e Wazuh è chiusa dal plugin, il cui supporto limitato è il punto fragile, con un ripiego via syslog.

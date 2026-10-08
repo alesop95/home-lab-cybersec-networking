@@ -16,7 +16,9 @@ Gli alias danno un nome a un insieme di indirizzi o di porte, così che una rego
 |---|---|---|---|
 | RETI_INTERNE | reti | 192.168.10.0/24, 192.168.20.0/24, 192.168.30.0/24, 192.168.40.0/24, 192.168.50.0/24, 192.168.60.0/24, 192.168.99.0/24, rete WireGuard | il blocco generico verso il resto della casa |
 | NAS | host | 192.168.30.10, proposta | destinazione dei servizi di condivisione |
-| GESTIONE | host | 192.168.99.1 del firewall, indirizzi di switch e AP, 192.168.99.10 del NAS, proposte | dove ascoltano le interfacce di amministrazione, tutte nella VLAN 99 |
+| WAZUH | host | 192.168.30.30, proposta | server Wazuh, che riceve agenti e syslog |
+| PORTE_WAZUH | porte | TCP 1514, TCP 1515 | connessione e registrazione degli agenti |
+| GESTIONE | host | 192.168.99.1 del firewall, indirizzi di switch e AP, 192.168.99.10 del NAS, 192.168.99.30 della dashboard di Wazuh, proposte | dove ascoltano le interfacce di amministrazione, tutte nella VLAN 99 |
 | HOST_SERVIZI | host | 192.168.30.20, proposta; macchina da individuare | DNS filtrante e monitoraggio, quando esisterà |
 | ADMIN | host | workstation della VLAN 10 con prenotazione DHCP, più la rete WireGuard | chi può amministrare |
 | WG_RETE | rete | 192.168.98.0/24, proposta | indirizzi dei peer WireGuard |
@@ -46,6 +48,7 @@ Le due opzioni di blocco della WAN restano attive, e sul punto la prima stesura 
 |---|---|---|---|---|---|---|
 | 1 | consenti | TCP/UDP | VLAN 10 | Firewall | PORTE_BASE | DNS e ora dal firewall |
 | 2 | consenti | TCP | VLAN 10 | NAS | PORTE_CONDIVISIONE | file e applicazioni del NAS |
+| 2b | consenti | TCP | VLAN 10 | WAZUH | PORTE_WAZUH | agenti Wazuh dei PC, secondo [Monitoraggio](11-monitoraggio-wazuh-suricata.md) |
 | 3 | consenti | TCP | ADMIN | GESTIONE | PORTE_GESTIONE | amministrazione solo dalla workstation designata, verso gli indirizzi della VLAN 99; il dettaglio è in [Accesso amministrativo](09-accesso-amministrativo.md) |
 | 4 | blocca, con registro | qualsiasi | VLAN 10 | RETI_INTERNE | qualsiasi | il resto della casa |
 | 5 | blocca, con registro | qualsiasi | VLAN 10 | Firewall | qualsiasi | altre porte del firewall |
@@ -88,6 +91,7 @@ Sugli AP l'SSID OSPITI ha l'isolamento dei client attivo, perché due ospiti nel
 | # | Azione | Protocollo | Origine | Destinazione | Porte | Motivo |
 |---|---|---|---|---|---|---|
 | 1 | consenti | TCP/UDP | VLAN 60 | Firewall | PORTE_BASE | DNS e ora |
+| 1a | consenti, facoltativa | TCP | VLAN 60 | WAZUH | PORTE_WAZUH | agenti sulle macchine di prova, quando l'esperimento li prevede |
 | 2 | blocca, con registro | qualsiasi | VLAN 60 | RETI_INTERNE | qualsiasi | il laboratorio non tocca la casa |
 | 3 | blocca, con registro | qualsiasi | VLAN 60 | qualsiasi | qualsiasi | nessuna uscita predefinita |
 
@@ -112,6 +116,7 @@ Ogni apertura si annota nel registro del progetto con data, macchine, regola, du
 |---|---|---|---|---|---|---|
 | 1 | consenti | TCP/UDP | VLAN 99 | Firewall | PORTE_BASE | DNS e ora per switch e AP |
 | 2 | consenti | TCP | VLAN 99 | Firewall | PORTE_GESTIONE | amministrazione dalla porta di recupero |
+| 2a | consenti | UDP | VLAN 99 | WAZUH | 514 | syslog di switch e AP verso Wazuh |
 | 3 | blocca, con registro | qualsiasi | VLAN 99 | RETI_INTERNE | qualsiasi | gli apparati non aprono connessioni verso la casa |
 | 4 | consenti | TCP | VLAN 99 | qualsiasi | 443 | aggiornamenti del firmware |
 

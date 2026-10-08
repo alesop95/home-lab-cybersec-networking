@@ -37,9 +37,9 @@ Il disco da comprare è uno solo, un SSD SATA da 500 GB o 1 TB. Un secondo SSD i
 | Funzione | Scelta | Dove | Stato |
 |---|---|---|---|
 | firewall, routing, VPN | OPNsense, WireGuard | NET-04 | deciso |
-| rilevamento sul traffico | Suricata integrato in OPNsense, prima in sola rilevazione | NET-04 | proposto dallo studio del 22/09/2026, confermato qui |
-| SIEM, rilevamento sugli host, integrità dei file | Wazuh | Proxmox, VLAN 30 | proposto |
-| raccolta dei log di firewall e apparati | syslog verso Wazuh; per gli allarmi di Suricata, l'integrazione disponibile su OPNsense va verificata | Proxmox | proposto, da verificare |
+| rilevamento sul traffico | Suricata integrato in OPNsense, prima in sola rilevazione | NET-04 | deciso (ADR-028) |
+| SIEM, rilevamento sugli host, integrità dei file | Wazuh | Proxmox, VLAN 30, dashboard nella VLAN 99 | deciso (ADR-028) |
+| raccolta dei log di firewall e apparati | plugin os-wazuh-agent per il firewall e gli allarmi di Suricata; syslog per switch, AP e NAS | NET-04, apparati | deciso (ADR-028), dettaglio in [Monitoraggio](11-monitoraggio-wazuh-suricata.md) |
 | indicizzazione e ricerca | l'indicizzatore di Wazuh, incluso | Proxmox | proposto |
 | DNS | Unbound su OPNsense, poi AdGuard Home | NET-04, poi Proxmox | deciso dallo studio del 22/09/2026 |
 | storage e copie | TrueNAS SCALE | NAS | deciso |
@@ -77,4 +77,4 @@ Il flusso che ne risulta è più corto e tutto mantenuto. Gli endpoint mandano e
 
 La sequenza rispetta la roadmap. La rete viene prima, cioè firewall, switch e AP, perché senza segmentazione ogni servizio finirebbe in una rete piatta. Proxmox viene subito dopo il collaudo delle VLAN, perché porta DNS filtrante e monitoraggio. Il NAS procede in parallelo, perché si assembla senza toccare la rete.
 
-Decisioni aspettate dall'utente: confermare `linux-desktop-A` come server Proxmox; decidere se portarlo a 32 GB; confermare Suricata al posto di Snort. Dati aspettati: le foto dei due PC; la verifica delle estensioni di virtualizzazione nel firmware; il massimo di memoria della scheda; il prezzo di un SSD e, se serve, della memoria; l'integrazione fra Suricata di OPNsense e Wazuh; il raccoglitore di metriche. Da progettare più avanti: la zona isolata per l'analisi dei campioni.
+Decisioni aspettate dall'utente: quale macchina diventa il server Proxmox, confrontando `linux-desktop-A` con i due PC da fotografare; se portarla a 32 GB con i moduli DDR4 di uno di quei due PC, che diventerebbe una scorta, come ha proposto l'utente l'8/10/2026. Dati aspettati: le foto dei due PC; la verifica delle estensioni di virtualizzazione nel firmware; il massimo di memoria della scheda e la compatibilità dei moduli; il prezzo di un SSD; il raccoglitore di metriche. Chiusi l'8/10/2026: Suricata al posto di Snort e l'integrazione con Wazuh, con il plugin di OPNsense (ADR-028). Da progettare più avanti: la zona isolata per l'analisi dei campioni.

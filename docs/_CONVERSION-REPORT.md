@@ -61,7 +61,7 @@ Le immagini non sono versionate (gitignore `*.png`/`*.jpeg`); restano in locale 
 - `docs/02-ftth-fastweb/06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/assets/img-0019.png` -> `img-0019.png`
 - `docs/02-ftth-fastweb/06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/assets/img-0020.png` -> `img-0020.png`
 - `docs/03-spunti-di-sviluppo/01-storage-non-di-rete/assets/img-0021.png` -> `img-0021.png`
-- `docs/03-spunti-di-sviluppo/09-monitoraggio/assets/img-0022.png` -> `img-0022.png`
+- `docs/03-spunti-di-sviluppo/09-monitoraggio/assets/img-0022.png` -> `img-0022.png` <!-- ref-assente --> (eliminata l'8/10/2026, ADR-027)
 - `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/assets/img-0023.png` -> `img-0023.png`
 - `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/assets/img-0024.png` -> `img-0024.png`
 - `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/assets/img-0025.png` -> `img-0025.png`

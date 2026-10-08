@@ -10,48 +10,22 @@ last-verified-commit: 6769dc4
 
 # Workflow di monitoraggio e analisi
 
-> Trasposizione testuale e versionabile dei due flussi descritti nel documento sorgente: il monitoraggio di sicurezza continuo e il percorso di analisi di un campione sospetto. Il primo esiste anche come immagine alla radice del progetto, non versionata; questo diagramma la sostituisce e ne corregge un difetto, cioè che l'immagine mostrava due volte lo stesso componente senza distinguerne il ruolo.
+> Trasposizione testuale e versionabile dei due flussi descritti nel documento sorgente: il monitoraggio di sicurezza continuo e il percorso di analisi di un campione sospetto. L'immagine dello schema della prima stesura è stata eliminata l'8/10/2026 (ADR-027).
 
 ## Monitoraggio continuo
 
-Aggiornamento dell'8/10/2026: verificati sulle fonti, MozDef è archiviato dal 2021, OSSIM è ritirato da fine 2024, Apache Metron è ritirato dal 2020, Sagan è fermo alla versione del 2021, e OPNsense non integra Snort. Il flusso adottato dal [piano unificato](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/10-piano-unificato-hardware-e-stack.md) è quindi più corto: agenti e syslog verso Wazuh su Proxmox, Suricata nel firewall, l'indicizzatore di Wazuh al posto di uno stack ELK separato. Il diagramma che segue resta come trascrizione dello schema del documento sorgente.
-
-Il flusso ha un centro chiaro, Wazuh, che raccoglie dagli endpoint e correla, e una spina dorsale di indicizzazione, lo stack Elasticsearch con i suoi contorni, dove confluisce tutto il resto. Nessuno di questi componenti è installato: il flusso è un piano.
+Dall'8/10/2026 il flusso è quello del [piano unificato](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/10-piano-unificato-hardware-e-stack.md), descritto tecnicamente in [Monitoraggio di sicurezza con Wazuh e Suricata](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/11-monitoraggio-wazuh-suricata.md) e approvato dall'utente (ADR-028). La trascrizione dello schema della prima stesura, che collegava Wazuh a ELK, Snort, Sagan, MozDef, OSSIM e Apache Metron, è stata tolta insieme alle sue fonti su indicazione dell'utente (ADR-027), perché quei componenti sono archiviati, ritirati o sostituiti.
 
 ```
-  [ endpoint: PC, server, VM, NAS ]
-              |
-              | agente Wazuh
-              v
-        [ WAZUH ]  <----- eventi IDS ------ [ SNORT ]
-     SIEM + HIDS + FIM                    analisi pacchetti
-     correlazione, alert                  in ingresso e uscita
-              |                                  ^
-              |                                  |
-              |                            traffico di rete
-              v
-   [ ELK: Elasticsearch + Logstash + Beats + Kibana ]
-     indicizzazione, ricerca, dashboard
-              ^                    |
-              |                    v
-   log via syslog            [ SAGAN ]
-   dal firewall e            correlazione log
-   dagli apparati            in tempo reale
-                                   |
-                                   v
-                             [ MOZDEF ]
-                        orchestrazione incidenti,
-                        vista in stile SOC
-                                   |
-                                   v
-                     [ OSSIM o Apache Metron ]
-                     estensione opzionale, solo se
-                     il volume lo giustifica
+  [ PC della VLAN 10, laboratorio ] --agente, TCP 1514--+
+                                                       |
+  [ OPNsense: filtro, accessi, VPN ]                    v
+  [ Suricata in OPNsense ] --plugin os-wazuh-agent--> [ Wazuh su Proxmox ]
+                                                       ^   server, indicizzatore,
+  [ switch, AP nella VLAN 99, NAS ] --syslog, UDP 514--+   dashboard nella VLAN 99
 ```
 
-La lettura corretta è che Wazuh è l'unico componente indispensabile per iniziare, perché da solo copre SIEM, rilevamento sull'host e controllo di integrità dei file, ed è più leggero di OSSIM e più completo di Snort da solo. Snort aggiunge la visibilità sul traffico, che Wazuh non ha; lo stack ELK aggiunge la capacità di interrogare grandi volumi, che serve solo quando i volumi ci sono; Sagan e MozDef sono raffinamenti che hanno senso quando esistono già più sorgenti da correlare e incidenti da gestire come tali. Adottarli tutti insieme in una rete domestica sarebbe sovradimensionato, e il documento sorgente lo dice esplicitamente.
-
-Sulla sonda di rete i documenti divergono, e la differenza va tenuta presente. L'analisi del monitoraggio sotto `09-monitoraggio/` ragiona su Snort come componente separato; lo studio home lab del 22/09/2026, nei servizi gratuiti, indica invece Suricata integrato in OPNsense, in sola rilevazione prima di qualunque blocco e solo dopo test prestazionali sul firewall. La seconda strada non aggiunge una macchina e usa il motore che il firewall già include, quindi è quella da cui partire; la scelta definitiva resta alla fase 5.
+Wazuh è il solo centro: correla gli eventi degli host, i log degli apparati e gli allarmi di Suricata, li conserva per 90 giorni e li mostra. Suricata parte in sola rilevazione e la risposta attiva resta spenta finché gli allarmi non sono stati letti per settimane.
 
 ## Il posto del monitoraggio nella rete
 

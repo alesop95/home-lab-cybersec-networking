@@ -124,6 +124,10 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S89 | https://tech-insider.org/?p=21341 | articolo di terzi, riassunto dalla ricerca dell'8/10/2026 | Suricata come motore di riferimento; gli sviluppatori di OPNsense non intendono integrare Snort e indicano Suricata; Suricata 8.0.6 del luglio 2026 |
 | S90 | https://attic.apache.org/projects/metron.html | Apache Software Foundation, riassunta dalla ricerca dell'8/10/2026 | Apache Metron ritirato nel dicembre 2020, spostato nell'Attic nell'aprile 2021 per inattività |
 | S91 | https://docs.securityonion.net/en/2.4/_sources/hardware.rst.txt | produttore, riassunta dalla ricerca dell'8/10/2026 | Security Onion in configurazione autonoma: almeno 24 GB di memoria, 4 core e 200 GB, meglio 32 GB se si monitora traffico |
+| S92 | https://documentation.wazuh.com/current/getting-started/architecture.html | produttore, letta l'8/10/2026 | porte di Wazuh: 1514 TCP connessione agenti, 1515 TCP registrazione, 1516 TCP cluster, 514 UDP o TCP syslog spento di default, 55000 TCP API del server, 9200 e 9300-9400 TCP indicizzatore, 443 TCP dashboard |
+| S93 | https://docs.opnsense.org/manual/wazuh-agent.html | produttore, letta l'8/10/2026 | plugin os-wazuh-agent: installazione, server e password, applicazioni syslog da inviare, eventi di intrusion detection dal flusso EVE, azione di risposta opnsense-fw; supporto comunitario molto limitato, tier 3 |
+| S94 | https://documentation.wazuh.com/4.14/proof-of-concept-guide/integrate-network-ids-suricata.html | produttore, riassunta dalla ricerca dell'8/10/2026 | integrazione di Suricata con l'agente Wazuh che legge eve.json in formato JSON; regole Suricata già presenti nel server |
+| S95 | https://documentation.wazuh.com/current/user-manual/capabilities/log-data-collection/syslog.html | produttore, letta l'8/10/2026 | blocco remote di ossec.conf per il syslog: connessione, porta 514, protocollo, allowed-ips obbligatorio, local_ip |
 
 ## Materiali locali che non devono sparire dal quadro
 
