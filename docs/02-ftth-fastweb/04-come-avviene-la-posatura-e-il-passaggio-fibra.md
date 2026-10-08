@@ -26,6 +26,8 @@ Dopodichè il Seven fa routing, Wi-Fi 7, switching LAN e VoIP e se l’ONT espon
 
 Abbiamo visto che il punto chiave è che la fibra si ferma al PTO per motivi tecnici e di responsabilità, l’ONT fa la conversione, tutto ciò che segue è normale networking. Difatti, da quel momento in poi, l’impianto di casa è rete dati utilizzabile. La distribuzione interna avviene via Ethernet dal modem/ONT verso prese RJ45 (ethernet classico), switch o access point. La fonia, se presente, è VoIP, cioè un servizio logico che viaggia sopra IP, non una linea fisica dedicata (a cui è associato anche un numero fisso che si ha a disposizione).
 
+Nel progetto la catena descritta qui è quella reale, confermata dall'utente l'8/10/2026: fibra fino alla PTO, bretella ottica, ONT esterno Zyxel PM5100-T1, cavo RJ45, WAN a 2,5 GbE del Seven. Da quel punto in avanti valgono le scelte della topologia: la LAN 4 del Seven verso OPNsense, il firewall, lo switch al piano più alto e due cavi verso gli access point ai piani centrali, già posati dall'utente (ADR-018). La distribuzione interna di cui parla l'ultimo paragrafo non parte quindi dal modem ma dallo switch dietro il firewall, e la fonia resta l'unico servizio che il Seven continua a portare direttamente.
+
 [^1]: La vecchia presa telefonica, di per sé, non ha più alcun ruolo perché era pensata per rame, tensioni, impedenze e segnali analogici o xDSL e non è meccanicamente né elettricamente compatibile con la fibra e o resta fisicamente nel muro senza essere più collegata a nulla, oppure viene rimossa per pulizia estetica.
 
 [^2]: Il PTO è l’equivalente concettuale della vecchia presa telefonica, ma con una differenza fondamentale: non è un punto di distribuzione elettrica, è un punto di terminazione ottica
