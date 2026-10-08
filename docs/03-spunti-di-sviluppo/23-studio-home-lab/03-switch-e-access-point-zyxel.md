@@ -61,7 +61,7 @@ Il prezzo è la banda del trunk. Il traffico fra due VLAN percorre lo stesso cav
 | 3 | AP 2, secondo piano | trunk e PoE, cavo già posato |
 | 4 | client cablato | access VLAN 10; dal 07/10/2026 non è più riservata a un terzo AP |
 | 5 | NAS | access VLAN 30; velocità dettata dalla NIC effettiva |
-| 6 | host servizi | access VLAN 30; trunk solo se ospita VM di zone distinte |
+| 6 | server Proxmox, host di servizio | trunk con le VLAN 30, 60 e 99, proposto l'8/10/2026 nel piano unificato |
 | 7 | workstation | access VLAN 10 |
 | 8 | porta per recupero o altro client | access VLAN 99 durante manutenzione, da documentare |
 

@@ -14,6 +14,8 @@ last-verified-commit: 6769dc4
 
 ## Monitoraggio continuo
 
+Aggiornamento dell'8/10/2026: verificati sulle fonti, MozDef è archiviato dal 2021, OSSIM è ritirato da fine 2024, Apache Metron è ritirato dal 2020, Sagan è fermo alla versione del 2021, e OPNsense non integra Snort. Il flusso adottato dal [piano unificato](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/10-piano-unificato-hardware-e-stack.md) è quindi più corto: agenti e syslog verso Wazuh su Proxmox, Suricata nel firewall, l'indicizzatore di Wazuh al posto di uno stack ELK separato. Il diagramma che segue resta come trascrizione dello schema del documento sorgente.
+
 Il flusso ha un centro chiaro, Wazuh, che raccoglie dagli endpoint e correla, e una spina dorsale di indicizzazione, lo stack Elasticsearch con i suoi contorni, dove confluisce tutto il resto. Nessuno di questi componenti è installato: il flusso è un piano.
 
 ```

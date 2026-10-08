@@ -13,6 +13,7 @@ La raccomandazione di partenza è OPNsense a valle del Fastweb Seven. Dal 07/10/
 | [Guida configurazione OPNsense](05-guida-configurazione-opnsense-in-casa.md) | percorso Seven -> OPNsense, VLAN, Wi-Fi upstream, prove e rollback |
 | [Memo acquisti e configurazione](ACQUISTI-E-CONFIGURAZIONE-DA-FINIRE.md) | promemoria operativo copiato anche sul Desktop |
 | [Accesso remoto VPN](06-accesso-remoto-vpn.md) | confronto Tailscale/WireGuard, subnet router, collaudo e uso di Tailcat |
+| [Piano unificato](10-piano-unificato-hardware-e-stack.md) | ruoli dell'hardware, server Proxmox, stack open source per funzione con gli scarti verificati, stato di ogni scelta |
 | [Accesso amministrativo](09-accesso-amministrativo.md) | tre ingressi e tre barriere per amministrare firewall, switch, AP e NAS |
 | [Regole fra le zone](08-regole-fra-le-zone.md) | alias e regole per interfaccia, in forma di configurazione OPNsense, con il collaudo |
 | [Doppio NAT dietro il modem in comodato](07-doppio-nat-dietro-modem-in-comodato.md) | documento didattico: perché due NAT, che cosa cambiano e che cosa no |

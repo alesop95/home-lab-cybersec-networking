@@ -173,11 +173,11 @@
   <text x="612" y="1001" class="m">gestione solo da VLAN 99</text>
 
   <rect x="780" y="864" width="170" height="150" rx="8" class="opt"/>
-  <text x="792" y="887" class="n">Host servizi</text>
-  <text x="792" y="907">access VLAN 30</text>
+  <text x="792" y="887" class="n">Proxmox · proposto</text>
+  <text x="792" y="907">trunk VLAN 30, 60, 99</text>
   <text x="792" y="926">sempre acceso</text>
-  <text x="792" y="945">AdGuard, monitoraggio</text>
-  <text x="792" y="1001" class="m">macchina da individuare</text>
+  <text x="792" y="945">Wazuh, AdGuard, lab</text>
+  <text x="792" y="1001" class="m">linux-desktop-A + SSD</text>
 
   <rect x="960" y="864" width="170" height="150" rx="8" class="plan"/>
   <text x="972" y="887" class="n">Workstation</text>

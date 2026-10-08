@@ -73,10 +73,10 @@ Tre interfacce fisiche, tre zone. La disposizione delle velocità non è vincola
         |  porta 1: trunk verso il firewall, VLAN 10/30/40/50/60/99
         |
    porte 2-3      porta 4      porta 5      porta 6       porta 7      porta 8
-   trunk e PoE    access 10    access 30    access 30     access 10    access 99
+   trunk e PoE    access 10    access 30    trunk 30-99   access 10    access 99
         |             |            |            |             |            |
    [ AP 1 piano 3 ] client     [ NAS ]     host servizi  workstation   recupero
-   [ AP 2 piano 2 ] cablato    1 GbE       da individuare
+   [ AP 2 piano 2 ] cablato    1 GbE       Proxmox, proposto
    SSID CASA 10, IOT 40, OSPITI 50: tutto il Wi-Fi degli AP passa dal firewall
 ```
 

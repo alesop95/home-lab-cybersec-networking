@@ -21,7 +21,7 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | NET-07 | AP 2 Zyxel NWA130BE | deciso (ADR-017, ADR-018, ADR-024), da acquistare | secondo piano, cavo posato; come AP 1; misurare la copertura del piano terra |
 | NET-08 | AP 3 Zyxel | non previsto dal 07/10/2026 (ADR-017) | torna in discussione solo se la misura del piano terra lo giustifica |
 | STO-01 | NAS da quattro desktop dismessi | assemblaggio nell'altra sessione | VLAN 30, a orario; ricevere configurazione e collaudo finali, non ricensire donatori |
-| SRV-01 | host servizi sempre acceso | ruolo non assegnato, nessun acquisto deciso | VLAN 30; individuare hardware, RAM, dischi, watt e disponibilità |
+| SRV-01 | host servizi sempre acceso, server Proxmox | proposto l'8/10/2026: `linux-desktop-A` del lotto del NAS, i7-7700, 16 GB, rete Intel; serve un SSD | trunk 30, 60, 99; Wazuh, AdGuard Home e laboratorio, secondo il piano unificato |
 | PC-01 | PC fisso 1, Windows 11 Pro indicato come forzato | storico, incompleto | confermare modello, NIC, supporto aggiornamenti e uso prima di VLAN fidata |
 | PC-02 | PC fisso 2, Xubuntu | storico, incompleto | client o candidato servizi da valutare; modello, NIC, RAM e consumo |
 | PC-03 | PC fisso 3, anduinOS | storico, incompleto | client; modello, versione e NIC |
