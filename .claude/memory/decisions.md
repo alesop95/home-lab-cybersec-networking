@@ -274,3 +274,15 @@ Contesto. Sedici riferimenti di regole e skill puntavano a strumenti `tools/...`
 Decisione. Il template è l'autorità e il progetto ne eredita le funzionalità; non si propongono modifiche al template per adattarlo al progetto. Si adottano tutti gli strumenti del template utili a questo progetto, compresi quelli di prosa e tipografia, istanziandoli dai pacchetti secondo i loro README; da lì in poi li aggiorna `allinea-dal-template.py`. Restano fuori gli strumenti che servono solo al template o a funzioni che il progetto non usa.
 
 Conseguenze. Il 07/10/2026 l'allineamento ha aggiornato nove file e ne ha aggiunto uno, senza conflitti. Il guard-rail di anonimizzazione del progetto, in `scripts/`, non è sostituibile alla cieca: legge chiavi del file dei pattern (seriali, ubicazione, organizzazioni private, importi ammessi, telefoni reali) che la versione del template non conosce, mentre gli manca `--autotest`, che `chiudi` ora richiede. Il 08/10/2026, su scelta dell'utente, la riconciliazione è fatta: `tools/Test-Anonymization.py` è la versione del template con sei estensioni del progetto marcate nel codice, registrata come risolta in `.claude/allineamento-risolti.json`, e la copia in `scripts/` è tolta.
+
+## ADR-023, lo switch è lo XMG1915-10EP anche al confronto dei prezzi
+
+Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. ADR-017 aveva scelto lo XMG1915-10EP. L'utente ha chiesto di riaprire la scelta con un solo criterio: spendere il meno possibile lasciando invariato il progetto, cioè otto porte 2,5 GbE gestite con VLAN, alimentazione PoE per due AP e uplink verso il firewall.
+
+Alternative considerate, con i prezzi raccolti l'8/10/2026 (S59-S63), indicativi e non preventivi. XMG1915-10E senza PoE con due iniettori 2,5 GbE: circa 251-307 euro più 2 x 28-31 euro, quindi circa 310-370 euro, con due alimentatori in più. TP-Link SG2210XMP-M2: circa 303-353 euro. Switch di marca generica 8 x 2,5 GbE PoE+ gestito, tipo Sodola: circa 170-200 euro, cioè l'unico risparmio reale, scartato perché firmware e aggiornamenti hanno provenienza poco documentata su un apparato che trasporta tutte le VLAN di un laboratorio di sicurezza.
+
+Decisione. Zyxel XMG1915-10EP, da comprare al prezzo più basso disponibile, circa 291 euro alla ricerca dell'8/10/2026.
+
+Conseguenze. Il risparmio sugli acquisti di rete, se serve, si cerca nel modello degli access point, che è ancora aperto.
