@@ -38,7 +38,7 @@ Su Linux, in bash.
 bash tools/raccolta-dispositivo.sh PC-02
 ```
 
-Lo script Windows legge il sistema, il produttore, il modello e la scheda madre, il processore, la memoria, le schede di rete fisiche con le velocità ammesse dal driver e, con `netsh`, il driver Wi-Fi e la connessione corrente. Lo script Linux legge `/etc/os-release`, i dati DMI esposti senza privilegi, `ip`, e se installati `ethtool` e `iw`. Nessuno dei due raccoglie numeri di serie, product ID, chiavi di licenza, utenti o programmi installati. Lo script Windows è stato provato l'8/10/2026 su un PC del progetto; quello Linux è verificato soltanto nella sintassi, e la prima corsa vera su una macchina Linux va controllata a campione.
+Lo script Windows legge il sistema, il produttore, il modello e la scheda madre, il processore, la memoria, le schede di rete fisiche con le velocità ammesse dal driver e, con `netsh`, il driver Wi-Fi e la connessione corrente. Lo script Linux legge `/etc/os-release`, i dati DMI esposti senza privilegi, `ip`, e se installati `ethtool` e `iw`. Nessuno dei due raccoglie numeri di serie, product ID, chiavi di licenza, utenti o programmi installati. Lo script Windows è stato provato l'8/10/2026 su un PC di sviluppo che non appartiene alla rete domestica, e la sua raccolta di prova è stata eliminata; quello Linux è verificato soltanto nella sintassi, e la prima corsa vera su una macchina Linux va controllata a campione.
 
 Dal JSON la scheda pubblica si ricava con uno strumento deterministico, che compila ciò che la raccolta sa e lascia "da compilare" il resto. Non scrive mai nome macchina, indirizzi MAC, SSID o versioni dei driver, e la sua prova interna lo verifica su una raccolta costruita.
 

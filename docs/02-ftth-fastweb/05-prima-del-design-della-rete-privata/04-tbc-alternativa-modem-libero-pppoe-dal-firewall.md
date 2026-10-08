@@ -20,3 +20,7 @@ La questione centrale allora è capire, nel momento in cui si ha un modem libero
 
 ![](assets/img-0008.png)
 
+
+Nel progetto questa strada non è percorsa. L'assistenza ha escluso per la linea il firewall collegato direttamente all'ONT con il modem fornito, e la procedura del modem libero, che la renderebbe possibile, richiede tre cose che oggi non ci sono: il protocollo di accesso e l'eventuale VLAN della WAN, cercati nella cartella sui [parametri di accesso WAN](../07-tbc-new-i-parametri-di-accesso-wan-su-ont/README.md); le credenziali della fonia, discusse nella [pagina sul VoIP](03-tbc-questione-fonia-voip.md); e la disponibilità ad attivare la procedura con l'operatore. La topologia adottata è quindi la cascata dietro il Seven, con il doppio NAT spiegato nel [documento didattico](../../03-spunti-di-sviluppo/23-studio-home-lab/07-doppio-nat-dietro-modem-in-comodato.md).
+
+Anche lo scenario descritto qui per il Seven, cioè modem sullo switch come semplice bridge e access point senza DHCP né NAT, è superato per un'altra ragione: il wireless della casa lo daranno due access point Zyxel dentro il perimetro (ADR-017, ADR-018), non la radio del Seven. Le cinque immagini della pagina sono riportate senza descrizione nella prima stesura; vanno lette e trascritte, già anonimizzate, quando si riprende questa alternativa.

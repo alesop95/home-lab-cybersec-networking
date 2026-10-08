@@ -67,11 +67,13 @@ Sotto `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, che è marca
 
 Dal 07/10/2026 il censimento ha un obiettivo in più, chiesto dall'utente: per ogni client dire se sarà cablato o resterà in Wi-Fi, e su quale porta o SSID finirà. Si fa per categoria e con i segnaposto nei file tracciati. È anche la misura che dirà se le otto porte dello switch bastano.
 
-Dall'8/10/2026 il metodo è deciso (ADR-021) ed è descritto in `05-analisi-del-caso/02-scheda-dispositivo.md`, con gli strumenti di raccolta. Restano da fare le raccolte, PC per PC, e due verifiche: la prima corsa vera dello script Linux, controllata a campione, e l'ID del PC su cui è stato provato lo script Windows, che il censimento non elenca.
+Dall'8/10/2026 il metodo è deciso (ADR-021) ed è descritto in `05-analisi-del-caso/02-scheda-dispositivo.md`, con gli strumenti di raccolta. Restano da fare le raccolte, PC per PC, e la prima corsa vera dello script Linux, controllata a campione. Il PC su cui è stato provato lo script Windows è una macchina di sviluppo esterna alla rete domestica, quindi non entra nel censimento.
 
 Il censimento è meno accessorio di quanto sembri: è la fonte che dice quale endpoint può realmente saturare una porta a 2,5 Gbps e quale no, e senza di esso il dimensionamento dello switch e la scelta di dove portare le porte veloci restano decisioni prese a intuito.
 
 ## Rilevazioni del Seven da ripetere
+
+Dall'8/10/2026 si aggiungono due verifiche emerse dalla riscrittura di `02-ftth-fastweb/05-prima-del-design-della-rete-privata/`: se il firewall del Seven permette di non rispondere al ping sulla WAN, che alla data del test rispondeva; e la trascrizione, già anonimizzata, delle cinque immagini della pagina sul modem libero, oggi senza descrizione.
 
 Dal 07/10/2026, con la lettura tecnica che dall'8/10/2026 sta dentro le pagine di `02-ftth-fastweb/06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/`. Le schermate dello stato WAN sono state catturate con la GPON giù e la connessione mobile su, quindi vanno rifatte con la fibra attiva, verificando che l'indirizzo pubblico statico sia lo stesso sui due collegamenti. Vanno fotografate per la prima volta lo stato LAN, la sezione LAN switch, il Port Triggering, il Filtro MAC, Easy Mesh, l'Analizzatore e la modalità ECO, che nel censimento hanno il solo titolo.
 
