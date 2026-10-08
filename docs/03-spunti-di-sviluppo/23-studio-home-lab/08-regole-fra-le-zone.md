@@ -16,6 +16,7 @@ Gli alias danno un nome a un insieme di indirizzi o di porte, così che una rego
 |---|---|---|---|
 | RETI_INTERNE | reti | 192.168.10.0/24, 192.168.20.0/24, 192.168.30.0/24, 192.168.40.0/24, 192.168.50.0/24, 192.168.60.0/24, 192.168.99.0/24, rete WireGuard | il blocco generico verso il resto della casa |
 | NAS | host | 192.168.30.10, proposta | destinazione dei servizi di condivisione |
+| GESTIONE | host | 192.168.99.1 del firewall, indirizzi di switch e AP, 192.168.99.10 del NAS, proposte | dove ascoltano le interfacce di amministrazione, tutte nella VLAN 99 |
 | HOST_SERVIZI | host | 192.168.30.20, proposta; macchina da individuare | DNS filtrante e monitoraggio, quando esisterà |
 | ADMIN | host | workstation della VLAN 10 con prenotazione DHCP, più la rete WireGuard | chi può amministrare |
 | WG_RETE | rete | 192.168.98.0/24, proposta | indirizzi dei peer WireGuard |
@@ -33,9 +34,11 @@ In tutte le tabelle "Firewall" è l'alias predefinito di OPNsense per gli indiri
 
 | # | Azione | Protocollo | Origine | Destinazione | Porte | Motivo |
 |---|---|---|---|---|---|---|
-| 1 | consenti | UDP | qualsiasi | Firewall | porta WireGuard scelta | unico servizio raggiungibile da fuori, inoltrato dal Seven |
+| 1 | consenti | UDP | qualsiasi | indirizzo WAN | porta WireGuard scelta | unico servizio raggiungibile da fuori, inoltrato dal Seven |
 
-Tutto il resto entra nel blocco predefinito. Sulla WAN va tolta l'opzione che blocca le reti private, perché la WAN sta nella rete privata del Seven e il gateway stesso ha un indirizzo privato; resta attiva quella che blocca le reti mai assegnate. L'interfaccia di gestione non ascolta sulla WAN.
+Tutto il resto entra nel blocco predefinito, e l'interfaccia di gestione non ascolta sulla WAN.
+
+Le due opzioni di blocco della WAN restano attive, e sul punto la prima stesura di questo documento sbagliava. L'opzione *Block private networks* scarta il traffico che arriva sulla WAN dichiarando come sorgente un indirizzo privato, e la documentazione di OPNsense dice che sulla WAN quel traffico non dovrebbe esistere legittimamente (S78). La prima stesura ne chiedeva la disattivazione perché la WAN sta nella rete privata del Seven, ma l'opzione guarda la sorgente di chi apre la connessione, non l'indirizzo della WAN. Il traffico di risposta, cioè il Seven che risponde al firewall come gateway, al DHCP o al controllo del collegamento, appartiene a connessioni aperte dal firewall, ed è consentito dagli stati o, per il DHCP, dalle regole di sistema che OPNsense crea per il client DHCP della WAN. L'unico traffico in ingresso voluto è WireGuard, che arriva con l'indirizzo pubblico del dispositivo remoto, perché l'inoltro del Seven riscrive la destinazione e non la sorgente. L'opzione blocca invece ciò che non deve passare: un dispositivo della rete del Seven, la PS5 o un client della sua Wi-Fi, che provasse ad aprire una connessione verso il firewall. Si disattiverebbe solo se il Seven riscrivesse anche la sorgente del traffico inoltrato, cosa che si verifica al primo collaudo del tunnel guardando nel registro con quale sorgente arriva. *Block bogon networks* scarta le sorgenti mai assegnate o riservate, e resta attiva anch'essa.
 
 ### VLAN 10, client fidati
 
@@ -43,7 +46,7 @@ Tutto il resto entra nel blocco predefinito. Sulla WAN va tolta l'opzione che bl
 |---|---|---|---|---|---|---|
 | 1 | consenti | TCP/UDP | VLAN 10 | Firewall | PORTE_BASE | DNS e ora dal firewall |
 | 2 | consenti | TCP | VLAN 10 | NAS | PORTE_CONDIVISIONE | file e applicazioni del NAS |
-| 3 | consenti | TCP | ADMIN | Firewall, VLAN 99, NAS | PORTE_GESTIONE | amministrazione solo dalla workstation designata |
+| 3 | consenti | TCP | ADMIN | GESTIONE | PORTE_GESTIONE | amministrazione solo dalla workstation designata, verso gli indirizzi della VLAN 99; il dettaglio è in [Accesso amministrativo](09-accesso-amministrativo.md) |
 | 4 | blocca, con registro | qualsiasi | VLAN 10 | RETI_INTERNE | qualsiasi | il resto della casa |
 | 5 | blocca, con registro | qualsiasi | VLAN 10 | Firewall | qualsiasi | altre porte del firewall |
 | 6 | consenti | qualsiasi | VLAN 10 | qualsiasi | qualsiasi | Internet |
@@ -88,7 +91,20 @@ Sugli AP l'SSID OSPITI ha l'isolamento dei client attivo, perché due ospiti nel
 | 2 | blocca, con registro | qualsiasi | VLAN 60 | RETI_INTERNE | qualsiasi | il laboratorio non tocca la casa |
 | 3 | blocca, con registro | qualsiasi | VLAN 60 | qualsiasi | qualsiasi | nessuna uscita predefinita |
 
-L'uscita verso Internet si apre con una regola esplicita, sopra la 3, per il tempo e le destinazioni di un esperimento, e si richiude dopo: macchine bersaglio vulnerabili per costruzione non escono da sole.
+L'uscita verso Internet si apre con una regola esplicita, sopra la 3, per il tempo e le destinazioni di un esperimento, e si richiude dopo: macchine bersaglio vulnerabili per costruzione non escono da sole. Il progetto delle aperture è nella sezione che segue.
+
+### Le aperture temporanee del laboratorio
+
+Il laboratorio non ha uscita verso Internet, perché ospita macchine vulnerabili per costruzione e prove di intrusione: un bersaglio compromesso che potesse uscire diventerebbe un punto di partenza verso l'esterno o verso servizi di controllo remoto. Molti esperimenti però hanno bisogno di Internet per un tempo breve, per installare pacchetti, scaricare un'immagine o aggiornare un sistema. Il progetto prevede due aperture, preparate in anticipo, disattivate, ciascuna con il proprio limite.
+
+| Apertura | Alias usati | Regola, sopra la 3 della VLAN 60 | Quando serve |
+|---|---|---|---|
+| A, aggiornamenti | `LAB_USCITA`: le macchine del laboratorio autorizzate; `LAB_REPOSITORY`: nomi di dominio dei repository, per esempio quelli di Debian, Ubuntu, Kali e del sistema dei contenitori | consenti TCP 80 e 443 da `LAB_USCITA` verso `LAB_REPOSITORY`, con registro | installare e aggiornare software, il caso più frequente |
+| B, uscita libera | `LAB_USCITA` | consenti qualsiasi da `LAB_USCITA` verso qualsiasi destinazione, sotto la regola che blocca `RETI_INTERNE`, con registro | un esperimento che deve parlare con un servizio esterno preciso; mai con campioni di malware |
+
+Le due regole esistono sempre e sono disattivate: OPNsense permette di disattivare una regola senza cancellarla proprio per le politiche usate di rado (S81). Per aprirne una le si associa una pianificazione oraria e la si attiva. Alla scadenza della pianificazione la regola smette di valere e OPNsense rimuove gli stati delle connessioni che aveva permesso (S81), quindi anche un download in corso si interrompe: è il comportamento voluto, perché un'apertura dimenticata si chiude da sola. Un alias di tipo host può contenere nomi di dominio, che il firewall risolve e aggiorna, ed è il modo di indicare i repository senza elencarne gli indirizzi; il comportamento esatto della risoluzione si verifica sulla versione installata.
+
+Ogni apertura si annota nel registro del progetto con data, macchine, regola, durata e scopo, e dopo la chiusura si controlla nel registro del firewall che il traffico sia cessato. Le macchine che analizzeranno campioni sospetti, previste dalla fase 6 della roadmap, non stanno nella VLAN 60 ma in una zona isolata a parte, ancora da progettare, e non hanno aperture.
 
 ### VLAN 99, gestione
 
@@ -115,7 +131,7 @@ La DMZ resta vuota finché non nasce un servizio pubblico. Quel giorno servono d
 | # | Azione | Protocollo | Origine | Destinazione | Porte | Motivo |
 |---|---|---|---|---|---|---|
 | 1 | consenti | TCP/UDP | WG_RETE | Firewall | PORTE_BASE | DNS attraverso il tunnel |
-| 2 | consenti | TCP | WG_RETE | Firewall, VLAN 99, NAS | PORTE_GESTIONE | amministrazione da fuori |
+| 2 | consenti | TCP | WG_RETE | GESTIONE | PORTE_GESTIONE | amministrazione da fuori |
 | 3 | consenti | TCP | WG_RETE | NAS | PORTE_CONDIVISIONE | file da fuori |
 | 4 | blocca, con registro | qualsiasi | WG_RETE | qualsiasi | qualsiasi | nient'altro, compresa l'uscita verso Internet |
 

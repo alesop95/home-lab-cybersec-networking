@@ -298,3 +298,19 @@ Alternative considerate, con i prezzi raccolti il 22/09 e l'8/10/2026 (S24, S25,
 Decisione. Due Zyxel NWA130BE, da comprare al prezzo più basso disponibile: 188,62 euro il 22/09 e 213,99 euro l'8/10/2026 presso un rivenditore italiano, cioè circa 380-430 euro in tutto.
 
 Conseguenze. Spesa di rete indicativa con lo switch (ADR-023): circa 670-720 euro, esclusi cavi e posa, già fatta. L'assorbimento di targa dei due AP è 48 W, dentro i 130 W dello switch. Lo stesso costruttore per switch e AP permette la gestione unificata Nebula, che resta facoltativa. Il prezzo del NWA130BE oscilla di decine di euro fra settimane: conviene controllarlo al momento dell'ordine.
+
+## ADR-025, amministrazione solo da tre ingressi, verso indirizzi della VLAN 99
+
+Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
+
+Decisione. Firewall, switch, access point e NAS si amministrano soltanto dalla workstation designata della VLAN 10 (alias ADMIN), dalla porta di recupero della VLAN 99 e dal tunnel WireGuard, la cui rete è `192.168.98.0/24`. Le interfacce di amministrazione ascoltano solo su indirizzi della VLAN 99; il NAS ha a questo scopo un secondo indirizzo nella VLAN 99. Si aggiungono utente amministratore personale, TOTP sull'interfaccia web del firewall, SSH solo con chiavi, HSTS, credenziali di fabbrica cambiate, registro dei blocchi. Il dettaglio, con l'ordine di attivazione per non chiudersi fuori e il collaudo, è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/09-accesso-amministrativo.md`.
+
+Conseguenze. Il punto debole dichiarato è l'identità della workstation, riconosciuta dall'indirizzo: è coperta dalla seconda barriera e, se servisse, da 802.1X sulla porta dello switch. Il laboratorio non ha uscita predefinita verso Internet e si apre con due regole preparate e disattivate, attivate a tempo con una pianificazione, come descritto in `08-regole-fra-le-zone.md`; anche questo è approvato dall'utente.
+
+## ADR-026, il NAS resta su TrueNAS SCALE
+
+Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. L'utente ha chiesto di valutare OpenMediaVault. La valutazione, in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/08-valutazione-openmediavault.md`, ha mostrato che OpenMediaVault porta ZFS solo con un plugin legato al kernel e non prevede l'avvio in specchio dall'installatore.
+
+Decisione. Resta TrueNAS SCALE, con l'avvio in specchio sui due SSD SATA e il pool ZFS in specchio sui due NVMe (ADR-015). L'analisi dell'hardware vecchio continua con le foto dell'interno di altri due PC, per riallocare le risorse se serve.

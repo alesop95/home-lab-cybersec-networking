@@ -75,10 +75,6 @@ Il censimento è meno accessorio di quanto sembri: è la fonte che dice quale en
 
 Dall'8/10/2026: l'utente può fotografare l'interno di altri due PC, per completare il censimento dell'hardware vecchio e riallocarne le risorse se serve, come è stato fatto per i quattro desktop del NAS. Quali due PC non è ancora detto. Le foto si copiano nel materiale privato e si leggono senza trascrivere numeri di serie nei file tracciati.
 
-## Scelta del sistema del NAS
-
-Dall'8/10/2026: l'utente valuta OpenMediaVault al posto di TrueNAS SCALE. Il confronto è in `03-spunti-di-sviluppo/02-storage-di-rete-nas/08-valutazione-openmediavault.md`; finché l'utente non decide resta valido TrueNAS SCALE (ADR-015).
-
 ## Preventivo per switch e access point
 
 Dall'8/10/2026: l'utente invia al proprio fornitore la richiesta di preventivo per uno XMG1915-10EP e due NWA130BE (ADR-023, ADR-024). Il sorgente è privato in `_notes/preventivo/`. Quando arriva la risposta si confronta con i prezzi di mercato registrati (S59, S68) e, se il fornitore propone alternative, si verificano sui requisiti della richiesta prima di accettarle.

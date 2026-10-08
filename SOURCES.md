@@ -110,6 +110,12 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S75 | https://dannyda.com/2026/05/18/how-to-fix-openmediavault-omv-debian-kernel-7-0-4-issue-with-zfs/ | blog di terzi, riassunto dalla ricerca dell'8/10/2026 | maggio 2026: l'aggiornamento al kernel Debian 7.0.4 rompe la compilazione automatica dei moduli ZFS su OpenMediaVault con il plugin |
 | S76 | https://www.it-connect.fr/raid-mirroring-sous-openmediavault%ef%bb%bf/ | guida di terzi, riassunta dalla ricerca dell'8/10/2026 | OpenMediaVault gestisce il RAID dei dischi dati con mdadm dall'interfaccia; l'installazione del sistema su un RAID1 non è prevista in modo ordinario |
 | S77 | https://en.wikipedia.org/wiki/OpenMediaVault | enciclopedia, riassunta dalla ricerca dell'8/10/2026 | ultima versione OpenMediaVault 8.0.8 del 25/01/2026 |
+| S78 | https://docs.opnsense.org/manual/interfaces.html | produttore, letta l'8/10/2026 | opzioni Block private networks e Block bogon networks: bloccano il traffico con sorgente privata o non assegnata; sulla WAN il traffico da sorgenti private non dovrebbe esistere legittimamente; nessuna indicazione esplicita su quando disattivarle |
+| S79 | https://docs.opnsense.org/manual/settingsmenu.html | produttore, letta l'8/10/2026 | Listen Interfaces dell'interfaccia web e di SSH, HSTS, Permit Root Login e Permit password login di SSH con le chiavi autorizzate, timeout delle sessioni; accesso root sconsigliato |
+| S80 | https://docs.opnsense.org/manual/two_factor.html | produttore, letta l'8/10/2026 | TOTP secondo RFC 6238 con server di autenticazione; copre l'interfaccia web e l'intero sistema tranne console e SSH |
+| S81 | https://docs.opnsense.org/manual/firewall.html | produttore, letta l'8/10/2026 | regole quick valutate alla prima corrispondenza, ordine floating, gruppi, interfacce; pianificazioni orarie, alla cui scadenza gli stati vengono rimossi; disattivazione di una regola senza cancellarla; registro per regola. Non tratta la regola anti-lockout |
+| S82 | https://docs.opnsense.org/manual/how-tos/wireguard-client.html | produttore, letta l'8/10/2026 | accesso road warrior con WireGuard: istanza con porta e indirizzo del tunnel, peer con chiave pubblica e indirizzo /32, regola WAN verso l'indirizzo WAN, regola sull'interfaccia del tunnel, tunnel parziale lato client |
+| S83 | https://docs.opnsense.org/manual/firewall_scheduling.html | produttore, tentata l'8/10/2026 | pagina non trovata, errore 404: le pianificazioni sono descritte in S81 |
 
 ## Materiali locali che non devono sparire dal quadro
 
