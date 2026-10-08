@@ -97,6 +97,12 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S62 | https://bechtle.com/it/shop/tp-link-omada-sg2210xmp-m2-smart-switch--4854272--p | commerciale, riassunto dalla ricerca dell'8/10/2026 | TP-Link SG2210XMP-M2, 8 x 2,5 GbE PoE+ con 160 W e 2 SFP+, fra 303 e 353 euro IVA inclusa |
 | S63 | https://www.servethehome.com/sodola-8-port-2-5gbe-and-1-port-10gbe-switch-review/2/ | recensione di terzi, riassunta dalla ricerca dell'8/10/2026, non aperta | switch Sodola 8 x 2,5 GbE con 10G, gestione web con VLAN; varianti PoE intorno a 170-190 dollari; firmware e aggiornamenti da valutare |
 | S64 | https://www.pccomponentes.it/access-point-zyxel-nwa90be-pro-wi-fi-7-tri-band-2-5gbe-mimo-poe-bianco | commerciale, riassunto dalla ricerca dell'8/10/2026 | NWA90BE Pro fra circa 129 e 195 euro, 135,66 euro presso un rivenditore italiano |
+| S65 | https://www.fastweb.it/myfastweb/seven-booster/?from=fastweb-casa | produttore, letta l'8/10/2026 | pagina del Seven Booster: caratteristiche, compatibilità e app; non contiene costi, comodato, disattivazione né restituzione |
+| S66 | https://www.fastweb.it/adsl-fibra-ottica/trasparenza-tariffaria/ | operatore, letta in parte l'8/10/2026 | elenco dei prospetti informativi in PDF delle offerte; nei primi 100.000 caratteri su oltre 560.000 nessuna informazione sul Booster; i prospetti PDF dell'offerta dell'utente restano da leggere |
+| S67 | https://www.fastweb.it/myfastweb/assistenza/guide/booster-seven/ | operatore, letta l'8/10/2026 | guida all'installazione del Booster Seven, LED, app ed Eco Mode; non contiene costi, comodato né restituzione |
+| S68 | https://www.yeppon.it/products/zyxel-nwa130be-eu0101f-punto-1237865 | commerciale, riassunta dalla ricerca dell'8/10/2026 | NWA130BE a 213,99 euro, prezzo consigliato 295 euro; il 22/09 un comparatore dava 188,62 euro (S25) |
+| S69 | https://shop.ascend.de/en/products/ubiquiti-unifi-7-pro-access-point-u7-pro | commerciale, riassunta dalla ricerca dell'8/10/2026 | Ubiquiti U7 Pro a 180,60 euro IVA esclusa; tre bande, 2,5 GbE, PoE+; richiede il controller UniFi |
+| S70 | https://m.cdw.com/product/tp-link-omada-eap772-tri-band-wi-fi-7-ieee-802.11-a-b-g-n-ac-ax-be-10.40-gb/8255259 | commerciale, riassunta dalla ricerca dell'8/10/2026 | TP-Link EAP772, tre bande Wi-Fi 7, 2,5 GbE, 802.3at, RADIUS; 169,99 dollari negli Stati Uniti, prezzo italiano non trovato; SNMP in modalità autonoma non verificato |
 
 ## Materiali locali che non devono sparire dal quadro
 

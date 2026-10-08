@@ -61,7 +61,7 @@ Nessuno di questi componenti è in esercizio, tranne dove indicato. La colonna d
 | Firewall e router interno | OPNsense 25.7 su x86 dedicato | sistema installato il 16/01/2026, non configurato |
 | Hardware del firewall | i3 di settima generazione, 8 GB RAM, SSD SATA 120 GB, NIC integrata 1 GbE più due TP-Link TX201 a 2,5 Gbps su chipset Realtek RTL8125B | assemblato |
 | Switch | Zyxel XMG1915-10EP, managed, 8 porte 2,5 GbE PoE++ con budget di 130 W più 2 SFP+ a 10 Gbps (ADR-017) | deciso il 07/10/2026, non acquistato |
-| Access point | due AP Zyxel Wi-Fi 7, NWA130BE o NWA50BE Pro, cablati e alimentati dallo switch al terzo e al secondo piano, con roaming fra i due (ADR-018) | numero e collocazione decisi, cavi posati, modello da scegliere |
+| Access point | due AP Zyxel NWA130BE Wi-Fi 7, tre bande, 802.1X/RADIUS e SNMP, cablati e alimentati dallo switch al terzo e al secondo piano, con roaming fra i due (ADR-018, ADR-024) | decisi, cavi posati, non acquistati |
 | Console di gioco | PS5 su una porta LAN da 1 GbE del modem, fuori dal perimetro, con un NAT solo (ADR-018) | collocazione decisa |
 | Virtualizzazione | Proxmox VE, edizione gratuita | pianificato |
 | Gestione endpoint | MeshCentral self-hosted, in container | pianificato |

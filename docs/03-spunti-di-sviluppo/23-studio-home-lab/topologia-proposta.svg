@@ -147,7 +147,7 @@
   <text x="72" y="945">SSID IOT → VLAN 40</text>
   <text x="72" y="964">SSID OSPITI → 50</text>
   <text x="72" y="984" class="m">gestione in VLAN 99</text>
-  <text x="72" y="1001" class="m">modello da scegliere</text>
+  <text x="72" y="1001" class="m">NWA130BE (ADR-024)</text>
 
   <rect x="240" y="864" width="170" height="150" rx="8" class="plan"/>
   <text x="252" y="887" class="n">AP 2 · piano 2</text>

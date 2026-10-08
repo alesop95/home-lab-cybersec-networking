@@ -286,3 +286,15 @@ Alternative considerate, con i prezzi raccolti l'8/10/2026 (S59-S63), indicativi
 Decisione. Zyxel XMG1915-10EP, da comprare al prezzo più basso disponibile, circa 291 euro alla ricerca dell'8/10/2026.
 
 Conseguenze. Il risparmio sugli acquisti di rete, se serve, si cerca nel modello degli access point, che è ancora aperto.
+
+## ADR-024, due NWA130BE: la soluzione più completa al costo minore
+
+Data: 08/10/2026. Stato: accettata. Criterio dell'utente, scelta conseguente.
+
+Contesto. Il modello degli AP era aperto fra NWA50BE Pro, NWA90BE Pro, NWA130BE e una combinazione. L'utente ha dato il criterio: la soluzione più completa possibile al costo minore. Completa, per questo progetto, significa tre bande in contemporanea, autenticazione 802.1X/RADIUS e SNMP su entrambi gli AP, perché una rete aziendale di prova che esistesse su un solo piano non avrebbe roaming e non sarebbe completa.
+
+Alternative considerate, con i prezzi raccolti il 22/09 e l'8/10/2026 (S24, S25, S64, S68-S70), indicativi. Due NWA50BE Pro, circa 205 euro: non hanno 802.1X né SNMP, e trasmettono su 2,4 GHz più una sola fra 5 e 6 GHz. Due NWA90BE Pro, circa 270-390 euro: 802.1X sì, SNMP no, due radio. Un NWA130BE e un NWA50BE Pro, circa 300 euro: completo su un piano solo. Ubiquiti U7 Pro, circa 220 euro IVA inclusa: richiede il controller UniFi, la stessa dipendenza per cui lo switch Ubiquiti era stato escluso. TP-Link EAP772: prezzo italiano non trovato e SNMP in modalità autonoma non verificato.
+
+Decisione. Due Zyxel NWA130BE, da comprare al prezzo più basso disponibile: 188,62 euro il 22/09 e 213,99 euro l'8/10/2026 presso un rivenditore italiano, cioè circa 380-430 euro in tutto.
+
+Conseguenze. Spesa di rete indicativa con lo switch (ADR-023): circa 670-720 euro, esclusi cavi e posa, già fatta. L'assorbimento di targa dei due AP è 48 W, dentro i 130 W dello switch. Lo stesso costruttore per switch e AP permette la gestione unificata Nebula, che resta facoltativa. Il prezzo del NWA130BE oscilla di decine di euro fra settimane: conviene controllarlo al momento dell'ordine.

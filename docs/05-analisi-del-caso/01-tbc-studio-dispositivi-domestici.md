@@ -17,8 +17,8 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | NET-03 | Seven Booster dell'operatore, con canone mensile del servizio di estensione del segnale | presente, confermato dall'utente l'8/10/2026 | non entra nel progetto: la copertura la danno due AP dentro il perimetro (ADR-017); dopo il collaudo degli AP si disattiva il servizio e si chiarisce con l'operatore se il Booster va restituito, secondo le pendenze |
 | NET-04 | firewall i3 settima generazione, 8 GB, SSD 120 GB; 1 GbE + due TX201 2,5 GbE | verbale 16/01/2026; coincide con PC fisso 5 | OPNsense; rilevare corrispondenza NIC-porta, versione corrente, consumi e throughput |
 | NET-05 | switch Zyxel XMG1915-10EP | deciso il 07/10/2026 (ADR-017), da acquistare | piano più alto; trunk verso il firewall, PoE verso i due AP; budget delle porte dal censimento |
-| NET-06 | AP 1 Zyxel, modello da scegliere | deciso (ADR-017, ADR-018), da acquistare | terzo piano, cavo posato, PoE dallo switch; trunk con gli SSID CASA, IOT e OSPITI |
-| NET-07 | AP 2 Zyxel, modello da scegliere | deciso (ADR-017, ADR-018), da acquistare | secondo piano, cavo posato; come AP 1; misurare la copertura del piano terra |
+| NET-06 | AP 1 Zyxel NWA130BE | deciso (ADR-017, ADR-018, ADR-024), da acquistare | terzo piano, cavo posato, PoE dallo switch; trunk con gli SSID CASA, IOT e OSPITI |
+| NET-07 | AP 2 Zyxel NWA130BE | deciso (ADR-017, ADR-018, ADR-024), da acquistare | secondo piano, cavo posato; come AP 1; misurare la copertura del piano terra |
 | NET-08 | AP 3 Zyxel | non previsto dal 07/10/2026 (ADR-017) | torna in discussione solo se la misura del piano terra lo giustifica |
 | STO-01 | NAS da quattro desktop dismessi | assemblaggio nell'altra sessione | VLAN 30, a orario; ricevere configurazione e collaudo finali, non ricensire donatori |
 | SRV-01 | host servizi sempre acceso | ruolo non assegnato, nessun acquisto deciso | VLAN 30; individuare hardware, RAM, dischi, watt e disponibilità |
