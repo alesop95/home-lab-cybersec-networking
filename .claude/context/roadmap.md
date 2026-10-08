@@ -4,7 +4,7 @@ generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - docs/**
-last-verified-commit: 0dbed60
+last-verified-commit: 1256ba7
 ---
 
 # Roadmap
@@ -51,6 +51,8 @@ Lo storage di rete è l'eccezione all'ordine, per una ragione materiale: il suo 
 
 ## Fase 5: monitoraggio
 
+Dall'8/10/2026 il percorso è deciso (ADR-028): Wazuh su una macchina virtuale del server Proxmox, Suricata integrato in OPNsense prima in sola rilevazione, il plugin `os-wazuh-agent` del firewall e il syslog degli apparati, nell'ordine di messa in opera di `docs/03-spunti-di-sviluppo/23-studio-home-lab/11-monitoraggio-wazuh-suricata.md`. Il server Proxmox che lo ospita, proposto su `linux-desktop-A`, appartiene alla fase 4 insieme ad AdGuard Home.
+
 Dipende dalla fase 4 perché un SIEM senza sorgenti da correlare non serve a niente. Si parte dal solo componente centrale, che copre da solo SIEM, rilevamento sull'host e integrità dei file, con gli agenti sugli endpoint e i log del firewall via syslog. L'indicizzazione con lo stack completo, la sonda sul traffico e i motori di correlazione si aggiungono solo se e quando il volume lo giustifica.
 
 ## Fase 6: verifica di sicurezza
@@ -62,5 +64,7 @@ Dipende da tutto il resto, perché si verifica ciò che esiste. Scansione delle 
 La macrosezione della documentazione destinata alla rete effettivamente realizzata si riempie man mano che le fasi da 2 a 6 si chiudono. Va scritta a valle di ogni fase e non alla fine di tutto, perché scritta alla fine sarebbe ricostruzione a memoria e non documentazione.
 
 ## Fuori roadmap
+
+Idea dell'utente dell'8/10/2026, da affrontare dopo le fasi della rete: un modello linguistico locale su una macchina dedicata con GPU, collegata alla rete. Si collega allo studio METATRON già presente fra le idee di pentesting, e richiederà una propria valutazione di hardware, consumi e collocazione in una zona.
 
 Sono idee presenti nel documento sorgente che non hanno una collocazione nella sequenza sopra e che si affrontano solo se emerge un bisogno concreto: le telecamere esterne, con il problema irrisolto dell'alimentazione fuori dal portone; il rack; la telefonia su apparato proprio, che dipende dalla disponibilità delle credenziali della fonia; e la posta self-hosted, che è il servizio con il rapporto peggiore fra manutenzione richiesta e beneficio in un contesto domestico.

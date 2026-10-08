@@ -35,3 +35,9 @@ L’interfaccia web di OPNsense è tecnicamente più completa, con configurazion
 ## Stabilità e logging
 
 Entrambi i sistemi sono stabili; tuttavia, PF su FreeBSD è storicamente più prevedibile in scenari con molte connessioni simultanee e regole complesse. Il logging e la gestione degli eventi su OPNsense sono più estesi e facilitano l’analisi post-evento.
+
+## Aggiornamento dell'8/10/2026
+
+Due fonti nuove toccano questo confronto. IPFire 2.29 Core Update 198 è passato a Suricata 8, con notifiche dell'IPS via posta in tempo reale (S97), quindi il motore di rilevamento dei due sistemi è oggi lo stesso: OPNsense usa Suricata come motore integrato, e il progetto lo ha adottato con ADR-028. E un talk del 03/10/2026, di cui l'utente ha fornito l'abstract senza che la pagina dell'evento sia stata trovata (S96), presenta IPFire con IPS su Suricata e con un plugin per Tor, che permette al firewall di fare da nodo di ingresso o da bridge della rete Tor.
+
+Per il progetto la scelta di OPNsense non cambia: era motivata dalla prevedibilità del filtro sotto carico, dal logging e dall'integrazione dei servizi, ed è già installata. Il plugin Tor merita una nota a parte, che è una valutazione di progetto e non una lettura del talk: far girare un nodo Tor sul firewall di casa significa associare l'indirizzo pubblico statico della linea al traffico di terzi e, nel caso di un nodo pubblico, a un elenco consultabile; per una rete il cui scopo è proteggere la casa è una superficie in più, non una protezione. Se interessasse il contributo alla rete Tor, il posto coerente sarebbe una macchina dedicata in DMZ, valutata come progetto a sé.

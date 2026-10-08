@@ -128,6 +128,8 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S93 | https://docs.opnsense.org/manual/wazuh-agent.html | produttore, letta l'8/10/2026 | plugin os-wazuh-agent: installazione, server e password, applicazioni syslog da inviare, eventi di intrusion detection dal flusso EVE, azione di risposta opnsense-fw; supporto comunitario molto limitato, tier 3 |
 | S94 | https://documentation.wazuh.com/4.14/proof-of-concept-guide/integrate-network-ids-suricata.html | produttore, riassunta dalla ricerca dell'8/10/2026 | integrazione di Suricata con l'agente Wazuh che legge eve.json in formato JSON; regole Suricata già presenti nel server |
 | S95 | https://documentation.wazuh.com/current/user-manual/capabilities/log-data-collection/syslog.html | produttore, letta l'8/10/2026 | blocco remote di ossec.conf per il syslog: connessione, porta 514, protocollo, allowed-ips obbligatorio, local_ip |
+| S96 | estratto del talk "Linux-IpFire hardening lan with suricata/IPS", 03/10/2026, stage 2 "Ghost in the Shellcode", in italiano | testo dell'abstract fornito dall'utente l'8/10/2026; pagina dell'evento non trovata con la ricerca, talk non visto | IPFire come firewall per casa e piccole aziende, IPS con Suricata, plugin Tor per usare il firewall come nodo di ingresso o bridge, sensibilizzazione a VPN e protezione DNS; progetto senza versione commerciale |
+| S97 | https://linuxiac.com/ipfire-2-29-released-with-suricata-8-and-real-time-ips-email-reporting/ | notizia di terzi, riassunta dalla ricerca dell'8/10/2026 | IPFire 2.29 Core Update 198 con Suricata 8 e notifiche IPS via posta in tempo reale |
 
 ## Materiali locali che non devono sparire dal quadro
 

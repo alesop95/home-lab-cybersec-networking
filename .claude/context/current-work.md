@@ -5,7 +5,7 @@ generated-date: 2026-10-07
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: 0dbed60
+last-verified-commit: 1256ba7
 ---
 
 # Lavoro corrente
@@ -57,5 +57,7 @@ Decise: catena ONT, Seven, OPNsense, switch, AP; switch XMG1915-10EP (ADR-017, A
 Deciso anche, l'8/10/2026: flusso di monitoraggio Wazuh con Suricata in OPNsense (ADR-028); eliminazione dei contenuti sugli strumenti scartati (ADR-027).
 
 Proposte che aspettano l'utente: quale macchina diventa il server Proxmox, da decidere confrontando `linux-desktop-A` con le foto dei due PC; i moduli DDR4 di uno di quei due PC portati sul server Proxmox, sacrificando quel PC come scorta, idea dell'utente da verificare sulle foto; l'attribuzione del Tab S6 Lite a TAB-01 o TAB-02; quali due PC fotografare.
+
+Idee future, fuori dalla sequenza: un modello linguistico locale su una macchina dedicata con GPU, idea dell'utente dell'8/10/2026, da valutare dopo le fasi della rete; un eventuale nodo Tor, che se mai si farà va su una macchina dedicata in DMZ e non sul firewall.
 
 Pendenti per un dato o un'azione: preventivo del fornitore per switch e AP; disattivazione del Booster dopo il collaudo degli AP; schermate del Seven a fibra attiva; foto dei due PC; estensioni di virtualizzazione e memoria massima di `linux-desktop-A`; prezzo dell'SSD per Proxmox; raccoglitore di metriche; raccolte sui PC per le schede dispositivo; adattatore PCIe-M.2 per il NAS, fermo al Passo 1.6; riscrittura di `04-concetti-generali` e `03-spunti-di-sviluppo`; zona isolata per l'analisi dei campioni.

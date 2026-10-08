@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 0dbed60, template e09e43b
+Commit di riferimento: 1256ba7, template 04b60ad
 Data snapshot:         2026-10-07
 Remoto:                origin, allineato
 ```
@@ -29,22 +29,22 @@ Il vincolo operativo della linea concreta è che l'assistenza ha escluso il coll
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| `context/STACK.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/design-and-security.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/deployment.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/dev-testing.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/current-work.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/roadmap.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/diagrams/topologia-di-rete.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
-| `context/diagrams/monitoraggio-open-source.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/STACK.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/design-and-security.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/deployment.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/dev-testing.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/current-work.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/roadmap.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/diagrams/topologia-di-rete.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/diagrams/monitoraggio-open-source.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
 
 Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il commit indicato, che è quello in cui la documentazione ha assunto la forma attuale. Da qui in avanti la skill di sincronizzazione le segnalerà come da riverificare appena HEAD si muove, ed è il comportamento voluto: una scheda vale finché qualcuno l'ha confrontata con lo stato reale.
 
 ## Documentazione generata
 
-L'albero `docs/` è scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, eliminato il 07/10/2026 dopo la verifica di ADR-019: `docs/` è l'unica fonte. Consistenza attuale: 146 documenti, tutti raggiungibili dalla home, zero collegamenti rotti. Il conteggio era 132 nello snapshot del 14/09/2026; la differenza sono i documenti dello studio home lab e delle note fonti aggiunti il 22/09 in una sessione parallela, più le tre schede nuove del 22/09, cioè lo studio dei dischi recuperati dal QNAP, la scheda didattica su dischi e SSD per uso continuo e la scheda METATRON.
+L'albero `docs/` è scritto e manutenuto a mano dal 25/08/2026 (ADR-010). Nasce da una conversione del documento Word, eliminato il 07/10/2026 dopo la verifica di ADR-019: `docs/` è l'unica fonte. Consistenza all'8/10/2026: 160 documenti, tutti raggiungibili dalla home, zero collegamenti rotti, misurati con `tools/check-docs-tree.py`. Il conteggio era 132 nello snapshot del 14/09/2026; la differenza sono i documenti dello studio home lab e delle note fonti aggiunti il 22/09 in una sessione parallela, più le tre schede nuove del 22/09, cioè lo studio dei dischi recuperati dal QNAP, la scheda didattica su dischi e SSD per uso continuo e la scheda METATRON.
 
-La completezza dell'ingestione iniziale non è affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, zero mancanti. Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
+La completezza dell'ingestione iniziale non è affidata al conteggio dei titoli: un confronto paragrafo per paragrafo ha ritrovato 1591 paragrafi su 1591, ma con un perimetro di soli paragrafi; il 07/10/2026 una verifica più larga ha trovato e recuperato 53 note a piè di pagina che quel confronto non vedeva (ADR-019). Il metodo e le due insidie che lo rendevano inaffidabile alla prima corsa sono in `progress.md`; i conteggi restano in `docs/_CONVERSION-REPORT.md` come documento storico.
 
 ## Materiale privato, non versionato
 
@@ -112,7 +112,7 @@ Allineamento al template `4f4f9d0`, senza conflitti, e guard-rail riportato al v
 
 Al 07/10/2026, commit `6769dc4` più le scritture di chiusura di questa sessione. Storia bonificata e pubblicata; repository pubblico; progetto allineato al template `c668b85`, con `chiudi` utilizzabile e il guard-rail di anonimizzazione fra i suoi controlli. Le ancore delle schede, che puntavano a commit di prima della riscrittura, sono state riportate sugli equivalenti della storia attuale con la tabella di corrispondenza privata `_notes/bonifica-2026-10-07-commit-map.txt`; gli hash citati in prosa nel work-log prima del 07/10 sono quelli vecchi, e si traducono con la stessa tabella.
 
-Il filo attivo è la progettazione della rete e della topologia, descritto in `.claude/context/current-work.md`. Sono decisi lo switch XMG1915-10EP, confermato ai prezzi dell'8/10/2026 (ADR-017, ADR-023), i due AP NWA130BE ai piani 3 e 2 con i cavi già posati (ADR-018, ADR-024), la PS5 sul Seven, il NAS nella VLAN 30, la rinuncia al FRITZ!Box e quella al Booster, da dismettere dopo il collaudo degli AP. Restano aperti il contratto fra zone in forma di regole e le schermate del Seven da rifare a fibra attiva. In parallelo procede la riscrittura al posto della documentazione dell'autore (ADR-020): fatte `02-ftth-fastweb` e il censimento di `05-analisi-del-caso`, con le schede dispositivo (ADR-021); restano `04-concetti-generali` e `03-spunti-di-sviluppo`. Il guard-rail e gli strumenti del template sono in `tools/` (ADR-022).
+Il filo attivo è la progettazione della rete e dei servizi, descritto in `.claude/context/current-work.md`, che contiene il quadro sempre aggiornato delle decisioni prese, proposte e pendenti. Decisi: switch XMG1915-10EP e due NWA130BE (ADR-017, ADR-023, ADR-024), PS5 sul Seven e niente FRITZ!Box (ADR-018), NAS su TrueNAS SCALE (ADR-026), amministrazione da tre ingressi verso la VLAN 99 (ADR-025), regole fra le zone con aperture a tempo del laboratorio, monitoraggio Wazuh con Suricata in OPNsense (ADR-028). Il piano unificato propone `linux-desktop-A` come server Proxmox; la scelta aspetta le foto di due PC. La riscrittura al posto della documentazione dell'autore (ADR-020) ha completato `02-ftth-fastweb` e il censimento; restano `04-concetti-generali` e `03-spunti-di-sviluppo`, oltre ai documenti di dettaglio di ogni area del piano. Il progetto è allineato al template `04b60ad` con gli strumenti in `tools/` (ADR-022).
 
 Il filo del NAS è in pausa in attesa dell'adattatore da PCIe a M.2. Tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7, e il montaggio non è cominciato; la ripresa è il Passo 1.6 della guida privata. Decisioni del giorno: ADR-014 e ADR-015 sul pool senza dischi meccanici, ADR-016 sull'alimentatore della base.
 

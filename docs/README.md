@@ -15,7 +15,7 @@ Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come è organizz
 - [Fonti e materiali del progetto](fonti-e-materiali.md)
 - [Fonti web consultate, per sessione](fonti-web-consultate.md)
 - [Alternative rispettose della privacy](alternative-privacy-oriented.md)
-- [Segni del testo generato](anti-slop/README.md)
+- [Segni del testo generato](anti-slop/indice.md)
 - [Report della conversione iniziale](_CONVERSION-REPORT.md)
 
 ## Aree

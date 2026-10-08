@@ -8,7 +8,7 @@ covers-paths:
   - docs/04-concetti-generali/**
   - .claude/rules/anonymization.md
   - tools/Test-Anonymization.py
-last-verified-commit: 0dbed60
+last-verified-commit: 1256ba7
 ---
 
 # Paradigmi di progettazione e di sicurezza
@@ -30,6 +30,10 @@ La zona non fidata è la WAN del firewall, che in questa topologia non è Intern
 La zona fidata è la VLAN 10 dei client, con politica permissiva in uscita e chiusa in ingresso. Lo storage sta nella VLAN 30, raggiunta dalla 10 sui soli protocolli di condivisione e amministrata dalla 99 (ADR-018); gli access point hanno la gestione nella 99 e portano gli SSID CASA, IOT e OSPITI sulle VLAN 10, 40 e 50.
 
 La zona esposta è la DMZ, che ospita il servizio raggiungibile da fuori. Il contratto è asimmetrico e va scritto in quest'ordine: dalla WAN verso la DMZ passa solo ciò che è esplicitamente inoltrato, sulle sole porte necessarie; dalla DMZ verso Internet passa il traffico in uscita necessario agli aggiornamenti e alle chiamate verso servizi esterni; dalla DMZ verso la LAN non passa nulla, e questa è la regola che rende la DMZ una DMZ. Se il servizio esposto viene compromesso, l'attaccante resta confinato in quel segmento.
+
+## Amministrazione e monitoraggio
+
+Dall'8/10/2026 l'amministrazione di firewall, switch, AP e NAS passa da tre soli ingressi, la workstation ADMIN, la porta di recupero della VLAN 99 e il tunnel WireGuard, verso interfacce di gestione che ascoltano solo nella VLAN 99, con TOTP e chiavi SSH (ADR-025, `docs/03-spunti-di-sviluppo/23-studio-home-lab/09-accesso-amministrativo.md`). Il monitoraggio è Wazuh su Proxmox con Suricata integrato in OPNsense e il plugin `os-wazuh-agent`, con risposta attiva spenta all'inizio (ADR-028, `11-monitoraggio-wazuh-suricata.md` nella stessa cartella). Le regole per interfaccia sono in `08-regole-fra-le-zone.md`, con le aperture a tempo del laboratorio.
 
 ## Il doppio NAT e cosa comporta davvero
 

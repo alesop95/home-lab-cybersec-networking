@@ -5,7 +5,7 @@ generated-date: 2026-08-25
 covers-paths:
   - tools/**
   - docs/_CONVERSION-REPORT.md
-last-verified-commit: 0dbed60
+last-verified-commit: 1256ba7
 ---
 
 # Verifica e casi limite
@@ -23,6 +23,8 @@ Il terzo è `tools/lint-md-commands.py`, che copre esattamente quel punto cieco,
 Il quarto è `tools/Test-Anonymization.py`, che passa i file tracciati e quelli nuovi non ancora aggiunti alla ricerca di valori reali. È quello che decide se il repository è pubblicabile.
 
 Dall'8/10/2026 a questi quattro si aggiungono i controlli che `chiudi` trova istanziati dal template (ADR-022): riferimenti a file inesistenti, fine riga miste, carico delle istruzioni, schede di contesto superate, i tre correttori tipografici in modalità di verifica e l'allineamento degli adattatori Codex. Tre strumenti misurano senza fermare il commit e vanno letti da una persona: `lint-prosa`, i cui avvisi sui segni del testo generato erano 77 in 57 file alla prima corsa, `lint-md-tables` e `verifica-ripresa`. Il controllo dell'albero resta fuori da `chiudi` e si lancia a parte.
+
+Gli strumenti di raccolta della scheda dispositivo (ADR-021) hanno una prova propria: `tools/scheda-da-raccolta.py --autotest` verifica che nome macchina, MAC e SSID non escano mai nella scheda pubblica. Lo script di raccolta per Windows è stato provato su una macchina reale l'8/10/2026; quello per Linux è verificato solo nella sintassi, e la sua prima corsa vera va controllata a campione.
 
 ## La prova di completezza, fatta una volta
 
