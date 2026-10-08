@@ -33,11 +33,11 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | LAP-04 | portatile Lenovo | storico, solo voce | identificare modello, OS e interfacce |
 | GAME-01 | PS5, variante non Pro indicata | storico, da confermare | cablata sulla LAN da 1 GbE del Seven, fuori perimetro (ADR-018); tipo di NAT da verificare |
 | IOT-01 | TV | storico, nessun modello | VLAN 40; modello, rete e dipendenze casting |
-| MOB-01 | Samsung S25 Ultra | storico, solo voce | client mobile; presenza, aggiornamenti e roaming |
+| MOB-01 | Samsung Galaxy S25 Ultra | confermato dall'utente l'8/10/2026 | client fidato, Wi-Fi 7 a tre bande; versione e aggiornamenti da leggere |
 | MOB-02 | Sony Xperia III, variante incompleta | storico, da identificare | modello preciso, aggiornamenti e uso |
-| MOB-03 | Samsung S20 FE 5G | storico, solo voce | aggiornamenti e uso prima di assegnare VLAN |
-| TAB-01 | tablet Samsung precedente | storico, nessun modello | legacy fino a identificazione; modello, OS e uso |
-| TAB-02 | tablet Samsung recente | storico, nessun modello | identificare modello, OS e uso |
+| MOB-03 | Samsung Galaxy S20 FE 5G | confermato dall'utente l'8/10/2026 | Wi-Fi 6 dual band; aggiornamenti da verificare prima di assegnare la VLAN |
+| TAB-01 | Samsung Galaxy Tab S6 Lite (2022), LTE, attribuzione all'ID da confermare | confermato dall'utente l'8/10/2026 | Wi-Fi 5 dual band; aggiornamenti da verificare |
+| TAB-02 | secondo tablet Samsung, modello da identificare | confermato dall'utente l'8/10/2026, modello non ricordato | identificare modello, OS e uso |
 
 Le intestazioni relative a persone e i segnaposto senza modello non identificano un dispositivo: non si creano apparati per riempire le righe. Telecamere, stampanti, domotica, UPS e ulteriori console restano categorie da rilevare, non beni già posseduti. I quattro desktop del consolidamento non si identificano con i PC domestici numerati: la documentazione li descrive come lotto distinto. Il firewall compare una sola volta, come NET-04.
 
@@ -454,13 +454,13 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 #### Scheda MOB-01
 
-**Identità.** categoria telefono; Samsung Galaxy S25 Ultra; proprietario per ruolo da compilare
+**Identità.** categoria telefono; Samsung Galaxy S25 Ultra, posseduto dall'utente, confermato l'8/10/2026; proprietario per ruolo da compilare
 
 **Sistema.** Android, versione da compilare
 
 **Rete cablata.** nessuna
 
-**Wi-Fi.** da compilare dalla scheda tecnica del produttore; WPA3 da compilare
+**Wi-Fi.** Wi-Fi 7, 802.11a/b/g/n/ac/ax/be su 2,4, 5 e 6 GHz (S72); WPA3 da verificare nelle impostazioni
 
 **Collocazione.** client fidato nella VLAN 10, SSID CASA
 
@@ -494,13 +494,13 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 #### Scheda MOB-03
 
-**Identità.** categoria telefono; Samsung Galaxy S20 FE 5G; proprietario per ruolo da compilare
+**Identità.** categoria telefono; Samsung Galaxy S20 FE 5G, posseduto dall'utente, confermato l'8/10/2026; proprietario per ruolo da compilare
 
 **Sistema.** Android, versione e supporto da compilare
 
 **Rete cablata.** nessuna
 
-**Wi-Fi.** da compilare
+**Wi-Fi.** Wi-Fi 6, 802.11a/b/g/n/ac/ax dual band (S73); WPA3 da verificare
 
 **Collocazione.** da decidere dopo la verifica degli aggiornamenti
 
@@ -514,15 +514,15 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 #### Scheda TAB-01
 
-**Identità.** categoria tablet; Samsung, modello da compilare; proprietario per ruolo da compilare
+**Identità.** categoria tablet; Samsung Galaxy Tab S6 Lite (2022), versione LTE con S Pen, 10,4 pollici, 4 GB di memoria e 64 GB espandibili, posseduto dall'utente, confermato l'8/10/2026; l'attribuzione a questo ID invece che a TAB-02 è da confermare
 
-**Sistema.** Android, versione e supporto da compilare
+**Sistema.** Android 12 alla vendita, aggiornabile fino ad Android 14 (S71); versione installata e supporto agli aggiornamenti da verificare
 
 **Rete cablata.** nessuna
 
-**Wi-Fi.** da compilare
+**Wi-Fi.** Wi-Fi 5, 802.11a/b/g/n/ac dual band (S71); WPA3 da verificare
 
-**Collocazione.** legacy fino all'identificazione
+**Collocazione.** client della VLAN 10 se gli aggiornamenti sono ancora attivi, altrimenti VLAN 40
 
 **Esposizione.** nessun servizio
 
@@ -534,7 +534,7 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 #### Scheda TAB-02
 
-**Identità.** categoria tablet; Samsung, modello da compilare; proprietario per ruolo Persona-B
+**Identità.** categoria tablet; secondo tablet Samsung confermato dall'utente l'8/10/2026, modello da identificare dalle impostazioni; proprietario per ruolo Persona-B, da confermare
 
 **Sistema.** Android, versione e supporto da compilare
 

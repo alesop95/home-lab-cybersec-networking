@@ -9,3 +9,4 @@
 - [Consumo elettrico del NAS e finestra di accensione](05-consumo-elettrico-e-finestra-di-accensione.md)
 - [Inventario delle scorte dopo il consolidamento](06-inventario-delle-scorte-dopo-il-consolidamento.md)
 - [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md), scheda storica: i dischi non si sono resi disponibili
+- [OpenMediaVault come alternativa a TrueNAS](08-valutazione-openmediavault.md), valutazione dell'8/10/2026

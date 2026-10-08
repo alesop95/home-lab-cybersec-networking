@@ -75,7 +75,7 @@ Sono sette domini logici contando DMZ e gestione, da attivare progressivamente. 
 
 ## Contratto fra zone
 
-La politica proposta nega nuove connessioni fra zone salvo le eccezioni della tabella e consente il traffico di risposta degli stati ammessi. Gli alias dei servizi devono contenere destinazioni e porte specifiche, evitando una regola generica client-verso-server.
+La traduzione di questa tabella in alias e regole per interfaccia, nell'ordine in cui OPNsense le valuta, è nel documento [Regole fra le zone](08-regole-fra-le-zone.md). La politica proposta nega nuove connessioni fra zone salvo le eccezioni della tabella e consente il traffico di risposta degli stati ammessi. Gli alias dei servizi devono contenere destinazioni e porte specifiche, evitando una regola generica client-verso-server.
 
 | Origine | Destinazione | Regola proposta |
 |---|---|---|

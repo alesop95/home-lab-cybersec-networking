@@ -14,10 +14,10 @@ ONT Fastweb
   -> LAN 2,5 GbE del Seven
   -> WAN 2,5 GbE di OPNsense
   -> LAN 2,5 GbE di OPNsense, trunk 802.1Q
-  -> Zyxel XMG1915-10E oppure XMG1915-10EP
-  -> cavo verso il piano inferiore
-  -> iniettore PoE 2,5 GbE oppure porta PoE dello switch
-  -> access point Zyxel
+  -> Zyxel XMG1915-10EP (ADR-017, ADR-023)
+  -> due cavi già posati verso il terzo e il secondo piano
+  -> porte PoE dello switch
+  -> due access point Zyxel NWA130BE (ADR-024)
 ```
 
 Il risultato è un doppio NAT. Soltanto i client collegati alla radio integrata del Seven si trovano sul lato upstream, insieme alla WAN di OPNsense, e non attraversano il firewall. Gli access point collegati allo switch sono invece a valle di OPNsense: i loro SSID, VLAN e client vengono gestiti dalle interfacce e dalle regole del firewall. Un client Wi-Fi Seven può avere Internet senza poter entrare nella LAN di OPNsense, salvo port forwarding, regole WAN permissive o errori di configurazione; OPNsense non può però filtrare il traffico fra client che restano sulla radio del Seven.
@@ -46,7 +46,7 @@ Il collegamento OPNsense-switch diventa un trunk quando la LAN piatta funziona. 
 
 Le VLAN proposte sono 10 client fidati, 30 servizi e storage, 40 IoT, 50 ospiti, 60 esperimenti e 99 gestione. Si attivano una alla volta, con DHCP e regole minime, verificando dopo ogni modifica. L'iniettore PoE deve essere trasparente a livello 2 e compatibile con 2,5 GbE e 802.3at se l'access point lo richiede; un iniettore Gigabit limita il collegamento anche quando switch e AP sono multigigabit.
 
-XMG1915-10E è sufficiente per uno o pochi AP alimentati separatamente. XMG1915-10EP è più adatto a due o tre AP perché centralizza l'alimentazione PoE e riduce gli alimentatori distribuiti. La scelta va chiusa prima dell'acquisto, non dopo la posa dei cavi.
+Dall'8/10/2026 la scelta è chiusa: XMG1915-10EP con due NWA130BE alimentati dalle sue porte PoE (ADR-023, ADR-024), quindi l'iniettore descritto sopra non serve. Le regole da applicare dopo l'attivazione delle VLAN sono in [Regole fra le zone](08-regole-fra-le-zone.md).
 
 ## DNS e servizi dipendenti
 

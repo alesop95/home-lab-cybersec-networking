@@ -103,6 +103,13 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S68 | https://www.yeppon.it/products/zyxel-nwa130be-eu0101f-punto-1237865 | commerciale, riassunta dalla ricerca dell'8/10/2026 | NWA130BE a 213,99 euro, prezzo consigliato 295 euro; il 22/09 un comparatore dava 188,62 euro (S25) |
 | S69 | https://shop.ascend.de/en/products/ubiquiti-unifi-7-pro-access-point-u7-pro | commerciale, riassunta dalla ricerca dell'8/10/2026 | Ubiquiti U7 Pro a 180,60 euro IVA esclusa; tre bande, 2,5 GbE, PoE+; richiede il controller UniFi |
 | S70 | https://m.cdw.com/product/tp-link-omada-eap772-tri-band-wi-fi-7-ieee-802.11-a-b-g-n-ac-ax-be-10.40-gb/8255259 | commerciale, riassunta dalla ricerca dell'8/10/2026 | TP-Link EAP772, tre bande Wi-Fi 7, 2,5 GbE, 802.3at, RADIUS; 169,99 dollari negli Stati Uniti, prezzo italiano non trovato; SNMP in modalità autonoma non verificato |
+| S71 | https://m.gsmarena.com/samsung_galaxy_tab_s6_lite_(2022)-11524.php | scheda tecnica di terzi, riassunta dalla ricerca dell'8/10/2026 | Galaxy Tab S6 Lite (2022), versione LTE SM-P619: Wi-Fi 802.11a/b/g/n/ac dual band, Android 12 aggiornabile ad Android 14; durata degli aggiornamenti di sicurezza non riportata |
+| S72 | https://www.devicespecifications.com/en/model/e11c627d | scheda tecnica di terzi, riassunta dalla ricerca dell'8/10/2026 | Galaxy S25 Ultra: Wi-Fi 7, 2,4, 5 e 6 GHz |
+| S73 | https://deviceguides.vodafone.co.uk/samsung/galaxy-s20-fe-5g-android-10-0/specifications | scheda tecnica di operatore, riassunta dalla ricerca dell'8/10/2026 | Galaxy S20 FE 5G: Wi-Fi 6, 802.11a/b/g/n/ac/ax, dual band |
+| S74 | https://wiki.omv-extras.org/doku.php?id=omv8%3Aomv8_plugins%3Azfs | documentazione del progetto omv-extras, riassunta dalla ricerca dell'8/10/2026 | plugin ZFS per OpenMediaVault 8; kernel Proxmox raccomandato perché porta i moduli ZFS compilati e allineati |
+| S75 | https://dannyda.com/2026/05/18/how-to-fix-openmediavault-omv-debian-kernel-7-0-4-issue-with-zfs/ | blog di terzi, riassunto dalla ricerca dell'8/10/2026 | maggio 2026: l'aggiornamento al kernel Debian 7.0.4 rompe la compilazione automatica dei moduli ZFS su OpenMediaVault con il plugin |
+| S76 | https://www.it-connect.fr/raid-mirroring-sous-openmediavault%ef%bb%bf/ | guida di terzi, riassunta dalla ricerca dell'8/10/2026 | OpenMediaVault gestisce il RAID dei dischi dati con mdadm dall'interfaccia; l'installazione del sistema su un RAID1 non è prevista in modo ordinario |
+| S77 | https://en.wikipedia.org/wiki/OpenMediaVault | enciclopedia, riassunta dalla ricerca dell'8/10/2026 | ultima versione OpenMediaVault 8.0.8 del 25/01/2026 |
 
 ## Materiali locali che non devono sparire dal quadro
 
