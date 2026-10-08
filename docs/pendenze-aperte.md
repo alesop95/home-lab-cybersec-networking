@@ -73,7 +73,7 @@ Il censimento è meno accessorio di quanto sembri: è la fonte che dice quale en
 
 ## Rilevazioni del Seven da ripetere
 
-Dal 07/10/2026, con la lettura tecnica in `02-ftth-fastweb/08-il-seven-nel-progetto-di-rete-voce-per-voce.md`. Le schermate dello stato WAN sono state catturate con la GPON giù e la connessione mobile su, quindi vanno rifatte con la fibra attiva, verificando che l'indirizzo pubblico statico sia lo stesso sui due collegamenti. Vanno fotografate per la prima volta lo stato LAN, la sezione LAN switch, il Port Triggering, il Filtro MAC, Easy Mesh, l'Analizzatore e la modalità ECO, che nel censimento hanno il solo titolo.
+Dal 07/10/2026, con la lettura tecnica che dall'8/10/2026 sta dentro le pagine di `02-ftth-fastweb/06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/`. Le schermate dello stato WAN sono state catturate con la GPON giù e la connessione mobile su, quindi vanno rifatte con la fibra attiva, verificando che l'indirizzo pubblico statico sia lo stesso sui due collegamenti. Vanno fotografate per la prima volta lo stato LAN, la sezione LAN switch, il Port Triggering, il Filtro MAC, Easy Mesh, l'Analizzatore e la modalità ECO, che nel censimento hanno il solo titolo.
 
 ## Metodo del censimento dei dispositivi
 
@@ -87,7 +87,7 @@ Dal 07/10/2026: regole e skill del progetto citano sedici volte strumenti `tools
 
 Undici sottosezioni dell'interfaccia del modem sono marcate `not-of-interest-here`: panoramica dei dispositivi connessi, telefono, l'intero ramo Wi-Fi, USB, condivisione contenuti, condivisione stampante, LAN switch, modalità a risparmio energetico, stato della fonia, e le tre sezioni di dettaglio e statistica su IPv6 e IPv4 della WAN. Una sezione, lo stato LAN, è marcata come mancante, cioè l'autore ha annotato che avrebbe dovuto catturarla e non l'ha fatta.
 
-Vale la pena una nota critica: il ramo Wi-Fi del modem è marcato come non rilevante, ma nella topologia adottata la Wi-Fi del modem è esattamente il pezzo di rete che resta fuori dal firewall, quindi le sue impostazioni di sicurezza, cioè cifratura, canale e rete ospite, sono l'unico controllo disponibile su quel segmento finché gli access point a valle non saranno installati. La marcatura andrebbe rivista.
+Vale la pena una nota critica: il ramo Wi-Fi del modem è marcato come non rilevante, ma nella topologia adottata la Wi-Fi del modem è esattamente il pezzo di rete che resta fuori dal firewall, quindi le sue impostazioni di sicurezza, cioè cifratura, canale e rete ospite, sono l'unico controllo disponibile su quel segmento finché gli access point a valle non saranno installati. La marcatura andava rivista, ed è stata rivista l'8/10/2026 nella riscrittura della cartella del Seven (ADR-020): la pagina Wi-Fi spiega perché la sezione conta e come si imposta, e lo stesso vale per panoramica e telefono. I nomi dei file conservano la marcatura, perché i nomi sono stabili.
 
 ## Come si aggiorna questo file
 

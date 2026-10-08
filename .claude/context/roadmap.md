@@ -29,7 +29,7 @@ Dal 07/10/2026 il lavoro documentale continua in tre forme decise dall'utente: `
 
 Si comincia identificando fisicamente le tre interfacce dalla console del firewall, correlando nome di driver, indirizzo hardware e connettore con la verifica a LED. Si prosegue con l'assegnazione dei ruoli, ricordando che dopo l'assegnazione il firewall crea una regola permissiva sulla sola LAN mentre le altre zone partono chiuse in ingresso, quindi un errore di assegnazione espone verso l'esterno oppure taglia fuori dall'interfaccia di gestione. Si configurano poi gli indirizzi delle tre reti, verificando che non si sovrappongano, e infine le regole, partendo dal contratto fra zone descritto in `design-and-security.md`.
 
-Sul modem la stessa fase comprende la prenotazione DHCP della WAN del firewall, collegata alla porta LAN 4, l'unica a 2,5 GbE, e a VPN pronta il solo inoltro UDP di WireGuard, nell'ordine scritto in `docs/02-ftth-fastweb/08-il-seven-nel-progetto-di-rete-voce-per-voce.md`. Prima vanno rifotografate le schermate dello stato WAN con la fibra attiva.
+Sul modem la stessa fase comprende la prenotazione DHCP della WAN del firewall, collegata alla porta LAN 4, l'unica a 2,5 GbE, e a VPN pronta il solo inoltro UDP di WireGuard, nell'ordine scritto nel README di `docs/02-ftth-fastweb/06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/`. Prima vanno rifotografate le schermate dello stato WAN con la fibra attiva.
 
 Resta da riverificare, prima di considerare chiusa la fase, l'avviso sulla generazione dei template osservato durante il boot dell'ambiente live.
 
