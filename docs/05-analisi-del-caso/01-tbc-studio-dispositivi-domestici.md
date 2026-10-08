@@ -2,6 +2,8 @@
 
 > CENSIMENTO INCOMPLETO E ANONIMIZZATO. Diverse voci hanno solo l'intestazione; i nomi macchina, gli identificativi di dispositivo e i numeri di serie sono segnaposto secondo `.claude/rules/anonymization.md` e i valori reali vivono in `_notes/.anonymization-map.md`, non versionato. Vedi `../pendenze-aperte.md` per l'elenco delle voci da completare.
 
+Riscritto l'8/10/2026 come documento di progetto (ADR-020, ADR-021): le descrizioni storiche restano, e sotto ciascun dispositivo c'è la sua scheda a campi fissi, secondo il modello di [Scheda dispositivo](02-scheda-dispositivo.md). Le schede riportano i dati già presenti nel testo con la loro fonte e lasciano "da compilare" ciò che solo una raccolta o una decisione può dire. La tabella dell'inventario è aggiornata alle decisioni del 07/10/2026.
+
 ## Inventario operativo documentale, ricognizione del 22/09/2026
 
 Questa tabella è il punto canonico per l'inventario del filone rete; le descrizioni storiche sotto restano materiale da verificare. Un apparato citato non è stato osservato online in questa sessione. Caratteristiche generiche dei prodotti e versioni OS del vecchio testo non sono automaticamente stato attuale. Nessuna scansione della rete è stata eseguita.
@@ -12,12 +14,12 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 |---|---|---|---|
 | NET-01 | ONT Zyxel PM5100-T1 | topologia, non rilevato ora | frontiera operatore; confermare cablaggio, nessuna modifica |
 | NET-02 | modem operatore Seven | topologia e storico | transito WAN e fonia; rilevare porte occupate e client Wi-Fi da migrare |
-| NET-03 | extender/booster operatore citato nella precedente scelta AP | presenza e modello da riconfermare | rilevare collocazione e uplink; possibile dismissione dopo collaudo AP |
+| NET-03 | extender/booster operatore citato nella precedente scelta AP | presenza e modello da riconfermare | non entra nel progetto: la copertura la danno due AP dentro il perimetro (ADR-017); se presente, si dismette dopo il collaudo degli AP |
 | NET-04 | firewall i3 settima generazione, 8 GB, SSD 120 GB; 1 GbE + due TX201 2,5 GbE | verbale 16/01/2026; coincide con PC fisso 5 | OPNsense; rilevare corrispondenza NIC-porta, versione corrente, consumi e throughput |
-| NET-05 | switch gestito 8 RJ45 | da acquistare | candidato XMG1915-10EP; definire budget e porte simultanee |
-| NET-06 | AP 1 Zyxel | da acquistare | trunk e VLAN SSID; rilevare sede, cavo e copertura |
-| NET-07 | AP 2 Zyxel | da acquistare | come AP 1 |
-| NET-08 | AP 3 Zyxel | eventuale, necessità non ancora dimostrata | misurare la zona che ne giustifica l'acquisto |
+| NET-05 | switch Zyxel XMG1915-10EP | deciso il 07/10/2026 (ADR-017), da acquistare | piano più alto; trunk verso il firewall, PoE verso i due AP; budget delle porte dal censimento |
+| NET-06 | AP 1 Zyxel, modello da scegliere | deciso (ADR-017, ADR-018), da acquistare | terzo piano, cavo posato, PoE dallo switch; trunk con gli SSID CASA, IOT e OSPITI |
+| NET-07 | AP 2 Zyxel, modello da scegliere | deciso (ADR-017, ADR-018), da acquistare | secondo piano, cavo posato; come AP 1; misurare la copertura del piano terra |
+| NET-08 | AP 3 Zyxel | non previsto dal 07/10/2026 (ADR-017) | torna in discussione solo se la misura del piano terra lo giustifica |
 | STO-01 | NAS da quattro desktop dismessi | assemblaggio nell'altra sessione | VLAN 30, a orario; ricevere configurazione e collaudo finali, non ricensire donatori |
 | SRV-01 | host servizi sempre acceso | ruolo non assegnato, nessun acquisto deciso | VLAN 30; individuare hardware, RAM, dischi, watt e disponibilità |
 | PC-01 | PC fisso 1, Windows 11 Pro indicato come forzato | storico, incompleto | confermare modello, NIC, supporto aggiornamenti e uso prima di VLAN fidata |
@@ -29,7 +31,7 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | LAP-02 | ASUS F550CC-XX698H, Ubuntu 24.04 indicato | storico; Intel N2230 2,4 GHz riportata | confermare Wi-Fi, Ethernet e supporto OS |
 | LAP-03 | MacBook Air 13 pollici 2017, Monterey 12.7.6 indicato | storico; descrizione generica non verificata | legacy fino a verifica aggiornamenti; modello da sistema e adattatori |
 | LAP-04 | portatile Lenovo | storico, solo voce | identificare modello, OS e interfacce |
-| GAME-01 | PS5, variante non Pro indicata | storico, da confermare | gaming, cablata se pratico; modello e requisiti NAT |
+| GAME-01 | PS5, variante non Pro indicata | storico, da confermare | cablata sulla LAN da 1 GbE del Seven, fuori perimetro (ADR-018); tipo di NAT da verificare |
 | IOT-01 | TV | storico, nessun modello | VLAN 40; modello, rete e dipendenze casting |
 | MOB-01 | Samsung S25 Ultra | storico, solo voce | client mobile; presenza, aggiornamenti e roaming |
 | MOB-02 | Sony Xperia III, variante incompleta | storico, da identificare | modello preciso, aggiornamenti e uso |
@@ -81,13 +83,61 @@ La “velocità massima” è *la velocità negoziata dal PHY*; quindi, la combi
 
 ##### Scheda(e) di rete
 
+##### Scheda PC-01
+
+**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** Windows 11 Pro, indicato come installato forzando i requisiti; processore e memoria da compilare; supporto da compilare, da verificare per un'installazione fuori requisiti
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** client fidato nella VLAN 10 se il supporto agli aggiornamenti è confermato; cablato o Wi-Fi da compilare
+
+**Esposizione.** nessun servizio previsto
+
+**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
+
 #### PC fisso 2 - Xubuntu
 
 ##### Scheda(e) di rete
 
+##### Scheda PC-02
+
+**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** Xubuntu, versione da compilare; processore e memoria da compilare
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** client nella VLAN 10, oppure candidato host di servizio nella VLAN 30 se le risorse lo permettono; da compilare
+
+**Esposizione.** da compilare
+
+**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
+
 #### PC fisso 3 - anduinOS
 
 ##### Scheda(e) di rete
+
+##### Scheda PC-03
+
+**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** anduinOS, versione da compilare; processore e memoria da compilare
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** client nella VLAN 10; da compilare
+
+**Esposizione.** da compilare
+
+**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
 
 #### PC fisso 4 - Windows 11 Pro (forced) - VHS converter
 
@@ -106,13 +156,61 @@ E per le specifiche Windows l’edizione è Windows 11 Pro - Versione: 24H2 - Da
 
 ##### Scheda(e) di rete
 
+##### Scheda PC-04
+
+**Identità.** categoria PC fisso, postazione per la conversione VHS; produttore e modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** Windows 11 Pro 24H2, build 26100.1742, indicato come installato forzando i requisiti; Intel Core i7-6700 a 3,4 GHz; 16 GB; SSD da 233 GB e disco da 298 GB; supporto da compilare
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** postazione specializzata, cablata; VLAN da compilare
+
+**Esposizione.** nessun servizio previsto; è la postazione per la conversione delle videocassette, e la sensibilità dei dati che contiene è da valutare
+
+**Fonte.** descrizione storica di questo documento, impostazioni di sistema; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1`
+
 #### PC fisso 5 - Firewall OPNsense
 
 ##### Scheda(e) di rete
 
+##### Scheda NET-04
+
+**Identità.** categoria firewall; PC x86 assemblato; amministrato dall'utente
+
+**Sistema.** OPNsense 25.7, installato il 16/01/2026 e non configurato; Intel Core i3 di settima generazione; 8 GB; SSD da 120 GB
+
+**Rete cablata.** scheda integrata da 1 GbE e due TP-Link TX201 da 2,5 GbE con chip Realtek RTL8125B; corrispondenza fra schede e porte da identificare dalla console
+
+**Wi-Fi.** nessuna radio
+
+**Collocazione.** piano più alto, accanto al Seven e allo switch, da confermare; WAN sulla LAN 4 del Seven, LAN in trunk verso lo switch, DMZ sulla scheda da 1 GbE
+
+**Esposizione.** è il perimetro: unico inoltro in ingresso la porta UDP di WireGuard
+
+**Fonte.** [verbale dell'installazione](../verbale-installazione-opnsense.md) e topologia
+
 #### [TBC] PC fisso 6 - Ubuntu Studio 25
 
 ##### Scheda(e) di rete
+
+##### Scheda PC-06
+
+**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** Ubuntu Studio 25, versione esatta da compilare; processore e memoria da compilare
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** client multimediale nella VLAN 10; da compilare
+
+**Esposizione.** da compilare
+
+**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
 
 #### PC portatile 1 - Windows 11 Home (asus X513EAN)
 
@@ -166,6 +264,22 @@ Questo elimina componenti obsoleti che possono creare incoerenze nei metadati de
 
 ##### Scheda(e) di rete
 
+##### Scheda LAP-01
+
+**Identità.** categoria portatile; ASUS VivoBook X513EAN/K513EA; proprietario per ruolo da compilare
+
+**Sistema.** Windows 11 Home, build 26200; Intel Core i5-1135G7; 8 GB
+
+**Rete cablata.** da compilare, da verificare se il modello ha una porta Ethernet
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** client fidato nella VLAN 10, via Wi-Fi
+
+**Esposizione.** nessun servizio previsto
+
+**Fonte.** diagnostica DxDiag del 19/01/2026, riportata qui sopra; schede di rete da raccogliere con `tools/raccolta-dispositivo.ps1`; la pulizia degli errori qui sopra è datata 19/01/2025, mentre il rapporto è del 19/01/2026, ed è con ogni probabilità un refuso dell'anno
+
 #### PC portatile 2 - Ubuntu 24.04 LTS (asus)
 
 Il PC è il vecchio PC Asus F550CC-XX698H (SN: <sn-portatile-2>, CN: <cn-portatile-2>). Il PC Asus F550CC-XX698H è un laptop consumer di fascia media, caratterizzato da un design standard in plastica con finitura opaca, uno schermo da 15,6 pollici con risoluzione HD 1366x768, processore Intel Core i3 di terza generazione, 4 GB di RAM DDR3 espandibili e un disco rigido da 500 GB a 5400 RPM. Il sistema operativo originale è Windows 8, aggiornabile a versioni successive di Windows, e la macchina dispone di un insieme di porte sufficienti per uso quotidiano: USB 2.0 e 3.0, HDMI, VGA, lettore schede SD e jack audio combinato. La batteria è integrata agli ioni di litio da circa 37 Wh, con autonomia ridotta se sottoposta a carichi elevati o multitasking intensivo. Il raffreddamento è affidato a un singolo heatpipe con ventola e il case presenta un layout tipico Asus, con tasti isolati e touchpad multitouch. Il peso si aggira attorno ai 2,3 kg, rendendolo portabile ma non leggerissimo. Il notebook supporta connettività wireless standard e Bluetooth integrato per periferiche. La scheda grafica dedicata è una NVIDIA GeForce GT 720M con 2 GB di VRAM DDR3, adatta a carichi grafici leggeri e giochi datati.
@@ -175,6 +289,22 @@ Il PC è il vecchio PC Asus F550CC-XX698H (SN: <sn-portatile-2>, CN: <cn-portati
 La scheda di rete wireless integrata è una Intel Centrino Wireless-N 2230, che supporta standard 802.11b/g/n con banda a 2,4 GHz e velocità fino a 300 Mbps, compatibile con WEP, WPA e WPA2. Non è presente supporto nativo per Wi-Fi a 5 GHz.
 
 Il dispositivo dispone anche di una scheda Ethernet Realtek PCIe GBE Family Controller, che consente connessioni cablate fino a 1 Gbps, con funzionalità di Wake-on-LAN e gestione avanzata del traffico tramite driver Realtek. La gestione delle interfacce di rete è affidabile e stabile, con latenze ridotte su LAN cablata e buona sensibilità del modulo Wi-Fi su segnali standard indoor.
+
+##### Scheda LAP-02
+
+**Identità.** categoria portatile; ASUS F550CC-XX698H; proprietario per ruolo da compilare
+
+**Sistema.** Ubuntu 24.04 LTS; Intel Core i3 di terza generazione; 4 GB
+
+**Rete cablata.** Realtek PCIe GBE Family Controller, massima 1 Gbps
+
+**Wi-Fi.** Intel Centrino Wireless-N 2230; 802.11b/g/n, solo 2,4 GHz; WPA2, nessun WPA3; 802.1X da compilare
+
+**Collocazione.** non può associarsi a un SSID solo WPA3: va cablato nella VLAN 10, oppure nella rete legacy della VLAN 40 se resta in Wi-Fi
+
+**Esposizione.** nessun servizio previsto
+
+**Fonte.** descrizione storica di questo documento; da confermare con `tools/raccolta-dispositivo.sh`
 
 #### PC portatile 3 - macOS
 
@@ -201,6 +331,22 @@ La scheda di rete wireless integrata è una Broadcom BCM4360 802.11ac che suppor
 
 La scheda Ethernet non è presente, ma la connettività cablata è ottenibile tramite adattatori Thunderbolt a Gigabit Ethernet, consentendo collegamenti stabili fino a 1 Gbps. Il Bluetooth integrato 4.0 gestisce periferiche wireless con basso consumo energetico e bassa latenza.
 
+##### Scheda LAP-03
+
+**Identità.** categoria portatile; Apple MacBook Air 13 pollici del 2017; proprietario per ruolo da compilare
+
+**Sistema.** macOS Monterey 12.7.6; Intel Core i5 dual-core a 1,8 GHz; 8 GB; supporto agli aggiornamenti da verificare sulla pagina del produttore, perché Monterey è una versione non più recente
+
+**Rete cablata.** nessuna porta Ethernet; 1 Gbps con adattatore Thunderbolt
+
+**Wi-Fi.** Broadcom BCM4360; Wi-Fi 5, 802.11ac dual-band; WPA2 dichiarato, WPA3 da verificare; 802.1X da compilare
+
+**Collocazione.** legacy fino alla verifica degli aggiornamenti e del WPA3; VLAN 10 o 40 di conseguenza
+
+**Esposizione.** nessun servizio previsto
+
+**Fonte.** descrizione storica di questo documento e schermata di sistema
+
 #### PC portatile 4 - …………… (Lenovo)
 
 ……………………………….
@@ -208,6 +354,22 @@ La scheda Ethernet non è presente, ma la connettività cablata è ottenibile tr
 ##### Scheda(e) di rete
 
 La scheda di rete wireless
+
+##### Scheda LAP-04
+
+**Identità.** categoria portatile; Lenovo, modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** da compilare
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** da compilare
+
+**Esposizione.** da compilare
+
+**Fonte.** solo voce nella descrizione storica
 
 ### PS5
 
@@ -236,11 +398,43 @@ La console dispone anche di una porta Ethernet Gigabit RJ-45, utilizzabile per c
 
 Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload bastano. Per il download giochi (molto pesanti, anche 100-150 GB) chiaramente più uno ha banda, meglio è. Per lo streaming o remote Play, 15-50 Mbps sono consigliati. Quindi, anche 100 Mbps sono più che sufficienti per giocare. Oltre 300-500 Mbps è utile solo se si scaricano giochi enormi frequentemente.
 
+#### Scheda GAME-01
+
+**Identità.** categoria console; Sony PlayStation 5 standard, variante non Pro indicata; proprietario per ruolo da compilare
+
+**Sistema.** sistema della console, aggiornato dal produttore
+
+**Rete cablata.** Gigabit Ethernet, massima 1 Gbps
+
+**Wi-Fi.** Wi-Fi 6, 802.11a/b/g/n/ac/ax, 2,4 e 5 GHz; WPA3 da compilare
+
+**Collocazione.** cablata su una porta LAN da 1 GbE del Seven, fuori dal perimetro di OPNsense, con un NAT solo (ADR-018)
+
+**Esposizione.** nessun servizio; richiede gli inoltri statici o UPnP sul Seven per il tipo di NAT, da preferire i primi
+
+**Fonte.** descrizione storica di questo documento; tipo di NAT da leggere nelle impostazioni di rete della console
+
 ### TV
 
 #### Analisi specifiche
 
 #### aaaaaaaaaaa
+
+#### Scheda IOT-01
+
+**Identità.** categoria televisore; produttore e modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** sistema e supporto agli aggiornamenti da compilare
+
+**Rete cablata.** da compilare
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** VLAN 40 IoT, con le eccezioni per il casting da decidere caso per caso
+
+**Esposizione.** da compilare
+
+**Fonte.** solo voce nella descrizione storica
 
 ### Persona-A
 
@@ -258,20 +452,100 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 ……….
 
+#### Scheda MOB-01
+
+**Identità.** categoria telefono; Samsung Galaxy S25 Ultra; proprietario per ruolo da compilare
+
+**Sistema.** Android, versione da compilare
+
+**Rete cablata.** nessuna
+
+**Wi-Fi.** da compilare dalla scheda tecnica del produttore; WPA3 da compilare
+
+**Collocazione.** client fidato nella VLAN 10, SSID CASA
+
+**Esposizione.** nessun servizio
+
+**Fonte.** solo voce nella descrizione storica; per il Wi-Fi esiste un'analisi a parte di un problema con il Wi-Fi 7 citata nella pagina del Seven
+
 ### Sony Xperia III ………..
 
 #### Analisi specifiche
+
+#### Scheda MOB-02
+
+**Identità.** categoria telefono; Sony Xperia, variante da compilare; proprietario per ruolo da compilare
+
+**Sistema.** Android, versione e supporto da compilare
+
+**Rete cablata.** nessuna
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** da decidere dopo la verifica degli aggiornamenti
+
+**Esposizione.** nessun servizio
+
+**Fonte.** solo voce nella descrizione storica
 
 ### Samsung S20 FE 5G
 
 #### Analisi specifiche
 
+#### Scheda MOB-03
+
+**Identità.** categoria telefono; Samsung Galaxy S20 FE 5G; proprietario per ruolo da compilare
+
+**Sistema.** Android, versione e supporto da compilare
+
+**Rete cablata.** nessuna
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** da decidere dopo la verifica degli aggiornamenti
+
+**Esposizione.** nessun servizio
+
+**Fonte.** solo voce nella descrizione storica
+
 ### Tablet Samsung vecchio
 
 #### Analisi specifiche
 
+#### Scheda TAB-01
+
+**Identità.** categoria tablet; Samsung, modello da compilare; proprietario per ruolo da compilare
+
+**Sistema.** Android, versione e supporto da compilare
+
+**Rete cablata.** nessuna
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** legacy fino all'identificazione
+
+**Esposizione.** nessun servizio
+
+**Fonte.** solo voce nella descrizione storica
+
 ### Tablet Samsung nuovo di Persona-B
 
 #### Analisi specifiche
+
+#### Scheda TAB-02
+
+**Identità.** categoria tablet; Samsung, modello da compilare; proprietario per ruolo Persona-B
+
+**Sistema.** Android, versione e supporto da compilare
+
+**Rete cablata.** nessuna
+
+**Wi-Fi.** da compilare
+
+**Collocazione.** da decidere dopo l'identificazione
+
+**Esposizione.** nessun servizio
+
+**Fonte.** solo voce nella descrizione storica
 
 [^1]: È una scheda di rete Ethernet a 2,5 Gbit/s basata su chip Realtek RTL8125 (o variante). È integrata in molte motherboard “gaming”, ma è una normale NIC 2.5GbE, non ha nulla di speciale legato al gaming. Significa che il PC può negoziare fino a 2,5 Gbit/s se collegato a una porta 2.5G e con cavo adeguato (Cat5e di buona qualità o superiore).
