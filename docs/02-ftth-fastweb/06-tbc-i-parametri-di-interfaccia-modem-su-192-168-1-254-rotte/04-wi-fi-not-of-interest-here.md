@@ -4,7 +4,7 @@
 
 Il Gateway supporta lo standard WiFi 7 in grado raggiungere velocità fino a 7200 Mbits/s utilizzando in modo contemporaneo ed ottimizzato tutte le radio presenti nel CPE (2.4 GHz e 5 GHz).
 
-E’ possibile ottenere il massimo livello delle prestazioni previste dallo standard solo mantenendo unite le radio.
+È possibile ottenere il massimo livello delle prestazioni previste dallo standard solo mantenendo unite le radio.
 
 ![](assets/img-0013.png)
 

@@ -51,7 +51,7 @@ OVM fornisce via interfaccia web:
 
 Tutto questo senza lavorare da shell, anche se la shell resta disponibile.
 
-Dopodiché OMV PUO' ospitare servizi, ma sempre come estensione dello storage, non come scopo principale:
+Dopodiché OMV Può ospitare servizi, ma sempre come estensione dello storage, non come scopo principale:
 
 - Docker / Docker Compose
 

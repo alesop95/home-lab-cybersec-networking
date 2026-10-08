@@ -85,7 +85,7 @@ def slugify(text, fallback="sezione"):
 _EMOJI_RE = re.compile(
     "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U00002B00-\U00002BFF\U0000FE00-\U0000FE0F]",
     flags=re.UNICODE)
-_DASH_RE = re.compile("[‐-―−]")
+_DASH_RE = re.compile("[‐---]")
 _PLACEHOLDER_RE = re.compile(r"(?m)^[ \t]*[Aa]{3,}\.?[ \t]*$\n?")
 
 

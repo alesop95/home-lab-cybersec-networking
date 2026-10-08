@@ -1,6 +1,6 @@
 # Switch 2,5Gbps managed
 
-> Analisi storica riferita a un solo AP. Dal 22/09/2026 il confronto di riferimento e' lo [studio switch e due o tre AP Zyxel](../23-studio-home-lab/03-switch-e-access-point-zyxel.md). Correzione verificata sulle specifiche del produttore: XMG1915 dispone anche di routing statico; usarlo come solo switch L2 e' una scelta progettuale. Il testo sottostante conserva il ragionamento iniziale e non costituisce un preventivo aggiornato.
+> Analisi storica riferita a un solo AP. Dal 22/09/2026 il confronto di riferimento è lo [studio switch e due o tre AP Zyxel](../23-studio-home-lab/03-switch-e-access-point-zyxel.md). Correzione verificata sulle specifiche del produttore: XMG1915 dispone anche di routing statico; usarlo come solo switch L2 è una scelta progettuale. Il testo sottostante conserva il ragionamento iniziale e non costituisce un preventivo aggiornato.
 
 ## Introduzione
 

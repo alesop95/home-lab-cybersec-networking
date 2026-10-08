@@ -10,11 +10,11 @@ last-verified-commit: 6769dc4
 
 # Workflow di monitoraggio e analisi
 
-> Trasposizione testuale e versionabile dei due flussi descritti nel documento sorgente: il monitoraggio di sicurezza continuo e il percorso di analisi di un campione sospetto. Il primo esiste anche come immagine alla radice del progetto, non versionata; questo diagramma la sostituisce e ne corregge un difetto, cioe' che l'immagine mostrava due volte lo stesso componente senza distinguerne il ruolo.
+> Trasposizione testuale e versionabile dei due flussi descritti nel documento sorgente: il monitoraggio di sicurezza continuo e il percorso di analisi di un campione sospetto. Il primo esiste anche come immagine alla radice del progetto, non versionata; questo diagramma la sostituisce e ne corregge un difetto, cioè che l'immagine mostrava due volte lo stesso componente senza distinguerne il ruolo.
 
 ## Monitoraggio continuo
 
-Il flusso ha un centro chiaro, Wazuh, che raccoglie dagli endpoint e correla, e una spina dorsale di indicizzazione, lo stack Elasticsearch con i suoi contorni, dove confluisce tutto il resto. Nessuno di questi componenti e' installato: il flusso e' un piano.
+Il flusso ha un centro chiaro, Wazuh, che raccoglie dagli endpoint e correla, e una spina dorsale di indicizzazione, lo stack Elasticsearch con i suoi contorni, dove confluisce tutto il resto. Nessuno di questi componenti è installato: il flusso è un piano.
 
 ```
   [ endpoint: PC, server, VM, NAS ]
@@ -47,13 +47,13 @@ Il flusso ha un centro chiaro, Wazuh, che raccoglie dagli endpoint e correla, e 
                      il volume lo giustifica
 ```
 
-La lettura corretta e' che Wazuh e' l'unico componente indispensabile per iniziare, perche' da solo copre SIEM, rilevamento sull'host e controllo di integrita' dei file, ed e' piu' leggero di OSSIM e piu' completo di Snort da solo. Snort aggiunge la visibilita' sul traffico, che Wazuh non ha; lo stack ELK aggiunge la capacita' di interrogare grandi volumi, che serve solo quando i volumi ci sono; Sagan e MozDef sono raffinamenti che hanno senso quando esistono gia' piu' sorgenti da correlare e incidenti da gestire come tali. Adottarli tutti insieme in una rete domestica sarebbe sovradimensionato, e il documento sorgente lo dice esplicitamente.
+La lettura corretta è che Wazuh è l'unico componente indispensabile per iniziare, perché da solo copre SIEM, rilevamento sull'host e controllo di integrità dei file, ed è più leggero di OSSIM e più completo di Snort da solo. Snort aggiunge la visibilità sul traffico, che Wazuh non ha; lo stack ELK aggiunge la capacità di interrogare grandi volumi, che serve solo quando i volumi ci sono; Sagan e MozDef sono raffinamenti che hanno senso quando esistono già più sorgenti da correlare e incidenti da gestire come tali. Adottarli tutti insieme in una rete domestica sarebbe sovradimensionato, e il documento sorgente lo dice esplicitamente.
 
-Sulla sonda di rete i documenti divergono, e la differenza va tenuta presente. L'analisi del monitoraggio sotto `09-monitoraggio/` ragiona su Snort come componente separato; lo studio home lab del 22/09/2026, nei servizi gratuiti, indica invece Suricata integrato in OPNsense, in sola rilevazione prima di qualunque blocco e solo dopo test prestazionali sul firewall. La seconda strada non aggiunge una macchina e usa il motore che il firewall gia' include, quindi e' quella da cui partire; la scelta definitiva resta alla fase 5.
+Sulla sonda di rete i documenti divergono, e la differenza va tenuta presente. L'analisi del monitoraggio sotto `09-monitoraggio/` ragiona su Snort come componente separato; lo studio home lab del 22/09/2026, nei servizi gratuiti, indica invece Suricata integrato in OPNsense, in sola rilevazione prima di qualunque blocco e solo dopo test prestazionali sul firewall. La seconda strada non aggiunge una macchina e usa il motore che il firewall già include, quindi è quella da cui partire; la scelta definitiva resta alla fase 5.
 
 ## Il posto del monitoraggio nella rete
 
-Il nodo di monitoraggio non e' il firewall. Il documento sorgente e' netto su questo punto: il firewall deve restare un apparato deterministico che non esegue servizi estranei alla sicurezza di rete. Il SIEM vive quindi su una macchina separata nella LAN, o in una macchina virtuale sull'hypervisor, e riceve i log del firewall via syslog come li riceverebbe da qualunque altro apparato.
+Il nodo di monitoraggio non è il firewall. Il documento sorgente è netto su questo punto: il firewall deve restare un apparato deterministico che non esegue servizi estranei alla sicurezza di rete. Il SIEM vive quindi su una macchina separata nella LAN, o in una macchina virtuale sull'hypervisor, e riceve i log del firewall via syslog come li riceverebbe da qualunque altro apparato.
 
 ```
    [ FIREWALL ] --syslog--> [ nodo SIEM in LAN ] <--agenti-- [ endpoint ]
@@ -62,11 +62,11 @@ Il nodo di monitoraggio non e' il firewall. Il documento sorgente e' netto su qu
    estraneo qui                virtualizzati su Proxmox
 ```
 
-Accanto al SIEM il documento prevede un nodo di diagnostica separato, basato su una distribuzione con strumenti di rete preinstallati, da usare per analisi puntuali con analizzatore di pacchetti, scanner di porte e visualizzazione della topologia. E' uno strumento da postazione, non un servizio permanente, e puo' vivere anche come sistema avviabile da chiavetta.
+Accanto al SIEM il documento prevede un nodo di diagnostica separato, basato su una distribuzione con strumenti di rete preinstallati, da usare per analisi puntuali con analizzatore di pacchetti, scanner di porte e visualizzazione della topologia. È uno strumento da postazione, non un servizio permanente, e può vivere anche come sistema avviabile da chiavetta.
 
 ## Analisi di un campione sospetto
 
-Il secondo flusso e' un percorso a fasi, non un'architettura: nessuno di questi strumenti resta in esecuzione, si usano uno dopo l'altro su un singolo artefatto.
+Il secondo flusso è un percorso a fasi, non un'architettura: nessuno di questi strumenti resta in esecuzione, si usano uno dopo l'altro su un singolo artefatto.
 
 ```
   campione
@@ -95,4 +95,4 @@ Il secondo flusso e' un percorso a fasi, non un'architettura: nessuno di questi 
   indicatori di compromissione e report
 ```
 
-La sequenza non e' rigida: si scende di fase solo se la precedente lascia dubbi, e si torna indietro quando l'analisi dinamica rivela qualcosa che va cercato di nuovo nel binario. Il vincolo vero, che il documento sorgente non affronta e che va risolto prima di eseguire qualunque campione, e' l'isolamento: la sandbox deve stare su una rete che non puo' raggiungere ne' la LAN ne' Internet senza controllo, il che nel piano di segmentazione significa una VLAN dedicata con regole di uscita esplicite, oggi non prevista. Va aggiunto al piano prima di questa attivita', non dopo.
+La sequenza non è rigida: si scende di fase solo se la precedente lascia dubbi, e si torna indietro quando l'analisi dinamica rivela qualcosa che va cercato di nuovo nel binario. Il vincolo vero, che il documento sorgente non affronta e che va risolto prima di eseguire qualunque campione, è l'isolamento: la sandbox deve stare su una rete che non può raggiungere né la LAN né Internet senza controllo, il che nel piano di segmentazione significa una VLAN dedicata con regole di uscita esplicite, oggi non prevista. Va aggiunto al piano prima di questa attività, non dopo.

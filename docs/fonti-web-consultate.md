@@ -1,6 +1,6 @@
 # Fonti web consultate, per sessione
 
-Dal 22/09/2026 il punto di ingresso canonico e' [SOURCES.md](../SOURCES.md), con [note di lettura](fonti/index-fonti.md) e censimento degli URL pubblici. Questo registro conserva le letture storiche e il contesto NAS; le nuove fonti del filone rete sono registrate nel punto unico. Le fonti aggiunte qui dalla sessione NAS vengono intercettate dal censimento senza alterarne le annotazioni.
+Dal 22/09/2026 il punto di ingresso canonico è [SOURCES.md](../SOURCES.md), con [note di lettura](fonti/index-fonti.md) e censimento degli URL pubblici. Questo registro conserva le letture storiche e il contesto NAS; le nuove fonti del filone rete sono registrate nel punto unico. Le fonti aggiunte qui dalla sessione NAS vengono intercettate dal censimento senza alterarne le annotazioni.
 
 > Registro delle fonti esterne consultate durante il lavoro, con la data e l'affermazione che ciascuna sostiene. Nasce dal principio già enunciato in [Fonti e materiali del progetto](fonti-e-materiali.md): le affermazioni ancorate a un indirizzo di documentazione ufficiale sono verificate, quelle senza ancoraggio sono ragionamenti plausibili che nessuno ha messo alla prova. Questo file rende quell'ancoraggio consultabile invece che implicito, così che chi rilegge una scheda tecnica possa risalire a che cosa la sostiene e con quale grado di affidabilità.
 
@@ -18,7 +18,7 @@ Il grado *commerciale* è un listino, una scheda prodotto di un rivenditore o un
 
 Le fonti seguenti sostengono la scheda [Consolidamento di quattro desktop dismessi in un NAS](03-spunti-di-sviluppo/02-storage-di-rete-nas/03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md) e la [Guida all'assemblaggio e all'installazione di TrueNAS](03-spunti-di-sviluppo/02-storage-di-rete-nas/04-guida-assemblaggio-e-installazione-truenas.md).
 
-### Manuale della scheda madre — grado ufficiale
+### Manuale della scheda madre - grado ufficiale
 
 | Fonte | Che cosa sostiene |
 |---|---|
@@ -26,7 +26,7 @@ Le fonti seguenti sostengono la scheda [Consolidamento di quattro desktop dismes
 
 È la fonte che ha smentito un sospetto invece di confermarlo, e per questo vale citarla per prima: si temeva che l'alloggiamento M.2 sottraesse la porta SATA destinata al disco di avvio, e il manuale ha escluso il problema per i dispositivi NVMe.
 
-### Versioni e stato del software — grado ufficiale
+### Versioni e stato del software - grado ufficiale
 
 | Fonte | Che cosa sostiene |
 |---|---|
@@ -45,7 +45,7 @@ La fonte sulla soglia di trentacinque giorni ha corretto un'affermazione già sc
 
 La fonte sull'insieme di avvio è quella con la conseguenza operativa più immediata di tutto il registro, perché i due dischi disponibili hanno capacità diverse e l'ordine di installazione determina se il mirror sarà possibile o richiederà di reinstallare.
 
-### Versioni e stato del software — grado comunità e stampa tecnica
+### Versioni e stato del software - grado comunità e stampa tecnica
 
 | Fonte | Che cosa sostiene |
 |---|---|
@@ -53,7 +53,7 @@ La fonte sull'insieme di avvio è quella con la conseguenza operativa più immed
 | [Phoronix, TrueNAS 26 beta](https://www.phoronix.com/news/TrueNAS-26-Beta) | Linux 6.18 LTS e OpenZFS 2.4 nella 26 |
 | [The Register, espansione raidz in OpenZFS 2.3](https://www.theregister.com/2025/01/23/openzfs_23_raid_expansion/) | L'espansione di un vdev raidz un disco alla volta è arrivata con OpenZFS 2.3 |
 
-### Affidabilità del controller di rete integrato — grado comunità
+### Affidabilità del controller di rete integrato - grado comunità
 
 Questa è la parte del registro dove il grado conta di più, perché l'affermazione a valle è una raccomandazione di spesa e non un fatto di specifica. Nessuna documentazione ufficiale dichiara inadatto il controller integrato: le fonti sono segnalazioni, e il loro peso viene dalla convergenza su uno stesso componente sotto uno stesso carico.
 
@@ -66,7 +66,7 @@ Questa è la parte del registro dove il grado conta di più, perché l'affermazi
 
 Il valore di queste fonti prese insieme è di avere smentito un'ipotesi comoda: si potrebbe pensare che l'avversione per questi controller appartenga all'epoca FreeBSD e sia superata dal driver Linux mainline. Le segnalazioni sulla base Linux, e in particolare quella su un passaggio da FreeBSD a Linux fatto proprio per risolvere crash sotto carico e rimasto senza esito, indicano che l'ipotesi non regge. Resta una raccomandazione fondata su indizi convergenti, non su una specifica, e per questo la scheda la accompagna con una prova di collaudo che la mette alla prova sul posto invece di darla per assodata.
 
-### Origine dei binari e loro verifica — grado ufficiale
+### Origine dei binari e loro verifica - grado ufficiale
 
 | Fonte | Che cosa sostiene |
 |---|---|
@@ -79,7 +79,7 @@ La distinzione fra le ultime due voci è il motivo per cui esistono entrambe. Co
 
 Su Memtest86+ questo riscontro **non è disponibile**: il sito ufficiale non pubblica somme di controllo accanto ai file, la release su GitHub non pubblica artefatti, e l'installer per Windows **non è firmato digitalmente**. L'assicurazione disponibile si riduce quindi al trasporto cifrato dal dominio ufficiale e alla corrispondenza fra la versione dichiarata dal sito e quella della release pubblica. È una lacuna che va dichiarata e non aggirata; la circostanza che la attenua è che quel programma gira prima di qualunque sistema operativo, non monta e non scrive dischi, e opera sulla sola memoria.
 
-### Prezzi e disponibilità dei componenti da acquistare — grado commerciale
+### Prezzi e disponibilità dei componenti da acquistare - grado commerciale
 
 Queste voci documentano un prezzo a una data e decadono rapidamente. Servono a orientare una spesa, e vanno ricontrollate al momento dell'acquisto invece di essere citate come se fossero stabili.
 

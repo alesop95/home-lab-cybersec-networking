@@ -14,9 +14,9 @@ last-verified-commit: 6769dc4
 
 > Diagrammi testuali della catena WAN e della segmentazione interna, ricavati dalla documentazione sotto `docs/`. Sono versionati e diffabili, a differenza di un file di disegno binario. Lo schema definitivo in draw.io resta da produrre e non sostituisce questi diagrammi: li affianca.
 
-## La catena fisica, com'e' oggi
+## La catena fisica, com'è oggi
 
-Questa e' la catena imposta dal vincolo dell'operatore, non una scelta di progetto. La fibra termina su una presa ottica, da li' una bretella ottica raggiunge il terminale di rete ottico che converte in Ethernet, e da quel punto in avanti e' rete dati normale.
+Questa è la catena imposta dal vincolo dell'operatore, non una scelta di progetto. La fibra termina su una presa ottica, da lì una bretella ottica raggiunge il terminale di rete ottico che converte in Ethernet, e da quel punto in avanti è rete dati normale.
 
 ```
                  rete dell'operatore
@@ -43,11 +43,11 @@ Questa e' la catena imposta dal vincolo dell'operatore, non una scelta di proget
               [ FIREWALL OPNsense 25.7 ]
 ```
 
-Il modem non puo' essere messo in bridge: l'interfaccia non espone modalita' bridge, ne' passthrough PPPoE, ne' passthrough VLAN. Per la linea concreta in esame l'assistenza ha escluso il collegamento diretto dell'OPNsense all'ONT e una prova di terzi ha riferito un rifiuto del nuovo apparato; la documentazione pubblica Fastweb, pero', descrive anche scenari con apparato proprio e non dichiara in modo generale un vincolo MAC dell'ONT. Il progetto tratta quindi il collegamento diretto come non verificato e non supportato per questa linea, mantenendo il percorso ONT -> Seven -> OPNsense. Il doppio NAT e' il vincolo operativo di progetto.
+Il modem non può essere messo in bridge: l'interfaccia non espone modalità bridge, né passthrough PPPoE, né passthrough VLAN. Per la linea concreta in esame l'assistenza ha escluso il collegamento diretto dell'OPNsense all'ONT e una prova di terzi ha riferito un rifiuto del nuovo apparato; la documentazione pubblica Fastweb, però, descrive anche scenari con apparato proprio e non dichiara in modo generale un vincolo MAC dell'ONT. Il progetto tratta quindi il collegamento diretto come non verificato e non supportato per questa linea, mantenendo il percorso ONT -> Seven -> OPNsense. Il doppio NAT è il vincolo operativo di progetto.
 
-## Il firewall e la segmentazione interna, come sara'
+## Il firewall e la segmentazione interna, come sarà
 
-Tre interfacce fisiche, tre zone. La disposizione delle velocita' non e' vincolata dal ruolo logico: la scelta di mettere la DMZ sulla gigabit integrata dipende dal fatto che il servizio esposto non ha bisogno di banda multigigabit, non da un vincolo dell'apparato.
+Tre interfacce fisiche, tre zone. La disposizione delle velocità non è vincolata dal ruolo logico: la scelta di mettere la DMZ sulla gigabit integrata dipende dal fatto che il servizio esposto non ha bisogno di banda multigigabit, non da un vincolo dell'apparato.
 
 ```
               [ MODEM operatore ] 192.168.1.254/24
@@ -79,7 +79,7 @@ Tre interfacce fisiche, tre zone. La disposizione delle velocita' non e' vincola
                                                  dal firewall
 ```
 
-Dal 07/10/2026 la variante e' decisa (ADR-017): XMG1915-10EP con due AP, senza iniettore e senza terzo AP. ADR-018 colloca i due AP, cablati e alimentati in PoE, al terzo e al secondo dei quattro piani, e mette la PS5 su una porta LAN da 1 GbE del Seven, fuori dal perimetro. Il disegno aggiornato e' `docs/03-spunti-di-sviluppo/23-studio-home-lab/topologia-proposta.svg`. Il paragrafo che segue resta come storia della scelta. La variante dello switch era una scelta aperta dal 22/09/2026, documentata nello [studio switch e AP](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/03-switch-e-access-point-zyxel.md): la 10EP con PoE integrato e' il candidato principale per due o tre AP, la 10E senza PoE con un iniettore resta sensata se l'AP e' uno solo. Il diagramma mostra la prima. Lo switch non instrada: e' di livello 2 e trasporta soltanto. La porta che va al firewall e' configurata come trunk 802.1Q, le porte verso i dispositivi come access, e il firewall crea un'interfaccia logica per ogni VLAN sopra l'unica interfaccia fisica che lo collega allo switch. Il routing fra VLAN, il NAT verso Internet e ogni regola di sicurezza vivono solo sul firewall. L'assenza di routing di livello 3 sullo switch non e' un limite in questo scenario, perche' non esiste traffico fra VLAN che debba evitare il firewall.
+Dal 07/10/2026 la variante è decisa (ADR-017): XMG1915-10EP con due AP, senza iniettore e senza terzo AP. ADR-018 colloca i due AP, cablati e alimentati in PoE, al terzo e al secondo dei quattro piani, e mette la PS5 su una porta LAN da 1 GbE del Seven, fuori dal perimetro. Il disegno aggiornato è `docs/03-spunti-di-sviluppo/23-studio-home-lab/topologia-proposta.svg`. Il paragrafo che segue resta come storia della scelta. La variante dello switch era una scelta aperta dal 22/09/2026, documentata nello [studio switch e AP](../../../docs/03-spunti-di-sviluppo/23-studio-home-lab/03-switch-e-access-point-zyxel.md): la 10EP con PoE integrato è il candidato principale per due o tre AP, la 10E senza PoE con un iniettore resta sensata se l'AP è uno solo. Il diagramma mostra la prima. Lo switch non instrada: è di livello 2 e trasporta soltanto. La porta che va al firewall è configurata come trunk 802.1Q, le porte verso i dispositivi come access, e il firewall crea un'interfaccia logica per ogni VLAN sopra l'unica interfaccia fisica che lo collega allo switch. Il routing fra VLAN, il NAT verso Internet e ogni regola di sicurezza vivono solo sul firewall. L'assenza di routing di livello 3 sullo switch non è un limite in questo scenario, perché non esiste traffico fra VLAN che debba evitare il firewall.
 
 ## Il piano di indirizzamento previsto
 
@@ -87,16 +87,16 @@ Gli indirizzi privati sono scelte di progetto e restano in chiaro nella document
 
 | Zona | Rete | Ruolo |
 |---|---|---|
-| WAN del firewall | 192.168.1.0/24, gateway 192.168.1.254 | rete privata del modem, non e' Internet |
+| WAN del firewall | 192.168.1.0/24, gateway 192.168.1.254 | rete privata del modem, non è Internet |
 | LAN principale | 192.168.10.0/24 | postazioni, NAS, access point |
 | DMZ | 192.168.20.0/24 | server esposto verso l'esterno |
 | Storage o server | 192.168.30.0/24 | ipotesi di terza VLAN interna, indirizzo statico previsto per il NAS |
 
-Il piano a VLAN 10, 20 e 30 compare in due varianti nel documento sorgente, una senza firewall con la segmentazione fatta sul modem e una con il firewall come unico punto di decisione. Solo la seconda e' coerente con la topologia adottata; la prima resta come analisi dello scenario alternativo.
+Il piano a VLAN 10, 20 e 30 compare in due varianti nel documento sorgente, una senza firewall con la segmentazione fatta sul modem e una con il firewall come unico punto di decisione. Solo la seconda è coerente con la topologia adottata; la prima resta come analisi dello scenario alternativo.
 
 ## Il buco noto
 
-Nella configurazione attuale, con il firewall a valle del modem, la Wi-Fi generata dal modem e' interna alla LAN del modem stesso e non attraversa il firewall. Ogni dispositivo wireless connesso a quella rete e' quindi fuori dal perimetro controllato, e continuera' a esserlo finche' gli access point a valle dello switch non saranno installati e la radio del modem non sara' spenta o ridotta a rete ospite. Questa rete upstream puo' essere tollerata temporaneamente per dispositivi ordinari o legacy, ma non va presentata come copertura di sicurezza dell'intera abitazione. Gli access point a valle dello switch chiudono il buco: senza di essi la segmentazione copre il cablato e lascia scoperto il wireless.
+Nella configurazione attuale, con il firewall a valle del modem, la Wi-Fi generata dal modem è interna alla LAN del modem stesso e non attraversa il firewall. Ogni dispositivo wireless connesso a quella rete è quindi fuori dal perimetro controllato, e continuerà a esserlo finché gli access point a valle dello switch non saranno installati e la radio del modem non sarà spenta o ridotta a rete ospite. Questa rete upstream può essere tollerata temporaneamente per dispositivi ordinari o legacy, ma non va presentata come copertura di sicurezza dell'intera abitazione. Gli access point a valle dello switch chiudono il buco: senza di essi la segmentazione copre il cablato e lascia scoperto il wireless.
 
 ## Diagramma della sequenza di decisione sulla WAN
 

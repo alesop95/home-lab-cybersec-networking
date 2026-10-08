@@ -4,9 +4,9 @@
 
 ## Inventario operativo documentale, ricognizione del 22/09/2026
 
-Questa tabella e' il punto canonico per l'inventario del filone rete; le descrizioni storiche sotto restano materiale da verificare. Un apparato citato non e' stato osservato online in questa sessione. Caratteristiche generiche dei prodotti e versioni OS del vecchio testo non sono automaticamente stato attuale. Nessuna scansione della rete e' stata eseguita.
+Questa tabella è il punto canonico per l'inventario del filone rete; le descrizioni storiche sotto restano materiale da verificare. Un apparato citato non è stato osservato online in questa sessione. Caratteristiche generiche dei prodotti e versioni OS del vecchio testo non sono automaticamente stato attuale. Nessuna scansione della rete è stata eseguita.
 
-Gli ID sono etichette documentali, non hostname reali. La fonte `storico` e' questo stesso documento; `verbale` e' il [verbale firewall](../verbale-installazione-opnsense.md); `topologia` e' la [scheda di rete](../../.claude/context/diagrams/topologia-di-rete.md); `NAS` e' il [sottoprogetto storage](../03-spunti-di-sviluppo/02-storage-di-rete-nas/README.md). Il [nuovo studio](../03-spunti-di-sviluppo/23-studio-home-lab/README.md) usa questa tabella senza creare un secondo inventario.
+Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è questo stesso documento; `verbale` è il [verbale firewall](../verbale-installazione-opnsense.md); `topologia` è la [scheda di rete](../../.claude/context/diagrams/topologia-di-rete.md); `NAS` è il [sottoprogetto storage](../03-spunti-di-sviluppo/02-storage-di-rete-nas/README.md). Il [nuovo studio](../03-spunti-di-sviluppo/23-studio-home-lab/README.md) usa questa tabella senza creare un secondo inventario.
 
 | ID | Apparato / dato documentato | Stato dell'evidenza | Ruolo proposto e dati da raccogliere |
 |---|---|---|---|
@@ -17,14 +17,14 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` e' que
 | NET-05 | switch gestito 8 RJ45 | da acquistare | candidato XMG1915-10EP; definire budget e porte simultanee |
 | NET-06 | AP 1 Zyxel | da acquistare | trunk e VLAN SSID; rilevare sede, cavo e copertura |
 | NET-07 | AP 2 Zyxel | da acquistare | come AP 1 |
-| NET-08 | AP 3 Zyxel | eventuale, necessita' non ancora dimostrata | misurare la zona che ne giustifica l'acquisto |
+| NET-08 | AP 3 Zyxel | eventuale, necessità non ancora dimostrata | misurare la zona che ne giustifica l'acquisto |
 | STO-01 | NAS da quattro desktop dismessi | assemblaggio nell'altra sessione | VLAN 30, a orario; ricevere configurazione e collaudo finali, non ricensire donatori |
-| SRV-01 | host servizi sempre acceso | ruolo non assegnato, nessun acquisto deciso | VLAN 30; individuare hardware, RAM, dischi, watt e disponibilita' |
+| SRV-01 | host servizi sempre acceso | ruolo non assegnato, nessun acquisto deciso | VLAN 30; individuare hardware, RAM, dischi, watt e disponibilità |
 | PC-01 | PC fisso 1, Windows 11 Pro indicato come forzato | storico, incompleto | confermare modello, NIC, supporto aggiornamenti e uso prima di VLAN fidata |
 | PC-02 | PC fisso 2, Xubuntu | storico, incompleto | client o candidato servizi da valutare; modello, NIC, RAM e consumo |
 | PC-03 | PC fisso 3, anduinOS | storico, incompleto | client; modello, versione e NIC |
 | PC-04 | PC conversione VHS, i7-6700, 16 GB | storico, distinto dal lotto NAS | postazione specializzata; NIC, dischi, periferiche e supporto OS |
-| PC-06 | PC fisso 6, Ubuntu Studio 25 indicato | storico, incompleto | client multimediale; versione, NIC e disponibilita' |
+| PC-06 | PC fisso 6, Ubuntu Studio 25 indicato | storico, incompleto | client multimediale; versione, NIC e disponibilità |
 | LAP-01 | ASUS X513EAN/K513EA, i5-1135G7, 8 GB | DxDiag storico gennaio 2026 | client; adattatori reali, link e aggiornamenti |
 | LAP-02 | ASUS F550CC-XX698H, Ubuntu 24.04 indicato | storico; Intel N2230 2,4 GHz riportata | confermare Wi-Fi, Ethernet e supporto OS |
 | LAP-03 | MacBook Air 13 pollici 2017, Monterey 12.7.6 indicato | storico; descrizione generica non verificata | legacy fino a verifica aggiornamenti; modello da sistema e adattatori |
@@ -37,15 +37,15 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` e' que
 | TAB-01 | tablet Samsung precedente | storico, nessun modello | legacy fino a identificazione; modello, OS e uso |
 | TAB-02 | tablet Samsung recente | storico, nessun modello | identificare modello, OS e uso |
 
-Le intestazioni relative a persone e i segnaposto senza modello non identificano un dispositivo: non si creano apparati per riempire le righe. Telecamere, stampanti, domotica, UPS e ulteriori console restano categorie da rilevare, non beni gia' posseduti. I quattro desktop del consolidamento non si identificano con i PC domestici numerati: la documentazione li descrive come lotto distinto. Il firewall compare una sola volta, come NET-04.
+Le intestazioni relative a persone e i segnaposto senza modello non identificano un dispositivo: non si creano apparati per riempire le righe. Telecamere, stampanti, domotica, UPS e ulteriori console restano categorie da rilevare, non beni già posseduti. I quattro desktop del consolidamento non si identificano con i PC domestici numerati: la documentazione li descrive come lotto distinto. Il firewall compare una sola volta, come NET-04.
 
 ## Scheda minima e livello privato
 
-Per ogni asset si tengono ID documentale, categoria, produttore/modello, ruolo, stato (citato/confermato/acquisto/ritirato), fonte e data, OS/firmware, interfacce, VLAN, alimentazione, dipendenze, backup e ultima prova. Nella copia pubblica si usano segnaposto per hostname, seriali, MAC, SSID, credenziali e indirizzi pubblici; i valori reali restano nella mappa privata. Posizione dettagliata e planimetria non si pubblicano. Il MAC non e' un'identita' univoca stabile sui client che lo randomizzano.
+Per ogni asset si tengono ID documentale, categoria, produttore/modello, ruolo, stato (citato/confermato/acquisto/ritirato), fonte e data, OS/firmware, interfacce, VLAN, alimentazione, dipendenze, backup e ultima prova. Nella copia pubblica si usano segnaposto per hostname, seriali, MAC, SSID, credenziali e indirizzi pubblici; i valori reali restano nella mappa privata. Posizione dettagliata e planimetria non si pubblicano. Il MAC non è un'identità univoca stabile sui client che lo randomizzano.
 
 La verifica parte dai dispositivi fisici e dagli elenchi lease/client del router: questi non trovano necessariamente apparati spenti o statici. Sui computer si raccolgono modello, OS e adattatori in sola lettura, mantenendo gli output completi sotto `_notes/`. Per il NAS si riceve il riepilogo della sessione responsabile. GLPI, NetBox e NovaSCM sono confrontati nello [studio servizi](../03-spunti-di-sviluppo/23-studio-home-lab/02-servizi-gratuiti.md); scegliere un software non colma i dati mancanti.
 
-Il primo passaggio deve produrre due conteggi: apparati cablati contemporaneamente e client Wi-Fi per area. Sono i numeri che decidono se otto porte e due AP bastano. Descrizioni commerciali, velocita' negoziata e velocita' massima della radio non sono misure di prestazioni. Il censimento e' completo rispetto alle voci documentali riportate, non rispetto all'intera abitazione.
+Il primo passaggio deve produrre due conteggi: apparati cablati contemporaneamente e client Wi-Fi per area. Sono i numeri che decidono se otto porte e due AP bastano. Descrizioni commerciali, velocità negoziata e velocità massima della radio non sono misure di prestazioni. Il censimento è completo rispetto alle voci documentali riportate, non rispetto all'intera abitazione.
 
 ## Descrizioni storiche da riverificare
 

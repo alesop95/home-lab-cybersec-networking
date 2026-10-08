@@ -1,8 +1,8 @@
 # Progetto rete domestica
 
-> Home della documentazione. Dal 25/08/2026 questo albero e' scritto e manutenuto a mano: non si rigenera piu' dal documento Word, che e' stato eliminato il 07/10/2026 dopo la verifica di ADR-019: questo albero e' l'unica fonte. Si modifica direttamente qui, si verifica con i controlli descritti in `../.claude/context/deployment.md`, si committa. Il razionale della scelta e' in ADR-010, `../.claude/memory/decisions.md`.
+> Home della documentazione. Dal 25/08/2026 questo albero è scritto e manutenuto a mano: non si rigenera più dal documento Word, che è stato eliminato il 07/10/2026 dopo la verifica di ADR-019: questo albero è l'unica fonte. Si modifica direttamente qui, si verifica con i controlli descritti in `../.claude/context/deployment.md`, si committa. Il razionale della scelta è in ADR-010, `../.claude/memory/decisions.md`.
 
-Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come e' organizzato l'albero e propone i percorsi di lettura per argomento. Per sapere che cosa manca, `pendenze-aperte.md`.
+Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come è organizzato l'albero e propone i percorsi di lettura per argomento. Per sapere che cosa manca, `pendenze-aperte.md`.
 
 ## Documenti trasversali
 
@@ -15,6 +15,7 @@ Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come e' organizz
 - [Fonti e materiali del progetto](fonti-e-materiali.md)
 - [Fonti web consultate, per sessione](fonti-web-consultate.md)
 - [Alternative rispettose della privacy](alternative-privacy-oriented.md)
+- [Segni del testo generato](anti-slop/README.md)
 - [Report della conversione iniziale](_CONVERSION-REPORT.md)
 
 ## Aree
@@ -28,6 +29,6 @@ Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come e' organizz
 
 ## Come si aggiunge qualcosa
 
-Un nuovo elemento di studio e' un file dentro l'area pertinente, quasi sempre sotto `03-spunti-di-sviluppo/`, aggiunto all'indice della sua cartella. Un nuovo dispositivo dell'inventario e' un sottotitolo dentro `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, senza creare file. Un intervento eseguito davvero e' un documento trasversale nuovo, sul modello del verbale di installazione, collegato qui sopra.
+Un nuovo elemento di studio è un file dentro l'area pertinente, quasi sempre sotto `03-spunti-di-sviluppo/`, aggiunto all'indice della sua cartella. Un nuovo dispositivo dell'inventario è un sottotitolo dentro `05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md`, senza creare file. Un intervento eseguito davvero è un documento trasversale nuovo, sul modello del verbale di installazione, collegato qui sopra.
 
-I prefissi numerici delle cartelle e dei file vengono dalla generazione iniziale e ora sono soltanto nomi stabili: non vanno rinumerati per inserire qualcosa in mezzo, si usa il numero successivo libero. Dopo ogni modifica, `python tools/check-docs-tree.py` verifica che non restino file scollegati ne' collegamenti rotti.
+I prefissi numerici delle cartelle e dei file vengono dalla generazione iniziale e ora sono soltanto nomi stabili: non vanno rinumerati per inserire qualcosa in mezzo, si usa il numero successivo libero. Dopo ogni modifica, `python tools/check-docs-tree.py` verifica che non restino file scollegati né collegamenti rotti.

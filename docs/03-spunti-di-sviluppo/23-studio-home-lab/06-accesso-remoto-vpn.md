@@ -1,6 +1,6 @@
 # Accesso remoto al laboratorio: Tailscale e WireGuard
 
-L'accesso remoto e' compatibile con la topologia attuale, ma non cambia la catena WAN: `ONT -> Fastweb Seven -> OPNsense`. La VPN deve terminare su OPNsense oppure su un host sempre acceso a valle. L'IP pubblico statico aiuta soprattutto WireGuard esposto direttamente; Tailscale normalmente evita di pubblicare una porta sul Seven e usa un overlay autenticato.
+L'accesso remoto è compatibile con la topologia attuale, ma non cambia la catena WAN: `ONT -> Fastweb Seven -> OPNsense`. La VPN deve terminare su OPNsense oppure su un host sempre acceso a valle. L'IP pubblico statico aiuta soprattutto WireGuard esposto direttamente; Tailscale normalmente evita di pubblicare una porta sul Seven e usa un overlay autenticato.
 
 ## Scelta iniziale consigliata
 

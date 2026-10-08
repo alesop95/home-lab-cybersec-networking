@@ -35,4 +35,4 @@ Se il Fastweb Seven non supporta trunk 802.1Q[^3]: allora solo la LAN principale
 
 [^2]: La PS5 finisce nella VLAN 10, così sfrutta la banda piena e non viene segregata come IoT. Superata il 07/10/2026 da ADR-018: la PS5 va su una porta LAN da 1 GbE del Seven, fuori dal perimetro di OPNsense, con un NAT solo.
 
-[^3]: Un trunk 802.1Q è un tipo di collegamento tra due dispositivi di rete (di solito router ↔ switch o switch ↔ switch) che porta più VLAN sulla stessa porta Ethernet, grazie a un “tag” inserito nei frame per indicare a quale VLAN appartengono. E’ una singola porta che trasporta più VLAN.
+[^3]: Un trunk 802.1Q è un tipo di collegamento tra due dispositivi di rete (di solito router ↔ switch o switch ↔ switch) che porta più VLAN sulla stessa porta Ethernet, grazie a un “tag” inserito nei frame per indicare a quale VLAN appartengono. È una singola porta che trasporta più VLAN.

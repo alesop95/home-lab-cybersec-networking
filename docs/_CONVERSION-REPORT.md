@@ -1,6 +1,6 @@
 # Report di conversione
 
-> Generato da `tools/docx-to-md.py`. Conversione verbatim: nessun contenuto rimosso. Questo report elenca conteggi, marcatori di lavoro dell'autore e mappa delle immagini, per tracciabilita'.
+> Generato da `tools/docx-to-md.py`. Conversione verbatim: nessun contenuto rimosso. Questo report elenca conteggi, marcatori di lavoro dell'autore e mappa delle immagini, per tracciabilità.
 
 ## Conteggi
 
@@ -116,7 +116,7 @@ Le immagini non sono versionate (gitignore `*.png`/`*.jpeg`); restano in locale 
 
 ## Redazioni applicate
 
-Sostituzioni deterministiche (sidecar `tools/redactions.json`) per neutralizzare i dati identificativi reali secondo `.claude/rules/anonymization.md`, preservando l'analisi tecnica. Questa e' una divergenza voluta dal testo verbatim del sorgente.
+Sostituzioni deterministiche (sidecar `tools/redactions.json`) per neutralizzare i dati identificativi reali secondo `.claude/rules/anonymization.md`, preservando l'analisi tecnica. Questa è una divergenza voluta dal testo verbatim del sorgente.
 
 - Totale sostituzioni: 54 (di cui 5 su titoli, quindi anche su slug e nomi di cartella)
 - 01-introduzione/README.md: 2
@@ -134,7 +134,7 @@ Sostituzioni deterministiche (sidecar `tools/redactions.json`) per neutralizzare
 
 ## Pulizia applicata (--clean)
 
-Rimozione deterministica di rumore ereditato dal sorgente: emoji, trattini lunghi normalizzati in trattini brevi, righe segnaposto (es. 'aaaa'). Divergenza voluta dal testo verbatim.
+Rimozione deterministica di rumore ereditato dal sorgente: emoji, trattini lunghi normalizzati in trattini brevi, righe segnaposto (es. 'aaaà). Divergenza voluta dal testo verbatim.
 
 - Righe segnaposto rimosse: 61
 - Trattini normalizzati: 212

@@ -1,12 +1,12 @@
 # Alternative rispettose della privacy ai servizi mainstream
 
-> Documento curato, non generato dal documento sorgente. Riporta integralmente il contenuto di `privacy pack.txt`, il file di appunti dell'autore, eliminato il 07/10/2026 dopo la verifica di ADR-019: questo documento ne e' l'unica copia. E' materiale di orientamento, non una configurazione: dice quali servizi si vorrebbero sottrarre a un fornitore terzo, e quindi quali carichi il lab dovra' eventualmente ospitare.
+> Documento curato, non generato dal documento sorgente. Riporta integralmente il contenuto di `privacy pack.txt`, il file di appunti dell'autore, eliminato il 07/10/2026 dopo la verifica di ADR-019: questo documento ne è l'unica copia. È materiale di orientamento, non una configurazione: dice quali servizi si vorrebbero sottrarre a un fornitore terzo, e quindi quali carichi il lab dovrà eventualmente ospitare.
 
 ## A che cosa serve in questo progetto
 
-Un home lab non nasce per il gusto di avere apparati in casa: nasce per riportare sotto controllo diretto dei servizi che altrimenti vivono su infrastruttura altrui. Questo elenco e' la lista della spesa che giustifica il lab, e va letta come tale. Ogni riga che indica una alternativa self-hostabile, dal cloud personale al server di posta al media server al DNS, e' un carico che prima o poi dovra' trovare posto su una macchina della rete, con il suo consumo, il suo backup e la sua superficie d'attacco. Le righe che indicano invece un servizio esterno diverso, per esempio un fornitore di posta orientato alla privacy al posto di un altro, non hanno impatto sull'infrastruttura e restano decisioni personali di uso quotidiano.
+Un home lab non nasce per il gusto di avere apparati in casa: nasce per riportare sotto controllo diretto dei servizi che altrimenti vivono su infrastruttura altrui. Questo elenco è la lista della spesa che giustifica il lab, e va letta come tale. Ogni riga che indica una alternativa self-hostabile, dal cloud personale al server di posta al media server al DNS, è un carico che prima o poi dovrà trovare posto su una macchina della rete, con il suo consumo, il suo backup e la sua superficie d'attacco. Le righe che indicano invece un servizio esterno diverso, per esempio un fornitore di posta orientato alla privacy al posto di un altro, non hanno impatto sull'infrastruttura e restano decisioni personali di uso quotidiano.
 
-La fonte dichiarata nel file di appunti e' la trascrizione di PrivacyPack.org. E' un elenco di terze parti, non una valutazione fatta in proprio: nessuna delle alternative qui sotto e' stata verificata sul campo in questo progetto, e vanno trattate come candidature da istruire, non come raccomandazioni consolidate.
+La fonte dichiarata nel file di appunti è la trascrizione di PrivacyPack.org. È un elenco di terze parti, non una valutazione fatta in proprio: nessuna delle alternative qui sotto è stata verificata sul campo in questo progetto, e vanno trattate come candidature da istruire, non come raccomandazioni consolidate.
 
 ## Le righe che diventano carichi del lab
 
@@ -16,16 +16,16 @@ Le voci che seguono sono quelle che, se adottate nella loro forma self-hosted, r
 |---|---|---|
 | OneDrive, Google Drive, iCloud, Samsung Cloud | Nextcloud, OwnCloud | storage di rete, spazio disco reale, backup, esposizione controllata verso l'esterno |
 | Plex | Jellyfin | media server, transcodifica, banda in LAN verso i client |
-| Google Home | Home Assistant | dominio domotico, tipicamente una VLAN separata perche' popolata da dispositivi IoT poco aggiornabili |
+| Google Home | Home Assistant | dominio domotico, tipicamente una VLAN separata perché popolata da dispositivi IoT poco aggiornabili |
 | Google Play Store | F-Droid | nessun impatto infrastrutturale |
 | Clipboard e file sharing cloud | Syncthing, KDE Connect | traffico laterale in LAN fra dispositivi, da tenere presente nelle regole inter-VLAN |
-| DNS dell'operatore | Quad9, NextDNS | si incrocia con la scelta gia' documentata di un resolver ricorsivo interno con Unbound dietro Pi-hole, che e' l'opzione piu' forte perche' non delega a nessun terzo |
+| DNS dell'operatore | Quad9, NextDNS | si incrocia con la scelta già documentata di un resolver ricorsivo interno con Unbound dietro Pi-hole, che è l'opzione più forte perché non delega a nessun terzo |
 
-La suite di posta self-hosted non compare in questo elenco ma e' trattata nel documento sorgente sotto `03-spunti-di-sviluppo/07-further-protection/`, con Mailcow come candidata; e' il carico piu' impegnativo dell'insieme, perche' un server di posta esposto richiede reputazione IP, record SPF, DKIM e DMARC corretti e manutenzione continua.
+La suite di posta self-hosted non compare in questo elenco ma è trattata nel documento sorgente sotto `03-spunti-di-sviluppo/07-further-protection/`, con Mailcow come candidata; è il carico più impegnativo dell'insieme, perché un server di posta esposto richiede reputazione IP, record SPF, DKIM e DMARC corretti e manutenzione continua.
 
 ## L'elenco completo, come trascritto
 
-Lo schema della fonte e' costante: applicazione di uso comune, poi alternativa proposta.
+Lo schema della fonte è costante: applicazione di uso comune, poi alternativa proposta.
 
 ### Posta, ricerca, browser
 
@@ -45,7 +45,7 @@ Google Calendar diventa Proton Calendar. Google Contacts diventa Proton Contacts
 
 ### Autenticazione, video, store, sicurezza
 
-L'account Microsoft diventa un account locale piu' un gestore di password, Proton Pass oppure Bitwarden. Windows Hello con sincronizzazione cloud diventa Windows Hello solo locale, senza sync. Google Play Store diventa F-Droid. Google Cast diventa Proton Cast. Dove non esiste un servizio di partenza, la fonte propone Proton VPN, notando che offre un piano gratuito illimitato nel traffico e senza pubblicita', con politica dichiarata di assenza di log, ma con limiti su velocita', numero di dispositivi (uno solo) e posizioni dei server. ChatGPT diventa LeChat.
+L'account Microsoft diventa un account locale più un gestore di password, Proton Pass oppure Bitwarden. Windows Hello con sincronizzazione cloud diventa Windows Hello solo locale, senza sync. Google Play Store diventa F-Droid. Google Cast diventa Proton Cast. Dove non esiste un servizio di partenza, la fonte propone Proton VPN, notando che offre un piano gratuito illimitato nel traffico e senza pubblicità, con politica dichiarata di assenza di log, ma con limiti su velocità, numero di dispositivi (uno solo) e posizioni dei server. ChatGPT diventa LeChat.
 
 ### Assistenti e mappe
 
@@ -53,7 +53,7 @@ Google Home diventa Home Assistant. Google Maps diventa Organic Maps. Google Tra
 
 ### Community, social, videoconferenze
 
-Discord diventa Matrix. X, gia' Twitter, diventa Mastodon. Zoom diventa Proton Meet.
+Discord diventa Matrix. X, già Twitter, diventa Mastodon. Zoom diventa Proton Meet.
 
 ### Pagamenti, DNS, sistemi
 
@@ -63,7 +63,7 @@ PayPal diventa Hero. Il DNS dell'operatore diventa Quad9. Windows diventa Ubuntu
 
 Plex diventa Jellyfin. Google Workspace diventa Proton Docs. iCloud diventa OwnCloud. La fonte nomina inoltre GoDaddy come servizio citato, senza indicarne un sostituto.
 
-### Produttivita'
+### Produttività
 
 Microsoft Office diventa OnlyOffice oppure LibreOffice. Microsoft To Do diventa Joplin oppure Tasks.org. Clipchamp diventa Kdenlive oppure Shotcut. Come suite per ufficio la fonte rimanda anche a ufficiozero.org.
 
@@ -81,16 +81,16 @@ Samsung Keyboard diventa OpenBoard oppure FlorisBoard. L'input vocale Google div
 
 ### Sistema e controllo su mobile
 
-I Google Device Services diventano microG, se la ROM e' compatibile. I Play Services completi diventano Play Services limitati, o un approccio in stile GrapheneOS.
+I Google Device Services diventano microG, se la ROM è compatibile. I Play Services completi diventano Play Services limitati, o un approccio in stile GrapheneOS.
 
 ### Sicurezza avanzata su mobile
 
-Le funzioni cloud di Samsung Knox diventano Knox locale piu' un firewall applicativo, TrackerControl oppure NetGuard.
+Le funzioni cloud di Samsung Knox diventano Knox locale più un firewall applicativo, TrackerControl oppure NetGuard.
 
 ### Cross-platform fra Windows e Android
 
-La clipboard cloud, di Google o di Microsoft, diventa sincronizzazione locale con KDE Connect. La condivisione file cloud diventa Syncthing. L'autofill delle password di sistema diventa Proton Pass oppure Bitwarden. Il DNS di sistema diventa Quad9 oppure NextDNS, gia' citati ma qui nell'accezione valida su tutti i dispositivi.
+La clipboard cloud, di Google o di Microsoft, diventa sincronizzazione locale con KDE Connect. La condivisione file cloud diventa Syncthing. L'autofill delle password di sistema diventa Proton Pass oppure Bitwarden. Il DNS di sistema diventa Quad9 oppure NextDNS, già citati ma qui nell'accezione valida su tutti i dispositivi.
 
 ## Osservazione critica
 
-L'elenco e' fortemente concentrato su un singolo fornitore per una larga parte delle voci, il che sposta la dipendenza invece di eliminarla: sostituire cinque servizi di un grande operatore con cinque servizi di un operatore piu' piccolo riduce l'esposizione pubblicitaria ma non l'accentramento. Le voci che spostano davvero il controllo sono quelle self-hostabili, cioe' il cloud personale, il media server, la domotica, la sincronizzazione file e il DNS, ed e' su quelle che il lab ha un ruolo. Questa e' una lettura del progetto, non della fonte, che si limita a elencare.
+L'elenco è fortemente concentrato su un singolo fornitore per una larga parte delle voci, il che sposta la dipendenza invece di eliminarla: sostituire cinque servizi di un grande operatore con cinque servizi di un operatore più piccolo riduce l'esposizione pubblicitaria ma non l'accentramento. Le voci che spostano davvero il controllo sono quelle self-hostabili, cioè il cloud personale, il media server, la domotica, la sincronizzazione file e il DNS, ed è su quelle che il lab ha un ruolo. Questa è una lettura del progetto, non della fonte, che si limita a elencare.

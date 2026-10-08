@@ -1,6 +1,6 @@
 # Implementazione con IP dinamico (aborted)
 
-> PERCORSO ABBANDONATO, conservato come riferimento. L'ipotesi di esporre MeshCentral con IP pubblico dinamico e Dynamic DNS e' decaduta con l'assegnazione dell'IP statico da parte dell'operatore, confermata il 05/03/2026. L'analisi resta valida come descrizione dei limiti di un IP dinamico. Vedi ADR-004 in `.claude/memory/decisions.md`.
+> PERCORSO ABBANDONATO, conservato come riferimento. L'ipotesi di esporre MeshCentral con IP pubblico dinamico e Dynamic DNS è decaduta con l'assegnazione dell'IP statico da parte dell'operatore, confermata il 05/03/2026. L'analisi resta valida come descrizione dei limiti di un IP dinamico. Vedi ADR-004 in `.claude/memory/decisions.md`.
 
 ## Come funziona con l’IP dinamico
 
