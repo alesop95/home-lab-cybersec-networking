@@ -36,6 +36,8 @@ In sintesi, con tre schede di rete sul firewall:
 
 Il modem resta il punto di uscita verso l’ISP, mentre OPNsense diventa il router e firewall reale della rete interna e della DMZ.
 
+Nel progetto la conclusione della pagina è quella adottata, con tre precisazioni. Il firewall installato il 16/01/2026 non è il PC con i7-6700 descritto qui, ma un PC con i3 di settima generazione, 8 GB di RAM e SSD da 120 GB, con la scheda integrata da 1 GbE e due TP-Link TX201 da 2,5 GbE, come documenta il [verbale dell'installazione](../../verbale-installazione-opnsense.md); nel censimento l'i7-6700 è il PC per la conversione VHS. La WAN di OPNsense prende l'indirizzo dal DHCP del Seven con una prenotazione, che la rende stabile per gli inoltri, ed è collegata alla porta LAN 4 del Seven, l'unica a 2,5 GbE. E la LAN di OPNsense non è una rete sola: porta in trunk le VLAN 10, 30, 40, 50, 60 e 99 verso lo switch, come descrive la [topologia](../../../.claude/context/diagrams/topologia-di-rete.md).
+
 ## Chiarimenti
 
 ### [TBC] La differenza tra port forwarding o Exposed Host (Fastweb seven)
@@ -44,11 +46,15 @@ Il traffico in ingresso da Internet arriverà prima al modem Fastweb, verrà ino
 
 	Considerando il menù sopra per come è fatto il Fastweb seven, che cambia?
 
+Risposta di progetto, dell'8/10/2026. Con il port forwarding il Seven inoltra alla WAN di OPNsense le sole porte indicate, e scarta tutto il resto del traffico non richiesto. Con l'Exposed Host inoltra alla WAN di OPNsense tutte le porte, e ogni decisione sul traffico in ingresso passa a OPNsense. Il progetto usa il port forwarding di una sola porta UDP, quella di WireGuard, perché finché l'unico servizio raggiungibile da fuori è la VPN è la superficie più piccola; l'Exposed Host resta l'alternativa per quando la DMZ ospiterà un servizio pubblico. Le due voci sono descritte nella pagina [Internet dell'interfaccia del Seven](../06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/03-internet.md).
+
 ### [TBC] La differenza tra le due DMZ in atto
 
 Abbiamo visto che il modem Fastweb fornisce una funzione chiamata Exposed Host, di fatto una DMZ completa verso *un* dispositivo interno. In pratica tutte le porte in ingresso sull’IP pubblico vengono inoltrate verso un singolo host della LAN e nel caso in esame quell’host sarebbe l’interfaccia WAN di OPNsense.
 
 Questa DMZ che fa il modem fastweb è diversa dalla DMZ che sta sulla scheda di rete da 1Gbps del firewall. cercare
+
+Risposta di progetto, dell'8/10/2026. Sono due cose diverse che portano lo stesso nome. La "DMZ" del Seven è una regola che consegna tutto il traffico in ingresso a un solo host della rete del modem, e nel progetto quell'host sarebbe la WAN di OPNsense. La DMZ di OPNsense è invece un segmento di rete vero, `192.168.20.0/24`, su una porta fisica propria, la scheda integrata da 1 GbE, con un contratto che nega ogni traffico dalla DMZ verso le altre zone. Un servizio pubblico in DMZ richiede quindi due passaggi in serie: il Seven porta il traffico alla WAN di OPNsense, con un inoltro di porta o con l'host esposto, e OPNsense lo porta all'host della DMZ con un proprio inoltro. Oggi la DMZ di OPNsense è prevista ma vuota.
 
 	____________
 
