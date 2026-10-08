@@ -4,9 +4,8 @@ generated-from-branch: main
 generated-date: 2026-08-25
 covers-paths:
   - tools/**
-  - scripts/**
   - docs/**
-last-verified-commit: 6769dc4
+last-verified-commit: 0dbed60
 ---
 
 # Esecuzione e manutenzione della documentazione
@@ -88,8 +87,10 @@ Si modifica un file, si collega dall'indice se è nuovo, si esegue il controllo 
 Dal 07/10/2026 la via ordinaria per committare è `chiudi`, lanciato dall'utente nel proprio terminale con il messaggio che l'agente prepara in `_notes/COMMIT-MSG.txt`. Esegue i controlli istanziati del template, fra cui `md-unwrap --only-tracked`, `lint-md-commands` e il guard-rail con il suo autotest; si ferma prima del commit se uno fallisce. Non conosce `tools/check-docs-tree.py`, che è proprio di questo progetto: dopo uno spostamento o un file nuovo nell'albero quel controllo si lancia a mano prima di `chiudi`.
 
 ```bash
-python tools/check-docs-tree.py && python tools/md-unwrap.py --check . && python tools/lint-md-commands.py . && python tools/Test-Anonymization.py
+python tools/check-docs-tree.py && powershell -NoProfile -ExecutionPolicy Bypass -File tools/chiudi-sessione.ps1 -SoloControlli
 ```
+
+Dopo il push `chiudi` registra l'impronta che `tools/verifica-ripresa.py` confronta all'apertura della sessione successiva, attraverso la skill `riprendi`.
 
 ## Rigenerare da un documento Word, se un giorno servisse
 

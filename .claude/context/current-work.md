@@ -5,12 +5,12 @@ generated-date: 2026-10-07
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: 6769dc4
+last-verified-commit: 0dbed60
 ---
 
 # Lavoro corrente
 
-> Scheda tecnica del lavoro aperto. Va riletta a inizio sessione e riscritta quando il lavoro cambia, non accresciuta all'infinito: il registro storico è `.claude/memory/progress.md`, questa scheda descrive solo ciò che è aperto adesso. Riscritta il 07/10/2026.
+> Scheda tecnica del lavoro aperto. Va riletta a inizio sessione e riscritta quando il lavoro cambia, non accresciuta all'infinito: il registro storico è `.claude/memory/progress.md`, questa scheda descrive solo ciò che è aperto adesso. Riscritta il 07/10/2026, aggiornata l'8/10/2026.
 
 ## Due fili, uno attivo e uno in pausa
 
@@ -20,7 +20,7 @@ Dal 07/10/2026 il filo attivo è la progettazione della rete domestica e della s
 
 La baseline è ONT, poi il modem dell'operatore, poi la WAN di OPNsense, poi la LAN di OPNsense in trunk verso lo switch Zyxel, poi gli access point. La Wi-Fi del modem resta a monte e fuori dal perimetro del firewall finché gli access point non sono installati, e non va descritta come protetta. Il collegamento diretto di OPNsense all'ONT non è la baseline, perché sulla linea concreta non è stato validato. Il ragionamento è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/`, a partire da `01-architettura.md`, con la guida operativa in `05-guida-configurazione-opnsense-in-casa.md` e il riepilogo degli acquisti in `ACQUISTI-E-CONFIGURAZIONE-DA-FINIRE.md`.
 
-Le decisioni aperte del filo sono di progetto e non di esecuzione. La prima, numero di access point e switch, è chiusa il 07/10/2026 da ADR-017: XMG1915-10EP e due AP, modello degli AP ancora da scegliere. Il rilievo fisico della casa serve ora alla posizione degli AP e al percorso dei cavi. La topologia confermata dall'utente è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/topologia-proposta.svg`; collocazione fisica, PS5 sul Seven e rinuncia al FRITZ!Box sono ADR-018. La seconda è il piano delle VLAN, proposto in `01-architettura.md` con i segmenti 10, 30, 40, 50, 60 e 99, e il contratto fra zone che lo accompagna. La terza è la collocazione del NAS nella topologia, che ora è una macchina reale con un indirizzo e un ruolo e non più un'ipotesi: va deciso in quale segmento sta e quali zone lo raggiungono. Deciso il 07/10/2026: VLAN 30 servizi e storage, raggiunta dalla VLAN 10 sui soli protocolli di condivisione e amministrata dalla sola VLAN 99, a 1 GbE.
+Le decisioni di topologia sono prese: XMG1915-10EP e due AP (ADR-017); AP cablati ai piani 3 e 2 con roaming, PS5 sul Seven, niente FRITZ!Box (ADR-018); NAS nella VLAN 30 a 1 GbE, amministrato dalla sola VLAN 99. La topologia confermata dall'utente è `docs/03-spunti-di-sviluppo/23-studio-home-lab/topologia-proposta.svg`. Restano aperti il modello degli AP, fra NWA130BE e NWA50BE Pro, e il contratto fra zone in forma di regole, partendo dalla tabella di `01-architettura.md`. Sul Seven vanno rifatte le schermate dello stato WAN con la fibra attiva, perché quelle del censimento sono state prese sul collegamento di riserva.
 
 Il primo passo che cambia lo stato della rete e non solo la sua descrizione resta la fase 2 della roadmap, cioè l'identificazione fisica delle tre schede di rete del firewall dalla console e la loro assegnazione ai ruoli. Si fa alla macchina, non al repository, e un abbinamento sbagliato può chiudere fuori dall'interfaccia di gestione: la mappatura fisica con la verifica a LED è un prerequisito.
 
@@ -44,6 +44,6 @@ L'agente non esegue operazioni git e non tocca lo stato della rete: prepara file
 
 Richiesta dell'utente del 07/10/2026: rileggere tutta la documentazione scritta originariamente da lui, cioè l'albero `docs/` nato dalla conversione del `.docx`, e trasformarla in documentazione tecnica di progetto. Il primo esempio indicato è l'interfaccia del Seven: tutte le voci di menu raggiungibili dal suo gateway e, per ciascuna, come si combina con il progetto di rete. Il lavoro si fa per area, una alla volta, partendo dal Seven sotto `docs/02-ftth-fastweb/`, e per ogni area si dichiara che cosa è stato letto e che cosa no.
 
-Stato al 07/10/2026: fatta la parte sul Seven, con `02-ftth-fastweb/08-il-seven-nel-progetto-di-rete-voce-per-voce.md`. Il resto di `02-ftth-fastweb` e le altre aree restano da fare; la misura in parole è nel work-log. La forma scelta è un documento tecnico nuovo per area, con il materiale dell'autore conservato e collegato, salvo diversa indicazione dell'utente.
+Forma decisa con ADR-020: ogni documento dell'autore si riscrive al suo posto come documento tecnico, e dopo ogni riscrittura il confronto paragrafo per paragrafo deve dimostrare che ogni contenuto è ancora presente o tolto con una ragione scritta. Il primo lavoro è riassorbire `02-ftth-fastweb/08-il-seven-nel-progetto-di-rete-voce-per-voce.md`, scritto come documento separato, nel censimento delle voci di menu sotto `06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/`; poi il resto di `02-ftth-fastweb`, `05-analisi-del-caso`, `04-concetti-generali` e per ultima `03-spunti-di-sviluppo`. Durante la riscrittura si rileggono le segnalazioni di `lint-prosa` e le forme di accento ambigue di ciascun documento.
 
-Filo collegato, chiesto il 07/10/2026: un metodo completo e omogeneo per caratterizzare tutti i dispositivi della rete, proposto all'utente come scheda a campi fissi e raccolta in sola lettura per sistema operativo, da approvare prima di compilare. Resta da confermare anche la forma della trasformazione dei documenti: la proposta è riscrivere ogni documento dell'autore al suo posto, verificando con il confronto paragrafo per paragrafo che nulla si perda, e riassorbire nella stessa forma il documento sul Seven scritto come file separato.
+Filo collegato, ADR-021: la scheda dispositivo a campi fissi, con raccolta in sola lettura per sistema operativo; i dati grezzi in `_notes/`, nel repository la sola scheda anonimizzata, partendo dal censimento in `docs/05-analisi-del-caso/`. È il prossimo lavoro dopo la riconciliazione delle schede dell'8/10/2026.

@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: fa719dc, template e09e43b
+Commit di riferimento: 0dbed60, template e09e43b
 Data snapshot:         2026-10-07
 Remoto:                origin, allineato
 ```
@@ -29,13 +29,13 @@ Il vincolo operativo della linea concreta è che l'assistenza ha escluso il coll
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| `context/STACK.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
-| `context/design-and-security.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
-| `context/deployment.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
-| `context/dev-testing.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
-| `context/current-work.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
-| `context/roadmap.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
-| `context/diagrams/topologia-di-rete.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
+| `context/STACK.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
+| `context/design-and-security.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
+| `context/deployment.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
+| `context/dev-testing.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
+| `context/current-work.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
+| `context/roadmap.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
+| `context/diagrams/topologia-di-rete.md` | 0dbed60 | aggiornata, verificata per contenuto l'8/10/2026 |
 | `context/diagrams/monitoraggio-open-source.md` | 6769dc4 | aggiornata, verificata per contenuto il 07/10/2026 |
 
 Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il commit indicato, che è quello in cui la documentazione ha assunto la forma attuale. Da qui in avanti la skill di sincronizzazione le segnalerà come da riverificare appena HEAD si muove, ed è il comportamento voluto: una scheda vale finché qualcuno l'ha confrontata con lo stato reale.

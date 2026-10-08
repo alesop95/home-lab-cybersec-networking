@@ -8,7 +8,7 @@ covers-paths:
   - docs/04-concetti-generali/**
   - .claude/rules/anonymization.md
   - tools/Test-Anonymization.py
-last-verified-commit: 6769dc4
+last-verified-commit: 0dbed60
 ---
 
 # Paradigmi di progettazione e di sicurezza
@@ -23,19 +23,19 @@ Il corollario operativo è che il firewall resta un apparato deterministico e no
 
 ## Le zone e il loro contratto
 
-Tre zone, con un contratto esplicito su cosa può parlare con cosa. La sicurezza non deriva dal nome della zona ma dalle regole scritte, e questo va ripetuto perché chiamare DMZ un'interfaccia non la rende isolata.
+Le zone sono la WAN, la DMZ su una porta fisica separata e, dietro il trunk verso lo switch, sei segmenti VLAN: 10 client fidati, 30 servizi e storage, 40 IoT, 50 ospiti, 60 laboratorio, 99 gestione. Il piano e il contratto fra zone, in forma di tabella, sono nello studio del 22/09/2026, `docs/03-spunti-di-sviluppo/23-studio-home-lab/01-architettura.md`: si nega di default e si apre porta per porta. La sicurezza non deriva dal nome della zona ma dalle regole scritte, e questo va ripetuto perché chiamare DMZ un'interfaccia non la rende isolata.
 
 La zona non fidata è la WAN del firewall, che in questa topologia non è Internet ma la rete privata del modem. Da lì arriva traffico già tradotto una volta, e il firewall applica il proprio filtro come se fosse traffico di frontiera, perché rispetto alle reti interne lo è.
 
-La zona fidata è la LAN, con politica permissiva in uscita e chiusa in ingresso. È dove vivono le postazioni, lo storage e gli access point.
+La zona fidata è la VLAN 10 dei client, con politica permissiva in uscita e chiusa in ingresso. Lo storage sta nella VLAN 30, raggiunta dalla 10 sui soli protocolli di condivisione e amministrata dalla 99 (ADR-018); gli access point hanno la gestione nella 99 e portano gli SSID CASA, IOT e OSPITI sulle VLAN 10, 40 e 50.
 
 La zona esposta è la DMZ, che ospita il servizio raggiungibile da fuori. Il contratto è asimmetrico e va scritto in quest'ordine: dalla WAN verso la DMZ passa solo ciò che è esplicitamente inoltrato, sulle sole porte necessarie; dalla DMZ verso Internet passa il traffico in uscita necessario agli aggiornamenti e alle chiamate verso servizi esterni; dalla DMZ verso la LAN non passa nulla, e questa è la regola che rende la DMZ una DMZ. Se il servizio esposto viene compromesso, l'attaccante resta confinato in quel segmento.
 
 ## Il doppio NAT e cosa comporta davvero
 
-La topologia impone due traduzioni di indirizzo in cascata: il modem traduce fra l'indirizzo pubblico e la propria rete privata, il firewall traduce fra quella rete e le proprie reti interne. La funzione di host esposto del modem inoltra tutte le porte in ingresso verso l'interfaccia WAN del firewall, il che sposta di fatto il controllo del traffico entrante sul firewall, ma non elimina la prima traduzione.
+La topologia impone due traduzioni di indirizzo in cascata: il modem traduce fra l'indirizzo pubblico e la propria rete privata, il firewall traduce fra quella rete e le proprie reti interne. La scelta di progetto è un solo inoltro sul modem, la porta UDP di WireGuard verso la WAN del firewall, che termina il tunnel. La funzione di host esposto, che inoltrerebbe tutte le porte e sposterebbe sul firewall ogni decisione sul traffico entrante, resta l'alternativa per quando la DMZ ospiterà un servizio pubblico. Nessuna delle due elimina la prima traduzione. La spiegazione didattica completa è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/07-doppio-nat-dietro-modem-in-comodato.md`.
 
-Le conseguenze concrete sono tre e vanno tenute a mente quando si pubblicherà un servizio. Il firewall non vede mai l'indirizzo pubblico sulla propria interfaccia, quindi ogni regola che lo assumesse sarebbe sbagliata. Il tracciamento delle connessioni attraversa due tabelle di stato invece di una, e un problema di raggiungibilità va diagnosticato su entrambe. I protocolli sensibili alla traduzione, in primo luogo la segnalazione della fonia, vanno lasciati passare senza manipolazioni applicative, disabilitando gli aiuti automatici del firewall.
+Le conseguenze concrete sono tre e vanno tenute a mente quando si pubblicherà un servizio. Il firewall non vede mai l'indirizzo pubblico sulla propria interfaccia, quindi ogni regola che lo assumesse sarebbe sbagliata. Il tracciamento delle connessioni attraversa due tabelle di stato invece di una, e un problema di raggiungibilità va diagnosticato su entrambe. I protocolli sensibili alla traduzione, in primo luogo la segnalazione della fonia, vanno lasciati passare senza manipolazioni applicative, disabilitando gli aiuti automatici del firewall. Una quarta conseguenza è favorevole: l'inoltro del modem riscrive la destinazione e non la sorgente, quindi i log del firewall vedono l'indirizzo vero di chi si collega.
 
 ## L'indirizzo pubblico statico come abilitatore
 
@@ -47,6 +47,8 @@ Nella configurazione attuale la rete wireless generata dal modem non attraversa 
 
 Le due sole architetture che chiudono il buco sono mettere il modem in bridge, cosa che il suo firmware non consente, oppure spostare tutto il wireless su access point collegati allo switch a valle del firewall. Poiché la prima è preclusa, la seconda non è un miglioramento facoltativo ma il completamento necessario del progetto. Nel frattempo l'unica mitigazione disponibile è l'igiene delle impostazioni radio del modem, cioè cifratura moderna, rete ospiti separata con spegnimento temporizzato, e nessun dispositivo sensibile su quella rete.
 
+Dal 07/10/2026 il completamento è deciso: due access point cablati ai piani centrali (ADR-017, ADR-018), con la rete ospiti nella VLAN 50 isolata sull'AP e sul firewall. Restano fuori dal perimetro per scelta dichiarata la PS5, collegata al modem per avere un NAT solo, e la Wi-Fi del modem se l'utente decide di tenerla come rete esterna: in quel caso la WAN del firewall non deve esporre l'interfaccia di gestione né altri servizi verso la rete del modem.
+
 ## Il DNS come punto di controllo
 
 Il progetto tratta il DNS non come servizio accessorio ma come punto di controllo infrastrutturale. L'architettura scelta mette un motore di policy davanti a un resolver ricorsivo: il primo risponde ai client, applica liste di blocco e liste di permesso, e inoltra soltanto ciò che passa la policy; il secondo risolve per conto proprio interrogando i server radice, i server di dominio di primo livello e infine quelli autoritativi, validando le risposte con DNSSEC e senza mai delegare a un resolver pubblico di terzi.
@@ -57,7 +59,7 @@ La regola che rende reale questo controllo è una sola e sta sul firewall: il tr
 
 Il repository è destinato a un remoto pubblico, e questo cambia la natura di ogni informazione che vi si scrive. La materia è governata dalla regola `anonymization.md`, che qui si riassume nel suo principio: un progetto di home lab, se pubblicato integralmente, descrive dove si trova una casa, come raggiungerla da Internet, che cosa c'è dentro e con quale sistema operativo. Ognuno di questi dati preso da solo è innocuo, l'insieme no.
 
-Il presidio non è la buona volontà ma un controllo eseguibile, `tools/Test-Anonymization.py`, che passa tutti i file tracciati e quelli nuovi e fallisce se trova indirizzi reali, identificativi macchina, numeri di serie, nomi propri, frammenti di ubicazione o contatti personali. Lo script è versionato e non contiene alcun valore reale: ciò che deve cercare vive in un file privato accanto alla mappa dei segnaposto, e se quel file manca lo script si ferma invece di restituire un verde non calcolato.
+Il presidio non è la buona volontà ma un controllo eseguibile, `tools/Test-Anonymization.py`, che passa tutti i file tracciati e quelli nuovi e fallisce se trova indirizzi reali, identificativi macchina, numeri di serie, nomi propri, frammenti di ubicazione o contatti personali. Dall'8/10/2026 riconosce anche IBAN di ogni paese e carte di pagamento, validati con le loro cifre di controllo, e porta un autotest che `chiudi` esegue a ogni commit. Lo script è versionato e non contiene alcun valore reale: ciò che deve cercare vive in un file privato accanto alla mappa dei segnaposto, e se quel file manca lo script si ferma invece di restituire un verde non calcolato.
 
 Due proprietà di questo impianto meritano di essere capite. La prima è che, dal 25/08/2026, l'anonimizzazione non è più una regola di generazione ma un gesto di scrittura: l'albero si scrive a mano, nessuna sostituzione automatica rimedia a un valore reale digitato per distrazione, e per questo la voce va aggiunta alla mappa e ai pattern privati prima di scrivere il segnaposto. Il guard-rail cerca le organizzazioni a parola intera, come i nomi propri, e ammette per costruzione le caselle su domini riservati dagli RFC 2606 e 6761, che compaiono negli esempi e nei test del template. La seconda è che la redazione si applica anche ai titoli, non solo al corpo, perché dal titolo discendono lo slug del file e il nome della cartella: un nome proprio lasciato in un titolo finisce nel percorso di un file tracciato, dove nessuna redazione del corpo lo raggiungerebbe.
 
