@@ -102,7 +102,7 @@ La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serig
 | disco | disco meccanico Samsung SpinPoint HD502HJ da 500 GB, 7200 rpm, fabbricato nell'agosto 2011 |
 | alimentatore | Tecnoware FAL550FS12, 550 W, 30 A sul ramo a 12 V |
 
-Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, le slitte e gli adattatori dei dischi, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica dedicata e i due moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio. Vanno al conferimento la scheda madre, il processore con il suo dissipatore e il case.
+Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica dedicata e i due moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio. Le slitte e gli adattatori dei dischi, che la sequenza prevedeva di riutilizzare, l'utente li dichiara rotti il 09/10/2026: la conseguenza è nel registro delle pendenze e riguarda il solo Kingston V300. Vanno al conferimento la scheda madre, il processore con il suo dissipatore e il case.
 
 ### Che cosa cambia nel magazzino
 

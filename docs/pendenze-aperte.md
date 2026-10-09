@@ -71,9 +71,13 @@ Dall'8/10/2026 il metodo è deciso (ADR-021) ed è descritto in `05-analisi-del-
 
 Il censimento è meno accessorio di quanto sembri: è la fonte che dice quale endpoint può realmente saturare una porta a 2,5 Gbps e quale no, e senza di esso il dimensionamento dello switch e la scelta di dove portare le porte veloci restano decisioni prese a intuito.
 
-## Foto dell'interno di altri due PC
+## Chiusa il 09/10/2026: foto dell'interno di altri due PC
 
-Dall'8/10/2026: l'utente può fotografare l'interno di altri due PC, per completare il censimento dell'hardware vecchio e riallocarne le risorse se serve, come è stato fatto per i quattro desktop del NAS. Quali due PC non è ancora detto. Le foto si copiano nel materiale privato e si leggono senza trascrivere numeri di serie nei file tracciati.
+Aperta l'8/10/2026 e chiusa il giorno dopo. I due PC sono PC-02, con Xubuntu, e PC-03, con anduinOS; le ventidue foto sono nel materiale privato con il loro indice. Da lì discendono ADR-030, ADR-031 e le sezioni del 09/10/2026 del [piano unificato](03-spunti-di-sviluppo/23-studio-home-lab/10-piano-unificato-hardware-e-stack.md).
+
+## Supporti di montaggio dei dischi da due pollici e mezzo
+
+Dal 09/10/2026: l'utente dichiara di avere probabilmente rotto le slitte e gli adattatori da due pollici e mezzo a tre e mezzo di PC-02, che la sequenza del da farsi prevedeva di riutilizzare. La conseguenza è circoscritta a un disco solo, il Kingston V300, perché il Samsung 850 EVO va nell'alloggiamento M.2 senza supporto e il disco meccanico da 500 GB è da tre pollici e mezzo e usa il montaggio del case che lo ospita. Resta da verificare, aprendo il case di `linux-desktop-A`, se abbia un montaggio proprio per i dischi da due pollici e mezzo, come molti case del 2017; se non ce l'ha serve un adattatore da pochi euro. Un disco non si lascia appoggiato dentro il case: anche senza parti in movimento, può cortocircuitare contro il telaio e sollecita il connettore SATA.
 
 ## Preventivo per switch e access point
 

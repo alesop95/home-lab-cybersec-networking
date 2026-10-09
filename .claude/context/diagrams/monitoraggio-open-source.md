@@ -5,7 +5,7 @@ generated-date: 2026-08-25
 covers-paths:
   - docs/03-spunti-di-sviluppo/09-monitoraggio/**
   - docs/03-spunti-di-sviluppo/08-malware-analysis-free-open-source-solutions/**
-last-verified-commit: d15463c
+last-verified-commit: ee63b19
 ---
 
 # Workflow di monitoraggio e analisi

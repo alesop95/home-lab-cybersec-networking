@@ -7,7 +7,7 @@ covers-paths:
   - docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/**
   - docs/03-spunti-di-sviluppo/13-switch/**
   - docs/03-spunti-di-sviluppo/23-studio-home-lab/**
-last-verified-commit: d15463c
+last-verified-commit: ee63b19
 ---
 
 # Topologia della rete

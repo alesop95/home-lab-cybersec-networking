@@ -5,7 +5,7 @@ generated-date: 2026-08-25
 covers-paths:
   - tools/**
   - docs/**
-last-verified-commit: d15463c
+last-verified-commit: ee63b19
 ---
 
 # Esecuzione e manutenzione della documentazione

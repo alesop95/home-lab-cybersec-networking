@@ -5,7 +5,7 @@ generated-date: 2026-10-07
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: d15463c
+last-verified-commit: ee63b19
 ---
 
 # Lavoro corrente
@@ -56,7 +56,7 @@ Decise: catena ONT, Seven, OPNsense, switch, AP; switch XMG1915-10EP (ADR-017, A
 
 Deciso anche, l'8/10/2026: flusso di monitoraggio Wazuh con Suricata in OPNsense (ADR-028); eliminazione dei contenuti sugli strumenti scartati (ADR-027).
 
-Proposte che aspettano l'utente: la Z97-P anche come banco di analisi dei campioni. Il confronto, la combinazione finale, la matrice, le porte, lo smontaggio e la sequenza del da farsi al banco sono nelle sezioni del 09/10/2026 del piano unificato. Caduta il 09/10/2026: l'idea di prendere la DDR4 da uno dei due PC, perché le foto mostrano che entrambi hanno solo DDR3.
+Proposte che aspettano l'utente: la Z97-P anche come banco di analisi dei campioni; l'eventuale adattatore da due pollici e mezzo per il Kingston V300, se il case di `linux-desktop-A` non lo monta da sé, perché le slitte di PC-02 risultano rotte. Il confronto, la combinazione finale, la matrice, le porte, lo smontaggio e la sequenza del da farsi al banco sono nelle sezioni del 09/10/2026 del piano unificato. Caduta il 09/10/2026: l'idea di prendere la DDR4 da uno dei due PC, perché le foto mostrano che entrambi hanno solo DDR3.
 
 Idee future, fuori dalla sequenza: un modello linguistico locale su una macchina dedicata con GPU, idea dell'utente dell'8/10/2026, da valutare dopo le fasi della rete; un eventuale nodo Tor, che se mai si farà va su una macchina dedicata in DMZ e non sul firewall.
 

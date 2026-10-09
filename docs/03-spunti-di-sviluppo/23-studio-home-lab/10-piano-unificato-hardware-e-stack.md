@@ -110,19 +110,19 @@ Sequenza aggiornata al 09/10/2026, dopo ADR-030 e ADR-031. Vale per il lavoro fi
 | Passo | Che cosa si fa | Perché adesso |
 |---|---|---|
 | 1 | procurare pasta termica | serve ai passi 3 e 5, e senza non si rimonta un dissipatore |
-| 2 | aprire PC-02, prelevare i due dischi con le loro slitte e adattatori, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica e i due moduli Kingston | è lo svuotamento di ADR-031, e la scheda grafica va guardata prima che la macchina esca di casa |
+| 2 | aprire PC-02, prelevare i due dischi, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica e i due moduli Kingston; guardare se slitte e adattatori siano davvero inservibili | è lo svuotamento di ADR-031, e la scheda grafica va guardata prima che la macchina esca di casa |
 | 3 | togliere il dissipatore di PC-02 e leggere la sigla del processore | è l'ultima occasione: dopo, scheda e processore vanno al conferimento |
 | 4 | leggere la targa dell'alimentatore Atlantis di PC-03 e confrontarla con il Tecnoware da 550 W | decide quale dei due alimenta il nodo di laboratorio |
 | 5 | aprire PC-03, pulirlo, leggere la sigla del suo processore e verificare che ci sia un alloggiamento da tre pollici e mezzo libero | se l'alloggiamento manca, la scheda Z97-P trasloca nel case di PC-02 e il conferimento si rimanda |
 | 6 | confrontare i due processori LGA1150 e, se quello di `linux-desktop-B` è migliore, scambiarli | si fa con entrambe le macchine già aperte |
 | 7 | montare nel nodo di laboratorio i due moduli DDR3 di `linux-desktop-B`, per arrivare a 32 GB, e il disco meccanico da 500 GB | completa il nodo di laboratorio |
-| 8 | montare sul server `linux-desktop-A` i due SSD, il Samsung nell'alloggiamento M.2 e il Kingston su una porta SATA | è la configurazione di ADR-030, da riconsiderare se l'M.2 non accetta dischi SATA |
+| 8 | montare sul server `linux-desktop-A` i due SSD, il Samsung nell'alloggiamento M.2 e il Kingston su una porta SATA, verificando come il case monti un disco da due pollici e mezzo | è la configurazione di ADR-030, da riconsiderare se l'M.2 non accetta dischi SATA; se manca il montaggio serve un adattatore |
 | 9 | accendere le due macchine e leggere lo SMART dei tre dischi con il test lungo | è la verifica che decide se lo specchio si può fare senza comprare niente |
 | 10 | nel firmware di `linux-desktop-A`, verificare che le estensioni di virtualizzazione siano attive | Proxmox le richiede, ed è un'impostazione e non un limite del processore |
 | 11 | misurare con una presa wattmetrica il consumo delle due macchine a riposo | è il numero che manca al confronto di ADR-030, e va scritto nel documento sui consumi |
 | 12 | conferire scheda madre, processore e case di PC-02 ai rifiuti elettronici | solo dopo il passo 5, perché il case serve ancora se l'alloggiamento di PC-03 manca |
 
-Fuori da questa sequenza restano due acquisti che non la bloccano, cioè l'SSD per il server se lo SMART boccia uno dei due recuperati, e i moduli SFP in rame quando il nodo di laboratorio chiede la sua porta (ADR-029).
+Fuori da questa sequenza restano tre acquisti che non la bloccano: l'SSD per il server se lo SMART boccia uno dei due recuperati, i moduli SFP in rame quando il nodo di laboratorio chiede la sua porta (ADR-029), e un adattatore da due pollici e mezzo a tre e mezzo se il case di `linux-desktop-A` non monta da sé un disco di quel formato, perché le slitte di PC-02 risultano rotte.
 
 ## Il server Proxmox
 
