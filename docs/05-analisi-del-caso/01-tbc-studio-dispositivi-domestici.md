@@ -23,10 +23,10 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | STO-01 | NAS da quattro desktop dismessi | assemblaggio nell'altra sessione | VLAN 30, a orario; ricevere configurazione e collaudo finali, non ricensire donatori |
 | SRV-01 | host servizi sempre acceso, server Proxmox | proposto l'8/10/2026: `linux-desktop-A` del lotto del NAS, i7-7700, 16 GB, rete Intel; serve un SSD | trunk 30, 60, 99; Wazuh, AdGuard Home e laboratorio, secondo il piano unificato |
 | PC-01 | PC fisso 1, Windows 11 Pro indicato come forzato | storico, incompleto | confermare modello, NIC, supporto aggiornamenti e uso prima di VLAN fidata |
-| PC-02 | PC fisso 2, Xubuntu | storico, incompleto | client o candidato servizi da valutare; modello, NIC, RAM e consumo |
-| PC-03 | PC fisso 3, anduinOS | storico, incompleto | client; modello, versione e NIC |
+| PC-02 | PC fisso 2, Xubuntu | hardware letto dalle foto del 09/10/2026, rete da raccogliere | disponibile per la riorganizzazione, fornitore di dischi; processore, RAM totale e NIC |
+| PC-03 | PC fisso 3, anduinOS | hardware letto dalle foto del 09/10/2026, rete da raccogliere | disponibile per la riorganizzazione, seconda Z97-P; processore, versione e NIC |
 | PC-04 | PC conversione VHS, i7-6700, 16 GB | storico, distinto dal lotto NAS | postazione specializzata; NIC, dischi, periferiche e supporto OS |
-| PC-06 | PC fisso 6, Ubuntu Studio 25 indicato | storico, incompleto | client multimediale; versione, NIC e disponibilità |
+| PC-06 | PC fisso 6, Ubuntu Studio, è `linux-desktop-C` | raccolto via SSH il 09/10/2026 | postazione di produzione musicale in Wi-Fi con adattatore USB da scegliere |
 | LAP-01 | ASUS X513EAN/K513EA, i5-1135G7, 8 GB | DxDiag storico gennaio 2026 | client; adattatori reali, link e aggiornamenti |
 | LAP-02 | ASUS F550CC-XX698H, Ubuntu 24.04 indicato | storico; Intel N2230 2,4 GHz riportata | confermare Wi-Fi, Ethernet e supporto OS |
 | LAP-03 | MacBook Air 13 pollici 2017, Monterey 12.7.6 indicato | storico; descrizione generica non verificata | legacy fino a verifica aggiornamenti; modello da sistema e adattatori |
@@ -36,8 +36,8 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | MOB-01 | Samsung Galaxy S25 Ultra | confermato dall'utente l'8/10/2026 | client fidato, Wi-Fi 7 a tre bande; versione e aggiornamenti da leggere |
 | MOB-02 | Sony Xperia III, variante incompleta | storico, da identificare | modello preciso, aggiornamenti e uso |
 | MOB-03 | Samsung Galaxy S20 FE 5G | confermato dall'utente l'8/10/2026 | Wi-Fi 6 dual band; aggiornamenti da verificare prima di assegnare la VLAN |
-| TAB-01 | Samsung Galaxy Tab S6 Lite (2022), LTE, attribuzione all'ID da confermare | confermato dall'utente l'8/10/2026 | Wi-Fi 5 dual band; aggiornamenti da verificare |
-| TAB-02 | secondo tablet Samsung, modello da identificare | confermato dall'utente l'8/10/2026, modello non ricordato | identificare modello, OS e uso |
+| TAB-01 | Samsung Galaxy Tab S6 Lite (2022), LTE, tablet di casa | confermato dall'utente l'8/10/2026, attribuzione confermata il 09/10/2026 | Wi-Fi 5 dual band; aggiornamenti da verificare |
+| TAB-02 | secondo tablet Samsung, più vecchio, di casa, modello da identificare | confermato dall'utente l'8/10/2026 e il 09/10/2026, modello non ricordato | identificare modello, OS e uso |
 
 Le intestazioni relative a persone e i segnaposto senza modello non identificano un dispositivo: non si creano apparati per riempire le righe. Telecamere, stampanti, domotica, UPS e ulteriori console restano categorie da rilevare, non beni già posseduti. I quattro desktop del consolidamento non si identificano con i PC domestici numerati: la documentazione li descrive come lotto distinto. Il firewall compare una sola volta, come NET-04.
 
@@ -105,19 +105,19 @@ La “velocità massima” è *la velocità negoziata dal PHY*; quindi, la combi
 
 ##### Scheda PC-02
 
-**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+**Identità.** categoria PC fisso assemblato; scheda madre ASUS serie P55, socket LGA1156, modello esatto da leggere; alimentatore Tecnoware FAL550FS12 da 550 W; proprietario per ruolo da compilare
 
-**Sistema.** Xubuntu, versione da compilare; processore e memoria da compilare
+**Sistema.** Xubuntu, versione da compilare; processore Core di prima generazione, modello da leggere; memoria DDR3-1333 Kingston, moduli da 2 GB e da 4 GB, totale da leggere; scheda grafica dedicata; SSD SATA Kingston V300 da 240 GB e disco meccanico Samsung HD502HJ da 500 GB
 
 **Rete cablata.** da compilare
 
 **Wi-Fi.** da compilare
 
-**Collocazione.** client nella VLAN 10, oppure candidato host di servizio nella VLAN 30 se le risorse lo permettono; da compilare
+**Collocazione.** il 09/10/2026 l'utente lo mette a disposizione per la riorganizzazione; come piattaforma non è candidato a servizi sempre accesi, e il suo valore sta nei dischi, vedi l'[inventario delle scorte](../03-spunti-di-sviluppo/02-storage-di-rete-nas/06-inventario-delle-scorte-dopo-il-consolidamento.md)
 
 **Esposizione.** da compilare
 
-**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
+**Fonte.** foto dell'interno del 09/10/2026, private; dati di rete, processore e memoria totale da raccogliere con `tools/raccolta-dispositivo.sh`
 
 #### PC fisso 3 - anduinOS
 
@@ -125,19 +125,19 @@ La “velocità massima” è *la velocità negoziata dal PHY*; quindi, la combi
 
 ##### Scheda PC-03
 
-**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+**Identità.** categoria PC fisso assemblato; scheda madre ASUS Z97-P revisione 2.02, socket LGA1150, la stessa di `linux-desktop-B` ma un esemplare diverso; alimentatore Atlantis, modello da leggere; proprietario per ruolo da compilare
 
-**Sistema.** anduinOS, versione da compilare; processore e memoria da compilare
+**Sistema.** anduinOS, versione da compilare; processore LGA1150, modello da leggere; memoria Corsair Vengeance 2 × 8 GB DDR3-1600; Samsung 850 EVO M.2 SATA da 250 GB
 
 **Rete cablata.** da compilare
 
 **Wi-Fi.** da compilare
 
-**Collocazione.** client nella VLAN 10; da compilare
+**Collocazione.** il 09/10/2026 l'utente lo mette a disposizione per la riorganizzazione; fornitore di disco e memoria DDR3, oppure nodo Proxmox alternativo con 32 GB DDR3, vedi il [piano unificato](../03-spunti-di-sviluppo/23-studio-home-lab/10-piano-unificato-hardware-e-stack.md)
 
 **Esposizione.** da compilare
 
-**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
+**Fonte.** foto dell'interno del 09/10/2026, private; dati di rete, processore e memoria totale da raccogliere con `tools/raccolta-dispositivo.sh`
 
 #### PC fisso 4 - Windows 11 Pro (forced) - VHS converter
 
@@ -192,25 +192,25 @@ E per le specifiche Windows l’edizione è Windows 11 Pro - Versione: 24H2 - Da
 
 **Fonte.** [verbale dell'installazione](../verbale-installazione-opnsense.md) e topologia
 
-#### [TBC] PC fisso 6 - Ubuntu Studio 25
+#### PC fisso 6 - Ubuntu Studio
 
 ##### Scheda(e) di rete
 
 ##### Scheda PC-06
 
-**Identità.** categoria PC fisso; produttore e modello da compilare; proprietario per ruolo da compilare
+**Identità.** categoria PC fisso assemblato; è la macchina che l'inventario delle scorte chiama `linux-desktop-C`; scheda madre ASUS H170-PRO, gemella di quella del NAS, firmware 3805 del 16/05/2018; proprietario per ruolo da compilare
 
-**Sistema.** Ubuntu Studio 25, versione esatta da compilare; processore e memoria da compilare
+**Sistema.** Ubuntu 26.04.1 LTS con kernel 7.0, cioè Ubuntu Studio aggiornato e non più la versione 25 della descrizione storica; Intel i7-6700, 4 core e 8 thread; 16 GB; NVMe Crucial P2 da 500 GB; grafica integrata HD 530; masterizzatore DVD SATA
 
-**Rete cablata.** da compilare
+**Rete cablata.** Realtek RTL8111/8168, driver r8169, collegata a 1 Gbps al momento della raccolta
 
-**Wi-Fi.** da compilare
+**Wi-Fi.** nessuna scheda integrata; l'utente prevede un adattatore USB, sufficiente per produzione musicale e registrazione, modello da scegliere
 
-**Collocazione.** client multimediale nella VLAN 10; da compilare
+**Collocazione.** client multimediale nella VLAN 10, in Wi-Fi
 
-**Esposizione.** da compilare
+**Esposizione.** nessun servizio previsto; SSH attivo al 09/10/2026, da rivalutare quando la macchina entra nella VLAN 10
 
-**Fonte.** descrizione storica di questo documento; dati di rete da raccogliere con `tools/raccolta-dispositivo.ps1` o `.sh`
+**Fonte.** raccolta in sola lettura via SSH del 09/10/2026, uscita grezza in `_notes/`, non versionata
 
 #### PC portatile 1 - Windows 11 Home (asus X513EAN)
 
@@ -514,7 +514,7 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 #### Scheda TAB-01
 
-**Identità.** categoria tablet; Samsung Galaxy Tab S6 Lite (2022), versione LTE con S Pen, 10,4 pollici, 4 GB di memoria e 64 GB espandibili, posseduto dall'utente, confermato l'8/10/2026; l'attribuzione a questo ID invece che a TAB-02 è da confermare
+**Identità.** categoria tablet; Samsung Galaxy Tab S6 Lite (2022), versione LTE con S Pen, 10,4 pollici, 4 GB di memoria e 64 GB espandibili, tablet di casa, confermato l'8/10/2026; attribuzione a TAB-01 confermata dall'utente il 09/10/2026
 
 **Sistema.** Android 12 alla vendita, aggiornabile fino ad Android 14 (S71); versione installata e supporto agli aggiornamenti da verificare
 
@@ -528,13 +528,13 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 **Fonte.** solo voce nella descrizione storica
 
-### Tablet Samsung nuovo di Persona-B
+### Secondo tablet Samsung, il più vecchio
 
 #### Analisi specifiche
 
 #### Scheda TAB-02
 
-**Identità.** categoria tablet; secondo tablet Samsung confermato dall'utente l'8/10/2026, modello da identificare dalle impostazioni; proprietario per ruolo Persona-B, da confermare
+**Identità.** categoria tablet; secondo tablet Samsung, il più vecchio dei due, tablet di casa, confermato dall'utente l'8/10/2026 e il 09/10/2026; modello da identificare dalle impostazioni; la descrizione storica lo attribuiva come tablet nuovo a Persona-B, smentita il 09/10/2026
 
 **Sistema.** Android, versione e supporto da compilare
 

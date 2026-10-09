@@ -332,3 +332,15 @@ Data: 08/10/2026. Stato: accettata. Decisione dell'utente.
 Decisione. Wazuh, con server, indicizzatore e dashboard sulla stessa macchina virtuale del server Proxmox, è il centro del monitoraggio. Suricata, integrato in OPNsense, rileva sul traffico, prima in sola rilevazione. Il plugin os-wazuh-agent porta a Wazuh i log del firewall e gli allarmi di Suricata; switch, AP e NAS mandano syslog; i PC hanno l'agente. La dashboard ascolta nella VLAN 99. La risposta attiva resta spenta all'inizio. Il dettaglio tecnico, con porte, regole, ripiego e ordine di messa in opera, è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/11-monitoraggio-wazuh-suricata.md`.
 
 Conseguenze. Snort è sostituito da Suricata. La pendenza sull'integrazione fra Suricata e Wazuh è chiusa dal plugin, il cui supporto limitato è il punto fragile, con un ripiego via syslog.
+
+## ADR-029, si resta sul XMG1915-10EP; porte in più con moduli SFP, solo se servono
+
+Data: 09/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. Con il nodo di laboratorio proposto il 09/10/2026 le otto porte in rame del 10EP risultano tutte assegnate. L'utente ha chiesto quanto costi in più il modello a 16 porte.
+
+Alternative considerate. XMG1915-18EP, circa 474-750 euro secondo il venditore (S99), cioè circa 180-460 euro più del 10EP di ADR-023, con le stesse otto porte PoE e otto porte senza PoE. Moduli SFP in rame nelle due gabbie SFP+ del 10EP, pochi euro ciascuno, compatibilità e velocità da verificare sulla documentazione Zyxel.
+
+Decisione. Resta lo XMG1915-10EP (ADR-023). Se servono prese cablate in più, per primo il nodo di laboratorio, si aggiungono moduli SFP in rame nelle gabbie SFP+.
+
+Conseguenze. Prima dell'acquisto dei moduli si verifica la compatibilità con lo switch. Il modello a 16 porte si riconsidera solo se i dispositivi cablati superano le dieci prese, per esempio con telecamere cablate in PoE, oggi non previste. La postazione da cui l'utente lavora al progetto non fa parte della rete di casa e non conta fra le prese.

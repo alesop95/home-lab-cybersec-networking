@@ -56,6 +56,8 @@ Sulla scheda risulta anche un ponte da PCIe verso PCI, che è il modo in cui que
 
 I due moduli DDR3 vanno etichettati come coppia spaiata, ed è il dettaglio meno intuitivo dell'intero magazzino. Sembrano una coppia e non lo sono: hanno codici prodotto diversi, `CMV8GX3M1A1333C9` nominale da 1333 MHz e `CMV8GX3M1A1600C11` nominale da 1600 MHz, e girano entrambi a 1333 allineandosi al più lento. Funzionano così da anni e non c'è niente da correggere, ma chi li ritrovasse fra due anni in un sacchetto li crederebbe appaiati e proverebbe a farli girare a 1600.
 
+Dal 09/10/2026 non è più un'isola: PC-03 monta la stessa scheda, e la sezione sui due PC in più dice che cosa ne segue.
+
 ### `linux-desktop-C`, in servizio e non disponibile
 
 È una quinta postazione, censita a smontaggio già avviato, che non fa parte del consolidamento e non è una scorta: è in esercizio con Ubuntu Studio. Sta in questo inventario perché ignorarla sarebbe peggio che elencarla, e la ragione è una sola, che riguarda la gerarchia dei ricambi.
@@ -68,6 +70,44 @@ C'è anche un beneficio collaterale, piccolo ma concreto. Questa macchina è una
 
 Va corretta infine un'affermazione fatta prima di censirla, quando l'unico dato disponibile era il nome host. Non è vero che il suo disco da 500 GB sia l'unico candidato a disco di scorta della casa: è un NVMe in uso su una macchina in esercizio, e il magazzino resta senza dischi.
 
+## Due PC in più, letti dalle foto del 09/10/2026
+
+Il 09/10/2026 l'utente ha messo a disposizione per la riorganizzazione altri due PC, quelli che il [censimento dei dispositivi](../../05-analisi-del-caso/01-tbc-studio-dispositivi-domestici.md) chiama PC-02, con Xubuntu, e PC-03, con anduinOS. Questa sezione riporta ciò che si legge nelle foto dell'interno, ventidue in tutto, conservate fuori dall'albero versionato. Le foto sono una fonte più debole di un censimento: dicono che cosa è montato, ma non il modello del processore né lo stato di salute dei dischi, e dove un dato non si legge resta scritto come mancante.
+
+L'8/10/2026 l'utente aveva proposto di prendere da uno dei due la memoria DDR4 per il server Proxmox. Le foto lo escludono, perché nessuno dei due ha DDR4: sono due piattaforme DDR3, una LGA1150 e una LGA1156, e i loro moduli non entrano nella H270M Pro4 di `linux-desktop-A`. Portano invece dischi, che erano il vincolo dominante di questo magazzino.
+
+### PC-03, anduinOS: una seconda Z97-P
+
+La scheda madre è una ASUS Z97-P revisione 2.02, lo stesso modello di `linux-desktop-B`, ma è un'altra macchina: i moduli di memoria hanno codici diversi da quelli di `linux-desktop-B`, e nell'alloggiamento M.2 c'è un SSD Samsung dove `linux-desktop-B` aveva il Crucial P3 prelevato per il NAS. Il processore è sotto un dissipatore Intel di serie per LGA1150, e il modello non si legge.
+
+| Pezzo | Che cosa è |
+|---|---|
+| memoria | kit Corsair Vengeance `CMV16GX3M2A1600C11`, 2 × 8 GB DDR3-1600 |
+| disco | Samsung 850 EVO M.2, `MZ-N5E250`, 250 GB, interfaccia SATA in formato M.2 |
+| alimentatore | Atlantis, modello e potenza non leggibili nelle foto |
+| processore | LGA1150, modello da leggere con la raccolta |
+
+La conseguenza più utile è che le due Z97-P fanno della piattaforma Haswell una coppia e non più un'isola. I processori e le memorie si scambiano fra le due, e una delle due può tenere tutti e quattro i moduli DDR3, cioè 32 GB, che è il massimo dichiarato per questa scheda e va confermato sulla pagina del costruttore. I quattro moduli sarebbero di tre codici diversi e girerebbero alla velocità del più lento, 1333 MHz, come già fanno i due di `linux-desktop-B`.
+
+### PC-02, Xubuntu: una piattaforma LGA1156
+
+La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serigrafato e dalle funzioni Express Gate e MemOK, ma il modello esatto non si legge nelle foto. Il processore è sotto un dissipatore Intel di serie per LGA1156, quindi è un Core di prima generazione, modello da leggere. Monta una scheda grafica dedicata, di modello non leggibile.
+
+| Pezzo | Che cosa è |
+|---|---|
+| memoria | moduli Kingston `KVR1333D3N9/2G` da 2 GB e `KVR1333D3N9/4G` da 4 GB, DDR3-1333; quanti ce ne sono in tutto va letto con la raccolta |
+| disco | SSD SATA Kingston SSDNow V300 da 240 GB, codice data della fine del 2015 |
+| disco | disco meccanico Samsung SpinPoint HD502HJ da 500 GB, 7200 rpm, fabbricato nell'agosto 2011 |
+| alimentatore | Tecnoware FAL550FS12, 550 W, 30 A sul ramo a 12 V |
+
+Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso. Il suo valore sta nei pezzi: due dischi, un alimentatore di cui si conosce la targa e una memoria DDR3 che fisicamente entra anche nelle due Z97-P, perché si tratta di moduli DDR3 senza buffer a 1,5 V come i loro.
+
+### Che cosa cambia nel magazzino
+
+Il magazzino passa da zero a tre dischi: due SSD SATA da circa 250 GB e un disco meccanico da 500 GB. Nessuno dei tre ha una prova di salute: prima di affidargli un servizio si legge lo stato SMART[^4] con `smartctl` e si lancia il test lungo, la stessa disciplina che la definizione di fatto del NAS chiede per i suoi dischi. Il disco meccanico ha quindici anni e conviene considerarlo adatto solo alle prove. Quanto al V300, è un modello di fascia bassa e le sue scritture garantite sono poche rispetto al carico continuo di un indicizzatore, e questa è un'inferenza da verificare sulla scheda tecnica di Kingston.
+
+La memoria DDR4 non cambia: il solo kit libero resta quello da 4 × 4 GB di `linux-desktop-A`.
+
 ## Il magazzino, per categoria
 
 La stessa sostanza riordinata per tipo di pezzo, che è il taglio utile quando si cerca un componente e non si sa in quale telaio sia.
@@ -77,13 +117,17 @@ La stessa sostanza riordinata per tipo di pezzo, che è il taglio utile quando s
 | Quantità | Tipo | Codice prodotto | Dove sta | Utilizzabile su |
 |---|---|---|---|---|
 | 4 × 4 GB = 16 GB | DDR4-2400 | `CT4G4DFS824A.C8FHP` | montata in `linux-desktop-A` | le tre schede LGA1151 |
-| 2 × 8 GB = 16 GB | DDR3, coppia spaiata | `CMV8GX3M1A1333C9` e `CMV8GX3M1A1600C11` | montata in `linux-desktop-B` | solo `linux-desktop-B` |
+| 2 × 8 GB = 16 GB | DDR3, coppia spaiata | `CMV8GX3M1A1333C9` e `CMV8GX3M1A1600C11` | montata in `linux-desktop-B` | le due Z97-P, e fisicamente PC-02 |
+| 2 × 8 GB = 16 GB | DDR3-1600, kit | `CMV16GX3M2A1600C11` | montata in PC-03 | le due Z97-P, e fisicamente PC-02 |
+| almeno 2 GB + 4 GB | DDR3-1333 | `KVR1333D3N9/2G` e `KVR1333D3N9/4G` | montata in PC-02 | PC-02 e le due Z97-P |
 
 I quattro moduli DDR4 sono il pezzo più fungibile del magazzino, ed è su di loro che si decide quale delle scorte si riaccende. Restano dove sono se si vuole tenere pronta `linux-desktop-A`, si spostano in `PC-DESKTOP-B` se si preferisce far rivivere la gemella della base; non esistono due kit, quindi le due cose si escludono.
 
 ### Dischi disponibili
 
 Nessuno, ed è il vincolo dominante del magazzino: tutti e quattro i dischi delle quattro macchine finiscono nel NAS e nessuna scorta ne conserva uno. Fra il 22/09 e il 07/10/2026 il vincolo era sembrato cadere con quattro dischi da 2 TB attesi da un NAS QNAP aziendale in dismissione, analizzati in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md), che prevedeva di dare il terzo alla scorta con la sola rete Intel; quei dischi non si sono resi disponibili, e il NAS stesso parte senza dischi meccanici. La scorta con la sola rete Intel torna quindi a essere quella a cui manca soltanto un disco, da comprare.
+
+Dal 09/10/2026 il vincolo si allenta con i due PC in più descritti sopra, che portano un Samsung 850 EVO M.2 SATA da 250 GB, un Kingston V300 SATA da 240 GB e un Samsung HD502HJ meccanico da 500 GB. Restano montati nelle rispettive macchine e nessuno ha ancora una prova SMART.
 
 ### Unità ottiche disponibili
 
@@ -96,6 +140,8 @@ Tre masterizzatori DVD SATA, uno per ciascuna delle tre scorte, più un quarto p
 | ASUS B150-PRO | ATX | LGA1151 | DDR4, 4 alloggiamenti, max 64 GB | i7-6700, Skylake |
 | ASRock H270M Pro4 | micro-ATX | LGA1151 | DDR4, 4 alloggiamenti | i7-7700, Kaby Lake |
 | ASUS Z97-P | ATX | LGA1150 | DDR3, 4 alloggiamenti | i7-4790, Haswell |
+| ASUS Z97-P, in PC-03 | ATX | LGA1150 | DDR3, 4 alloggiamenti | da leggere, Haswell o Devil's Canyon |
+| ASUS serie P55, in PC-02 | da leggere | LGA1156 | DDR3, 4 alloggiamenti | da leggere, Core di prima generazione |
 
 ### Periferiche di ingresso e uscita
 
@@ -142,3 +188,5 @@ I codici data dei moduli di memoria. Vanno annotati per i due moduli che si prel
 [^2]: *VPN*, Virtual Private Network - collegamento cifrato che estende una rete privata attraverso una rete pubblica; il suo client crea sul sistema operativo un'interfaccia di rete virtuale, che i censimenti hardware elencano accanto a quelle fisiche.
 
 [^3]: *UEFI*, Unified Extensible Firmware Interface - firmware di avvio che ha sostituito il BIOS legacy, con cui una macchina può avviare da dischi partizionati in GPT e superare i limiti dello schema di avvio precedente.
+
+[^4]: *SMART*, Self-Monitoring, Analysis and Reporting Technology - sistema di autodiagnosi dei dischi, che registra contatori di usura ed errori e può eseguire un test di superficie lungo; su Linux si legge con `smartctl` del pacchetto smartmontools.

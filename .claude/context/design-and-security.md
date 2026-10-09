@@ -8,7 +8,7 @@ covers-paths:
   - docs/04-concetti-generali/**
   - .claude/rules/anonymization.md
   - tools/Test-Anonymization.py
-last-verified-commit: 1256ba7
+last-verified-commit: a7eda8a
 ---
 
 # Paradigmi di progettazione e di sicurezza

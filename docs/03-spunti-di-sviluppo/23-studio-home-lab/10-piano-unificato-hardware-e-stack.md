@@ -11,9 +11,83 @@ Ritorno allo [studio](README.md). Documento di progetto dell'8/10/2026, chiesto 
 | `linux-desktop-A` | ASRock H270M Pro4, i7-7700 a 4 core e 8 thread, 16 GB DDR4 in quattro moduli, rete Intel I219-V, nessun disco | server Proxmox, cioè l'host di servizio sempre acceso SRV-01 | proposto |
 | `PC-DESKTOP-B` | ASUS B150-PRO, i7-6700, senza memoria né disco | scorta gemella del NAS, non si tocca | deciso dall'inventario delle scorte |
 | `linux-desktop-B` | ASUS Z97-P, i7-4790, 16 GB DDR3, nessun disco | secondo nodo sacrificabile per prove distruttive, solo se serve | proposto, priorità bassa |
-| due PC da fotografare | da identificare | da decidere dopo le foto | pendente |
+| PC-03, anduinOS | seconda ASUS Z97-P, processore LGA1150 da leggere, 16 GB DDR3, Samsung 850 EVO M.2 SATA da 250 GB | fornitore di disco e memoria DDR3; in alternativa nodo con 32 GB DDR3 | proposto, letto dalle foto del 09/10/2026 |
+| PC-02, Xubuntu | ASUS serie P55, LGA1156, DDR3-1333, grafica dedicata, SSD Kingston V300 da 240 GB, disco meccanico da 500 GB | fornitore di dischi e alimentatore, nessun servizio | proposto, letto dalle foto del 09/10/2026 |
 
-La scelta di `linux-desktop-A` per Proxmox viene dall'[inventario delle scorte](../02-storage-di-rete-nas/06-inventario-delle-scorte-dopo-il-consolidamento.md), che la indica già come candidata naturale a un nodo ipervisore: è la più recente, conserva tutta la sua memoria e ha l'unica scheda di rete Intel del gruppo, la famiglia che gli ipervisori open source trattano meglio. Le manca soltanto un disco. Proxmox VE, oggi alla versione 9.2 su Debian 13, richiede le estensioni di virtualizzazione attive nel firmware e consiglia dischi ridondanti per l'uso continuo (S88); sul processore Intel le dichiara presenti, e l'impostazione del firmware va controllata alla prima accensione, come l'inventario raccomanda per la macchina gemella. Le foto dei due PC ancora da guardare possono cambiare il quadro, per esempio se uno dei due ha più memoria.
+La scelta di `linux-desktop-A` per Proxmox viene dall'[inventario delle scorte](../02-storage-di-rete-nas/06-inventario-delle-scorte-dopo-il-consolidamento.md), che la indica già come candidata naturale a un nodo ipervisore: è la più recente, conserva tutta la sua memoria e ha l'unica scheda di rete Intel del gruppo, la famiglia che gli ipervisori open source trattano meglio. Le manca soltanto un disco. Proxmox VE, oggi alla versione 9.2 su Debian 13, richiede le estensioni di virtualizzazione attive nel firmware e consiglia dischi ridondanti per l'uso continuo (S88); sul processore Intel le dichiara presenti, e l'impostazione del firmware va controllata alla prima accensione, come l'inventario raccomanda per la macchina gemella. Le foto dei due PC arrivate il 09/10/2026 non cambiano la scelta e ne tolgono il costo: nessuno dei due ha memoria DDR4, ma insieme portano due SSD SATA da circa 250 GB. Il dettaglio è nell'inventario delle scorte, alla sezione sui due PC in più.
+
+C'è un'alternativa che vale scrivere per non scartarla senza averla vista. Con PC-03 le Z97-P diventano due, e una delle due può tenere i quattro moduli DDR3 delle due macchine, cioè 32 GB: il doppio della memoria di `linux-desktop-A`, su un processore di tre generazioni prima, con una rete Realtek invece che Intel e con un consumo maggiore. Per il conto della memoria qui sotto il guadagno è reale, perché toglie il vincolo che lascia al laboratorio solo 4 GB. Resta preferibile `linux-desktop-A`, per la rete Intel e per i problemi di avvio e di tastiera già osservati su `linux-desktop-B`; ma è una scelta dell'utente, e il dato che la decide è il modello del processore di PC-03, da leggere con la raccolta.
+
+## Quale macchina fa da server Proxmox: il confronto, e la combinazione finale
+
+Sezione del 09/10/2026, scritta perché l'utente sta smontando PC-02 e PC-03 e vuole riassemblare una volta sola. Le due candidate sono `linux-desktop-A` e una Z97-P portata a 32 GB con la memoria DDR3 di `linux-desktop-B` e di PC-03. Per la Z97-P si sceglie la scheda di PC-03, che funziona con anduinOS, e non quella di `linux-desktop-B`, su cui il censimento ha osservato un avvio intermittente e la tastiera che non risponde nel firmware.
+
+| Criterio | `linux-desktop-A` | Z97-P a 32 GB |
+|---|---|---|
+| processore | i7-7700, Kaby Lake, 14 nm, 4 core e 8 thread | i7-4790 se si sposta quello di `linux-desktop-B`, Haswell, 22 nm, 4 core e 8 thread; quello di PC-03 è da leggere |
+| prestazioni (S100) | CPU Mark 8.640, single thread 2.441, circa il 19% in più | CPU Mark 7.257, single thread 2.226 |
+| TDP (S100) | 65 W | 84 W |
+| virtualizzazione (S101) | VT-x, EPT, VT-d | VT-x, EPT, VT-d |
+| memoria oggi | 16 GB DDR4-2400 | 32 GB DDR3, quattro moduli di tre codici, a 1333 MHz |
+| memoria in futuro | fino a 64 GB, comprando DDR4 (S98) | 32 GB è il tetto, e la DDR3 non si compra più volentieri |
+| che cosa ci sta | Proxmox, Wazuh e AdGuard, più circa 4 GB di laboratorio | gli stessi servizi più circa 20 GB di laboratorio |
+| rete | Intel I219-V | Realtek, che Proxmox gestisce ma con meno garanzie; si può aggiungere una scheda Intel PCIe |
+| dischi | due alloggiamenti M.2 PCIe e SATA (S98, da confermare sul manuale) e sei porte SATA | M.2 SATA, già provato con il Samsung di PC-03, e porte SATA |
+| consumo sempre acceso | il più basso dei due | più alto, perché la piattaforma è di tre anni prima; la differenza non è misurata e va presa con una presa wattmetrica |
+| età | 2017 | 2014 |
+| costo oggi | nessuno | nessuno |
+
+Il consumo è il criterio che pesa negli anni, e qui va detto che cosa si sa e che cosa no. Il TDP misura il calore a pieno carico, non il consumo a riposo, che è lo stato in cui un server domestico passa quasi tutto il tempo; il TDP più alto e la piattaforma più vecchia fanno presumere che la Z97-P consumi di più anche a riposo, ma il quanto non è misurato. Per dare un ordine di grandezza: con il costo marginale di 0,256 euro al kWh del [documento sui consumi](../02-storage-di-rete-nas/05-consumo-elettrico-e-finestra-di-accensione.md), ogni 10 W di differenza continua valgono circa 88 kWh e circa 22 euro all'anno. La misura vera si prende con una presa wattmetrica, una volta assemblate le due macchine.
+
+Il parere, del 09/10/2026: `linux-desktop-A`. Vince su processore, consumo presunto, rete e crescita della memoria, cioè su tutto ciò che conta per una macchina sempre accesa che ospita il monitoraggio; la Z97-P vince sulla sola memoria di oggi, e quel vantaggio si recupera comprando DDR4 quando il laboratorio lo chiederà, mentre gli svantaggi della Z97-P non si recuperano. La Z97-P resta preziosa nel ruolo in cui la memoria conta e il consumo no, perché è accesa a richiesta: laboratorio e analisi dei campioni.
+
+La raccomandazione resta `linux-desktop-A`. Il server è sempre acceso e ospita il monitoraggio, quindi contano consumo, rete e margine di crescita più della memoria di oggi, e i 16 GB bastano ai servizi decisi. La Z97-P vince solo se il laboratorio deve girare sulla stessa macchina con molte macchine virtuali insieme già adesso.
+
+Le due strade usano gli stessi pezzi, cambiano solo i dischi. Con `linux-desktop-A` server, i due SSD vanno su di lei in specchio e la Z97-P a 32 GB diventa il nodo di laboratorio, acceso solo quando serve, con il disco meccanico da 500 GB: il laboratorio sta così su una macchina fisica separata da quella che lo sorveglia, che è anche una separazione di sicurezza. Con la Z97-P server, i due SSD vanno sulla Z97-P e `linux-desktop-A` con il disco meccanico diventa il nodo di laboratorio. In entrambi i casi la Z97-P si monta allo stesso modo, quindi la si può assemblare prima della decisione e rimandare solo i dischi.
+
+| Macchina | Che cosa contiene | Ruolo con la raccomandazione |
+|---|---|---|
+| `linux-desktop-A` | H270M Pro4, i7-7700, 4 × 4 GB DDR4 già montati, alimentatore suo; Samsung 850 EVO M.2 da PC-03 e Kingston V300 da PC-02 in specchio | server Proxmox SRV-01 |
+| Z97-P di PC-03 | scheda e case di PC-03; i7-4790 di `linux-desktop-B` se il processore di PC-03 è inferiore; i due kit DDR3, 32 GB; disco meccanico Samsung da 500 GB di PC-02; l'alimentatore fra Atlantis e Tecnoware con la targa migliore | nodo di laboratorio, acceso a richiesta |
+| `linux-desktop-B` | scheda Z97-P, processore che resta, case e alimentatore; niente memoria e niente disco | scorta del nodo di laboratorio |
+| PC-02 | scheda P55, processore, DDR3 Kingston, grafica dedicata, case e l'alimentatore non usato | scorta di pezzi, valore basso |
+| `PC-DESKTOP-B` | invariata | scorta gemella del NAS, non si tocca |
+
+Il nodo di laboratorio ha un costo che non è hardware: lo switch ha le otto porte già assegnate, e una macchina in più nella VLAN 60 richiede una porta. Le strade sono un modulo SFP+ con presa RJ45 in una delle due gabbie SFP+, che si compra, oppure la porta 4, oggi un client cablato nella VLAN 10, convertita alla VLAN 60 se quel client non serve. È una decisione che si prende quando il nodo serve davvero, non prima di assemblarlo.
+
+Sullo specchio dei due SSD la scelta è fra tre strade. Con lo specchio, gratis, i due dischi tengono la stessa copia e il server continua a funzionare se uno si guasta: il V300 è il più debole e si sostituisce quando lo SMART lo indica. Con il solo Samsung, gratis, non c'è ridondanza, e un guasto ferma il server finché non si ripristina dalle copie sul NAS. Comprando un SSD nuovo si spende, e si consiglia comunque di affiancargli il Samsung in specchio. La raccomandazione è la prima, ammesso che i due dischi superino lo SMART.
+
+## Matrice rivista e porte dello switch, 09/10/2026
+
+L'utente ha chiesto di rifare la matrice cercando l'uso migliore di ogni macchina alla luce delle aree di studio, e di rivedere le porte dello switch. Due fatti nuovi. `linux-desktop-C`, la postazione con Ubuntu Studio (PC-06 nel censimento), resta in servizio per produzione musicale e registrazione e andrà in Wi-Fi con un adattatore USB, perché la sua scheda madre non ne ha uno integrato: la raccolta via SSH del 09/10/2026 mostra la sola rete cablata Realtek. La postazione da cui l'utente lavora a questo progetto non fa parte della rete di casa e resta fuori dal computo. I due tablet sono entrambi di casa (TAB-01 e TAB-02).
+
+Rilette le aree di `03-spunti-di-sviluppo`, una sola cambia l'uso dell'hardware: l'analisi dei campioni sospetti (area 08), che il piano lascia pendente come zona isolata distinta dalla VLAN 60. La sandbox dinamica è il carico che chiede più memoria fra quelli del progetto, e va su una macchina fisica che non ospita servizi; la Z97-P con 32 GB, accesa a richiesta, è la candidata naturale, e aggiunge al ruolo di nodo di laboratorio quello di banco di analisi. La rete di quella zona resta da progettare. Le altre aree si risolvono senza macchine nuove: scansione delle vulnerabilità (area 16), bot (area 22) e MeshCentral (area 04) sono macchine virtuali su Proxmox; il resolver DNS dedicato dell'area 11 è già coperto da Unbound sul firewall e AdGuard su Proxmox; le telecamere dell'area 20 sono previste in Wi-Fi, perché il cavo fuori dal portone non passa; il modello linguistico locale chiede una GPU moderna, e la scheda grafica di PC-02 non lo è.
+
+| Macchina | Ruolo proposto | Rete |
+|---|---|---|
+| NET-04 | firewall OPNsense | WAN, trunk LAN, DMZ fisica vuota |
+| `PC-DESKTOP-A` | NAS TrueNAS SCALE | porta 5 |
+| `linux-desktop-A` | server Proxmox SRV-01 | porta 6, trunk 30-60-99 |
+| Z97-P di PC-03 | nodo di laboratorio e banco di analisi dei campioni, acceso a richiesta | porta da trovare, vedi sotto |
+| `linux-desktop-C` | postazione multimediale con Ubuntu Studio | Wi-Fi, VLAN 10 |
+| `PC-DESKTOP-B` | scorta gemella del NAS | nessuna |
+| `linux-desktop-B` | scorta della Z97-P; candidata al server della DMZ se un giorno nasce un servizio pubblico | nessuna |
+| PC-02 | scorta di pezzi | nessuna |
+
+Le porte del XMG1915-10EP sono otto in rame e due gabbie SFP+, e quelle in rame sono tutte assegnate.
+
+| Porta | Uso | Note |
+|---|---|---|
+| 1 | trunk verso il firewall | |
+| 2, 3 | i due AP, PoE | |
+| 4 | client cablato della VLAN 10 | da assegnare a un dispositivo reale, oppure al nodo di laboratorio |
+| 5 | NAS | con il secondo indirizzo di gestione di ADR-025 |
+| 6 | server Proxmox, trunk 30-60-99 | |
+| 7 | workstation ADMIN | |
+| 8 | porta di recupero, VLAN 99 | vuota in esercizio, ma deve restare pronta |
+| SFP+ 9, 10 | libere | con un modulo SFP in rame diventano due porte cablate in più |
+
+La proposta è di non passare al modello a 16 porte. Lo XMG1915-18EP costa da circa 474 a circa 750 euro secondo il venditore (S99), contro i circa 291 euro del 10EP (ADR-023), quindi da circa 180 a circa 460 euro in più, e porta le stesse otto porte PoE: in più dà solo porte senza PoE. Due moduli SFP in rame nelle gabbie SFP+ danno due porte cablate per pochi euro ciascuno; la compatibilità dei moduli di terzi con lo switch e la velocità che accettano vanno verificate sulla documentazione Zyxel prima di comprarli. Con quelle due porte il nodo di laboratorio ha la sua porta senza togliere la 4 a un client. Il 18EP torna sensato solo se i dispositivi cablati superano le dieci prese, per esempio con telecamere cablate in PoE, che oggi non sono previste.
 
 ## Il server Proxmox
 
@@ -28,9 +102,9 @@ La rete è un solo cavo dalla scheda Intel alla porta 6 dello switch, configurat
 | macchine del laboratorio | macchine virtuali | VLAN 60 | il resto, circa 4 GB | secondo l'esperimento | proposto |
 | Proxmox stesso | sistema ospite | VLAN 99 | 2 GB | sistema | proposto |
 
-Il conto della memoria è il vincolo vero. Wazuh, nella configurazione con i tre componenti sulla stessa macchina, chiede 4 vCPU, 8 GB di memoria e 50 GB di spazio per un massimo di 25 agenti e 90 giorni di allarmi (S87). Con 16 GB restano circa 4 GB per il laboratorio, che bastano per due o tre macchine leggere alla volta. Portare la macchina a 32 GB toglie il vincolo; che la scheda accetti 64 GB in quattro alloggiamenti va verificato sulla scheda del costruttore, e il costo dei moduli va cercato. È una decisione dell'utente, non un requisito di partenza.
+Il conto della memoria è il vincolo vero. Wazuh, nella configurazione con i tre componenti sulla stessa macchina, chiede 4 vCPU, 8 GB di memoria e 50 GB di spazio per un massimo di 25 agenti e 90 giorni di allarmi (S87). Con 16 GB restano circa 4 GB per il laboratorio, che bastano per due o tre macchine leggere alla volta. Portare la macchina a 32 GB toglie il vincolo; che la scheda accetti 64 GB in quattro alloggiamenti va verificato sulla scheda del costruttore, e il costo dei moduli va cercato. È una decisione dell'utente, non un requisito di partenza. La via di prendere i moduli da un altro PC di casa è chiusa dal 09/10/2026: i due PC fotografati hanno solo DDR3, e la DDR4 a 32 GB si ottiene soltanto comprandola.
 
-Il disco da comprare è uno solo, un SSD SATA da 500 GB o 1 TB. Un secondo SSD in specchio è ciò che Proxmox consiglia, e si può aggiungere dopo. Le copie delle macchine virtuali vanno sul NAS, nella sua finestra di accensione.
+Il disco forse non si compra. I due PC fotografati il 09/10/2026 portano un Samsung 850 EVO M.2 SATA da 250 GB e un Kingston V300 SATA da 240 GB, e due dischi di taglia simile sono esattamente lo specchio che Proxmox consiglia: con ZFS in mirror restano circa 240 GB utili, contro i 50 GB di Wazuh, i 2 GB di AdGuard e il sistema. Valgono tre condizioni. Entrambi devono passare la lettura SMART e il test lungo. L'alloggiamento M.2 della H270M Pro4 deve accettare un disco SATA e non solo NVMe, e lo si verifica sul manuale ASRock; altrimenti il Samsung va in un adattatore da M.2 SATA a 2,5 pollici, oppure si usa un altro disco. E il V300 ha poche scritture garantite per il carico continuo dell'indicizzatore di Wazuh, che è un'inferenza da verificare sulla scheda tecnica: se si conferma, lo specchio regge finché uno dei due non si consuma, e quel momento lo dice lo SMART. Se una delle tre condizioni cade, resta il piano di prima, cioè comprare un SSD SATA da 500 GB o 1 TB. Le copie delle macchine virtuali vanno sul NAS, nella sua finestra di accensione.
 
 ## Lo stack open source, funzione per funzione
 
@@ -77,4 +151,4 @@ Il flusso che ne risulta è più corto e tutto mantenuto. Gli endpoint mandano e
 
 La sequenza rispetta la roadmap. La rete viene prima, cioè firewall, switch e AP, perché senza segmentazione ogni servizio finirebbe in una rete piatta. Proxmox viene subito dopo il collaudo delle VLAN, perché porta DNS filtrante e monitoraggio. Il NAS procede in parallelo, perché si assembla senza toccare la rete.
 
-Decisioni aspettate dall'utente: quale macchina diventa il server Proxmox, confrontando `linux-desktop-A` con i due PC da fotografare; se portarla a 32 GB con i moduli DDR4 di uno di quei due PC, che diventerebbe una scorta, come ha proposto l'utente l'8/10/2026. Dati aspettati: le foto dei due PC; la verifica delle estensioni di virtualizzazione nel firmware; il massimo di memoria della scheda e la compatibilità dei moduli; il prezzo di un SSD; il raccoglitore di metriche. Chiusi l'8/10/2026: Suricata al posto di Snort e l'integrazione con Wazuh, con il plugin di OPNsense (ADR-028). Da progettare più avanti: la zona isolata per l'analisi dei campioni.
+Decisioni aspettate dall'utente: quale macchina diventa il server Proxmox, cioè `linux-desktop-A` con 16 GB DDR4 oppure una Z97-P con 32 GB DDR3; se usare i due SSD dei PC fotografati in specchio. L'idea dell'8/10/2026 di portare `linux-desktop-A` a 32 GB con la DDR4 di uno dei due PC è caduta il 09/10/2026: le foto mostrano solo DDR3. Dati aspettati: la raccolta in sola lettura su PC-02 e PC-03, che legge i processori e la memoria totale; la lettura SMART dei loro dischi; il supporto SATA dell'M.2 della H270M Pro4; la verifica delle estensioni di virtualizzazione nel firmware; il massimo di memoria della scheda e la compatibilità dei moduli; il prezzo di un SSD; il raccoglitore di metriche. Chiusi l'8/10/2026: Suricata al posto di Snort e l'integrazione con Wazuh, con il plugin di OPNsense (ADR-028). Da progettare più avanti: la zona isolata per l'analisi dei campioni.

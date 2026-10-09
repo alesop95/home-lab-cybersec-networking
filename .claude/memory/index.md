@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 1256ba7, template 04b60ad
-Data snapshot:         2026-10-07
+Commit di riferimento: a7eda8a, template 04b60ad
+Data snapshot:         2026-10-09
 Remoto:                origin, allineato
 ```
 
@@ -29,14 +29,14 @@ Il vincolo operativo della linea concreta è che l'assistenza ha escluso il coll
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| `context/STACK.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/design-and-security.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/deployment.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/dev-testing.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/current-work.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/roadmap.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/diagrams/topologia-di-rete.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
-| `context/diagrams/monitoraggio-open-source.md` | 1256ba7 | aggiornata, verificata per contenuto l'8/10/2026 a fine sessione |
+| `context/STACK.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/design-and-security.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/deployment.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/dev-testing.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/current-work.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/roadmap.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/diagrams/topologia-di-rete.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/diagrams/monitoraggio-open-source.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
 
 Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il commit indicato, che è quello in cui la documentazione ha assunto la forma attuale. Da qui in avanti la skill di sincronizzazione le segnalerà come da riverificare appena HEAD si muove, ed è il comportamento voluto: una scheda vale finché qualcuno l'ha confrontata con lo stato reale.
 
@@ -112,7 +112,7 @@ Allineamento al template `4f4f9d0`, senza conflitti, e guard-rail riportato al v
 
 Al 07/10/2026, commit `6769dc4` più le scritture di chiusura di questa sessione. Storia bonificata e pubblicata; repository pubblico; progetto allineato al template `c668b85`, con `chiudi` utilizzabile e il guard-rail di anonimizzazione fra i suoi controlli. Le ancore delle schede, che puntavano a commit di prima della riscrittura, sono state riportate sugli equivalenti della storia attuale con la tabella di corrispondenza privata `_notes/bonifica-2026-10-07-commit-map.txt`; gli hash citati in prosa nel work-log prima del 07/10 sono quelli vecchi, e si traducono con la stessa tabella.
 
-Il filo attivo è la progettazione della rete e dei servizi, descritto in `.claude/context/current-work.md`, che contiene il quadro sempre aggiornato delle decisioni prese, proposte e pendenti. Decisi: switch XMG1915-10EP e due NWA130BE (ADR-017, ADR-023, ADR-024), PS5 sul Seven e niente FRITZ!Box (ADR-018), NAS su TrueNAS SCALE (ADR-026), amministrazione da tre ingressi verso la VLAN 99 (ADR-025), regole fra le zone con aperture a tempo del laboratorio, monitoraggio Wazuh con Suricata in OPNsense (ADR-028). Il piano unificato propone `linux-desktop-A` come server Proxmox; la scelta aspetta le foto di due PC. La riscrittura al posto della documentazione dell'autore (ADR-020) ha completato `02-ftth-fastweb` e il censimento; restano `04-concetti-generali` e `03-spunti-di-sviluppo`, oltre ai documenti di dettaglio di ogni area del piano. Il progetto è allineato al template `04b60ad` con gli strumenti in `tools/` (ADR-022).
+Il filo attivo è la progettazione della rete e dei servizi, descritto in `.claude/context/current-work.md`, che contiene il quadro sempre aggiornato delle decisioni prese, proposte e pendenti. Decisi: switch XMG1915-10EP e due NWA130BE (ADR-017, ADR-023, ADR-024), PS5 sul Seven e niente FRITZ!Box (ADR-018), NAS su TrueNAS SCALE (ADR-026), amministrazione da tre ingressi verso la VLAN 99 (ADR-025), regole fra le zone con aperture a tempo del laboratorio, monitoraggio Wazuh con Suricata in OPNsense (ADR-028). Il piano unificato propone `linux-desktop-A` come server Proxmox. Le foto di PC-02 e PC-03 del 09/10/2026 mostrano solo DDR3, quindi l'idea della DDR4 cade; portano due SSD SATA da circa 250 GB, candidati allo specchio di Proxmox dopo la lettura SMART e la raccolta che legge i processori. La riscrittura al posto della documentazione dell'autore (ADR-020) ha completato `02-ftth-fastweb` e il censimento; restano `04-concetti-generali` e `03-spunti-di-sviluppo`, oltre ai documenti di dettaglio di ogni area del piano. Il progetto è allineato al template `04b60ad` con gli strumenti in `tools/` (ADR-022).
 
 Il filo del NAS è in pausa in attesa dell'adattatore da PCIe a M.2. Tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7, e il montaggio non è cominciato; la ripresa è il Passo 1.6 della guida privata. Decisioni del giorno: ADR-014 e ADR-015 sul pool senza dischi meccanici, ADR-016 sull'alimentatore della base.
 
