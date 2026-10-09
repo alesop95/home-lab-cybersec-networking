@@ -89,7 +89,9 @@ La scheda madre è una ASUS Z97-P revisione 2.02, lo stesso modello di `linux-de
 
 La conseguenza più utile è che le due Z97-P fanno della piattaforma Haswell una coppia e non più un'isola. I processori e le memorie si scambiano fra le due, e una delle due può tenere tutti e quattro i moduli DDR3, cioè 32 GB, che è il massimo dichiarato per questa scheda e va confermato sulla pagina del costruttore. I quattro moduli sarebbero di tre codici diversi e girerebbero alla velocità del più lento, 1333 MHz, come già fanno i due di `linux-desktop-B`.
 
-### PC-02, Xubuntu: una piattaforma LGA1156
+### PC-02, Xubuntu: una piattaforma LGA1156, svuotata e smaltita
+
+Dal 09/10/2026 questa macchina non esiste più come macchina (ADR-031): se ne prelevano i pezzi utili e scheda madre, processore e case vanno al conferimento. Quanto segue descrive che cosa conteneva e che cosa ne resta.
 
 La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serigrafato e dalle funzioni Express Gate e MemOK, ma il modello esatto non si legge nelle foto. Il processore è sotto un dissipatore Intel di serie per LGA1156, quindi è un Core di prima generazione, modello da leggere. Monta una scheda grafica dedicata, di modello non leggibile.
 
@@ -100,7 +102,7 @@ La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serig
 | disco | disco meccanico Samsung SpinPoint HD502HJ da 500 GB, 7200 rpm, fabbricato nell'agosto 2011 |
 | alimentatore | Tecnoware FAL550FS12, 550 W, 30 A sul ramo a 12 V |
 
-Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso. Il suo valore sta nei pezzi: due dischi, un alimentatore di cui si conosce la targa e una memoria DDR3 che fisicamente entra anche nelle due Z97-P, perché si tratta di moduli DDR3 senza buffer a 1,5 V come i loro.
+Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, le slitte e gli adattatori dei dischi, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica dedicata e i due moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio. Vanno al conferimento la scheda madre, il processore con il suo dissipatore e il case.
 
 ### Che cosa cambia nel magazzino
 
@@ -119,7 +121,7 @@ La stessa sostanza riordinata per tipo di pezzo, che è il taglio utile quando s
 | 4 × 4 GB = 16 GB | DDR4-2400 | `CT4G4DFS824A.C8FHP` | montata in `linux-desktop-A` | le tre schede LGA1151 |
 | 2 × 8 GB = 16 GB | DDR3, coppia spaiata | `CMV8GX3M1A1333C9` e `CMV8GX3M1A1600C11` | montata in `linux-desktop-B` | le due Z97-P, e fisicamente PC-02 |
 | 2 × 8 GB = 16 GB | DDR3-1600, kit | `CMV16GX3M2A1600C11` | montata in PC-03 | le due Z97-P, e fisicamente PC-02 |
-| almeno 2 GB + 4 GB | DDR3-1333 | `KVR1333D3N9/2G` e `KVR1333D3N9/4G` | montata in PC-02 | PC-02 e le due Z97-P |
+| almeno 2 GB + 4 GB | DDR3-1333 | `KVR1333D3N9/2G` e `KVR1333D3N9/4G` | in una busta, prelevata da PC-02 | le due Z97-P, come ricambio a capacità ridotta |
 
 I quattro moduli DDR4 sono il pezzo più fungibile del magazzino, ed è su di loro che si decide quale delle scorte si riaccende. Restano dove sono se si vuole tenere pronta `linux-desktop-A`, si spostano in `PC-DESKTOP-B` se si preferisce far rivivere la gemella della base; non esistono due kit, quindi le due cose si escludono.
 
@@ -127,7 +129,7 @@ I quattro moduli DDR4 sono il pezzo più fungibile del magazzino, ed è su di lo
 
 Nessuno, ed è il vincolo dominante del magazzino: tutti e quattro i dischi delle quattro macchine finiscono nel NAS e nessuna scorta ne conserva uno. Fra il 22/09 e il 07/10/2026 il vincolo era sembrato cadere con quattro dischi da 2 TB attesi da un NAS QNAP aziendale in dismissione, analizzati in [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md), che prevedeva di dare il terzo alla scorta con la sola rete Intel; quei dischi non si sono resi disponibili, e il NAS stesso parte senza dischi meccanici. La scorta con la sola rete Intel torna quindi a essere quella a cui manca soltanto un disco, da comprare.
 
-Dal 09/10/2026 il vincolo si allenta con i due PC in più descritti sopra, che portano un Samsung 850 EVO M.2 SATA da 250 GB, un Kingston V300 SATA da 240 GB e un Samsung HD502HJ meccanico da 500 GB. Restano montati nelle rispettive macchine e nessuno ha ancora una prova SMART.
+Dal 09/10/2026 il vincolo cade con i due PC in più descritti sopra, che portano un Samsung 850 EVO M.2 SATA da 250 GB, un Kingston V300 SATA da 240 GB e un Samsung HD502HJ meccanico da 500 GB. I primi due vanno in specchio sul server Proxmox (ADR-030), il terzo al nodo di laboratorio; nessuno ha ancora una prova SMART.
 
 ### Unità ottiche disponibili
 
@@ -141,7 +143,6 @@ Tre masterizzatori DVD SATA, uno per ciascuna delle tre scorte, più un quarto p
 | ASRock H270M Pro4 | micro-ATX | LGA1151 | DDR4, 4 alloggiamenti | i7-7700, Kaby Lake |
 | ASUS Z97-P | ATX | LGA1150 | DDR3, 4 alloggiamenti | i7-4790, Haswell |
 | ASUS Z97-P, in PC-03 | ATX | LGA1150 | DDR3, 4 alloggiamenti | da leggere, Haswell o Devil's Canyon |
-| ASUS serie P55, in PC-02 | da leggere | LGA1156 | DDR3, 4 alloggiamenti | da leggere, Core di prima generazione |
 
 ### Periferiche di ingresso e uscita
 

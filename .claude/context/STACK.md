@@ -6,7 +6,7 @@ covers-paths:
   - tools/**
   - docs/**
   - .claude/rules/**
-last-verified-commit: a7eda8a
+last-verified-commit: d15463c
 ---
 
 # Stack del progetto

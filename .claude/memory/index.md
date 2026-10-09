@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: a7eda8a, template 04b60ad
+Commit di riferimento: d15463c, template 04b60ad
 Data snapshot:         2026-10-09
 Remoto:                origin, allineato
 ```
@@ -29,14 +29,14 @@ Il vincolo operativo della linea concreta è che l'assistenza ha escluso il coll
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| `context/STACK.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/design-and-security.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/deployment.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/dev-testing.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/current-work.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/roadmap.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/diagrams/topologia-di-rete.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
-| `context/diagrams/monitoraggio-open-source.md` | a7eda8a | verificata per contenuto l'8/10/2026, riancorata il 9/10/2026 |
+| `context/STACK.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/design-and-security.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/deployment.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/dev-testing.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/current-work.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/roadmap.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/diagrams/topologia-di-rete.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
+| `context/diagrams/monitoraggio-open-source.md` | d15463c | aggiornata il 9/10/2026 con foto, matrice e decisioni |
 
 Le schede sono state scritte il 24/08/2026 e rilette il 25/08/2026 contro il commit indicato, che è quello in cui la documentazione ha assunto la forma attuale. Da qui in avanti la skill di sincronizzazione le segnalerà come da riverificare appena HEAD si muove, ed è il comportamento voluto: una scheda vale finché qualcuno l'ha confrontata con lo stato reale.
 
@@ -111,6 +111,8 @@ Allineamento al template `4f4f9d0`, senza conflitti, e guard-rail riportato al v
 ## Punto di ripresa
 
 Al 07/10/2026, commit `6769dc4` più le scritture di chiusura di questa sessione. Storia bonificata e pubblicata; repository pubblico; progetto allineato al template `c668b85`, con `chiudi` utilizzabile e il guard-rail di anonimizzazione fra i suoi controlli. Le ancore delle schede, che puntavano a commit di prima della riscrittura, sono state riportate sugli equivalenti della storia attuale con la tabella di corrispondenza privata `_notes/bonifica-2026-10-07-commit-map.txt`; gli hash citati in prosa nel work-log prima del 07/10 sono quelli vecchi, e si traducono con la stessa tabella.
+
+Al 09/10/2026 il server Proxmox è deciso: `linux-desktop-A` (ADR-030), con la Z97-P di PC-03 a 32 GB come nodo di laboratorio e banco di analisi dei campioni. Lo switch resta il 10EP con moduli SFP in rame se servono (ADR-029). I due PC messi a disposizione dall'utente portano tre dischi e nessuna DDR4; il piano unificato dice che cosa si smonta e che cosa no.
 
 Il filo attivo è la progettazione della rete e dei servizi, descritto in `.claude/context/current-work.md`, che contiene il quadro sempre aggiornato delle decisioni prese, proposte e pendenti. Decisi: switch XMG1915-10EP e due NWA130BE (ADR-017, ADR-023, ADR-024), PS5 sul Seven e niente FRITZ!Box (ADR-018), NAS su TrueNAS SCALE (ADR-026), amministrazione da tre ingressi verso la VLAN 99 (ADR-025), regole fra le zone con aperture a tempo del laboratorio, monitoraggio Wazuh con Suricata in OPNsense (ADR-028). Il piano unificato propone `linux-desktop-A` come server Proxmox. Le foto di PC-02 e PC-03 del 09/10/2026 mostrano solo DDR3, quindi l'idea della DDR4 cade; portano due SSD SATA da circa 250 GB, candidati allo specchio di Proxmox dopo la lettura SMART e la raccolta che legge i processori. La riscrittura al posto della documentazione dell'autore (ADR-020) ha completato `02-ftth-fastweb` e il censimento; restano `04-concetti-generali` e `03-spunti-di-sviluppo`, oltre ai documenti di dettaglio di ogni area del piano. Il progetto è allineato al template `04b60ad` con gli strumenti in `tools/` (ADR-022).
 

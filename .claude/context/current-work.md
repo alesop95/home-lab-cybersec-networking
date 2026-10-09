@@ -5,7 +5,7 @@ generated-date: 2026-10-07
 covers-paths:
   - docs/**
   - .claude/**
-last-verified-commit: a7eda8a
+last-verified-commit: d15463c
 ---
 
 # Lavoro corrente
@@ -56,10 +56,10 @@ Decise: catena ONT, Seven, OPNsense, switch, AP; switch XMG1915-10EP (ADR-017, A
 
 Deciso anche, l'8/10/2026: flusso di monitoraggio Wazuh con Suricata in OPNsense (ADR-028); eliminazione dei contenuti sugli strumenti scartati (ADR-027).
 
-Proposte che aspettano l'utente: quale macchina diventa il server Proxmox, `linux-desktop-A` con 16 GB DDR4 (raccomandata) oppure una Z97-P con 32 GB DDR3 raccolti da `linux-desktop-B` e PC-03; se usare in specchio i due SSD SATA di PC-02 e PC-03 invece di comprarne uno, con confronto, combinazione finale e nodo di laboratorio nella sezione del 09/10/2026 del piano unificato; la Z97-P anche come banco di analisi dei campioni; matrice e porte nella sezione del 09/10/2026 del piano unificato, con il confronto e il parere per il server Proxmox; Caduta il 09/10/2026: l'idea di prendere la DDR4 da uno dei due PC, perché le foto mostrano che entrambi hanno solo DDR3.
+Proposte che aspettano l'utente: la Z97-P anche come banco di analisi dei campioni. Il confronto, la combinazione finale, la matrice, le porte, lo smontaggio e la sequenza del da farsi al banco sono nelle sezioni del 09/10/2026 del piano unificato. Caduta il 09/10/2026: l'idea di prendere la DDR4 da uno dei due PC, perché le foto mostrano che entrambi hanno solo DDR3.
 
 Idee future, fuori dalla sequenza: un modello linguistico locale su una macchina dedicata con GPU, idea dell'utente dell'8/10/2026, da valutare dopo le fasi della rete; un eventuale nodo Tor, che se mai si farà va su una macchina dedicata in DMZ e non sul firewall.
 
-Chiuso il 09/10/2026: i due tablet sono di casa, Tab S6 Lite = TAB-01, il più vecchio = TAB-02. `linux-desktop-C` (Ubuntu Studio, PC-06) resta per produzione musicale, in Wi-Fi con adattatore USB, raccolta via SSH fatta. Si resta sul 10EP, moduli SFP in rame se servono (ADR-029). La postazione di lavoro dell'utente non è della rete di casa.
+Chiuso il 09/10/2026: il server Proxmox è `linux-desktop-A` (ADR-030), la Z97-P di PC-03 a 32 GB è il nodo di laboratorio e banco di analisi, PC-02 si svuota e si smaltisce (ADR-031); i due tablet sono di casa, Tab S6 Lite = TAB-01, il più vecchio = TAB-02. `linux-desktop-C` (Ubuntu Studio, PC-06) resta per produzione musicale, in Wi-Fi con adattatore USB, raccolta via SSH fatta. Si resta sul 10EP, moduli SFP in rame se servono (ADR-029). La postazione di lavoro dell'utente non è della rete di casa.
 
 Pendenti per un dato o un'azione: compatibilità dei moduli SFP in rame con lo XMG1915; preventivo del fornitore per switch e AP; disattivazione del Booster dopo il collaudo degli AP; schermate del Seven a fibra attiva; raccolta con `tools/raccolta-dispositivo.sh` su PC-02 e PC-03 per processore e memoria totale, e lettura SMART dei loro tre dischi; supporto SATA dell'M.2 della H270M Pro4; estensioni di virtualizzazione e memoria massima di `linux-desktop-A`; prezzo dell'SSD per Proxmox; raccoglitore di metriche; raccolte sui PC per le schede dispositivo; adattatore PCIe-M.2 per il NAS, fermo al Passo 1.6; riscrittura di `04-concetti-generali` e `03-spunti-di-sviluppo`; zona isolata per l'analisi dei campioni.

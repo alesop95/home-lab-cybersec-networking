@@ -41,7 +41,7 @@ Il consumo è il criterio che pesa negli anni, e qui va detto che cosa si sa e c
 
 Il parere, del 09/10/2026: `linux-desktop-A`. Vince su processore, consumo presunto, rete e crescita della memoria, cioè su tutto ciò che conta per una macchina sempre accesa che ospita il monitoraggio; la Z97-P vince sulla sola memoria di oggi, e quel vantaggio si recupera comprando DDR4 quando il laboratorio lo chiederà, mentre gli svantaggi della Z97-P non si recuperano. La Z97-P resta preziosa nel ruolo in cui la memoria conta e il consumo no, perché è accesa a richiesta: laboratorio e analisi dei campioni.
 
-La raccomandazione resta `linux-desktop-A`. Il server è sempre acceso e ospita il monitoraggio, quindi contano consumo, rete e margine di crescita più della memoria di oggi, e i 16 GB bastano ai servizi decisi. La Z97-P vince solo se il laboratorio deve girare sulla stessa macchina con molte macchine virtuali insieme già adesso.
+Decisione dell'utente del 09/10/2026, registrata come ADR-030: il server è `linux-desktop-A`. Le righe che seguono restano come storia del confronto. Il server è sempre acceso e ospita il monitoraggio, quindi contano consumo, rete e margine di crescita più della memoria di oggi, e i 16 GB bastano ai servizi decisi. La Z97-P vince solo se il laboratorio deve girare sulla stessa macchina con molte macchine virtuali insieme già adesso.
 
 Le due strade usano gli stessi pezzi, cambiano solo i dischi. Con `linux-desktop-A` server, i due SSD vanno su di lei in specchio e la Z97-P a 32 GB diventa il nodo di laboratorio, acceso solo quando serve, con il disco meccanico da 500 GB: il laboratorio sta così su una macchina fisica separata da quella che lo sorveglia, che è anche una separazione di sicurezza. Con la Z97-P server, i due SSD vanno sulla Z97-P e `linux-desktop-A` con il disco meccanico diventa il nodo di laboratorio. In entrambi i casi la Z97-P si monta allo stesso modo, quindi la si può assemblare prima della decisione e rimandare solo i dischi.
 
@@ -50,7 +50,7 @@ Le due strade usano gli stessi pezzi, cambiano solo i dischi. Con `linux-desktop
 | `linux-desktop-A` | H270M Pro4, i7-7700, 4 × 4 GB DDR4 già montati, alimentatore suo; Samsung 850 EVO M.2 da PC-03 e Kingston V300 da PC-02 in specchio | server Proxmox SRV-01 |
 | Z97-P di PC-03 | scheda e case di PC-03; i7-4790 di `linux-desktop-B` se il processore di PC-03 è inferiore; i due kit DDR3, 32 GB; disco meccanico Samsung da 500 GB di PC-02; l'alimentatore fra Atlantis e Tecnoware con la targa migliore | nodo di laboratorio, acceso a richiesta |
 | `linux-desktop-B` | scheda Z97-P, processore che resta, case e alimentatore; niente memoria e niente disco | scorta del nodo di laboratorio |
-| PC-02 | scheda P55, processore, DDR3 Kingston, grafica dedicata, case e l'alimentatore non usato | scorta di pezzi, valore basso |
+| PC-02 | ne escono i due dischi, l'alimentatore, le slitte, i cavi, l'unità ottica, la minuteria, la scheda grafica e i due moduli Kingston | svuotato e smaltito (ADR-031) |
 | `PC-DESKTOP-B` | invariata | scorta gemella del NAS, non si tocca |
 
 Il nodo di laboratorio ha un costo che non è hardware: lo switch ha le otto porte già assegnate, e una macchina in più nella VLAN 60 richiede una porta. Le strade sono un modulo SFP+ con presa RJ45 in una delle due gabbie SFP+, che si compra, oppure la porta 4, oggi un client cablato nella VLAN 10, convertita alla VLAN 60 se quel client non serve. È una decisione che si prende quando il nodo serve davvero, non prima di assemblarlo.
@@ -72,7 +72,7 @@ Rilette le aree di `03-spunti-di-sviluppo`, una sola cambia l'uso dell'hardware:
 | `linux-desktop-C` | postazione multimediale con Ubuntu Studio | Wi-Fi, VLAN 10 |
 | `PC-DESKTOP-B` | scorta gemella del NAS | nessuna |
 | `linux-desktop-B` | scorta della Z97-P; candidata al server della DMZ se un giorno nasce un servizio pubblico | nessuna |
-| PC-02 | scorta di pezzi | nessuna |
+| PC-02 | smaltito dopo il prelievo dei pezzi (ADR-031) | nessuna |
 
 Le porte del XMG1915-10EP sono otto in rame e due gabbie SFP+, e quelle in rame sono tutte assegnate.
 
@@ -88,6 +88,41 @@ Le porte del XMG1915-10EP sono otto in rame e due gabbie SFP+, e quelle in rame 
 | SFP+ 9, 10 | libere | con un modulo SFP in rame diventano due porte cablate in più |
 
 La proposta è di non passare al modello a 16 porte. Lo XMG1915-18EP costa da circa 474 a circa 750 euro secondo il venditore (S99), contro i circa 291 euro del 10EP (ADR-023), quindi da circa 180 a circa 460 euro in più, e porta le stesse otto porte PoE: in più dà solo porte senza PoE. Due moduli SFP in rame nelle gabbie SFP+ danno due porte cablate per pochi euro ciascuno; la compatibilità dei moduli di terzi con lo switch e la velocità che accettano vanno verificate sulla documentazione Zyxel prima di comprarli. Con quelle due porte il nodo di laboratorio ha la sua porta senza togliere la 4 a un client. Il 18EP torna sensato solo se i dispositivi cablati superano le dieci prese, per esempio con telecamere cablate in PoE, che oggi non sono previste.
+
+## Smontare i due PC: che cosa si recupera, che cosa resta in piedi, che cosa si butta
+
+Sezione del 09/10/2026, scritta perché l'utente ha chiesto se possa smontare interamente PC-02 e PC-03 e buttare i case. La risposta è diversa per i due, e la ragione è che il case non è un contenitore vuoto: è l'unico pezzo che non si ricompra per pochi euro quando serve, perché porta con sé l'alimentatore, le gabbie dei dischi, le slitte, la minuteria e i cavi del pannello frontale.
+
+PC-03 non si smonta: diventa il nodo di laboratorio e il banco di analisi, quindi la sua scheda Z97-P resta dentro il suo case, che va soltanto pulito dalla polvere. Ciò che entra sono i due moduli DDR3 di `linux-desktop-B`, per arrivare a 32 GB, il disco meccanico di PC-02 e, se il confronto dei modelli lo giustifica, l'i7-4790 di `linux-desktop-B`. Ciò che esce è il solo Samsung 850 EVO M.2, che va nel server.
+
+PC-02 si smonta e il suo case si può eliminare, ma solo dopo aver tolto sei cose, e l'ordine conta perché alcune si vedono solo a case aperto. I due dischi, cioè il Kingston V300 e il Samsung HD502HJ. L'alimentatore Tecnoware FAL550FS12, di cui si conosce la targa, da confrontare con l'Atlantis di PC-03: uno dei due alimenta il nodo di laboratorio, l'altro è la scorta. Le slitte o gli adattatori da due pollici e mezzo a tre e mezzo su cui i dischi sono montati, che servono a montare gli SSD nel server e che la guida di smontaggio del NAS ha già imparato a non lasciare nel case. I cavi dati SATA, che non costano nulla ma mancano sempre quando servono. L'unità ottica, se si vuole tenere un lettore DVD in casa. E la minuteria, cioè viti del pannello, viti della gabbia dei dischi e distanziali.
+
+L'utente ha scelto il 09/10/2026 di svuotare PC-02 e smaltirlo (ADR-031). Scheda madre, processore e case vanno insieme al conferimento, perché la piattaforma LGA1156 è del 2010, non ha ruolo nel progetto, e una scheda senza case non si rimette in servizio senza ricomprare proprio il pezzo che si è buttato. Due pezzi sfuggono alla regola e restano in casa. I due moduli Kingston si conservano in una busta etichettata: sono ridondanti, perché il nodo di laboratorio arriva già a 32 GB con i due kit Corsair, ma non occupano spazio e sono l'unico ricambio di memoria di quel nodo, a capacità ridotta, se un modulo Corsair si guastasse. E la scheda grafica dedicata si estrae e si guarda prima del conferimento, perché il suo modello non si legge nelle foto ed è l'unico pezzo di PC-02 che potrebbe servire al nodo di laboratorio.
+
+Due verifiche prima di muovere i cacciaviti. Il case di PC-03 deve avere un alloggiamento da tre pollici e mezzo libero per il disco meccanico, e lo si guarda mentre si pulisce: se non ce l'ha, si inverte la scelta e la scheda Z97-P trasloca nel case di PC-02, perché è la scheda a essere legata al ruolo, non il telaio. E il dissipatore, una volta tolto per leggere la sigla del processore, non si rimonta senza pasta termica nuova, che va procurata prima e non dopo.
+
+Sui pezzi che escono di casa vale una regola che il progetto applica già ai dispositivi: un disco che viene smaltito o ceduto porta con sé tutto ciò che conteneva, quindi si cancella prima di lasciarlo andare. Qui i tre dischi restano tutti in casa e vengono riscritti dall'installazione, quindi il problema non si pone; si porrebbe se si decidesse di disfarsi di uno di loro dopo averne letto lo SMART. Il case e la scheda madre non contengono dati e vanno al conferimento dei rifiuti elettronici, non al cassonetto, perché sono apparecchiature elettriche ed elettroniche.
+
+## Il da farsi al banco, in ordine
+
+Sequenza aggiornata al 09/10/2026, dopo ADR-030 e ADR-031. Vale per il lavoro fisico sulle macchine; la messa in opera dei servizi resta quella descritta più avanti e comincia solo quando la rete è collaudata. Il principio che ordina i passi è uno solo: ogni lettura che richiede di aprire o smontare qualcosa si fa mentre quella cosa è già aperta, perché riaprire un case per leggere un'etichetta è il modo più comune di perdere un pomeriggio.
+
+| Passo | Che cosa si fa | Perché adesso |
+|---|---|---|
+| 1 | procurare pasta termica | serve ai passi 3 e 5, e senza non si rimonta un dissipatore |
+| 2 | aprire PC-02, prelevare i due dischi con le loro slitte e adattatori, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica e i due moduli Kingston | è lo svuotamento di ADR-031, e la scheda grafica va guardata prima che la macchina esca di casa |
+| 3 | togliere il dissipatore di PC-02 e leggere la sigla del processore | è l'ultima occasione: dopo, scheda e processore vanno al conferimento |
+| 4 | leggere la targa dell'alimentatore Atlantis di PC-03 e confrontarla con il Tecnoware da 550 W | decide quale dei due alimenta il nodo di laboratorio |
+| 5 | aprire PC-03, pulirlo, leggere la sigla del suo processore e verificare che ci sia un alloggiamento da tre pollici e mezzo libero | se l'alloggiamento manca, la scheda Z97-P trasloca nel case di PC-02 e il conferimento si rimanda |
+| 6 | confrontare i due processori LGA1150 e, se quello di `linux-desktop-B` è migliore, scambiarli | si fa con entrambe le macchine già aperte |
+| 7 | montare nel nodo di laboratorio i due moduli DDR3 di `linux-desktop-B`, per arrivare a 32 GB, e il disco meccanico da 500 GB | completa il nodo di laboratorio |
+| 8 | montare sul server `linux-desktop-A` i due SSD, il Samsung nell'alloggiamento M.2 e il Kingston su una porta SATA | è la configurazione di ADR-030, da riconsiderare se l'M.2 non accetta dischi SATA |
+| 9 | accendere le due macchine e leggere lo SMART dei tre dischi con il test lungo | è la verifica che decide se lo specchio si può fare senza comprare niente |
+| 10 | nel firmware di `linux-desktop-A`, verificare che le estensioni di virtualizzazione siano attive | Proxmox le richiede, ed è un'impostazione e non un limite del processore |
+| 11 | misurare con una presa wattmetrica il consumo delle due macchine a riposo | è il numero che manca al confronto di ADR-030, e va scritto nel documento sui consumi |
+| 12 | conferire scheda madre, processore e case di PC-02 ai rifiuti elettronici | solo dopo il passo 5, perché il case serve ancora se l'alloggiamento di PC-03 manca |
+
+Fuori da questa sequenza restano due acquisti che non la bloccano, cioè l'SSD per il server se lo SMART boccia uno dei due recuperati, e i moduli SFP in rame quando il nodo di laboratorio chiede la sua porta (ADR-029).
 
 ## Il server Proxmox
 

@@ -344,3 +344,29 @@ Alternative considerate. XMG1915-18EP, circa 474-750 euro secondo il venditore (
 Decisione. Resta lo XMG1915-10EP (ADR-023). Se servono prese cablate in più, per primo il nodo di laboratorio, si aggiungono moduli SFP in rame nelle gabbie SFP+.
 
 Conseguenze. Prima dell'acquisto dei moduli si verifica la compatibilità con lo switch. Il modello a 16 porte si riconsidera solo se i dispositivi cablati superano le dieci prese, per esempio con telecamere cablate in PoE, oggi non previste. La postazione da cui l'utente lavora al progetto non fa parte della rete di casa e non conta fra le prese.
+
+## ADR-030, il server Proxmox è `linux-desktop-A`
+
+Data: 09/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. Il piano unificato dell'8/10/2026 proponeva `linux-desktop-A` come host di servizio sempre acceso, con la riserva che le foto dei due PC in più potessero cambiare il quadro. Le foto del 09/10/2026 hanno aperto una seconda candidata reale: la ASUS Z97-P di PC-03 portata a 32 GB con i due kit DDR3 di PC-03 e di `linux-desktop-B`, cioè il doppio della memoria a costo zero.
+
+Alternative considerate, con i dati del 09/10/2026. `linux-desktop-A`, ASRock H270M Pro4 con i7-7700: CPU Mark 8.640 e single thread 2.441 contro 7.257 e 2.226 dell'i7-4790, cioè circa il 19% in più; TDP 65 W contro 84 W (S100); rete Intel I219-V, la famiglia che gli ipervisori open source trattano meglio; 16 GB DDR4 oggi, fino a 64 GB comprando moduli (S98). Z97-P a 32 GB: 32 GB oggi e 32 GB per sempre, perché è il tetto della scheda e la DDR3 non si compra più volentieri; rete Realtek; piattaforma Haswell del 2014. Entrambe hanno VT-x, EPT e VT-d (S101), quindi la virtualizzazione non discrimina.
+
+Decisione. Il server Proxmox è `linux-desktop-A`. La Z97-P di PC-03 a 32 GB diventa il nodo di laboratorio e il banco di analisi dei campioni, acceso a richiesta.
+
+Ratio. I criteri sono stati pesati per il modo d'uso e non in astratto. Una macchina sempre accesa paga il consumo ogni ora dell'anno e deve reggere il monitoraggio senza sorprese di driver: lì contano consumo, rete e processore, e su tutti e tre vince `linux-desktop-A`. Il solo vantaggio della Z97-P, la memoria, è l'unico recuperabile con una spesa, perché la H270M Pro4 sale a 64 GB mentre gli svantaggi della Z97-P non si tolgono con nessun acquisto. Il carico che chiede memoria, cioè il laboratorio e la sandbox di analisi, è anche quello che non sta acceso di continuo: assegnarlo alla macchina con 32 GB e consumo alto mette ciascun vincolo dove costa meno. Ne segue anche una separazione utile per la sicurezza, perché il banco su cui si eseguono campioni sospetti è una macchina fisica diversa da quella che ospita il sistema di monitoraggio.
+
+Conseguenze. I due SSD SATA recuperati dai due PC vanno in specchio su `linux-desktop-A`, se superano la verifica SMART e se l'alloggiamento M.2 della H270M Pro4 accetta un disco SATA; altrimenti si compra un SSD. Il conto della memoria del piano unificato resta quello di 16 GB, cioè circa 4 GB per il laboratorio sull'host di servizio, e questa è la ragione per cui il nodo di laboratorio separato non è un lusso ma la contropartita della scelta. Il consumo delle due macchine non è misurato: si misura con una presa wattmetrica quando sono assemblate, e il numero va scritto nel documento sui consumi.
+
+## ADR-031, PC-02 si svuota e si smaltisce
+
+Data: 09/10/2026. Stato: accettata. Decisione dell'utente.
+
+Contesto. La sezione sullo smontaggio del piano unificato lasciava due strade coerenti per PC-02: tenerlo intero come scorta, oppure prelevare i pezzi utili e smaltire scheda, processore e case insieme. L'utente ha scelto la seconda, chiedendo di aggiornare il da farsi di conseguenza.
+
+Decisione. Da PC-02 si prelevano i due dischi, l'alimentatore Tecnoware FAL550FS12, le slitte e gli adattatori dei dischi, i cavi dati SATA, l'unità ottica, la minuteria e la scheda grafica dedicata; i due moduli Kingston si conservano in una busta etichettata. Scheda madre di serie P55, processore LGA1156 e case vanno al conferimento dei rifiuti elettronici. PC-02 esce dal parco macchine e dal magazzino delle scorte.
+
+Ratio. La piattaforma LGA1156 è del 2010, non è candidata a nessun ruolo del progetto, e una scheda madre senza case non si rimette in servizio senza ricomprare proprio il pezzo che si butterebbe; tenere la scheda e smaltire il case sarebbe la combinazione che conserva la parte priva di valore. I moduli Kingston fanno eccezione alla logica dello smaltimento perché non occupano spazio e perché restano l'unico ricambio di memoria del nodo di laboratorio, a capacità ridotta, se un modulo Corsair si guastasse. Il processore segue la scheda perché il suo socket non esiste su nessun'altra macchina di casa.
+
+Conseguenze. Il magazzino perde una scheda madre e un processore e guadagna due dischi, un alimentatore con la targa nota e la minuteria. Le scorte tornano a essere tre, cioè `PC-DESKTOP-B` per il NAS, `linux-desktop-B` per il nodo di laboratorio e i pezzi sciolti. La scheda grafica va guardata prima del conferimento, perché il suo modello non si legge nelle foto ed è l'unico pezzo di PC-02 che potrebbe servire al nodo di laboratorio. Nessun dato lascia la casa, perché i tre dischi restano e vengono riscritti dall'installazione; scheda e case non contengono dati.

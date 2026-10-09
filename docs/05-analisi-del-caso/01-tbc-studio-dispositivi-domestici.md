@@ -23,7 +23,7 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | STO-01 | NAS da quattro desktop dismessi | assemblaggio nell'altra sessione | VLAN 30, a orario; ricevere configurazione e collaudo finali, non ricensire donatori |
 | SRV-01 | host servizi sempre acceso, server Proxmox | proposto l'8/10/2026: `linux-desktop-A` del lotto del NAS, i7-7700, 16 GB, rete Intel; serve un SSD | trunk 30, 60, 99; Wazuh, AdGuard Home e laboratorio, secondo il piano unificato |
 | PC-01 | PC fisso 1, Windows 11 Pro indicato come forzato | storico, incompleto | confermare modello, NIC, supporto aggiornamenti e uso prima di VLAN fidata |
-| PC-02 | PC fisso 2, Xubuntu | hardware letto dalle foto del 09/10/2026, rete da raccogliere | disponibile per la riorganizzazione, fornitore di dischi; processore, RAM totale e NIC |
+| PC-02 | PC fisso 2, Xubuntu | svuotato e smaltito il 09/10/2026 (ADR-031) | esce dal parco macchine; resta la sigla del processore da leggere prima del conferimento |
 | PC-03 | PC fisso 3, anduinOS | hardware letto dalle foto del 09/10/2026, rete da raccogliere | disponibile per la riorganizzazione, seconda Z97-P; processore, versione e NIC |
 | PC-04 | PC conversione VHS, i7-6700, 16 GB | storico, distinto dal lotto NAS | postazione specializzata; NIC, dischi, periferiche e supporto OS |
 | PC-06 | PC fisso 6, Ubuntu Studio, è `linux-desktop-C` | raccolto via SSH il 09/10/2026 | postazione di produzione musicale in Wi-Fi con adattatore USB da scegliere |
@@ -113,7 +113,7 @@ La “velocità massima” è *la velocità negoziata dal PHY*; quindi, la combi
 
 **Wi-Fi.** da compilare
 
-**Collocazione.** il 09/10/2026 l'utente lo mette a disposizione per la riorganizzazione; come piattaforma non è candidato a servizi sempre accesi, e il suo valore sta nei dischi, vedi l'[inventario delle scorte](../03-spunti-di-sviluppo/02-storage-di-rete-nas/06-inventario-delle-scorte-dopo-il-consolidamento.md)
+**Collocazione.** nessuna: il 09/10/2026 l'utente ha deciso di svuotarlo e smaltirlo (ADR-031); i pezzi prelevati sono nell'[inventario delle scorte](../03-spunti-di-sviluppo/02-storage-di-rete-nas/06-inventario-delle-scorte-dopo-il-consolidamento.md)
 
 **Esposizione.** da compilare
 
