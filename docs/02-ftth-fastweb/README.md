@@ -9,3 +9,4 @@
 - [Prima del design della rete privata](05-prima-del-design-della-rete-privata/README.md)
 - [[TBC] L'interfaccia del Seven su 192.168.1.254, voce per voce](06-tbc-i-parametri-di-interfaccia-modem-su-192-168-1-254-rotte/README.md)
 - [[TBC] [new] I parametri di accesso WAN su ONT](07-tbc-new-i-parametri-di-accesso-wan-su-ont/README.md)
+- [Guasto in cabina, ottobre 2026](08-guasto-in-cabina-ottobre-2026.md)

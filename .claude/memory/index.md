@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 732b93f, template 04b60ad
+Commit di riferimento: ccf9e41, template 04b60ad
 Data snapshot:         2026-10-12
 Remoto:                origin, allineato
 ```
@@ -118,6 +118,6 @@ Il filo attivo è la progettazione della rete e dei servizi, descritto in `.clau
 
 Il filo del NAS è in pausa in attesa dell'adattatore da PCIe a M.2. Tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7, e il montaggio non è cominciato; la ripresa è il Passo 1.6 della guida privata. Decisioni del giorno: ADR-014 e ADR-015 sul pool senza dischi meccanici, ADR-016 sull'alimentatore della base.
 
-Al 12/10/2026 si aggiunge un fatto che viene dalla linea reale e non dal repository. Dal 9/10 la fibra è giù per un guasto in cabina e il 12/10 alle 14:30 è previsto l'intervento di riparazione con collaudo, senza il proprietario in casa. La sessione ha prodotto le domande da fare al tecnico, il messaggio per chi resta in casa e le verifiche da fare dopo, tutto in `_notes/collaudo-fastweb-2026-10-12.md`, fuori da git perché incrocia i valori reali della linea. Il ritorno della fibra sblocca la pendenza più vecchia dell'area del modem, cioè la lettura dei parametri WAN con la GPON attiva e la verifica che l'indirizzo pubblico statico sia lo stesso sulla fibra e sul collegamento mobile di riserva: le letture di febbraio 2026 furono prese sul collegamento di riserva e non descrivono la fibra. La sessione successiva riparte dalle risposte del tecnico.
+Al 12/10/2026 la fibra è tornata. Era giù dal 9/10 per un guasto in cabina, dove un armadio era staccato e il percorso di rete era sbagliato; il tecnico ha riparato fuori casa senza toccare nulla all'interno, e la rete senza fili è tornata da sé. Il valore ottico dichiarato al telefono, 20,93 con soglia a 25, è di seconda mano e non misurato, e sta dentro il bilancio di tratta in entrambe le letture possibili dell'unità: il racconto, i sintomi e il bilancio sono in `docs/02-ftth-fastweb/08-guasto-in-cabina-ottobre-2026.md`. La parte del guasto è chiusa. Resta aperta la pendenza che il guasto bloccava, cioè il giro di schermate dello stato WAN del Seven con la GPON attiva e il confronto dell'indirizzo pubblico statico fra fibra e collegamento di riserva: le letture di febbraio 2026 furono prese sul collegamento di riserva e non descrivono la fibra. È un'azione dell'utente davanti all'interfaccia del modem, e la checklist che la guida resta fuori da git in `_notes/collaudo-fastweb-2026-10-12.md`. Dal 12/10/2026 il filo attivo torna al banco: l'assemblaggio del NAS, fermo al Passo 1.6 e avviabile anche senza l'adattatore PCIe-M.2, e la sequenza in dodici passi su PC-02 e PC-03, ferma al passo 1, che è procurare la pasta termica.
 
 Il lavoro che cambia lo stato della rete resta la fase 2 della roadmap, cioè l'identificazione fisica delle tre schede di rete del firewall dalla console. Si fa alla macchina, non al repository.
