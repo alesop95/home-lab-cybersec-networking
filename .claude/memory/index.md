@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: ee63b19, template 04b60ad
-Data snapshot:         2026-10-09
+Commit di riferimento: 732b93f, template 04b60ad
+Data snapshot:         2026-10-12
 Remoto:                origin, allineato
 ```
 
@@ -117,5 +117,7 @@ Al 09/10/2026 il server Proxmox è deciso: `linux-desktop-A` (ADR-030), con la Z
 Il filo attivo è la progettazione della rete e dei servizi, descritto in `.claude/context/current-work.md`, che contiene il quadro sempre aggiornato delle decisioni prese, proposte e pendenti. Decisi: switch XMG1915-10EP e due NWA130BE (ADR-017, ADR-023, ADR-024), PS5 sul Seven e niente FRITZ!Box (ADR-018), NAS su TrueNAS SCALE (ADR-026), amministrazione da tre ingressi verso la VLAN 99 (ADR-025), regole fra le zone con aperture a tempo del laboratorio, monitoraggio Wazuh con Suricata in OPNsense (ADR-028). Il piano unificato propone `linux-desktop-A` come server Proxmox. Le foto di PC-02 e PC-03 del 09/10/2026 mostrano solo DDR3, quindi l'idea della DDR4 cade; portano due SSD SATA da circa 250 GB, candidati allo specchio di Proxmox dopo la lettura SMART e la raccolta che legge i processori. La riscrittura al posto della documentazione dell'autore (ADR-020) ha completato `02-ftth-fastweb` e il censimento; restano `04-concetti-generali` e `03-spunti-di-sviluppo`, oltre ai documenti di dettaglio di ogni area del piano. Il progetto è allineato al template `04b60ad` con gli strumenti in `tools/` (ADR-022).
 
 Il filo del NAS è in pausa in attesa dell'adattatore da PCIe a M.2. Tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7, e il montaggio non è cominciato; la ripresa è il Passo 1.6 della guida privata. Decisioni del giorno: ADR-014 e ADR-015 sul pool senza dischi meccanici, ADR-016 sull'alimentatore della base.
+
+Al 12/10/2026 si aggiunge un fatto che viene dalla linea reale e non dal repository. Dal 9/10 la fibra è giù per un guasto in cabina e il 12/10 alle 14:30 è previsto l'intervento di riparazione con collaudo, senza il proprietario in casa. La sessione ha prodotto le domande da fare al tecnico, il messaggio per chi resta in casa e le verifiche da fare dopo, tutto in `_notes/collaudo-fastweb-2026-10-12.md`, fuori da git perché incrocia i valori reali della linea. Il ritorno della fibra sblocca la pendenza più vecchia dell'area del modem, cioè la lettura dei parametri WAN con la GPON attiva e la verifica che l'indirizzo pubblico statico sia lo stesso sulla fibra e sul collegamento mobile di riserva: le letture di febbraio 2026 furono prese sul collegamento di riserva e non descrivono la fibra. La sessione successiva riparte dalle risposte del tecnico.
 
 Il lavoro che cambia lo stato della rete resta la fase 2 della roadmap, cioè l'identificazione fisica delle tre schede di rete del firewall dalla console. Si fa alla macchina, non al repository.
