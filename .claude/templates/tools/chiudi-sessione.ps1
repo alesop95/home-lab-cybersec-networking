@@ -13,8 +13,10 @@
 #      l'agente prepara a fine lavoro, oppure si chiede; poi chiede conferma, salvo -Si;
 #   4. verifica che il push sia arrivato, cioe' che HEAD coincida con il ramo remoto;
 #   5. registra l'impronta di ripresa con verifica-ripresa.py --registra;
-#   6. wipe: esegue session-end-wipe.ps1 di ogni account che ne ha uno installato, ma solo se
-#      nessuna sessione Claude Code da terminale o da editor e' ancora aperta.
+#   6. wipe: esegue session-end-wipe.ps1 di ogni account che ne ha uno installato; dal
+#      2026-10-09 il wipe toglie da se' cio' che appartiene a sessioni chiuse e conserva quelle
+#      aperte, quindi si esegue anche con altre sessioni vive. In coda stampa con
+#      stato-magazzino.ps1 che cosa resta in ogni account e quali sessioni lo trattengono.
 #
 # Commit e push restano un gesto dell'utente: e' l'utente a lanciare lo script e a confermare
 # dopo aver visto file e messaggio. L'agente, Claude Code o Codex, prepara il messaggio, non lo usa.
@@ -277,14 +279,24 @@ $script = @(Get-ChildItem $env:USERPROFILE -Directory -Filter ".claude*" -Force 
 
 if ($script.Count -eq 0) {
     Nota "nessuno script di wipe installato negli account: passo saltato"
-} elseif ($aperte.Count -gt 0) {
-    Write-Host "   $($aperte.Count) processi Claude Code ancora aperti (CLI o editor): wipe rimandato. Chiuderli e lanciare:" -ForegroundColor Yellow
-    $script | ForEach-Object { Write-Host "   powershell -NoProfile -ExecutionPolicy Bypass -File `"$_`"" }
 } else {
+    if ($aperte.Count -gt 0) {
+        Write-Host "   $($aperte.Count) processi Claude Code ancora aperti (CLI o editor): il wipe conserva le loro sessioni e toglie tutte le altre. Una copia del wipe anteriore al 2026-10-09 invece rimanda tutto." -ForegroundColor Yellow
+    }
     foreach ($s in $script) {
         & powershell -NoProfile -ExecutionPolicy Bypass -File $s
         if ($LASTEXITCODE -eq 0) { Ok $s } else { Ko "$s (uscita $LASTEXITCODE)" }
     }
 }
+
+# Che cosa resta dopo il wipe, o dopo il suo rinvio: senza questo resoconto un rinvio si
+# leggeva solo nel diario dell'account, che nessuno apre. Lo strumento e' in sola lettura;
+# si cerca accanto a questo script e, in un progetto che non lo ha, nelle home degli account.
+$stato = @((Join-Path $PSScriptRoot 'stato-magazzino.ps1')) +
+    @(Get-ChildItem $env:USERPROFILE -Directory -Filter ".claude*" -Force -ErrorAction SilentlyContinue |
+      ForEach-Object { Join-Path $_.FullName "hooks\stato-magazzino.ps1" }) |
+    Where-Object { Test-Path $_ } | Select-Object -First 1
+if ($stato) { & powershell -NoProfile -ExecutionPolicy Bypass -File $stato }
+else { Nota "stato-magazzino.ps1 non trovato: resoconto dei residui saltato" }
 
 Fine ""
