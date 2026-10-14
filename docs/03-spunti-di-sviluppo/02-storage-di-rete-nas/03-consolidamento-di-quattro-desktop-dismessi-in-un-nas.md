@@ -58,16 +58,20 @@ La terza chiude una porta, e vale saperla chiusa. Il manuale dichiara quattro al
 
 ## La configurazione bersaglio
 
+Nota del 12/10/2026, ADR-033: i due NVMe vanno al server Proxmox e il NAS si monta con il Kingston V300 come avvio e i due SSD SATA in specchio come pool dei dati; l'adattatore non si compra. La fonte canonica è [Allocazione dell'hardware](../23-studio-home-lab/12-allocazione-dell-hardware.md), e dove questa scheda parla di NVMe nel NAS descrive il piano precedente.
+
 | Componente | Provenienza | Nota |
 |---|---|---|
 | Motherboard H170-PRO | `PC-DESKTOP-A`, resta nel suo case | |
 | CPU i7-6700 | già montata, non si sostituisce | vedi il paragrafo seguente |
-| 32 GB DDR4 | 16 GB presenti più 16 GB da `PC-DESKTOP-B` | quattro moduli da 8 GB dello stesso codice prodotto |
+| 16 GB DDR4 | i 16 GB già presenti | dal 12/10/2026 (ADR-032); fino ad allora 32 GB, con i due moduli da 8 GB di `PC-DESKTOP-B`, che vanno invece al server Proxmox |
 | SSD SATA di avvio | entrambi gli SSD SATA del parco | in mirror, vedi la sezione dedicata |
 | Primo NVMe 1 TB | `linux-desktop-A` | nell'alloggiamento M.2 della scheda |
 | Secondo NVMe 1 TB | `linux-desktop-B` | su adattatore PCIe verso M.2, secondo slot x16 |
 | Scheda di rete Intel gigabit | acquisto di fascia bassa | su slot PCIe x1; la Realtek integrata resta come seconda |
 | Adattatore PCIe verso M.2 | acquisto di fascia bassa | la scheda ha un solo alloggiamento M.2 |
+
+Nota del 12/10/2026, decisione dell'utente registrata come ADR-032. I 32 GB della prima stesura servivano a un NAS che doveva tenere un pool di dischi meccanici da più terabyte e, sullo stesso hardware, applicazioni e macchine virtuali. Dopo ADR-015 il pool è di 1 TB sui due NVMe, e dopo ADR-030 applicazioni e servizi stanno sul server Proxmox `linux-desktop-A`, che con 16 GB lasciava al laboratorio circa 4 GB. La guida hardware di TrueNAS chiede almeno 8 GB fino a otto dischi e memoria in più soltanto per deduplicazione, L2ARC, applicazioni e macchine virtuali (S102), nessuna delle quali è prevista qui. Il NAS resta quindi con i suoi due moduli, 16 GB, e i due moduli da 8 GB di `PC-DESKTOP-B` vanno al server insieme a due dei suoi moduli da 4 GB, che sale a 24 GB; i due moduli da 4 GB avanzati sono scorta. Il passo di montaggio della memoria sulla base si salta.
 
 Verrebbe naturale spostare sulla base l'i7-7700, che è la CPU più veloce del parco, e sarebbe uno sbaglio. Il guadagno reale è di due decimi di gigahertz sulla frequenza base e altrettanti sul turbo, cioè nulla per una macchina il cui collo di bottiglia è un collegamento gigabit e non il calcolo. In cambio si introdurrebbe un rischio: il supporto Kaby Lake sulle schede di serie 100 è arrivato con aggiornamenti di firmware, e anche se quello del 2018 quasi certamente lo comprende, verificarlo richiede montare e provare, con la prospettiva di aver smontato tutto per niente. La CPU già installata è compatibile senza verifiche e per servire file è sovradimensionata.
 
@@ -75,7 +79,7 @@ Verrebbe naturale spostare sulla base l'i7-7700, che è la CPU più veloce del p
 
 Il confronto è fra tre candidati. TrueNAS SCALE e OpenMediaVault sono gratuiti e aperti, Unraid è a pagamento con abbonamento annuale. La differenza sostanziale non è il prezzo ma il file system: TrueNAS porta ZFS[^3], con somme di controllo da un capo all'altro della catena, istantanee e verifiche periodiche dell'integrità; OpenMediaVault porta ext4 o btrfs sopra il RAID software del kernel; Unraid usa un array proprietario. Il valore di ZFS in un archivio domestico è esattamente la differenza fra accorgersi di un bit corrotto e scoprirlo tre anni dopo aprendo il file.
 
-Il costo è la memoria, e trentadue gigabyte collocano questa macchina nella fascia consigliata invece che al minimo. La curva di apprendimento è più ripida di quella di OpenMediaVault, che è in sostanza un Debian con un'interfaccia di amministrazione: chi preferisce consumi minimi e semplicità sceglie quello, perdendo ZFS e le sue garanzie. Nota dell'8/10/2026: OpenMediaVault supporta ZFS con un plugin, quindi la perdita non è automatica; il confronto aggiornato è nella [valutazione di OpenMediaVault](08-valutazione-openmediavault.md).
+Il costo è la memoria, e trentadue gigabyte collocano questa macchina nella fascia consigliata invece che al minimo; dal 12/10/2026 la macchina ne monta sedici, il doppio del minimo dichiarato, perché il pool è di un terabyte e le applicazioni stanno altrove (ADR-032). La curva di apprendimento è più ripida di quella di OpenMediaVault, che è in sostanza un Debian con un'interfaccia di amministrazione: chi preferisce consumi minimi e semplicità sceglie quello, perdendo ZFS e le sue garanzie. Nota dell'8/10/2026: OpenMediaVault supporta ZFS con un plugin, quindi la perdita non è automatica; il confronto aggiornato è nella [valutazione di OpenMediaVault](08-valutazione-openmediavault.md).
 
 Resta il limite dell'ECC, ed è un limite di piattaforma e non di configurazione. ZFS senza memoria a correzione d'errore funziona, perché l'ECC è una raccomandazione e non un requisito, ma un modulo difettoso corrompe i dati in silenzio e le somme di controllo di ZFS registrano fedelmente ciò che la memoria ha consegnato loro. Da qui l'importanza, in questa configurazione più che in un'altra, del test di memoria descritto nella sequenza di verifica: è l'unica difesa che questa piattaforma consente.
 
@@ -107,11 +111,11 @@ Prima di aprire i case si verifica che le due macchine Linux siano state salvate
 
 I prelievi sono due moduli di memoria e l'SSD SATA da `PC-DESKTOP-B`, l'NVMe da ciascuna delle due macchine Linux, e facoltativamente un masterizzatore. Conviene fotografare la posizione dei moduli prima di estrarli, perché sulle schede a quattro alloggiamenti il doppio canale richiede le coppie in posizioni alterne e sbagliarle costa metà della banda di memoria.
 
-Il montaggio sulla base dispone i quattro moduli da 8 GB nei quattro alloggiamenti, i due SSD SATA sulle porte SATA, il primo NVMe nell'alloggiamento M.2, il secondo sull'adattatore nel secondo slot x16 e la scheda di rete Intel su uno slot x1.
+Il montaggio sulla base lascia al loro posto i due moduli da 8 GB già montati (ADR-032; la prima stesura ne prevedeva quattro), i due SSD SATA sulle porte SATA, il primo NVMe nell'alloggiamento M.2, il secondo sull'adattatore nel secondo slot x16 e la scheda di rete Intel su uno slot x1.
 
-Nel firmware si verifica che siano riconosciuti trentadue gigabyte in doppio canale e tutti i dischi, si abilita la virtualizzazione perché è utile se un domani si vorranno container o macchine virtuali sulla stessa macchina, si disabilita il Secure Boot perché il sistema da installare non è firmato dal produttore del sistema operativo desktop, si impone la modalità di avvio UEFI, e soprattutto si imposta il ripristino automatico dell'accensione al ritorno della corrente, che è la ragione per cui questa macchina è stata scelta invece di quella con il firmware legacy.
+Nel firmware si verifica che siano riconosciuti sedici gigabyte in doppio canale e tutti i dischi, si abilita la virtualizzazione perché è utile se un domani si vorranno container o macchine virtuali sulla stessa macchina, si disabilita il Secure Boot perché il sistema da installare non è firmato dal produttore del sistema operativo desktop, si impone la modalità di avvio UEFI, e soprattutto si imposta il ripristino automatico dell'accensione al ritorno della corrente, che è la ragione per cui questa macchina è stata scelta invece di quella con il firmware legacy.
 
-Il test di stabilità precede l'installazione e non è opzionale, per il motivo detto sopra sull'assenza di ECC. Si esegue almeno un ciclo completo di test della memoria, e meglio una notte intera, perché i moduli sono usati e provengono da due macchine diverse; se emerge un errore si isola il modulo escludendone uno per volta e si scarta, perché ventiquattro gigabyte sani valgono più di trentadue con un modulo guasto. In parallelo si lancia il test SMART lungo su ogni disco e si rilegge l'esito dopo alcune ore.
+Il test di stabilità precede l'installazione e non è opzionale, per il motivo detto sopra sull'assenza di ECC. Si esegue almeno un ciclo completo di test della memoria, e meglio una notte intera, perché i moduli sono usati; se emerge un errore si isola il modulo escludendone uno per volta e si scarta, perché ventiquattro gigabyte sani valgono più di trentadue con un modulo guasto. In parallelo si lancia il test SMART lungo su ogni disco e si rilegge l'esito dopo alcune ore.
 
 L'installazione mette il sistema sul mirror dei due SSD SATA, tenendo l'avvio separato dai dati. I due dischi vanno selezionati entrambi già nella schermata di scelta del dispositivo di installazione, e non uno solo con l'intenzione di aggiungere il secondo dopo: l'operazione di aggancio successivo pretende che il disco nuovo sia almeno grande quanto quello esistente, quindi partire dal maggiore dei due renderebbe impossibile agganciare il minore. Se per qualche ragione si installa su un disco solo, si installa sul minore.
 

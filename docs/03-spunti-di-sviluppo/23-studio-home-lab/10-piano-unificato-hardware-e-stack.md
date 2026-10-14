@@ -4,11 +4,13 @@ Ritorno allo [studio](README.md). Documento di progetto dell'8/10/2026, chiesto 
 
 ## L'hardware e il suo ruolo
 
+Nota del 12/10/2026: memoria e dischi di questa sezione sono superati da ADR-032 e ADR-033. La fonte canonica dell'allocazione e dell'ordine dei gesti al banco è [Allocazione dell'hardware](12-allocazione-dell-hardware.md).
+
 | Macchina | Che cosa è | Ruolo | Stato |
 |---|---|---|---|
 | NET-04, firewall | i3 di settima generazione, 8 GB, SSD 120 GB, tre schede di rete | OPNsense | deciso; installato il 16/01/2026, non configurato |
-| `PC-DESKTOP-A` | base del consolidamento, 32 GB DDR4, due SSD SATA, due NVMe | NAS con TrueNAS SCALE (ADR-015, ADR-026) | deciso; montaggio fermo al Passo 1.6 |
-| `linux-desktop-A` | ASRock H270M Pro4, i7-7700 a 4 core e 8 thread, 16 GB DDR4 in quattro moduli, rete Intel I219-V, nessun disco | server Proxmox, cioè l'host di servizio sempre acceso SRV-01 | proposto |
+| `PC-DESKTOP-A` | base del consolidamento, 16 GB DDR4 (ADR-032, prima 32), due SSD SATA, due NVMe | NAS con TrueNAS SCALE (ADR-015, ADR-026) | deciso; montaggio fermo al Passo 1.6 |
+| `linux-desktop-A` | ASRock H270M Pro4, i7-7700 a 4 core e 8 thread, 16 GB DDR4 in quattro moduli, che diventano 24 GB con lo scambio di ADR-032, rete Intel I219-V, nessun disco | server Proxmox, cioè l'host di servizio sempre acceso SRV-01 | deciso (ADR-030) |
 | `PC-DESKTOP-B` | ASUS B150-PRO, i7-6700, senza memoria né disco | scorta gemella del NAS, non si tocca | deciso dall'inventario delle scorte |
 | `linux-desktop-B` | ASUS Z97-P, i7-4790, 16 GB DDR3, nessun disco | secondo nodo sacrificabile per prove distruttive, solo se serve | proposto, priorità bassa |
 | PC-03, anduinOS | seconda ASUS Z97-P, processore LGA1150 da leggere, 16 GB DDR3, Samsung 850 EVO M.2 SATA da 250 GB | fornitore di disco e memoria DDR3; in alternativa nodo con 32 GB DDR3 | proposto, letto dalle foto del 09/10/2026 |
@@ -47,7 +49,7 @@ Le due strade usano gli stessi pezzi, cambiano solo i dischi. Con `linux-desktop
 
 | Macchina | Che cosa contiene | Ruolo con la raccomandazione |
 |---|---|---|
-| `linux-desktop-A` | H270M Pro4, i7-7700, 4 × 4 GB DDR4 già montati, alimentatore suo; Samsung 850 EVO M.2 da PC-03 e Kingston V300 da PC-02 in specchio | server Proxmox SRV-01 |
+| `linux-desktop-A` | H270M Pro4, i7-7700, 24 GB DDR4 con i due moduli da 8 GB di `PC-DESKTOP-B` e due dei suoi quattro da 4 GB (ADR-032), alimentatore suo; Samsung 850 EVO M.2 da PC-03 e Kingston V300 da PC-02 in specchio | server Proxmox SRV-01 |
 | Z97-P di PC-03 | scheda e case di PC-03; i7-4790 di `linux-desktop-B` se il processore di PC-03 è inferiore; i due kit DDR3, 32 GB; disco meccanico Samsung da 500 GB di PC-02; l'alimentatore fra Atlantis e Tecnoware con la targa migliore | nodo di laboratorio, acceso a richiesta |
 | `linux-desktop-B` | scheda Z97-P, processore che resta, case e alimentatore; niente memoria e niente disco | scorta del nodo di laboratorio |
 | PC-02 | ne escono i due dischi, l'alimentatore, le slitte, i cavi, l'unità ottica, la minuteria, la scheda grafica e i due moduli Kingston | svuotato e smaltito (ADR-031) |
@@ -61,14 +63,14 @@ Sullo specchio dei due SSD la scelta è fra tre strade. Con lo specchio, gratis,
 
 L'utente ha chiesto di rifare la matrice cercando l'uso migliore di ogni macchina alla luce delle aree di studio, e di rivedere le porte dello switch. Due fatti nuovi. `linux-desktop-C`, la postazione con Ubuntu Studio (PC-06 nel censimento), resta in servizio per produzione musicale e registrazione e andrà in Wi-Fi con un adattatore USB, perché la sua scheda madre non ne ha uno integrato: la raccolta via SSH del 09/10/2026 mostra la sola rete cablata Realtek. La postazione da cui l'utente lavora a questo progetto non fa parte della rete di casa e resta fuori dal computo. I due tablet sono entrambi di casa (TAB-01 e TAB-02).
 
-Rilette le aree di `03-spunti-di-sviluppo`, una sola cambia l'uso dell'hardware: l'analisi dei campioni sospetti (area 08), che il piano lascia pendente come zona isolata distinta dalla VLAN 60. La sandbox dinamica è il carico che chiede più memoria fra quelli del progetto, e va su una macchina fisica che non ospita servizi; la Z97-P con 32 GB, accesa a richiesta, è la candidata naturale, e aggiunge al ruolo di nodo di laboratorio quello di banco di analisi. La rete di quella zona resta da progettare. Le altre aree si risolvono senza macchine nuove: scansione delle vulnerabilità (area 16), bot (area 22) e MeshCentral (area 04) sono macchine virtuali su Proxmox; il resolver DNS dedicato dell'area 11 è già coperto da Unbound sul firewall e AdGuard su Proxmox; le telecamere dell'area 20 sono previste in Wi-Fi, perché il cavo fuori dal portone non passa; il modello linguistico locale chiede una GPU moderna, e la scheda grafica di PC-02 non lo è.
+Rilette le aree di `03-spunti-di-sviluppo`, una sola cambia l'uso dell'hardware: l'analisi dei campioni sospetti (area 08), che il piano lascia pendente come zona isolata distinta dalla VLAN 60. La sandbox dinamica è il carico che chiede più memoria fra quelli del progetto, e va su una macchina fisica che non ospita servizi; la Z97-P con 32 GB, accesa a richiesta, è la candidata naturale, e aggiunge al ruolo di nodo di laboratorio quello di banco di analisi. La rete di quella zona resta da progettare. Le altre aree si risolvono senza macchine nuove: scansione delle vulnerabilità (area 16), bot (area 22) e MeshCentral (area 04) sono macchine virtuali su Proxmox; il resolver DNS dedicato dell'area 11 è già coperto da Unbound sul firewall e AdGuard su Proxmox; le telecamere dell'area 20 sono previste in Wi-Fi, perché il cavo fuori dal portone non passa; il modello linguistico locale chiede una GPU moderna, e la scheda grafica di PC-02 non lo è. Nota del 13/10/2026: quest'ultima affermazione non vale più per i modelli *mixture of experts* di taglia media, che colibri esegue sul solo processore; con 32 GB vanno sul nodo di laboratorio, e lo studio è [Modello linguistico locale su CPU](13-modello-linguistico-locale-su-cpu.md).
 
 | Macchina | Ruolo proposto | Rete |
 |---|---|---|
 | NET-04 | firewall OPNsense | WAN, trunk LAN, DMZ fisica vuota |
 | `PC-DESKTOP-A` | NAS TrueNAS SCALE | porta 5 |
 | `linux-desktop-A` | server Proxmox SRV-01 | porta 6, trunk 30-60-99 |
-| Z97-P di PC-03 | nodo di laboratorio e banco di analisi dei campioni, acceso a richiesta | porta da trovare, vedi sotto |
+| Z97-P di PC-03 | nodo di laboratorio e banco di analisi dei campioni, acceso a richiesta; dal 13/10/2026 anche modello linguistico locale su CPU (ADR-034), alternato all'analisi e subordinato alla misura | porta da trovare, vedi sotto |
 | `linux-desktop-C` | postazione multimediale con Ubuntu Studio | Wi-Fi, VLAN 10 |
 | `PC-DESKTOP-B` | scorta gemella del NAS | nessuna |
 | `linux-desktop-B` | scorta della Z97-P; candidata al server della DMZ se un giorno nasce un servizio pubblico | nessuna |
@@ -105,6 +107,8 @@ Sui pezzi che escono di casa vale una regola che il progetto applica già ai dis
 
 ## Il da farsi al banco, in ordine
 
+Nota del 12/10/2026: memoria e dischi di questa sezione e la sequenza qui sotto sono superati da ADR-032 e ADR-033. La fonte canonica dell'allocazione e dell'ordine dei gesti al banco è [Allocazione dell'hardware](12-allocazione-dell-hardware.md).
+
 Sequenza aggiornata al 09/10/2026, dopo ADR-030 e ADR-031. Vale per il lavoro fisico sulle macchine; la messa in opera dei servizi resta quella descritta più avanti e comincia solo quando la rete è collaudata. Il principio che ordina i passi è uno solo: ogni lettura che richiede di aprire o smontare qualcosa si fa mentre quella cosa è già aperta, perché riaprire un case per leggere un'etichetta è il modo più comune di perdere un pomeriggio.
 
 | Passo | Che cosa si fa | Perché adesso |
@@ -116,13 +120,13 @@ Sequenza aggiornata al 09/10/2026, dopo ADR-030 e ADR-031. Vale per il lavoro fi
 | 5 | aprire PC-03, pulirlo, leggere la sigla del suo processore e verificare che ci sia un alloggiamento da tre pollici e mezzo libero | se l'alloggiamento manca, la scheda Z97-P trasloca nel case di PC-02 e il conferimento si rimanda |
 | 6 | confrontare i due processori LGA1150 e, se quello di `linux-desktop-B` è migliore, scambiarli | si fa con entrambe le macchine già aperte |
 | 7 | montare nel nodo di laboratorio i due moduli DDR3 di `linux-desktop-B`, per arrivare a 32 GB, e il disco meccanico da 500 GB | completa il nodo di laboratorio |
-| 8 | montare sul server `linux-desktop-A` i due SSD, il Samsung nell'alloggiamento M.2 e il Kingston su una porta SATA, verificando come il case monti un disco da due pollici e mezzo | è la configurazione di ADR-030, da riconsiderare se l'M.2 non accetta dischi SATA; se manca il montaggio serve un adattatore |
+| 8 | montare sul server `linux-desktop-A` i due SSD, il Samsung nell'alloggiamento M.2 e il Kingston su una porta SATA, verificando come il case monti un disco da due pollici e mezzo; nello stesso giro sostituire due dei quattro moduli da 4 GB con i due da 8 GB prelevati da `PC-DESKTOP-B`, un modulo da 8 e uno da 4 per canale, e mettere i due da 4 GB tolti nella busta delle scorte (ADR-032) | è la configurazione di ADR-030, da riconsiderare se l'M.2 non accetta dischi SATA; se manca il montaggio serve un adattatore |
 | 9 | accendere le due macchine e leggere lo SMART dei tre dischi con il test lungo | è la verifica che decide se lo specchio si può fare senza comprare niente |
-| 10 | nel firmware di `linux-desktop-A`, verificare che le estensioni di virtualizzazione siano attive | Proxmox le richiede, ed è un'impostazione e non un limite del processore |
+| 10 | nel firmware di `linux-desktop-A`, verificare che le estensioni di virtualizzazione siano attive e che la memoria dichiarata sia 24 GB in doppio canale, poi una notte di test della memoria | Proxmox le richiede, ed è un'impostazione e non un limite del processore; i moduli arrivano da due macchine diverse |
 | 11 | misurare con una presa wattmetrica il consumo delle due macchine a riposo | è il numero che manca al confronto di ADR-030, e va scritto nel documento sui consumi |
 | 12 | conferire scheda madre, processore e case di PC-02 ai rifiuti elettronici | solo dopo il passo 5, perché il case serve ancora se l'alloggiamento di PC-03 manca |
 
-Fuori da questa sequenza restano tre acquisti che non la bloccano: l'SSD per il server se lo SMART boccia uno dei due recuperati, i moduli SFP in rame quando il nodo di laboratorio chiede la sua porta (ADR-029), e un adattatore da due pollici e mezzo a tre e mezzo se il case di `linux-desktop-A` non monta da sé un disco di quel formato, perché le slitte di PC-02 risultano rotte.
+Fuori da questa sequenza restano tre acquisti che non la bloccano: l'SSD per il server se lo SMART boccia uno dei due recuperati, i moduli SFP in rame quando il nodo di laboratorio chiede la sua porta (ADR-029), e un adattatore da due pollici e mezzo a tre e mezzo se il case di `linux-desktop-A` non monta da sé un disco di quel formato, perché le slitte di PC-02 risultano rotte; dal 14/10/2026 non serve, perché il V300, che va nel NAS (ADR-033), è avvitato su un adattatore Corsair apparentemente integro.
 
 ## Il server Proxmox
 
@@ -134,12 +138,12 @@ La rete è un solo cavo dalla scheda Intel alla porta 6 dello switch, configurat
 |---|---|---|---|---|---|
 | Wazuh, server, indicizzatore e dashboard insieme | macchina virtuale | VLAN 30 | 8 GB | 50 GB | proposto |
 | AdGuard Home, DNS filtrante davanti a Unbound | contenitore | VLAN 30 | 0,5 GB | 2 GB | proposto |
-| macchine del laboratorio | macchine virtuali | VLAN 60 | il resto, circa 4 GB | secondo l'esperimento | proposto |
+| macchine del laboratorio | macchine virtuali | VLAN 60 | il resto, circa 12 GB con i 24 GB di ADR-032 | secondo l'esperimento | proposto |
 | Proxmox stesso | sistema ospite | VLAN 99 | 2 GB | sistema | proposto |
 
-Il conto della memoria è il vincolo vero. Wazuh, nella configurazione con i tre componenti sulla stessa macchina, chiede 4 vCPU, 8 GB di memoria e 50 GB di spazio per un massimo di 25 agenti e 90 giorni di allarmi (S87). Con 16 GB restano circa 4 GB per il laboratorio, che bastano per due o tre macchine leggere alla volta. Portare la macchina a 32 GB toglie il vincolo; che la scheda accetti 64 GB in quattro alloggiamenti va verificato sulla scheda del costruttore, e il costo dei moduli va cercato. È una decisione dell'utente, non un requisito di partenza. La via di prendere i moduli da un altro PC di casa è chiusa dal 09/10/2026: i due PC fotografati hanno solo DDR3, e la DDR4 a 32 GB si ottiene soltanto comprandola.
+Il conto della memoria era il vincolo vero, e dal 12/10/2026 è allentato senza spesa: il NAS non ha bisogno dei 32 GB della prima stesura, perché il suo pool è di 1 TB e non ospita applicazioni (S102), quindi i due moduli da 8 GB prelevati per lui da `PC-DESKTOP-B` passano al server, che sale a 24 GB e lascia al laboratorio circa 12 GB (ADR-032). Il resto del paragrafo descrive il conto con 16 GB. Wazuh, nella configurazione con i tre componenti sulla stessa macchina, chiede 4 vCPU, 8 GB di memoria e 50 GB di spazio per un massimo di 25 agenti e 90 giorni di allarmi (S87). Con 16 GB restano circa 4 GB per il laboratorio, che bastano per due o tre macchine leggere alla volta. Portare la macchina a 32 GB toglie il vincolo; che la scheda accetti 64 GB in quattro alloggiamenti va verificato sulla scheda del costruttore, e il costo dei moduli va cercato. È una decisione dell'utente, non un requisito di partenza. La via di prendere i moduli da un altro PC di casa è chiusa dal 09/10/2026: i due PC fotografati hanno solo DDR3, e la DDR4 a 32 GB si ottiene soltanto comprandola.
 
-Il disco forse non si compra. I due PC fotografati il 09/10/2026 portano un Samsung 850 EVO M.2 SATA da 250 GB e un Kingston V300 SATA da 240 GB, e due dischi di taglia simile sono esattamente lo specchio che Proxmox consiglia: con ZFS in mirror restano circa 240 GB utili, contro i 50 GB di Wazuh, i 2 GB di AdGuard e il sistema. Valgono tre condizioni. Entrambi devono passare la lettura SMART e il test lungo. L'alloggiamento M.2 della H270M Pro4 deve accettare un disco SATA e non solo NVMe, e lo si verifica sul manuale ASRock; altrimenti il Samsung va in un adattatore da M.2 SATA a 2,5 pollici, oppure si usa un altro disco. E il V300 ha poche scritture garantite per il carico continuo dell'indicizzatore di Wazuh, che è un'inferenza da verificare sulla scheda tecnica: se si conferma, lo specchio regge finché uno dei due non si consuma, e quel momento lo dice lo SMART. Se una delle tre condizioni cade, resta il piano di prima, cioè comprare un SSD SATA da 500 GB o 1 TB. Le copie delle macchine virtuali vanno sul NAS, nella sua finestra di accensione.
+Dal 12/10/2026 i dischi del server sono i due NVMe da 1 TB (ADR-033) e il paragrafo che segue è storia. Il disco forse non si compra. I due PC fotografati il 09/10/2026 portano un Samsung 850 EVO M.2 SATA da 250 GB e un Kingston V300 SATA da 240 GB, e due dischi di taglia simile sono esattamente lo specchio che Proxmox consiglia: con ZFS in mirror restano circa 240 GB utili, contro i 50 GB di Wazuh, i 2 GB di AdGuard e il sistema. Valgono tre condizioni. Entrambi devono passare la lettura SMART e il test lungo. L'alloggiamento M.2 della H270M Pro4 deve accettare un disco SATA e non solo NVMe, e lo si verifica sul manuale ASRock; altrimenti il Samsung va in un adattatore da M.2 SATA a 2,5 pollici, oppure si usa un altro disco. E il V300 ha poche scritture garantite per il carico continuo dell'indicizzatore di Wazuh, che è un'inferenza da verificare sulla scheda tecnica: se si conferma, lo specchio regge finché uno dei due non si consuma, e quel momento lo dice lo SMART. Se una delle tre condizioni cade, resta il piano di prima, cioè comprare un SSD SATA da 500 GB o 1 TB. Le copie delle macchine virtuali vanno sul NAS, nella sua finestra di accensione.
 
 ## Lo stack open source, funzione per funzione
 
@@ -156,6 +160,7 @@ Il disco forse non si compra. I due PC fotografati il 09/10/2026 portano un Sams
 | gestione remota degli endpoint | MeshCentral, dagli studi del documento sorgente | Proxmox, VLAN 30 | proposto, fase 4 |
 | metriche di switch, AP e host | lettura SNMP dall'host di servizio, con un raccoglitore da scegliere | Proxmox | pendente |
 | analisi di campioni sospetti | zona isolata a parte, non la VLAN 60 | da progettare | pendente, fase 6 |
+| modello linguistico locale, per leggere dati che non escono di casa | colibri su CPU con Qwen3.6-35B-A3B, interfaccia compatibile OpenAI con chiave | nodo di laboratorio, VLAN 60 | deciso il 13/10/2026 (ADR-034), da tenere solo se la misura supera la soglia ([studio](13-modello-linguistico-locale-su-cpu.md)) |
 
 ### Che cosa resta dello schema del documento sorgente
 

@@ -62,7 +62,7 @@ Dal 09/10/2026 non è più un'isola: PC-03 monta la stessa scheda, e la sezione 
 
 È una quinta postazione, censita a smontaggio già avviato, che non fa parte del consolidamento e non è una scorta: è in esercizio con Ubuntu Studio. Sta in questo inventario perché ignorarla sarebbe peggio che elencarla, e la ragione è una sola, che riguarda la gerarchia dei ricambi.
 
-Al NAS non porta niente, e la verifica lo conferma su tutti e tre i fronti. Il processore è lo stesso modello della base, quindi non sarebbe un miglioramento. La memoria non entra, perché con i quattro moduli da 8 GB il NAS arriva a 32 GB e i quattro alloggiamenti sono pieni, e per superarli servirebbero moduli da 16 GB che in casa non esistono. Il disco non serve, perché è un NVMe e il NAS ne ha già due da un terabyte, mentre ciò che manca al magazzino sono dischi SATA, e questa macchina non ne ha nessuno.
+Al NAS non porta niente, e la verifica lo conferma su tutti e tre i fronti. Il processore è lo stesso modello della base, quindi non sarebbe un miglioramento. La memoria non entra, perché al NAS non serve: dal 12/10/2026 resta a 16 GB (ADR-032), e la prima stesura, che lo portava a 32 GB con i quattro alloggiamenti pieni, è superata. Il disco non serve, perché è un NVMe e il NAS ne ha già due da un terabyte, mentre ciò che manca al magazzino sono dischi SATA, e questa macchina non ne ha nessuno.
 
 La ragione per cui va comunque registrata è che la sua scheda madre è la gemella identica di quella della base, stesso modello e stessa versione di firmware, con numeri di serie contigui, cioè due esemplari dello stesso lotto di produzione. Cambia la gerarchia dei ricambi: il sostituto ideale della scheda del NAS è questa e non la B150-PRO di `PC-DESKTOP-B`, ma essendo in servizio non è disponibile, quindi la scorta gemella resta il ricambio utilizzabile e questa resta l'informazione da ricordare il giorno in cui la scheda del NAS si guasta davvero.
 
@@ -97,12 +97,12 @@ La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serig
 
 | Pezzo | Che cosa è |
 |---|---|
-| memoria | moduli Kingston `KVR1333D3N9/2G` da 2 GB e `KVR1333D3N9/4G` da 4 GB, DDR3-1333; quanti ce ne sono in tutto va letto con la raccolta |
+| memoria | moduli Kingston `KVR1333D3N9/2G` da 2 GB e `KVR1333D3N9/4G` da 4 GB, DDR3-1333; sono quattro, perché la foto dell'interno riletta per intero il 12/10/2026 mostra due moduli in mano e altri due ancora inseriti; la taglia dei due inseriti va letta al prelievo |
 | disco | SSD SATA Kingston SSDNow V300 da 240 GB, codice data della fine del 2015 |
 | disco | disco meccanico Samsung SpinPoint HD502HJ da 500 GB, 7200 rpm, fabbricato nell'agosto 2011 |
 | alimentatore | Tecnoware FAL550FS12, 550 W, 30 A sul ramo a 12 V |
 
-Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica dedicata e i due moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio. Le slitte e gli adattatori dei dischi, che la sequenza prevedeva di riutilizzare, l'utente li dichiara rotti il 09/10/2026: la conseguenza è nel registro delle pendenze e riguarda il solo Kingston V300. Vanno al conferimento la scheda madre, il processore con il suo dissipatore e il case.
+Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica dedicata e i due moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio. Le slitte e gli adattatori dei dischi, che la sequenza prevedeva di riutilizzare, l'utente li dichiara rotti il 09/10/2026: la conseguenza è nel registro delle pendenze e riguarda il solo Kingston V300, che il 14/10/2026 risulta però avvitato su un adattatore Corsair da due pollici e mezzo a tre e mezzo apparentemente integro, con cui va nel NAS. Vanno al conferimento la scheda madre, il processore con il suo dissipatore e il case.
 
 ### Che cosa cambia nel magazzino
 
@@ -116,14 +116,18 @@ La stessa sostanza riordinata per tipo di pezzo, che è il taglio utile quando s
 
 ### Memoria disponibile
 
+Nota del 12/10/2026, ADR-033: i due NVMe vanno al server Proxmox e il NAS si monta con il Kingston V300 come avvio e i due SSD SATA in specchio come pool dei dati; l'adattatore non si compra. La fonte canonica è [Allocazione dell'hardware](../23-studio-home-lab/12-allocazione-dell-hardware.md), e dove questa scheda parla di NVMe nel NAS descrive il piano precedente.
+
 | Quantità | Tipo | Codice prodotto | Dove sta | Utilizzabile su |
 |---|---|---|---|---|
 | 4 × 4 GB = 16 GB | DDR4-2400 | `CT4G4DFS824A.C8FHP` | montata in `linux-desktop-A` | le tre schede LGA1151 |
 | 2 × 8 GB = 16 GB | DDR3, coppia spaiata | `CMV8GX3M1A1333C9` e `CMV8GX3M1A1600C11` | montata in `linux-desktop-B` | le due Z97-P, e fisicamente PC-02 |
 | 2 × 8 GB = 16 GB | DDR3-1600, kit | `CMV16GX3M2A1600C11` | montata in PC-03 | le due Z97-P, e fisicamente PC-02 |
-| almeno 2 GB + 4 GB | DDR3-1333 | `KVR1333D3N9/2G` e `KVR1333D3N9/4G` | in una busta, prelevata da PC-02 | le due Z97-P, come ricambio a capacità ridotta |
+| quattro moduli, almeno 2 GB + 4 GB | DDR3-1333 | `KVR1333D3N9/2G`, `KVR1333D3N9/4G` e due da leggere | due in una busta e due ancora in PC-02 | le due Z97-P, come ricambio a capacità ridotta |
 
-I quattro moduli DDR4 sono il pezzo più fungibile del magazzino, ed è su di loro che si decide quale delle scorte si riaccende. Restano dove sono se si vuole tenere pronta `linux-desktop-A`, si spostano in `PC-DESKTOP-B` se si preferisce far rivivere la gemella della base; non esistono due kit, quindi le due cose si escludono.
+Dal 12/10/2026 la memoria DDR4 cambia posto (ADR-032). Il NAS resta con i suoi due moduli da 8 GB; i due moduli da 8 GB prelevati da `PC-DESKTOP-B` e due dei quattro moduli da 4 GB vanno nel server Proxmox `linux-desktop-A`, che sale a 24 GB; gli altri due moduli da 4 GB, 8 GB in tutto, sono la sola scorta DDR4 e possono ridare 16 GB al NAS se un suo modulo si guasta. La prima riga della tabella descrive il magazzino prima dello scambio, che si esegue al passo 8 della sequenza del [piano unificato](../23-studio-home-lab/10-piano-unificato-hardware-e-stack.md).
+
+Prima di ADR-032, il ragionamento era questo. I quattro moduli DDR4 sono il pezzo più fungibile del magazzino, ed è su di loro che si decide quale delle scorte si riaccende. Restano dove sono se si vuole tenere pronta `linux-desktop-A`, si spostano in `PC-DESKTOP-B` se si preferisce far rivivere la gemella della base; non esistono due kit, quindi le due cose si escludono.
 
 ### Dischi disponibili
 

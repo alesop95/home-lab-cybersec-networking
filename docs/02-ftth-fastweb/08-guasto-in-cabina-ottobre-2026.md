@@ -28,9 +28,22 @@ La conclusione pratica non dipende da quale delle due sia: il collegamento ottic
 
 L'ambiguità si risolve con un dato che il progetto deve raccogliere comunque: se la pagina di stato dell'ONT o la sezione GPON dello stato WAN del Seven espone la potenza ottica ricevuta, segno e unità si leggono lì e il valore dettato al telefono trova o perde conferma. È un'inferenza da verificare, aggiunta al giro di schermate già pendente.
 
+## La verifica del 14/10/2026, e la chiusura della pratica
+
+Il 14/10/2026 l'utente dichiara chiusa la pratica aperta con l'operatore per il guasto, e porta tre schermate di una prova di velocità fatta con speedtest.net nel browser di un telefono Android, collegato al Wi-Fi del Seven, con il server scelto in automatico dal servizio. Le schermate mostrano lo scarico e la latenza, non il carico, che quindi non è misurato.
+
+| Ora | VPN sul telefono | Scarico | Latenza a riposo | Latenza durante lo scarico |
+|---|---|---|---|---|
+| 08:02 | attiva, dall'icona nella barra di stato | 746,38 Mbit/s | 46 ms | 119 ms |
+| 08:03 | spenta | 903,57 Mbit/s | 45 ms | 117 ms |
+
+Nella terza schermata, a VPN spenta, il servizio indica come fornitore Fastweb e un indirizzo pubblico che coincide con l'indirizzo statico della linea, `203.0.113.10` nei segnaposto del progetto; il confronto è stato fatto in locale, e la schermata originale resta fuori da git. L'intervento in cabina non ha quindi toccato l'assegnazione dell'indirizzo statico, che era la domanda della checklist di collaudo a cui il tecnico non poteva rispondere con certezza per telefono. È coerente con quanto il tecnico aveva dichiarato, cioè di non aver toccato nulla in casa: lo stesso indirizzo, e il telefono che si ricollega da solo alle stesse reti senza fili.
+
+Come si leggono i numeri. Novecento megabit al secondo in Wi-Fi su un telefono dicono che la linea non è il collo di bottiglia: il valore sta vicino a ciò che una porta da 1 Gbit/s dà via cavo, e il profilo da 2,5 Gbit/s resta misurabile solo lato modem, come la checklist di collaudo già prevedeva. La prova con la VPN attiva misura il percorso fino al server della VPN e non la linea; lo scarto di circa 160 Mbit/s è con ogni probabilità il costo della VPN, ed è un'inferenza. La latenza a riposo di 45 ms è più alta di quella che ci si aspetta da una fibra verso un server vicino, ma senza la distanza del server e senza una ripetizione via cavo non si può attribuire alla linea, al Wi-Fi o al server: resta un dato da guardare alla prossima misura, non un difetto. Il quadro conferma la lettura del valore ottico data sopra: collegamento dentro il bilancio di tratta, linea sana.
+
 ## Che cosa resta aperto
 
-Il guasto è chiuso e non lascia lavoro residuo: la linea è tornata, la configurazione di casa è intatta e nessun intervento è rimasto a metà. Restano aperte le verifiche che l'evento ha reso finalmente possibili, che riguardano la documentazione e non la riparazione: le schermate dello stato WAN del Seven con la GPON attiva, dato che il censimento di febbraio 2026 le aveva prese sul collegamento mobile di riserva, e il confronto dell'indirizzo pubblico statico fra la fibra e il collegamento di riserva. Entrambe stanno nel [registro delle pendenze](../pendenze-aperte.md), sotto le rilevazioni del Seven da ripetere, e la loro guida di lettura è la [seconda lettura dei parametri di interesse](07-tbc-new-i-parametri-di-accesso-wan-su-ont/03-tbc-seconda-lettura-parametri-di-interesse.md).
+Il guasto è chiuso e non lascia lavoro residuo, e dal 14/10/2026 è chiusa anche la pratica con l'operatore: la linea è tornata, la configurazione di casa è intatta e nessun intervento è rimasto a metà. Restano aperte le verifiche che l'evento ha reso finalmente possibili, che riguardano la documentazione e non la riparazione: le schermate dello stato WAN del Seven con la GPON attiva, dato che il censimento di febbraio 2026 le aveva prese sul collegamento mobile di riserva, e il confronto dell'indirizzo pubblico statico fra la fibra e il collegamento di riserva, di cui dal 14/10/2026 il lato della fibra è verificato e resta solo quello del collegamento di riserva. Entrambe stanno nel [registro delle pendenze](../pendenze-aperte.md), sotto le rilevazioni del Seven da ripetere, e la loro guida di lettura è la [seconda lettura dei parametri di interesse](07-tbc-new-i-parametri-di-accesso-wan-su-ont/03-tbc-seconda-lettura-parametri-di-interesse.md).
 
 [^1]: *LOS*, Loss of Signal: l'indicazione con cui un terminale ottico segnala di non ricevere potenza sufficiente a riconoscere il segnale della rete PON. Acceso fisso descrive un collegamento assente, non degradato.
 

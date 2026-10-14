@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: ccf9e41, template 04b60ad
+Commit di riferimento: 5804c51, template 04b60ad
 Data snapshot:         2026-10-12
 Remoto:                origin, allineato
 ```
@@ -119,5 +119,13 @@ Il filo attivo è la progettazione della rete e dei servizi, descritto in `.clau
 Il filo del NAS è in pausa in attesa dell'adattatore da PCIe a M.2. Tutti i prelievi sono chiusi, dal Passo 1.1 al 1.7, e il montaggio non è cominciato; la ripresa è il Passo 1.6 della guida privata. Decisioni del giorno: ADR-014 e ADR-015 sul pool senza dischi meccanici, ADR-016 sull'alimentatore della base.
 
 Al 12/10/2026 la fibra è tornata. Era giù dal 9/10 per un guasto in cabina, dove un armadio era staccato e il percorso di rete era sbagliato; il tecnico ha riparato fuori casa senza toccare nulla all'interno, e la rete senza fili è tornata da sé. Il valore ottico dichiarato al telefono, 20,93 con soglia a 25, è di seconda mano e non misurato, e sta dentro il bilancio di tratta in entrambe le letture possibili dell'unità: il racconto, i sintomi e il bilancio sono in `docs/02-ftth-fastweb/08-guasto-in-cabina-ottobre-2026.md`. La parte del guasto è chiusa. Resta aperta la pendenza che il guasto bloccava, cioè il giro di schermate dello stato WAN del Seven con la GPON attiva e il confronto dell'indirizzo pubblico statico fra fibra e collegamento di riserva: le letture di febbraio 2026 furono prese sul collegamento di riserva e non descrivono la fibra. È un'azione dell'utente davanti all'interfaccia del modem, e la checklist che la guida resta fuori da git in `_notes/collaudo-fastweb-2026-10-12.md`. Dal 12/10/2026 il filo attivo torna al banco: l'assemblaggio del NAS, fermo al Passo 1.6 e avviabile anche senza l'adattatore PCIe-M.2, e la sequenza in dodici passi su PC-02 e PC-03, ferma al passo 1, che è procurare la pasta termica.
+
+Sempre il 12/10/2026, dopo un riavvio del PC che ha perso la discussione sul NAS non ancora scritta, la configurazione del NAS è stata riverificata contro i pezzi disponibili: l'impianto regge, la memoria no. Il NAS resta a 16 GB con i suoi due moduli, e i due moduli da 8 GB prelevati vanno al server Proxmox, che sale a 24 GB (ADR-032). Nello stesso giorno, su richiesta dell'utente di scegliere al suo posto, i due NVMe sono passati al server e il NAS si monta con gli SSD SATA (ADR-033). L'allocazione completa, macchina per macchina e pezzo per pezzo con la ragione e l'ordine dei gesti, è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/12-allocazione-dell-hardware.md`, fonte canonica che supera le parti corrispondenti del piano unificato e delle schede NAS. Il punto di ripresa al banco è la sezione «PERCORSO RAPIDO dal 12/10/2026» della guida privata, gesto 1.
+
+Il 13/10/2026 è entrato lo studio di colibri, modello linguistico locale sul solo processore: collocazione sul nodo di laboratorio a 32 GB decisa dall'utente (ADR-034), da tenere solo se una misura supera la soglia fissata, fuori dalla sequenza delle fasi; uno studio di espansione con una GPU è rimandato senza data. Il documento contiene anche un glossario da zero e la procedura di misura con i comandi. Non cambia il punto di ripresa. Documento in `docs/03-spunti-di-sviluppo/23-studio-home-lab/13-modello-linguistico-locale-su-cpu.md`.
+
+Il 14/10/2026 il gesto 1 del banco è a metà: PC-02 è aperto e i due dischi sono estratti. Il V300 è avvitato su un adattatore Corsair da due pollici e mezzo a tre e mezzo, apparentemente integro, quindi la conseguenza delle slitte rotte cade se la verifica a mano lo conferma. Restano del gesto 1 i cavi dati, la minuteria, la taglia dei due DDR3 inseriti e la scheda grafica.
+
+Sempre il 14/10/2026 la pratica con l'operatore per il guasto in cabina è chiusa. Una prova di velocità dal telefono in Wi-Fi a VPN spenta ha dato 903,57 Mbit/s in scarico, 746,38 a VPN attiva, e ha mostrato l'indirizzo statico sulla fibra: l'intervento non l'ha toccato. Restano le schermate del Seven con la GPON attiva e l'indirizzo pubblico sul collegamento di riserva. Dettaglio nella sezione del 14/10/2026 di `docs/02-ftth-fastweb/08-guasto-in-cabina-ottobre-2026.md`.
 
 Il lavoro che cambia lo stato della rete resta la fase 2 della roadmap, cioè l'identificazione fisica delle tre schede di rete del firewall dalla console. Si fa alla macchina, non al repository.

@@ -484,3 +484,43 @@ Scritto `docs/02-ftth-fastweb/08-guasto-in-cabina-ottobre-2026.md`, collegato da
 La cartella personale dell'operatore su disco J, dove l'utente tiene la propria nota del guasto, non è stata aperta: la regola sui documenti personali vale anche quando il percorso viene citato in sessione, e tutto ciò che è stato scritto qui viene da quanto l'utente ha riferito in chat.
 
 Il filo attivo torna al banco: assemblaggio del NAS e sequenza in dodici passi su PC-02 e PC-03.
+
+## 12/10/2026, ripresa dopo il riavvio: memoria del NAS ridistribuita (ADR-032) e percorso rapido
+
+Il PC si è riavviato durante la sessione, dopo il commit `5804c51`. L'albero era pulito e la trascrizione della sessione caduta non esisteva più, quindi la discussione sul NAS di quel giro non è arrivata su disco; l'unica traccia è il timbro del Passo 1.6 nella guida privata, che dichiara il montaggio avviato con cinque pezzi. L'utente ha chiesto di accelerare l'assemblaggio e di verificare che il NAS, con i pezzi disponibili, sia la scelta migliore.
+
+La rilettura di guida, decisioni e piano unificato conferma l'impianto, cioè base, alimentatore, avvio in specchio, pool sui due NVMe e TrueNAS, e trova una sola cosa rimasta indietro: la memoria. I 32 GB del NAS venivano dall'analisi del 01/09, con un pool di dischi meccanici e applicazioni sul NAS; dopo ADR-015 e ADR-030 non servono più, mentre il server Proxmox con 16 GB lasciava al laboratorio circa 4 GB. Fonte letta: guida hardware di TrueNAS, S102, minimo 8 GB fino a otto dischi. Quattro strade messe davanti all'utente: piano invariato, NAS 16 e server 24, scambio completo con NAS 16 e server 32, una macchina sola per NAS e Proxmox. Scelta dell'utente: NAS 16 e server 24, registrata come ADR-032.
+
+L'utente ricordava che si fosse detto diverso per la DDR3 di xubuntu. Riletta per intero la foto 10 di PC-02: il ricordo è giusto ma riguarda l'idea dell'8/10, cioè prendere memoria per il server da PC-02 o PC-03, già esclusa perché sono DDR3; qui si spostano solo moduli DDR4. La foto aggiunge un dato: oltre ai due Kingston in mano ne restano due inseriti in `DIMM_B1` e `DIMM_B2`, quindi i moduli DDR3 di PC-02 sono quattro, due di taglia da leggere.
+
+Scritti: ADR-032; nella guida privata la sezione «PERCORSO RAPIDO dal 12/10/2026» con i dodici gesti che restano, il Passo 2.2 marcato saltato e i valori attesi portati a 16 GB; inventario privato e pubblico delle scorte con la scorta di due moduli da 4 GB; schede NAS 03 e 04; piano unificato con il server a 24 GB, lo scambio dei moduli al passo 8 e il test della memoria al passo 10; quadro delle decisioni; voce nuova nel registro delle pendenze; fonte S102; indice delle foto di PC-02.
+
+## 12/10/2026: allocazione completa fissata, i due NVMe al server (ADR-033)
+
+L'utente ha segnalato di aver perso il quadro dei pezzi e dello stato, e che le informazioni gli arrivavano a frammenti; ha chiesto una panoramica unica fissata nel modo migliore, con la ratio registrata, e poi di decidere al suo posto dove mettere i due NVMe. Ha chiesto anche se ADR-032 togliesse a `PC-DESKTOP-B` il ruolo di scorta: no, quel ruolo è scheda, processore e alimentatore senza memoria né disco dal 07/10, e i suoi moduli uscivano comunque.
+
+Rifacendo la panoramica è emerso che la scheda del server ha due alloggiamenti M.2 NVMe x4 (S103, pagina del produttore riassunta dalla ricerca), quindi i due NVMe vi entrano senza adattatore, e che la premessa di ADR-015 era caduta con ADR-030. Decisione, ADR-033: NVMe al server in specchio, NAS con il V300 come avvio e SanDisk più WD Blue in specchio come dati, Samsung 850 EVO fermo nel nodo di laboratorio, adattatore non acquistato. Limite dichiarato: circa 180 GB pianificabili sul NAS.
+
+Scritto `docs/03-spunti-di-sviluppo/23-studio-home-lab/12-allocazione-dell-hardware.md`, fonte canonica, collegato dall'indice dello studio, con macchine, dischi, memoria, acquisti, limiti e un ordine dei gesti in undici passi che mette per prime le due macchine senza pasta termica. Note di rimando nel piano unificato e nelle schede NAS 03, 04 e 06; guida privata con il percorso rapido riscritto e i Passi 2.4 e 2.5 marcati; quadro delle decisioni, pendenze, snapshot, fonte S103.
+
+## 13/10/2026: modello linguistico locale su CPU, studio colibri
+
+L'utente ha segnalato colibri, un motore che esegue modelli mixture of experts sul solo processore leggendo gli esperti dal disco, chiedendo se i 16 o 32 GB componibili in casa bastino, di completare la matrice e la roadmap e dove collocarlo. Letti il README, il Makefile, la pagina dell'interfaccia e la tabella delle prove (S104, S105).
+
+Esito: 32 GB fanno al caso, 16 no, perché Qwen3.6-35B-A3B chiede 20 GB per girare dalla memoria; i modelli grandi non sono alla portata della casa per il disco, non per la memoria. La premessa del piano che un modello locale chieda una GPU cade per i modelli medi. Collocazione proposta: nodo di laboratorio a 32 GB, VLAN 60, alternato all'analisi dei campioni; scartati server, NAS, scorte e la postazione di lavoro, che resta fuori dalla rete di casa. Velocità stimata fra 1 e 2 token al secondo, inferenza da misurare con una soglia fissata in anticipo. Nessuna decisione dell'utente, quindi nessun ADR.
+
+Scritto `docs/03-spunti-di-sviluppo/23-studio-home-lab/13-modello-linguistico-locale-su-cpu.md`, collegato dall'indice dello studio; aggiornati la matrice e lo stack del piano unificato, la riga del nodo e il passo 12 facoltativo nell'allocazione, la roadmap fuori sequenza, il quadro delle decisioni, le pendenze e le fonti S104 e S105.
+
+## 13/10/2026: colibri sul nodo di laboratorio confermato (ADR-034), studio reso leggibile da zero
+
+L'utente ha confermato la collocazione proposta, cioè il nodo di laboratorio PC-03 nella VLAN 60, acceso a richiesta, senza costo e senza cambiare l'ordine della roadmap, e ha deciso che un giorno si farà uno studio di espansione con una GPU. Ha chiesto di ripartire esattamente da questo punto e di tracciare ogni dettaglio tecnico come per chi non conosce i passaggi.
+
+Registrato ADR-034. Lo studio 13 ha ora lo stato in testa, un glossario di diciannove voci che spiega ogni parola tecnica e perché conta, il racconto di come è stato fatto lo studio, la misura in sette passi con i comandi da lanciare sul nodo, le domande dello studio futuro sulla GPU e una sezione finale «Da dove si riparte». La procedura usa lo strumento di misura del progetto, `c/tools/datapoint.py`, letto dalla sua intestazione e non provato. Aggiornati con il riferimento ad ADR-034 piano unificato, allocazione, roadmap, quadro delle decisioni, snapshot e fonte S104; nuova voce nelle pendenze per lo studio sulla GPU.
+
+## 14/10/2026: PC-02 aperto, dischi estratti, il V300 ha il suo adattatore
+
+L'utente ha aperto PC-02 ed estratto i due dischi, mandando tre foto. Le etichette coincidono con il censimento del 09/10: Samsung HD502HJ da 500 GB e Kingston V300 da 240 GB. Il V300 è avvitato su un adattatore Corsair da due pollici e mezzo a tre e mezzo che dalla foto appare integro: la conseguenza delle slitte rotte dichiarate il 09/10, che il 12/10 si era spostata sul NAS come una fascetta da mettere, cade se l'adattatore è davvero sano, e il V300 va in un alloggiamento da tre pollici e mezzo del NAS con le viti. L'integrità è letta dalla foto e va confermata a mano. Aggiornati pendenze, inventario 06, piano unificato, scheda del lavoro corrente, gesto 1 e 2 della guida privata e indice delle foto, dove le tre schermate sono copiate come foto 18, 19 e 20. Del gesto 1 restano i cavi dati, la minuteria, la taglia dei due DDR3 inseriti e la scheda grafica.
+
+## 14/10/2026: pratica della fibra chiusa, indirizzo statico confermato, velocità misurata
+
+L'utente dichiara chiusa la pratica con l'operatore e porta tre schermate di speedtest.net dal telefono in Wi-Fi sul Seven: alle 08:02, con la VPN attiva, 746,38 Mbit/s in scarico e latenza 46 ms a riposo, 119 ms sotto carico; alle 08:03, a VPN spenta, 903,57 Mbit/s, 45 e 117 ms. La terza schermata, a VPN spenta, mostra Fastweb e un indirizzo pubblico che, confrontato in locale con la mappa privata, coincide con l'indirizzo statico: l'intervento in cabina non l'ha toccato. Il carico non compare nelle schermate e non è misurato. La latenza a riposo di 45 ms resta da guardare, senza attribuzione. Il server scelto dal servizio e l'indirizzo reale stanno solo nella nota privata del collaudo, con le schermate copiate in `_notes/collaudo-fastweb-2026-10-14/` e impronte identiche agli originali. Aggiornati il documento del guasto, con una sezione del 14/10 e la sezione di ciò che resta aperto, il registro delle pendenze, la scheda del lavoro corrente e lo snapshot.

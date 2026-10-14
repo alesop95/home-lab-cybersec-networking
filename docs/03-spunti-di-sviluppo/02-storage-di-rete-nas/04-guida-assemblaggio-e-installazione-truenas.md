@@ -53,7 +53,9 @@ Un NVMe si estrae svitando la vite di fermo e sollevandolo: la scheda si alza da
 
 ## Fase 3, il montaggio sulla base
 
-I quattro moduli da 8 GB vanno nei quattro alloggiamenti. Sono dello stesso codice prodotto, quindi la questione delle coppie non si pone come compatibilità ma solo come posizione, e con tutti e quattro occupati non c'è scelta da fare. Al primo avvio il firmware deve dichiarare trentadue gigabyte in doppio canale.
+Nota del 12/10/2026, ADR-033: i due NVMe vanno al server Proxmox e il NAS si monta con il Kingston V300 come avvio e i due SSD SATA in specchio come pool dei dati; l'adattatore non si compra. La fonte canonica è [Allocazione dell'hardware](../23-studio-home-lab/12-allocazione-dell-hardware.md), e dove questa scheda parla di NVMe nel NAS descrive il piano precedente.
+
+La memoria non si tocca: dal 12/10/2026 il NAS resta con i due moduli da 8 GB già montati, cioè 16 GB, e i due prelevati da `PC-DESKTOP-B` vanno al server Proxmox (ADR-032, con la ragione nella [scheda di consolidamento](03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md)). Al primo avvio il firmware deve dichiarare sedici gigabyte in doppio canale. La prima stesura montava quattro moduli da 8 GB per 32 GB.
 
 I due SSD SATA vanno su due porte SATA qualsiasi. Il manuale della scheda conferma che un dispositivo M.2 in modalità PCIe, cioè un NVMe, non sottrae nessuna porta SATA: la contesa riguarda i soli M.2 in modalità SATA. Tutte e sei restano quindi disponibili, e questo è ciò che rende possibile tenere due dischi per l'avvio e lasciare posto ai meccanici.
 
@@ -76,7 +78,7 @@ Si entra nel firmware al primo avvio e si verifica quanto segue prima di install
 
 | Voce | Valore | Perché |
 |---|---|---|
-| Memoria rilevata | 32 GB, doppio canale | se dichiara 16 o canale singolo, i moduli sono nella posizione sbagliata |
+| Memoria rilevata | 16 GB, doppio canale (32 GB prima di ADR-032) | se dichiara 8 o canale singolo, un modulo non è inserito o è nella posizione sbagliata |
 | Dischi rilevati | 2 SSD SATA e 2 NVMe | un NVMe assente indica l'adattatore non inserito a fondo |
 | `Intel Virtualization Technology` | Enabled | serve se un domani si vorranno container o macchine virtuali sulla stessa macchina |
 | `Secure Boot` | Disabled | TrueNAS non è firmato dalla catena che il firmware verifica per default |
@@ -92,7 +94,7 @@ Nella stessa schermata si trova la conferma di un limite di piattaforma che vale
 
 Questa è la fase che si salta più volentieri e che costa di più saltare. Su ZFS senza memoria a correzione d'errore un modulo difettoso corrompe i dati in silenzio: le somme di controllo di ZFS certificano fedelmente ciò che la memoria ha consegnato loro, quindi un dato già corrotto in memoria viene scritto su disco con una somma di controllo perfettamente valida e nessun allarme scatta mai. La verifica periodica dell'integrità non lo troverà, perché dal punto di vista del disco quel dato è corretto.
 
-Si avvia `memtest86+` da chiavetta e si lascia girare almeno un ciclo completo, meglio una notte intera. I quattro moduli sono usati e provengono da due macchine diverse, il che li rende il componente statisticamente più sospetto di tutto l'assemblaggio. Se emerge un errore si isola il modulo responsabile escludendone uno per volta, e si scarta: ventiquattro gigabyte sani valgono più di trentadue con un modulo marcio, e su questa piattaforma non c'è nessun meccanismo che compensi.
+Si avvia `memtest86+` da chiavetta e si lascia girare almeno un ciclo completo, meglio una notte intera. I moduli sono usati, il che li rende il componente statisticamente più sospetto di tutto l'assemblaggio, e con 16 GB un ciclo dura circa la metà che con 32. Se emerge un errore si isola il modulo responsabile escludendone uno per volta, e si scarta: il modulo sano più i due moduli da 4 GB rimasti di scorta ridanno 16 GB in doppio canale, e su questa piattaforma non c'è nessun meccanismo che compensi un modulo marcio.
 
 Sui dischi si lancia il test SMART[^3] lungo, che percorre l'intera superficie e richiede alcune ore, e si rilegge l'esito a test concluso.
 
