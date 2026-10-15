@@ -91,6 +91,10 @@ Dal 13/10/2026, studio in [Modello linguistico locale su CPU](03-spunti-di-svilu
 
 Dal 13/10/2026, deciso dall'utente senza data. Va scritto in un documento a sé quando lo si vorrà affrontare. Le domande sono già elencate nella sezione «Lo studio futuro» dello [studio sul modello locale](03-spunti-di-sviluppo/23-studio-home-lab/13-modello-linguistico-locale-su-cpu.md): dove montare la scheda, se l'alimentatore del nodo la regge, quanta memoria video serve, quanto costa all'acquisto e in corrente, e se basti a superare la soglia nel caso in cui la misura sul solo processore vada sotto. Non blocca nulla.
 
+## Raccoglitore di metriche: Netdata da accettare o scartare
+
+Dal 15/10/2026, su segnalazione dell'utente, studio in [Metriche in tempo reale con Netdata](03-spunti-di-sviluppo/23-studio-home-lab/14-metriche-con-netdata.md). La riga delle metriche di switch, access point e host è pendente nel piano unificato dall'8/10/2026 ed è l'unica voce di monitoraggio non decisa; ora ha un candidato studiato, con la forma proposta, i percorsi dei dati, i costi dichiarati dal produttore e le alternative già censite messe a confronto. Aspetta un sì o un no dell'utente, e non blocca la configurazione della rete. Quattro verifiche restano comunque fuori dalla documentazione, e si fanno solo a cose accese: se il plugin `netdata` di OPNsense esista nella versione installata e funzioni, oppure se il firewall si legga via SNMP; se i profili SNMP riconoscano lo XMG1915 e i NWA130BE; quanta memoria e quanto disco occupi davvero il parent sul server dopo una settimana; se i suoi allarmi si sovrappongano a quelli di Wazuh al punto da doverne spegnere una parte.
+
 ## Preventivo per switch e access point
 
 Dall'8/10/2026: l'utente invia al proprio fornitore la richiesta di preventivo per uno XMG1915-10EP e due NWA130BE (ADR-023, ADR-024). Il sorgente è privato in `_notes/preventivo/`. Quando arriva la risposta si confronta con i prezzi di mercato registrati (S59, S68) e, se il fornitore propone alternative, si verificano sui requisiti della richiesta prima di accettarle.

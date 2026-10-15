@@ -8,6 +8,7 @@ La raccomandazione di partenza è OPNsense a valle del Fastweb Seven. Dal 07/10/
 |---|---|
 | [Allocazione dell'hardware](12-allocazione-dell-hardware.md) | fonte canonica: ogni macchina, disco e modulo di memoria, dove va e perché, con l'ordine dei gesti al banco |
 | [Modello linguistico locale su CPU](13-modello-linguistico-locale-su-cpu.md) | colibri sull'hardware di casa: che cosa ci sta in 16 e 32 GB, dove va, la misura che decide |
+| [Metriche in tempo reale con Netdata](14-metriche-con-netdata.md) | candidato per il raccoglitore di metriche pendente: che cosa aggiunge a Wazuh, dove starebbe, la dashboard senza credenziali, costi e alternative |
 | [Architettura e diagrammi](01-architettura.md) | separa stato documentato, proposta fisica, VLAN e flussi ammessi |
 | [Servizi gratuiti](02-servizi-gratuiti.md) | confronta alternative, collocazione e costo operativo |
 | [Switch e AP Zyxel](03-switch-e-access-point-zyxel.md) | specifiche, budget porte/PoE, prezzi indicativi e collaudo |
