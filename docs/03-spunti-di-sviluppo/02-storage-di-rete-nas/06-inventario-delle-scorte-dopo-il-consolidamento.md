@@ -93,11 +93,11 @@ La conseguenza più utile è che le due Z97-P fanno della piattaforma Haswell un
 
 Dal 09/10/2026 questa macchina non esiste più come macchina (ADR-031): se ne prelevano i pezzi utili e scheda madre, processore e case vanno al conferimento. Quanto segue descrive che cosa conteneva e che cosa ne resta.
 
-La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serigrafato e dalle funzioni Express Gate e MemOK, ma il modello esatto non si legge nelle foto. Il processore è sotto un dissipatore Intel di serie per LGA1156, quindi è un Core di prima generazione, modello da leggere. Monta una scheda grafica dedicata, di modello non leggibile.
+La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serigrafato e dalle funzioni Express Gate e MemOK, ma il modello esatto non si legge nelle foto. Il processore è sotto un dissipatore Intel di serie per LGA1156, quindi è un Core di prima generazione, modello da leggere. Monta una scheda grafica dedicata, che le foto del 15/10/2026 identificano come NVIDIA GeForce 210 da 1 GB DDR3 con bus a 64 bit, uscite VGA, DVI e HDMI e raffreddamento passivo.
 
 | Pezzo | Che cosa è |
 |---|---|
-| memoria | moduli Kingston `KVR1333D3N9/2G` da 2 GB e `KVR1333D3N9/4G` da 4 GB, DDR3-1333; sono quattro, perché la foto dell'interno riletta per intero il 12/10/2026 mostra due moduli in mano e altri due ancora inseriti; la taglia dei due inseriti va letta al prelievo |
+| memoria | moduli Kingston `KVR1333D3N9/2G` da 2 GB e `KVR1333D3N9/4G` da 4 GB, DDR3-1333; sono quattro, perché la foto dell'interno riletta per intero il 12/10/2026 mostra due moduli in mano e altri due ancora inseriti; le foto del 15/10/2026 li mostrano tutti fuori dalla macchina, due da 2 GB e due da 4 GB, 12 GB in tutto |
 | disco | SSD SATA Kingston SSDNow V300 da 240 GB, codice data della fine del 2015 |
 | disco | disco meccanico Samsung SpinPoint HD502HJ da 500 GB, 7200 rpm, fabbricato nell'agosto 2011 |
 | alimentatore | Tecnoware FAL550FS12, 550 W, 30 A sul ramo a 12 V |
@@ -123,7 +123,7 @@ Nota del 12/10/2026, ADR-033: i due NVMe vanno al server Proxmox e il NAS si mon
 | 4 × 4 GB = 16 GB | DDR4-2400 | `CT4G4DFS824A.C8FHP` | montata in `linux-desktop-A` | le tre schede LGA1151 |
 | 2 × 8 GB = 16 GB | DDR3, coppia spaiata | `CMV8GX3M1A1333C9` e `CMV8GX3M1A1600C11` | montata in `linux-desktop-B` | le due Z97-P, e fisicamente PC-02 |
 | 2 × 8 GB = 16 GB | DDR3-1600, kit | `CMV16GX3M2A1600C11` | montata in PC-03 | le due Z97-P, e fisicamente PC-02 |
-| quattro moduli, almeno 2 GB + 4 GB | DDR3-1333 | `KVR1333D3N9/2G`, `KVR1333D3N9/4G` e due da leggere | due in una busta e due ancora in PC-02 | le due Z97-P, come ricambio a capacità ridotta |
+| 2 × 2 GB + 2 × 4 GB = 12 GB | DDR3-1333 | due `KVR1333D3N9/2G` e due `KVR1333D3N9/4G` | tutti fuori da PC-02 dal 15/10/2026 | le due Z97-P, come ricambio a capacità ridotta |
 
 Dal 12/10/2026 la memoria DDR4 cambia posto (ADR-032). Il NAS resta con i suoi due moduli da 8 GB; i due moduli da 8 GB prelevati da `PC-DESKTOP-B` e due dei quattro moduli da 4 GB vanno nel server Proxmox `linux-desktop-A`, che sale a 24 GB; gli altri due moduli da 4 GB, 8 GB in tutto, sono la sola scorta DDR4 e possono ridare 16 GB al NAS se un suo modulo si guasta. La prima riga della tabella descrive il magazzino prima dello scambio, che si esegue al passo 8 della sequenza del [piano unificato](../23-studio-home-lab/10-piano-unificato-hardware-e-stack.md).
 

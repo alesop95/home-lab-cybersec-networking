@@ -36,7 +36,7 @@ Ritorno allo [studio](README.md). Documento del 12/10/2026, chiesto dall'utente 
 | 2 dei 4 moduli Crucial da 4 GB DDR4 | server | |
 | 2 moduli Crucial da 4 GB DDR4 | scorta | ridanno 16 GB al NAS se un suo modulo si guasta |
 | 2 × 8 GB DDR3 di PC-03 e 2 × 8 GB DDR3 di `linux-desktop-B` | nodo di laboratorio, 32 GB | il tetto della Z97-P |
-| 4 moduli DDR3 Kingston di PC-02 | busta delle scorte | ricambio a capacità ridotta del laboratorio; taglia di due moduli da leggere |
+| 4 moduli DDR3 Kingston di PC-02, 2 × 2 GB e 2 × 4 GB | busta delle scorte | ricambio a capacità ridotta del laboratorio, 12 GB in tutto, taglie lette il 15/10/2026 |
 
 ## Gli acquisti
 
@@ -52,7 +52,7 @@ Il principio è montare per prime le due macchine che non richiedono pasta termi
 
 | Passo | Che cosa si fa |
 |---|---|
-| 1 | PC-02: estrarre il V300, il disco da 500 GB, i cavi dati SATA, la minuteria e i due moduli DDR3 ancora inseriti, leggendone la taglia; guardare la scheda grafica |
+| 1 | PC-02: estrarre il V300, il disco da 500 GB, i cavi dati SATA, la minuteria e i due moduli DDR3 ancora inseriti, leggendone la taglia; guardare la scheda grafica. Fatto il 15/10/2026 secondo le foto: fuori anche l'alimentatore Tecnoware, moduli 2 × 2 GB e 2 × 4 GB, scheda grafica GeForce 210 da 1 GB ancora nel case |
 | 2 | NAS: SanDisk su `SATA6G_1`, WD Blue su `SATA6G_2`, V300 su `SATA6G_3`, ciascuno con cavo dati e alimentazione; contare che l'alimentatore abbia tre connettori SATA; memoria e M.2 non si toccano |
 | 3 | NAS: primo avvio a case aperto, firmware secondo la guida, +12 V fra 11,4 e 12,6 V, memoria a 16 GB, tre dischi visibili; test della memoria una notte |
 | 4 | NAS: installazione di TrueNAS sul solo V300, pool in specchio su SanDisk e WD Blue, test SMART lungo dalla shell, esportazione della configurazione |

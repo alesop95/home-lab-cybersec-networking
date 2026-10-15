@@ -107,7 +107,7 @@ La “velocità massima” è *la velocità negoziata dal PHY*; quindi, la combi
 
 **Identità.** categoria PC fisso assemblato; scheda madre ASUS serie P55, socket LGA1156, modello esatto da leggere; alimentatore Tecnoware FAL550FS12 da 550 W; proprietario per ruolo da compilare
 
-**Sistema.** Xubuntu, versione da compilare; processore Core di prima generazione, modello da leggere; memoria DDR3-1333 Kingston, moduli da 2 GB e da 4 GB, totale da leggere; scheda grafica dedicata; SSD SATA Kingston V300 da 240 GB e disco meccanico Samsung HD502HJ da 500 GB
+**Sistema.** Xubuntu, versione da compilare; processore Core di prima generazione, modello da leggere; memoria DDR3-1333 Kingston, due moduli da 2 GB e due da 4 GB, 12 GB in tutto, letti il 15/10/2026; scheda grafica dedicata NVIDIA GeForce 210 da 1 GB; SSD SATA Kingston V300 da 240 GB e disco meccanico Samsung HD502HJ da 500 GB
 
 **Rete cablata.** da compilare
 
