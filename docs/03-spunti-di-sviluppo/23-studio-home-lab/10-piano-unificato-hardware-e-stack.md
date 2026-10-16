@@ -158,7 +158,7 @@ Dal 12/10/2026 i dischi del server sono i due NVMe da 1 TB (ADR-033) e il paragr
 | storage e copie | TrueNAS SCALE | NAS | deciso |
 | scansione delle vulnerabilità | Greenbone OpenVAS, acceso quando serve | Proxmox, VLAN 60 | proposto, fase 6 |
 | gestione remota degli endpoint | MeshCentral, dagli studi del documento sorgente | Proxmox, VLAN 30 | proposto, fase 4 |
-| metriche di switch, AP e host | candidato Netdata: agenti sugli host che trasmettono a un parent, lettura SNMP degli apparati dal parent ([studio](14-metriche-con-netdata.md)) | Proxmox | pendente, candidato proposto il 15/10/2026 |
+| metriche di switch, AP e host | candidato Netdata: agenti sugli host che trasmettono a un parent, lettura SNMP degli apparati dal parent ([studio](14-metriche-con-netdata.md)) | Proxmox | deciso il 15/10/2026 (ADR-036), da installare dopo Proxmox e Wazuh |
 | analisi di campioni sospetti | zona isolata a parte, non la VLAN 60 | da progettare | pendente, fase 6 |
 | modello linguistico locale, per leggere dati che non escono di casa | colibri su CPU con Qwen3.6-35B-A3B, interfaccia compatibile OpenAI con chiave | nodo di laboratorio, VLAN 60 | deciso il 13/10/2026 (ADR-034), da tenere solo se la misura supera la soglia ([studio](13-modello-linguistico-locale-su-cpu.md)) |
 

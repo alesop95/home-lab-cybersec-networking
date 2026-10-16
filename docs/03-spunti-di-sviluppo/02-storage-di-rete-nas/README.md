@@ -10,3 +10,4 @@
 - [Inventario delle scorte dopo il consolidamento](06-inventario-delle-scorte-dopo-il-consolidamento.md)
 - [Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md), scheda storica: i dischi non si sono resi disponibili
 - [OpenMediaVault come alternativa a TrueNAS](08-valutazione-openmediavault.md), valutazione dell'8/10/2026
+- [Registro del montaggio del NAS](09-registro-del-montaggio.md), cronologia del banco dal 14/10/2026 con letture e ragioni

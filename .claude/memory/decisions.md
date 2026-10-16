@@ -410,3 +410,27 @@ Decisione. colibri va sul nodo di laboratorio, la Z97-P di PC-03 a 32 GB DDR3, n
 Ratio. È l'unica macchina di casa con 32 GB, la soglia a cui i modelli medi girano dalla memoria; è accesa a richiesta, quindi un carico che occupa tutti i core non pesa sul server che sorveglia la rete, lo stesso principio di ADR-030; la VLAN 60 è senza uscita salvo aperture a tempo (ADR-025), quindi i dati che il modello legge non lasciano la casa; e non costa nulla, perché il nodo si assembla comunque.
 
 Conseguenze. La roadmap non cambia ordine: la misura è un pomeriggio facoltativo, il passo 12 dell'allocazione, dopo il passo 10. Il processore del nodo deve avere AVX2, da controllare con il primo comando della procedura; se non lo ha, si monta l'i7-4790 di `linux-desktop-B`. L'interfaccia si espone solo con la chiave impostata e solo verso la postazione di amministrazione. Studio, glossario, procedura e domande dello studio futuro sulla GPU sono in `docs/03-spunti-di-sviluppo/23-studio-home-lab/13-modello-linguistico-locale-su-cpu.md`.
+
+## ADR-035, il Tecnoware di PC-02 resta alimentatore di scorta
+
+Data: 15/10/2026. Stato: accettata. Decisione dell'utente, con le parole «tanto farà l'alimentatore di backup non complicarti la vita».
+
+Contesto. Il passo 9 dell'allocazione prevedeva di scegliere per il nodo di laboratorio l'alimentatore migliore fra l'Atlantis di PC-03 e il Tecnoware FAL550FS12 da 550 W di PC-02, che il 15/10/2026 è uscito dalla macchina con i suoi cavi fissi.
+
+Decisione. Il Tecnoware non entra in nessuna macchina: resta in magazzino come alimentatore di scorta. Il nodo di laboratorio tiene il proprio Atlantis, e non si contano i connettori del Tecnoware.
+
+Ratio. Un alimentatore di scorta serve il giorno di un guasto, e quel giorno si guarda che cosa deve alimentare; contarne oggi i connettori è lavoro che non cambia nessuna scelta.
+
+Conseguenze. Il passo 9 dell'allocazione non confronta più i due alimentatori. Resta utile leggere la targa dell'Atlantis, perché è l'alimentatore che il nodo di laboratorio userà davvero.
+
+## ADR-036, Netdata è il raccoglitore di metriche
+
+Data: 15/10/2026. Stato: accettata. Decisione dell'utente, con le parole «Netdata va bene, su una macchina linux».
+
+Contesto. La riga delle metriche di switch, access point e host era l'unica voce di monitoraggio non decisa dal piano unificato dell'8/10/2026. Lo studio del 15/10/2026 ha proposto Netdata con la forma descritta in `docs/03-spunti-di-sviluppo/23-studio-home-lab/14-metriche-con-netdata.md`.
+
+Decisione. Netdata è il raccoglitore di metriche: parent sul server Proxmox, che è una macchina Linux, nella VLAN 30; agenti sugli host; switch, access point e firewall letti via SNMP dal parent; dashboard raggiungibile dalla sola VLAN 99; uscita verso il servizio del produttore negata.
+
+Ratio. Copre la sola voce pendente senza servizi esterni né abbonamenti, e l'utente ne ha già provato a mano l'installazione su una macchina Linux di un altro progetto, nella configurazione che lo studio raccomanda: pacchetto statico verificato, dashboard sul solo indirizzo locale, nessun collegamento al servizio del produttore.
+
+Conseguenze. La messa in opera viene dopo Proxmox e Wazuh. Restano le quattro verifiche a cose accese del registro delle pendenze: plugin di OPNsense o SNMP, profili SNMP dello switch e degli access point, memoria e disco reali del parent dopo una settimana, sovrapposizione degli allarmi con Wazuh.

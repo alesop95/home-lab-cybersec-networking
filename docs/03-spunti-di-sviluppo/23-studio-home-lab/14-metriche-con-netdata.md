@@ -2,7 +2,7 @@
 
 Ritorno allo [studio](README.md). Studio del 15/10/2026, nato da una segnalazione dell'utente: il progetto [Netdata](https://github.com/netdata/netdata) come possibilità per sorvegliare le macchine del laboratorio di casa, e in generale dove serva vedere come stanno. La domanda a cui risponde questo documento è se Netdata sia il candidato giusto per l'unica voce di monitoraggio rimasta pendente nel [piano unificato](10-piano-unificato-hardware-e-stack.md), cioè il raccoglitore di metriche, e che cosa comporterebbe adottarlo nella rete già decisa. Fonti S106, S107, S108 e S109 del [registro](../../../SOURCES.md).
 
-Stato al 15/10/2026: nessuna decisione. Netdata entra nel progetto come candidato proposto, non come scelta, e nulla è installato né misurato sulle macchine di casa. I numeri di consumo di risorse scritti qui sono dichiarazioni del produttore, etichettate come tali, e la sezione sulla misura dice come sostituirli con letture vere.
+Stato al 15/10/2026: accettato dall'utente nello stesso giorno (ADR-036), nella forma descritta qui, con il parent su una macchina Linux, cioè il server Proxmox. Nulla è ancora installato né misurato sulle macchine di casa. I numeri di consumo di risorse scritti qui sono dichiarazioni del produttore, etichettate come tali, e la sezione sulla misura dice come sostituirli con letture vere.
 
 ## Il buco che riempirebbe
 
@@ -86,7 +86,9 @@ Quattro cose, nessuna delle quali si chiude leggendo documentazione. Se il plugi
 
 ## Da dove si riparte
 
-La decisione spetta all'utente e non è urgente: il raccoglitore di metriche è pendente dall'8/10/2026 e non blocca la rete, che si configura comunque. Se la risposta è sì, Netdata entra nello stack del piano unificato al posto della riga pendente, con stato proposto, e la messa in opera si colloca dopo Proxmox e dopo Wazuh, perché sorvegliare una macchina ha senso quando la macchina fa qualcosa. Se la risposta è no, la riga resta pendente con LibreNMS e Zabbix come candidati già censiti.
+Aggiornamento del 15/10/2026: la risposta è sì (ADR-036). L'utente ha già installato Netdata 2.12.1 su una macchina Linux di un altro progetto, dal pacchetto statico con verifica delle impronte, con la dashboard in ascolto sul solo indirizzo locale e senza collegamento al servizio del produttore: è la configurazione che questo studio raccomanda, già provata a mano, e quella procedura è il punto di partenza qui. Il testo che segue resta come ragionamento della decisione.
+
+La decisione spettava all'utente e non era urgente: il raccoglitore di metriche è pendente dall'8/10/2026 e non blocca la rete, che si configura comunque. Se la risposta è sì, Netdata entra nello stack del piano unificato al posto della riga pendente, con stato proposto, e la messa in opera si colloca dopo Proxmox e dopo Wazuh, perché sorvegliare una macchina ha senso quando la macchina fa qualcosa. Se la risposta è no, la riga resta pendente con LibreNMS e Zabbix come candidati già censiti.
 
 L'occasione più vicina per provarlo senza impegno è il nodo di laboratorio: un agente installato lì durante la misura di ADR-034 darebbe la memoria residente e il carico del processore durante l'inferenza senza stare davanti allo schermo, che è uno dei quattro numeri che quella misura chiede. È un uso di un pomeriggio, su una macchina accesa a richiesta e in una VLAN senza uscita, e non impegna il progetto ad adottarlo.
 

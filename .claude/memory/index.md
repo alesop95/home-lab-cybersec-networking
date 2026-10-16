@@ -6,8 +6,8 @@
 
 ```
 Branch attivo:         main
-Commit di riferimento: 6f8e956, template 04b60ad
-Data snapshot:         2026-10-15
+Commit di riferimento: cea0311, template 36bbb94
+Data snapshot:         2026-10-16
 Remoto:                origin, allineato
 ```
 
@@ -128,8 +128,12 @@ Il 14/10/2026 il gesto 1 del banco è a metà: PC-02 è aperto e i due dischi so
 
 Sempre il 14/10/2026 la pratica con l'operatore per il guasto in cabina è chiusa. Una prova di velocità dal telefono in Wi-Fi a VPN spenta ha dato 903,57 Mbit/s in scarico, 746,38 a VPN attiva, e ha mostrato l'indirizzo statico sulla fibra: l'intervento non l'ha toccato. Restano le schermate del Seven con la GPON attiva e l'indirizzo pubblico sul collegamento di riserva. Dettaglio nella sezione del 14/10/2026 di `docs/02-ftth-fastweb/08-guasto-in-cabina-ottobre-2026.md`.
 
-Il 15/10/2026, su segnalazione dell'utente, Netdata è entrato nel progetto come candidato al raccoglitore di metriche, che era l'unica voce di monitoraggio pendente dall'8/10/2026. Lo studio è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/14-metriche-con-netdata.md`: forma proposta con un parent sul server Proxmox, agenti sugli host e lettura SNMP di switch e access point, dashboard nella sola VLAN 99, uscita verso il servizio del produttore negata. Due cautele verificate sulle fonti: la dashboard non chiede credenziali per impostazione predefinita, e il plugin per OPNsense esiste ma non è documentato nel manuale. Nessuna decisione e nessun ADR: la voce resta pendente e aspetta un sì o un no. Non cambia il punto di ripresa al banco.
+Il 15/10/2026, su segnalazione dell'utente, Netdata è entrato nel progetto come candidato al raccoglitore di metriche, che era l'unica voce di monitoraggio pendente dall'8/10/2026. Lo studio è in `docs/03-spunti-di-sviluppo/23-studio-home-lab/14-metriche-con-netdata.md`: forma proposta con un parent sul server Proxmox, agenti sugli host e lettura SNMP di switch e access point, dashboard nella sola VLAN 99, uscita verso il servizio del produttore negata. Due cautele verificate sulle fonti: la dashboard non chiede credenziali per impostazione predefinita, e il plugin per OPNsense esiste ma non è documentato nel manuale. Nello stesso giorno l'utente ha detto sì (ADR-036), con il parent su una macchina Linux; restano le verifiche a cose accese. Non cambia il punto di ripresa al banco.
 
-Sempre il 15/10/2026, dalle foto dell'utente, il gesto 1 del banco risulta chiuso: fuori da PC-02 i due dischi, il V300 ancora sul suo adattatore Corsair, l'alimentatore Tecnoware con i suoi cavi fissi, due cavi dati SATA, la minuteria e i quattro moduli DDR3, che sono due da 2 GB e due da 4 GB, 12 GB in tutto. La scheda grafica, ancora nel case, è una GeForce 210 da 1 GB a raffreddamento passivo. Le dieci foto sono nel materiale privato con il loro indice. Il punto di ripresa al banco passa al gesto 2, cioè i tre dischi nel NAS.
+Sempre il 15/10/2026, dalle foto dell'utente, il gesto 1 del banco risulta chiuso: fuori da PC-02 i due dischi, il V300 ancora sul suo adattatore Corsair, l'alimentatore Tecnoware con i suoi cavi fissi, due cavi dati SATA, la minuteria e i quattro moduli DDR3, che sono due da 2 GB e due da 4 GB, 12 GB in tutto. La scheda grafica, ancora nel case, è una GeForce 210 da 1 GB a raffreddamento passivo. Le dieci foto sono nel materiale privato con il loro indice. Il punto di ripresa al banco passa al gesto 2, cioè i tre dischi nel NAS. Il Tecnoware resta alimentatore di scorta e il nodo di laboratorio tiene l'Atlantis (ADR-035).
 
+Sempre il 15/10/2026 è nato lo studio della protezione degli endpoint oltre il firewall, a costo zero, in `docs/03-spunti-di-sviluppo/07-further-protection/03-studio-protezione-endpoint-2026.md`: base su Defender irrigidito, Wazuh come occhio comune, nessuna decisione. Netdata è accettato (ADR-036) e il Tecnoware resta di scorta (ADR-035).
+
+Il 16/10/2026 il NAS è assemblato e acceso per la prima volta a case aperto: tre dischi collegati e visti dal firmware, 16 GB in doppio canale, +12 V a 12,192 V, ventola in funzione. Di ADR-016 manca il solo test della memoria di una notte. La cronologia del banco, con letture e ragioni, sta in `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/09-registro-del-montaggio.md`, e le foto e schermate nella cartella della base sotto `_notes/censimento/foto-pc/`, non versionata. Il test della memoria ha trovato un errore singolo dopo quasi quattro ore e quattro passaggi puliti: la quarta condizione di ADR-016 non è soddisfatta. Il test resta acceso fino a lunedì 19/10/2026; il punto di ripresa al banco è la lettura di passaggi, errori e indirizzi, poi l'isolamento dei due moduli uno per volta, e solo dopo il gesto 4.
+
 Il lavoro che cambia lo stato della rete resta la fase 2 della roadmap, cioè l'identificazione fisica delle tre schede di rete del firewall dalla console. Si fa alla macchina, non al repository.
