@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "input_status": "illustrative",
+  "capacity": {
+    "layout": "mirror",
+    "devices": [
+      "240 GB",
+      "250 GB"
+    ],
+    "filesystem_reserve": "5 GB",
+    "max_fraction": "0.8",
+    "planning_limit": "180 GB"
+  },
+  "fixed_allocations": [
+    {
+      "label": "documenti",
+      "size": "20 GB"
+    },
+    {
+      "label": "configurazioni",
+      "size": "2 GB"
+    }
+  ],
+  "snapshot_hold": "15 GB",
+  "workspace": "5 GB",
+  "full_archives": [
+    {
+      "label": "vm-servizi",
+      "size": "18 GB",
+      "keep": 2,
+      "protected": 0
+    },
+    {
+      "label": "vm-monitoraggio",
+      "size": "12 GB",
+      "keep": 2,
+      "protected": 0
+    }
+  ],
+  "incremental_repositories": [
+    {
+      "label": "file-client-prioritario",
+      "base": "12 GB",
+      "unique_change_per_point": "500 MB",
+      "points": 7,
+      "maintenance_workspace": "3 GB"
+    }
+  ],
+  "run_time": {
+    "throughput": "2 MiB/s",
+    "overhead_minutes": 15,
+    "window_minutes": 180
+  },
+  "uncertainties": [
+    "Dimensione reale degli archivi VM dopo la prima copia e crescita successiva",
+    "Dati endpoint inclusi ed esclusi, variazione unica e costo reale degli snapshot",
+    "Capacita effettiva del pool e velocita completa della catena di backup"
+  ]
+}

@@ -125,15 +125,15 @@ La “velocità massima” è *la velocità negoziata dal PHY*; quindi, la combi
 
 ##### Scheda PC-03
 
-**Identità.** categoria PC fisso assemblato; scheda madre ASUS Z97-P revisione 2.02, socket LGA1150, la stessa di `linux-desktop-B` ma un esemplare diverso; alimentatore Atlantis, modello da leggere; proprietario per ruolo da compilare
+**Identità.** categoria PC fisso assemblato; scheda madre ASUS Z97-P revisione 2.02, socket LGA1150, la stessa di `linux-desktop-B` ma un esemplare diverso; alimentatore Atlantis P016-MPW-6000-W, 600 W massimi dichiarati dalla targa letta il 17/10/2026; proprietario per ruolo da compilare
 
-**Sistema.** anduinOS, versione da compilare; processore LGA1150, modello da leggere; memoria Corsair Vengeance 2 × 8 GB DDR3-1600; Samsung 850 EVO M.2 SATA da 250 GB
+**Sistema.** anduinOS nella rilevazione storica, versione da compilare; processore LGA1150, modello da leggere; memoria Corsair Vengeance 2 × 8 GB DDR3-1600 dalle foto del 09/10. Al 17/10/2026 l'utente dichiara la macchina senza SSD; il Samsung 850 EVO M.2 SATA da 250 GB fotografato il 09/10 resta da localizzare, destinato al nodo di laboratorio
 
 **Rete cablata.** da compilare
 
 **Wi-Fi.** da compilare
 
-**Collocazione.** il 09/10/2026 l'utente lo mette a disposizione per la riorganizzazione; fornitore di disco e memoria DDR3, oppure nodo Proxmox alternativo con 32 GB DDR3, vedi il [piano unificato](../03-spunti-di-sviluppo/23-studio-home-lab/10-piano-unificato-hardware-e-stack.md)
+**Collocazione.** nodo di laboratorio deciso con ADR-030, memoria prevista 32 GB DDR3, acceso a richiesta; stato attuale e montaggio nell'[allocazione hardware](../03-spunti-di-sviluppo/23-studio-home-lab/12-allocazione-dell-hardware.md)
 
 **Esposizione.** da compilare
 

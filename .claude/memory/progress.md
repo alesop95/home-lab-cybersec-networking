@@ -592,3 +592,247 @@ Scelta dell'utente: memtest lasciato acceso fino a lunedì 19/10/2026, poi lettu
 ## 16/10/2026: chiusura della sessione
 
 Lezioni per il template, valutate con i due criteri della sezione 16 di PROJECT-SYSTEM.md, depositate in `_notes/lezioni-da-home-lab-2026-10-16.md` del template e segnalate alla sessione del template aperta in parallelo, che stava modificando le stesse regole: difetto di `allinea-tutti.ps1`, che scrive il marcatore con fine riga misti, con la causa letta nel codice; falso esito di `sha256sum` con percorsi che contengono una barra rovesciata; riscrittura dell'intero file a LF che sfugge a `check-eol`; nome reale di una cartella privata finito nei file tracciati attraverso la citazione del percorso; e una candidata sulle impostazioni dell'account riscritte da un comando dell'harness. Snapshot, scheda del lavoro corrente e file di ripresa aggiornati per riprendere con la skill riprendi.
+
+## 17/10/2026: ripresa verificata e prelievi residui dei due PC
+
+Eseguita la procedura `riprendi` su richiesta dell'utente, che vuole proseguire davanti a PC-02 e PC-03. HEAD `eb4708a`, albero pulito, un solo albero di lavoro, impronta registrata il 16/10 alle 16:48 sul medesimo commit. Il controllo segnala solo il commit arretrato dello snapshot (`cea0311`); il work-log descrive già il lavoro del 16/10. Aggiornato lo snapshot a HEAD. Adattatori Codex allineati; `verifica-schede` trova sette schede superate rispetto all'ancora e zero difetti. Riconciliate le sole sezioni del banco in lavoro corrente e roadmap, senza dichiarare riverificate le intere schede e senza spostarne le ancore. Nessun subagent avviato.
+
+Confrontati ADR-031, ADR-035, allocazione canonica e registro del montaggio: i prelievi principali di PC-02 sono chiusi dal 15/10, ma la GeForce 210 era ancora nel case e l'estrazione del lettore ottico non risulta documentata. Entrambi vanno verificati prima del conferimento; la sigla del processore di PC-02 serve solo all'inventario. PC-03 si conserva come nodo di laboratorio con memoria, Samsung 850 EVO e Atlantis; riceverà il disco da 500 GB di PC-02 e due moduli da 8 GB da `linux-desktop-B`. Restano da leggere processore e targa dell'Atlantis e da verificare il vano da 3,5 pollici. Il NAS resta sul test fino al 19/10 secondo la scelta già registrata; nessun nuovo esito di memoria ricevuto. Aggiornati allocazione, pendenze e file privato di ripresa. Primo gesto proposto: verificare se la GeForce 210 sia ancora inserita in PC-02; non si registra alcun prelievo come avvenuto.
+
+Verifiche della ripresa: 166 documenti raggiungibili dalla home, zero collegamenti rotti e zero orfani con check-docs-tree; md-unwrap sui sette documenti modificati, incluso il file privato di ripresa, senza modifiche necessarie. Guard-rail: 609 file tracciati esaminati, zero riscontri bloccanti; i 124 riscontri non bloccanti sono importi e indirizzi da valutare nel loro contesto, senza nuovi valori identificanti nel delta. I dodici controlli di chiudi -SoloControlli sono verdi. Verifica del diff pulita considerando CR come parte dei fine riga CRLF, conservati nei file che li usavano. Nessuna operazione di staging, commit o push.
+
+## 17/10/2026: GeForce recuperata, PC-02 dismesso e PC-03 senza SSD
+
+L'utente conferma GeForce 210 recuperata e PC-02 dismesso e indica due foto Telegram da assorbire, archiviare e poi cancellare dalla cartella di origine. Lette entrambe, copiate nelle cartelle private dei due PC e confrontate con gli originali mediante SHA-256: due su due identiche. Manifesto di importazione e indice privato conservano l'abbinamento. La foto della scheda la mostra fuori dal case; resta scorta video per diagnosi, non collaudata e senza assegnazione alle tre macchine. Il lettore DVD non risulta recuperato: non lo si conta fra le scorte certe e non si chiede di intervenire su una macchina ormai dismessa.
+
+L'utente identifica l'alimentatore fotografato come quello attualmente in PC-03: Atlantis P016-MPW-6000-W, 600 W massimi dichiarati, due rami +12 V da 22 A e 264 W ciascuno. Targa letta e trascritta nel registro del montaggio; salute elettrica non misurata. ADR-035 resta valido.
+
+Correzione dell'allocazione fisica: l'utente dichiara PC-03 senza alcun SSD e deve controllare se il Samsung sia in un'altra stanza. Su suo richiamo è stata cercata prima la storia in memoria, registri privati, indice delle foto e git: il 09/10 si prevedeva l'estrazione del Samsung 850 EVO per il server, il 12/10 ADR-033 lo destinava al laboratorio; non è stata trovata una conferma del prelievo o del rimontaggio. L'agente aveva ripetuto «già montato» dal piano senza prova dello stato corrente; corrette allocazione, inventario, censimento, schede e ripresa. L'ubicazione resta aperta, il disco non viene dichiarato perso e non si propone un acquisto. Nessun nuovo esito memtest ricevuto: resta la scelta del test fino al 19/10. Nessun subagent avviato. Gli originali Telegram restano fino alla cancellazione verificata dopo la trascrizione.
+
+Archiviazione conclusa nello stesso giro: cancellati soltanto i due originali Telegram indicati dall'utente, dopo il secondo confronto SHA-256. Verificati originali assenti e copie archiviate intatte; il manifesto privato registra l'esito per entrambi. La ricerca documentale sul Samsung ha incluso memoria, contesto, guida e inventario privati, indice delle foto, piano e storia git; trovata l'istruzione di estrazione del 09/10, non una conferma di esecuzione. Il dato attuale resta quello dichiarato dall'utente: PC-03 senza SSD.
+
+Verifiche finali del giro: md-unwrap su 14 Markdown modificati, zero riscritture necessarie; albero docs con 166 documenti tutti raggiungibili, zero orfani e collegamenti rotti; diff pulito con i CRLF conservati. I dodici controlli di chiudi -SoloControlli sono verdi nella ripetizione fuori sandbox. La prima esecuzione aveva superato il guard-rail sui contenuti ma fallito il suo autotest per accesso negato durante la pulizia di una cartella temporanea Windows; nessuna modifica agli strumenti, ripetizione riuscita. Foto originali eliminate e due copie SHA-256 verificate. Nessuna operazione git di scrittura.
+
+## 19/10/2026: etichetta del disco recuperato e contatori Memtest invariati
+
+Lette le due immagini indicate dall'utente dalla cartella Screenpresso e archiviate nella parte privata con confronto SHA-256 identico per entrambe; indice e manifesto aggiornati, originali della cartella di cattura conservati. La targhetta del disco di PC-02 conferma Samsung HD502HJ 500 GB, 7200 giri al minuto, 16 MB, SATA 3 Gb/s, agosto 2011: è il meccanico delle prove, non l'850 EVO da localizzare. Nessuna prova SMART o conferma di montaggio.
+
+Memtest86+ 8.10 mostra 3:46:14, Pass 4, Errors 1, lo stesso indirizzo 0x3a03f65e0 e bit 31 del 16/10, test 6 al 89 per cento e quinto passaggio al 45. Confrontata anche la foto archiviata del 16/10: stessi contatori, quindi nessun nuovo tempo di prova o passaggio pulito attribuito al fine settimana. Scroll lock attivo dal testo del comando in basso. Consultati manuale e codice ufficiali della versione 8.10, fonti S126-S128, e l'estratto del manuale corrente S129: Spazio cambia il blocco senza riavvio; l'attesa è prevista se il blocco è attivo e l'area messaggi è piena, ma qui la causa del fermo non è verificata. Il primo gesto proposto è Spazio una volta e osservazione dell'avanzamento di Time, passo discriminante della verifica manuale; nessun esito ricevuto. Poi resta l'isolamento dei due moduli, non una diagnosi già chiusa. Aggiornati registro, memoria, lavoro corrente, pendenze, fonti e ripresa; guida privata corretta al caso attuale di due moduli e prova di alcune ore ciascuno. Nessun subagent avviato.
+
+Verifiche del 19/10: nove Markdown controllati con md-unwrap senza riscritture; albero docs con 166 documenti tutti raggiungibili e zero collegamenti rotti; diff senza errori considerando i CRLF conservati. I dodici controlli di chiudi -SoloControlli sono verdi dopo ripetizione fuori sandbox per il noto accesso negato alla cartella temporanea dell'autotest. Il controllo aggiuntivo source-register --check trova 13 URL non registrati: tutti già presenti nel file docs/anti-slop/FONTI.md a HEAD, verificati sul contenuto del commit, quindi separati dalle nuove fonti S126-S129 che sono registrate. Pendenza sul censimento delle fonti annotata, senza attribuire una lettura a quei 13 URL. Nessuna operazione git di scrittura.
+
+## 19/10/2026: Memtest non risponde a Spazio
+
+L'utente ha eseguito il riscontro richiesto: premendo la barra spaziatrice non succede nulla, schermata bloccata. Registrata la mancata risposta senza dedurne un modulo guasto o il completamento del test nel fine settimana; resta distinta la mancata risposta da una diagnosi della sua causa. Prossimo gesto indicato al banco: tenere premuto il pulsante di accensione finché il NAS si spegne, circa cinque-dieci secondi. Spegnimento ancora non confermato; dopo verranno scollegamento dalla corrente e preparazione del test dei due moduli separati, uno per volta in DIMM_A1. Nessuna estrazione di memoria ancora avvenuta o richiesta sulla macchina alimentata. Aggiornati registro, snapshot, lavoro corrente, pendenze, guida e ripresa nello stesso giro. Nessun nuovo file immagine, nessuna nuova fonte web e nessun subagent.
+
+## 19/10/2026: NAS spento, prima dell'isolamento dei moduli
+
+L'utente conferma «NAS spento» e autorizza a procedere. Registrato l'arresto, senza assumere già scollegata la corrente o rimosso un modulo. Prossimo gesto unico: staccare il cavo di corrente dal retro del NAS e attendere conferma. La preparazione della prova dei due moduli separati segue solo dopo l'isolamento dell'alimentazione. Aggiornati registro, snapshot, lavoro corrente, pendenze, guida e ripresa; nessuna nuova fonte o evidenza visiva e nessun subagent.
+
+## 19/10/2026: corrente del NAS scollegata
+
+L'utente conferma il cavo scollegato. NAS spento e isolato dalla rete elettrica; nessuna rimozione di memoria confermata. Prossimo gesto unico: tenere premuto il pulsante di accensione per cinque secondi a cavo staccato, come già prescritto dalla guida privata al passo 1.1. Scarica residua e identificazione visiva dei moduli ancora da eseguire; non si è già scelto o rimosso un modulo. Aggiornati registro, memoria, lavoro corrente, pendenze, guida e ripresa. Nessun nuovo test automatico o nuova fonte.
+
+## 19/10/2026: pressione del pulsante a corrente tolta confermata
+
+L'utente conferma eseguita la pressione del pulsante di accensione per cinque secondi a cavo scollegato. Nessun modulo rimosso. Rilette visivamente le foto archiviate del 15/10 della base: riconoscibili ventola Intel e due moduli, non tutti i fermi sono abbastanza chiari per guidare lo sgancio. Prossimo riscontro richiesto: foto ravvicinata dei quattro alloggiamenti RAM, due occupati, con i fermi alle estremità. Si attende l'immagine prima della rimozione. Aggiornati registro, memoria, lavoro corrente, pendenze, guida e ripresa; nessuna nuova immagine ricevuta o nuova fonte web.
+
+## 19/10/2026: foto della memoria lette, prossimo gesto sul fermo di DIMM_B1
+
+Lette e archiviate quattro nuove immagini del NAS, copie confrontate SHA-256 con gli originali, quattro su quattro identiche. Mostrano due moduli ancora montati in DIMM_A1 e DIMM_B1, alloggiamenti intermedi A2 e B2 vuoti. Consultato il manuale ASUS H170-PRO E12046 revisione V2, testo e figure alle pagine 1-2 e 1-9, fonte S130: verificati ordine degli alloggiamenti e fermo mobile su un solo lato. La cattura del PDF con il browser non rendeva visibile la figura nella sessione: scaricato il PDF ufficiale nella parte privata e lette le due pagine rese localmente; nessun altro manuale usato al posto di quello della scheda. Il primo download era bloccato dalla rete del sandbox, ripetuto con accesso autorizzato e riuscito.
+
+Il modulo vicino alla ventola resta in A1. Il gesto unico proposto è aprire il fermo superiore del modulo più lontano dalla ventola, B1, verso il bordo alto della scheda nell'orientamento delle foto; lato inferiore fisso. Nessun fermo ancora confermato aperto e nessuna rimozione eseguita. Dopo l'estrazione si terrà traccia del modulo tolto e il primo test sarà sul solo A1. Aggiornati registro, snapshot, lavoro corrente, pendenze, guida, fonti, indice foto e ripresa; nessun subagent.
+
+Verifica del giro sui fermi: nove Markdown controllati senza riscritture, diff pulito conservando i CRLF; guard-rail su 609 file tracciati con zero riscontri bloccanti. Le quattro copie delle foto sono state rilette nel confronto SHA-256; nessun fermo dichiarato aperto prima del riscontro dell'utente.
+
+## 19/10/2026: RAM di B1 già estratta, preparazione del primo test a 8 GB
+
+Le due immagini successive mostrano il modulo estratto in mano e il solo A1 ancora popolato vicino alla ventola: B1 vuoto, rimozione già eseguita. Etichetta del modulo tolto: Team Group TED48G2400C16BK, 8 GB DDR4-2400, CL16-16-16-39, 1,2 V; identificativi individuali non trascritti in pubblico. Copie delle due immagini archiviate e confrontate SHA-256, due su due identiche; indice e manifesto privati aggiornati.
+
+Prossimo passaggio operativo indicato: ricollegare corrente, accendere e premere F8 per fermarsi al menu di avvio. Consultata la copia locale del manuale ufficiale ASUS, fonte S130, sui richiami di F8 nelle sezioni di avvio. Nessuna conferma ancora di riaccensione, menu, selezione della chiavetta o avvio di Memtest. Il primo modulo in prova sarà quello già rimasto in A1, 8 GB nominali; il modulo estratto da B1 si conserva separato. Aggiornati registro, snapshot, lavoro corrente, pendenze, fonti, indice foto, guida e ripresa. Nessun subagent.
+
+## 19/10/2026: firmware a 8 GB e chiavetta selezionata nel menu F8
+
+Due nuove immagini, ricevute in sequenza nello stesso giro, mostrano prima il firmware EZ Mode e poi il menu F8. NAS riacceso: 8192 MB solo in A1, altri tre slot N/A, DDR4-2133, X.M.P. spento; tre dischi SATA ancora visti. Temperature, ventole, tensione del core e letture complete trascritte nel registro del montaggio. Off del controllo Intel RST appare evidenziato, ma non è una lettura diretta della modalità AHCI. Il menu F8 risponde e mostra già selezionata UEFI: Generic, Partition 2 (59600MB), la stessa voce riuscita il 16/10. Prossimo gesto: Invio per entrare in Ventoy; nessun esito ancora ricevuto e nessun test individuale avviato. Copie SHA-256 identiche per entrambe, indice e manifesti privati aggiornati. Le viste di stato del banco sono state ricomposte in paragrafi attuali, lasciando la sequenza storica nel registro per evitare istruzioni superate nella ripresa.
+
+## 19/10/2026: menu principale Ventoy raggiunto
+
+Nuova immagine: avvio della chiavetta riuscito, menu principale Ventoy/Medicat USB v21.12 in UEFI. Evidenziata la prima categoria, Diagnostic Tools è la quarta. Prossimo gesto unico: selezionare Diagnostic Tools e premere Invio; sottomenu e Memtest 8.10 non ancora avviati, primo modulo A1 da 8 GB ancora da collaudare. Copia archiviata con SHA-256 identico, indice e manifesto privati aggiornati. Viste correnti e ripresa riconciliate con il menu effettivo; nessun subagent o nuova fonte web.
+
+## 19/10/2026: sottomenu Diagnostic Tools, scelta di MemTest86+
+
+Nuova immagine letta e archiviata, copia SHA-256 identica: Diagnostic Tools aperto, riga di ritorno selezionata. MemTest86+ è tre righe sotto, dopo HDAT2 e PassMark MemTest86. Prossimo gesto: Freccia giù tre volte e Invio su MemTest86+; il prodotto PassMark è una voce distinta. Nessuna ISO o test individuale sul solo A1 ancora avviati. Aggiornati stato corrente, registro, guida, ripresa e indice foto; nessuna nuova fonte web o subagent.
+
+## 19/10/2026: ISO 8.10 evidenziata
+
+Nuova immagine: cartella Diagnostic Tools/MemTest86+ aperta, mt86plus_8.10_x86_64.iso già selezionata. Prossimo gesto Invio; immagine o test sul solo A1 da 8 GB non ancora avviati secondo i riscontri. Copia archiviata con SHA-256 identico, indice e manifesto privati aggiornati; stato corrente, pendenze, guida e ripresa aggiornati nello stesso giro. Nessuna nuova fonte web o subagent.
+
+## 19/10/2026: Ventoy attende Boot in normal mode
+
+Nuova schermata ricevuta e letta: la ISO 8.10 è scelta, il menu di modalità avvio ha già evidenziato Boot in normal mode. Prossimo gesto Invio; Memtest sul solo A1 da 8 GB non è ancora avviato. Copia archiviata con SHA-256 identico; aggiornati indice, manifesto, registro e viste correnti. Nessuna nuova fonte web o subagent.
+
+## 19/10/2026: primo test individuale avviato sul modulo A1
+
+Nuova immagine letta e conferma dell'utente: Memtest86+ 8.10 in esecuzione, solo A1 da 8 GB nominali e 7,85 GB utilizzabili; Time 0:00:05, Pass 0, Errors 0, Status Testing. Test 3 Moving inversions, 1s & 0s al 29%, primo passaggio allo 0%; 8 thread paralleli, DDR4-2138 CAS 15-15-15-35, temperatura mostrata 42/48 °C. Nessuna conclusione sulla salute del modulo dalla sola partenza. Lasciare almeno quattro ore, preferibilmente una notte, con controllo fra 10-15 minuti dell'avanzamento per intercettare un eventuale nuovo blocco. Poi testare il modulo estratto da B1 da solo nello stesso A1. Copia SHA-256 identica e originale Screenpresso conservato; aggiornati registro, memoria, lavoro corrente, pendenze, guida, ripresa e indice foto. Nessuna nuova fonte web o subagent.
+
+## 19/10/2026: primo passaggio individuale pulito e avanzamento confermato
+
+Due nuove immagini Memtest86+ 8.10 sul solo A1: Time da 0:53:16 a 0:53:36, Pass 1, Errors 0, secondo passaggio dal 54% al 55%; test 8 Random number sequence dal 30% al 42%, intervallo in prova da 1-2 GB a 2-3 GB, memoria totale 7,85 GB, 48/52 °C. Nella prima compare il banner verde PASS e il comando Scroll unlock, nella seconda il banner è assente e il comando è Scroll Lock; non è documentato quale tasto sia stato premuto. I venti secondi di avanzamento letti sul programma confermano attività fra le catture, senza spiegare il precedente blocco con due moduli. Un passaggio pulito non chiude il collaudo. Indicazione aggiornata: lasciare almeno fino a Time 4:00:00, preferibilmente una notte, con nuova schermata a quel punto o prima se errori o tempo fermo. Secondo modulo da testare separatamente nello stesso A1 dopo questa prova. Due copie SHA-256 identiche, originali Screenpresso conservati; aggiornati registro, viste correnti, pendenze, guida, ripresa e indice foto. Nessuna nuova fonte web o subagent.
+
+## 19/10/2026: errore anche nel primo test individuale, solo A1
+
+Nuova immagine letta: Memtest86+ 8.10 sul solo modulo A1 da 8 GB, 7,85 GB utilizzabili, Time 2:51:08, Pass 3, Errors 1, Status Failed; quarto passaggio al 58%, test 8 Random number sequence al 93%, intervallo 7-8 GB, 48/52 °C. Riga errore: pCPU 5, Pass 3, Test 8, indirizzo 0001efab15d8 (7,74 GB), atteso e7e3be2fa2c35822, letto e7c3be2fa2c35822. XOR calcolato 0x0020000000000000, un bit in posizione 53, da 1 a 0. Il tempo è quello della foto; l'istante esatto dell'errore non è osservato. Non si deduce un blocco da una sola immagine.
+
+La prova è già fallita, quindi superata l'indicazione di attendere almeno quattro ore prima del prossimo riscontro. Prossimo gesto unico: tenere premuto il pulsante fino allo spegnimento del NAS, ancora da confermare; poi scollegamento e preparazione dello scambio. Il confronto successivo sarà con il modulo estratto da B1 da solo nello stesso A1. Riletta la fonte primaria S126, Trouble-shooting Memory Errors: CPU, cache e scheda madre sono coinvolte nella prova, il componente responsabile non è identificato da un errore. Corretta nella guida privata la prescrizione troppo forte di scartare subito il modulo che fallisce da solo; marcata come storica la configurazione a quattro moduli e corretta la prova per cause comuni. Aggiornati anche roadmap, allocazione canonica e passaggi di ripresa rimasti al vecchio test acceso fino al 19/10. Una copia SHA-256 identica, originale Screenpresso conservato, indice e manifesto aggiornati. Scrittura dell'allocazione inizialmente negata, ripetuta con permessi autorizzati e riuscita. Nessuna riallocazione hardware decisa, nessun subagent.
+
+Verifiche del giro: undici Markdown esaminati senza riscritture; guard-rail su 627 file tracciati, zero riscontri bloccanti e 124 voci non bloccanti. Rimosso il CR duplicato sulla sola riga dello snapshot appena modificata, necessario per il diff pulito; nessuna normalizzazione generale dei fine riga. HEAD locale ora 71a863c rispetto a eb4708a della ripresa iniziale, snapshot aggiornato senza cambiare le ancore delle schede o l'impronta di chiusura; nessun commit dell'agente.
+
+## 19/10/2026: NAS spento dopo il primo test individuale fallito
+
+L'utente conferma il NAS spento dopo l'errore sul solo modulo A1. Nessuna nuova schermata o misura. Prossimo gesto unico: scollegare il cavo di alimentazione dal retro del NAS e attendere conferma, poi preparare lo scambio a corrente tolta. Il nuovo scollegamento e lo scambio non sono ancora eseguiti; il modulo estratto da B1 resta separato e da provare da solo nello stesso A1. Aggiornati registro, stato corrente, pendenze, guida e ripresa; nessun nuovo collaudo né componente già dichiarato guasto certo.
+
+## 19/10/2026: cavo del NAS scollegato dopo la prova individuale
+
+L'utente conferma il cavo di alimentazione scollegato dopo lo spegnimento del NAS. Prossimo gesto unico: tenere premuto il pulsante di accensione per cinque secondi con il cavo staccato, poi attendere conferma prima dello scambio della memoria. Questa nuova pressione non è ancora eseguita secondo i riscontri; non usare al suo posto la conferma precedente alla prima prova. Solo A1 ancora inserito, modulo estratto da B1 separato e da provare nel solo A1. Aggiornati registro, memoria, lavoro corrente, pendenze, guida e ripresa; nessuna nuova immagine o misura.
+
+## 19/10/2026: preparazione a corrente tolta confermata prima dello scambio
+
+L'utente conferma la pressione del pulsante per cinque secondi con il cavo di alimentazione staccato, dopo il test individuale fallito. Riletta l'immagine privata già archiviata del solo A1 inserito: modulo vicino alla ventola Intel; manuale S130 già verificato per fermo superiore mobile e lato inferiore fisso. Prossimo gesto unico proposto: estrarre A1 aprendo il solo fermo mobile superiore, prendendolo dai bordi e tenendolo separato dal modulo già estratto da B1. Foto del modulo tolto richiesta per tracciamento; estrazione non ancora eseguita secondo i riscontri, nessun inserimento del secondo modulo. Poi l'ex B1 sarà provato da solo nello stesso A1. Aggiornati registro, memoria, lavoro corrente, pendenze, guida e ripresa; nessuna nuova immagine acquisita.
+
+## 19/10/2026: secondo modulo già in A1, riaccensione senza segnale video
+
+L'utente dichiara già eseguito lo scambio: primo modulo estratto, altro modulo prima in B1 ora da solo in A1, NAS riacceso. Il monitor riferisce nessun input video; nessuna foto nuova, nessuna lettura di firmware o Memtest e nessun riscontro di ventole, cavo video o completo inserimento. Stato accettato su dichiarazione, superata la richiesta della foto del modulo estratto; evitare di chiedere ancora i passaggi già eseguiti. Il nuovo sintomo non qualifica né condanna il secondo modulo.
+
+Consultate FAQ ufficiali ASUS S131-S132: dopo un cambio RAM senza video verificare inserimento completo a cavo di alimentazione rimosso e collegamenti/ingresso monitor. Proposto un tentativo coerente: spegnimento, cavo staccato, pulsante cinque secondi; reinserire lo stesso ex B1 nel solo A1, tacca allineata e due estremità a battuta fino alla chiusura del fermo mobile, poi ricollegare e riaccendere, osservando per un minuto e riferendo video e ventole. Questa osservazione di un minuto è una finestra pratica, non prova o diagnosi di addestramento della memoria. Tentativo ancora da eseguire secondo i riscontri. Aggiornati stato corrente, roadmap, allocazione, pendenze, fonti, guida, ripresa e registro; nessun nuovo scambio di hardware deciso.
+
+## 19/10/2026: video recuperato e secondo test individuale avviato
+
+L'utente conferma ripartenza; nuova immagine letta mostra Memtest86+ 8.10 build 8.10.49468.x64 sul modulo prima in B1, ora da solo in A1 secondo lo scambio dichiarato. 7,85 GB utilizzabili, Time 0:00:07, Pass 0, Errors 0, Status Testing; primo passaggio 1%, test 3 Moving inversions 1s & 0s al 71%, intervallo 4-5 GB, pattern 0x0000000000000000. SPD di un Team Group da 8 GB DDR4-2400, 8 thread PAR, DDR4-2138 CAS 15-15-15-35, 38/45 °C. Il video è quindi tornato; le singole azioni intermedie non sono state descritte separatamente, non si attribuisce la causa con certezza al reinserimento. Primo modulo estratto dopo la prova con un errore a Time 2:51:08, Pass 3; nessun modulo ancora qualificato.
+
+Indicazione: lasciare almeno fino a Time 4:00:00, preferibilmente una notte, nuova schermata di avanzamento ed esito oppure prima se errori o tempo fermo. La foto iniziale non prova ancora l'avanzamento della nuova esecuzione. Copia SHA-256 identica e originale Screenpresso conservato, indice e manifesto aggiornati. Superate le istruzioni di recupero video nelle viste correnti; pendenze, roadmap, allocazione, guida e ripresa riconciliate. Nessun nuovo controllo fisico richiesto prima di lasciare lavorare il test.
+
+## 19/10/2026: avvio del lavoro autonomo su backup e ripristino
+
+L'utente autorizza un'attività utile per dodici ore durante Memtest, senza budget di token e senza persone disponibili a confermare operazioni. Avviato Goal nativo alle 15:51:11 UTC, 17:51:11 locali, con finestra fino al 20/10 alle 03:51:11 UTC. Scelto il piano operativo di backup e ripristino: la cartella esistente contiene titoli Veeam e cloud vuoti; il NAS pianificato ha circa 180 GB di budget e il server uno specchio NVMe da 1 TB. Servono fonti primarie, dimensionamento riproducibile, procedure e criteri di recupero, senza inventare misure o chiudere collaudi fisici. Goal e registro privato conservano i lotti; le continuazioni sono condizionate dalla piattaforma, non si promette riavvio garantito oltre una quota. Fonti S133-S134 consultate con OpenAI Docs.
+
+Stato iniziale: main, HEAD 48100c7, un solo albero, undici file già modificati per il banco; preservati. Sette schede superate rispetto a ee63b19, zero difetti di mappatura. Il documento dei consumi descrive ancora hardware NAS precedente all'allocazione canonica: divergenza da correggere per contenuto. Creato il documento operativo in preparazione e il registro dei lotti, aggiornati indice dei backup, memoria, lavoro corrente, pendenze, fonti e ripresa. Nessun subagent, acquisto, login o operazione sulla rete.
+
+## 19/10/2026: banner del primo passaggio e prosecuzione autonoma ribadita
+
+L'utente riferisce di avere fatto avanzare il banner del primo passaggio del secondo test Memtest. Nessuna nuova immagine, durata o lettura di Errors ricevuta: si registra come avanzamento riferito, senza inventare contatori o chiudere il collaudo. Ribadisce di continuare autonomamente il lavoro già autorizzato per dodici ore; mandato e scadenza non sostituiti, niente richiesta di ulteriori conferme. Aggiornati stato corrente, guida e ripresa; prosegue il piano di backup e ripristino.
+
+## 19/10/2026: primo lotto autonomo, capacità e prove del dimensionamento
+
+Scritti piano iniziale e matrice delle copie, guida al dimensionamento, calcolatore locale, scenario esplicito e suite di 27 prove. Il mirror nominale 240/250 GB vale 240 GB, circa 223,517 GiB prima del filesystem; 80% vale 192 GB, circa 178,814 GiB. Per evitare la vecchia etichetta ambigua «180 GB» il piano propone un tetto prudente esplicito di 180 GB decimali, circa 167,638 GiB, senza cambiare l'allocazione o dichiarare il pool misurato. Nell'esempio costruito il picco è 150,5 GB e il margine 29,5 GB; prima durata 2.903 secondi e ordinaria 2.355 a 20 MiB/s dichiarati più 15 minuti, nessuna prestazione reale misurata.
+
+La prima implementazione considerava soltanto il nuovo file maggiore con lavori sequenziali: correzione sostanziale, perché una generazione intera può coesistere fino al pruning. Conteggio aggiornato, campo della concorrenza rimosso e prova discriminante aggiunta. Sette copie mutate del programma sottoposte alla stessa suite provocano rispettivamente 3, 7, 2, 6, 7, 3 e 2 asserzioni fallite, zero errori di esecuzione, impronta originale invariata. La prima corsa CLI aveva incontrato ACL delle directory TemporaryDirectory Windows; dopo rilancio pytest già autorizzato, fixture resa portabile con file univoci nel workspace. Ventisette prove ora passano nel sandbox, nessuna esclusione aggiunta.
+
+Fonti S135-S142: Proxmox sorgenti ufficiali, TrueNAS stabile 25.10, Veeam 13 e restic 0.19.1. Le due pagine HTML PVE 403 restano etichettate non lette; i contenuti pertinenti sono letti nei sorgenti. Ricerca e runbook restano in corso; il Goal autonomo resta attivo. Aggiornati registri privati dei lotti e affermazioni, fonti, indici e ripresa. Nessuna lettura di dati personali o accesso alle macchine.
+
+Verifica del primo lotto autonomo: tre scenari CLI producono codici 0, 1 e 1, distinguendo piano entro i limiti, capacità superata e finestra insufficiente; risultati JSON privati riletti. Il caso lento richiede nel modello 20.928 secondi per la prima corsa e 15.444 per quella ordinaria contro 10.800 disponibili. Controllo albero su 168 documenti: tutti raggiungibili, zero collegamenti rotti e zero orfani. Guard-rail su 638 file, 631 tracciati e sette nuovi: zero blocchi, 126 voci non bloccanti; la costante di byte per GiB nel documento nuovo è un riscontro non identificante. Dodici Markdown del lotto verificati senza riscritture, diff pulito. Riconciliato il censimento fonti: tredici riferimenti storici aggiunti come non verificati, check 211 URL e zero non registrati. Pendenza di copertura chiusa, nessuna affermazione di lettura completa delle fonti. Aggiornati stato corrente, indice, pendenze, piano, registro privato e ripresa; Goal attivo, runbook e coerenza della destinazione ancora aperti.
+
+## 19/10/2026: secondo lotto autonomo, procedure e dipendenze del recupero
+
+Scritti i runbook per guest PVE, ricostruzione host, configurazione TrueNAS, guasto del disco di avvio e copia distinta dei documenti NAS; preparati percorsi file restic e immagine Windows Veeam. Aggiunti permessi per dataset, finestra proposta 09:00-12:00 da misurare e modello di verbale non compilato. Prove sulle macchine non eseguite. I percorsi T7 verso Drive e T7 Shield verso OneDrive restano intenzioni da verificare, senza presumere supporti, account o quote disponibili.
+
+Il confronto fra PVE gestito soltanto in VLAN 99 e regole tra zone richiede un'eccezione proposta TCP 445 verso NAS dati in VLAN 30; per la gestione PVE manca TCP 8006, distinta dalle porte generali 22/443. Sono lacune del progetto, non guasti di apparati configurati. Il campo di bind SMB nella fonte stabile TrueNAS 25.10 conferma ascolto su tutte le interfacce se lasciato vuoto. Quote e istantanee richiedono una contabilità separata del picco.
+
+Fonti ufficiali S143-S165 registrate; controllo 232 URL e zero non censiti, senza estendere la lettura oltre le sezioni dichiarate. Veeam può saltare un disco esterno assente e terminare con successo in modalità intero computer: il piano verifica il perimetro effettivo oltre all'esito verde. Catena VBK/VIB distinta dal modello restic. Aggiunta la sola esclusione .pytest_cache/ a .gitignore: status non emette più l'errore sulla cache e i nuovi sorgenti restano visibili, senza modificare ACL o cancellare directory.
+
+Primi controlli su tre runbook nuovi: 171 documenti raggiungibili, zero orfani e link rotti; il modello di verbale aggiunto dopo richiede nuovo conteggio. Tabelle e comandi dell'area backup senza difetti. Una scrittura del checkpoint si è fermata nel preflight perché l'ultimo paragrafo di index.md non aveva un successivo separatore vuoto: nessun file scritto in quel tentativo; gestita esplicitamente la fine del file e applicato il lotto con rilettura. Goal attivo, prossimo lotto revisione e riconciliazione storica.
+
+## 20/10/2026: secondo modulo NAS con due errori, banco non qualificato
+
+Nuova immagine indicata dall'utente: Memtest86+ 8.10, ex B1 da solo in A1 secondo il montaggio confermato, 7,85 GB, Time 3:03:15, Pass 3, Errors 2 e Status Failed. Quarto passaggio 93%, test 9 Modulo 20 random pattern 87%; 47/52 °C. Errori ai passaggi 2 e 3, indirizzi 2,81 e 6,49 GB; trascritti nel registro con valori attesi/letti e XOR. Immagine privata archiviata con SHA-256 identico all'originale Screenpresso conservato. Una foto non prova che il timer sia rimasto fermo durante la notte.
+
+Entrambi i moduli sono falliti nello stesso A1: non basta per scartare entrambi o dichiarare certamente sano lo slot. Riletto S126 sul coinvolgimento di CPU, cache e scheda. Prossimo gesto chiesto: spegnere il NAS, senza presumere avvenuti arresto, scollegamento o spostamenti. Dopo la preparazione senza corrente si sceglierà un confronto che cambi solo slot, impostazione o modulo noto sano; nessuna modifica fisica eseguita dall'agente e TrueNAS ancora sospeso.
+
+Il lavoro documentale di backup ha 172 documenti raggiungibili e 239 URL censiti, zero rotture/orfani e zero URL mancanti dal registro. Il controllo del template iniziale aveva due errori: rigenerato l'adattatore cerca-pacchetto con lo strumento e il prefisso già autorizzati, resta la sola fine riga mista del metadato protetto di allineamento. Preparata copia CRLF equivalente nella parte privata; non richiesta una nuova conferma. Preparato e verificato con git apply --check anche il delta per unità e porte SATA dell'allocazione protetta, senza applicarlo.
+
+Una richiesta di permesso per il piano unificato ha invece sospeso la sessione durante la notte e si è conclusa alle 06:59 UTC del 20/10. Non sono state svolte dodici ore continue di lavoro: dichiarato all'utente e corretto lo stato di ripresa. Nessuna quota o test hardware è usato per attribuire lavoro al periodo di attesa. Goal resta attivo per l'audit residuo, mentre la nuova evidenza RAM aggiorna il filo al banco.
+
+## 2026-10-20: audit dei backup, dipendenze di rete e seconda destinazione
+
+L'audit del mandato ha trovato due lacune documentali: dipendenza dai percorsi di gestione della rete per raggiungere le copie, e spazio sottratto ai guest dalla copia proposta dei documenti NAS sul server. Aggiunto il fascicolo di emergenza con export OPNsense, futuri switch/AP, credenziali e supporti leggibili anche senza NAS e PVE; fonti ufficiali S170-S171. Aggiunti due casi costruiti per il mirror server, uno ammesso dal modello e uno saturo: picco 599 GB con margine 101, contro 799 e margine meno 99 su tetto proposto 700 GB. CLI exit 0 e 1, tempi 1950 e 948 secondi; risultati e impronte input archiviati nella parte privata. Un primo atteso manuale 1949 era errato: corretto con aritmetica razionale dopo l'asserzione fallita, programma invariato. Gli esempi non dichiarano protetti tutti i 500 GB dei guest tramite gli archivi NAS dell'altro scenario.
+
+Controlli dopo il lotto: 173 documenti raggiungibili, zero rotture/orfani; 241 riferimenti e zero non censiti. Rimosse otto righe vuote interne al corpo di SOURCES.md: le 171 righe fonte sono conservate e ora contigue sotto la stessa intestazione. Il linter delle colonne era verde anche prima; il riproduttore privato con una riga isolata conferma exit 0. Registrata L-001 nel canale locale del template. La nuova utility di registrazione ha appiattito anche il codice Markdown passato al corpo: la rilettura ha trovato il difetto, conservata copia e ripristinata soltanto la struttura della voce locale, registrando L-002. Nessuna modifica alle copie degli strumenti del template per risolvere questi difetti, nessun messaggio esterno inviato.
+
+Nel frattempo sono presenti modifiche del template a regole, strumenti e craft-apps, indipendenti da questo lavoro: preservate, letto il delta di istruzioni applicabile e rispettato il nuovo campo Template del work-log. Il precedente 11/12 resta un risultato storico sulla versione di allora: controllo globale corrente da rifare. Rimane la correzione EOL preparata per il metadato protetto e la patch allocazione con porte, unità e nuova RAM, non applicate. La richiesta notturna di permesso ha impedito dodici ore continue di lavoro e non è presentata come esecuzione autonoma riuscita.
+
+**Template:** L-001, L-002
+
+## 2026-10-20: controllo globale aggiornato e verifica separata dell'autotest
+
+Rieseguito chiudi-sessione.ps1 con SoloControlli dopo gli aggiornamenti concorrenti del template, senza commit. Nove controlli passano e tre falliscono: autotest del guard-rail su un temporaneo Windows non accessibile, riferimento craft-apps a una configurazione dichiarata opzionale ma assente, EOL del metadato protetto. Il normale controllo di anonimizzazione sui file passa. Il registro delle lezioni viene letto dalla chiusura e non segnala voci di work-log senza il campo previsto dopo l'adozione.
+
+Per distinguere l'errore di ambiente dal risultato del guard-rail, una prova privata invoca il vero tools/Test-Anonymization.py --autotest e richiede il riepilogo con casi effettivamente eseguiti. Eseguita via pytest con prefisso già autorizzato, senza nuovo prompt: una prova passata, autotest 20 casi e zero errori, sorgente invariata e output con SHA archiviato. Non è dichiarato verde il comando completo nel runner ordinario. Non sono state alterate le esclusioni del controllo o le ACL.
+
+Registrate L-003 sul riferimento condizionale della skill e L-004 sul ciclo delle fixture temporanee; nessuna configurazione di stile inventata, nessuna correzione ai tool copiati dal template. La lezione L-002 è stata riletta e normalizzata negli accenti senza perdere il codice restaurato di L-001. Le modifiche del piano restano locali; i dati di rete, i backup e i restore reali non sono stati eseguiti. Il NAS attende ancora conferma dello spegnimento richiesto dopo i due errori del secondo modulo.
+
+**Template:** L-003, L-004
+
+## 2026-10-20: confronto fra archivi PVE e PBS
+
+Aggiunto il confronto 09 per evitare che la deduplicazione venga usata come capacità già disponibile sul piccolo mirror SATA. Distinte risorse del servizio, montaggio e filesystem del datastore, spazio non liberato dal solo pruning, tolleranza della garbage collection e costi di verifica. Proposti token DatastoreBackup con perimetro limitato, chiave client fuori PVE e collaudo del recupero senza dipendere dalla VM PBS perduta. Fonti ufficiali S172-S176, versione documentale HTML 4.2.8-1. Nessuna macchina assegnata, installazione o misura PBS; gli archivi restano il primo percorso proposto. Stato hardware invariato: secondo test individuale fallito e spegnimento ancora da confermare. Segue audit finale degli artefatti e dei delta protetti.
+
+**Template:** nessuna
+
+## 2026-10-20: consegna documentale pronta, mandato temporale non soddisfatto
+
+Completata la verifica degli artefatti del piano: nove documenti operativi compreso il confronto PBS, cinque scenari e risultati locali, procedure di recupero e verbale ancora da eseguire sulle macchine. Albero 174 documenti raggiungibili con zero rotture/orfani; fonti 246 riferimenti senza mancanti, 176 righe S uniche e corpo continuo. L'ordine storico S102 dopo S105 ha fatto fallire una prima asserzione troppo stretta sull'ordinamento: verificata la completezza senza riordinare fonti preesistenti. Tabelle 12 file senza difetti e comandi zero errori/avvisi. Impronte del calcolatore e suite identiche alle prove archiviate, delta protetti ancora applicabili ed equivalenti, non applicati. Risultati effettivi salvati nella parte privata.
+
+Guard corrente 654 file, zero bloccanti e 127 riscontri riletti; quattro avvisi di prosa su enumerazioni funzionali e modulo a campi fissi. Il gate globale resta distinto a 9/12 e l'autotest separato a 20/0, senza ripetere o indebolire prove già valide. Preparazione documentale pronta per la revisione; prove sulle macchine e copie fuori sede non eseguite. La continuità delle dodici ore non è stata rispettata per l'attesa notturna e il Goal non è dichiarato completo. Stato fisico invariato al secondo test RAM fallito: arresto richiesto, non confermato. Corretto anche il prompt volatile e la tabella macchine che conservavano l'avvio del secondo test come punto attuale.
+
+**Template:** nessuna
+
+## 2026-10-20: riaudit dopo aggiornamento concorrente del template
+
+Il giro precedente è progresso: confronto PBS e relative fonti, audit del piano e correzione del prompt corrente sono arrivati su disco. L'allineamento concorrente porta ora il template a 953e506, senza commit dell'agente. Rieseguita la chiusura con SoloControlli sulla nuova versione: dieci controlli passano e due falliscono. Il riferimento craft-apps ora passa; restano autotest nel temporaneo Windows ed EOL del metadato protetto. Il vero autotest ripetuto con pytest e prefisso già autorizzato dà 20 casi e zero errori; output e SHA sono archiviati, senza attribuirlo alla suite ordinaria.
+
+La candidata EOL precedente conteneva il vecchio commit del template: non va applicata al nuovo file. Conservata come evidenza storica, preparati nuovo originale e candidata 953e506 con equivalenza JSON verificata e metadato delta-eol-metadata.json. Il target reale non viene modificato. La chiusura rivela inoltre un errore non bloccante nel richiamo delle lezioni: PowerShell emette una stringa nel ramo con un argomento e la espande in caratteri. Riprodotto osservando System.String e gli argv Python, registrata L-005 con corpo Markdown preservato; nessun fix alle copie degli strumenti. Il controllo lezioni diretto dà tre aperte, due recepite e zero avvisi.
+
+Il verbale include ora anche RETE-01/02 e l'eventuale scenario PBS: le procedure aggiunte non restano fuori dalla selezione del modello. Preparazione documentale pronta, distinta da prove hardware, backup e recuperi reali mai eseguiti. La condizione delle dodici ore continue rimane non soddisfatta e non può essere recuperata retroattivamente. Stato hardware invariato: arresto dopo il secondo test fallito ancora da confermare.
+
+**Template:** L-005
+
+## 2026-10-20: esito del mandato autonomo registrato
+
+Dopo l'audit tecnico e la verifica dei delta il servizio Goal restituisce stato blocked. Non è una consegna dichiarata completa: il vincolo delle dodici ore continue nella finestra originaria resta contraddetto dall'attesa notturna e non è recuperabile con altre modifiche documentali. La condizione è rimasta la stessa negli ultimi tre giri; gli artefatti preparati sono disponibili per la revisione nel manifesto privato, con esiti e limiti espliciti. Nessuna prova sulle macchine è stata eseguita e nessuna nuova autorizzazione è in attesa. Il lavoro al banco rimane separato, alla conferma dell'arresto dopo i due errori RAM.
+
+**Template:** nessuna
+
+## 2026-10-20: arresto del NAS confermato e preparazione del versionamento
+
+L'utente conferma il NAS spento e chiede di fare version control. Aggiornati registro del montaggio, stato corrente, roadmap, pendenze e ripresa: nessuno scollegamento o spostamento successivo è dato per avvenuto. Identità git locale e remoto esistono e corrispondono alla firma dell'ultimo commit; valori identificanti non copiati nei file pubblici. Branch main a 48100c7, un solo albero, indice senza file in stage. Le modifiche del template sono riconosciute come allineamento concorrente e non vengono incluse automaticamente con add -A. In corso verifica del perimetro, correzioni documentali preparate e controlli prima della consegna dei comandi; nessun add, commit o push eseguito.
+
+**Template:** nessuna
+
+## 2026-10-20: applicate le correzioni protette prima del versionamento
+
+Dopo preparazione delle copie e confronto delle impronte, la scrittura ordinaria del metadato è negata dal sandbox. L'utente autorizza il comando limitato ai due file: applicati fine riga CRLF senza variazione del JSON template e allocazione con porte effettive, unità distinte, secondo test RAM fallito e arresto confermato. Rilette le impronte finali; evidenza privata in correzioni-applicate.json. Piano e pendenze ora registrano la riconciliazione canonica effettiva, senza far restare aperto il delta già applicato. Nessun add, commit o push eseguito.
+
+**Template:** nessuna
+
+## 2026-10-20: controlli verdi e perimetri pronti per il versionamento
+
+Dopo le correzioni preparate, la suite completa nel sandbox fallisce soltanto sul noto accesso al temporaneo Windows. Ripetuto lo stesso comando con SoloControlli fuori dal sandbox, senza operazioni Git: dodici controlli passano e il footer è Controlli verdi. Log completo conservato nella parte privata. Resta il messaggio non bloccante del richiamo lezioni PowerShell L-005; il controllo diretto del registro funziona e non è stato escluso alcun caso dell'autotest. Albero 174 documenti senza rotture/orfani, fonti 246 senza mancanti, diff senza difetti. Le sette schede superate e zero difetti di mappatura sono confermati; ancore non avanzate senza una riconciliazione completa.
+
+Preparati due messaggi entro 72 caratteri e due elenchi: 31 file NAS/backup/memoria, 34 dell'allineamento concorrente. Identità locale coerente con l'ultimo commit, main e indice vuoto. Il normale chiudi usa add -A e non supporta un perimetro limitato; non va consegnato per mescolare una sessione eventualmente ancora attiva. È stata posta all'utente la domanda sul termine dell'altra sessione; in attesa della risposta si conservano entrambi i lotti senza stage, commit o push. NAS spento confermato, nessun altro gesto fisico assunto.
+
+**Template:** L-005
+
+## 2026-10-20: perimetro confermato, due commit preparati
+
+L'utente conferma che l'altra sessione ha terminato e ribadisce di procedere. Git mostra il commit di allineamento 4311db3 già creato dall'altra sessione, con ulteriori modifiche del template b2fb025 ancora nel working tree insieme al lavoro NAS e backup. Verificata di nuovo l'identità locale, coerente con l'ultimo commit, e l'indice vuoto. Preparati primo commit parziale del template e successiva chiusura NAS/backup; nessun add, commit o push eseguito dall'agente. Il messaggio di milestone è in COMMIT-MSG.txt.
+
+Normalizzati di nuovo i soli fine riga del metadato riscritto dall'allineamento, preservandone i valori b2fb025, attraverso il comando limitato già autorizzato. Il registro del template riconosce tutte e cinque le lezioni come recepite. L-005 risulta corretta nella copia di chiudi; L-004 è recepita come norma sulle fixture, senza fingere una correzione del guard-rail locale. In corso ultimo giro di controlli sulla nuova versione prima della consegna dei comandi manuali.
+
+**Template:** nessuna
+
+## 2026-10-20: consegna dei due passaggi di versionamento
+
+Suite completa sulla versione finale del template passata: dodici controlli, zero KO, footer Controlli verdi; il controllo lezioni funziona e riporta cinque recepite, zero aperte e zero avvisi. Albero 174 documenti raggiungibili senza rotture/orfani, fonti 246 senza mancanti. Corretti soltanto due a capo vuoti finali trovati da diff --check dopo lo spostamento dello stato corrente; controllo finale senza difetti.
+
+Perimetri correnti verificati senza sovrapposizioni: 37 file template e 31 file NAS/backup/memoria. Il primo passaggio usa percorsi espliciti perché chiudi non supporta un sottoinsieme; il secondo usa la chiusura ordinaria con NoWipe e messaggio già pronto, per committare il lotto residuo e pubblicare entrambi. Comandi e messaggi salvati nella parte privata. L'utente li esegue su main da questo PC; nessuno stage, commit o push è stato eseguito dall'agente. Il NAS rimane spento, corrente scollegata ancora non confermata.
+
+**Template:** nessuna

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "input_status": "illustrative",
+  "capacity": {
+    "layout": "mirror",
+    "devices": ["1 TB", "1 TB"],
+    "filesystem_reserve": "50 GB",
+    "max_fraction": "0.8",
+    "planning_limit": "700 GB"
+  },
+  "fixed_allocations": [
+    {
+      "label": "limite costruito dei dati originali guest sul server",
+      "size": "700 GB"
+    },
+    {
+      "label": "sistema, installer e altri file locali ipotetici",
+      "size": "50 GB"
+    }
+  ],
+  "snapshot_hold": "10 GB",
+  "workspace": "5 GB",
+  "full_archives": [],
+  "incremental_repositories": [
+    {
+      "label": "copia distinta dei soli documenti originali NAS",
+      "base": "22 GB",
+      "unique_change_per_point": "1 GB",
+      "points": 7,
+      "maintenance_workspace": "5 GB"
+    }
+  ],
+  "run_time": {
+    "throughput": "20 MiB/s",
+    "overhead_minutes": 15,
+    "window_minutes": 180
+  },
+  "uncertainties": [
+    "Caso negativo costruito: aumenta soltanto il limite dei dati originali guest da 500 a 700 GB.",
+    "Non descrive un server già montato o misurato e non autorizza cancellazioni.",
+    "La copia NAS esclude gli archivi PVE e non sostituisce il backup degli originali guest."
+  ]
+}

@@ -78,20 +78,20 @@ L'8/10/2026 l'utente aveva proposto di prendere da uno dei due la memoria DDR4 p
 
 ### PC-03, anduinOS: una seconda Z97-P
 
-La scheda madre è una ASUS Z97-P revisione 2.02, lo stesso modello di `linux-desktop-B`, ma è un'altra macchina: i moduli di memoria hanno codici diversi da quelli di `linux-desktop-B`, e nell'alloggiamento M.2 c'è un SSD Samsung dove `linux-desktop-B` aveva il Crucial P3 prelevato per il NAS. Il processore è sotto un dissipatore Intel di serie per LGA1150, e il modello non si legge.
+La scheda madre è una ASUS Z97-P revisione 2.02, lo stesso modello di `linux-desktop-B`, ma è un'altra macchina: i moduli di memoria hanno codici diversi da quelli di `linux-desktop-B`, e nelle foto del 09/10 nell'alloggiamento M.2 era presente un SSD Samsung, dove `linux-desktop-B` aveva il Crucial P3. Il 17/10 l'utente dichiara PC-03 senza SSD: il Samsung va localizzato prima di considerarlo disponibile per il laboratorio. Il processore è sotto un dissipatore Intel di serie per LGA1150, e il modello non si legge.
 
 | Pezzo | Che cosa è |
 |---|---|
 | memoria | kit Corsair Vengeance `CMV16GX3M2A1600C11`, 2 × 8 GB DDR3-1600 |
-| disco | Samsung 850 EVO M.2, `MZ-N5E250`, 250 GB, interfaccia SATA in formato M.2 |
-| alimentatore | Atlantis, modello e potenza non leggibili nelle foto |
+| disco previsto | Samsung 850 EVO M.2, `MZ-N5E250`, 250 GB, SATA: nelle foto del 09/10 era montato, il 17/10 è dichiarato assente; ubicazione da verificare |
+| alimentatore | Atlantis P016-MPW-6000-W, 600 W massimi dichiarati; targa letta dalla foto del 17/10, installazione in PC-03 dichiarata dall'utente |
 | processore | LGA1150, modello da leggere con la raccolta |
 
 La conseguenza più utile è che le due Z97-P fanno della piattaforma Haswell una coppia e non più un'isola. I processori e le memorie si scambiano fra le due, e una delle due può tenere tutti e quattro i moduli DDR3, cioè 32 GB, che è il massimo dichiarato per questa scheda e va confermato sulla pagina del costruttore. I quattro moduli sarebbero di tre codici diversi e girerebbero alla velocità del più lento, 1333 MHz, come già fanno i due di `linux-desktop-B`.
 
 ### PC-02, Xubuntu: una piattaforma LGA1156, svuotata e smaltita
 
-Dal 09/10/2026 questa macchina non esiste più come macchina (ADR-031): se ne prelevano i pezzi utili e scheda madre, processore e case vanno al conferimento. Quanto segue descrive che cosa conteneva e che cosa ne resta.
+La dismissione è stata decisa il 09/10/2026 (ADR-031) e confermata dall'utente il 17/10, insieme al recupero della GeForce 210, fotografata fuori dal case. La scheda grafica resta scorta video per diagnosi, non collaudata e senza assegnazione alle macchine del lab. Il recupero del lettore ottico non risulta documentato e non si assume avvenuto. Quanto segue descrive il censimento storico e i prelievi: per lo stato fisico attuale vale [Allocazione dell'hardware](../23-studio-home-lab/12-allocazione-dell-hardware.md).
 
 La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serigrafato e dalle funzioni Express Gate e MemOK, ma il modello esatto non si legge nelle foto. Il processore è sotto un dissipatore Intel di serie per LGA1156, quindi è un Core di prima generazione, modello da leggere. Monta una scheda grafica dedicata, che le foto del 15/10/2026 identificano come NVIDIA GeForce 210 da 1 GB DDR3 con bus a 64 bit, uscite VGA, DVI e HDMI e raffreddamento passivo.
 
@@ -102,7 +102,7 @@ La scheda madre è una ASUS di serie P55, riconoscibile dal socket LGA1156 serig
 | disco | disco meccanico Samsung SpinPoint HD502HJ da 500 GB, 7200 rpm, fabbricato nell'agosto 2011 |
 | alimentatore | Tecnoware FAL550FS12, 550 W, 30 A sul ramo a 12 V |
 
-Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, i cavi SATA, l'unità ottica, la minuteria, la scheda grafica dedicata e i due moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio. Le slitte e gli adattatori dei dischi, che la sequenza prevedeva di riutilizzare, l'utente li dichiara rotti il 09/10/2026: la conseguenza è nel registro delle pendenze e riguarda il solo Kingston V300, che il 14/10/2026 risulta però avvitato su un adattatore Corsair da due pollici e mezzo a tre e mezzo apparentemente integro, con cui va nel NAS. Vanno al conferimento la scheda madre, il processore con il suo dissipatore e il case.
+Come piattaforma è la più vecchia di casa e non è candidata a nessun servizio sempre acceso: tutto il suo valore sta nei pezzi, ed è la ragione di ADR-031. Restano in casa i due dischi, l'alimentatore di cui si conosce la targa, i cavi SATA, la minuteria, la scheda grafica recuperata e i quattro moduli Kingston, conservati in una busta etichettata come ricambio a capacità ridotta del nodo di laboratorio; il recupero dell'unità ottica non è confermato. Le slitte e gli adattatori dei dischi, che la sequenza prevedeva di riutilizzare, l'utente li dichiara rotti il 09/10/2026: la conseguenza è nel registro delle pendenze e riguarda il solo Kingston V300, che il 14/10/2026 risulta però avvitato su un adattatore Corsair da due pollici e mezzo a tre e mezzo apparentemente integro, con cui va nel NAS. Scheda madre, processore con dissipatore e case sono dismessi secondo la conferma dell'utente del 17/10/2026.
 
 ### Che cosa cambia nel magazzino
 

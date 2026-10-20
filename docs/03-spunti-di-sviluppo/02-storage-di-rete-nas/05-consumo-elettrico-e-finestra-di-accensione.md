@@ -4,7 +4,7 @@
 
 ## Stato di questo documento
 
-Le tariffe sono misurate su sei bollette mensili consecutive del 2026. Il consumo della macchina è **stimato per componenti** e non misurato, perché la macchina non è ancora stata assemblata: l'incertezza dichiarata è di circa il trenta per cento, e la sezione sulla misura dice come chiuderla. La finestra di accensione è una decisione presa, non ancora attuata.
+Le tariffe e i conti seguenti documentano l'analisi del 2026 già svolta; questo aggiornamento non rilegge le bollette né ricalcola le condizioni della fornitura. I consumi sono stime per componenti di scenari precedenti, non misure del NAS montato. Dal 12/10/2026 ADR-032 e ADR-033 prevedono 16 GB di memoria e tre SSD SATA, con V300 di avvio e SanDisk/WD Blue in specchio dati; i due NVMe appartengono al server. L'[allocazione canonica](../23-studio-home-lab/12-allocazione-dell-hardware.md) e il [registro del montaggio](09-registro-del-montaggio.md) descrivono il nuovo assemblaggio. Le stime 48 e 60 W restano storiche e non diventano automaticamente il suo consumo. La finestra di accensione è una decisione presa, non ancora attuata.
 
 ## Il numero da cui dipende tutto: il costo marginale
 
@@ -53,7 +53,7 @@ C'è inoltre una circostanza che aiuta e che è specifica di questa architettura
 | Tre dischi meccanici in rotazione (piano del 22/09, decaduto) | +17-24 W | vedi la nota sotto |
 | **Alla presa, configurazione completa** | **52-70 W** | stima centrale 60 W |
 
-Dal 07/10/2026 la configurazione di riferimento è la prima riga in grassetto, quella senza dischi meccanici: il NAS parte con i soli due SSD SATA di avvio e i due NVMe in mirror, perché nel magazzino non ci sono dischi meccanici e i quattro recuperati da un NAS QNAP dismesso, che avevano portato a riferimento la riga a tre dischi, non si sono resi disponibili ([Quattro dischi recuperati da un NAS QNAP dismesso](07-dischi-recuperati-dal-nas-qnap-dismesso.md)). La stima centrale alla presa scende quindi a 48 W, con l'intervallo da 40 a 55 W. Le righe con i dischi meccanici restano come riferimento per il giorno in cui se ne aggiungeranno due in mirror: con quei due la stima centrale torna a 60 W.
+Nello scenario del 07/10/2026 il riferimento era la riga senza dischi meccanici: 32 GB, due SSD SATA di avvio e due NVMe in specchio. I dischi meccanici recuperati dal QNAP non si erano resi disponibili ([studio del recupero](07-dischi-recuperati-dal-nas-qnap-dismesso.md)). I 48 W centrali e l'intervallo 40-55 W della tabella appartengono a quello scenario, superato dalla nuova allocazione. Le righe con dischi meccanici restano confronti storici e non una configurazione in corso di montaggio.
 
 ## L'alimentatore, e un fatto controintuitivo sull'efficienza
 
@@ -136,11 +136,11 @@ Ci sono inoltre due benefici non monetari che non compaiono in tabella. Duemilas
 
 Lo spegnimento e la riaccensione hanno bisogno di meccanismi diversi, e questa è la parte in cui un progetto approssimativo si rompe.
 
-Lo **spegnimento** si programma dal sistema operativo, con un'attività pianificata che invochi un arresto ordinato. Deve essere un arresto e non un'interruzione di alimentazione: il file system è transazionale e non si corromperebbe nemmeno con un taglio brusco, ma le scritture in volo si perderebbero comunque, e una macchina il cui scopo è custodire dati non si spegne strappando la spina. Il vantaggio di programmare lo spegnimento dal sistema è che l'attività pianificata distingue i giorni della settimana, che è esattamente ciò che serve avendo due orari diversi.
+Lo spegnimento si programma dal sistema operativo con un arresto ordinato, distinguendo i giorni della settimana. La destinazione non va spenta con scritture o manutenzioni ancora attive: le scritture in volo e gli altri guasti non si escludono perché il filesystem è transazionale. Prima di applicare l'orario serve il coordinamento dei job descritto in [Permessi, finestre e collaudo dei backup](../05-strategia-di-backup/05-permessi-finestre-e-collaudo.md), con rilevazione dei lavori attivi e gestione esplicita del ritardo.
 
 La **riaccensione** non può venire dal sistema operativo, perché a macchina spenta il sistema non gira. Viene dal firmware, e il manuale della scheda documenta la voce che serve nella sezione di gestione dell'alimentazione: un allarme dell'orologio in tempo reale, per cui si impostano giorni, ore, minuti e secondi, che genera un evento di accensione. È la soluzione corretta perché non dipende da nessun apparato esterno, a differenza del risveglio da rete, che pure la scheda supporta ma che richiederebbe qualcosa che invii il pacchetto di risveglio nel momento giusto.
 
-L'allarme del firmware ammette però **un solo orario giornaliero**, mentre la decisione ne prevede due. La soluzione è impostarlo sull'orario **più precoce**, cioè quello dei giorni lavorativi, accettando che nel fine settimana la macchina si accenda un'ora e mezza prima del necessario. Il costo di quella semplificazione è di circa tre ore di accensione in più a settimana, cioè meno di trenta centesimi al mese: una cifra che non giustifica di complicare la configurazione.
+La tabella decisa prevede la stessa riaccensione alle 07:30 tutti i giorni; cambiano soltanto gli orari di spegnimento. Non serve quindi anticipare il fine settimana né aggiungere tre ore di accensione settimanali. L'orario del firmware, il fuso e il comportamento al cambio d'ora vanno verificati al collaudo; nessun allarme è già stato configurato da questo documento.
 
 ### Che cosa si rompe, e come si sistema
 
@@ -148,7 +148,7 @@ Una finestra di accensione rompe tre cose, e vanno affrontate esplicitamente per
 
 Le **attività pianificate non girano a macchina spenta**. Le istantanee periodiche e la verifica periodica dell'integrità del pool sono programmate a orari fissi, e se quegli orari cadono nella finestra di spegnimento semplicemente non si eseguono, senza che nessuno lo segnali. Vanno ricollocate dentro la finestra di accensione, e va verificato che ci stiano per intero.
 
-Questa seconda condizione merita attenzione, perché la verifica dell'integrità di un pool di alcuni terabyte richiede diverse ore. Il compito che il sistema crea da sé alla creazione del pool è programmato a mezzanotte del sabato, che con questa finestra cade nelle due ore e mezza che precedono lo spegnimento del venerdì notte: la verifica partirebbe e verrebbe interrotta. Va spostata a un orario che disponga di tutta la durata necessaria, per esempio la mattina del sabato subito dopo la riaccensione, che precede lo spegnimento successivo di diciannove ore.
+Questa seconda condizione richiede una misura sul pool reale. La durata dello scrub dipende da spazio e carico; il vecchio esempio di un pool di alcuni terabyte non descrive il piccolo specchio SATA attuale. Si controllano calendario effettivo della versione installata e ultima conclusione riuscita, senza presumere un orario predefinito universale. La mattina del sabato offre in progetto una finestra ampia, ma il lavoro va separato dai backup e la destinazione non si arresta prima che sia terminato.
 
 I **salvataggi automatici notturni da altri apparati non trovano la destinazione**. È il conflitto più sostanziale, perché essere la destinazione dei backup della rete è uno degli usi principali di un archivio di rete, e la notte è la finestra in cui quei backup si programmano naturalmente. Se questo uso è previsto, gli orari dei backup vanno portati dentro la finestra di accensione, oppure la finestra va ripensata.
 
