@@ -72,7 +72,7 @@ Navigazione e DNS: AdGuard Home sul server, uBlock Origin nel browser. Resta sco
 
 Credenziali, backup e cifratura: Vaultwarden con secondo fattore; restic verso il NAS più una copia fuori casa; BitLocker, LUKS e FileVault sui dischi. Restano da fare le prove di ripristino e da decidere dove tenere le chiavi di recupero.
 
-Aggiornamenti: Windows Update e aggiornamenti automatici su Linux. LAP-03 con macOS Monterey non riceve più correzioni di sicurezza dalla fine del 2024 secondo una fonte secondaria (S123): va tenuto fuori dalla zona fidata o ritirato. La stessa verifica va fatta su Xperia III, sul tablet più vecchio e su PC-01, il cui Windows 11 l'inventario dichiara installato forzando i requisiti, con il supporto agli aggiornamenti non verificato.
+Aggiornamenti: Windows Update e aggiornamenti automatici su Linux. LAP-03 con macOS Monterey non riceve più correzioni di sicurezza dalla fine del 2024 secondo una fonte secondaria (S123): va tenuto fuori dalla zona fidata o ritirato. La stessa verifica va fatta su Xperia III, su TAB-01 e TAB-02, i due Galaxy Tab S6 Lite, e su PC-01, il cui Windows 11 l'inventario dichiara installato forzando i requisiti, con il supporto agli aggiornamenti non verificato.
 
 Telefoni e console: Play Protect, aggiornamenti del produttore e l'app Defender sugli Android; per PS5 e TV nessun agente è possibile, restano il filtro DNS e la zona di rete, già decisi.
 

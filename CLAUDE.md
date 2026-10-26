@@ -36,6 +36,10 @@ Prima di ogni commit si lancia il controllo dell'albero, che è proprio di quest
 python tools/check-docs-tree.py && powershell -NoProfile -ExecutionPolicy Bypass -File tools/chiudi-sessione.ps1 -SoloControlli
 ```
 
+## Documentazione tecnica e tecnico-didattica
+
+Pratica adottata dall'utente il 23/10/2026, ADR-038. La [matrice dei bisogni](docs/03-spunti-di-sviluppo/23-studio-home-lab/16-bisogni-controlli-e-flussi.md) distingue bisogno, strumento, punto di controllo, confini e stato. Ogni sviluppo aggiorna documento tecnico e registro con fonte, riscontro e verifiche ancora aperte, distinguendo approvazione, configurazione ed esecuzione. Ogni scelta non ovvia aggiunge una voce al [racconto evolutivo](.claude/context/studio-didattico-master.md) e una scheda di dettaglio secondo la skill studio-didattico, con estratti reali di questo repository e senza inventare configurazioni eseguite. Si parte dall'adozione attuale, senza ricostruire retroattivamente tutta la storia. Da questo giro il work log dichiara Didattica con il rimando alla voce/scheda oppure nessuna con la ragione. Le letture puntuali restano nel registro operativo; il racconto conserva il perché delle scelte significative. Fonti, valori letti e limiti si scrivono nel medesimo giro.
+
 ## Indice dei file satellite tracciati
 
 Memoria e meta-stato, sotto `.claude/memory/`, letti a inizio sessione.

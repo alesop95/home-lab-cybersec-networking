@@ -5,15 +5,16 @@
 ## Stato
 
 ```
-Branch attivo:         main
-Commit di riferimento: 4311db3; template b2fb025 nel working tree
-Data snapshot:         2026-10-20
-Remoto:                origin; HEAD coincide con origin/main locale, nessun fetch nel lotto
+Branch attivo:         main, un solo worktree
+HEAD osservato:        c1f6eb0, allineamento template 3c611dc
+Ancora precedente:     67abca0; schede precedenti non tutte riconciliate qui
+Data snapshot:         2026-10-23
+Remoto:                origin; nessun fetch o verifica del remoto in questo giro
 ```
 
-## Versionamento richiesto il 20/10/2026
+## Versionamento concluso il 20/10/2026
 
-L'utente ha confermato che l'altra sessione ha terminato e ha chiesto di procedere. HEAD osservato 4311db3, allineamento precedente a 84239e1; il working tree contiene il successivo template b2fb025 e il lotto NAS/backup. Non servono altre conferme sul perimetro. Preparare il primo commit parziale del solo allineamento e il successivo chiudi per NAS/backup, senza eseguire git add, commit o push dall'agente. Messaggio NAS preparato in _notes/COMMIT-MSG.txt; il comando finale usa NoWipe per conservare le sessioni. NAS spento confermato, corrente scollegata non ancora confermata. Le cinque lezioni risultano recepite dal registro del template; L-004 documenta il limite delle fixture, non una correzione locale del guard-rail. I controlli completi sulla versione finale passano tutti e dodici, con footer Controlli verdi; cinque lezioni recepite e zero avvisi. Due passaggi manuali pronti in _notes/version-control/COMANDI-PREPARATI.txt: primo commit parziale template senza push, poi chiudi NoWipe per NAS/backup e push finale. Nessuna operazione Git di scrittura eseguita dall'agente.
+Versionamento concluso dall'utente: 9b6d762 per il template b2fb025 e 67abca0 per NAS/backup; chiusura della milestone del 20/10 registrata, da non ripetere. HEAD osservato il23/10 è c1f6eb0, allineamento template3c611dc, un solo worktree main; non riconciliate qui tutte le ancore delle schede precedenti. NASconRAM-03/A2,8GB,treSSD, AHCIora letto. Studioe raccomandazioni approvati ADR-037; pratica tecnico-didattica adottata ADR-038 e già documentata. Nessun account/tunnel/servizio Cloudflare installato o regola applicata. Il mandato autonomo precedente resta in stato blocked per il requisito temporale mancato.
 
 ## Avvertenza sul remoto, da leggere prima di scrivere qualunque cosa
 
@@ -145,7 +146,7 @@ Ripresa del 17/10/2026 su `main` a `eb4708a`. L'impronta della chiusura corrispo
 
 Aggiornamento del banco, 17/10/2026: l'utente conferma GeForce 210 recuperata e PC-02 dismesso. PC-03 è attualmente senza SSD; il Samsung 850 EVO fotografato il 09/10 resta destinato al laboratorio, ubicazione da verificare anche in un'altra stanza. Il work-log del 09/10 prevedeva di estrarlo per il server; ADR-033 del 12/10 lo riassegnava al laboratorio, ma non si trova conferma dell'estrazione o del rimontaggio. Corrette le frasi che lo davano «già montato». Alimentatore attuale di PC-03 dichiarato dall'utente: Atlantis P016-MPW-6000-W, 600 W massimi dichiarati, targa ora letta dalla nuova foto. Due immagini archiviate nella parte privata e verificate SHA-256, due su due. La GeForce resta scorta video non collaudata, senza ruolo nel modello linguistico locale su CPU. Prossimo passo fisico: localizzare il Samsung; niente nuovi prelievi da PC-02. Registro completo nel documento del montaggio.
 
-Aggiornamento del 20/10/2026: anche il secondo modulo, ex B1 ora da solo in A1 secondo lo scambio confermato, ha fallito Memtest86+ 8.10. La nuova immagine mostra 7,85 GB utilizzabili, Time 3:03:15, Pass 3, Errors 2, Status Failed; quarto passaggio al 93%, test 9 Modulo 20 random pattern all'87%, intervallo 7-8 GB, 47/52 °C, DDR4-2138 CAS 15-15-15-35 e 8 thread PAR. Due righe: passaggi 2 e 3, indirizzi 2,81 e 6,49 GB. Il primo modulo aveva già un errore a Time 2:51:08, Pass 3 nello stesso A1. Nessun modulo qualificato: ora si considerano anche slot, canale, scheda, impostazioni e controller, senza dichiarare già guasti entrambi i moduli. Una sola foto non dimostra contatori fermi durante la notte. Immagine archiviata con SHA-256 identico; originale conservato. L'utente ha ora confermato il NAS spento. Non sono ancora confermati scollegamento della corrente o spostamenti della memoria; prima si prepara il versionamento richiesto. TrueNAS attende. Per il laboratorio resta l'850 EVO da localizzare.
+Aggiornamento del 26/10/2026: La scheda Self-Tests del WDC WDS250G1B0A-00H9H0 /dev/sdc mostra Test completed e Test result: Completed without error. Il log contiene una voce Extended offline, stato Completed without error e completamento100%. Sono quindi documentati tre autotest estesi superati, uno per ciascuno dei tre SSD del NAS: SanDisk, Kingston V300 e WD Blue. La stima10min mostrata per il WD non viene chiamata durata effettiva. Nessuna ripetizione dei test è richiesta. Per completare identificazione e usura manca una raccolta via GUI: General e Attributes del WD, General e Attributes del Kingston, General del SanDisk; gli attributi SanDisk sono già acquisiti. I seriali eventualmente presenti nelle foto restano nel livello privato. La domanda sui file da conservare sul SanDisk è ancora senza risposta: nessuna cancellazione o creazione di pool eseguita. Firmware, restanti dati di usura, accettazione finale e riallocazione RAM restano aperti. Raccomandazioni per bisogni approvate in ADR-037 e pratica tecnico-didattica adottata in ADR-038, esplicita in CLAUDE.md, matrice 16, racconto e scheda 01. WireGuard e DNS locale confermati; Cloudflare resta un'opzione per una futura applicazione web non critica, senza attivazione. Nella proposta, condivisioni TCP 445 e gestione HTTPS sono separate; nessuna regola applicata. Sempre il 26/10 TAB-02 è identificato da schermata come Galaxy Tab S6 Lite (2024) SM-P620 di Persona-B, quindi non è il più vecchio dei due; l'edizione di TAB-01 resta da leggere. Aperta, in attesa di riallineamento, la valutazione di SoundCraft per `linux-desktop-C`, con sede nei progetti gemelli dell'audio: nessun fork.
 
 Il lavoro che cambia lo stato della rete resta la fase 2 della roadmap, cioè l'identificazione fisica delle tre schede di rete del firewall dalla console. Si fa alla macchina, non al repository.
 

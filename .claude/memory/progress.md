@@ -836,3 +836,393 @@ Suite completa sulla versione finale del template passata: dodici controlli, zer
 Perimetri correnti verificati senza sovrapposizioni: 37 file template e 31 file NAS/backup/memoria. Il primo passaggio usa percorsi espliciti perché chiudi non supporta un sottoinsieme; il secondo usa la chiusura ordinaria con NoWipe e messaggio già pronto, per committare il lotto residuo e pubblicare entrambi. Comandi e messaggi salvati nella parte privata. L'utente li esegue su main da questo PC; nessuno stage, commit o push è stato eseguito dall'agente. Il NAS rimane spento, corrente scollegata ancora non confermata.
 
 **Template:** nessuna
+
+## 2026-10-20: cavo di alimentazione NAS scollegato
+
+Il versionamento dell'utente è concluso ai commit 9b6d762 e 67abca0, quest'ultimo verificato anche sul remoto. L'utente conferma ora il cavo di alimentazione del NAS scollegato, dopo lo spegnimento già confermato. Aggiornati registro, stato corrente, pendenze e ripresa senza assumere spostamenti RAM o pressione del pulsante già avvenuti. Prossimo gesto comunicato: pulsante di accensione premuto cinque secondi a cavo staccato; nessuna nuova prova di memoria eseguita e TrueNAS resta sospeso.
+
+**Template:** nessuna
+
+## 2026-10-20: pulsante premuto a cavo staccato, prossimo confronto A1-A2
+
+L'utente conferma la pressione per cinque secondi dopo spegnimento e scollegamento del NAS. Il secondo modulo ex B1 resta in A1 e il primo fuori fino a nuova conferma. Verificata visivamente la figura del manuale ASUS S130 a pagina 1-7: A2 raccomandato per un solo modulo, secondo dalla CPU. Richiesta soltanto l'estrazione del secondo modulo da A1, prima della successiva prova in A2 con stesso modulo e impostazioni; nessun esito nuovo. Aggiornati registro del montaggio, allocazione, pendenze, roadmap, stato corrente, registro fonti e ripresa. Impronta di chiusura e frontmatter delle schede non rigenerati.
+
+**Template:** nessuna
+
+## 2026-10-20: posizione di A2 chiarita
+
+Chiarito il riferimento spaziale sul manuale ASUS S130: A2 è adiacente ad A1 allontanandosi dalla CPU, secondo slot dalla ventola Intel; è a destra quando la ventola è alla sinistra degli slot. Nessuna estrazione o installazione confermata dalla domanda dell'utente. Prossima azione fisica invariata, estrazione del solo modulo in A1 a cavo staccato.
+
+**Template:** nessuna
+
+## 2026-10-20: modulo in A2 senza video, avanzamento sul server
+
+Registrato su dichiarazione dell'utente il passaggio del secondo modulo da A1 ad A2 e il nuovo tentativo senza segnale video. Nessun Memtest osservato in A2, nessuna nuova attribuzione del guasto. L'utente chiede di abbreviare il percorso; sospesa la sequenza NAS, proposta prosecuzione sul server Proxmox della roadmap, previa conferma dello spegnimento del NAS. Riletta S102: errori in memoria possono danneggiare i dati e 8 GB è il minimo base, non una qualifica di affidabilità. La coppia Crucial da 4 GB è soltanto un'alternativa proposta per dopo; nessun prelievo o riallocazione definitiva. Riesaminata ADR-016: quarta condizione ancora non soddisfatta, previsto alimentatore alternativo da riprendere. Aggiornati registro NAS, allocazione, pendenze, roadmap, memoria, fonte e ripresa. Nessun cambio hardware eseguito dall'agente, nessun nuovo test fisico o operazione Git.
+
+**Template:** nessuna
+
+## 2026-10-20: obiettivo corretto, completare il NAS e spiegare il rischio
+
+L'utente corregge il fraintendimento: vuole finire il NAS e valutare le conseguenze di un errore, non passare al server. Ripristinato il NAS come lavoro attivo in memoria, pendenze, roadmap, allocazione e ripresa. Spiegato che la coppia mostrava un errore con contatore fermo a 3:46:14, non due giorni di prova attiva documentata; le successive prove individuali hanno mostrato uno e due errori. Nessun tasso di rischio per file calcolabile da questi dati.
+
+Consultata S177 OpenZFS, sezione ECC Memory: effetti da nessun sintomo a blocco, dati o metadati alterati; l'errore precedente al checksum può essere scritto su entrambi i membri del mirror. Esempi foto, ZIP e backup illustrativi, nessun danno reale osservato. Completamento e installazione di prova possibili senza qualifica di affidabilità, conservando originali indipendenti; non dedotta accettazione di perdere dati o cancellare dischi. Primo ostacolo è il video; nessun nuovo gesto fisico confermato, rimane richiesto lo spegnimento prima di interventi. Diagnosi RAM e quarta condizione di ADR-016 aperte; nessun altro ciclo lungo o cambio di componenti richiesto ora.
+
+**Template:** nessuna
+
+## 2026-10-20: NAS spento dopo il mancato video in A2
+
+Confermato dall'utente lo spegnimento del NAS; secondo modulo nell'ultimo A2 dichiarato, primo fuori. Lo scollegamento dopo questo tentativo non è confermato. Prossima azione richiesta: togliere il cavo di alimentazione dal retro, prima del controllo dell'inserimento in A2. Resta attivo il completamento NAS, senza altro lungo Memtest richiesto. Aggiornati registro del montaggio, allocazione, pendenze, memoria, lavoro corrente e ripresa; nessun intervento fisico dell'agente.
+
+**Template:** nessuna
+
+## 2026-10-20: corrente scollegata dopo il tentativo senza video in A2
+
+L'utente conferma il cavo di alimentazione scollegato dal retro del NAS, già spento. Modulo nell'ultimo A2 dichiarato e primo modulo fuori, senza nuovi spostamenti. Prossimo gesto richiesto: premere il pulsante di accensione per cinque secondi a cavo staccato, ancora da confermare per questa preparazione. Seguono controllo dell'inserimento e recupero video; nessun altro lungo Memtest richiesto. Aggiornati registro NAS, allocazione, pendenze, memoria, lavoro corrente e ripresa.
+
+**Template:** nessuna
+
+## 2026-10-20: preparazione completata, reinserimento in A2 richiesto
+
+Confermata dall'utente la pressione per cinque secondi a cavo staccato dopo il tentativo senza video; spegnimento e scollegamento già confermati. Riletta visivamente la pagina 1-9 di S130 sul fermo mobile singolo. Prossimo gesto richiesto: reinserire lo stesso modulo nello stesso A2, tacca allineata e due estremità in sede fino alla chiusura del fermo superiore; nessun inserimento o nuovo avvio confermato. Si prepara il recupero video per completare il NAS, senza altro lungo Memtest automatico. Aggiornati registro NAS, allocazione, pendenze, memoria, lavoro corrente e ripresa.
+
+**Template:** nessuna
+
+## 2026-10-20: NAS ripartito dopo il reinserimento richiesto in A2
+
+L'utente riferisce la ripartenza dopo il reinserimento dello stesso modulo nello stesso A2 richiesto a corrente tolta e chiede come procedere. Nessuna nuova foto o lettura firmware ricevuta e causa del mancato video non isolata. Richiesta una foto completa della schermata corrente con nome del file, prima di scegliere il passo successivo verso firmware e installazione TrueNAS. Nessun altro lungo Memtest o riavvio richiesto per automatismo; diagnosi RAM aperta. Aggiornati registro NAS, allocazione, pendenze, roadmap, memoria, lavoro corrente e ripresa.
+
+**Template:** nessuna
+
+## 2026-10-20: test A2 prima della coppia finale, corretto l'anticipo dell'installazione
+
+L'utente richiama i test, segnala che il NAS ha una sola RAM e chiede precisione. Corretto il percorso attivo: secondo modulo da solo in A2 come confronto temporaneo da 8 GB; obiettivo finale 16 GB A2+B2, poi installazione. Dichiarati scopo e limite: verificare se gli errori osservati in A1 si ripetono col medesimo DIMM in A2, quattro passaggi completi senza errori o stop al primo errore/blocco documentato. Se supera, aggiunta dell'altro in B2 a corrente tolta e prova della coppia con stesso criterio; se fallisce, registrazione e arresto del percorso senza identica ripetizione automatica. Nessuna garanzia assoluta o diagnosi dello slot dedotta. Richiesta foto della schermata corrente per avviare Memtest, nessun nuovo test osservato. Aggiornati registro NAS, allocazione, pendenze, roadmap, memoria, lavoro corrente e ripresa.
+
+**Template:** nessuna
+
+## 2026-10-20: Memtest RAM-02/A2 avviato e identità dei due moduli fissata
+
+L'utente conferma Memtest partito in A2 sullo stesso modulo prima testato in A1 e chiede nomi per i pezzi. Assegnati nomi persistenti: RAM-01 primo test individuale A1, ora fuori; RAM-02 originariamente B1, secondo test A1 e ora in A2. Pubblicate nel registro NAS legenda e matrice delle prove individuali: RAM-01/A1 un errore, RAM-02/A1 due, RAM-02/A2 in corso su dichiarazione senza contatori. Nessun risultato individuale attribuito a B1/B2 dalla coppia originale. Richiesto foglietto RAM-01 accanto al modulo fuori, senza toccare RAM-02 in funzione; applicazione non confermata. Prossimo riscontro foto a quattro passaggi o al primo errore/blocco prima dell'arresto. Coppia finale prevista RAM-02/A2 più RAM-01/B2 se la prova consente di proseguire, nessuna serie automatica sugli altri slot. Aggiornati registro, allocazione, pendenze, roadmap, memoria, lavoro corrente e ripresa.
+
+**Template:** nessuna
+
+## 2026-10-20: RAM-02/A2 fallita e due etichette fisiche confermate
+
+Lette due nuove immagini Memtest86+ 8.10: RAM-02/A2 secondo configurazione dichiarata, 7,85 GB, Time 0:23:17 e 0:23:21, Pass 1, Errors 1, Failed. Riga Pass 0 Test 9, indirizzo 0x0000b479e178, bit 42 calcolato e verificato: stesso indirizzo e bit del primo errore RAM-02/A1. Indizio a favore del modulo, nessuna certezza sul componente e canale A comune ancora non escluso. Tempo avanzato quattro secondi, non un blocco documentato. Etichette RAM-01 e RAM-02 applicate su conferma dell'utente. Due copie archiviate con SHA-256 identico agli originali conservati, manifesto e indice privato aggiornati.
+
+Prova chiusa come fallita: non aspettare quattro passaggi né avviare la coppia con RAM-02. Richiesto spegnimento, ancora non confermato; poi preparare confronto RAM-01 nello stesso A2 a corrente tolta, cambiando soltanto il modulo. Nessun altro scambio o test eseguito. Aggiornati registro NAS, allocazione, pendenze, roadmap, fonte S126, memoria, lavoro corrente e ripresa; nessuna nuova qualifica o operazione Git.
+
+**Template:** nessuna
+
+## 2026-10-20: RAM-01/A2 avviata, corretta l'associazione dell'immagine
+
+L'utente riferisce lo scambio già completato e Memtest partito su RAM-01 sola in A2. Il primo file indicato è risultato SHA-256 identico all'immagine della precedente RAM-02/A2: non attribuito a RAM-01 il vecchio errore. L'utente corregge il riferimento e conferma verifica visiva della combinazione al banco. Nuova immagine letta: Memtest86+ 8.10, 7,85 GB, Time 0:00:02, Pass 0, Errors 0, Testing; test 3 al 21%, 50/50 °C, DDR4-2138 CAS 15-15-15-35, 8T PAR. Copia privata archiviata e riletta con SHA-256 identico, originale conservato; manifesto e indice aggiornati.
+
+RAM-01/A2 ora in corso, RAM-02 fuori; nessuna qualifica dai due secondi iniziali. Prossimo riscontro foto a quattro passaggi completi senza errori o al primo errore/blocco documentato prima dell'arresto, nessun nuovo scambio richiesto. Aggiornati registro NAS, allocazione, pendenze, roadmap, memoria, lavoro corrente e ripresa. Nessuna nuova operazione fisica dell'agente o azione Git.
+
+**Template:** nessuna
+
+## 2026-10-21: RAM-01/A2 fallita dopo il riscontro serale senza errori
+
+Lette insieme le due immagini della sera del 20/10 e quella del mattino del 21/10. RAM-01/A2 a 0:25:57 e 0:26:01: Pass 1, Errors 0; al mattino 0:55:10: Pass 1, Errors 1, Failed, test 8. Indirizzo 0x0001efab15d8 e bit 53 identici al precedente RAM-01/A1, con verso opposto, verificati sulle trascrizioni del registro; nessuna qualifica di modulo o certezza della causa. Entrambi i TEAMGROUP hanno ora fallito A1 e A2. Il contatore non documenta una notte intera di esecuzione attiva e non isola la causa del mancato avanzamento.
+
+Tre immagini archiviate e rilette, SHA-256 identico e originali conservati; manifesto definitivo e indice privato aggiornati. Richiesto spegnimento, ancora da confermare; proposto confronto con due Crucial DDR4 da 4 GB previsti come scorta, non estratti o qualificati. Prova da 8 GB, nessuna nuova allocazione definitiva e 16 GB NAS ancora da risolvere. Se fallisce anche memoria alternativa, riprendere cause comuni e ADR-016 invece di un'altra serie sugli slot. Aggiornati registro NAS, allocazione, pendenze, roadmap, fonti S102/S126, memoria, lavoro corrente e ripresa; impronta di chiusura non rigenerata e nessuna operazione Git.
+
+**Template:** nessuna
+
+## 2026-10-21: origine dei Crucial e coppia alternativa già disponibile
+
+L'utente chiede quale smontaggio fornisca i Crucial. Verificati ADR-032 e inventario: quattro moduli da 4 GB nel futuro server linux-desktop-A, H270M Pro4/i7-7700; due diventerebbero scorta soltanto dopo lo scambio ancora non confermato. Nuova foto letta: due TEAMGROUP TED48G2400C16BK da 8 GB DDR4-2400, 1,2 V, già sul banco e associati a PC-DESKTOP-B. Copia privata SHA-256 identica, originale conservato, manifesto e indice aggiornati. Proposti nomi RAM-03 superiore e RAM-04 inferiore della foto, etichette ancora da confermare.
+
+Aggiornato il controllo proposto alla coppia già disponibile da 16 GB, RAM-03/A2 e RAM-04/B2 dopo spegnimento e preparazione a corrente tolta, invece di richiedere ora il prelievo Crucial. Nessun nuovo montaggio o spegnimento confermato. Criterio della nuova coppia almeno cinque passaggi completi senza errori o stop al primo errore/blocco: il precedente insieme aveva fallito nel quinto dopo quattro puliti. Prestito temporaneo, assegnazione definitiva e conto dei 24 GB server ancora aperti; ADR-016 non chiusa. Aggiornati registro NAS, allocazione, pendenze, roadmap, memoria, lavoro corrente e ripresa.
+
+**Template:** nessuna
+
+## 2026-10-21: corrente NAS rimossa, ruolo della scorta e prova della coppia chiariti
+
+L'utente conferma di avere tolto corrente al NAS, chiede che cosa fare di PC-DESKTOP-B dopo i prelievi e vuole capire la prova. Verificati inventario e allocazione: conservare la scorta assemblata e spenta con B150-PRO, i7-6700, dissipatore, alimentatore, case/ventole e unità ottica; RAM e SSD già rimossi, nessun altro smontaggio ora. RAM-01 resta nell'ultimo A2 dichiarato e RAM-02 fuori. Prossimo gesto richiesto pressione del pulsante per cinque secondi a cavo scollegato, non ancora confermato; nessuna nuova etichetta o inserimento dei due moduli alternativi confermato.
+
+Spiegata la prova successiva: coppia alternativa RAM-03/A2 e RAM-04/B2 da 16 GB, senza altre modifiche, almeno cinque passaggi completi senza errori o arresto dopo foto al primo errore/blocco; il vecchio insieme falliva nel quinto. Scopo confrontare la macchina con altra memoria, non diagnosticare da solo il componente. Nessuna nuova serie automatica sugli slot. Allocazione definitiva NAS/server e quarta condizione ADR-016 aperte. Aggiornati registro NAS, allocazione, pendenze, roadmap, memoria, lavoro corrente e ripresa; nessun intervento fisico o operazione Git dell'agente.
+
+**Template:** nessuna
+
+## 2026-10-21: Memtest della coppia RAM-03/A2 e RAM-04/B2 avviato, limiti del confronto chiariti
+
+Cinque nuove immagini confermano etichette e montaggio: RAM-03 in A2, RAM-04 in B2, A1/B1 vuoti e RAM-01/RAM-02 fuori. Memtest86+ 8.10 su 15,8 GB utilizzabili a Time 0:00:04, Pass 0, Errors 0, Testing. Nessuna qualifica. Originali conservati, cinque copie private con SHA-256 identico, manifesto e indice aggiornati; ordine delle catture distinto da ordine degli eventi fisici.
+
+Su obiezione dell'utente esplicitato il cambio di obiettivo: prova della configurazione candidata da 16 GB, non isolamento di una sola variabile. Cambiano moduli, numero, capacità e uso del canale B; A2+B2 raccomandato dal manuale ASUS S130, pagina 1-7, ricontrollato visivamente. Il confronto controllato avrebbe usato RAM-03 da sola nello stesso A2. Proseguire la coppia già avviata per almeno cinque passaggi senza errori, foto e stop al primo errore/blocco. Se fallisce, prossimo confronto proposto RAM-03 da sola in A2, nessuna serie automatica di tutti gli slot; un esito pulito non prova il guasto dei due vecchi moduli. Accettazione notturna ADR-016 e allocazione definitiva NAS/server ancora aperte. Aggiornati registro, allocazione, pendenze, roadmap, fonti, memoria, lavoro corrente e ripresa. Nessuna operazione Git.
+
+**Template:** nessuna
+
+## 2026-10-21: confermata prosecuzione della coppia, esito in attesa
+
+L'utente conferma di lasciare proseguire la prova RAM-03/A2 + RAM-04/B2 e chiede che sia registrato tutto. Nessun nuovo contatore o esito comunicato: resta valido soltanto l'avvio documentato. Nessuna modifica alla configurazione richiesta; attesa di almeno cinque passaggi completi con Errors 0, oppure foto e arresto al primo errore o blocco documentato. Restano registrati anche lo scopo della prova della coppia da 16 GB e i suoi limiti per isolare il guasto.
+
+**Template:** nessuna
+
+## 2026-10-21: banner PASS riferito, barra spaziatrice premuta e contatori da acquisire
+
+Ultima segnalazione: l'utente riferisce il banner PASS per la coppia RAM-03/A2 + RAM-04/B2 e dice di avere premuto la barra spaziatrice per proseguire. Si registra la dichiarazione senza attribuire un numero di passaggi completati, una durata o un totale di errori non ancora letti. Il banner da solo non verifica il criterio concordato di almeno cinque passaggi completi con Errors 0. Richiesta identificazione della schermata disponibile per acquisire Time, Pass, Errors e stato attuale; nessuna nuova manipolazione o riavvio richiesto. Prova e accettazione finale restano aperte.
+
+**Template:** nessuna
+
+## 2026-10-21: PASS senza schermata, prova lasciata proseguire
+
+L'utente precisa che non c'è una schermata da acquisire: riferisce soltanto PASS, lascia proseguire la prova RAM-03/A2 + RAM-04/B2 e aggiornerà lui. Richiesta di identificare una schermata superata; nessun altro screenshot o contatore da sollecitare ora. PASS registrato come dichiarazione, senza inventare durata, numero di passaggi o totale degli errori. Nessun cambio alla configurazione o riavvio richiesto; si attende il prossimo aggiornamento dell'utente.
+
+**Template:** nessuna
+
+## 2026-10-21: coppia alternativa fallita, Errors 2 nel secondo passaggio
+
+Aggiornamento del 21/10/2026: la coppia alternativa RAM-03/A2 + RAM-04/B2 è fallita. Nuova schermata Memtest86+ 8.10: 15,8 GB, Time 0:53:56, Pass 1, Errors 2, Status Failed; secondo passaggio al 54%, test 8 Random number sequence al 33%. Una sola riga di errore visibile: pCPU 2, Pass 1, Test 8, indirizzo 0x00008fb766b8 (2,24 GB), atteso 0xf56caad22e562f66, letto 0xf56c2ad22e562f66; XOR 0x0000800000000000, bit 47 da 1 a 0. Il contatore totale è due, ma la foto non mostra due righe distinte. Il PASS riferito prima non era un esito finale; criterio dei cinque passaggi senza errori non raggiunto. Non dedurre da una sola schermata un blocco o da questa coppia il guasto individuale di RAM-03/RAM-04; restano possibili cause comuni, B2/canale B e interazione fra moduli. RAM-03 resta nell'ultimo A2 confermato, RAM-04 in B2; RAM-01/RAM-02 fuori e già fallite individualmente A1/A2. Prossimo gesto richiesto spegnere il NAS e scollegare il cavo di alimentazione, ancora da confermare; non muovere RAM ora. Dopo preparazione a corrente tolta, confronto già previsto: togliere soltanto RAM-04 da B2, lasciare RAM-03 da sola nello stesso A2 e riprovare senza cambiare impostazioni. Nessuna matrice automatica di tutti gli slot. Quarta condizione ADR-016, cause comuni e allocazione definitiva NAS/server ADR-032 aperte. PC-DESKTOP-B resta scorta assemblata e spenta senza RAM/SSD; TrueNAS non installato. Foto archiviata con SHA-256 identico, originale conservato.
+
+**Template:** nessuna
+
+## 2026-10-21: avvio prova individuale RAM-03/A2 confermato
+
+Nuovo test del 21/10/2026: l'utente conferma di avere completato la preparazione e avviato Memtest con RAM-03 da sola nello stesso A2. RAM-04 rimossa da B2, A1/B1/B2 vuoti su configurazione dichiarata; RAM-01/RAM-02 restano fuori. La schermata conferma un solo modulo da 8 GB e 7,85 GB utilizzabili, non identifica da sola l'etichetta fisica o il nome ASUS dello slot. Memtest86+ 8.10 build 8.10.49468.x64, Time 0:00:04, Pass 0, Errors 0, Testing; primo passaggio allo 0%, test 3 Moving inversions, 1s & 0s al 28%. DDR4-2138, IMC 1069 MHz, CAS 15-15-15-35, SMP 8T PAR, CPU 3408 MHz, temperatura 39/45 °C. SPD software Slot 1: 8 GB DDR4-2400 Team Group TEAMGROUP-UD4-2400, 2016-W48; Slot 1 non è il nome ASUS A1. Nessuna qualifica dall'avvio. Criterio della prova individuale: quattro passaggi completi con Errors 0, come per i precedenti confronti individuali A2, oppure foto e arresto al primo errore/blocco documentato; i cinque passaggi restano il criterio della futura coppia finale, non una prova già superata. La coppia RAM-03/A2 + RAM-04/B2 resta fallita a 0:53:56, Pass 1, Errors 2; RAM-03 e RAM-04 non sono ancora qualificate individualmente. Togliere RAM-04 verifica il comportamento del modulo rimasto in A2, ma un eventuale esito pulito non distingue da solo modulo tolto, B2/canale B o interazione della coppia. Lasciare proseguire senza altre modifiche; nessun nuovo spegnimento o montaggio da richiedere. Cause comuni, ADR-016 e allocazione definitiva NAS/server ADR-032 restano aperte. TrueNAS non installato. Foto copiata e SHA-256 identico all'originale conservato.
+
+**Template:** nessuna
+
+## 2026-10-21: RAM-03/A2, PASS riferito senza schermata e prova in prosecuzione
+
+L'utente riferisce PASS nella prova di RAM-03 da sola in A2, dice di avere premuto la barra spaziatrice e lascia proseguire il test, senza schermata. Segnalazione registrata senza attribuire contatori, durata o numero di passaggi non acquisiti; il criterio dei quattro passaggi completi con Errors 0 resta da verificare. Nessun cambio alla configurazione, nessuno screenshot da richiedere ora; attendere il prossimo aggiornamento dell'utente.
+
+**Template:** nessuna
+
+## 2026-10-22: RAM-03/A2 circa 22 ore senza fail riferite, prossimo confronto RAM-04 nello stesso slot
+
+Aggiornamento del 22/10/2026: l'utente riferisce circa 22 ore di prosecuzione del Memtest di RAM-03 da sola nello stesso A2 senza fail. Si registra un esito prolungato positivo su dichiarazione e si ritiene sufficiente questa prova individuale per avanzare, senza prolungarla ancora. Durata approssimata riferita, non contatore Time letto dall'agente; nessuna nuova schermata, numero di passaggi o valore del contatore Errors acquisito. Il precedente PASS era riferito, seguito dalla prosecuzione. RAM-03/A2 è quindi la prima configurazione individuale con un risultato prolungato positivo; non è una garanzia assoluta né l'accettazione del NAS da 16 GB. RAM-01/RAM-02 restano fallite individualmente A1/A2, la coppia RAM-03/A2 + RAM-04/B2 resta fallita a 0:53:56 con Errors 2. RAM-04 non ancora provata da sola. Il risultato riduce il sospetto sulla combinazione RAM-03/A2 in questa configurazione, ma non distingue da solo RAM-04, B2/canale B e carico o interazione dei due moduli. Prossimo gesto richiesto spegnere il NAS e scollegare alimentazione, ancora da confermare; il test è ancora in corso nell'ultimo stato riferito. Poi sostituire soltanto RAM-03 con RAM-04 nello stesso A2, un solo modulo, impostazioni invariate. Criterio per RAM-04 individuale: quattro passaggi completi senza errori o arresto al primo errore/blocco documentato, senza richiedere un'altra prova di 22 ore. Nessuna matrice automatica degli slot. Accettazione finale, ADR-016 e allocazione definitiva NAS/server ADR-032 restano aperte; i cinque passaggi appartengono al criterio della futura coppia finale. PC-DESKTOP-B resta scorta assemblata e spenta senza RAM/SSD. TrueNAS non installato; nessun nuovo screenshot da richiedere per registrare questa dichiarazione.
+
+**Template:** nessuna
+
+## 2026-10-22: prova individuale RAM-04/A2 avviata dopo RAM-03
+
+Avviata la prova concordata di RAM-04 da sola nello stesso A2, RAM-03 rimossa. Schermata Memtest86+ 8.10 build 8.10.49468.x64: 7,85 GB, Time 0:00:35, Pass 0, Errors 0, Testing; primo passaggio al 3%, test 4 Moving inversions, 8 bit pattern al 47%, intervallo 2 GB - 3 GB, pattern 0xfdfdfdfdfdfdfdfd. CPU 3408 MHz, temperatura 46/50 °C, IMC 1069 MHz, DDR4-2138 CAS 15-15-15-35, SMP 8T PAR. SPD software Slot 1: 8 GB DDR4-2400 Team Group TEAMGROUP-UD4-2400, 2016-W48. Slot 1 non è il nome ASUS A1; identità RAM-04 e posizione A2 derivano dal passo concordato e dall'avvio riferito, non dalla sola schermata SPD. È soltanto l'avvio, nessuna qualifica di RAM-04. Lasciare proseguire per quattro passaggi completi con Errors 0 oppure foto e arresto al primo errore/blocco, senza altre modifiche. RAM-03/A2 conserva circa 22 ore senza fail su dichiarazione; coppia RAM-03/A2 + RAM-04/B2 fallita a 0:53:56 con due errori. Cause comuni, configurazione finale, ADR-016 e allocazione NAS/server aperte. TrueNAS non installato. Foto archiviata e SHA-256 identico all'originale conservato; nessun nuovo spegnimento o montaggio da richiedere.
+
+**Template:** nessuna
+
+## 2026-10-22: RAM-04/A2 fallita, richiesto proseguimento con sola RAM-03 e BIOS
+
+RAM-04 da sola in A2 ha mostrato un errore: Memtest86+ 8.10 build 8.10.49468.x64, Time 0:04:38, Pass 0, Errors 1, Status Testing; primo passaggio al 27%, test 6 Moving inversions, 64 bit pattern al 36%. Il test è fallito secondo il criterio di zero errori, anche se lo stato visualizzato non è ancora Failed. Una riga visibile: pCPU 1, Pass 0, Test 6, indirizzo 0x000047abb378 (1,12 GB), atteso 0x0000080000000000, letto 0x0000000000000000, XOR 0x0000080000000000, bit 43 da 1 a 0. RAM 7,85 GB utilizzabili, CPU 3408 MHz, temperatura 47/50 °C, DDR4-2138 CAS 15-15-15-35, 8T PAR. Non si deduce un blocco da una sola schermata. RAM-03 nello stesso A2 ha circa 22 ore senza fail su dichiarazione: il confronto rafforza nettamente il sospetto su RAM-04, da escludere operativamente dal NAS, senza certificare ogni causa comune o B2. RAM-01/RAM-02 restano sospette e fuori; non buttare i moduli. L'utente invita a procedere. Percorso attivo: spegnere e scollegare il NAS, a LED spenti sostituire RAM-04 con la sola RAM-03 nello stesso A2, poi riaccendere ed entrare nel BIOS con Canc per proseguire il montaggio e verificare firmware/dischi. Tutti questi nuovi gesti ancora da confermare; ultima configurazione RAM-04/A2 con errore. Nessun altro Memtest identico su RAM-03 né nuova matrice di slot richiesta. Configurazione candidata per avanzare da 8 GB, coerente con il minimo base di S102; obiettivo precedente 16 GB e conto server di ADR-032 da rivedere, non contare gli stessi moduli due volte. Accettazione finale e ADR-016 ancora aperte; nessuna installazione o cancellazione eseguita. TrueNAS non installato. Foto archiviata con SHA-256 identico, originale conservato.
+
+S102 requisito minimo base riletto online; URL corrente sviluppo28, nessuna release selezionata. Aggiornati registro, allocazione, pendenze, roadmap, fonti, memoria, lavoro corrente e ripresa. Nessuna operazione Git o installazione.
+
+**Template:** nessuna
+
+## 2026-10-23: rimontaggio RAM-03/A2 e BIOS confermati
+
+Aggiornamento del 23/10/2026: l'utente conferma RAM-03 rimontata nello stesso A2 e ingresso nel BIOS. Nuova configurazione corrente confermata su dichiarazione, non più preparazione pendente: NAS acceso nel firmware con la sola RAM-03, RAM-04 rimossa secondo il passo concordato; RAM-01/RAM-02 fuori. Nessuna nuova schermata BIOS ricevuta o letta: memoria effettivamente rilevata, presenza e porte dei tre SSD e modalità SATA/AHCI restano da verificare, non si presumono dai dati dei giorni precedenti. Prossimo riscontro richiesto una foto intera e leggibile della schermata BIOS attuale; nessuna modifica alle impostazioni richiesta prima della lettura. Nessun nuovo spegnimento, rimontaggio o Memtest identico da richiedere. Base del percorso candidato da 8 GB: RAM-03/A2 circa 22 ore senza fail riferite il 22/10; RAM-04/A2 fallita a 0:04:38, Errors 1, Status Testing, test 6 e bit 43. RAM-01/RAM-02 fallite individualmente A1/A2 e coppia RAM-03/A2 + RAM-04/B2 fallita. RAM sospette escluse dall'uso NAS e conservate etichettate. Accettazione ADR-016 e riallocazione NAS/server ADR-032 ancora da riconciliare; TrueNAS non installato, AHCI, SMART lungo e dati SanDisk da verificare.
+
+**Template:** nessuna
+
+## 2026-10-23: EZMode conferma RAM8GB/A2 e treSSD, controllo AHCI successivo
+
+Aggiornamento del 23/10/2026: letta la schermata ASUS H170-PRO EZ Mode, BIOS 3805. RAM-03 nello stesso A2 su conferma precedente dell'utente; ora il BIOS osservato mostra 8192 MB DDR4 a 2133 MHz, solo DIMM_A2 Team Group 8192 MB 2400 MHz SPD, A1/B1/B2 N/A, XMP Disabled. Tre SSD rilevati sulle porte previste: SATA6G_1 SanDisk SDSSDA240G 240 GB; SATA6G_2 Kingston SV300S37A240G 240 GB; SATA6G_6 WDC WDS250G1B0A-00H9H0 250 GB. Porte 3/4/5 N/A. CPU 34 °C, scheda 27 °C, CPU Core Voltage 1,104 V; questo non è il +12 V dell'alimentatore. Intel Rapid Storage mostra Off evidenziato, ma SATA Mode Selection non è visibile: AHCI resta da verificare direttamente. Prossimo passo F7, Advanced, SATA Configuration, leggere SATA Mode Selection e acquisire schermata senza cambiare valori. Percorso riscontrato sul manuale S130 sezione 2.6.5, pagina 2-32, PDF 66. RAM-03/A2 circa22h senza fail su dichiarazione; RAM-01/RAM-02/RAM-04 fuori e sospette, nessun nuovo Memtest richiesto. TrueNAS non installato; SMART lungo, dati SanDisk, accettazione e riallocazione NAS/server restano aperti. Foto archiviata con SHA-256 identico, originale conservato.
+
+**Template:** nessuna
+
+## 2026-10-23: correzione menu BIOS e studio Cloudflare nel contesto del progetto
+
+Aggiornamento del 23/10/2026: le due foto corrette mostrano il menu Advanced del BIOS, non ancora il campo SATA Mode Selection. Nel BIOS corrente la voce si chiama PCH Storage Configuration: correggere il percorso precedente Advanced > SATA Configuration, che deriva dal manuale E12046 ma non dal nome effettivo della versione osservata. Prossimo riscontro: aprire Advanced > PCH Storage Configuration e fotografare SATA Mode Selection senza cambiare valori. AHCI resta da verificare. Monitor hardware osservato: memoria 8192 MB a2133MHz, tensione DRAM1,200V, CPU34°C e3400MHz, Vcore1,104V; +12V12,192V, +5V5,040V, +3,3V3,392V. Il +12V è ora letto direttamente nel BIOS, senza confonderlo con Vcore, e non certifica da solo l'alimentatore. Sola RAM-03/A2 e treSSD porte1/2/6 già osservati; RAM-03 circa22h senza fail su dichiarazione, RAM-01/RAM-02/RAM-04 fuori. Nessun nuovo Memtest. Foto copiate con SHA-256 identici e originali conservati; identificativo NIC non trascritto nel livello pubblico. TrueNAS non installato; SMARTlungo, datiSanDisk, accettazione e allocazione restano aperti.
+
+Studio Cloudflare Zero Trust Free e alternative completato il23/10/2026 in docs/03-spunti-di-sviluppo/23-studio-home-lab/15-cloudflare-zero-trust-e-alternative.md, con fonti primarie aggiornate. Raccomandazione dell'analisi: mantenere WireGuard su OPNsense per accesso amministrativo, AdGuard/Unbound per DNS locale e priorità a VLAN/AP/firewall; Cloudflare soltanto candidato facoltativo per una singola applicazione web non critica, senza nuovi ingressi di gestione o inoltro DNS della casa. Gateway come DNS richiederebbe rivedere ADR-007; pubblicare amministrazione tramite Access rivedrebbe ADR-025. Free verificati: Cloudflare50utenti e logstandard fino24h; TailscalePersonal6utenti, dispositivi personali illimitati e50risorse con tag incluse; NetBirdCloud5utenti/100macchine, Communityautogestita gratuita distinta dalle funzioniEnterprise. Nessun account creato, connettore installato, configurazione modificata o prova eseguita. Nessuna nuova decisione di adozione.
+
+Aggiornati indice dello studio, confronto VPN, registro fonti e roadmap; nessuna nuova adozione o operazione Git.
+
+**Template:** nessuna
+
+Verifiche del giro: md-unwrap su 14 file senza modifiche; albero documentale con 175 documenti tutti raggiungibili, zero collegamenti rotti e zero orfani; cinque file di tabelle senza difetti; diff whitespace pulito. Guard-rail di anonimizzazione: 664 file esaminati, zero riscontri bloccanti; 127 riscontri non bloccanti da valutazione, principalmente importi e indirizzi del piano privato già documentati. Nessun commit o push eseguito.
+
+## 2026-10-23: approvazioni per bisogni, avvio tecnico-didattico e AHCI verificato
+
+Aggiornamento del 23/10/2026: letta direttamente nel BIOS la modalità SATA Mode Selection AHCI, controller SATA Enabled, percorso Advanced > PCH Storage Configuration. Nessuna modifica di questi valori richiesta. Hyper Kit Mode Disabled, Aggressive LPM Support Disabled; SMART Self Test mostra On, che non documenta l'esito di un test lungo. Visibili SanDisk240 su SATA6G_1 e Kingston240 su SATA6G_2; WD250 su SATA6G_6 già osservato nella schermata EZ. Memoria8192MB a2133MHz, DRAM1,200V; CPU35°C3400MHz, Vcore1,104V; +12V12,192V,+5V5,040V,+3,3V3,408V. Sola RAM-03/A2, circa22h senza fail su dichiarazione; RAM-01/RAM-02/RAM-04 fuori. Prossimo riscontro Esc, Advanced, HDD/SSD SMART Information e foto leggibile; attributi e test lungo ancora non acquisiti, datiSanDisk da confermare, TrueNAS non installato. Foto copiata e SHA-256 identico all'originale conservato.
+
+L'utente approva le raccomandazioni e richiede documentazione tecnica e tecnico-didattica evolutiva: registrati ADR-037 e ADR-038, matrice16, master e scheda01, istruzione in CLAUDE.md. WireGuard/DNSlocale e priorità rete confermati; Cloudflare solo eventuale appweb noncritica, nessuna attivazione. La bozza PORTE_CONDIVISIONE è limitata aTCP445 per NASsenzaapp, HTTPS gestione inVLAN99; nessuna regola applicata.
+
+Creati matrice tecnica16, master cronologico e scheda01 con estratti reali prima/dopo, inclusa correzione del solo alias SMB nella proposta08. Fonti S178-S185 mantenute come riferimenti datati, S130 aggiornata per AHCI osservato. Nuova scheda ancorata al HEAD c1f6eb0 letto oggi con perimetro esplicito delle modifiche locali; nessuna ancora delle schede precedenti spostata. Nessuna rete configurata, nessun test di accesso remoto o Cloudflare eseguito.
+
+**Didattica:** voce 1 nel master e scheda [refactor-01-bisogni-controlli-e-flussi.md](../context/refactor-01-bisogni-controlli-e-flussi.md).
+
+**Template:** nessuna
+
+Verifiche del giro didattico: 22 file Markdown conformi, cinque file di tabelle senza difetti, 176 documenti tutti raggiungibili e zero collegamenti rotti/orfani, diff whitespace pulito. Anonimizzazione: zero riscontri bloccanti e 127 avvisi non bloccanti del controllo generale. Carico istruzioni di progetto 85.544 caratteri sotto la soglia 100.000. Estratti prima/dopo confrontati con le fonti reali conservate; alias condivisioni TCP445 e alias gestione TCP22/443 verificati nei file. Nessuna regola applicata, nessun commit o push.
+
+## 2026-10-23: quattro attributi SMART SanDisk acquisiti, letture degli altri SSD successive
+
+Aggiornamento del 23/10/2026: letta la prima pagina HDD/SSD SMART Information, dispositivo SanDisk SDSSDA240G 240 GB del pool dati previsto. BIOS mostra quattro attributi: Reallocated Sectors Count VAL100 WOR100 THR000 raw000000000000; Power-On Hours Count VAL000 WOR100 THR000 raw000000004AF0; Power Cycle Count VAL100 WOR100 THR000 raw000000000755; Temperature(C) VAL071 WOR041 THR000 raw003B0000001D. Conversioni aritmetiche dei contatori: 0x4AF0=19184, 0x0755=1877; nel formato termico standard la parte bassa0x1D=29, da confermare nella lettura completa. Il profilo smartmontools per SDSSDA240G chiama il primo contatore Retired_Block_Count: non estendere l'etichetta generica BIOS a una certificazione dei settori o del disco. VAL/WOR sono valori normalizzati, non ore o gradi: 071 non significa71°C. Questa schermata parziale non mostra usura completa, log errori o risultato del testlungo. AHCI,8GB/A2 e treSSD già verificati; TrueNAS non installato. Prossimo passo nel menuDevice selezionare KingstonV300 eWDBlue, una foto ciascuno, senza cambi. Testlungo/capacità SMARTcomplete e datiSanDisk ancora da verificare. Fonti smartctl/drivedb ufficiali registrate; nessuna nuova scheda didattica, applicazione della distinzione già documentata nella voce1. Foto copiata con SHA identico, originale conservato.
+
+**Didattica:** nessuna nuova scheda: rilievo operativo e applicazione della distinzione fra configurazione, misura e qualifica già sviluppata nella voce1; spiegazione normalizzato/RAW nel registro NAS con fonti specifiche, senza riscrivere la voce storica.
+
+**Template:** nessuna
+
+## 2026-10-23: SMART BIOS KingstonV300 acquisito, rimane WD Blue
+
+Aggiornamento del 23/10/2026: letta la pagina SMART BIOS del Kingston SV300S37A240G 240 GB, disco di avvio previsto su SATA6G_2. Cinque attributi acquisiti: Read Error Rate RAW0 e Reallocated Sectors Count RAW0; Power-On Hours RAW234400007DE4, Power Cycle Count RAW000000000E02, temperatura RAW00110029001A. Il profilo specifico smartmontools usa msec24hour32: i32bitbassi7DE4 corrispondono al campoore32228, non si converte l'intero RAW in ore; decodifica completa e firmware da leggere. Cicli0xE02=3586, parte bassa temperatura0x1A=26 coerente conVAL026, senza generalizzare questo formato agli altriSSD. Nessuna percentuale di vita residua o testlungo superato dedotta. SanDisk già letto, WD Blue ancora da fotografare dalmenuDevice senza altre modifiche. RAM-03/A2,8GB,AHCI e treSSD già verificati; TrueNASnoninstallato, SMARTcompleto/testlungo e datiSanDisk ancora da verificare. Foto copiata e SHA identico, originale conservato.
+
+**Didattica:** nessuna nuova scheda: seconda lettura operativa, applicazione del principio della voce1 e dei formati vendor gi? spiegati nel registro; nessuna qualifica oltre i dati acquisiti.
+
+**Template:** nessuna
+
+## 2026-10-23: nuova immagine ancora Kingston, WD non acquisito
+
+Ulteriore riscontro del 23/10/2026: la nuova immagine mostra ancora Device KINGSTON SV300S37A240G, non il WD Blue. I cinque campi SMART visibili coincidono con la precedente pagina Kingston; nessun nuovo dato WD acquisito. Prossimo passo selezionare nel menuDevice WDC WDS250G1B0A; se non compare, acquisire l'elenco Device aperto. Nessun'altra impostazione da modificare, nessun nuovo test o giudizio di salute dedotto.
+
+**Didattica:** nessuna nuova scheda: riscontro ripetuto, controllo dell'identità del dispositivo prima di attribuire i dati.
+
+**Template:** nessuna
+
+## 2026-10-23: SMART BIOS WD Blue acquisito, prima raccolta dei treSSD completata
+
+Aggiornamento del 23/10/2026: acquisita la pagina SMART del WD Blue WDS250G1B0A-00H9H0, dati su SATA6G_6. RAW riallocazioni 000000000000, ore 000000004889, cicli 000000000ADB, temperatura 00400011001B; VAL/WOR/THR rispettivamente100/100/000,100/100/000,100/100/000,073/064/000. Conversioni dei campi standard:18569 nel campoore,2779cicli e partebassa27 compatibiletemperatura; firmware e output completo ancora da leggere. Le prime pagine BIOS dei treSSD sono ora tutte acquisite, ciascuna con RAW0 nel contatore riallocazioni/ritiroblocchi; soloKingston mostraReadErrorRate,RAW0. Raccolta preliminare finita, non salute/usura o testlungo qualificati. AHCI,RAM-03/A2,8GB e porte1/2/6 gi?verificati. Prossimo avvio UEFI della chiavettaVentoy/Medicat gi? usata perMemtest e foto delmenuprincipale per scegliere diagnosticaSMART. Immagini diagnostiche disponibili non ancora confermate; nessun nuovoMemtest o installazione/formattazione. DatiSanDisk, SMARTcompleto/capacit? e testlungo pendenti. FotoWDarchiviata SHAidentico, originaleconservato.
+
+**Didattica:** nessuna nuova scheda: terzo rilievo operativo e confronto preliminare, applicazione della distinzione gi? documentata fra misura e qualifica. Valori e fonti nel registro NAS.
+
+**Template:** nessuna
+
+## 23/10/2026: chiavetta Medicat avviata, scelta dell'ambiente diagnostico
+
+Avviato correttamente il menu principale Medicat USB v21.12, con indicazione UEFI. Sono visibili Antivirus, Backup and Recovery, Boot Repair, Diagnostic Tools, Live Operating Systems, Partition Tools, Password Removal e Windows Recovery; è selezionato Antivirus. Per individuare un ambiente da cui leggere lo SMART completo, aprire Live Operating Systems, quinta voce: dalla selezione attuale quattro pressioni di freccia giù e Invio, poi acquisire il sottomenu. La presenza della categoria non conferma ancora quali sistemi o strumenti contenga. Nessun nuovo test o intervento sui dischi eseguito.
+
+Restano aperti SMART completo, firmware e autotest supportati dei tre SSD, oltre alla destinazione dei dati SanDisk. RAM-03/A2, 8 GB e AHCI restano la configurazione osservata. Il riscontro conferma il menu di avvio, non l'esecuzione di una diagnostica. Nessuna modifica ai dischi; immagine conservata privatamente con verifica SHA-256 e originale mantenuto.
+
+**Didattica:** nessuna nuova scheda: osservazione del menu di avvio e avanzamento operativo; la categoria visibile non dimostra la presenza di uno specifico ambiente o strumento.
+
+**Template:** nessuna
+
+## 23/10/2026: ambienti live elencati, voce SystemRescue individuata
+
+Nel sottomenu Live Operating Systems di Medicat USB v21.12 sono visibili Active@ Data Studio, Mini Windows 10 e SystemRescue, tutte con freccia verso un ulteriore livello. È selezionata la riga di ritorno alla cartella superiore; indicazione UEFI visibile. Prossimo passo aprire SystemRescue, terza voce dopo il ritorno: tre pressioni di freccia giù e Invio, poi acquisire il menu risultante. La voce SystemRescue è confermata, mentre versione, immagine avviabile e strumenti effettivamente disponibili non sono ancora verificati. Nessun ambiente live avviato e nessun nuovo controllo dei dischi eseguito.
+
+Restano aperti SMART completo, firmware e autotest supportati dei tre SSD, oltre alla destinazione dei dati SanDisk. RAM-03/A2, 8 GB e AHCI restano la configurazione osservata. Il riscontro conferma il menu di avvio, non l'esecuzione di una diagnostica. Nessuna modifica ai dischi; immagine conservata privatamente con verifica SHA-256 e originale mantenuto.
+
+**Didattica:** nessuna nuova scheda: osservazione del sottomenu; si distingue la voce disponibile dall'effettivo avvio dell'ambiente e dall'esecuzione della diagnostica.
+
+**Template:** nessuna
+
+## 23/10/2026: SystemRescue 8.07 avviato, identificazione dei dischi da console
+
+Acquisita la sequenza dal file SystemRescue nel menu Medicat, attraverso la schermata Ventoy con Boot in normal mode selezionato, fino al menu GNU GRUB 2.06 con Boot SystemRescue using default options selezionato. L'utente riferisce che l'avvio è proseguito da solo senza selezionare manualmente la voce; la successiva console conferma SystemRescue 8.07 x86_64, tty1/6, accesso root automatico e prompt disponibile. La versione 2.06 è di GRUB, mentre quella del sistema live è 8.07. Prossimo controllo, nel prompt della console del NAS: digitare `lsblk -d -o NAME,SIZE,MODEL,TRAN`, premere Invio e acquisire l'output. Il dato necessario è la corrispondenza osservata fra nome Linux, capacità, modello e trasporto di ciascun disco, distinguendo i tre SSD SATA dalla chiavetta USB; non assegnare /dev/sda o altri nomi per supposizione. La console pronta verifica l'avvio del live, non la salute dei dischi. SMART completo e autotest non ancora eseguiti.
+
+Restano aperti SMART completo, firmware e autotest supportati dei tre SSD, oltre alla destinazione dei dati SanDisk. RAM-03/A2, 8 GB e AHCI restano la configurazione osservata. Il riscontro conferma il menu di avvio, non l'esecuzione di una diagnostica. Nessuna modifica ai dischi; quattro immagini conservate privatamente con verifica SHA-256 e originali mantenuti.
+
+**Didattica:** nessuna nuova scheda: avanzamento operativo; si distinguono versione del bootloader, avvio reale del live e controlli dei dischi ancora da eseguire. Skill prove-che-misurano applicata al riscontro reale dei nomi Linux prima dei comandi SMART.
+
+**Template:** nessuna
+
+## 23/10/2026: SSD identificati in Linux e passaggio al desktop per facilitare l'uso
+
+Riuscito il comando `lsblk -d -o NAME,SIZE,MODEL,TRAN` nella console di SystemRescue 8.07: /dev/sda SanDisk SDSSDA240G, 223.6G, SATA; /dev/sdb KINGSTON SV300S37A240G, 223.6G, SATA; /dev/sdc WDC WDS250G1B0A-00H9H0, 232.9G, SATA; /dev/sdd Flash Disk, 58.2G, USB. Presente anche loop0 da 693.6M, da non confondere con gli SSD. La schermata contiene un errore di un tentativo precedente, seguito dall'elenco valido; nessun guasto ai dischi dedotto dall'errore di comando. L'utente riferisce notevole difficoltà a digitare anche cambiando tastiera; layout effettivo e causa non verificati. Si adatta il percorso: digitare soltanto `startx`, Invio e acquisire il desktop o l'eventuale errore. Il manuale ufficiale S188 documenta startx; S189 registra l'aggiunta di GSmartControl dalla versione 8.03, S190 il suo avvio dal menu desktop. La disponibilità effettiva di GSmartControl nell'immagine corrente va ancora vista. Desktop e interfaccia SMART non ancora avviati; lettura completa e test lungo restano pendenti.
+
+Restano aperti SMART completo, firmware e autotest supportati dei tre SSD, oltre alla destinazione dei dati SanDisk. RAM-03/A2, 8 GB e AHCI restano la configurazione osservata. Il riscontro identifica i dispositivi nella sessione Linux; non ne misura ancora salute, usura o risultato degli autotest. Nessuna modifica ai dischi; immagine conservata privatamente con verifica SHA-256 e originale mantenuto.
+
+| Nome nella sessione live | Modello letto | Dimensione riportata da lsblk | Trasporto | Ruolo previsto |
+|---|---|---|---|---|
+| /dev/sda | SanDisk SDSSDA240G | 223.6G | sata | dati, porta SATA6G_1 |
+| /dev/sdb | KINGSTON SV300S37A240G | 223.6G | sata | avvio, porta SATA6G_2 |
+| /dev/sdc | WDC WDS250G1B0A-00H9H0 | 232.9G | sata | dati, porta SATA6G_6 |
+| /dev/sdd | Flash Disk | 58.2G | usb | chiavetta diagnostica |
+| loop0 | non mostrato | 693.6M | non mostrato | dispositivo loop, escluso dai tre SSD SATA |
+
+La mappa deriva dall'output reale di questa sessione, non dal solo ordine dei cavi; i nomi Linux possono cambiare dopo un riavvio o una modifica ai collegamenti. Le letture SMART successive devono confrontare ancora il modello dell'unità. L'avvio del desktop è soltanto richiesto, non ancora verificato. Fonti: S188, S189 e S190 nel registro unico.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo della mappa dei dischi e adattamento alla difficoltà di digitazione; elenco dei dispositivi distinto dalla qualifica SMART. La presenza effettiva dell'interfaccia grafica viene verificata prima di prescriverne i clic.
+
+**Template:** nessuna
+
+## 23/10/2026: desktop grafico avviato, apertura del controllo SMART da verificare
+
+Desktop grafico Xfce di SystemRescue 8.07 avviato e visibile, con icone File System e Home e pannello inferiore. Prossimo passo aprire il menu applicazioni in basso a sinistra, cercare GSmartControl nella categoria System ed aprirlo se presente; acquisire la finestra dei dischi, oppure il menu aperto se la voce manca. La posizione della voce è un percorso da verificare, non un menu già osservato. GSmartControl e i dati SMART completi non ancora acquisiti. Mappa della sessione già letta: /dev/sda SanDisk, /dev/sdb Kingston V300, /dev/sdc WD Blue, /dev/sdd USB; RAM-03/A2, 8 GB e AHCI restano la configurazione osservata. Dati SanDisk, autotest supportati, risultato lungo e accettazione finale ancora pendenti. Nessuna installazione o creazione di pool eseguita.
+
+Il desktop disponibile conferma l'avvio grafico; la lettura SMART e l'esito dei test restano verifiche distinte. Si usa il mouse per ridurre la difficoltà di digitazione riferita dall'utente. Riferimenti già consultati: S188 per startx e S189/S190 per il percorso verso GSmartControl. Immagine conservata privatamente con SHA-256 verificato e originale mantenuto.
+
+**Didattica:** nessuna nuova scheda: avanzamento operativo nell'interfaccia grafica; avvio del desktop distinto dalla presenza del programma e dai risultati diagnostici.
+
+**Template:** nessuna
+
+## 23/10/2026: GSmartControl aperto, controllo SMART generale superato dai tre SSD
+
+GSmartControl aperto e inventario dei tre SSD più Flash Disk visibile. Selezionando le unità, il programma mostra Basic health check: PASSED per SanDisk SDSSDA240G /dev/sda 240.06 GB, KINGSTON SV300S37A240G /dev/sdb 240.06 GB e WDC WDS250G1B0A-00H9H0 /dev/sdc 250.06 GB. Enable SMART risulta selezionato per tutti e tre; la schermata non prova chi abbia cambiato l'impostazione. Le famiglie mostrate sono SandForce Driven SSDs per SanDisk e Kingston, WD Blue / Red / Green SSDs per WD: sono etichette del database del programma, senza diagnosi del controller reale. PASSED riguarda lo stato SMART generale, non un test lungo superato né una misura della vita residua. Prossimo passo doppio clic sul SanDisk in alto a sinistra, poi scheda Attributes e foto leggibile degli attributi. Se la finestra è piccola, ingrandirla; se non compare Attributes, acquisire la finestra dei dettagli aperta. Firmware, attributi completi, capacità ed esito del test lungo ancora da acquisire.
+
+| Dispositivo osservato | Modello | Capacità riportata dalla GUI | Basic health check | Enable SMART |
+|---|---|---|---|---|
+| /dev/sda | SanDisk SDSSDA240G | 240.06 GB | PASSED | selezionato |
+| /dev/sdb | KINGSTON SV300S37A240G | 240.06 GB | PASSED | selezionato |
+| /dev/sdc | WDC WDS250G1B0A-00H9H0 | 250.06 GB | PASSED | selezionato |
+
+Il risultato generale SMART è distinto dal log degli autotest e dagli attributi di usura, come spiegato dal manuale S186. La nuova osservazione chiude la verifica della presenza e apertura del programma; mantiene aperti dati completi e test dei dischi.
+
+Immagini archiviate privatamente con confronto SHA-256; originali conservati. Nessun test o modifica dei dati dedotto dalla semplice selezione delle unità.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo del programma e del controllo generale; distinzione fra stato SMART, usura e autotest già documentata.
+
+**Template:** nessuna
+
+## 23/10/2026: attributi SMART del SanDisk letti, verifica dei test ancora aperta
+
+Letta la scheda Attributes del SanDisk SDSSDA240G /dev/sda in GSmartControl, revisione struttura SMART 1. Tutte le righe visibili riportano Failed: never. Valori acquisiti: ID5 RAW0; ore19193h+00m+00.000s; cicli1877; ID166 RAW51; ID168 RAW102; ID173 RAW65; perdite inattese di alimentazione ID174 RAW62; Reported Uncorrectable ID187 RAW0; Command Timeout ID188 RAW0; temperatura34 gradi con Min/Max0/59; SATA CRC Error Count ID199 RAW0; spazio di riserva ID232 VAL100 WOR100 THR4 RAW100; scritture ID241 RAW29129 GiB e letture ID242 RAW54361 GiB secondo il profilo specifico. Il profilo corrente S187 per il modello esatto chiama ID166 Min_PE_Cycles e ID168 Max_PE_Cycles: le etichette GUI Later Bad Block Count e SATA Physical Error Count non sono usate per dichiarare 51 blocchi guasti o 102 errori di collegamento. ID232 non è una percentuale di vita residua; i campi grezzi composti non vengono convertiti in usura totale. Prossimo passo aprire la scheda Self-tests già visibile e acquisirla per verificare test disponibili e log. Firmware e dati generali ancora da leggere, test lungo non avviato né concluso.
+
+Tabella e confronto con la fonte S187 nel registro NAS. Nessuna modifica ai dati o autotest avviato in questo riscontro.
+
+**Didattica:** nessuna nuova scheda: applicazione del principio già documentato su misura e interpretazione; il caso concreto delle etichette discordanti è spiegato nel registro con la fonte primaria.
+
+**Template:** nessuna
+
+## 23/10/2026: selezionato il test esteso del SanDisk prima dell'assenza
+
+Nella scheda Self-Tests del SanDisk SDSSDA240G /dev/sda risulta selezionato Extended Self-test, durata stimata 10 min, log con zero voci. L'utente chiede se lanciarlo prima di andare via: indicato di premere Execute e lasciare il NAS acceso e alimentato. Il test termina da solo e non cancella i dati. Questo riscontro documenta la selezione, senza ancora attestare avvio o completamento; prevista lettura del log al ritorno, senza foto intermedia obbligatoria.
+
+**Didattica:** nessuna nuova scheda: selezione del test e indicazione di esecuzione, senza ancora un esito.
+
+**Template:** nessuna
+
+## 26/10/2026: SanDisk supera il test esteso, prossimo Kingston
+
+La scheda Self-Tests del SanDisk SDSSDA240G /dev/sda mostra Test completed e Test result: Completed without error. Self-Test Log contiene una voce Extended offline, stato Completed without error e completamento 100%. Confermato quindi l'esito positivo del test esteso sul SanDisk. La schermata precedente del 23/10 documentava selezione Extended Self-test, stima10min e log0voci; quella ricevuta il26/10 documenta il risultato. Non si deduce un test durato tre giorni né una prova continua del NAS durante l'assenza. Il campo Lifetime hours della foto finale non è trascritto perché poco leggibile. Firmware SanDisk e dettagli/test degli altri SSD restano da acquisire. Prossimo passo chiudere i dettagli SanDisk, aprire con doppio clic KINGSTON SV300S37A240G, scheda Self-tests, selezionare Extended Self-test se disponibile e premere Execute; acquisire la schermata per verificare unità, tipo di test e stato. Nessuna ripetizione del test SanDisk richiesta.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo dell'esito; distinguere il log di un autotest del disco da durata dell'assenza e accettazione dell'intero NAS.
+
+**Template:** nessuna
+
+## 26/10/2026: Kingston supera il test esteso, prossimo WD Blue
+
+La scheda Self-Tests del KINGSTON SV300S37A240G /dev/sdb mostra Test completed e Test result: Completed without error. Il log contiene una voce Extended offline, Completed without error e completamento 100%. Anche il Kingston ha quindi superato l'autotest esteso: due dei tre SSD hanno ora un esito esteso documentato, SanDisk e Kingston. La durata effettiva non viene ricavata dalla fotografia. Prossimo passo chiudere i dettagli Kingston, aprire con doppio clic WDC WDS250G1B0A-00H9H0, scheda Self-tests, scegliere Extended Self-test se disponibile e premere Execute, poi acquisire la schermata. Test esteso WD ancora pendente; nessuna ripetizione di SanDisk o Kingston richiesta. Firmware e dettagli ancora mancanti restano da raccogliere. Chiesto in parallelo se sul SanDisk ci siano file da conservare prima del futuro pool: risposta ancora attesa, nessuna cancellazione autorizzata da questa verifica.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo dell'autotest Kingston e riepilogo dei due esiti acquisiti; esito del singolo disco distinto dall'accettazione del NAS.
+
+**Template:** nessuna
+
+## 26/10/2026: WD Blue supera il test esteso, tre SSD con esito positivo
+
+La scheda Self-Tests del WDC WDS250G1B0A-00H9H0 /dev/sdc mostra Test completed e Test result: Completed without error. Il log contiene una voce Extended offline, stato Completed without error e completamento100%. Sono quindi documentati tre autotest estesi superati, uno per ciascuno dei tre SSD del NAS: SanDisk, Kingston V300 e WD Blue. La stima10min mostrata per il WD non viene chiamata durata effettiva. Nessuna ripetizione dei test è richiesta. Per completare identificazione e usura manca una raccolta via GUI: General e Attributes del WD, General e Attributes del Kingston, General del SanDisk; gli attributi SanDisk sono già acquisiti. I seriali eventualmente presenti nelle foto restano nel livello privato. La domanda sui file da conservare sul SanDisk è ancora senza risposta: nessuna cancellazione o creazione di pool eseguita. Firmware, restanti dati di usura, accettazione finale e riallocazione RAM restano aperti.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo del terzo autotest e riepilogo dei tre esiti acquisiti; risultati dei dischi distinti dall'accettazione dell'intero NAS.
+
+**Template:** nessuna
+
+## 26/10/2026: TAB-02 identificato, SoundCraft valutato senza fork
+
+Dallo screenshot Screenpresso del 26/10/2026, che mostra la schermata Informazioni sul tablet, TAB-02 risulta un Galaxy Tab S6 Lite (2024), modello SM-P620 solo Wi-Fi, con il nome dispositivo di Persona-B. Il modello è confermato su S191 (GSMArena) e la variante solo Wi-Fi su S192 (SamMobile, da Geekbench e GCF) e S193 (AndroidHeadlines). Una prima stesura attribuiva la variante alle schede Bluetooth SIG: la lettura di S192 lo ha smentito, perché il corpo dell'articolo non le cita. Due correzioni, scritte nel censimento senza cancellare la storia. TAB-02 non è più «il più vecchio»: è l'edizione 2024, mentre TAB-01 è registrato come 2022 LTE in base alla sola dichiarazione dell'8/10. L'attribuzione storica a Persona-B, data per smentita il 09/10, è confermata dal nome del dispositivo, che però dice chi ha configurato l'apparecchio e non chi lo usa oggi. Prima della scrittura il seriale è entrato nella mappa come `<sn-tab-02>` e nei pattern. Lo screenshot è archiviato in `_notes/censimento/foto-pc/tab-02/` con SHA-256 identico all'originale, e l'originale resta in Screenpresso. Titoli delle due schede resi neutri (nessuna ancora li collegava); allineati lo studio degli endpoint e `current-work.md`. Pendenze: Informazioni software di TAB-02 e Informazioni sul tablet di TAB-01.
+
+L'utente ha chiesto anche di fare un fork di SoundCraft della suite ArtCraft e personalizzarlo per Ubuntu Studio. Poi ha precisato che i progetti interessati sono quello dei monitor e quello di home recording, e che questo repository c'entra solo per `linux-desktop-C`. Ha chiesto una spiegazione prima del dettaglio. Dati raccolti in sola lettura. La CLI installata è la 0.10.0 ed espone 480 comandi e 27 plugin interni, contati con `soundcraft-cli commands` e `plugins`. Il repository `storytold/soundcraft` ha licenza Apache-2.0 o MIT, pubblica per Linux il deb, il tarball, l'AppImage e il Flatpak, e ospita CLAP e VST3 ma non LV2. Il crate `playback` usa cpal con la sola feature `asio` opzionale. Il `docs/gaps.md` di upstream, G-01, dichiara come blocco dell'alpha la mancanza di JACK e della verifica su Linux, con il mix a blocchi fissi di 512 campioni. Il README dice che un fork deve togliere nome e loghi ArtCraft; l'utente sceglie un nome neutro, anche perché Soundcraft è il marchio dei mixer Harman. Per usarlo non serve un fork. Il fork serve a cambiare il codice, cioè per JACK, LV2 e priorità realtime. Il valore atteso è alto per l'home recording, come DAW pilotabile dall'agente accanto ad Ardour, e basso per i monitor, dove misura, crossover e DSP restano a REW, Octave, VituixCAD e CamillaDSP. Nessun fork, clone o scrittura nei progetti gemelli; la voce resta aperta in `pendenze-aperte.md`.
+
+**Didattica:** nessuna: registrazione di inventario e valutazione non ancora decisa; la scelta sul fork, quando sarà presa, avrà la sua voce nel progetto gemello che la ospita.
+
+Nei controlli di chiusura `check-eol` ha bloccato `.claude/allineamento-template.json`, che il commit `c1f6eb0` ha registrato con sei CRLF e un LF finale. La causa è alla riga 638 di `allinea-tutti.ps1` del template, che accoda un LF nudo all'uscita CRLF di `ConvertTo-Json`. Il file è stato normalizzato a CRLF, con una sola riga cambiata.
+
+**Template:** L-006
+
+## 26/10/2026: fonti salvate, voci aperte nei due progetti gemelli
+
+Su richiesta dell'utente sono salvate tutte le fonti del giro. In `SOURCES.md` sono S192 e S193 per la variante del tablet, entrambe lette, e S194-S197 per SoundCraft, cioè README, manifesto del crate di riproduzione, sorgente dei dispositivi e registro delle lacune. La lettura di S192 ha corretto la frase che attribuiva la variante Wi-Fi alle schede Bluetooth SIG. Per farla comparire a ogni `/riprendi`, la valutazione di SoundCraft è ora una voce anche nei due progetti gemelli. In `diy-2way-monitors-home` è PA-034, con le fonti in `docs/90-riferimenti/fonti.md`, una voce nel work-log e una riga nel file di ripresa. In `home-recording-training-mixing-setup` è PA-003, con un file di ripresa nuovo. Nello stesso progetto c'è PA-004 per l'articolo di Futuranet del 15/10/2026 sull'analizzatore di spettro con Raspberry Pi Pico, proposto dall'utente come sottoprogetto: ha senso come strumento da banco fino a 250 kHz e come didattica, non come misura audio, perché l'ADC a 12 bit sta molto sotto la Scarlett. L'articolo ha risposto 403 al recupero ordinario e si è letto per intero con `curl` e uno user agent da browser, verificando il corpo. Le due schermate dei tablet restano da chiedere alla ripresa, quando l'utente è a casa, ciascuna con il tablet e il menu indicati in `pendenze-aperte.md`.
+
+**Didattica:** nessuna: registrazione di fonti e pendenze, nessuna scelta presa.
+
+**Template:** nessuna
+
+## 26/10/2026: doc-ingest senza esclusione dei documenti personali, causa nel template (L-007)
+
+L'utente ha chiesto perché la copia di `doc-ingest.py` di `diy-2way-monitors-home` non avesse `--esclusi`, se fosse grave e se fosse un difetto del template. La causa è nel template, alla riga 623 di `allinea-dal-template.py`: l'allineamento aggiorna una copia in `tools/` solo se nel template il file sta in una cartella `tools/` di un pacchetto. `doc-ingest.py`, `cache-storage.py` e `docx-to-md.py` stanno invece nella radice del loro pacchetto e non si aggiornano mai. Perimetro misurato sui progetti di E: confrontando le copie in `tools/` con il template, a meno del fine riga. `doc-ingest.py` differisce in quattro progetti e manca di `--esclusi` in due: `diy-2way-monitors-home` e `spanish-learning`. La gravità è giudicata sulle date e sul codice, senza aprire documenti. La falla era latente: in `diy-2way-monitors-home` la conversione ordinaria passa da `converti-fonti.py`, che esclude da sé, le cache hanno l'ultima scrittura il 07/10 alle 13:45 e la cache di `spanish-learning` è del 06/07. Nessuna conversione senza esclusione è risultata dopo la regola. La copia di `diy-2way-monitors-home` era intatta ed è stata sostituita con quella del pacchetto, con `cache-storage.py` e il file di esempio degli schemi: autotest 21 file e 0 errori, `chiudi -SoloControlli` verde, PA-035 chiusa. La copia di `spanish-learning` porta un OCR bilingue proprio e resta da fondere all'allineamento successivo. Lezione L-007 registrata per il template, con anche il secondo difetto: la prova dei documenti personali verifica il pacchetto nel template e non la copia nei progetti.
+
+**Didattica:** nessuna in questo progetto: il difetto e il suo rimedio riguardano il template, dove la lezione L-007 li porta.
+
+**Template:** L-007

@@ -434,3 +434,25 @@ Decisione. Netdata è il raccoglitore di metriche: parent sul server Proxmox, ch
 Ratio. Copre la sola voce pendente senza servizi esterni né abbonamenti, e l'utente ne ha già provato a mano l'installazione su una macchina Linux di un altro progetto, nella configurazione che lo studio raccomanda: pacchetto statico verificato, dashboard sul solo indirizzo locale, nessun collegamento al servizio del produttore.
 
 Conseguenze. La messa in opera viene dopo Proxmox e Wazuh. Restano le quattro verifiche a cose accese del registro delle pendenze: plugin di OPNsense o SNMP, profili SNMP dello switch e degli access point, memoria e disco reali del parent dopo una settimana, sovrapposizione degli allarmi con Wazuh.
+
+## ADR-037, strumenti scelti per bisogno e Cloudflare come esperimento applicativo facoltativo
+
+Data: 23/10/2026. Stato: accettata. L'utente approva le raccomandazioni dello studio con le parole «Approvo tutto e le tue raccomandazioni».
+
+Contesto. La valutazione Cloudflare Zero Trust Free ha distinto protezione della rete locale, DNS, collegamento remoto, accesso per identità a un'applicazione e monitoraggio. Il progetto ha già ADR-007 sul DNS locale, ADR-025 sull'amministrazione e ADR-032 sul NAS senza applicazioni. Nessun servizio Cloudflare è stato configurato.
+
+Decisione. Si mantengono OPNsense e VLAN per la separazione, AdGuard Home davanti a Unbound ricorsivo per il DNS, WireGuard su OPNsense per accesso amministrativo e file del NAS con le regole previste. Tailscale e NetBird restano alternative studiate, non strumenti da installare insieme. Cloudflare Access e Tunnel rimangono un possibile esperimento successivo per una singola applicazione web non critica e isolata, senza interfacce amministrative, nuove rotte generali o cambio del DNS della casa.
+
+Ratio. Il punto che decide l'accesso deve corrispondere al bisogno: percorso cifrato, regola di rete, identità applicativa, permesso del file e osservazione di un evento sono controlli distinti. Il piano gratuito rende una prova accessibile ma non sostituisce la segmentazione e introduce dipendenze da valutare. Le fonti e i limiti datati sono nello studio 15, S178-S185; la matrice tecnica corrente è il documento 16 dello studio home lab.
+
+Conseguenze. Nessuna installazione, account o modifica di rete deriva dalla sola approvazione. Un eventuale Gateway come resolver domestico o Access davanti alla gestione richiederebbe rivedere ADR-007 o ADR-025. La rilettura della bozza 08 riallinea PORTE_CONDIVISIONE al solo TCP 445: HTTPS per applicazioni NAS non più previste viene tolto dall'alias generale, mantenendo la gestione nella VLAN 99. La correzione è documentale; le regole e il binding delle interfacce andranno collaudati nella fase di rete.
+
+## ADR-038, documentazione tecnico-didattica evolutiva basata su bisogni e riscontri
+
+Data: 23/10/2026. Stato: accettata. Richiesta esplicita dell'utente di espandere la spiegazione nei livelli tecnico e tecnico-didattico e di documentare gli sviluppi successivi per capire le differenze.
+
+Contesto. La tabella dei bisogni è risultata utile per capire perché VPN, DNS, accesso applicativo e monitoraggio non siano equivalenti. La sola chat non garantisce che il ragionamento sopravviva alla sessione o accompagni la futura configurazione.
+
+Decisione. Il riferimento tecnico conserva bisogno, strumento, punto di applicazione, confini, stato e prove. Il racconto .claude/context/studio-didattico-master.md cresce per voci cronologiche, ciascuna con contesto, forma precedente, principio adottato e rimando a una scheda refactor-NN. Ogni scheda è autoconsistente e usa estratti reali dei documenti, delle configurazioni o del codice presenti nel repository, senza chiamare eseguito un esempio progettuale. Si parte dal 23/10/2026; non si ricostruisce retroattivamente tutto il progetto.
+
+Conseguenze. CLAUDE.md rende la pratica un'istruzione delle prossime sessioni. Ogni sviluppo aggiorna il registro operativo e le fonti pertinenti; una scelta o distinzione significativa aggiorna anche il racconto e il dettaglio. Da questo giro il work log dichiara Didattica con il rimando o nessuna con motivazione. Le letture puntuali non generano da sole una nuova scheda. Le prove future registrano anche i casi negati e i limiti. La prima voce è refactor-01-bisogni-controlli-e-flussi.md. Nessun nuovo controllo automatico semantico, configurazione di rete o servizio è dichiarato realizzato da questa adozione.

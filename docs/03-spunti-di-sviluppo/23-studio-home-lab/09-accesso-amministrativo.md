@@ -67,3 +67,5 @@ Le regole che bloccano il traffico verso le reti interne e verso il firewall scr
 ## Collaudo
 
 Dalla workstation ADMIN l'interfaccia web e SSH del firewall rispondono su `192.168.99.1`. Da un altro PC della VLAN 10 non risponde nulla, né su `192.168.99.1` né sul gateway `192.168.10.1`, e il registro mostra il blocco. Da un telefono della VLAN 50 nessuna porta di gestione risponde. Dal portatile sulla porta di recupero il firewall risponde. Da un telefono fuori casa, con il tunnel attivo, il firewall risponde, e senza tunnel non risponde nulla. Un accesso SSH con password fallisce anche dalla workstation, e uno con chiave riesce.
+
+Il 23/10/2026 ADR-037 conferma questo perimetro. La [matrice dei bisogni](16-bisogni-controlli-e-flussi.md) separa accesso al file, gestione e accesso applicativo; Cloudflare non diventa un quarto ingresso di amministrazione. La bozza PORTE_CONDIVISIONE riguarda il solo SMB; HTTPS rimane nelle regole amministrative della VLAN 99. Sono decisioni e proposta documentale, da verificare sugli apparati nella fase di rete.

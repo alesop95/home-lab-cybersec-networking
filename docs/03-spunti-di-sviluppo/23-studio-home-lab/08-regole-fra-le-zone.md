@@ -22,9 +22,11 @@ Gli alias danno un nome a un insieme di indirizzi o di porte, così che una rego
 | HOST_SERVIZI | host | 192.168.30.20, proposta; macchina da individuare | DNS filtrante e monitoraggio, quando esisterà |
 | ADMIN | host | workstation della VLAN 10 con prenotazione DHCP, più la rete WireGuard | chi può amministrare |
 | WG_RETE | rete | 192.168.98.0/24, proposta | indirizzi dei peer WireGuard |
-| PORTE_CONDIVISIONE | porte | TCP 445, TCP 443 | SMB e interfaccia web delle applicazioni del NAS |
+| PORTE_CONDIVISIONE | porte | TCP 445 | sole condivisioni SMB; gestione HTTPS separata nella VLAN 99 |
 | PORTE_GESTIONE | porte | TCP 22, TCP 443 | SSH e interfacce web di firewall, switch, AP e NAS |
 | PORTE_BASE | porte | TCP e UDP 53, UDP 123 | DNS e NTP |
+
+Nota del 23/10/2026: la bozza di PORTE_CONDIVISIONE è riallineata al solo TCP 445 per SMB. Il precedente TCP 443 era riferito ad applicazioni NAS che ADR-032 non prevede più; la gestione HTTPS rimane nel perimetro della VLAN 99 e nelle regole ADMIN di ADR-025. È una correzione documentale coerente con ADR-037, non una regola applicata oggi. Un nuovo servizio richiederà il proprio bisogno, indirizzo, porta e collaudo. La spiegazione è nella [matrice dei bisogni](16-bisogni-controlli-e-flussi.md).
 
 La rete WireGuard va scelta in modo che non coincida con le reti più comuni degli alberghi e degli uffici da cui ci si collegherà, che sono spesso `192.168.0.0/24` e `192.168.1.0/24`: per questo la proposta è `192.168.98.0/24`.
 

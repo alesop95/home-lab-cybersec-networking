@@ -37,7 +37,7 @@ Gli ID sono etichette documentali, non hostname reali. La fonte `storico` è que
 | MOB-02 | Sony Xperia III, variante incompleta | storico, da identificare | modello preciso, aggiornamenti e uso |
 | MOB-03 | Samsung Galaxy S20 FE 5G | confermato dall'utente l'8/10/2026 | Wi-Fi 6 dual band; aggiornamenti da verificare prima di assegnare la VLAN |
 | TAB-01 | Samsung Galaxy Tab S6 Lite (2022), LTE, tablet di casa | confermato dall'utente l'8/10/2026, attribuzione confermata il 09/10/2026 | Wi-Fi 5 dual band; aggiornamenti da verificare |
-| TAB-02 | secondo tablet Samsung, più vecchio, di casa, modello da identificare | confermato dall'utente l'8/10/2026 e il 09/10/2026, modello non ricordato | identificare modello, OS e uso |
+| TAB-02 | Samsung Galaxy Tab S6 Lite (2024), SM-P620 solo Wi-Fi, di Persona-B | modello letto dalla schermata Informazioni sul tablet del 26/10/2026 | Wi-Fi 5 dual band; versione Android e aggiornamenti da leggere |
 
 Le intestazioni relative a persone e i segnaposto senza modello non identificano un dispositivo: non si creano apparati per riempire le righe. Telecamere, stampanti, domotica, UPS e ulteriori console restano categorie da rilevare, non beni già posseduti. I quattro desktop del consolidamento non si identificano con i PC domestici numerati: la documentazione li descrive come lotto distinto. Il firewall compare una sola volta, come NET-04.
 
@@ -508,13 +508,13 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 **Fonte.** solo voce nella descrizione storica
 
-### Tablet Samsung vecchio
+### Tablet Samsung Galaxy Tab S6 Lite (2022)
 
 #### Analisi specifiche
 
 #### Scheda TAB-01
 
-**Identità.** categoria tablet; Samsung Galaxy Tab S6 Lite (2022), versione LTE con S Pen, 10,4 pollici, 4 GB di memoria e 64 GB espandibili, tablet di casa, confermato l'8/10/2026; attribuzione a TAB-01 confermata dall'utente il 09/10/2026
+**Identità.** categoria tablet; Samsung Galaxy Tab S6 Lite (2022), versione LTE con S Pen, 10,4 pollici, 4 GB di memoria e 64 GB espandibili, tablet di casa, confermato l'8/10/2026; attribuzione a TAB-01 confermata dall'utente il 09/10/2026. L'edizione 2022 LTE poggia sulla dichiarazione dell'8/10/2026 e non su una lettura dal dispositivo: dal 26/10/2026, quando TAB-02 è risultato un Tab S6 Lite del 2024, va confermata con la schermata Informazioni sul tablet di questo apparecchio, che è anche la sola fonte del rapporto di età fra i due
 
 **Sistema.** Android 12 alla vendita, aggiornabile fino ad Android 14 (S71); versione installata e supporto agli aggiornamenti da verificare
 
@@ -528,24 +528,26 @@ Per la PS5 per il gaming online 3-10 Mbps in download e 1-3 Mbps in upload basta
 
 **Fonte.** solo voce nella descrizione storica
 
-### Secondo tablet Samsung, il più vecchio
+### Tablet Samsung Galaxy Tab S6 Lite (2024)
 
 #### Analisi specifiche
 
+La schermata Informazioni sul tablet del 26/10/2026 ha chiuso l'identificazione e smentito due affermazioni precedenti, che si correggono qui invece di cancellarle. La prima è l'età: fino al 26/10 questo apparecchio era registrato come il più vecchio dei due, ma SM-P620 è il codice dell'edizione 2024 solo Wi-Fi (S191, S192, S193), mentre TAB-01 è registrato come edizione 2022. Il rapporto di età si decide sull'identità di TAB-01, oggi dichiarata e non letta. La seconda è l'attribuzione: il nome del dispositivo, «Tab S6 Lite di Persona-B», conferma la descrizione storica che lo assegnava a Persona-B, data per smentita il 09/10/2026. Il nome fissato nelle impostazioni dice chi ha configurato l'apparecchio, non chi lo usa oggi, e l'uso resta da confermare con l'utente.
+
 #### Scheda TAB-02
 
-**Identità.** categoria tablet; secondo tablet Samsung, il più vecchio dei due, tablet di casa, confermato dall'utente l'8/10/2026 e il 09/10/2026; modello da identificare dalle impostazioni; la descrizione storica lo attribuiva come tablet nuovo a Persona-B, smentita il 09/10/2026
+**Identità.** categoria tablet; Samsung Galaxy Tab S6 Lite (2024), modello SM-P620 solo Wi-Fi, 10,4 pollici, Exynos 1280, 4 GB di memoria e 64 o 128 GB espandibili (S191); nome dispositivo «Tab S6 Lite di Persona-B»; numero di serie `<sn-tab-02>`, nel solo livello privato; tablet di casa, uno dei due confermati dall'utente; identificato dalla schermata del 26/10/2026
 
-**Sistema.** Android, versione e supporto da compilare
+**Sistema.** Android 14 alla vendita, aggiornabile fino ad Android 15 con One UI 7 (S191); versione installata e livello delle patch di sicurezza da leggere nella voce Informazioni software
 
 **Rete cablata.** nessuna
 
-**Wi-Fi.** da compilare
+**Wi-Fi.** Wi-Fi 5, 802.11a/b/g/n/ac dual band (S191); WPA3 da verificare
 
-**Collocazione.** da decidere dopo l'identificazione
+**Collocazione.** client della VLAN 10 se le patch di sicurezza risultano correnti, altrimenti VLAN 40
 
 **Esposizione.** nessun servizio
 
-**Fonte.** solo voce nella descrizione storica
+**Fonte.** schermata Informazioni sul tablet del 26/10/2026, archiviata nel solo livello privato; scheda tecnica S191
 
 [^1]: È una scheda di rete Ethernet a 2,5 Gbit/s basata su chip Realtek RTL8125 (o variante). È integrata in molte motherboard “gaming”, ma è una normale NIC 2.5GbE, non ha nulla di speciale legato al gaming. Significa che il PC può negoziare fino a 2,5 Gbit/s se collegato a una porta 2.5G e con cavo adeguato (Cat5e di buona qualità o superiore).
