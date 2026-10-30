@@ -93,3 +93,7 @@ python tools/test_dimensiona_backup.py
 ```
 
 Il 19/10/2026 passano 27 prove. Sette copie mutate del programma sono state sottoposte alla stessa suite: sommare i dischi, omettere il nuovo full, contare soltanto il nuovo maggiore, omettere istantanee o copie protette, certificare operatività dalla stima, trattare la prima copia come un incremento. Tutte provocano asserzioni fallite e nessun errore di esecuzione; l'impronta del programma originale rimane invariata. Questa verifica prova che la suite distingue quei difetti del modello. Non misura la dimensione dei dati di casa, il funzionamento di Proxmox o il ripristino di un servizio.
+
+## Ricalcolo dopo la crescita del NAS
+
+ADR-044 del29/10/2026 rende il dimensionamento rivedibile con SSD più capienti. Gli esempi su240GB e il tetto proposto di180GB descrivono il punto di partenza, non una quota permanente già applicata al NAS. Dopo l’espansione si leggono capacità reale, quote eventualmente configurate e picchi dei lavori e si aggiornano gli input; non si presume che una quota numerica cresca insieme ai dischi. Si mantengono nomi dei dataset e destinazioni logiche; dettagli nella [guida NAS11](../02-storage-di-rete-nas/11-crescita-del-nas-e-indipendenza-dall-hardware.md). Nessuna prova di espansione è già eseguita.

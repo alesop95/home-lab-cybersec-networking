@@ -14,3 +14,5 @@
 - [Modello di verbale di collaudo](07-modello-di-verbale-di-collaudo.md)
 - [Fascicolo di emergenza della rete](08-fascicolo-di-emergenza-della-rete.md)
 - [Archivi Proxmox e Proxmox Backup Server](09-confronto-archivi-proxmox-e-pbs.md)
+
+- [Configurazione TrueNAS e cambio hardware](10-configurazione-truenas-e-cambio-hardware.md), checkpoint esterni con seed, materiali separati e riuso dei riscontri Veeam Linux; primo export con seed acquisito e verificato fuori NAS, seconda copia indipendente e restore aperti.

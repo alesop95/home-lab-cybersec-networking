@@ -68,3 +68,7 @@ La prova è facoltativa e non è stata richiesta come installazione. Può partir
 Si annotano configurazione, tempi di gestione, log realmente disponibili e risultato delle prove positive e negative. Il ritorno indietro riguarda soltanto connettore, applicazione e record creati per l'esperimento. Finché queste misure non esistono, il beneficio operativo è un'ipotesi documentata. Nessun test di questa tabella è stato eseguito.
 
 La raccomandazione approvata dall'utente il 23/10/2026 è completare l'architettura scelta e tenere Cloudflare come studio facoltativo per una singola applicazione. L'adozione come DNS della casa o come ingresso di gestione richiederebbe una decisione esplicita che riveda ADR-007 o ADR-025; questo documento non la prende.
+
+## Raccordo con il requisito assistente del29/10/2026
+
+La valutazione del23/10 e i limiti commerciali qui citati conservano quella data. ADR-045 aggiunge Tailscale come direzione esplicita richiesta per accesso domestico e assistente, superando il suo precedente stato di sola alternativa. Percorso nello [studio17](17-assistente-personale-hermes-nix-e-memoria.md), senza installazioni o subnet già approvate. WireGuard rimane il disegno amministrativo esistente finché il raccordo degli ingressi non è dettagliato; Cloudflare resta studio facoltativo e non diventa VPN, DNS di casa o accesso alle interfacce per effetto del nuovo filone.

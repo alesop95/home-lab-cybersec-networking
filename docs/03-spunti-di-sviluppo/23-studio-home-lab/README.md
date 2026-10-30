@@ -6,10 +6,15 @@ La raccomandazione di partenza è OPNsense a valle del Fastweb Seven. Dal 07/10/
 
 | Documento | Risultato |
 |---|---|
-| [Allocazione dell'hardware](12-allocazione-dell-hardware.md) | fonte canonica: ogni macchina, disco e modulo di memoria, dove va e perché, con l'ordine dei gesti al banco |
+| [Microcontrollori e microserver](19-microcontrollori-microserver-e-laboratorio-browser.md) | studio browser, MCU e host Linux, preferenza Wi-Fi con VLAN distinte, consumo da misurare |
+| [Governo sicurezza e privacy](20-governo-sicurezza-e-privacy-domestiche.md) | ISO27001 come metodo, applicabilità domestica GDPR, rischi e prove concrete |
+| [Aggiornamento OPNsense](21-aggiornamento-e-vulnerabilita-opnsense.md) | baseline26.7.7 e hotfix al29/10; aggiornamento fisico ancora da eseguire |
+| [NordVPN condivisa e confini domestici](18-nordvpn-account-condiviso-e-confini-domestici.md) | rapporto locale recepito: tunnel commerciale spento a casa, niente Meshnet condivisa, cautele su identità, DNS e Android |
+| [Allocazione dell'hardware](12-allocazione-dell-hardware.md) | inventario corrente, stato delle prove, moduli con errori e confronto NAS/server senza contare i pezzi due volte |
 | [Modello linguistico locale su CPU](13-modello-linguistico-locale-su-cpu.md) | colibri sull'hardware di casa: che cosa ci sta in 16 e 32 GB, dove va, la misura che decide |
 | [Metriche in tempo reale con Netdata](14-metriche-con-netdata.md) | candidato per il raccoglitore di metriche pendente: che cosa aggiunge a Wazuh, dove starebbe, la dashboard senza credenziali, costi e alternative |
 | [Cloudflare Zero Trust e alternative](15-cloudflare-zero-trust-e-alternative.md) | valutazione del 23/10: Access, Gateway, limiti Free, alternative e compatibilità con DNS locale e WireGuard, senza adozione |
+| [Assistente personale e memoria](17-assistente-personale-hermes-nix-e-memoria.md) | studio del29/10: Hermes, hardware a basso consumo, Nix/NixOS, Tailscale e brain futuro del template; nessuna installazione |
 | [Bisogni, controlli e flussi](16-bisogni-controlli-e-flussi.md) | matrice tecnica approvata: che cosa serve, chi decide, che cosa resta fuori e come si verifica |
 | [Racconto tecnico-didattico](../../../.claude/context/studio-didattico-master.md) | percorso evolutivo adottato il 23/10/2026, con prima scheda di dettaglio e sviluppi successivi |
 | [Architettura e diagrammi](01-architettura.md) | separa stato documentato, proposta fisica, VLAN e flussi ammessi |

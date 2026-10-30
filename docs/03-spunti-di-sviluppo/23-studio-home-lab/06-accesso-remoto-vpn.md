@@ -2,9 +2,9 @@
 
 L'accesso remoto è compatibile con la topologia attuale, ma non cambia la catena WAN: `ONT -> Fastweb Seven -> OPNsense`. La VPN deve terminare su OPNsense oppure su un host sempre acceso a valle. L'IP pubblico statico aiuta soprattutto WireGuard esposto direttamente; Tailscale normalmente evita di pubblicare una porta sul Seven e usa un overlay autenticato.
 
-Aggiornamento del 23/10/2026: la successiva decisione ADR-025 governa l'amministrazione della rete e ammette il solo tunnel WireGuard oltre a workstation e porta di recupero. La proposta Tailscale della prima stesura resta un'alternativa studiata, non un quarto ingresso già autorizzato o configurato. La [valutazione Cloudflare Zero Trust e alternative](15-cloudflare-zero-trust-e-alternative.md) aggiorna limiti gratuiti e confronto senza cambiare ADR-007 sul DNS o ADR-025 sull'amministrazione.
+Aggiornamento del 23/10/2026: la successiva decisione ADR-025 governa l'amministrazione della rete e ammette il solo tunnel WireGuard oltre a workstation e porta di recupero. La proposta Tailscale della prima stesura resta un'alternativa studiata, non un quarto ingresso già autorizzato o configurato. Dal29/10 ADR-045 registra il nuovo requisito esplicito Tailscale per l’accesso domestico e l’assistente personale: l’esclusione come sola alternativa non più perseguibile è superata. Non è ancora un ingresso configurato; destinazioni e possibile raccordo amministrativo vanno definiti nello [studio17](17-assistente-personale-hermes-nix-e-memoria.md). La [valutazione Cloudflare Zero Trust e alternative](15-cloudflare-zero-trust-e-alternative.md) aggiorna limiti gratuiti e confronto senza cambiare ADR-007 sul DNS o ADR-025 sull'amministrazione.
 
-## Alternativa Tailscale studiata nella prima stesura
+## Percorso Tailscale: prima stesura e nuovo requisito
 
 La prima stesura proponeva di installare Tailscale su un host Linux sempre acceso nella VLAN servizi e usarlo come *subnet router* verso una sola rete di gestione o verso le VLAN necessarie. La documentazione ufficiale distingue chiaramente il routing Layer 3 dalle policy di accesso: pubblicizzare una subnet non equivale ad autorizzare ogni porta. Le regole del tailnet e quelle OPNsense devono entrambe limitare le destinazioni.
 
@@ -51,3 +51,11 @@ C'è poi una conseguenza di rete che riguarda il firewall. Tailcat attraversa il
 La documentazione ufficiale Tailscale su [subnet router e quickstart](https://tailscale.com/kb/1017/install/), [CLI](https://tailscale.com/kb/1080/cli), [exit node](https://tailscale.com/kb/1103/exit-nodes/) e [policy](https://tailscale.com/docs/reference/syntax/policy-file) è la base del confronto. Le pagine descrivono il comportamento del prodotto, non la configurazione specifica di questa casa. Nessuna VPN è stata installata o collaudata in questa sessione.
 
 Approvazione del 23/10/2026, ADR-037: WireGuard resta la scelta per gestione e accesso privato al NAS con le regole documentate; Tailscale e NetBird sono alternative non adottate. La [matrice dei bisogni](16-bisogni-controlli-e-flussi.md) distingue percorso VPN, regola di rete e permessi del servizio; la bozza delle condivisioni NAS è riallineata al solo SMB, mantenendo HTTPS nella gestione separata.
+
+## Aggiornamento del29/10: accesso domestico e assistente
+
+ADR-045 rende Tailscale una direzione richiesta, senza attribuire al progetto una VPN già attiva. Prima valutare il peer diretto sul nodo dell’assistente; il subnet router serve per destinazioni senza client ed è da limitare con rotte approvate, policy e firewall. Nessun exit node o accesso generale alle VLAN deriva dalla richiesta. WireGuard rimane nel disegno amministrativo di ADR-025; l’eventuale uso Tailscale per la gestione richiede il raccordo esplicito della tabella09, non una seconda domanda di adozione del prodotto. Lo [studio17](17-assistente-personale-hermes-nix-e-memoria.md) raggruppa host, consumi, memoria e recupero. Stato: studio, nessuna installazione o rotta; S255 distingue approvazione delle rotte e autorizzazione del traffico.
+
+## NordVPN e account condiviso: vincolo del29/10/2026
+
+Lo [studio18](18-nordvpn-account-condiviso-e-confini-domestici.md), ADR-046, recepisce il rapporto locale: NordVPN spenta nella rete domestica e Meshnet non usata con l’account condiviso. La VPN commerciale di uscita non viene introdotta come ingresso verso NAS o assistente. Resta il percorso Tailscale richiesto in ADR-045, oltre al disegno amministrativo WireGuard; il vecchio riferimento del rapporto al solo WireGuard non li aggiorna automaticamente. Endpoint, DNS e passaggio fra profili Android vanno collaudati, senza promettere che tutti i tunnel siano attivi insieme o che la rete domestica sia già operativa.

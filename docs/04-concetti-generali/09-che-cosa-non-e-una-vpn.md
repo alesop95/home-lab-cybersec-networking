@@ -1,5 +1,7 @@
 # Che cosa NON è una VPN
 
+Aggiornamento29/10/2026: le formulazioni assolute del testo storico vanno lette con la precisazione finale e con lo [studio sui confini VPN](../03-spunti-di-sviluppo/23-studio-home-lab/18-nordvpn-account-condiviso-e-confini-domestici.md). Il tunnel protegge il proprio canale; i componenti accessori di una suite possono avere altre funzioni.
+
 Una VPN non protegge il traffico, lo occulta durante il trasporto. Non decide cosa è sicuro, non rileva attacchi, non blocca minacce, non protegge endpoint o applicazioni. È uno strumento di privacy e tunneling, non di security enforcement. Chi confonde le due cose sta scambiando la crittografia del canale con la sicurezza del sistema, che sono problemi distinti e non sovrapponibili.
 
 Una VPN non protegge il traffico in senso di sicurezza applicativa o di controllo perché il suo perimetro funzionale è limitato alla confidenzialità del canale, non al contenuto, al comportamento né alle minacce. Prendo NordVPN come esempio concreto, ma il discorso vale per qualunque VPN commerciale.
@@ -11,3 +13,9 @@ Per questo non è neanche un UTM di un firewall. Quest'ultimo lavora in-line com
 Non è neanche cloud security perché non protegge risorse, workload o dati nel cloud. La cloud security opera su IAM, network segmentation, WAF, posture, logging, threat detection, vicino alle risorse (AWS/GCP/Azure). Toranando all'esempio di una NordVPN, questa è esterna al cloud: non conosce identità, ruoli, API call, storage access, né flussi east-west. Protegge solo il tratto client <> server VPN, non ciò che succede dopo né dentro il cloud.
 
 Non è neanche endpoint security perché non osserva né controlla il comportamento del dispositivo. Un EDR/AV lavora su processi, memoria, syscall, file system, persistence, exploit behavior. La VPN non sa se il pacchetto è stato generato da Chrome o da un dropper. Se l’endpoint è compromesso, la VPN protegge l’attaccante, dandogli un canale cifrato stabile verso l’esterno. Questo è un punto chiave: la VPN aumenta la stealth del malware verso la rete, ma di fatto non lo ostacola. Nemmeno le funzioni “extra” (es. blocco DNS, Threat Protection di NordVPN) cambiano il quadro. Quelle sono filtrazioni DNS o IP reputation-based, grossolane, opzionali, bypassabili, non equivalenti a un firewall applicativo o a un EDR. Non c’è correlazione comportamentale, non c’è ispezione del payload, non c’è contesto di processo. Sono misure accessorie, non sicurezza strutturale.
+
+## Precisazione tecnica del29/10/2026
+
+La cifratura autenticata è una protezione del canale: la frase iniziale non deve essere letta come assenza di sicurezza del trasporto. TLS/HTTPS protegge a sua volta la comunicazione applicativa su reti non fidate, S267. Tunnel, protezione dell’endpoint e controllo della rete rispondono a bisogni diversi.
+
+È troppo assoluto dedurre che una suite non possa bloccare domini malevoli o includere scansione dei file soltanto perché il suo prodotto principale è una VPN. La documentazione del produttore descrive componenti web e file distinti, S268; la loro presenza non equivale al firewall, EDR o monitoraggio scelti nel progetto. Le generalizzazioni storiche su tutte le funzioni come filtri DNS/IP sono quindi superate da questa precisazione, senza adottare la suite nel lab. Lo [studio18](../03-spunti-di-sviluppo/23-studio-home-lab/18-nordvpn-account-condiviso-e-confini-domestici.md) applica il confine a NordVPN spenta a casa, Meshnet condivisa esclusa e accesso domestico separato.

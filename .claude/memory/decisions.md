@@ -456,3 +456,151 @@ Contesto. La tabella dei bisogni è risultata utile per capire perché VPN, DNS,
 Decisione. Il riferimento tecnico conserva bisogno, strumento, punto di applicazione, confini, stato e prove. Il racconto .claude/context/studio-didattico-master.md cresce per voci cronologiche, ciascuna con contesto, forma precedente, principio adottato e rimando a una scheda refactor-NN. Ogni scheda è autoconsistente e usa estratti reali dei documenti, delle configurazioni o del codice presenti nel repository, senza chiamare eseguito un esempio progettuale. Si parte dal 23/10/2026; non si ricostruisce retroattivamente tutto il progetto.
 
 Conseguenze. CLAUDE.md rende la pratica un'istruzione delle prossime sessioni. Ogni sviluppo aggiorna il registro operativo e le fonti pertinenti; una scelta o distinzione significativa aggiorna anche il racconto e il dettaglio. Da questo giro il work log dichiara Didattica con il rimando o nessuna con motivazione. Le letture puntuali non generano da sole una nuova scheda. Le prove future registrano anche i casi negati e i limiti. La prima voce è refactor-01-bisogni-controlli-e-flussi.md. Nessun nuovo controllo automatico semantico, configurazione di rete o servizio è dichiarato realizzato da questa adozione.
+
+## ADR-039, NAS16 GB come obiettivo e prova della coppia RAM-03/A2 più RAM-01/B2
+
+Data:26/10/2026. Stato:accettata come obiettivo e prova da eseguire, non attestazione di funzionamento. L'utente chiede almeno un'altraRAM8 GB nel NAS, gli altri due moduli come scorta e autorizza ulteriori test necessari per procedere.
+
+Contesto. Il NAS monta ancora solaRAM-03 inA2,8192 MB cioè8 GB, con circa22 ore senza fail riferite. RAM-01/02 hanno fallito individualmente A1/A2 eRAM-04 da solaA2. Non ci sono due moduli già promossi. Il vecchio piano NAS16/server24 con dueCrucial liberi non rappresenta la disponibilità attuale.
+
+Decisione. Obiettivo NAS16 GB senza sottrarre i quattroCrucial4 GB al server. Prossima configurazione da provare: RAM-03 restaA2 eRAM-01 viene aggiuntaB2, ultimo slot dalla CPU. RAM-02/04 sono conservate come scorte fisiche con errori registrati. Verifica BIOS16384 MB,2133 MHz,XMP disabilitato; Memtest86+8.10,quattro passaggi completi senza errori o stop al primo errore. Nessuna prova o installazione della coppia è ancora osservata.
+
+Ratio. Questa coppia e disposizione non risultano già provate; misura direttamente se il sistema desiderato16 GB funziona, mantenendo il modulo senza fail nella posizione già usata. Non ripete la coppia03/A2+04/B2 già fallita. S204 conferma8 GB come minimo base della release25.10, utile a spiegare l'avvio attuale ma distinto dall'obiettivo16 GB dell'utente.
+
+Conseguenze. Stato fisico ancora NAS8 GB e server16 GB Crucial censiti. I vecchi errori dei moduli non scompaiono dalla documentazione, né le scorte sono dichiarate ricambi funzionanti. Nessun acquisto, trasferimento Crucial o smaltimento eseguito. Il precedente server24 GB è sospeso. Le alternative12/12 e16/8 discusse prima non sono adottate.
+
+## ADR-040, preparare il NAS sulla rete temporanea mantenendo distinta la rete domestica
+
+Data:27/10/2026. Stato:linea operativa nel perimetro della preparazione richiesta dall'utente; indirizzamento temporaneo e accesso web ancora da verificare, rete domestica non applicata.
+
+Contesto. Il NAS ha completato il primo boot del sistema installato ma la console non mostra un indirizzo web. L'utente conferma che è sulla rete aziendale e chiede di proseguire con le attività che non dipendono dalla collocazione definitiva. La prima lettura della scheda enp3s0 mostra già ipv4_dhcp Yes.
+
+Decisione. Leggere prima stato e indirizzi dell'interfaccia esistente, senza assegnare IP domestici nella rete temporanea. Dopo accesso, preparare localizzazione, verifica del boot-pool e configurazione esportata; applicare il piano domestico di indirizzamento e accesso quando il NAS viene trasferito. DHCP resta lo strumento per ottenere un indirizzo coerente con la rete disponibile, senza affermare che un lease sia già arrivato. Nessun cambiamento di gateway, DNS, switch, VLAN o servizi aziendali è compreso nell'attuazione attuale.
+
+Ratio. L'indirizzo dipende dal luogo, mentre molte impostazioni della macchina restano utili al trasferimento. Separare le due verifiche consente di avanzare e conserva chiaro che primo boot, raggiungibilità web e rete definitiva sono stati diversi.
+
+Conseguenze. Web e indirizzo ancora da osservare; prossimo comando di sola lettura ip -br address show enp3s0. Pool dati attende il chiarimento dei file SanDisk;16GB resta l'obiettivo aperto di ADR-039, nessun nuovo test RAM identico. Gli export con secret seed restano privati e si rinnovano dopo il trasferimento. Fonti S210-S212 e S158, pratica didattica già adottata in ADR-038.
+
+## ADR-041, destinatario Proton e raccolta Log NAS
+
+Data:27/10/2026. Stato:preferenza espressa dall'utente e preparazione richiesta; configurazione e prova di consegna non ancora eseguite.
+
+Contesto. Il NAS è raggiungibile nella GUI sulla rete temporanea e l'utente propone l'invio di email, con preferenza per Proton e Gmail come alternativa, da classificare come Log NAS. Chiede di vedere più avanti il concetto generale di server interno domestico che invia posta.
+
+Decisione. Destinazione preferita `<email-destinatario-nas>` su Proton, alternativa `<email-alternativa-nas>` su Gmail. Predisporre le notifiche del NAS e la raccolta Log NAS; scelta del servizio di spedizione, configurazione e test restano aperti. Gmail OAuth è una proposta di trasporto, non un'autorizzazione già concessa o una preferenza cambiata. Non è stata richiesta duplicazione o attivazione di fallback automatico. Lo studio generale della posta dei server interni viene rinviato.
+
+Ratio. Destinatario, identità di spedizione e classificazione nella casella sono scelte distinte. Separarle permette di rispettare la preferenza Proton senza presupporre che lo stesso account offra il servizio SMTP da configurare. Log NAS raccoglie avvisi e rapporti e si affianca alla futura conservazione dei log completi.
+
+Conseguenze. Valori reali solo in mappa privata e pattern di blocco; nessuna password ricevuta. Destinatari nelle impostazioni Email Recipients di TrueNAS25.10, servizio alert e filtro della casella da configurare; test di posta e alert chiusi solo con ricezione effettiva. Nessun mail server, relay o regola sulla rete aziendale configurati. Fonti S214-S216; pendenza esplicita e sviluppo della scheda didattica03.
+
+Attuazione parziale di ADR-041,27/10/2026: l'utente ha selezionato GMail OAuth nel pannello e confermato di procedere, chiedendo della continuità fra browser e reti. Il metodo nel modulo è scelto; consenso Google, salvataggio e consegna sono ancora da osservare. Proton resta destinatario preferito e Gmail alternativa di destinazione. La validità del collegamento e la raggiungibilità remota del NAS sono proprietà separate; nessuna VPN o ingresso remoto attivato. Destinatari ancora da individuare nella GUI locale, fonte S214 da confrontare con i campi effettivi e S217 per il rinnovo OAuth.
+
+## ADR-042, account Google personale per i servizi della rete domestica
+
+Data:27/10/2026. Stato:perimetro proposto dall'utente e raccomandato per la preparazione richiesta; account e collegamenti ancora da realizzare.
+
+Contesto. La GUI richiede il login Gmail per gli avvisi del NAS. L'utente precisa che il mittente dovrebbe essere un account dei servizi, che non possiede una casella dedicata e che vorrebbe un normale account Google personale utilizzabile anche per altre esigenze private della rete domestica.
+
+Decisione. Preparare un normale account Google Per uso personale con Gmail, identificato come `<email-servizi-casa>`, per i servizi domestici. Primo uso previsto: mittente del NAS tramite GMail OAuth. Il perimetro consente altri servizi compatibili valutati singolarmente, senza creare qui un account per ogni dispositivo o adottare servizi ulteriori. Proton rimane destinatario preferito degli avvisi; il Gmail personale già censito resta soltanto alternativa di destinazione, ADR-041. Il nome visualizzato del NAS è proposto come NAS domestico.
+
+Ratio. Tipo di account del provider e ruolo operativo sono due proprietà diverse: un account Google personale può svolgere il ruolo di identità dei servizi domestici. Non è il service account IAM di Google Cloud. Un solo account mantiene semplice la gestione iniziale, con il compromesso di concentrare le autorizzazioni future in un'identità; funzioni e permessi si valutano per applicazione. Fonti S214 e S218-S220.
+
+Conseguenze. Account da creare in locale, nessun indirizzo reale o segreto ricevuto. Prima di collegare il NAS, individuare la nuova casella, autenticare quella, salvare e verificare destinatario e ricezione. From Email, From Name e destinatario hanno ruoli distinti. Mappatura reale e pattern di blocco si aggiungono quando l'indirizzo esiste; i dati di recupero restano privati. Nessun progetto Google Cloud, account Workspace o relay domestico creato, nessun account personale Google già autorizzato accreditato. Il tema generale dei server interni che inviano posta rimane in roadmap.
+
+Avanzamento di ADR-042,27/10/2026: indirizzo `<email-servizi-casa>` scelto dall'utente e confermato dalla schermata di riepilogo Google. Il flusso è proseguito oltre il QR di verifica; email e contatto di recupero sono compilati con il precedente Gmail personale, senza conferma di attivazione o accettazione dell'invito. Completamento dell'account e Gmail OAuth NAS ancora da osservare. Il ruolo dei servizi domestici e Proton destinatario restano invariati; valori reali solo in mappa privata e pattern di blocco.
+
+Attuazione osservata di ADR-042,27/10/2026: account Google personale `<email-servizi-casa>` creato, Home autenticata visibile dopo scelta delle preferenze e condizioni. Scelte nel flusso: attività web/app e cronologia YouTube non salvate, annunci generici, promemoria privacy attivi. Protezione e recupero finale ancora da leggere; raccomandati verifica in due passaggi e codici di backup, senza considerarli già configurati o imposti tecnicamente da Gmail OAuth. Collegamento NAS e recapito ancora da eseguire; nessun altro servizio adottato.
+
+Aggiornamento operativo di ADR-042,27/10/2026: Authenticator aggiunto con conferma visibile, attivazione2FA ancora richiesta dal pulsante Turn on 2-Step Verification. L'utente chiede di limitare i passaggi e proseguire; codici di backup spiegati come scorta in caso di perdita del telefono e rinviati, senza bloccare il NAS. Non si dichiarano generati o custoditi. Prossimo attivare2FA con il pulsante già disponibile, poi Gmail OAuth NAS; nessun nuovo test o secondo metodo imposto.
+
+Riscontro ulteriore di ADR-042,27/10/2026: l'attivazione2FA non si conclude con il solo pulsante; Google mostra richiesta di un metodo come telefono o passkey pur avendo Authenticator registrato. Proposto il percorso Go back e Phone number, senza numero o nuovo metodo già osservato, senza diagnosi della causa e senza garanzia dell'esito. Non si modifica l'identità dei servizi casa né il destinatario Proton. Codici di backup rinviati; nessun requisito tecnico2FA aggiunto a Gmail OAuth NAS.
+
+Steering operativo di ADR-042,27/10/2026: dopo rifiuto della verifica di identità, nuovo accesso Chrome e rifiuto ripetuto nel profilo corretto, l'utente richiede di completare2FA ora. La proposta di rinvio dell'agente è superata. Prossimo percorso da app Google/Gmail sul telefono e lettura dell'esito; S228 descrive eventuali restrizioni sulle azioni sensibili senza provare una scadenza specifica del caso. Non si dichiara completata la protezione. Codici di backup ancora rinviati come già deciso; ruolo della nuova identità e Proton destinatario invariati.
+
+Avanzamento osservato di ADR-042,27/10/2026: nel profilo Google mostrato sul Samsung il telefono di recupero è confermato e una passkey del Galaxy è presente, non sincronizzabile e non ancora usata secondo la schermata. Attivazione2FA globale non esplicitamente osservata; prossimo leggere la barra2 verification methods, non aggiungere ulteriori metodi. Numero solo in mappa/pattern privati, email completa del profilo non visibile in queste immagini. Codici di backup rinviati e OAuth NAS ancora non autorizzato.
+
+Avanzamento operativo ADR-041/042 del28/10/2026: Gmail OAuth del nuovo account servizi domestici autorizzato e salvato sul NAS, mittente e nome visualizzato confermati. Nessuna mail NAS ricevuta: test fermo perché manca il recapito nell’amministratore locale. Il telefono mostra2FA off, da completare ora come già richiesto; codici backup rinviati. La direttiva di tracciare ogni passaggio è ribadita: aggiornamento nello stesso giro, archivio privato verificato e punto di ripresa; ripristino tecnico non dichiarato disponibile finché manca export configurazione con seed. Nessuna nuova scelta di provider o metodo e nessun segreto pubblicato.
+
+Avanzamento ADR-042 del28/10/2026: verifica in due passaggi della nuova identità Google attivata, con conferma nel dialogo e nel corpo dell’email. La precedente richiesta di completarla ora è soddisfatta. Codici backup rinviati, verifica email recupero ancora aperta. Direttiva aggiuntiva dell’utente: tracciare gli orari degli avvisi per ritrovarli; indice nel livello privato, con campo ricezione non valorizzato se l’header non è visibile. Nessun automatismo di invio o accesso alla posta introdotto.
+
+Chiarimento ADR-026 del28/10/2026, su richiesta esplicita dell’utente: la motivazione corrente è la gestione integrata di ZFS e delle attività di protezione in TrueNAS per archivio e copie del server. OMV può usare lo stesso ZFS con plugin e relativo percorso kernel, incluse attività di snapshot/scrub/replica: non viene presentato come incapace o privo automaticamente di integrità. ADR-033 ha superato il vantaggio dello specchio di avvio; la memoria reale è8GB con obiettivo16GB, non32GB. Il confronto08 e la scheda didattica05 sono riallineati, anche correggendo la generalizzazione su Btrfs. La decisione TrueNAS resta invariata e OMV rimane rivalutabile se prevalgono base più leggera e manutenzione modulare consapevole. Nessun nuovo acquisto, benchmark o migrazione autorizzati o eseguiti da questa spiegazione.
+
+## ADR-043, le personalizzazioni TrueNAS devono sopravvivere alla macchina
+
+Data:28/10/2026. Stato: accettata, requisito esplicito dell’utente.
+
+Contesto. Dopo la prima mail di test ricevuta su Proton, l’utente chiede che tutte le configurazioni siano salvate anche per guasto o sostituzione hardware e richiama i backup Veeam Linux già collaudati.
+
+Decisione. Export nativo TrueNAS con Password Secret Seed, copie versionate fuori dal NAS e aggiornamento delle copie dopo le modifiche di configurazione. Si acquisisce ora il primo file della tappa corrente; dati dei dataset e materiali esterni hanno copertura separata. Si riusa il materiale veeam-linux già nel template per il percorso delle macchine Linux e per l’eventuale protezione della cartella export, verificando che il file e la destinazione siano realmente inclusi. Non si installa un agente sul NAS per questa acquisizione.
+
+Conseguenze. Il cambio di hardware passa da installazione compatibile, recupero configurazione, verifica rete/dischi e servizi. Ogni tappa distingue modifica, file acquisito, copia esterna protetta e ripristino provato. Il primo export è ancora da scaricare: nessuna copertura NAS o recupero su altro hardware già dimostrati. Codici Google backup restano rinviati; nessun pool dati creato o disco cancellato da questa decisione.
+
+Avanzamento ADR-043 del28/10/2026: primo export nativo TrueNAS25.10.7 acquisito dal download dell’utente e archiviato fuori NAS nel livello privato del PC. SHA-256 originale/copia identici, database SQLite valido al quick_check, seed presente e campi della tappa confermati tramite confronti booleani senza pubblicare valori. Originale conservato. Acquisizione conclusa per la tappa corrente; download e copia sono sul medesimo client. Seconda destinazione indipendente, inclusione Veeam e ripristino su installazione sostitutiva restano non verificati; aggiornare le generazioni dopo le future modifiche.
+
+Avanzamento operativo di ADR-033 del28/10/2026: alla domanda sui dati ancora da conservare su SanDisk240GB e WD Blue250GB l’utente conferma di avere già salvato ciò che serve e che i vecchi dati non occorrono più. La condizione di conservazione è risolta per entrambi; si prosegue con il pool dati in specchio già previsto dopo identificazione dei due SSD nella GUI. Kingston di avvio escluso. Questa dichiarazione non attesta un collaudo del backup e non equivale a pool già creato o cancellazione già eseguita. Non riproporre la medesima domanda in assenza di nuovi fatti.
+
+Avanzamento operativo di ADR-033/043 del28/10/2026: nel wizard sono ora osservati Name tank, Encryption None e Layout Mirror; un unico VDEV MIRROR ancora vuoto nella selezione manuale. Si indica di usare nello stesso VDEV soltanto WD sda e SanDisk sdc, Kingston di avvio escluso. La raccomandazione S240 è mantenere non cifrato il dataset radice del pool e valutare separatamente la cifratura dei dataset figli con la loro custodia dei materiali di sblocco. Nessuna cifratura già applicata, pool creato o scelta definitiva sui dataset attribuita all’utente. Nuovo export configurazione dopo la creazione effettiva, conservando il precedente.
+
+Attuazione osservata di ADR-033 del28/10/2026: dopo conferma di cancellazione e formattazione il pool tank è creato sul singolo mirror dei due SSD dati selezionati, SanDisk e WD. Dashboard1xMIRROR2wideMixed Capacity, Online no errors e213.19GiB utilizzabili; Kingston di avvio escluso. L’obiettivo16GB resta aperto, NAS con RAM-03/A2 da8GB. ADR-043 richiede ora una nuova generazione dell’export con seed, mantenendo il file precedente; nuova acquisizione non ancora osservata. Dataset, condivisioni e prove dei backup restano passi distinti, nessuna copertura dati già attribuita alla sola creazione.
+
+Raccordo operativo di ADR-040/043 del29/10/2026: l’export post-pool acquisito e verificato il28/10 chiude la copia della nuova tappa; prima generazione conservata, seconda destinazione indipendente e restore aperti. La domanda dell’utente sui pannelli avanzati viene collegata alle dipendenze: preparazione dei dataset e permessi locale; rete e accesso amministrativo da completare nella topologia domestica; syslog con ricevitore disponibile; parametri speciali solo con bisogno concreto. Non sono autorizzate o dichiarate modifiche massive. Global2FA TrueNAS Disabled è distinta dalla2FA Google attiva; ora e recupero vanno verificati prima dell’eventuale configurazione NAS. Prossimo leggere Datasets, non riaprire i flussi Google o i test hardware.
+
+## ADR-044, il NAS deve crescere mantenendo struttura e configurazione
+
+Data:29/10/2026. Stato: accettata, requisito esplicito dell’utente.
+
+Contesto. Prima di creare i dataset utente, l’utente richiede che il lavoro rimanga scalabile con SSD di taglia maggiore, RAM e configurazione complessiva. Il NAS attuale ha un mirror piccolo e8GB; queste sono misure del banco, non limiti permanenti del disegno.
+
+Decisione. Separare struttura logica e componenti: nomi del pool, dataset e ruoli dei contenuti stabili; accessi e condivisioni collegati a quelle identità; quote e conservazione rivedibili con la capacità reale. Crescita dello stesso mirror tramite sostituzione dei membri uno per volta, resilver completato prima del successivo ed espansione finale, con copie e configurazione recuperabili. L’aumento di RAM compatibile non richiede ricreazione dei dataset; compatibilità e stabilità si verificano al relativo intervento, senza riaprire ora i test della configurazione attuale. Cambio completo della macchina tramite ADR-043 e verifiche di rete/dischi/servizi, non ricreazione indiscriminata del pool.
+
+Conseguenze. Guida NAS11 e scheda didattica08 descrivono il percorso, fonti S243-S246. Dataset creati per funzione, senza nomi legati a SSD240GB o RAM8GB; preset e cifratura scelti prima della creazione. Nessun acquisto, sostituzione disco, modifica RAM o espansione eseguiti qui. Il requisito di crescita non è una garanzia di conversione automatica verso qualsiasi topologia. Backup dati, seconda copia indipendente della configurazione e restore restano aperti.
+
+Attuazione progettata di ADR-043/044,29/10/2026: l’utente sceglie Key automatica consigliata per il primo dataset documenti. La GUI avanzata letta mostra ancora Inherit(non-encrypted), quindi cifratura non applicata e dataset non creato. Guida NAS12 registra tutti i campi; prima del Save verificare Name documenti, preset SMB, Encryption Key/Generate Key e ACL Type NFSv4. Dopo creazione chiave esterna e nuova generazione export con seed; seconda copia indipendente e restore restano aperti. La scelta non va chiesta nuovamente.
+
+## ADR-045, assistente personale residente e memoria portabile
+
+Data:29/10/2026. Stato: direzioni di studio accettate su richiesta esplicita; implementazione e scelta hardware aperte.
+
+Contesto. L’utente richiede il filone assistente a consumo minimo con Hermes, Nix/NixOS e Tailscale, consegna un handoff locale e aggiunge il futuro impianto brain dal template, con Obsidian e Claude Opus5.5. Chiede di raggruppare quanto già presente e approfondire. Nel chiarimento successivo rinvia l’identificazione di Jev alla recezione di quella capacità nel template e chiede di ricordarglielo.
+
+Decisione. Studio17 come punto unico di raccordo; host sempre acceso da scegliere confrontando energia misurata, disponibilità e compatibilità. Hermes come direzione agente, Nix/NixOS come percorso dichiarativo da verificare, modello inizialmente remoto come ipotesi dell’handoff; archivio personale portabile e privato, consultabile con Obsidian e separato dalla memoria canonica del lab. Riutilizzare i pacchetti hermes-agent e knowledge-wiki già censiti, senza istanziarli automaticamente né duplicare la knowledge base esistente. Chiedere l’identificazione di Jev quando il template avrà recepito il brain.
+
+Raccordo di rete. Tailscale passa da sola alternativa a direzione richiesta per raggiungere casa e assistente; questo supera la precedente esclusione assoluta di ADR-025/037 per tale filone. WireGuard resta nel disegno amministrativo esistente. Peer, subnet router ed eventuale nuovo ingresso di gestione vanno dettagliati e collaudati nelle policy prima dell’applicazione. Nessuna autorizzazione indiscriminata alle VLAN o amministrazione automatica affidata all’agente.
+
+Conseguenze. Nessun acquisto, installazione, account, bot, provider a pagamento, route o modifica del template eseguiti da questa decisione. Nix/Hermes Tier2 richiede una revisione funzionante fissata e provata; rollback ambiente e backup dello stato sono distinti. Fonti S250-S260; scheda didattica09. Restano da misurare consumo e qualità del compito, costi e compatibilità del modello, recupero dello stato e rifiuto degli accessi non ammessi.
+
+Avanzamento ADR-043 del29/10/2026: tank/documenti cifrato creato; chiave JSON separata e terzo export con seed acquisiti e verificati fuori NAS. Il nuovo database contiene il record tank/documenti con campo chiave non vuoto, assente nel precedente; share non ancora creata. Due generazioni precedenti preservate. Presenza del seed e dei record non equivale a sblocco/ripristino provato; copia indipendente e inclusione Veeam restano aperti. ACL Mode finale va letto nella GUI, non desunto da questa acquisizione. Nessuna nuova decisione di prodotto o test hardware.
+
+## ADR-046, account VPN commerciale fuori dal perimetro domestico
+
+Data:29/10/2026. Stato: vincoli recepiti su richiesta esplicita dell’utente e dal rapporto locale; attuazione sugli endpoint da verificare.
+
+Contesto. L’utente chiede di aggiornare il progetto con il rapporto VPN locale per il non utilizzo di quella VPN e le cautele. Il rapporto corrente distingue NordVPN spenta a casa da uso personale eventuale su reti estranee ed esclude Meshnet sull’account condiviso.
+
+Decisione. Non introdurre il tunnel commerciale nella navigazione domestica prevista o sul router dell’intera casa; non usare Meshnet con l’identità condivisa per collegare dispositivi o aprire la LAN. Credenziali, vault e dati personali rimangono separati dall’account di gruppo. Conservare auto-connect e blocco fuori VPN come impostazioni da verificare sul profilo concreto, senza confonderle con l’accesso domestico. WireGuard del disegno amministrativo e Tailscale di ADR-045 restano percorsi distinti e da collaudare.
+
+Conseguenze. Studio18 e scheda didattica10 raccordano S261-S268; nessuna modifica al rapporto sorgente, all’account, al telefono, al router o alle rotte. La lettura del rapporto non dimostra il servizio domestico già attivo. Non si importano come verità le frasi VPN unica protezione, Meshnet unica via di compromissione o equivalenza fra VPN sempre attiva e blocco connessioni. Il riferimento del rapporto al solo WireGuard non annulla il nuovo requisito Tailscale. Non è un divieto generalizzato di ogni VPN o una nuova adozione di prodotti di sicurezza.
+
+## ADR-047, nodi Wi-Fi piccoli e host Linux per l’assistente
+
+Data:29/10/2026. Stato: mandato di studio e preferenza di collegamento recepiti; hardware e configurazioni non scelti definitivamente.
+
+Decisione. Conservare Learn ESP32 e Learn Arduino come spunti, studiare Wokwi/CircuitJS e propagare il filone al template. Separare MCU per sensori/attuatori da Linux per Hermes, Nix e Tailscale. Preferire Wi-Fi sui piccoli nodi con SSID associato alla zona IoT, host dell’assistente nella zona servizi con permessi propri. Misurare energia alla presa e disponibilità sullo stesso compito prima di scegliere hardware; nessuna doppia allocazione del Pico citato nello studio audio.
+
+Conseguenze. Studio19, didattica11, nessun acquisto, nessuna porta/VLAN già configurata. Il prototipo su host disponibile precede l’acquisto dedicato. Restano Jev da chiedere alla tappa concordata e il brain futuro del template.
+
+## ADR-048, sicurezza domestica governata da rischi e prove
+
+Data:29/10/2026. Stato: filone richiesto e istruito; attuazione progressiva.
+
+Decisione. Usare ISO27001 come metodo volontario proporzionato e valutare il GDPR sul trattamento reale, con fonti primarie e senza dichiarare certificazione o obblighi aziendali automatici. Istanziate dal template le sole skill iso27001 e gdpr-compliance. Aggiornare OPNsense alla Production mantenuta prima dell’attivazione domestica; al29/10 la fonte corrente è26.7.7 con hotfix PHP8.5.12 successivo. Prima leggere macchina/configurazione reali e predisporre recupero; non ordinare una reinstallazione cieca.
+
+Conseguenze. Studi20/21, didattica12, registro rischi iniziale e prove future di recupero, isolamento e patch. Nessun audit, upgrade o test di rete già eseguito; la rete aziendale temporanea resta fuori dal filone. La versione va riconfermata al momento dell’intervento.
+
+## ADR-049, procedure comuni e comunicazione fra Claude e Codex
+
+Data:30/10/2026. Stato: requisito esplicito, implementazione del template preparata e collaudo progressivo; distribuzione dal commit ancora manuale.
+
+Decisione. Codex-account1/2/3 devono avere la stessa pulizia automatica dal launcher comune. Claude e Codex leggono istruzioni, memoria e procedure canoniche comuni, con cassetta condivisa nel solo perimetro esplicito aggiuntivo per scambiare evidenze. L’avvio deve mostrare quando il template è avanti e la passata lascia una ricevuta leggibile; esclusioni temporanee con scadenza o condizione, senza rimozione automatica. Le differenze interne dei runtime sono documentate e non giustificano una procedura persa in uno dei due agenti.
+
+Conseguenze. Nessun protocollo privato del demone usato come bus e nessun comando ricevuto eseguito automaticamente. La cassetta richiede lettura ai giri di lavoro e non notifica una sessione inattiva. Le sessioni già aperte ripartono dal nuovo launcher per acquisire il perimetro. L-039/L-040 e la nota della sessione esterna sono integrate nel template; commit e passata restano al proprietario.

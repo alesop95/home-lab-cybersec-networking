@@ -59,3 +59,7 @@ Da un client cablato si verifica l'indirizzo DHCP, il gateway, la risoluzione DN
 Da un client sulla Wi-Fi del Seven si verifica che Internet funzioni, che la gestione WAN di OPNsense non sia esposta e che il client non raggiunga la LAN del laboratorio. Questo test dimostra la separazione topologica, non una protezione fornita da OPNsense: il traffico resta fuori dalla sua visibilità.
 
 Il rollback è fisico: si scollega OPNsense, si ricollega il client al Seven, si ripristina la configurazione esportata e si annota quale modifica ha richiesto il ritorno. La definizione di completamento è un verbale con porte, indirizzi osservati, VLAN collaudate, regole applicate, limiti della Wi-Fi Seven e data dell'ultimo firmware verificato.
+
+## Baseline da aggiornare prima del cablaggio domestico
+
+Verifica del29/10/2026 nello [studio21](21-aggiornamento-e-vulnerabilita-opnsense.md): ultima Community letta26.7.7, con hotfix PHP successivo. Prima della messa in servizio leggere versione/configurazione reali alla console, esportare quanto serve e aggiornare alla Production mantenuta di quel giorno. La guida non prova un aggiornamento già eseguito e le schermate possono essere cambiate rispetto alla25.7 del verbale.

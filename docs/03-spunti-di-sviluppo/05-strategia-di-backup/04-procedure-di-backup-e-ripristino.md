@@ -1,10 +1,10 @@
 # Procedure di backup e ripristino del laboratorio
 
-Queste procedure completano il [piano del laboratorio](02-piano-di-backup-e-ripristino-del-lab.md). Sono preparate il 19/10/2026; nessuna è stata eseguita sulle macchine del progetto. Prima dell'uso si registrano versione installata, identificativi privati, destinazioni e dimensioni effettive. I segnaposto non sono valori da applicare. Il [collaudo](05-permessi-finestre-e-collaudo.md) stabilisce le prove necessarie per dichiarare una copertura operativa.
+Queste procedure completano il [piano del laboratorio](02-piano-di-backup-e-ripristino-del-lab.md). Preparate il19/10/2026; al28/10 sono acquisite due generazioni dell’export configurazione NAS con seed, prima e dopo la creazione di tank, copiate e verificate fuori NAS secondo NAS-01. Le altre prove, la seconda destinazione indipendente e i ripristini rimangono da eseguire. Prima dell’uso si registrano versione installata, identificativi privati, destinazioni e dimensioni effettive. I segnaposto non sono valori da applicare. Il [collaudo](05-permessi-finestre-e-collaudo.md) stabilisce le prove necessarie per dichiarare una copertura operativa.
 
 ## Condizioni comuni di avvio
 
-Il NAS deve avere memoria e dischi qualificati, un pool sano e una copia dei contenuti precedenti dei dischi da riutilizzare, oppure la conferma che quei contenuti siano sacrificabili. La creazione del pool non appartiene a una procedura di backup: è una fase precedente e distruttiva, ancora da autorizzare al banco. Il test RAM in corso non soddisfa da solo queste condizioni.
+Il NAS deve avere memoria e dischi qualificati, un pool sano e una copia dei contenuti precedenti dei dischi da riutilizzare, oppure la conferma che quei contenuti siano sacrificabili. La creazione del pool non appartiene a una procedura di backup: è una fase precedente e distruttiva. Al28/10 tank è creato dopo dichiarazione sui dati già salvati e conferma dell’utente, con dashboard Online no errors e mirror a due dischi. Questo non dimostra un backup né chiude l’obiettivo16GB ancora aperto: il NAS mantiene RAM-03/A2 da8GB.
 
 Per ogni oggetto si censiscono originale, copia, responsabile, contenuti esclusi, credenziale di lettura, materiale di sblocco e destinazione di recupero. Si misura lo spazio di picco con il [calcolatore](03-dimensionamento-e-scenari-di-backup.md), includendo nuova generazione, versioni protette, istantanee e spazio della prova di ripristino. Se manca la misura, si può collaudare con dati artificiali limitati; non si ammettono per questo gli originali dell'utente.
 
@@ -56,6 +56,8 @@ Si conserva almeno una copia del fascicolo host fuori dal server e una possibili
 
 ## NAS-01: salvare configurazione e materiali di sblocco
 
+Dal28/10/2026 ADR-043 rende questo export il prossimo passo dopo la tappa mail riuscita. Il [dettaglio per cambio hardware](10-configurazione-truenas-e-cambio-hardware.md) definisce inclusioni, versioni esterne e rapporto con il materiale Veeam Linux già disponibile. Primo file con seed ora acquisito e verificato fuori NAS il28/10: archivio/database leggibili, copia identica e campi della tappa controllati. Seconda destinazione indipendente, inclusione nel lavoro di backup e restore ancora da verificare.
+
 Dopo la prima configurazione e dopo ogni modifica significativa si esporta la configurazione dalla GUI TrueNAS con Export Password Secret Seed selezionato. Si registrano versione, data, nome logico e impronta del file, senza pubblicare il file o il suo contenuto. Si verifica che l'archivio cifrato di destinazione sia leggibile da un'altra macchina e che il materiale necessario per aprirlo sia disponibile indipendentemente dal NAS. [Gestione configurazione TrueNAS 25.10](https://www.truenas.com/docs/scale/25.10/scaletutorials/systemsettings/advanced/managesysconfig/).
 
 La configurazione non contiene i documenti dei dataset. Le passphrase ZFS non sono memorizzate nel file; si conservano separatamente i materiali di sblocco previsti dalla scelta di cifratura, con una copia di emergenza. L'impronta rileva una modifica o una copia incompleta del file, ma non verifica la validità dell'importazione né la possibilità di sbloccare i dati. Queste ultime richiedono una prova separata.
@@ -85,6 +87,6 @@ Il recupero dopo perdita del pool NAS deve funzionare leggendo il repository dal
 | PVE-01 | host, NAS e share ancora da configurare | log del job, contenuti e dimensioni reali, esito senza avvisi non risolti |
 | PVE-02 | archivio reale e spazio/rete di prova | contenuto ripristinato e servizio verificato in isolamento |
 | HOST-01 | host non installato e supporto esterno non assegnato | ricostruzione del nodo documentata con accesso al backup indipendente |
-| NAS-01 | TrueNAS non installato | export con seed custodito e recupero provato separatamente |
+| NAS-01 | due generazioni pre/post-tank con seed acquisite e verificate; seconda destinazione indipendente e verifica del recupero ancora aperte | export con seed custodito e recupero provato separatamente |
 | NAS-02 | supporto di prova e configurazione futura | reinstallazione/import su ambiente di prova senza alterare gli originali |
 | NAS-03 | destinazione distinta e quota non assegnate | recupero dei documenti dalla copia anche con NAS indisponibile |

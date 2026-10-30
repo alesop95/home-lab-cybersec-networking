@@ -1226,3 +1226,723 @@ L'utente ha chiesto perché la copia di `doc-ingest.py` di `diy-2way-monitors-ho
 **Didattica:** nessuna in questo progetto: il difetto e il suo rimedio riguardano il template, dove la lezione L-007 li porta.
 
 **Template:** L-007
+
+## 26/10/2026: inventario riconciliato e ISO spostate su Ventoy
+
+Acquisite in lettura sei foto Telegram, General e Attributes per tutti i tre SSD. Firmware SanDisk Z32070RL, Kingston605ABBF2 e WD X41100WD; smartctl7.2r5155. Tutte le righe visibili Failed: never; tre generali PASSED e tre estesi già superati. Le foto contengono identificativi conservati fuori dalla prosa pubblica. Al successivo tentativo di copia i sei file non risultano più nella cartella indicata: valori trascritti e associazioni sono salvati, ma la copia dei JPEG originali rimane da recuperare.
+
+## RAM e recap finale del26/10/2026
+
+L'utente chiarisce di volere almeno un secondo modulo8 GB nelNAS e gli altri due come scorta, quindi autorizza gli ulteriori test necessari per avanzare. La configurazione attuale restaRAM-03 solaA2,8 GB; prossimo montaggio da eseguireRAM-01 inB2, ultimo slot dallaCPU. Questa coppia16 GB non risulta già provata; la coppiaRAM-03/A2+RAM-04/B2 era invece fallita e non viene semplicemente ripetuta. BIOS atteso16384 MB,2133 MHz,XMP disabilitato; Memtest86+8.10,quattro passaggi senza errori o stop al primo errore. RAM-01 aveva fallitoA1/A2: la destinazione scelta non ne cambia retroattivamente l'esito. RAM-02/04 restano le due scorte fisiche richieste, conservate con errori registrati. QuattroCrucial4 GB restano alserver,16 GB censiti. Le alternative12/12 e16/8 non sono state scelte. ADR-039 registra obiettivo e prova, non montaggio o pass già osservati. Il chiarimento sui fileSanDisk è ancora pendente.
+
+Due ISO spostate come autorizzato e verificate prima della rimozione delle sorgenti. Nuova canonica separa censimento, prove, assegnazioni e proposte; corrette disponibilità NAS8GB/server16GB censiti e quarantena tre moduli. Nessun sistema o pool installato. Autorizzata prova mirata16 GB RAM-03/A2+RAM-01/B2,non ancora montata o avviata.
+
+**Didattica:** [voce2 del racconto](../context/studio-didattico-master.md) e [refactor02](../context/refactor-02-inventario-e-ram-nas.md), estratti reali prima/dopo e compromessi di redistribuzione.
+
+**Template:** nessuna
+
+## 26/10/2026: montata la coppia RAM-03/A2 e RAM-01/B2, BIOS ancora da verificare
+
+La nuova fotografia del NAS mostra i moduli etichettati RAM-03 in A2 e RAM-01 in B2; A1 e B1 risultano vuoti. Il montaggio richiesto è quindi osservato: due moduli nominali da8 GB, non ancora una lettura BIOS da16 GB o un test superato. L'utente chiede di procedere. Prossimo collegare alimentazione e chiavetta Medicat, accendere ed entrare nel BIOS con Canc. Verificare16384 MB,2133 MHz e XMP disabilitato prima di Memtest86+8.10. La prova della coppia prevede quattro passaggi completi senza errori oppure stop al primo errore. Avvio e risultato non ancora acquisiti. La fotografia è stata copiata subito nell'archivio privato con SHA-256 identico e originale conservato.
+
+**Didattica:** nessuna nuova scheda: riscontro fisico della configurazione descritta nella voce2, distinto dal rilevamento BIOS e dalla prova.
+
+**Template:** nessuna
+
+## 26/10/2026: BIOS conferma 16384 MB con RAM-03/A2 e RAM-01/B2
+
+Il BIOS ASUS H170-PRO versione 3805, i7-6700, mostra Memory 16384 MB (DDR4 2133 MHz), XMP Disabled. DRAM Status: DIMM_A1 N/A, DIMM_A2 TEAMGROUP 8192 MB 2400 MHz, DIMM_B1 N/A, DIMM_B2 TEAMGROUP 8192 MB 2400 MHz. I 2400 MHz delle righe dei moduli sono distinti dai 2133 MHz operativi indicati in alto. Le etichette RAM-03/A2 e RAM-01/B2 derivano dalla precedente foto del montaggio. Riconoscimento dei 16 GB confermato; questo non è un esito di stabilità. Memtest della nuova coppia non ancora osservato. Restano quattro passaggi completi senza errori oppure stop al primo errore, secondo ADR-039. Prossimo F8 e selezione UEFI: Generic, Partition 2; se la voce manca acquisire il menu. In Medicat avviare Diagnostic Tools, Memtest86+ 8.10 e acquisire la schermata iniziale della coppia. La schermata EZ Mode mostra anche la voce Intel Rapid Storage Technology con indicazione On: non sostituisce una lettura di SATA Mode in Advanced, già verificato AHCI nel giro precedente; non è stata richiesta alcuna modifica ora. Tre SSD ancora visibili su SATA6G_1, _2 e _6. Immagine copiata nell'archivio privato, SHA-256 identico e originale conservato.
+
+**Didattica:** nessuna nuova scheda: riscontro BIOS della configurazione già motivata nella voce 2, distinto dal test ancora aperto.
+
+**Template:** nessuna
+
+## 26/10/2026: avviato Memtest sulla coppia RAM-03/A2 e RAM-01/B2
+
+L'utente riferisce l'avvio e la schermata lo conferma: Memtest86+ v8.10, build 8.10.49468.x64, ASUS H170-PRO e i7-6700, quattro core e otto thread, SMP 8T PAR. Alla lettura iniziale Time 0:00:03, Status Testing, Pass 0, Errors 0, progresso del passaggio 0%, Test 15%, Test #3 Moving inversions, 1s & 0s. Memoria 15.8 GB, IMC 1069 MHz (DDR4-2138), CAS 15-15-15-35; CPU 3400 MHz, indicazione termica 42/48 °C. SPD Slot 1: TEAMGROUP 8 GB DDR4-2400, 2016-W48; Slot 3: TEAMGROUP 8 GB DDR4-2400, 2016-W40. La combinazione fisica RAM-03/A2 e RAM-01/B2 deriva dal montaggio già fotografato, e il BIOS precedente confermava 16384 MB a 2133 MHz, XMP disabilitato. Questi sono contatori iniziali: non documentano un passaggio completo o il superamento della prova. Proseguire con questa stessa configurazione fino a quattro passaggi completi senza errori, oppure stop al primo errore con foto dei contatori e della riga di errore. Nessun ulteriore spostamento RAM richiesto. Immagine archiviata subito, SHA-256 identico, originale conservato.
+
+**Didattica:** nessuna nuova scheda: avvio della prova della configurazione già motivata nella voce 2, senza esito finale.
+
+**Template:** nessuna
+
+## 26/10/2026: fallita RAM-03/A2 più RAM-01/B2, spiegato il rischio della RAM volatile
+
+Due letture della stessa prova Memtest86+ 8.10 mostrano Status Failed, Pass 0, Errors 1. Prima lettura a 0:20:49 con banner FAIL, seconda a 0:20:54 senza banner: non sono due errori o due test diversi. Il passaggio è al 99% ma il contatore Pass resta 0. Nella seconda lettura il test corrente è #10 Bit fade test, 2 patterns, al 65%; la riga che ha registrato l'errore indica invece Test 9, pCPU 0, Pass 0, Failing Address 0x000100d49410 (4.01 GB), Expected 0x3d12e399ff15f5d8, Found 0x3d12e399ff15fdd8. XOR calcolato 0x800: un solo bit differente, bit 11 contando da zero. Il tempo è quello della lettura, non il momento esatto del bit alterato. Coppia RAM-03/A2 + RAM-01/B2 ricavata dal montaggio precedente; non si attribuisce il bit a un singolo DIMM dall'indirizzo. Memoria 15.8 GB, DDR4-2138, CAS 15-15-15-35; temperature mostrate 42/54 e 41/54 °C. Criterio di stop al primo errore raggiunto: richiesto spegnimento, ancora da confermare; nessun nuovo innesto o test identico assegnato. Obiettivo 16 GB aperto. Immagini archiviate subito con SHA-256 corrispondenti e originali conservati. Fonti S126, S129 e S204 rilette per significato dei campi, limiti diagnostici e conseguenze sui dati.
+
+**Didattica:** ampliata la voce 2 e la scheda refactor-02-inventario-e-ram-nas.md con volatilità, percorso del dato e limiti di mirror/checksum, usando la riga reale Expected/Found.
+
+**Template:** nessuna
+
+## 26/10/2026: NAS spento dopo il fallimento della coppia, cavo ancora da scollegare
+
+L'utente conferma che il NAS è spento. Non conferma ancora lo scollegamento del cavo di alimentazione; il prossimo gesto richiesto è scollegarlo, prima di toccare i moduli. Nessun nuovo montaggio, avvio o test. Restano RAM-03/A2 e RAM-01/B2 all'ultimo riscontro, con esito negativo della coppia già registrato; obiettivo 16 GB invariato e Crucial sul server.
+
+**Didattica:** nessuna nuova scheda, sola conferma operativa.
+
+**Template:** nessuna
+
+## 26/10/2026: cavo NAS scollegato, richiesta rimozione della sola RAM-01/B2
+
+L'utente risponde fatto alla richiesta di scollegare il cavo di alimentazione: NAS spento e scollegato confermati. Prossimo gesto richiesto: rimuovere soltanto RAM-01 da B2, ultimo slot dalla CPU, lasciando RAM-03 in A2. Rimozione non ancora confermata, nessuna riaccensione o nuova prova assegnata. RAM-01 resta conservata con gli errori registrati, senza qualifica come ricambio funzionante. La rimozione separa la coppia appena fallita e non decide una riduzione permanente a 8 GB: obiettivo NAS 16 GB ancora aperto, Crucial invariati sul server e nessun acquisto deciso.
+
+**Didattica:** nessuna nuova scheda, gesto operativo conseguente alla prova già spiegata nella voce 2.
+
+**Template:** nessuna
+
+## 26/10/2026: RAM-01 rimossa, resta RAM-03/A2, prossimo avvio installer con 8 GB provvisori
+
+L'utente conferma RAM-01 rimossa, dopo spegnimento e scollegamento già confermati. Nel NAS resta RAM-03 da 8 GB in A2; B2 torna vuoto, nessun altro modulo aggiunto. RAM-01 conservata fuori con gli errori registrati, come RAM-02/04, senza smaltimento o qualifica come ricambio funzionante. La precedente prova singola RAM-03/A2 ha circa 22 ore senza fail riferite; non si richiede una ripetizione identica per il solo ritorno alla configurazione. Passo operativo successivo: avviare la chiavetta UEFI con F8, Generic Partition 2, poi Live_Operating_Systems/TrueNAS/TrueNAS-SCALE-25.10.7.iso. Si usa la configurazione provvisoria da 8 GB, minimo base documentato in S204, mantenendo aperto l'obiettivo 16 GB di ADR-039. Aggiungere in seguito un modulo utilizzabile non richiede reinstallare TrueNAS. Nuova accensione e installer ancora non osservati; nessun disco cancellato, Kingston resta la sola destinazione prevista dell'installazione e i dati SanDisk sono ancora da chiarire prima del pool. Crucial invariati sul server, nessun acquisto o riduzione permanente a 8 GB decisi.
+
+**Didattica:** nessuna nuova scheda: si applica la distinzione fra capacità montata e obiettivo già spiegata nella voce 2; l'avvio provvisorio non equivale alla chiusura dell'espansione.
+
+**Template:** nessuna
+
+## 26/10/2026: avvio TrueNAS 25.10.7 fino al menu installer, errori di boot registrati
+
+L'utente dichiara di aver eseguito i passi e le tre immagini mostrano in sequenza GRUB con Start TrueNAS SCALE Installation selezionato, log del live e TrueNAS 25.10.7 Console Setup con 1 Install/Upgrade selezionato, oltre a Shell, Reboot e Shutdown. La copia di filesystem.squashfs in RAM è mostrata al 100%. Nel log sono leggibili SGX disabled or unsupported by BIOS, mount della sorgente in sola lettura, Failed to open /dev/shm device, ignoring: Inappropriate ioctl for device, firmware Realtek rtl_nic/rtl8168h-2.fw non caricato (-2) e soprattutto Failed to start mount-cd.service - Mount installation media. Non si attribuiscono questi messaggi alla RAM e non si dichiarano risolti o ininfluenti dall'apparizione successiva del menu. NAS acceso con sola RAM-03/A2 da 8 GB secondo il montaggio confermato; nessuna nuova lettura BIOS della memoria nelle tre foto. Boot raggiunto fino al menu, non installazione conclusa o disponibilità completa del media provata. Prossimo premere Invio su Install/Upgrade e acquisire l'elenco delle destinazioni: previsto soltanto Kingston V300 240 GB, ancora da identificare nel live attuale. Nessuna lettera sda/sdb viene ereditata da precedenti sessioni. Nessun disco selezionato o cancellato, file SanDisk ancora da chiarire prima del pool, obiettivo 16 GB aperto. Guida ufficiale stabile Installing TrueNAS letta, S205; il passo apre la selezione, la cancellazione richiede una conferma successiva. Tre immagini copiate subito e rilette, SHA-256 coincidenti con gli originali conservati.
+
+**Didattica:** nessuna nuova scheda: si distingue menu raggiunto da installazione riuscita, secondo il criterio di stato e riscontro già adottato.
+
+**Template:** nessuna
+
+## 26/10/2026: Kingston identificato come sdc, prima della cancellazione verifica del supporto
+
+La schermata Choose Destination Media di TrueNAS 25.10.7 elenca sda SanDisk SDSSDA2, NTFS, 223.57 GiB; sdb WDC WDS250G1B0A, NTFS, 232.89 GiB; sdc KINGSTON SV300S, ext4, 223.57 GiB; sdd Flash Disk Medicat, NTFS, 58.2 GiB. Tutte le caselle sono vuote e l'evidenziazione è sul SanDisk, non sul Kingston. Il Kingston destinato al sistema è quindi sdc, terza riga: la vecchia mappa sdb Kingston e sdc WD non vale in questo avvio. Nessun disco è ancora selezionato o cancellato. Poiché il log precedente mostrava mount-cd.service fallito, si richiede un controllo del media prima della conferma di cancellazione: Esc, ritorno al menu, 2 Shell, ls -lh /cdrom, foto del risultato. Il comando legge la cartella; nessun nuovo mount o scrittura è assegnato. Fonti ufficiali correnti consultate e scaricate: scale-build al commit 2b2b629f7726daeb2dc5b618ecdd8e1014723a45, script mount-cd con mountpoint /cdrom e ricerca TrueNAS-SCALE.update; truenas-installer al commit b988b96279e33ab799326205b6e3e8c8879b2ae1, install.py che nel codice corrente formatta prima di montare /cdrom/TrueNAS.update. Non sono versioni confrontate con i file della ISO 25.10.7; i nomi payload differiscono e non si deve dedurre la causa o imporre un nome file dal solo master. La verifica ls sul live risolve la presenza effettiva del supporto. Lettura ancora non eseguita o osservata. RAM-03/A2 da 8 GB provvisori invariata, obiettivo 16 GB aperto, dati SanDisk ancora da chiarire. Immagine archiviata subito con SHA-256 corrispondente e originale conservato.
+
+**Didattica:** nessuna nuova scheda: lettura effettiva del supporto prima della scrittura, versione del sorgente distinta da quella del live; coerente con la distinzione di riscontro già adottata.
+
+**Template:** nessuna
+
+## 26/10/2026: payload presente in /cdrom, si torna alla selezione del solo Kingston
+
+La Shell mostra il comando ls -lh /cdrom eseguito e il suo elenco: total 2.0G, file TrueNAS-SCALE.update da 1.9G, directory EFI, System, boot, efi, live, oltre a boot.catalog, efi.img, initrd.img, mach_kernel e vmlinuz. In alto è visibile un tentativo precedente con /cd-rom inesistente, corretto nel comando riuscito: non è un errore della cartella /cdrom. Nel live il payload è presente e il controllo richiesto ha dato il riscontro necessario a proseguire. Non si dichiara una verifica byte per byte del payload, un nuovo checksum della ISO, un servizio mount-cd ora attivo o la causa certa del fallimento di avvio. Non si rinomina il file TrueNAS-SCALE.update in TrueNAS.update sulla base di sorgenti di un'altra versione. Nessun nuovo mount, formattazione USB o test RAM richiesto. Prossimo exit, 1 Install/Upgrade, navigare su sdc KINGSTON SV300S 223.57 GiB, selezionarlo con Spazio assicurando che solo quel disco abbia l'asterisco, OK e Yes all'avviso di cancellazione relativo al Kingston; acquisire la schermata successiva. La cancellazione del Kingston è compresa nell'installazione sul disco di avvio già prevista, senza estendere l'azione a SanDisk, WD o USB. Selezione, conferma ed effettive scritture ancora non osservate. Mappa attuale sda SanDisk, sdb WD, sdc Kingston, sdd Flash Disk. Sola RAM-03/A2 da 8 GB provvisori, obiettivo 16 GB ancora aperto e dati SanDisk pendenti prima del pool. Immagine archiviata subito, SHA-256 coincidente e originale conservato. Procedura ufficiale S205 già letta.
+
+**Didattica:** nessuna nuova scheda: acquisito il riscontro richiesto sul live, distinto dalla sola inferenza da sorgenti di versione diversa.
+
+**Template:** nessuna
+
+## 26/10/2026: installer alla scelta dell'amministratore web truenas_admin
+
+La nuova immagine mostra Web UI Authentication Method, con Administrative user (truenas_admin) selezionato e Configure using Web UI come alternativa. L'avanzamento è coerente con i passi precedenti del flusso S205, ma il disco selezionato non è visibile in questa schermata: non è una nuova lettura del target. Destinazione assegnata dalle istruzioni: solo Kingston V300 sdc 223.57 GiB; nessuna estensione a SanDisk, WD o chiavetta. Si indica di lasciare la prima voce, confermare Invio, impostare una password unica nei due campi usando Tab e salvarla nel proprio gestore, quindi OK e foto della schermata successiva. La credenziale è da digitare localmente; nessun valore è stato richiesto, ricevuto o conservato nei file del progetto. truenas_admin è il nome pubblico predefinito del ruolo amministrativo della gestione web, distinto dalle successive utenze per le condivisioni. Conferma del metodo, password impostata, scritture ed esito conclusivo ancora non osservati; non si dichiara TrueNAS installato. NAS acceso con sola RAM-03/A2 da 8 GB provvisori, obiettivo 16 GB aperto; payload TrueNAS-SCALE.update presente in /cdrom dalla verifica precedente, dati SanDisk ancora da chiarire prima del pool. Immagine copiata subito e verificata SHA-256, originale conservato. Procedura ufficiale S205 già letta.
+
+**Didattica:** nessuna nuova scheda: passo previsto dell'installazione, distinguendo amministrazione web e futura autorizzazione delle condivisioni.
+
+**Template:** nessuna
+
+## 27/10/2026: truenas_admin e password confermati, installazione in avvio riferita
+
+L'utente conferma di aver scelto truenas_admin e impostato la password, quindi riferisce che sta lanciando l'installazione. Sono conferme dichiarate, senza nuova immagine dell'avanzamento o dell'esito: non si accredita ancora Installation Succeeded, completamento o primo avvio dal Kingston. Nessun valore di password è stato richiesto, ricevuto o salvato. Prossimo lasciare proseguire con la chiavetta collegata e acquisire il messaggio finale di successo o errore prima del riavvio. Il target assegnato è solo Kingston V300 sdc nella mappa dell'installer già osservata, non una nuova verifica del disco in questo messaggio. RAM-03/A2 sola da 8 GB provvisori, obiettivo 16 GB ancora aperto, Crucial sul server; pool non creato e dati SanDisk ancora da chiarire. Non si deduce la durata dell'installazione o un funzionamento notturno dal cambio di data.
+
+**Didattica:** nessuna nuova scheda: conferma operativa dell'autenticazione, avvio dichiarato distinto dall'esito ancora da acquisire.
+
+**Template:** nessuna
+
+## 27/10/2026: prima lettura errata di sdc come sda e richiesta di verifica
+
+L'agente ha inizialmente letto sdc come sda nel messaggio Installation Succeeded e ha chiesto una verifica di modelli e filesystem prima del riavvio. Quella lettura del messaggio era errata e non descrive una destinazione diversa dell'installer. La rilettura dell'originale e il risultato lsblk, registrati nella voce successiva, confermano sdc Kingston con EFI/ZFS. La richiesta eseguita era 2 Shell, lsblk -o NAME,SIZE,MODEL,FSTYPE; nessuna scrittura è stata assegnata per questa verifica. Il messaggio precedente dell'agente sul possibile SanDisk installato è rettificato, senza considerare mai dimostrata una cancellazione del SanDisk.
+
+**Didattica:** nessuna nuova scheda: prima interpretazione visiva errata, corretta nel medesimo giro con rilettura e riscontro.
+
+**Template:** nessuna
+
+## 27/10/2026: Kingston con EFI e ZFS verificato, corretto errore di lettura, prossimo primo avvio
+
+La nuova lettura lsblk -o NAME,SIZE,MODEL,FSTYPE identifica sda SanDisk SDSSDA240G 223.6G con partizioni da 450M NTFS, 99M vfat, 16M, 222.5G NTFS e 530M NTFS; sdb WDC WDS250G1B0A-00H9H0 232.9G con partizioni da 450M NTFS, 99M vfat, 16M, 231.5G NTFS e 859M NTFS. sdc è KINGSTON SV300S37A240G 223.6G, con sdc1 1M, sdc2 512M vfat e sdc3 223.1G zfs_member. sdd è Flash Disk 58.2G, partizioni NTFS da 58.2G e vfat da 32M. Il Kingston ha quindi lo schema EFI/ZFS dell'installazione e SanDisk/WD mostrano ancora le strutture NTFS, senza che ciò provi la validità dei file. Riletta a risoluzione originale anche l'immagine del successo: il testo è The TrueNAS installation on sdc succeeded, non sda. L'agente aveva letto male la lettera, causando il controllo in più; errore riconosciuto all'utente e registrato esplicitamente. Non c'è evidenza di una destinazione sbagliata dell'installer. Installazione sul Kingston verificata, primo avvio ancora da osservare. Si indica exit dalla Shell, 3 Reboot System e rimozione della USB quando parte il riavvio, poi foto della console. L'utente chiede se scegliere 1: viene chiarito che 1 Install/Upgrade riapre l'installazione e che occorre 3 Reboot System. Nessuna di queste azioni è ancora confermata o vista. Account/password impostata confermati senza valore archiviato, RAM-03/A2 sola da 8 GB provvisori, obiettivo 16 GB e dati SanDisk ancora aperti. Foto nuova copiata e verificata SHA-256, originale conservato.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo del disco installato e rettifica trasparente della lettura errata.
+
+**Template:** nessuna
+
+## 27/10/2026: chiusura del live con messaggi unmount e watchdog, primo boot ancora da osservare
+
+L'utente invia la prima schermata dopo le istruzioni exit e 3 Reboot System. Sono visibili Failed unmounting run-live-medium.mount - /run/live/medium e watchdog: watchdog0: watchdog did not stop. I messaggi appartengono alla chiusura dell'ambiente live già avviato dalla USB, coerente con le operazioni di smontaggio descritte in S208; non costituiscono una console del sistema installato. Il fotogramma non dimostra da solo la persistenza di un blocco e non viene attribuito a RAM, alimentatore, dischi o a un driver specifico. Rimozione USB non ancora confermata esplicitamente. Si indica di lasciare completare il riavvio e, soltanto se il sistema non è già ripartito e resta fermo così per almeno due minuti, tenere premuto il pulsante fino allo spegnimento, poi riaccendere con la chiavetta rimossa e acquisire la console. È una soglia operativa per questo passaggio, non un timeout del watchdog misurato o prescritto dalla fonte. Spegnimento manuale, nuova accensione e primo boot non ancora osservati. L'installazione sul Kingston sdc era già conclusa e verificata con EFI e ZFS; la precedente lettura sda del messaggio era errore dell'agente, già rettificato. Consultati S208 e S209: quest'ultimo è un documento storico sull'API watchdog, usato per il contesto generale, non per diagnosticare il kernel o il driver attuale. Foto archiviata subito con SHA-256 corrispondente, originale conservato. RAM-03/A2 da 8 GB provvisori, obiettivo 16 GB e dati SanDisk ancora aperti.
+
+**Didattica:** nessuna nuova scheda: riconoscimento della fase di shutdown e separazione fra installazione riuscita e primo avvio ancora da verificare.
+
+**Template:** nessuna
+
+## 27/10/2026: primo avvio documentato in 17 foto, rete temporanea e DHCP già attivo
+
+Archiviate e rilette tutte le17 foto fornite nella cartella Telegram: manifesto con17 sorgenti, copie, byte e SHA-256 coincidenti, originali conservati; successiva rilettura delle impronte dell'archivio completata. Le foto documentano GRUB del sistema installato25.10.7, caricamento ZFS2.3.9-1, avvio middlewared e servizi fino alla console1-10. L'ultima mostra The web interface could not be accessed. Please check network configuration, senza indirizzo di gestione. Primo boot del sistema installato quindi osservato, accesso web ancora no. Le attese ix-wait-on-disks e middlewared sono seguite nelle foto da esiti OK; le frazioni5s/20min e35s/15min10s non sono durate misurate dell'intero avvio o prove fallite. Registrati separatamente avvisi kernel MDS/MMIO/VMSCAPE, ASPM, pcspkr duplicato, dipendenze SSSD e timer ipa-epn fallito; una foto è mossa, la successiva conferma il timer. Gli avvisi non hanno impedito la console ma non vengono dichiarati risolti o usati per diagnosticare un guasto RAM. L'utente riferisce NAS temporaneamente sulla rete aziendale e chiede di preparare il resto prima della casa. Nelle ulteriori schermate sono osservati enp3s0, aliases/state.aliases vuoti, poi ipv4_dhcp Yes, ipv6_auto Yes, aliases vuoti, MTU not set. DHCP era già attivo alla lettura, non è una nuova configurazione eseguita. Prossimo Back,q,8 Open Linux Shell,ip -br address show enp3s0 e foto del risultato, ancora non acquisito. Nessun indirizzo statico, gateway, VLAN, pool, condivisione o impostazione della rete aziendale modificati. Configurazione portabile e rete definitiva tenute distinte in ADR-040 e scheda didattica03. RAM-03/A2 sola da8GB provvisori,16GB e dati SanDisk ancora aperti; nessun valore di password ricevuto o salvato.
+
+**Didattica:** voce3 e scheda refactor-03-preparazione-nas-e-rete-temporanea.md, con estratti reali prima/dopo dalla riga Storage di rete di STACK.md.
+
+**Template:** nessuna
+
+## 27/10/2026: enp3s0 DOWN senza indirizzi, richiesta lettura dei flag e verifica del cavo
+
+La nuova immagine mostra scelta8 Open Linux Shell e comando ip -br address show enp3s0 eseguito: unica riga enp3s0 DOWN e nessun indirizzo. Nel precedente editor ipv4_dhcp era già Yes, quindi non si richiede di abilitarlo di nuovo. Prossimo ip link show enp3s0 per distinguere stato amministrativo e collegamento, oltre al controllo del cavo Ethernet lato NAS e presa/switch. Flag completi e riscontro fisico non ancora acquisiti; non si conclude dal solo DOWN che il cavo sia certamente scollegato, che il server DHCP non risponda o che il driver sia guasto. Comando richiesto di sola lettura, nessuna modifica di indirizzo, DHCP o rete aziendale. Boot e installazione restano confermati, accesso web non ancora raggiunto. Foto copiata subito, SHA-256 coincidente e originale conservato.
+
+**Didattica:** integrazione alla scheda03 con il riscontro DOWN; stato dell'opzione DHCP distinto da link e indirizzo.
+
+**Template:** nessuna
+
+## 27/10/2026: cavo inizialmente assente chiarito, enp3s0 ora UP ma senza IPv4
+
+L'utente chiarisce che doveva ancora collegare il cavo Ethernet. La nuova immagine contiene la precedente lettura DOWN e una seconda esecuzione di ip -br address show enp3s0: ora UP, con un IPv6 link-local /64 e nessun IPv4 visibile. Il collegamento operativo è quindi osservato, senza cambiare il DHCP già Yes o altre impostazioni. Il valore IPv6 completo, identificante l'interfaccia, resta nella foto privata e non viene riportato nei documenti pubblici. La richiesta precedente di leggere ip link show non è più il prossimo passo: dopo il chiarimento e il nuovo UP si indica di attendere circa un minuto e digitare exit per tornare alla console e cercare l'indirizzo web; esito dopo attesa ancora non acquisito. Si chiede inoltre se l'altro capo è su presa/switch della rete aziendale o direttamente su un PC, per non presumere un servizio DHCP disponibile; risposta ancora pendente. Non si attribuisce ancora l'assenza IPv4 al server, al driver o a restrizioni della rete e non si tenta alcuna modifica alla rete aziendale. Immagine archiviata subito con hash coincidente e originale conservato.17foto precedenti salvate e lette, primo boot confermato,16GB e dati SanDisk aperti.
+
+**Didattica:** aggiornamento scheda03: il cavo chiarisce il precedente DOWN, UP e lease IPv4 restano riscontri distinti.
+
+**Template:** nessuna
+
+## 27/10/2026: altro capo del cavo sullo switch aziendale con DHCP confermato dall'utente
+
+L'utente risponde alla domanda sul collegamento: il cavo termina nello switch della rete aziendale, che assegna una classe IP specifica in DHCP. Non è un collegamento diretto NAS-PC e non si indicano IP statici manuali. Restano il DHCP già Yes e l'ultima lettura enp3s0 UP con solo IPv6 link-local; nessun IPv4 del NAS ancora osservato. Si conferma il prossimo gesto: breve attesa ed exit per leggere la console aggiornata, poi foto dell'indirizzo web o dell'eventuale stato ancora senza indirizzo. La disponibilità dichiarata del servizio DHCP non equivale a un lease già acquisito dal NAS. Nessuna modifica alla rete aziendale, nessun login web e nessun valore di password ricevuto.17foto archiviate e verificate, primo boot confermato,16GB e dati SanDisk ancora aperti.
+
+**Didattica:** integrazione scheda03: topologia dichiarata chiarita, lease effettivo ancora da osservare.
+
+**Template:** nessuna
+
+## 27/10/2026: lease DHCP, login web e preferenza per gli avvisi su Proton
+
+Le nuove schermate documentano la console con URL HTTP/HTTPS sul lease `<ip-nas-lan-temporanea>`, la pagina di login e poi la dashboard autenticata come truenas_admin. Raggiungibilità web e accesso amministrativo sono quindi verificati sulla LAN aziendale temporanea; il precedente stato senza IPv4 è superato. Nessuna modifica di DHCP, IP statici, gateway, DNS o VLAN. Dashboard25.10.7-Goldeye: 7,6 GiB disponibili, Create Pool e nessun pool dati. General Settings: memoria8 GiB, lingua English, fuso America/Los_Angeles, tastiera English (US) (us); il riquadro GUI mostra indirizzo di ascolto IPv4 0.0.0.0, che non è il lease da digitare nel browser. Indicato Localization, Settings, Europe/Rome e tastiera italiana, poi Save; salvataggio non ancora osservato e sincronizzazione oraria da verificare separatamente. Le cinque nuove immagini sono archiviate in privato e le copie sono verificate SHA-256; originali conservati.
+
+Registrata la preferenza Proton/Gmail e Log NAS in ADR-041, pendenze, matrice16 e registro tecnico; servizio di spedizione, ricezione e filtro ancora aperti. Le17foto del primo boot restano archiviate e distinte dalle vecchie6SMART mancanti. La localizzazione è il prossimo gesto dell'utente. Nessun pool o invio email eseguito dall'agente.
+
+**Didattica:** sviluppo della [scheda03](../context/refactor-03-preparazione-nas-e-rete-temporanea.md) su lease e login osservati e separazione fra destinatario, trasporto e classificazione.
+
+**Template:** nessuna
+
+## 27/10/2026: localizzazione Europe/Rome e Italian (it) salvata
+
+La prima immagine mostra il pannello Localization Settings con Italian (it), Europe/Rome e salvataggio in corso; da sola non chiudeva la verifica. La successiva mostra il pannello chiuso e i valori nella scheda General Settings: Timezone Europe/Rome, Console Keyboard Map Italian (it), Language English, Date Format27/10/2026 e Time Format11:02:31 a24ore. Salvataggio e applicazione del fuso sono quindi osservati; non si accredita da questo la sincronizzazione NTP. Le due immagini sono archiviate nel livello privato con SHA-256 verificati e originali conservati. Prossimo gesto indicato: Settings del riquadro Email, in basso a destra, per osservare campi e metodo prima di configurare. Email ancora SMTP nel riepilogo, nessun mittente, destinatario o test di recapito osservato. Obiettivo16GB, dati SanDisk prima del pool, boot-pool ed export restano aperti.
+
+**Didattica:** riscontro aggiunto alla scheda03: pannello con salvataggio in corso e valori finali riletti sono osservazioni diverse; nessuna nuova scelta architetturale.
+
+**Template:** nessuna
+
+## 27/10/2026: GMail OAuth selezionato, login e salvataggio ancora aperti
+
+Il pannello Email Options mostra GMail OAuth selezionato, From Email e From Name vuoti, invito a configurare le credenziali OAuth e pulsante Log In To Gmail. Save e Send Test Mail sono disabilitati; il riepilogo sottostante mostra ancora SMTP. La selezione nel modulo è osservata, mentre autorizzazione, salvataggio e invio non lo sono. Email Recipients non è visibile: la descrizione di S214 resta una guida da confrontare con la GUI effettiva, non la prova di un campo già trovato. Immagine archiviata in privato con SHA-256 verificato, originale conservato. L'utente chiede se cambiando browser e rete il collegamento continuerà e conferma di procedere. Indicato Log In To Gmail, con account e consenso solo nella GUI locale; nessuna password o codice ricevuti.
+
+Registrata la distinzione tra sessione del browser, autorizzazione salvata nel NAS e connettività della rete. Fonte Google S217 aggiunta; destinatari da trovare nella GUI effettiva, nessun recapito accreditato.
+
+**Didattica:** sviluppo della scheda03 sul collegamento OAuth che segue la macchina e sul percorso remoto che va configurato separatamente.
+
+**Template:** nessuna
+
+## 27/10/2026: account Google personale dei servizi domestici, ancora da creare
+
+Le due schermate mostrano GMail OAuth selezionato ma ancora da autorizzare, From Email e From Name vuoti, Save e Send Test Mail disabilitati. La prima apre l'help From Email, che cita envelope From e un indirizzo da configurare in Accounts > Users > Edit; la seconda descrive From Name come nome visualizzato del mittente. Sono testi di aiuto osservati, non prova di un account configurato o della posizione attuale del destinatario. Immagini archiviate in privato con SHA-256 verificati, originali conservati.
+
+L'utente chiarisce che non ha una casella Gmail dedicata e propone di creare un normale account Google personale per altre esigenze private della propria rete domestica, riutilizzabile altrove. Raccomandato questo perimetro: un account dei servizi di casa, il cui primo utilizzo sarà l'invio degli avvisi NAS. Correzione operativa rispetto al precedente invito a usare il Gmail personale: il mittente sarà la nuova casella, non il Gmail personale già citato come destinatario alternativo. Nessun nuovo account, indirizzo, consenso, salvataggio o invio è ancora osservato. ADR-042 registra il piano, senza attestare la creazione.
+
+Aggiunte fonti S218-S220 e placeholder del nuovo account senza un valore reale. Aggiornati mittente, destinatario e nome visualizzato nei documenti correnti. Il passo dell'utente è ora la registrazione Google Per uso personale; nessuna operazione su account Google eseguita dall'agente.
+
+**Didattica:** [scheda04](../context/refactor-04-identita-google-e-notifiche.md), tipo di account Google, ruolo nel progetto e perimetro delle autorizzazioni.
+
+**Template:** nessuna
+
+## 27/10/2026: registrazione Google avviata, nuova Gmail ancora da scegliere
+
+Le tre schermate mostrano inserimento del nome, informazioni di base e pagina Use an email address or phone number con campo vuoto. Il collegamento visibile Don't have an email address or phone number? è il prossimo gesto indicato per proseguire verso una nuova casella Gmail. Nessun indirizzo scelto, account completato o collegamento al NAS è ancora osservato. Dati anagrafici non trascritti nei documenti pubblici; indicato di verificare la correttezza della data del titolare. Le immagini sono archiviate nel livello privato con SHA-256 verificati e originali conservati.
+
+S221 distingue account Google e Gmail: la registrazione può anche usare un indirizzo esterno o un numero, senza creare per questo la nuova casella Gmail prevista come mittente. Il piano di ADR-042 resta un account personale dei servizi domestici con Gmail; Proton resta destinatario degli avvisi. Selezione e completamento del nuovo indirizzo, autenticazione OAuth, salvataggio e recapito restano pendenti.
+
+**Didattica:** integrazione della scheda04 su account Google e servizio Gmail; nessuna nuova scelta rispetto ad ADR-042.
+
+**Template:** nessuna
+
+## 27/10/2026: indirizzo servizi casa scelto e riepilogo Google dopo il QR
+
+L'utente comunica l'indirizzo scelto per `<email-servizi-casa>` e la prima immagine mostra Verify some info before creating an account: Google chiede una verifica del dispositivo o numero contro gli abusi, con QR da scansionare dal telefono, passaggi sul telefono ed eventuale invio di un codice a Google, poi ritorno al PC. Indicato di lasciare aperta la pagina; QR conservato solo nella foto privata, non decodificato o pubblicato. La richiesta è coerente con S222, senza accreditare un'attivazione della verifica in due passaggi.
+
+Le quattro immagini successive mostrano Add recovery email con il precedente Gmail personale compilato, Add phone number con campo vuoto, Add a recovery contact con lo stesso Gmail personale compilato e infine Review your account info con la nuova casella e pulsante Next. Il flusso ha quindi superato il ramo QR ed è al riepilogo; non è ancora osservato un accesso alla casella o al profilo dopo il completamento. Nessun numero di telefono è stato ricevuto; dal campo vuoto non si conclude che un numero sia stato aggiunto o saltato nei passi successivi. Nessun invito di recupero accettato o impostazione confermata nelle impostazioni finali.
+
+Cinque immagini archiviate e verificate SHA-256, originali conservati. Indirizzo reale registrato prima nel livello privato e nei pattern di blocco; nel pubblico resta il segnaposto. Prossimo gesto indicato Next sul riepilogo, poi lettura della schermata seguente. Nessun login OAuth NAS, salvataggio del metodo o invio email osservato.
+
+Aggiornati inventario, memoria e pendenze alla registrazione al riepilogo; indirizzo scelto non equivale a completamento o collegamento NAS. Mappatura privata e blocco letterale verificati prima dei documenti pubblici.
+
+**Didattica:** sviluppo scheda04 su verifica antiabuso, recupero, identità mittente e prova del completamento. Nessuna nuova scelta architetturale oltre ADR-042.
+
+**Template:** nessuna
+
+## 27/10/2026: account Google dei servizi casa creato e protezione ancora da verificare
+
+Le nove schermate documentano la scelta delle preferenze in quattro passi: attività web/app non salvata, cronologia YouTube non salvata, annunci generici selezionati dopo una prima vista senza selezione, promemoria privacy selezionati. Il riepilogo riporta attività e personalizzazione off e promemoria attivi. Seguono la pagina delle condizioni con I agree e infine la Home Google Account autenticata della nuova identità `<email-servizi-casa>`. La creazione è quindi osservata dalla pagina successiva al consenso, senza presumere il click dal solo pulsante. Le opzioni descritte sono quelle selezionate e riepilogate nel flusso; non è stata eseguita una nuova visita separata a ogni controllo dati dopo la creazione.
+
+La Home invita ad aggiungere una seconda opzione di recupero con telefono. Il banner non dimostra lo stato di ogni metodo di accesso, del recupero o della verifica in due passaggi. Non sono ancora state aperte le impostazioni Security & sign-in: nessuna autenticazione a due fattori, passkey, app autenticatore o codice di backup viene dichiarato configurato da queste immagini. Email e contatto di recupero erano stati inseriti nel flusso precedente; conferma e stato dell'invito restano da verificare. Nove copie archiviate con SHA-256 verificati, originali conservati, dati identificanti nel solo livello privato.
+
+Alla domanda sugli ulteriori settaggi, raccomandato un passaggio essenziale: leggere Security & sign-in, proteggere l'accesso con verifica in due passaggi e conservare i codici di backup in privato (S225-S226). La guida ammette app autenticatore e altri metodi; il metodo effettivo dipenderà dalle opzioni disponibili all'utente. Non si aggiungono servizi Google, nuovi account o una serie di controlli sulla personalizzazione già scelta. La raccomandazione non è un prerequisito tecnico di Gmail OAuth. Prossimo gesto aprire Security & sign-in, poi collegamento NAS.
+
+Snapshot corrente compattato allo stato presente, con cronologia conservata nel registro. Fase account creazione chiusa, protezione e OAuth NAS ancora aperti. Fonti S225-S226 aggiunte.
+
+**Didattica:** sviluppo scheda04 su preferenze dei dati, protezione dell'accesso e autorizzazione del NAS; nessuna ulteriore scelta architetturale rispetto ad ADR-042.
+
+**Template:** nessuna
+
+## 27/10/2026: Authenticator aggiunto, pulsante finale2FA e codici di backup rinviati
+
+L'utente riferisce di avere impostato Google Authenticator e chiede perché sia ancora presente Turn on 2-Step Verification, chiedendo di proseguire e chiarendo di non capire quali siano i codici proposti. Le due schermate confermano Authenticator Added just now, messaggio Authenticator app has been set up e successiva riga verde Added1minuteago. Mostrano anche l'invito ad attivare2FA e il pulsante Turn on 2-Step Verification in basso. Metodo configurato e attivazione globale sono quindi stati separati: nessuna conferma2FA attiva è ancora osservata.
+
+Indicato il solo pulsante finale, senza rifare il setup dell'app o richiedere un nuovo test di logout. I codici di backup di S226 sono spiegati come codici di scorta per accedere se perde il telefono; vengono rinviati per rispettare la richiesta di avanzare e non sono una condizione del collegamento NAS. La pendenza resta esplicita, non viene marcata completata. Dopo la conferma di attivazione si torna al NAS per Gmail OAuth. Nessun codice o QR segreto ricevuto. Le due immagini sono archiviate e verificate SHA-256, originali conservati. Fonti S225-S226 già consultate; nessun nuovo servizio o metodo aggiunto dall'agente.
+
+**Didattica:** integrazione scheda04: un metodo aggiunto non equivale alla verifica in due passaggi attiva; rinvio dei codici mantenuto distinto dalla loro generazione.
+
+**Template:** nessuna
+
+## 27/10/2026: il clic2FA richiede un metodo aggiuntivo, Authenticator resta registrato
+
+La nuova schermata mostra il dialogo Add second steps to your account: per attivare2-Step Verification chiede di aggiungere metodi come numero di telefono o passkey, con solo pulsante Go back. Sullo sfondo Authenticator resta con spunta verde e Added1minuteago. L'utente osserva correttamente che Authenticator è già un secondo fattore. Il metodo esiste, ma questo tentativo non ha attivato la protezione globale. Immagine archiviata in privato e verificata SHA-256, originale conservato; nessun numero di telefono o codice ricevuto.
+
+Rettifica del passo precedente: indicare soltanto l'ultimo clic era un'aspettativa troppo ottimistica, smentita dal dialogo osservato. Il messaggio richiede un metodo ulteriore senza spiegarne la causa. Non si inventa un requisito universale di due metodi, non si dichiara un bug e non si rifà Authenticator. Proposto Go back, poi Phone number per seguire una delle opzioni indicate; dati e verifica si inseriscono soltanto sul sito Google. Il risultato di questo eventuale inserimento non è ancora osservato e non viene garantito. La passkey è l'altra opzione nominata dal dialogo, non configurata.
+
+S225 descrive i metodi e l'attivazione generale. S227 è un annuncio ufficiale del6/5/2024, applicabile anche agli account personali, che distingue l'aggiunta dei metodi dall'attivazione2SV: contesto per la separazione degli stati, non diagnosi del messaggio di questo account nel2026. Il risultato osservato nella GUI guida il passo corrente. Codici di backup già rinviati; Gmail OAuth NAS non dipende tecnicamente da2FA e nessuna nuova checklist viene imposta.
+
+**Didattica:** integrazione scheda04: Authenticator è un secondo fattore, ma registrazione del metodo e criterio di attivazione osservato nel provider restano distinti; rettifica di un'aspettativa smentita dalla GUI.
+
+**Template:** nessuna
+
+## 27/10/2026: verifica identità Google rifiutata nel nuovo profilo, completamento2FA richiesto ora
+
+La prima immagine mostra We couldn't verify it's you durante il percorso di modifica della sicurezza dell'account servizi casa. La pagina suggerisce dispositivo/browser già usati e rete familiare, senza indicare causa o scadenza. L'utente riferisce poi un nuovo accesso in Chrome; la seconda immagine mostra Google Home con avatar, senza indirizzo completo. La terza mostra lo stesso rifiuto e il menu del profilo Chrome con l'indirizzo dell'account corretto, coincidente con quello della pagina Google. Il cambio di sessione non ha quindi risolto il rifiuto della verifica. Il pulsante Attiva nel menu Chrome riguarda la sincronizzazione di cronologia e schede, non l'attivazione2FA.
+
+Tre copie archiviate e verificate SHA-256, originali conservati. I parametri di sessione visibili nell'URL restano nella sola foto privata e non vengono estratti. Nessun numero di telefono, codice o nuova conferma di metodo acquisiti. Authenticator è già stato aggiunto; una conferma2FA attiva non è osservata.
+
+L'agente aveva proposto di rimandare l'attivazione e tornare al NAS; l'utente richiede esplicitamente di completare2FA adesso. Tale richiesta supera il rinvio: il passo corrente resta la protezione dell'account, non il collegamento NAS. Indicato il percorso ufficiale di S228: accedere al nuovo account nell'app Google o Gmail sul telefono, poi Gestisci account Google, Sicurezza e accesso, Verifica in due passaggi. Il risultato del percorso mobile non è ancora osservato. Non si rifà Authenticator, non si moltiplicano browser o metodi e non si promette che il nuovo accesso risolva il controllo. Codici di backup già rinviati, nessuna nuova richiesta di gerarli.
+
+Fonte ufficiale S228 consultata e registrata. Distinti accesso ordinario all'account, registrazione di Authenticator, verifica per operazione sensibile e2FA attiva. Nessuna attesa o data di sblocco specifica accreditata.
+
+**Didattica:** integrazione scheda04 su login riuscito e operazione sensibile consentita; richiesta dell'utente di completare2FA mantenuta esplicita, non trasformata in rinvio.
+
+**Template:** nessuna
+
+## 27/10/2026: account servizi casa aggiunto al telefono, prossimo stato2FA
+
+L'utente conferma di avere aggiunto l'account dei servizi domestici al proprio telefono e chiede come proseguire. Riscontro dichiarato, senza nuova immagine; non si deduce che il controllo identità sia già superato o che2FA sia attiva. Indicato di selezionare il nuovo account nell'app Google o Gmail e aprire Gestisci il tuo Account Google, Sicurezza e accesso, Verifica in due passaggi; premere Attiva se presente e seguire la richiesta del fornitore. La conferma che chiude questa fase è Verifica in due passaggi attiva. Nessun codice, password, QR o numero richiesto in chat. Non si rifà l'aggiunta al telefono o il setup Authenticator. L'utente vuole completare questa fase ora; codici di backup ancora rinviati e OAuth NAS non ancora eseguito. Procedura coerente con S225 e S228 già consultate.
+
+**Didattica:** nessuna nuova scelta; conferma operativa nel percorso già spiegato dalla scheda04.
+
+**Template:** nessuna
+
+## 27/10/2026: percorso dalle Impostazioni Google sul Samsung S25 Ultra
+
+L'utente identifica il telefono come Samsung Galaxy S25 Ultra e chiede dove proseguire. L'account è già stato aggiunto secondo la sua dichiarazione; non si richiede di aggiungerlo nuovamente. Indicato il percorso dalle impostazioni del telefono: Impostazioni, Google, foto o iniziale dell'account in alto, selezione del nuovo account servizi casa, Gestisci il tuo Account Google, Sicurezza e accesso, Verifica in due passaggi. Se Google non è visibile nell'elenco, usare la ricerca delle Impostazioni per trovare la voce. Fonte generale Android S229, insieme a S225 per2FA; nessuna versione One UI o disposizione concreta della pagina viene dedotta senza una schermata.
+
+Attiva va premuto se disponibile nella pagina2FA. L'esito non è ancora ricevuto e l'aggiunta al telefono non chiude questa fase: il criterio resta Verifica in due passaggi attiva. L'utente vuole completare la protezione ora, backup codes già rinviati, nessuna nuova configurazione Authenticator o tentativo da altro browser. Il modello del telefono è contesto per questa guida, non un censimento completo del dispositivo.
+
+**Didattica:** nessuna nuova scelta; chiarimento di navigazione nel percorso già descritto dalla scheda04.
+
+**Template:** nessuna
+
+## 27/10/2026: telefono di recupero confermato e passkey presente,2FA globale ancora da leggere
+
+La prima immagine dal Samsung mostra Confirm your recovery phone con il numero e le opzioni Yes confirm e No update. La seconda mostra il messaggio Recovery phone confirmed. Sono inoltre visibili una passkey etichettata Galaxy S25 Ultra, Last used Not yet used e This passkey is not syncable, una barra chiusa2 verification methods e le sezioni Safe Browsing, Your devices e Recent security activity. Non si è osservata la creazione della passkey: si registra la sua presenza. Non compare una dicitura esplicita di attivazione2-Step Verification. L'email completa non è visibile nelle due immagini, solo l'avatar coerente con il percorso seguito.
+
+Il numero viene registrato prima nella mappa privata e nei pattern di blocco come `<tel-recupero-google>`, senza pubblicare valori o parametri identificanti. Due immagini archiviate e verificate SHA-256, originali conservati. Prossimo solo espandere2 verification methods, barra grigia sotto Continue, e leggere il contenuto. Non si prescrivono un'altra passkey, sincronizzazione Chrome o Enhanced Safe Browsing. La conferma del recupero e il conteggio dei metodi non vengono trasformati in2FA globale attiva; l'utente vuole completare questa fase ora, codici di backup rinviati e OAuth NAS non ancora eseguito.
+
+**Didattica:** riscontro operativo nella scheda04: recupero confermato, credenziale presente e protezione globale restano prove diverse.
+
+**Template:** nessuna
+
+## 28/10/2026: Gmail OAuth salvato, test senza destinatario amministrativo e Google2FA off
+
+Registrato alle 2026-10-28T10:53:11+01:00.
+
+L’utente fornisce dodici nuove immagini e ribadisce che ogni passaggio deve essere registrato per poter riprendere il lavoro. Tutte le immagini nominate sono state lette e copiate nell’archivio privato, con SHA-256 confrontato con l’originale e manifest per immagine; gli originali sono conservati. Timestamp e numerazione non vengono assunti come sequenza esatta dei clic: si registrano gli stati visibili.
+
+Nel modulo Email Options sono compilati From Email `<email-servizi-casa>` e From Name `<nome-mittente-nas>`. Il popup TrueNAS Authorization presenta Proceed; segue la scelta della nuova identità Google e la parte finale della pagina di consenso con Continue. Gli scope completi non sono visibili e non vengono inventariati per ipotesi. La schermata successiva conferma Gmail credentials have been applied e Logged In To Gmail. Un tentativo di test produce l’avviso che nessuna email è configurata per root o altro amministratore locale e chiede di configurarla prima. Infine Email settings updated e il riepilogo GMail OAuth con mittente confermano il salvataggio. OAuth e campi mittente sono quindi configurati; nessuna consegna NAS è provata.
+
+Sul telefono Google notifica che TrueNAS ha ricevuto accesso e una copia dell’avviso compare nella Gmail personale indicata come email di recupero. Security & sign-in elenca l’evento di concessione e TrueNAS tra le applicazioni collegate. Questi sono riscontri Google del consenso, non messaggi di test inviati dal NAS. La stessa pagina mostra2-Step Verification is off, Authenticator Added Oct27, Google prompt1device, il recapito telefonico già censito e Recovery email con Verify arancione. La ricezione della copia dell’avviso non cancella quel Verify. Skip password when possible è On ed Enhanced Safe Browsing è Off: si registrano senza cambiarli. La passkey era visibile il27/10; il suo inventario non viene aperto ora e non si deduce né rimozione né creazione dalla voce del menu.
+
+Prossimo sul telefono: dalla pagina Security & sign-in risalire a How you sign in to Google e toccare2-Step Verification, la riga con is off, poi leggere la schermata successiva. L’attivazione resta richiesta ora, i codici backup restano rinviati. Dopo2FA, verificare l’email dell’amministratore locale nel percorso utenti della GUI e impostare il destinatario Proton prima del nuovo test; nessuna modifica a utenti già eseguita. La discrepanza tra Email Recipients nella guida S214 e l’avviso effettivo rimane esplicita. S214 e S225 rilette il28/10; percorso di consenso coerente con la guida, stato reale sempre dedotto dalla GUI.
+
+Riprendibilità e ripristino restano diversi: registro, memoria, checkpoint privato e fotografie ricostruiscono lo stato e i prossimi passi. Per un ripristino della configurazione TrueNAS serve ancora l’export con Password Secret Seed previsto da S137/S158 e la sua custodia privata; nessun file di backup o prova di restore viene dichiarato esistente. Non si propone di rifare OAuth già salvato. Password, token e codici restano in possesso dell’utente e non vengono estratti dalle immagini.
+
+**Didattica:** scheda04 aggiornata: consenso OAuth,2FA, recapito NAS e backup configurazione hanno riscontri distinti.
+
+**Template:** nessuna
+
+## 28/10/2026: verifica in due passaggi attiva, email di conferma e indice privato dei messaggi
+
+Registrato alle 2026-10-28T11:02:08+01:00.
+
+Quattro nuove immagini documentano la pagina2-Step Verification con Turn on, Google prompt su un dispositivo, Authenticator già aggiunto e Phone number con spunta verde; è elencata anche una passkey con indicatore giallo, del quale non si inventa la causa. Segue Turning on, poi You’re now protected with 2-Step Verification con pulsante Done. L’ultima immagine mostra il corpo dell’email Google2-Step Verification turned on per l’account servizi casa. L’attivazione è quindi confermata e la relativa pendenza è chiusa, senza richiedere di rifare metodi o nuovi test di accesso. I codici di backup restano rinviati. Quattro copie archiviate e verificate SHA-256, originali conservati.
+
+L’utente richiede di annotare anche quando arrivano le email per poterle ritrovare. Creato un indice privato per evento e casella: per ciascuna evidenza separa ora nel display della notifica, ora dell’orologio del telefono mentre il messaggio è aperto, data di osservazione e ora esatta dell’header, quando visibile. Nell’email finale l’header è fuori inquadratura: il titolo del corpo non viene chiamato oggetto verificato e l’ora di lettura non viene chiamata ricezione. Inclusa retroattivamente la notifica Gmail della copia dell’avviso OAuth già osservata nel lotto precedente, senza accreditarla come email NAS. Date e orari di sistema della registrazione vengono dalla macchina.
+
+Prossimo sul PC TrueNAS: aprire Credentials > Users e leggere la schermata dell’account locale prima di intervenire sull’email richiesta dal test. Fonte S230 consultata per il percorso utenti; anche questa guida parla di destinatari separati da25.10, quindi non risolve per ipotesi la discrepanza della GUI. OAuth e mittente restano già salvati, recapito Proton e mail NAS ricevuta ancora non provati. Google2FA è una protezione dell’identità Google, non un’attivazione2FA della GUI NAS. Verifica email di recupero, filtro Log NAS ed export configurazione con seed rimangono aperti.
+
+**Didattica:** scheda04: la conferma Google e l’email chiudono la sola attivazione2FA; indice messaggi con tipi di orario distinti.
+
+**Template:** nessuna
+
+## 28/10/2026: pagina Users osservata e motivazione TrueNAS rispetto a OMV riallineata
+
+Registrato alle 2026-10-28T12:07:12+01:00.
+
+La pagina Users mostra due utenti: root, Built-In Full Admin, e truenas_admin, Local Administrator e Full Admin. È selezionato root; i dettagli mostrano No Password, No SMB Access, No API Keys, No SSH Access e shell /usr/bin/zsh. Il pulsante Edit è in alto a destra. Nessun campo email è aperto e nessuna modifica è dimostrata. Immagine archiviata nel livello privato con SHA-256 verificato, originale conservato. Prossimo selezionare truenas_admin, seconda riga, poi Edit e leggere il modulo; nessuna modifica della password di root. Non sono osservate nuove email e il registro privato degli orari non riceve eventi inventati.
+
+L’utente chiede inoltre di capire e documentare perché TrueNAS rispetto a OMV. Il confronto08 è riscritto sui requisiti correnti e la sezione tecnologia dello studio03 corretta; ADR-026 è mantenuto storico e chiarito alla luce di ADR-033/039. Il vantaggio attuale è una preferenza per l’integrazione ZFS, non avvio in specchio ormai assente,32GB o proprietà negate al plugin OMV. Fonti primarie consultate, correzione Btrfs, costi e condizioni di rivalutazione espliciti. Documento tecnico, matrice, memoria e didattica aggiornati senza cambiare la configurazione NAS.
+
+**Didattica:** voce5 del racconto e scheda05 con estratti reali prima/dopo; distinzione capacità filesystem, integrazione piattaforma e stato attuale.
+
+**Template:** nessuna
+
+## 28/10/2026: Edit User aperto, campo Email dell’amministratore Not Set
+
+Registrato alle 2026-10-28T12:20:29+01:00.
+
+La schermata mostra selezionato truenas_admin e il pannello Edit User aperto. In Additional Details la riga Email riporta Not Set con una matita; Save è visibile in basso. Il campo dell’indirizzo amministrativo è quindi individuato e la sua assenza osservata direttamente. Nessun indirizzo inserito o salvataggio è ancora dimostrato. Immagine archiviata in privato con SHA-256 confrontato con l’originale, conservato. Non è mostrato un nuovo messaggio email: nessun orario di ricezione viene aggiunto al registro.
+
+Prossimo: nella riga Email, sotto Additional Details del pannello destro, cliccare la matita accanto a Not Set, inserire Proton `<email-destinatario-nas>` e salvare con Save in basso. Password e permessi rimangono invariati; nessun nuovo utente richiesto. La casella Gmail `<email-servizi-casa>` resta il mittente OAuth già salvato. Email dell’account locale e identità del provider hanno ruoli distinti; dopo il salvataggio va ancora provata la ricezione reale di un messaggio NAS. S230 resta la fonte del percorso utenti, mentre la GUI effettiva identifica il controllo da usare.
+
+**Didattica:** riscontro operativo della scheda04: il recapito email dell’amministratore è distinto dal mittente Gmail OAuth; nessuna nuova scelta architetturale.
+
+**Template:** nessuna
+
+## 28/10/2026: recapito Proton riscontrato nel Profile dell’amministratore
+
+Registrato alle 2026-10-28T12:25:51+01:00.
+
+L’utente conferma fatto. La nuova schermata mostra `<email-destinatario-nas>` sia nella riga Email del pannello Edit User di truenas_admin sia nel riquadro Profile sottostante. Il recapito non è quindi soltanto testo nel campo di modifica: il riepilogo del profilo lo riporta dopo l’azione dichiarata. Salvataggio riscontrato; nessun toast di successo è inquadrato. Il pannello di modifica resta aperto. Immagine archiviata in privato, SHA-256 confrontato con l’originale e originale conservato. Nessun nuovo test o messaggio ricevuto sono mostrati: nessun orario email aggiunto al registro.
+
+Prossimo chiudere Edit User con la X in alto a destra, aprire System > General Settings, scegliere Settings nel riquadro Email e premere Send Test Mail. Leggere il risultato e controllare Proton; se arriva il messaggio, registrarne nel privato casella, mittente, oggetto e ora effettivamente visibili nell’header, distinguendoli dal momento della lettura. L’ora Method Call nel profilo è un evento della GUI, non una ricezione email. Gmail OAuth e Google2FA restano già acquisiti; nessuna nuova autorizzazione o modifica a password e permessi richiesta. Il servizio alert e il filtro Log NAS restano prove separate.
+
+**Didattica:** nessuna nuova scheda; sola avanzata operativa del recapito già spiegato nella scheda04, consegna ancora distinta dal salvataggio.
+
+**Template:** nessuna
+
+## 28/10/2026: prima mail NAS ricevuta su Proton e backup delle personalizzazioni richiesto
+
+Registrato alle 2026-10-28T12:36:05+01:00.
+
+Quattro immagini mostrano Email Options con Gmail OAuth già autenticato, l’attività mail.send, Test email sent e il messaggio di prova aperto in Proton. L’utente conferma l’arrivo. Mittente visualizzato `<nome-mittente-nas>`, indirizzo coerente con il mittente configurato ma abbreviato nella vista mobile, corpo di prova TrueNAS Community Edition. Prima consegna NAS verificata, distinta dagli avvisi Google dei lotti precedenti. L’app e la notifica mostrano12:25, l’orologio del telefono12:26; data28/10 ricavata dal contesto della sessione e delle immagini, secondi e fuso non visibili. Oggetto completo e indirizzi sono solo nel registro email privato. Quattro copie archiviate, SHA-256 confrontati con gli originali, conservati.
+
+L’utente richiede che anche le impostazioni sopravvivano a guasto o cambio hardware: ADR-043, documento backup10 e scheda didattica06. Primo export con seed ancora da acquisire; prossimo chiudere Email Options, System > Advanced Settings > Manage Configuration > Download File, selezionare Export Password Secret Seed e Save. Solo quando esiste il file, registrare versione, data, dimensioni, impronta e copie esterne; nessun export vuoto o ripristino già provato viene inventato. Fonti S137 e S158 rilette; S238 per il legame fra hardware e nomi rete.
+
+Il pacchetto veeam-linux del template è stato ritrovato e letto, S237. Documenta il backup a livello di file e la rilettura su una macchina Linux, con limiti dichiarati sull’esecuzione degli script e sul recupero avviabile. Non si richiedono di nuovo i materiali; si riusa il percorso distinguendo prova precedente e protezione effettiva di questo NAS, che non è ancora acquisita. Nessun nuovo software installato. Test del servizio alert e filtro Log NAS restano aperti.
+
+**Didattica:** voce6 e scheda06: configurazione, dati e materiali esterni separati; un export previsto non è un backup acquisito e il collaudo Veeam file non è un recupero TrueNAS.
+
+**Template:** nessuna
+
+## 28/10/2026: primo export configurazione con seed acquisito e verificato fuori NAS
+
+Registrato alle 2026-10-28T12:43:04+01:00.
+
+L’utente fornisce il percorso dell’export nativo. File849920byte copiato nell’archivio privato del PC, originale conservato, SHA-256 confrontato fra sorgente e copia e corrispondente. Archivio leggibile con freenas-v1.db da835584byte e pwenc_secret da32byte. Database letto in memoria, senza estrazione dei segreti in file intermedi, quick_check restituisce ok. Confronti booleani confermano mittente servizi casa, nome visualizzato, configurazione OAuth non vuota, destinatario Proton dell’amministratore e Europe/Rome; nessun valore segreto è stampato. Percorso, impronta, orari e manifest sono soltanto nel livello privato, file verificato ignorato da git.
+
+Primo backup della configurazione fuori NAS acquisito e verificato per la tappa localizzazione/account/OAuth/recapito/prima mail ricevuta. La verifica di struttura e dei campi non è un’importazione su un’altra installazione e la presenza del campo OAuth non prova la validità futura del consenso. Download e copia sono sul medesimo PC; seconda destinazione indipendente, protezione nel lavoro Veeam e ripristino restano aperti. Nessun dato dei dataset incluso e nessun pool dati ancora creato. Nessuna nuova email mostrata, indice ricezioni invariato.
+
+Prossimo nel NAS aprire System > Alert Settings e leggere la configurazione del servizio Email per verificare anche gli avvisi automatici, distinti dalla mail di test già riuscita. Il prossimo checkpoint di configurazione va riesportato dopo le relative modifiche; non si riscarica inutilmente la stessa tappa. Restano filtro Log NAS, boot-pool,16GB, dati SanDisk e verifica email recupero; codici Google backup rinviati.
+
+**Didattica:** avanzamento scheda06: file acquisito, integrità strutturale e campi confermati, secondo supporto e recupero ancora distinti.
+
+**Template:** nessuna
+
+## 28/10/2026: Alert Settings aperto, E-Mail già abilitato al livello Warning
+
+Registrato alle 2026-10-28T12:50:31+01:00.
+
+Le due immagini mostrano System > Alert Settings. La tabella Alert Services contiene SNMP Trap ed E-Mail, entrambi con livello Warning ed Enabled Yes. Nella seconda riga E-Mail sono visibili matita di modifica e cestino all’estremità destra. Il destinatario e il pannello del servizio non sono ancora aperti. Non viene creato un nuovo servizio né dichiarata già riuscita la sua prova. La presenza del servizio di notifica SNMP Trap non dimostra che il demone SNMP di sistema sia in esecuzione e non viene modificata.
+
+Sotto la tabella la categoria Applications mostra nomi di tipi di evento, livelli e frequenze impostabili; non è una lista di errori effettivamente in corso. Nessun evento applicativo viene diagnosticato da quelle etichette. Due immagini lette, archiviate e verificate SHA-256, originali conservati. Nessuna nuova email ricevuta mostrata: indice privato degli orari invariato.
+
+Prossimo nella tabella Alert Services in alto cliccare la matita sulla seconda riga E-Mail, immediatamente prima del cestino, poi leggere destinatario e comando di test. Il primo test posta e il primo export con seed restano acquisiti; questa sola lettura non richiede un nuovo export, che si aggiornerà dopo eventuali modifiche effettive. Destinatario/test alert e filtro Log NAS restano distinti e aperti.
+
+**Didattica:** nessuna nuova scheda: riscontro operativo del servizio già distinto da invio e ricezione nella scheda04; impostazione Enabled non sostituisce il test.
+
+**Template:** nessuna
+
+## 28/10/2026: override email vuoto, prossimo test del servizio alert
+
+Registrato alle 2026-10-28T12:54:26+01:00.
+
+Edit Alert Service mostra Name E-Mail, Enabled selezionato, Type E-Mail, Level Warning e il campo Override Admin Email vuoto. Sono presenti Save e Send Test Alert. La guida ufficiale25.10 S239 conferma che il campo vuoto usa l’email dell’amministratore: nel caso locale Proton è già salvato nel Profile. Non si duplica l’indirizzo nell’override e non si crea un nuovo servizio. Il livello Warning comprende quella gravità e quelle superiori secondo la stessa fonte, senza cambiare i livelli delle categorie.
+
+Prossimo lasciare invariati i valori e premere Send Test Alert, pulsante grigio a destra di Save. Leggere il risultato e la ricezione su Proton; eventuale nuova email va aggiunta al registro privato con mittente, oggetto e orario effettivamente visibile. Nessun test alert, modifica o nuova email sono ancora osservati. La prima mail di test trasporto e il primo export con seed restano acquisiti; una lettura e una prova senza cambi di configurazione non richiedono un altro export della stessa tappa. Immagine letta, archiviata e verificata SHA-256, originale conservato.
+
+**Didattica:** integrazione scheda04: destinatario ereditato distinto da override esplicito, test del servizio ancora da provare.
+
+**Template:** nessuna
+
+## 28/10/2026: test alert inviato e ricevuto su Proton, prossimo controllo boot-pool
+
+Registrato alle 2026-10-28T14:42:38+01:00.
+
+La schermata TrueNAS mostra Test alert sent nel pannello Edit Alert Service con Name/Type E-Mail, Enabled selezionato, Warning e override vuoto invariati. La schermata mobile mostra in Proton il messaggio del servizio con corpo This is a test alert, mittente visualizzato `<nome-mittente-nas>` e indirizzo abbreviato coerente con il mittente configurato. L’oggetto completo è nel registro privato. Messaggio e notifica mostrano1:01PM, registrato come13:01; telefono1:01, data28/10dal contesto e dai file osservati, secondi/fuso non visibili. L’ora di registrazione del riscontro è distinta dall’ora email. Test sintetico invio/ricezione del servizio alert concluso, senza attribuire un guasto reale o cambiarne i livelli. Le due immagini sono state lette; al momento della copia gli originali non risultano più disponibili. Cercate copie nelle cartelle di cattura/download/desktop, nell’archivio privato e nel Cestino, senza recupero. Nessuna copia o impronta delle due immagini viene accreditata: il manifest conserva descrizione e lacuna dell’archivio.
+
+Aggiornato EMAIL-004 nel registro privato, distinto dal Test Message precedente delle12:25. Nessuna modifica di configurazione osservata: il primo export con seed rimane il checkpoint acquisito, senza richiesta di un altro download per il solo test. Non si riaprono OAuth o Google2FA.
+
+Prossimo chiudere il pannello con la X in alto a destra e aprire System > Boot per leggere la schermata. S212 riletto per Stats/Settings e Boot Pool Status: si osserveranno condizione, dispositivi e contatori prima di interpretarli. Non sono ancora letti ONLINE o errori zero e non viene assegnato uno scrub o un ulteriore test di memoria. Filtro Log NAS mantenuto aperto; seconda copia indipendente/restore,16GB, dati SanDisk ed email recupero restano distinti.
+
+**Didattica:** scheda04 aggiornata con la prova di servizio, distinta dalla prima prova del trasporto; nessuna nuova architettura.
+
+**Template:** nessuna
+
+## 28/10/2026: Boot Environments aperto,25.10.7 attivo
+
+Registrato alle 2026-10-28T14:53:11+01:00.
+
+La nuova schermata mostra Boot Environments con una sola voce25.10.7, Active Now, Date Created2026-10-27 11:00:07, Used Space3.42GiB e Keep No. Data e ora sono quelle visualizzate dalla GUI; non vengono trasformate in un evento di reinstallazione o di backup. Lo spazio è riferito alla voce ambiente, non alla capacità complessiva del Kingston o del pool. In alto sono visibili Stats/Settings, Boot Pool Status e Scrub Boot Pool. Non compare ancora la condizione del boot-pool né il dispositivo o i contatori di lettura/scrittura/checksum.
+
+L’immagine è copiata e verificata SHA-256 prima della lettura visiva e dell’aggiornamento documentale, originale conservato. Il manifest registra questa sequenza per evitare una nuova perdita degli originali durante l’elaborazione. La lacuna delle due immagini precedenti rimane distinta e non viene chiusa da questa nuova copia. Nessuna email o modifica di configurazione osservate; il checkpoint nativo già acquisito rimane quello della tappa corrente.
+
+Prossimo cliccare Boot Pool Status in alto a destra, pulsante centrale fra Stats/Settings e Scrub Boot Pool, e leggere la pagina. Non si avvia uno scrub né si modificano Keep, ambiente di avvio o firmware. Il controllo è una lettura dello stato attuale, non un nuovo ciclo di prove RAM.
+
+**Didattica:** nessuna nuova scheda; sola lettura dell’ambiente, distinta dalla salute del pool e dal backup esterno già documentati.
+
+**Template:** nessuna
+
+## 28/10/2026: boot-pool ONLINE, dati dei due SSD dichiarati già salvati
+
+Registrato alle 2026-10-28T15:07:38+01:00.
+
+Boot Pool Status mostra boot-pool e il membro sdb3 entrambi ONLINE, ciascuno con Read0, Write0, Checksum0 e No Errors. La lettura dello stato corrente del pool di avvio è conclusa. Il nome del membro è quello della sessione osservata: non sostituisce l’identificazione per modello e ruolo, dato che le lettere dei dischi erano diverse durante l’installazione. Questi contatori non sono un nuovo test SMART né una verifica del ripristino. Il precedente dialogo Start the scrub now aveva Confirm non selezionato e Start Scrub disabilitato; non si accredita uno scrub avviato o concluso. L’ultima schermata mostra soltanto il menu Replace/Attach aperto, senza selezione.
+
+Alla domanda esplicita sui dati di SanDisk240GB e WD Blue250GB, l’utente risponde: «Ho già salvato ciò che serve e quei dati non mi occorrono più». La questione conservazione del vecchio contenuto è chiusa per entrambi sulla base di questa dichiarazione. Non viene dedotto un collaudo delle copie né viene riaperta la stessa domanda. Si prosegue verso il pool dati in specchio sui due SSD previsti da ADR-033; il Kingston resta il disco di avvio da escludere. Nessun pool dati creato e nessuna cancellazione osservati.
+
+Tre immagini archiviate e verificate SHA-256 prima della lettura visiva, originali conservati alla copia. Nessuna nuova email o modifica di configurazione osservata: registro email invariato e primo export con seed ancora valido per la tappa acquisita. Dopo la creazione effettiva del pool servirà una nuova generazione dell’export, conservando la precedente. La lacuna delle due vecchie immagini alert rimane dichiarata.
+
+Prossimo cliccare in uno spazio vuoto per chiudere Replace/Attach, quindi Storage nella barra sinistra, seconda voce sotto Dashboard, e leggere la pagina per l’identificazione dei dischi. Non vengono assegnati altri scrub o test RAM. Fonte S212 per il pannello di stato; S240 consultata per il successivo wizard con selezione manuale dei dischi, mirror e riepilogo finale, ancora non eseguito.
+
+**Didattica:** nessuna nuova scheda; lettura operativa e dichiarazione di conservazione chiusa, senza nuova scelta architetturale.
+
+**Template:** nessuna
+
+## 28/10/2026: Storage Dashboard aperto, No Pools
+
+Registrato alle 2026-10-28T15:31:40+01:00.
+
+La pagina Storage Dashboard mostra No Pools, il pulsante Create Pool al centro e Import Pool e Disks in alto a destra. Il menu del membro di avvio non è più aperto. L’assenza osservata riguarda i pool dati della dashboard, senza contraddire il boot-pool già letto ONLINE con contatori0. L’elenco con modelli e capacità dei dischi non è ancora aperto. Nessuna creazione, importazione, cancellazione o modifica di configurazione osservata.
+
+La nuova immagine è archiviata e verificata SHA-256 prima della lettura visiva, originale conservato alla copia. Non contiene una nuova email; il registro degli orari resta invariato. Primo export con seed già acquisito; una nuova generazione sarà necessaria dopo le modifiche effettive.
+
+Prossimo cliccare Disks in alto a destra, immediatamente a destra di Import Pool, e leggere l’elenco. SanDisk240GB e WD Blue250GB restano i due SSD del mirror dati previsto; il Kingston V300 di avvio va escluso. La dichiarazione dell’utente sui dati già salvati e non più necessari è acquisita per entrambi e non si richiede di nuovo. Pool dati, seconda copia indipendente della configurazione e ripristino restano da eseguire; nessun nuovo test RAM o scrub assegnato.
+
+**Didattica:** nessuna nuova scheda; avanzamento della sola navigazione, senza nuove scelte architetturali.
+
+**Template:** nessuna
+
+## 28/10/2026: Disks letto, identificati i due SSD dati
+
+Registrato alle 2026-10-28T15:35:41+01:00.
+
+La pagina Disks mostra tre righe: sdc223.57GiB con Pool N/A, sdb223.57GiB con boot-pool e sda232.89GiB con Pool N/A. Nessuna casella di selezione è spuntata. I seriali di sdc e sda corrispondono ai dischi già censiti nella guida privata: rispettivamente SanDisk SDSSDA240G e WD Blue WDS250G1B0A-00H9H0. sdb è esplicitamente assegnato a boot-pool e coincide con il ruolo del Kingston su cui è già stata verificata l’installazione. I modelli non sono una lettura delle colonne di questa schermata; provengono dal collegamento con il censimento. Seriale completo e mappatura restano nel livello privato.
+
+L’identificazione dei due candidati del mirror dati è conclusa per la sessione attuale; le lettere non diventano identità permanenti. Le capacità sono quelle mostrate dalla GUI, non una misura dello spazio utilizzabile del futuro mirror. La stessa capacità di sdc e sdb rende insufficiente distinguere i dischi solo dalla taglia: servono seriale e appartenenza al pool. Nessun pool dati creato, importato o disco cancellato. La conferma dell’utente sui dati già salvati e non più necessari di SanDisk e WD resta acquisita.
+
+Immagine archiviata e verificata SHA-256 prima della lettura, originale conservato alla copia. Nessuna nuova email o modifica di configurazione osservata; export con seed precedente conservato, nuova generazione dopo la modifica effettiva.
+
+Prossimo cliccare Storage, collegamento blu sopra il titolo Disks, quindi Create Pool al centro della dashboard per aprire la prima pagina del wizard. La configurazione prevista resta un solo VDEV dati Mirror con SanDisk e WD; il disco sdb di boot resta escluso. Aprire il wizard non equivale ad aver creato il pool; selezioni e riepilogo andranno letti nelle schermate successive, secondo S240.
+
+**Didattica:** nessuna nuova scheda; applicazione del censimento e distinzione tra nome corrente, seriale e ruolo del disco.
+
+**Template:** nessuna
+
+## 28/10/2026: wizard tank, Mirror e primo VDEV ancora vuoto
+
+Registrato alle 2026-10-28T15:49:17+01:00. HEAD ora osservato 7a659d12bc5e7372dd2f3fc5fc71f3446a2a3e04; aggiornamento del template intervenuto esternamente, senza commit o push dell’agente e senza riconciliare tutte le ancore.
+
+La sequenza osservata parte da General Info con Name vuoto, Encryption non selezionata e due dischi non assegnati,223.57GiB e232.89GiB. La schermata successiva mostra tank compilato e preview Encryption None; poi è aperta Data con Layout ancora vuoto. Si osservano quindi Layout Mirror e il menu Disk Size aperto sulle due capacità, senza una taglia già selezionata. Manual Selection mostra soltanto WD WDS250G1B0A-00H9H0 sda232.89GiB e SanDisk SDSSDA240G sdc223.57GiB, entrambi SSD e con seriali corrispondenti al censimento privato. Il Kingston di boot non compare tra questi candidati. Dopo Add è presente un unico riquadro MIRROR, ancora vuoto, con richiesta di almeno due dischi e Save Selection disabilitato.
+
+Prossimo trascinare dalla colonna sinistra prima il WD sda e poi il SanDisk sdc dentro lo stesso riquadro MIRROR a destra; non aggiungere un secondo VDEV. Leggere il risultato prima del salvataggio della selezione e del riepilogo. Le impostazioni sono ancora nel wizard: nessuna creazione, cancellazione o configurazione applicata osservate. La capacità0B della preview descrive la selezione ancora vuota, non una nuova misura della capacità fisica degli SSD.
+
+Le sei immagini sono archiviate e verificate SHA-256 prima della rispettiva lettura, con originali conservati alla copia. Nessuna nuova email; primo export con seed invariato, nuova generazione dopo le modifiche effettive. Conservazione dei vecchi dati SanDisk/WD già risolta dalla dichiarazione dell’utente. S240 riletta per selezione manuale, mirror e raccomandazione sulla cifratura del dataset radice; la differenza fra pool, dataset e materiale di recupero è documentata nella nuova scheda07. Nessun dato ancora scritto e nessun dataset cifrato già creato.
+
+**Didattica:** [scheda07](../context/refactor-07-pool-dataset-e-cifratura.md), confini del mirror, cifratura e custodia dei materiali di recupero.
+
+**Template:** nessuna
+
+## 28/10/2026: mirror dei due SSD selezionato, Review tank aperta
+
+Registrato alle 2026-10-28T15:53:37+01:00.
+
+La selezione manuale mostra un solo MIRROR contenente sda232.89GiB e sdc223.57GiB, con Est. Usable Raw Capacity223.57GiB e No Unassigned Disks. L’avviso Mixing disks of different sizes riguarda le capacità differenti del WD e del SanDisk già previsti dal piano. Il risultato mostrato è limitato al membro più piccolo; non si sommano le due capacità e non si dichiara223.57GiB come spazio netto dei futuri file. Nessuna nuova prova SMART o sostituzione è richiesta da questo avviso.
+
+L’utente riferisce di avere premuto Save Selection; la schermata successiva mostra Manually Configured VDEVs, VDEVs1 e No warnings. Preview: tank, Data Manual layout1VDEVs, Encryption None, Total Raw Capacity223.57GiB; nessun disco non assegnato disponibile. L’assenza di avvisi nel pannello non cancella l’avviso di taglia effettivamente letto nel dialogo. Save Selection ha salvato soltanto la scelta nel wizard.
+
+La pagina Review è poi osservata con Pool Name tank, Data Manual layout1VDEVs ed Est. Usable Raw Capacity223.57GiB. Pulsanti Back, Inspect VDEVs, Start Over e Create Pool. La selezione precedente permette di collegare quel singolo VDEV al mirror WD/SanDisk; Kingston di avvio resta escluso. Prossimo cliccare Create Pool, pulsante azzurro in basso a destra del gruppo, e leggere il dialogo successivo. Creazione, cancellazione e ONLINE del pool dati ancora non osservati. La conferma dell’utente sui vecchi dati resta acquisita e non si ripete la stessa domanda.
+
+Le immagini successive sono archiviate e verificate SHA-256 prima della lettura; quella iniziale del lotto era già archiviata ed è stata ricontrollata senza duplicarla. Nessuna email né nuova configurazione applicata osservate. Primo export con seed conservato; dopo la creazione effettiva servirà una nuova generazione. S240 per il passaggio dalla selezione al riepilogo e alla creazione.
+
+**Didattica:** sviluppo della [scheda07](../context/refactor-07-pool-dataset-e-cifratura.md): scelta salvata nel wizard distinta dal pool creato; capacità stimata distinta dallo spazio netto.
+
+**Template:** nessuna
+
+## 28/10/2026: tank creato, mirror Online no errors
+
+Registrato alle 2026-10-28T15:59:16+01:00.
+
+Sono osservati il riepilogo tank e il dialogo Warning con Confirm selezionato, poi pool.create a0%,15% con Formatting disks1/2 e95% con Setting pool options. La dashboard successiva mostra Pool created successfully. La creazione è conclusa e i due SSD dati sono stati riformattati secondo il flusso confermato dall’utente; la precedente dichiarazione sui contenuti già salvati è acquisita. Non si ripete la creazione. Il Kingston di avvio era escluso dalla selezione WD/SanDisk.
+
+La dashboard tank mostra Data VDEVs1xMIRROR,2wide,Mixed Capacity e No other VDEV types. Storage Health: Online no errors. Usable Capacity213.19GiB, Available213.18GiB, Used8.19MiB e0% visualizzato. I223.57GiB della preview erano una stima grezza prima della creazione, non il valore ora indicato come utilizzabile. Non viene attribuita a una causa specifica la differenza senza una lettura dei relativi dettagli. Mixed Capacity conserva l’indicazione delle taglie differenti, non viene descritto come un guasto osservato.
+
+Scheduled Scrub mostra At00:00 only on Sunday; è una pianificazione, non la prova di uno scrub già eseguito. Auto TRIM è Off. Disk Health mostra0avvisi legati alla temperatura e No disk temperature is available: zero avvisi non prova una temperatura regolare. Non si cambia ora la pianificazione né si avvia un nuovo scrub o test SSD/RAM.
+
+Prossimo View VDEVs nel primo riquadro a sinistra per leggere membri e contatori dopo la creazione, poi nuova acquisizione configurazione con seed. Il primo file resta intatto, ma non copre la nuova tappa. Dataset/condivisioni e backup reali restano da realizzare. Le sei nuove immagini sono copiate e verificate SHA-256 prima della lettura. Il nuovo file con lo stesso nome della precedente cattura del riepilogo è diverso e conserva un archivio distinto; nessuna sovrascrittura dell’immagine già acquisita. Gli orari dei file sono registrati nel manifest ma non diventano orari esatti dei clic o del completamento. Nessuna nuova email osservata; registro email invariato. Lacuna delle vecchie immagini alert mantenuta.
+
+Riconciliato lo stato corrente nei sei riepiloghi e nelle schede/pendenze pertinenti; la cronologia dei clic rimane nel registro, senza conservare una falsa pendenza pool assente.
+
+**Didattica:** sviluppo della [scheda07](../context/refactor-07-pool-dataset-e-cifratura.md), configurazione applicata e misura reale distinte dalla preview.
+
+**Template:** nessuna
+
+## 28/10/2026: mirror e due membri ONLINE, prossimo export post-pool
+
+Registrato alle 2026-10-28T16:07:52+01:00.
+
+La pagina tank VDEVs espande l’unico MIRROR e mostra tre righe ONLINE, tutte con ZFS Errors No errors: il MIRROR, sda232.89GiB e sdc223.57GiB. L’appartenenza effettiva dei due SSD selezionati è ora osservata dopo la creazione; il Kingston sdb di avvio non è membro di tank. La pagina non mostra i singoli numeri Read/Write/Checksum: non si trasformano le etichette No errors in letture numeriche non presenti. Il controllo di topologia e stato corrente è concluso, senza un altro test, scrub, shell o richiesta di altre schermate sui contatori.
+
+Prossimo acquisire la configurazione post-pool: System > Advanced Settings > Manage Configuration > Download File; nel dialogo Save Configuration selezionare Export Password Secret Seed e premere Save. S137 riletta conferma percorso, casella e salvataggio dopo cambiamenti. Il primo archivio va mantenuto; nuova acquisizione, copia e verifica non ancora eseguite. Nel download locale è ancora presente soltanto la prima generazione, secondo la lettura dei nomi file autorizzati. Dopo il download si verificano archivio e campi della tappa senza esporre seed o valori segreti.
+
+L’immagine è archiviata e verificata SHA-256 prima della lettura, originale conservato alla copia. Nessuna modifica di configurazione, nuova email o prova di recupero osservate; registro email invariato. Dataset/condivisioni, backup dati, seconda destinazione indipendente e restore restano aperti.
+
+**Didattica:** nessuna nuova scheda; sola verifica operativa dei membri secondo la distinzione già documentata nella scheda07.
+
+**Template:** nessuna
+
+## 29/10/2026: raccordo export post-pool e impostazioni da completare a casa
+
+Registrato alle 2026-10-29T09:32:09+01:00.
+
+Il file nativo indicato dall’utente è stato copiato e verificato il28/10:849920byte, SHA-256 originale/copia identici, SQLite quick_check ok e seed32byte presente. Il nuovo database contiene un unico record tank con GUID e System Dataset Pool tank; il primo non conteneva tank. Dimensione uguale non significa contenuto uguale: le impronte delle generazioni sono diverse. Confronti booleani confermano inoltre mittente, nome visualizzato, OAuth presente, recapito Proton e Europe/Rome; seed coerente con il precedente. Prima generazione e download originali conservati. Acquisizione post-pool conclusa, senza attribuire al file una prova di restore o una seconda destinazione indipendente.
+
+Le tre schermate Advanced Settings del28/10 sono archiviate SHA-256 prima della lettura e mostrano: console testuale senza prompt Enabled, seriale Disabled; Syslog Info, nessun server e Include Audit Logs No; Audit7giorni, reservation/quota None e soglie75%/95%; debug kernel Disabled; Cron Jobs, Init/Shutdown Scripts e Sysctl senza voci. NTP contiene i tre server Debian configurati, senza prova di sincronizzazione. Storage indica System Dataset Pool tank e priorità resilver Never; Replication Tasks Limit5 è un limite simultaneo, non cinque attività configurate. Access mostra timeout5minuti, nessun banner; Allowed IP Addresses vuoto; nessuna GPU isolata; Global2FA TrueNAS e2FA SSH Disabled. Nessuna modifica è osservata in questi pannelli. La2FA Google già attiva resta una verifica distinta e conclusa.
+
+Alla domanda sulle molte impostazioni, il quadro tecnico distingue preparazione locale, dipendenze della rete domestica e personalizzazioni giustificate da un bisogno. Dataset, utenti e permessi si preparano ora; indirizzi finali, DNS, VLAN e restrizione degli accessi seguono la topologia domestica; syslog segue la disponibilità del ricevitore. NTP effettivo e recupero precedono l’eventuale2FA NAS. Nessun debug, script, Sysctl o GPU aggiunti per riempire pannelli vuoti. Nuova guida tecnica10, matrice aggiornata e sviluppo didattico della scheda03; fonti S241/S242.
+
+Il29/10 l’utente chiede di procedere. Prossimo cliccare Datasets nella barra sinistra e leggere la struttura di tank prima di creare dataset utente. Il nuovo export non va riscaricato per questa sola lettura. Filtro Log NAS, seconda copia indipendente, inclusione Veeam, restore, rete finale e obiettivo16GB restano aperti. Nessuna nuova email o nuova osservazione dal NAS il29/10 viene inventata; le letture fisiche restano del28/10.
+
+**Didattica:** sviluppo della [scheda03](../context/refactor-03-preparazione-nas-e-rete-temporanea.md), capability del pannello distinta dal bisogno di configurarla; stessa separazione banco/rete di ADR-040.
+
+**Template:** nessuna
+
+## 29/10/2026: Datasets letto, requisito di crescita SSD/RAM/configurazione
+
+Registrato alle 2026-10-29T09:50:32+01:00. HEAD ora osservato 9499dcae3668e49bb1069664176ca459d386fa53 per allineamento template esterno; nessun commit dell’agente o riconciliazione generale delle vecchie ancore.
+
+La pagina Datasets mostra tank selezionato, Unencrypted,12.21MiB usati e213.18GiB disponibili. Details: Root Dataset, Sync STANDARD, Compression2.00x(LZ4), Enable Atime OFF, ZFS Deduplication OFF, Case Sensitivity ON e Path tank. Usage segnala System Dataset; Space Management mostra Total Allocation12.21MiB, Data Written96KiB e Children12.12MiB; User Quotas e Group Quotas None. Permissions: owner root:root e permessi Unix mostrati. Per la selezione sono indicati Snapshots0, Snapshot Tasks0 e No Backup Tasks, senza confonderli con gli export di configurazione già acquisiti. Nessun dataset utente creato e nessuna modifica osservata. Il rapporto di compressione è un dato visualizzato, non una previsione sul contenuto futuro.
+
+L’utente richiede esplicitamente che tutto il lavoro sia scalabile con SSD di taglia maggiore, RAM e configurazione. ADR-044 adotta struttura per funzione, nomi stabili e quote rivedibili; guida NAS11 e scheda08 documentano crescita dello stesso mirror, compatibilità della memoria e continuità hardware tramite ADR-043. S243/S244 indicano sostituzione di un membro alla volta, attesa del resilver prima del successivo ed espansione dopo l’ultimo; S245 tratta dataset e quote modificabili; S246 dimensiona la memoria per carico e piattaforma. Nessun upgrade o nuovo test hardware eseguito o richiesto adesso.
+
+Prossimo cliccare Add Dataset, pulsante azzurro in alto a destra accanto ad Add Zvol, e leggere il modulo prima di compilare o salvare. Il primo dataset utente sarà definito per funzione, senza modificare i permessi della radice per renderla una condivisione generica. Immagine archiviata e verificata SHA-256 prima della lettura, originale conservato alla copia. Nessuna nuova email o configurazione applicata; i due export precedenti rimangono il checkpoint acquisito, senza nuovo download per la sola navigazione.
+
+**Didattica:** [scheda08](../context/refactor-08-crescita-nas-e-struttura-logica.md), struttura logica distinta dalla fotografia hardware e crescita ancora da eseguire.
+
+**Template:** nessuna
+
+## 29/10/2026: richieste ricevute, chiave dataset e assistente personale
+
+Registrato alle 2026-10-29T10:12:45+01:00.
+
+L’utente sceglie la cifratura con chiave automatica consigliata per il dataset documenti, ancora non salvato. Richiede inoltre uno studio di un assistente personale a basso consumo con Hermes Agent, Nix/NixOS e Tailscale per raggiungere la rete domestica; handoff locale ricevuto, copiato nel livello privato e in lettura. Un secondo sviluppo deve raggruppare la memoria personale con Obsidian e un brain per Claude, da raccordare alla futura capacità del template. Autori, denominazioni di modello e strumento non ancora identificato sono conservati nel promemoria privato, senza promuoverli a prodotti verificati. Si continua il lavoro NAS e si apre il filone di studio; nessuna installazione, acquisto, accesso a servizi o cambio delle rotte già eseguiti. Le precedenti restrizioni di ADR-025/037 vanno confrontate con il nuovo requisito Tailscale, senza trattarlo ancora come configurato.
+
+**Didattica:** raccordo tecnico e didattico da completare nello stesso giro dopo lettura delle fonti e del catalogo.
+
+**Template:** nessuna
+
+## 29/10/2026: raccordo completo dataset e studio assistente
+
+Registrato 2026-10-29T10:48:07+01:00. Modulo Add Dataset base e avanzato letto; immagini copiate prima della lettura e SHA-256 verificati. Prima Name vuoto/Generic/Save disabilitato; opzioni avanzate con quote/prenotazioni vuote, soglie80/95 ereditate, proprietà tabellate nella guida NAS12, ACL Type Inherit e Mode Restricted; Save abilitato non premuto. L’intestazione delle immagini avanzate non è visibile: documenti/SMB sono indicazioni da verificare, non valori già attestati. L’utente sceglie chiave automatica; Inherit(non-encrypted) ancora selezionato, cifratura non applicata. Prossimo Encryption Key/Generate Key, intestazione e ACL NFSv4 prima di Save. Dopo creazione chiave esterna e nuova generazione export; nessun nuovo export per la sola lettura. Nessuna mail nuova o modifica hardware. Fonti S247-S249.
+
+Letto e archiviato con impronta l’handoff Nix locale; verificati homepage Hermes, piattaforme Linux ARM64/x86-64, Nix Tier2, percorso Telegram, NixOS, subnet router Tailscale, schema LLM Wiki, formato Obsidian e annuncio ufficiale Opus5.5. Link breve Nix recuperato via curl: contenuto homepage ufficiale, titolo e canonical verificati; non rimane una fonte non letta. Rinvii comunitari dell’handoff non consultati autonomamente, perimetro esplicito. Catalogo locale e template consultati in sola lettura: hermes-agent e knowledge-wiki già presenti, non istanziati. Nessuna nuova memoria globale nascosta.
+
+Studio17 e ADR-045 conservano ruoli, confronto energetico senza watt inventati, correzioni del handoff, backup distinto di ambiente e stato, rete autorizzata per bisogno e prove future. Aggiornati VPN, accesso amministrativo, Cloudflare e matrice: il precedente stato Tailscale sola alternativa è superato dal nuovo requisito, ma nessun ingresso è già configurato. Il chiarimento dell’utente su Jev diventa un promemoria alla tappa di recezione del brain nel template; non riproporre ora la domanda. Corrette nel piano backup le vecchie frasi nessun export e pool da misurare, mantenendo aperti volumi, copia indipendente e restore.
+
+Didattica: sviluppo voce7/scheda07 per proprietà ereditate, ACL e chiave; nuova voce9/scheda09 per assistente, memoria portabile, ambiente dichiarativo e rete. Fonti S247-S260. Nessun commit, acquisto, installazione, account o cambio macchina; lavoro documentale verificabile, servizio ancora da collaudare.
+
+## 29/10/2026: verifica finale del raccordo assistente e dataset
+
+Registrato 2026-10-29T11:03:08+01:00. Quattro copie fotografiche archiviate ricontrollate per dimensione e SHA-256; stesso paragrafo di stato NAS ritrovato nei sei punti di ripresa. S247-S260 univoche, ADR-045 univoca, promemoria Jev alla tappa template presente e sezione privata TAB-02/SoundCraft conservata. Raccordo NAS completo anche nel registro JSON privato. Metadati del template invariati rispetto alla copia di controllo: nel frattempo HEAD è avanzato da un’altra sessione per allineamento del template; ultimo osservato 9882943, nessun commit di questo agente e nessuna riconciliazione generale delle ancore dichiarata.
+
+Verifiche: md-unwrap sui26Markdown del giro senza modifiche; tabelle su5file senza difetti dopo correzione della separazione della tabella fonti; albero181documenti tutti raggiungibili,0link rotti/orfani; guard-rail744file,731tracciati e13nuovi,0riscontri bloccanti e127avvisi da valutare già presenti, nessun avviso sui tre nuovi documenti. diff --check pulito. Sono controlli documentali: non dimostrano dataset creato, assistente avviato, consumi o ripristino. Didattica già collegata a voce7 e voce9. Nessuna nuova prova hardware, installazione o autorizzazione di rete.
+
+## 29/10/2026: verifica del modulo documenti prima del Save
+
+Registrato 2026-10-29T11:15:17+01:00. Due nuove immagini archiviate prima della lettura, originali conservati e SHA-256 verificati. Add Dataset: Parent Path tank, Name documenti, Dataset Preset SMB; Create SMB Share selezionato e SMB Name documenti. Encryption Inherit(non-encrypted) deselezionato, Encryption selezionato, Type Key, Generate Key selezionato, Algorithm AES-256-GCM. Comments vuoto, Sync Inherit(STANDARD), Compression Inherit(LZ4); quote superiori visibili vuote. tank sullo sfondo Unencrypted,12.57MiB usati/213.18GiB disponibili. Nessun Save o esito creazione osservati, nessuna nuova chiave esportata o condivisione creata. ACL non inquadrate: ultimo riscontro Inherit/Restricted. Prossimo togliere Create SMB Share per preparare prima utente e permessi, impostare ACL Type NFSv4 lasciando Mode Restricted, quindi Save e leggere esito/dialogo. La nuova configurazione con seed e la chiave esterna seguono la creazione, non questa anteprima. Nessuna nuova email o modifica hardware. Guida NAS12 aggiornata; S245/S247/S248 già registrate.
+
+Didattica: sviluppo della voce7 nella scheda07 per distinguere dataset e condivisione automatica. Nessuna nuova scelta architetturale, skill o fonte richiesta; decisione Key già acquisita e non riproposta. Filone assistente e promemoria Jev al template conservati.
+
+## 29/10/2026: condivisione automatica tolta, checklist unica per salvare
+
+Registrato 2026-10-29T11:16:42+01:00. Nuova immagine copiata prima della lettura e SHA-256 verificato. Create SMB Share deselezionato, campo SMB Name non più mostrato; preset SMB, quote/riserve vuote e soglie80/95 ereditate confermati. L’utente chiede tutti i settings in un solo messaggio per scadenza della sessione: checklist completa nella guida NAS12, nessun ulteriore controllo intermedio degli stessi campi. Prossimo ACL Type NFSv4 e Mode Restricted, poi Save e lettura dell’esito. Nessun Save o dataset creato osservato, nessuna chiave esportata. Didattica: nessuna nuova scelta, resta sviluppo voce7/scheda07 già scritto. Assistente e richiamo Jev invariati.
+
+## 29/10/2026: documenti creato, chiave esterna da acquisire
+
+Registrato 2026-10-29T11:21:47+01:00. Due immagini archiviate prima della lettura, SHA-256 verificati e originali conservati.
+
+Creazione osservata alle11:18: selezione documenti e messaggio Switched to new dataset. Dataset cifrato Unlocked, Usage Not Shared, Path tank/documenti. Used192KiB e Available213.17GiB; Total Allocation192KiB e Data Written192KiB(100%). SyncSTANDARD, Compression Inherit(1.00x(LZ4)), AtimeOFF, DedupOFF e CaseSensitivityOFF. UserQuotasNone. Per questa selezione Snapshots0,SnapshotTasks0,NoBackupTasks: nessuna attività dati ancora configurata. Radice tank Unencrypted,12.93MiB usati/213.17GiB disponibili. Owner root:root, pannello NFSv4 con tre ACE visibili: owner@root AllowFullControl,group@root AllowModify,builtin_users AllowModify; parte inferiore tagliata, non è una trascrizione completa delle ACL.
+
+Prima del risultato compare ACL Types & ACL Modes, avviso generale sulla conversione delle ACL. L’anteprima sottostante mostra ACL Type SMB/NFSv4 e ACL Mode Passthrough. La dashboard successiva conferma NFSv4 ma non espone ACL Mode: non si dichiara Restricted applicato. Il valore finale va letto nella modifica delle proprietà prima di completare i permessi e la share; non si ricrea il dataset né si riaprono test hardware. Non occorre una snapshot preventiva per una migrazione di dati esistenti che questa creazione nuova non sta eseguendo.
+
+Prossimo passo: mantenere documenti selezionato, scorrere nel pannello destro fino al riquadro Encryption e premere Export Key. S248 conferma che scarica un JSON; il file va acquisito nel livello privato senza trascrivere la chiave nei documenti o nella chat. S247 descrive la custodia esterna. Serve inoltre una nuova generazione dell’export con Password Secret Seed, conservando le due precedenti. Due copie sullo stesso client non chiudono la destinazione indipendente o il ripristino. Nessuna chiave esterna o nuovo export post-dataset è già acquisito.
+
+Didattica: sviluppo voce7/scheda07 su avviso generale, proprietà osservate e impostazioni non ancora dimostrate. Nessuna nuova decisione di prodotto o conferma Key richiesta. S247/S248 rilette per Export Key; filone assistente e richiamo Jev conservati.
+
+## 29/10/2026: acquisizione della chiave documenti conclusa
+
+Registrato 2026-10-29T11:46:22+01:00. Chiave di tank/documenti acquisita dal file indicato dall’utente:86byte, originale conservato e copia privata ignorata da git, impronte SHA-256 uguali. JSON valido per il solo dataset atteso, chiave in formato esadecimale256bit; nessun valore stampato o trascritto nei documenti pubblici. Acquisizione della chiave fuori NAS conclusa. Download e archivio sono sullo stesso client: destinazione indipendente e prova di sblocco/ripristino ancora aperti. Nessuna dimostrazione del valore finale ACL Mode da questa lettura del file.
+
+Prossimo System > Advanced Settings > Manage Configuration > Download File; selezionare Export Password Secret Seed e Save. Il nuovo archivio post-dataset è ancora da acquisire, mantenendo entrambi gli export del28/10. S137 riletto e conferma percorso e opzione; key export e configurazione restano materiali distinti. Nessuna nuova mail, test hardware o modifica al filone assistente/Jev.
+
+Didattica: nessuna nuova scelta architetturale; prova di integrità e formato distinta dalla prova di recupero già spiegata in voce7/scheda07. Aggiornati i sei riepiloghi, guida NAS12, piano di recupero, pendenze e ripresa privata nel medesimo giro.
+
+## 29/10/2026: export post-documenti concluso, passaggio ai permessi
+
+Registrato 2026-10-29T11:53:05+01:00. Terzo export TrueNAS25.10.7 post-dataset acquisito:849920byte, copia privata ignorata identica al download per SHA-256, originale conservato. SQLite835584byte letto soltanto in memoria supera quick_check; seed32byte presente e coerente con la precedente. Quindici controlli di checkpoint tutti positivi: record tank/documenti univoco con campo chiave non vuoto e gestione locale, assente nell’export post-pool; pool/GUID invariati; share documenti non creata nel database; mittente/nome e recapito amministratore coerenti, OAuth presente, Europe/Rome e System Dataset Pool tank. Archivio differente da entrambe le generazioni precedenti, che restano conservate. Chiave JSON separata già acquisita e riletta per impronta. Nessun valore segreto stampato, nessun database o seed estratti su file. Il campo chiave del database non è stato decifrato o confrontato in valore con il JSON: la verifica non prova uno sblocco o restore.
+
+Acquisizione dell’export di questa tappa conclusa. Download, archivio e chiave sono sul medesimo client: seconda destinazione indipendente, inclusione Veeam e recupero restano aperti. ACL Mode non è dimostrato dai controlli del database: ultima anteprima Passthrough, valore finale ancora da leggere. Prossimo Datasets > documenti > Edit nel riquadro Details > Advanced Options, scorrere fino a ACL Type/ACL Mode e leggere i valori; poi utente, permessi e condivisione. Nessun altro export identico o test hardware richiesto.
+
+Didattica: sviluppo voce6/scheda06, distinzione fra nuovo checkpoint verificato, campo chiave presente e ripristino provato. Nessuna nuova scelta architetturale o fonte. Filone assistente, richiamo Jev alla tappa template e TAB/SoundCraft conservati; nessun commit dell’agente.
+
+## 29/10/2026: rapporto NordVPN recepito e verifica del dataset selezionato
+
+Registrato 2026-10-29T12:11:38+01:00. Edit Dataset mostra Snapshot Directory Invisible, SnapdevHidden, Copies1, RecordSize128K, ACL Type POSIX e ACL Mode Discard entrambi disabilitati, SpecialSmallBlocks0. Il nome/percorso del dataset è fuori inquadratura; il riscontro è compatibile con tank radice (S248), non una prova di regressione del figlio documenti già mostrato NFSv4. Prossimo chiudere il pannello con X, selezionare la riga documenti e verificare Details for documenti prima di Edit/Advanced Options e lettura ACL Type/Mode. Nessun Save o cambiamento dei permessi osservati; nessun nuovo export richiesto per questa sola lettura. tank sullo sfondo13.08MiB/213.17GiB, documenti192KiB/213.17GiB Unlocked. Immagine archiviata prima della lettura e SHA-256 verificato.
+
+Letto il corpo del rapporto HTML corrente, comprese scelte, limiti, rischi e preventivo; bibliografia estratta ma non tutte le fonti consultate autonomamente. Copia privata SHA verificata e originale conservato. Non letti PDF, immagini della cartella fonti o versioni archiviate; non aperti Nord Account o dati di fughe altrui. Si recepisce il perimetro del rapporto: NordVPN spenta a casa, Meshnet esclusa con account condiviso, eventuale uso personale esterno separato. Studio18/ADR-046 e fonti S261-S268 registrano cautele di identità, DNS, Android, memoria e accessi. Il rapporto cita WireGuard, raccordato a Tailscale già richiesto in ADR-045, senza annullarlo. Prezzi e diritti contrattuali non ripubblicati o confermati; nessun acquisto o modifica di servizi.
+
+Corrette nella documentazione le semplificazioni VPN unica protezione, Meshnet unica via di compromissione, sempre attiva uguale blocco connessioni e tutte le funzioni della suite ridotte al tunnel/DNS. Nei concetti storici aggiunta precisazione datata senza riscrittura estesa. Fonti Android, Meshnet, supporto DNS/monitor, TLS e release Windows consultate come primarie; il rinvio non recuperato sulla condivisione account non sostiene conclusioni. Didattica: nuova voce10/scheda10. Raccordati matrice, VPN, assistente, fonti, roadmap, pendenze, sei riepiloghi NAS e ripresa privata. Nessun commit, installazione o configurazione fisica; studio del brain e richiamo Jev conservati.
+
+## 29/10/2026: lettura ACL documenti chiusa, nessuna modifica necessaria
+
+Registrato 2026-10-29T12:21:49+01:00. Tre immagini archiviate prima della lettura, SHA-256 verificati e originali conservati. Il modulo Edit Dataset mostra Name tank/documenti bloccato: identità ora verificata. Valori letti: Comments vuoto; Sync Inherit(STANDARD); Compression Inherit(LZ4); Atime Inherit(OFF); Dedup Inherit(OFF); Case Sensitivity Insensitive bloccato; Checksum Inherit(ON); Read-only Inherit(OFF); Exec Inherit(ON); Snapshot Directory Invisible; Snapdev Inherit(HIDDEN); Copies1; Record Size Inherit(128KiB); ACL Type SMB/NFSv4; ACL Mode Restricted; Metadata(Special)Small Block Size Inherit(0). Save abilitato e Basic Options visibile. tank sullo sfondo13.16MiB/213.17GiB, documenti192KiB/213.17GiB Unlocked. Nessun campo richiede modifica.
+
+Chiusa la lettura del tipo e della modalità ACL nel modulo identificato; i precedenti POSIX/Discard senza nome non sono proprietà accertate di documenti. Nessun nuovo Save osservato in queste immagini. Indicazione operativa: Save per confermare, poi Credentials > Users > Add e lettura del modulo utente; nessun utente, permesso finale o share ancora creati. Nessun nuovo export richiesto per una lettura senza cambi di configurazione. Tre export e chiave JSON restano acquisiti e verificati; copia indipendente e restore aperti.
+
+Richiesta di stile ribadita dall’utente: in un solo messaggio indicare soltanto i settings che cambiano; tutti i valori, le ragioni e lo stato nel progetto. Qui i cambi necessari sono nessuno.
+
+Didattica: nessuna nuova scelta; il criterio identità dell’oggetto più proprietà osservata, già nella scheda10, è ora soddisfatto. Campi prima non espliciti, incluso Snapshot Directory, riletti senza indovinare. Fonte UI locale, nessuna nuova fonte o ADR; filone VPN/assistente e richiamo Jev conservati.
+
+## 29/10/2026: studi MCU, sicurezza e ponte Codex riparato a monte
+
+Registrato 2026-10-29T16:29:12+01:00. Richiesta di strumenti browser ESP32/Arduino recepita con fonti primarie S269-S284; alternative Wokwi/CircuitJS, distinzione MCU/Linux/Hermes, preferenza Wi-Fi con SSID su VLAN per ruolo e misura alla presa. Pico/RP2040 dello studio audio non contato come hardware posseduto o host Linux. Studi19/20/21, ADR-047/048, didattica11/12; ISO27001 come metodo e GDPR con applicabilità concreta, sole due skill pertinenti istanziate da grc-skills v2.1.0. OPNsense26.7.7 ultima voce Community consultata, hotfix21/10 PHP8.5.12 incluso nel piano; macchina non aggiornata o ispezionata oggi.
+
+Memo TXT dello switch XMG1915-10EP250×104×27mm scritto sul Desktop e verificato; fonte S09 riletta. Root AGENTS mancante riprodotto con wrapper già allineati: corretti generatore e allineatori nel template, root creato qui dal modello canonico e wrapper delle due skill generati. Otto regressioni funzionali positive, inclusi check senza scritture, personalizzazione conservata e ponte nel rapporto della passata. Nessun commit dell’agente; propagazione ufficiale globale dopo commit manuale a monte. La correzione non viene ridotta a un file locale.
+
+Stato NAS invariato, nessun nuovo screenshot o comando sul NAS: documento identificato e Restricted corretti, nessun setting da cambiare; Save/utente/ACL/share non osservati. Export e JSON già verificati, copia indipendente/restore aperti. Jev alla tappa del brain, TAB/SoundCraft e tutti gli altri fili mantenuti. Chiusura e riapertura preparate nel livello privato; wipe ancora da eseguire solo dopo checkpoint e uscita.
+
+**Didattica:** voci11/12 e schede corrispondenti, con estratti reali e prove che distinguono dato letto da effetto dimostrato.
+
+**Template:** lezione del ponte mancante da registrare e recepire nel medesimo giro; filone browser da integrare a monte prima della chiusura.
+
+## 30/10/2026: chiusura consolidata, nota fra sessioni e parità dei launcher
+
+Registrato 2026-10-30T10:37:06+01:00. Nota esplicita della sessione esterna letta nel template: L-039 e L-040, esclusioni degli adattatori GRC e visibilità del template più avanti. Implementati a monte helper di stato con commit/pacchetti nuovi e scadenze, ricevuta nel rapporto della passata, rimozione esatta di una riga con copia preventiva e terminatori conservati. Aggiunta cassetta atomica fra Claude/Codex, launcher Claude comune e collegamento per tutti i numeri di account; nessuna notifica push o acquisizione retroattiva dei permessi promessa.
+
+Autotest anonimizzazione riprodotto: sandbox nega la scrittura della fixture, fuori sandbox22 casi e0 errori. È un impedimento ambientale, non una prova di difetto del guard-rail; nessuna protezione tolta. Un vero difetto di chiusura individuato nel wrapper ISO27001 con trattino em: generatore corretto e pacchetto GRC ora ripara anche le esclusioni Codex alla reinstallazione, preservando la fonte terza. Le prove e i log di chiusura restano nel checkpoint privato, con esiti aggiornati prima della consegna.
+
+Ponte e copie tecniche ricevuti qui con controllo di identità della versione precedente, marcatore del template lasciato invariato. Ripresa privata consolidata, precedente conservata con SHA; punto NAS invariato e nessun nuovo comando fisico. Nessun add, commit, push o wipe; passata ufficiale dopo commit manuale a monte. Preservati i due documenti di altra sessione nel template, TAB/SoundCraft, Jev alla tappa concordata e tutte le acquisizioni di recupero.
+
+**Didattica:** sviluppo voce12 sulla distinzione fra controllo non eseguito, difetto riprodotto e propagazione ancora da eseguire.
+
+**Template:** L-008 implementata; ulteriori lezioni su wrapper e fixture da registrare/recepire nello stesso lotto, con L-039/L-040 del progetto che le ha prodotte.
+
+## 30/10/2026: prove di consegna e profilo della macchina aggiornato
+
+Registrato 2026-10-30T11:19:18+01:00.55 regressioni complete positive in112,45secondi; verifica-ripresa28 prove positive e allinea-tutti24 casi positivi. Copertura di tutti gli account Codex1/2/3 anche su errore del backend, stessa cassetta esposta da launcher Claude/Codex e installazione ripetuta del profilo con contenuto esterno conservato. Installazione reale del profilo conclusa con backup: sette comandi, tre per ciascun agente più chiudi. Nessuna credenziale o configurazione di radice riscritta. Nuova finestra o caricamento del profilo per i nuovi launcher; nessuna ricezione retroattiva dei permessi nelle sessioni attive.
+
+Controlli completi home-lab passati dopo le correzioni, albero senza link rotti o orfani, diff senza errori. La prova sandbox dell’autotest resta distinta dalla sua esecuzione riuscita fuori: nessuna esclusione di sicurezza aggiunta. L-008/L-009/L-010 ora recepite a monte e registro canonico copiato qui; L-039/L-040 del progetto di origine recepite con strumenti e prove. Quattro fonti browser e dipendenza pytest registrate; censimento193 fonti classificate e verificate, distinto dagli aggiornamenti di fonti già pendenti.
+
+Nel template due soli interventi tipografici su documenti preesistenti, due accenti e due trattini, conservano tutto il contenuto: i documenti dell’altra sessione non sono presi automaticamente nel lotto di commit. Riscontro alla nota scritto privatamente, originale conservato. Stato NAS invariato, prossimo utente SMB. Chiusura manuale e passata ufficiale ancora da eseguire; nessun commit, push o wipe dell’agente.
+
+**Didattica:** sviluppo voce12, prove del comportamento e conservazione della fonte distinti da pubblicazione e dialogo reale fra sessioni.
+
+**Template:** L-008/L-009/L-010 recepite, con L-039/L-040 del progetto che le ha prodotte; altri filoni e lezioni preesistenti restano nel loro registro.
+
+## Verifiche concluse 2026-10-30T11:29:19+01:00
+
+Controlli richiesti del progetto:12 su12 positivi, albero documentale senza link rotti/orfani. Controlli del template:25 su25 positivi, diff senza errori.55 regressioni funzionali complete,24 ripetute dopo la sola formattazione,28 self-test ripresa e24 autotest passata positivi. Stage vuoto in entrambi i repository, nessun commit/push/wipe dell’agente. La distribuzione ufficiale segue il versionamento manuale.
+
+La ripresa consolidata e il suo originale sono nel progetto. Profilo aggiornato per tutti e tre gli account dei due agenti, copia preventiva conservata. Cassetta su file e perimetro comune testati; registrazione non equivale a heartbeat, polling non equivale a notifica push, dialogo reale ancora da osservare. Chiavi e tre export restano privati; la copia su un altro disco dello stesso PC non prova una destinazione indipendente o un restore. Prossimo NAS: utente SMB, poi ACL/share; dataset già corretto e nessun nuovo test RAM.

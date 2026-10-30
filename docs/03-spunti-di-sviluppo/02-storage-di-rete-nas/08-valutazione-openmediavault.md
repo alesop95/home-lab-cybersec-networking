@@ -1,30 +1,61 @@
-# OpenMediaVault come alternativa a TrueNAS per questo NAS
+# Perché questo NAS usa TrueNAS e quando avrebbe senso OpenMediaVault
 
-Ritorno alla [cartella del NAS](README.md). Valutazione dell'8/10/2026, chiesta dall'utente: se OpenMediaVault sia un'opzione per il NAS ricavato dai quattro desktop dismessi. Il documento raccoglie il materiale per decidere; la decisione resta dell'utente. Il progetto oggi prevede TrueNAS SCALE, con l'insieme di avvio in specchio sui due SSD SATA e un solo pool ZFS in specchio sui due NVMe (ADR-015).
+Ritorno alla [cartella del NAS](README.md). Valutazione iniziata l’8/10/2026 e riallineata il28/10/2026 su richiesta dell’utente. ADR-026 conserva la decisione originaria; ADR-033 ne ha cambiato i dischi e ADR-039 distingue la memoria prevista da quella effettivamente disponibile. L’[allocazione hardware](../23-studio-home-lab/12-allocazione-dell-hardware.md) descrive dove sono i pezzi, il [registro](09-registro-del-montaggio.md) che cosa è stato realmente eseguito.
 
-## Una correzione a quanto scritto finora
+## La ragione della scelta attuale
 
-Il [consolidamento dei quattro desktop](03-consolidamento-di-quattro-desktop-dismessi-in-un-nas.md) descrive OpenMediaVault come un sistema che porta ext4 o btrfs sopra il RAID software del kernel, e conclude che sceglierlo significa perdere ZFS. È impreciso: OpenMediaVault non ha ZFS nel sistema di base, ma lo supporta con il plugin `openmediavault-zfs` del repository omv-extras, documentato per la versione 7 e per la versione 8 (S74). La differenza vera non è se ZFS c'è, ma come ci arriva, ed è il punto che decide.
+Il progetto vuole un archivio per documenti e copie del server, con controllo dell’integrità e una storia recuperabile dei file. Manteniamo TrueNAS perché organizza intorno a ZFS[^1] la gestione dello storage, delle istantanee e della replica. È una preferenza per una piattaforma integrata da imparare e amministrare, non la dimostrazione che OpenMediaVault perda dati o che serva TrueNAS per condividere cartelle.
 
-## Il confronto sui requisiti di questo NAS
+OpenMediaVault può usare ZFS. La sua documentazione distingue il sistema di base dal plugin omv-extras e raccomanda un percorso con plugin del kernel e kernel Proxmox per i moduli precompilati. Il plugin documenta anche snapshot, scrub e replica: queste funzioni non sono esclusive di TrueNAS. Il confronto riguarda l’integrazione e le dipendenze da mantenere, a parità di corretta configurazione del filesystem. Fonti primarie S231 e S74: [filesystem OMV](https://docs.openmediavault.org/en/latest/administration/storage/filesystems.html), [plugin ZFS](https://wiki.omv-extras.org/doku.php?id=omv8%3Aomv8_plugins%3Azfs).
 
-| Requisito del progetto | TrueNAS SCALE | OpenMediaVault 8 |
-|---|---|---|
-| ZFS per il pool dei due NVMe | nativo, è il file system del sistema | con il plugin `openmediavault-zfs`; la documentazione raccomanda il kernel Proxmox, installato con un altro plugin, perché porta i moduli ZFS già compilati e allineati |
-| avvio in specchio sui due SSD SATA | previsto dall'installatore | non previsto dall'installatore: un disco di sistema solo, oppure un RAID del kernel costruito a mano, procedura non supportata in modo ordinario (S76) |
-| robustezza degli aggiornamenti | sistema e ZFS aggiornati insieme dallo stesso progetto | ZFS dipende dall'allineamento fra kernel e moduli; a maggio 2026 un aggiornamento del kernel Debian ha rotto la compilazione dei moduli ZFS sui sistemi con il plugin (S75) |
-| memoria e consumo | più esigente; i 32 GB della macchina sono nella fascia consigliata | più leggero, è in sostanza un Debian con un'interfaccia di amministrazione |
-| applicazioni in container | catalogo integrato | plugin per Docker Compose |
-| curva di apprendimento | più ripida, interfaccia ricca | più dolce, vicina a un Debian amministrato |
+## Che cosa otteniamo tecnicamente da ZFS
 
-La versione corrente rilevata è OpenMediaVault 8.0.8 del 25/01/2026 (S77).
+Immaginiamo un file conservato per mesi: un settore restituisce dati diversi da quelli scritti. ZFS verifica i blocchi tramite somme di controllo. Se il pool dispone di un’altra copia valida, come nello specchio dati previsto, può correggere il blocco; se non ha una copia buona, rilevare l’errore non significa poterlo riparare. Lo scrub è la lettura periodica dei dati per cercare questi problemi anche nei file che nessuno apre. È una proprietà di ZFS utilizzabile anche su OMV, non del marchio TrueNAS. Fonte S233, [ZFS Primer](https://www.truenas.com/docs/references/zfsprimer/).
 
-## Che cosa cambierebbe nel progetto
+Se invece cancelliamo per errore un documento, il disco e il suo specchio possono essere perfettamente sani: entrambi registrano la cancellazione. Una snapshot conservata permette di recuperare lo stato precedente. TrueNAS offre pianificazioni e durata delle istantanee nella propria interfaccia, S235, [snapshot periodiche](https://www.truenas.com/docs/scale/25.10/scaletutorials/dataprotection/periodicsnapshottasksscale/). La replica è un altro passo: trasferire gli stati conservati verso un’altra destinazione compatibile. TrueNAS ne gestisce le attività, ma destinazione, accessi e conservazione devono essere configurati, S236, [replica](https://www.truenas.com/docs/scale/25.10/scaletutorials/dataprotection/replication/).
 
-Scegliere OpenMediaVault mantenendo ZFS significa accettare due differenze rispetto ad ADR-015. La prima è l'avvio: senza specchio sui due SSD SATA, il guasto del disco di sistema ferma il NAS fino alla reinstallazione, mentre i dati restano sul pool degli NVMe e si reimportano; il secondo SSD resterebbe libero o diventerebbe un disco di copia del sistema. La seconda è la manutenzione: ogni aggiornamento del kernel diventa un punto da controllare, perché ZFS è un componente aggiunto e non il cuore del sistema. In cambio si ottiene un sistema più leggero e più familiare a chi conosce Debian.
+Per questo progetto distinguiamo quattro bisogni: continuare dopo il guasto di un disco, riconoscere dati alterati, recuperare una versione precedente e avere una copia fuori dal NAS. Lo specchio, le somme di controllo, le snapshot e il backup separato rispondono a problemi diversi. Nessuna singola casella selezionata nella GUI li rende tutti risolti.
 
-Scegliere OpenMediaVault rinunciando a ZFS, con ext4 o btrfs sopra un RAID del kernel, toglie il secondo problema ma anche le somme di controllo da un capo all'altro della catena, che sono la ragione per cui il progetto aveva scelto ZFS per un archivio.
+## Il confronto sulle esigenze reali
 
-## Lettura per questo progetto
+| Esigenza | TrueNAS25.10 | OpenMediaVault8 | Peso nel nostro progetto |
+|---|---|---|---|
+| usare ZFS | componente centrale della piattaforma | supporto tramite omv-extras e relativo percorso kernel/moduli | preferiamo seguire il percorso integrato TrueNAS; OMV con ZFS resta una soluzione valida |
+| programmare protezione e recupero | interfaccia per snapshot e replica | il plugin ZFS documenta attività analoghe | il vantaggio scelto è l’ambiente amministrativo, non una funzione negata a OMV |
+| condividere cartelle via SMB[^2] | copre il bisogno | copre il bisogno | la sola condivisione non decide il confronto |
+| ridurre il requisito di memoria della piattaforma | minimo base dichiarato8GB | minimo base dichiarato1GiB | OMV ha un vantaggio per macchine più limitate; i minimi non misurano lo stesso carico con ZFS |
+| far girare applicazioni e macchine virtuali | possibilità non usata come motivo per scegliere il NAS | possibilità non usata come motivo per scegliere il NAS | nel piano questi carichi stanno sul server Proxmox |
+| tollerare il guasto del disco di avvio | il nostro Kingston è singolo | anche una scelta OMV può avere avvio singolo | nessun vantaggio di specchio di avvio nella configurazione attuale |
 
-Per una macchina con 32 GB di memoria, due SSD destinati proprio a un avvio in specchio e un pool ZFS come unico deposito dei dati, TrueNAS SCALE resta la scelta più coerente: fa nativamente le due cose che OpenMediaVault fa con componenti aggiunti o non fa. OpenMediaVault diventerebbe preferibile se cambiassero i presupposti, cioè una macchina con poca memoria, un solo disco di sistema, oppure la scelta consapevole di rinunciare a ZFS per un sistema più semplice. La decisione resta dell'utente; se la conferma, nulla cambia nella guida di montaggio.
+Le fonti dei requisiti sono S204, [hardware TrueNAS25.10](https://www.truenas.com/docs/scale/25.10/gettingstarted/scalehardwareguide/), e S232, [prerequisiti OMV](https://docs.openmediavault.org/en/latest/prerequisites.html). Gli8GB attuali sono il minimo base TrueNAS, non un errore di installazione né una prova che ogni carico futuro starà bene. L’obiettivo del progetto resta16GB, aperto; prima di attribuire lentezza alla RAM servono carico e misure reali. Non esiste qui un confronto di consumi o prestazioni sulle due installazioni.
+
+## Quali argomenti della prima valutazione non valgono più
+
+L’8/10 il piano prevedeva32GB, avvio in specchio sui SATA e dati sui due NVMe[^3]. Il12/10 ADR-033 ha assegnato i NVMe al server e lasciato al NAS il Kingston per l’avvio, con SanDisk e WD per il futuro specchio dati. Dopo le prove RAM, lo stato attuale è RAM-03 da8GB in A2. Il vantaggio dell’installatore capace di preparare l’avvio in specchio non giustifica una configurazione che oggi avvia da un solo disco. Non lo usiamo come ragione attuale per escludere OMV.
+
+Se il Kingston si guasta, il piano richiede reinstallazione e recupero della configurazione, poi importazione del pool dati se integro e compatibile. La copia della configurazione con secret seed è ancora da esportare. Il sistema scelto non rende quel backup già esistente; vale il [piano di ripristino](../05-strategia-di-backup/02-piano-di-backup-e-ripristino-del-lab.md).
+
+Correggiamo anche un’altra generalizzazione della prima valutazione: rinunciare a ZFS non implica che ogni alternativa perda le somme di controllo. Btrfs verifica dati e metadati per impostazione predefinita, S234, [Checksumming](https://btrfs.readthedocs.io/en/latest/Checksumming.html). La sua configurazione e la sua integrazione in OMV andrebbero valutate per quel percorso; non le abbiamo collaudate. Non basiamo il confronto su un generico “gli altri filesystem non controllano i dati”.
+
+Il precedente episodio di aggiornamento riportato da un blog, S75, rimane nel registro delle fonti come materiale storico. La conclusione attuale usa il percorso kernel/moduli dichiarato dai manutentori OMV e omv-extras; non deduce che ogni aggiornamento OMV rompa ZFS. Non ripropone neppure il vecchio numero di versione come rilevazione della release attuale.
+
+## Quando rivaluteremmo OMV
+
+Se il bisogno si riducesse a poche cartelle condivise e il criterio principale diventasse una base Debian con requisiti inferiori, OMV sarebbe una scelta sensata. Lo sarebbe anche volendo ZFS e accettando consapevolmente la manutenzione del relativo plugin e kernel. La nostra preferenza per l’integrazione TrueNAS è una valutazione di progetto: non deriva da un benchmark né da una garanzia di affidabilità superiore del medesimo ZFS.
+
+Con i pezzi attuali e il piano di protezione dei dati già impostato manteniamo TrueNAS. Questa spiegazione chiarisce la decisione esistente; non avvia migrazioni, nuovi acquisti o altre prove della RAM. La separazione fra NAS e server Proxmox è una scelta indipendente, possibile anche con OMV.
+
+## Che cosa è già vero e che cosa costruiremo
+
+| Elemento | Stato al28/10/2026 |
+|---|---|
+| sistema e memoria | TrueNAS25.10.7 installato sul Kingston; sola RAM-03/A2 da8GB, obiettivo16GB aperto |
+| pool dei dati | assente; specchio SanDisk/WD previsto, contenuto SanDisk da chiarire prima della creazione |
+| condivisioni, snapshot, scrub e replica dei dati | da configurare e verificare sul futuro pool; la scelta del prodotto non ne dimostra l’esecuzione |
+| notifiche e ripristino | OAuth salvato, Google2FA attiva e prima mail NAS ricevuta su Proton; test alert ricevuto e filtro ancora aperto, primo export configurazione con seed acquisito e verificato fuori NAS, seconda copia e restore aperti ADR-043 |
+
+Quando arriveremo a queste configurazioni, il registro conserverà impostazioni, esiti e recuperi realmente provati. Il percorso didattico approfondisce il ragionamento in [Perché manteniamo TrueNAS](../../../.claude/context/refactor-05-scelta-truenas-e-alternativa-omv.md).
+
+[^1]: ZFS è il filesystem e gestore dello storage del progetto OpenZFS; collega organizzazione dei dati, integrità e ridondanza.
+[^2]: SMB, Server Message Block, è il protocollo usato per le cartelle condivise in rete.
+[^3]: NVMe, Non-Volatile Memory Express, è il protocollo degli SSD collegati tramite PCI Express.

@@ -63,12 +63,12 @@ Nessuno di questi componenti è in esercizio, tranne dove indicato. La colonna d
 | Switch | Zyxel XMG1915-10EP, managed, 8 porte 2,5 GbE PoE++ con budget di 130 W più 2 SFP+ a 10 Gbps (ADR-017) | deciso il 07/10/2026, non acquistato |
 | Access point | due AP Zyxel NWA130BE Wi-Fi 7, tre bande, 802.1X/RADIUS e SNMP, cablati e alimentati dallo switch al terzo e al secondo piano, con roaming fra i due (ADR-018, ADR-024) | decisi, cavi posati, non acquistati |
 | Console di gioco | PS5 su una porta LAN da 1 GbE del modem, fuori dal perimetro, con un NAT solo (ADR-018) | collocazione decisa |
-| Virtualizzazione | Proxmox VE su `linux-desktop-A`, i7-7700 con 16 GB e rete Intel, più un SSD da comprare; trunk 30, 60, 99 | proposto l'8/10/2026, piano unificato |
+| Virtualizzazione | Proxmox previsto su linux-desktop-A,i7-7700,16GB DDR4 censiti,due NVMe1TB in specchio; precedente24GB sospeso | montaggio/installazione non confermati; riferimento allocazione12 eADR-039 |
 | Gestione endpoint | MeshCentral self-hosted, in container | pianificato |
 | DNS interno | Unbound su OPNsense nella fase iniziale, poi AdGuard Home su un host sempre acceso come motore di policy davanti a Unbound, secondo lo studio del 22/09/2026; il documento sorgente proponeva Pi-hole nello stesso ruolo | pianificato |
 | Monitoraggio | Wazuh con il proprio indicizzatore, su Proxmox; Suricata integrato in OPNsense; plugin os-wazuh-agent; syslog per gli apparati | deciso l'8/10/2026 (ADR-028), non installato |
-| Storage di rete | TrueNAS SCALE su hardware proprio ricavato da quattro desktop dismessi; unico pool sui due NVMe da 1 TB in specchio, senza dischi meccanici (ADR-014, ADR-015); alimentatore della base tenuto con condizioni di accettazione (ADR-016) | in assemblaggio: prelievi chiusi il 07/10/2026, montaggio fermo in attesa dell'adattatore da PCIe a M.2 per il secondo NVMe; collocato nella VLAN 30 a 1 GbE, con una scheda da 2,5 GbE facoltativa |
-| VPN | WireGuard su OPNsense per l'accesso stabile, con un solo inoltro UDP sul modem; Tailscale come subnet router per una prima fase; Tailcat per collegamenti occasionali fra due macchine; Pritunl citato nel documento sorgente | in valutazione, nulla installato |
+| Storage di rete | TrueNAS25.10.7 su H170-PRO/i7-6700, RAM-03/A2 da8GB e obiettivo16GB aperto; Kingston avvio, tank su mirror SanDisk/WD | tank Online no errors e213.19GiB utilizzabili alla creazione; documenti cifrato creato29/10, Unlocked e Not Shared; chiave JSON e terzo export con seed post-dataset acquisiti e verificati, due precedenti conservati; ACL Type SMB/NFSv4 e Mode Restricted letti su documenti, prossimo utente/ACL/share; rete definitiva, copia indipendente e recuperi aperti, ADR-033/039/043/044 |
+| VPN | WireGuard per gestione secondo ADR-025; Tailscale richiesto per accesso domestico e assistente, ADR-045; NordVPN spenta a casa e Meshnet condivisa esclusa, ADR-046 | nessun tunnel domestico o subnet router collaudato; studio18 recepisce i vincoli dell’account commerciale senza modificare telefono o rete |
 | Backup | agente di backup incrementale su disco esterno, con copia su due servizi cloud diversi | parzialmente in uso |
 
 ## Alternative deliberatamente escluse
@@ -80,3 +80,13 @@ Un mini-PC generico di importazione come piattaforma firewall è stato scartato 
 ## Vincoli che nessuna scelta tecnica può aggirare
 
 Il modem non espone bridge né passthrough, e per questa linea l'assistenza ha escluso il collegamento diretto del firewall all'ONT; la documentazione pubblica dell'operatore non prova un vincolo MAC generale dell'ONT, quindi l'evidenza resta locale e non si generalizza. Ne discende che il doppio NAT è strutturale e che la Wi-Fi del modem resta fuori dal firewall finché non la si sostituisce con access point a valle. L'indirizzo pubblico statico, ottenuto senza costi su una linea residenziale, è ciò che rende sensato esporre un servizio dalla DMZ; è un dato di contratto, non una proprietà dell'apparato, e va trattato come tale.
+
+La scelta dello storage è motivata nel [confronto TrueNAS/OMV](../../docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/08-valutazione-openmediavault.md), aggiornato il28/10/2026: preferenza per la gestione integrata ZFS, OMV con ZFS come alternativa valida. I precedenti32GB e lo specchio di avvio non descrivono la configurazione attuale e non ne motivano più la scelta. Nessun confronto di consumi o prestazioni eseguito.
+
+## Assistente personale, direzione del29/10/2026
+
+Hermes, Nix/NixOS, Tailscale e archivio personale Markdown/Obsidian sono raggruppati nello [studio17](../../docs/03-spunti-di-sviluppo/23-studio-home-lab/17-assistente-personale-hermes-nix-e-memoria.md), ADR-045. Modello inizialmente remoto come ipotesi dell’handoff; Opus5.5 verificato come prodotto, compatibilità/provider non provati. Hardware a basso consumo da misurare, nessun SBC assegnato. Pacchetti hermes-agent e knowledge-wiki già nel catalogo, non istanziati qui. Capacità brain futura nel template; chiedere Jev quando sarà recepita. Nessun bot, vault personale, account, installazione o percorso di rete configurati.
+
+## Estensione in studio del29/10/2026
+
+Studi19/20/21 nell’area home-lab: firmware MCU distinto da host Linux Hermes, browser didattici, Wi-Fi con SSID per zona, governo sicurezza e piano di aggiornamento OPNsense. Sono candidati e requisiti, senza nuovi servizi in esercizio. Istanziate le skill testuali iso27001/gdpr-compliance dal pacchetto grc-skills v2.1.0; ponte AGENTS e wrapper Codex verificati. Nessun server MCP o agente remoto aggiunto.

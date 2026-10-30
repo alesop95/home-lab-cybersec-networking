@@ -4,7 +4,7 @@ Documento avviato il 19/10/2026 durante il collaudo della memoria del NAS. La pr
 
 ## Il vincolo da risolvere
 
-Il NAS previsto ha il Kingston V300 per il solo avvio e uno specchio dati fra SanDisk 240 GB e WD Blue 250 GB. L'allocazione canonica ora distingue il limite nominale di 240 GB, circa 223,517 GiB prima del costo del filesystem, dal tetto iniziale proposto di 180 GB decimali. Lo spazio effettivamente disponibile dopo la creazione del pool resta da misurare. Il server Proxmox è previsto sui due NVMe da 1 TB in specchio; il montaggio e la capacità occupata dalle macchine virtuali non sono ancora verificati. Non si può promettere che il NAS contenga tutte le copie del server senza misurare il contenuto da salvare.
+Il NAS previsto ha il Kingston V300 per il solo avvio e uno specchio dati fra SanDisk 240 GB e WD Blue 250 GB. L'allocazione canonica ora distingue il limite nominale di 240 GB, circa 223,517 GiB prima del costo del filesystem, dal tetto iniziale proposto di 180 GB decimali. Il28/10 tank è creato: la dashboard mostra213.19GiB utilizzabili,213.18GiB disponibili e8.19MiB usati, a fronte della preview223.57GiB grezzi stimati. Questi valori osservati sostituiscono la pendenza sulla prima misura dello spazio; il tetto proposto e le copie ammissibili dipendono ancora dal contenuto reale e dalle versioni da conservare. Il server Proxmox è previsto sui due NVMe da 1 TB in specchio; il montaggio e la capacità occupata dalle macchine virtuali non sono ancora verificati. Non si può promettere che il NAS contenga tutte le copie del server senza misurare il contenuto da salvare.
 
 Al 20/10 entrambi i moduli del NAS hanno prodotto errori nelle prove individuali nello stesso slot A1; il secondo mostra due errori a Time 3:03:15, Pass 3. La qualificazione della memoria resta condizione di avvio. Il piano qui descritto si prepara senza intervenire sulle macchine.
 
@@ -24,7 +24,7 @@ Non sono ancora noti il volume dei dati da proteggere, la dimensione reale dei b
 
 ## Primo risultato: capacità e confini delle copie
 
-Il [dimensionamento riproducibile](03-dimensionamento-e-scenari-di-backup.md) chiarisce le unità del piccolo specchio SATA e fornisce uno strumento con scenari costruiti, compresi i casi che superano spazio e durata. Il tetto iniziale proposto è 180 GB decimali; il pool reale e le dimensioni degli archivi restano da misurare.
+Il [dimensionamento riproducibile](03-dimensionamento-e-scenari-di-backup.md) chiarisce le unità del piccolo specchio SATA e fornisce uno strumento con scenari costruiti, compresi i casi che superano spazio e durata. Il tetto iniziale proposto è 180 GB decimali; il pool reale è misurato dal28/10 con213.19GiB utilizzabili; le dimensioni degli archivi restano da misurare.
 
 La documentazione del progetto Proxmox distingue archivi completi su storage a file e repository a blocchi deduplicati su Proxmox Backup Server. Per partire senza un altro servizio, questo piano studia gli archivi completi su una condivisione dedicata del NAS. Il loro spazio di picco comprende anche una nuova generazione. Il [confronto con PBS](09-confronto-archivi-proxmox-e-pbs.md) esplicita risorse aggiuntive, spazio prima della raccolta dei blocchi, permessi e dipendenze di recupero; resta un'alternativa da collaudare, senza assegnazione di hardware o installazione. [Backup e ripristino Proxmox](https://raw.githubusercontent.com/proxmox/pve-docs/master/vzdump.adoc).
 
@@ -33,7 +33,7 @@ La documentazione del progetto Proxmox distingue archivi completi su storage a f
 | dischi e configurazioni delle VM | specchio NVMe del server | archivi sullo specchio SATA del NAS | contenuto e dimensioni da raccogliere |
 | configurazione dell'host Proxmox | server | fascicolo privato fuori host, oltre ai backup guest | HOST-01 preparata; metodo coerente per il database e prova reale aperti |
 | documenti conservati sul NAS | specchio SATA del NAS | destinazione su altra macchina o supporto da assegnare | il mirror e le istantanee locali non chiudono la copia |
-| configurazione e chiavi NAS | avvio e configurazione TrueNAS | esportazione custodita fuori dal NAS, con materiali di recupero separati | nessun export ancora eseguito |
+| configurazione e chiavi NAS | avvio e configurazione TrueNAS | esportazione custodita fuori dal NAS, con materiali di recupero separati | tre generazioni con seed acquisite e verificate fuori NAS il28-29/10, ultima post-documenti; chiave JSON separata acquisita, destinazione indipendente e restore aperti |
 | file degli endpoint | rispettivi computer | repository o immagine solo per contenuti selezionati e dimensionati | censimento e scelta degli oggetti da proteggere aperti |
 | dati di laboratorio sacrificabili | nodo di laboratorio | ricostruzione da procedura, salvo dati selezionati | nessuna promessa di conservare tutti gli esperimenti |
 | configurazioni di rete e accesso di emergenza | firewall e futuri switch/AP | fascicolo privato leggibile anche senza NAS e server | RETE-01/02 preparate, export e supporto da qualificare |
@@ -53,3 +53,11 @@ Si parte dal [dimensionamento](03-dimensionamento-e-scenari-di-backup.md), si sc
 Il piano distingue fonte primaria letta, proposta specifica del laboratorio, verifica locale del modello e collaudo sulle macchine. Al 20/10 i primi livelli hanno risultati tracciati; il collaudo è aperto. La prima attivazione procede con dati artificiali e poi con il perimetro reale autorizzato, senza compromettere gli originali per provare un recupero.
 
 Il [fascicolo di emergenza della rete](08-fascicolo-di-emergenza-della-rete.md) copre la dipendenza dai percorsi di gestione e dalla configurazione di firewall, switch e access point. Il dimensionamento comprende ora anche uno scenario per lo spazio sottratto ai guest dalla copia dei documenti NAS sul server: la capacità di quella destinazione non si presume illimitata perché il suo mirror è più grande.
+
+## Requisito esplicito per le personalizzazioni TrueNAS,28/10/2026
+
+Dopo la prima mail NAS ricevuta, l’utente richiede che tutte le impostazioni restino recuperabili anche cambiando hardware, ADR-043. Il [percorso dedicato](10-configurazione-truenas-e-cambio-hardware.md) ha portato all’acquisizione e verifica del primo export con seed fuori NAS; seconda copia indipendente e restore rimangono aperti. Veeam Linux non viene ricostruito da zero: il pacchetto già presente nel template contiene guida e riscontri manuali del backup file/rilettura su Linux, S237. Questi non certificano un export TrueNAS, una sua copia nel lavoro Veeam o un ripristino del NAS già eseguiti.
+
+## Stato assistente e chiave del primo dataset,29/10/2026
+
+La cifratura con chiave automatica del primo dataset documenti è scelta dall’utente ma il modulo non è ancora salvato; chiave esterna e nuova generazione export sono il passo successivo alla creazione. I due export precedenti restano acquisiti e verificati, non vengono sostituiti da una copia della sola documentazione. Il futuro assistente aggiunge oggetti distinti: configurazione/lock Nix, vault personale, stato Hermes e materiali segreti, come descritto nello [studio17](../23-studio-home-lab/17-assistente-personale-hermes-nix-e-memoria.md). Nessuna copertura di questi oggetti è già implementata.
