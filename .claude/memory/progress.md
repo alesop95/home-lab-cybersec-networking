@@ -1946,3 +1946,27 @@ Nel template due soli interventi tipografici su documenti preesistenti, due acce
 Controlli richiesti del progetto:12 su12 positivi, albero documentale senza link rotti/orfani. Controlli del template:25 su25 positivi, diff senza errori.55 regressioni funzionali complete,24 ripetute dopo la sola formattazione,28 self-test ripresa e24 autotest passata positivi. Stage vuoto in entrambi i repository, nessun commit/push/wipe dell’agente. La distribuzione ufficiale segue il versionamento manuale.
 
 La ripresa consolidata e il suo originale sono nel progetto. Profilo aggiornato per tutti e tre gli account dei due agenti, copia preventiva conservata. Cassetta su file e perimetro comune testati; registrazione non equivale a heartbeat, polling non equivale a notifica push, dialogo reale ancora da osservare. Chiavi e tre export restano privati; la copia su un altro disco dello stesso PC non prova una destinazione indipendente o un restore. Prossimo NAS: utente SMB, poi ACL/share; dataset già corretto e nessun nuovo test RAM.
+
+## Propagazione interrotta e correzione pronta 2026-10-30T12:19:02+01:00
+
+Utente ha pubblicato home-lab bc8f9c0 e template e633956. Allinea-tutti si ferma prima della passata per due email fittizie non ammesse nei nuovi test. Chiudi-allineamento eseguito comunque con punto e virgola legge la vecchia corsa del29/10 contro8a42d36, non una passata nuova. Nessuna distribuzione di e633956 attestata. Push del progetto remoto indicato nel log ancora fallito, separato dalla nuova distribuzione. Le impronte registrate non provano un allineamento mai eseguito.
+
+Corretti i due dati dei test con un esempio già ammesso; guardia estesa ai nuovi file non ignorati, con regressione che dimostra riconoscimento del file nuovo e rispetto del gitignore. Autotest guardia31 positivi;25 regressioni positive. Agganciato l'avviso automatico in ingresso e il controllo lezioni in uscita nel punto comune ai due launcher; provato per Claude/Codex senza contaminare gli argomenti della cassetta. Quattro file corretti nel template ancora da committare e pubblicare manualmente, due bozze estranee preservate. Poi l'agente può eseguire la passata autorizzata; il suo versionamento resta manuale secondo le istruzioni. Non pulire ancora gli store.
+
+
+## Consegna locale e verifica della chiusura 2026-10-30T17:18:57+01:00
+
+Seconda passata conclusa su44 primari:39 allineati e5 applicati, nessun conflitto;7 esclusi e2 alberi secondari conservati. Ponti e wrapper verificati su38 locali e6 remoti. Correzione ulteriore nel template per la chiusura dopo passate ripetute:23 prove positive,2 mutazioni rosse, anteprima reale su44 progetti senza errori. Correzione installata ma non versionata; nessun commit/push reale dell’agente. Ricevute e materiali utili restano nel progetto, anche soltanto nel livello privato non versionato, secondo il chiarimento del proprietario. Nessun nuovo wipe. Stato NAS invariato, prossimo utente SMB/ACL/share.
+
+**Didattica:** nessuna nuova scelta del lab; regressione misurata e conservazione locale dei riscontri nella nota privata di consegna.
+
+**Template:** nessuna nuova lezione da trasferire; correzione di chiudi-allineamento già preparata nel sorgente, con nota privata. Pubblicazione e distribuzione della nuova modifica ancora manuali.
+
+
+## Ripresa della distribuzione conclusa 2026-10-30T17:56:45+01:00
+
+Il proprietario ha pubblicato832bdc0 e interrotto la corsa sospesa20261030-172208. Verificato di nuovo il collegamento ad asset-vm, ripresa autorizzata dall’agente conclusa con uscita0 nella corsa20261030-175222:44 applicati,7 esclusi,2 alberi secondari,zero conflitti o collisioni. Nessun commit/push dell’agente; chiusura delle consegne ancora manuale. Stato NAS e materiali privati invariati.
+
+**Didattica:** nessuna, ripresa operativa di una distribuzione già documentata.
+
+**Template:** nessuna nuova lezione; diagnosi della connessione sospesa conservata nel livello privato.

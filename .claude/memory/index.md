@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:         main, un solo worktree
-HEAD osservato:        3c876a6, letto29/10/2026; ancore precedenti non tutte riconciliate
+HEAD osservato:        a7631c3, letto02/11/2026; ancore precedenti non tutte riconciliate
 Ancora precedente:     67abca0; schede precedenti non tutte riconciliate qui
 Data snapshot:         2026-10-30; ultimo banco29/10, chiusura e allineamenti30/10
 Remoto:                origin; nessun fetch o verifica del remoto in questo giro
@@ -172,10 +172,12 @@ Studi19/20/21 e ADR-047/048 aggiungono microcontrollori/microserver, laboratorio
 
 Punto NAS invariato: tank/documenti identificato, SMB/NFSv4 e Restricted corretti nelle110-112; nessun campo da cambiare. Save e Credentials > Users > Add ancora non osservati; prossimo utente SMB, ACL e share dopo la riapertura. Tre export con seed e JSON chiave già acquisiti e verificati privatamente, non scaricare di nuovo per questa sola lettura. Copia indipendente e restore aperti. NAS8GB RAM-03/A2;16GB obiettivo aperto, nessun nuovo test RAM richiesto da questi studi.
 
-## Chiusura preparata il30/10/2026 e parità fra gli agenti
+## Chiusura corrente e parità fra gli agenti
 
-Ponte AGENTS e istruzioni canoniche comuni aggiornati; verifica-ripresa ora può mostrare il ritardo dal template e la ricevuta di una passata. Nel template L-039 e L-040 danno scadenza visibile alle esclusioni e manutenzione delle righe con copia preventiva. Il generatore corregge la descrizione del wrapper ISO27001; il pacchetto GRC gestisce anche le esclusioni Codex in modo idempotente. Le copie tecniche necessarie sono state ricevute qui senza dichiarare un commit a monte inesistente o una passata globale eseguita.
+Al30/10/2026 il proprietario ha pubblicato il progetto a bc8f9c0 e il template a832bdc0. La ripresa della passata è conclusa:44 applicati, nessun conflitto o collisione;44 progetti primari coperti,7 esclusi e2 alberi secondari intenzionalmente fuori. Ponti e wrapper verificati nei38 locali e6 remoti. La ricevuta e il punto operativo aggiornato sono in `_notes/RESUME-PROMPT.md`, con prove private in `_notes/template-final-2026-10-30/esito-finale.json`. L’allineamento dei file è distinto dal loro commit/push, ancora manuale.
 
-Il pacchetto agenti-terminale espone una cassetta comune su file atomici ai launcher Claude e Codex, con perimetro aggiuntivo limitato e visibile. I tre account Codex usano lo stesso finally di pulizia; tutte le sessioni vive restano protette. Nessun push dei messaggi o ricezione retroattiva nelle sessioni già avviate sono promessi. Le prove del trasporto e i test dei launcher sono distinti dal collaudo di un dialogo fra agenti reali. Persistenza e punto NAS nelle sezioni precedenti restano invariati; prossimo utente SMB/ACL/share.
+L’anteprima reale ha scoperto e poi verificato la correzione di chiudi-allineamento nel template: include le consegne non committate dei progetti già allineati, recupera le corse anche prima del primo marcatore versionato e non riapre copie obsolete.23 autotest positivi e2 mutazioni rosse; anteprima finale su44 progetti senza errori, nessun commit/push reale. Lo script corretto è pubblicato in832bdc0 e distribuito nei44 primari; corsa20261030-175222, uscita0. Il proprietario deve ancora eseguire la chiusura dei commit/push delle consegne. Due documenti di altra sessione nel template restano fuori dal commit mirato.
 
-Versionamento del progetto e del template, passata ufficiale e pulizia dopo l’uscita restano operazioni manuali del proprietario secondo le regole. Nessun commit, push o wipe dell’agente. La ripresa privata è consolidata e la versione precedente conservata integralmente nel checkpoint; chiavi, export e fotografie restano nel livello ignorato. La nota da un’altra sessione è stata letta e le richieste integrate, senza sovrascrivere i suoi documenti pendenti.
+Direttiva di conservazione: quanto serve può vivere soltanto nel progetto, nel livello privato non versionato; conservarlo non richiede un commit. Il wipe elimina soltanto elementi superflui o duplicati dopo assorbimento verificato, anche nel solo livello privato. Export, chiavi e prove utili restano. Sono già state eliminate copie ridondanti della chat e della ripresa; nessuna ulteriore cancellazione in questo giro. Dettaglio privato in `_notes/template-final-2026-10-30/regola-conservazione-progetto.md`.
+
+NAS invariato:8GB RAM-03/A2, tank/documenti creato e cifrato, SMB/NFSv4 e Restricted corretti, prossimo utente SMB poi ACL/share. Tre export con seed e chiave JSON conservati privatamente; copia indipendente e ripristino ancora aperti. Jev da chiedere solo alla recezione del brain nel template; altre pendenze nei registri esistenti. Launcher comuni per i tre account, protezione delle sessioni vive e posta su file verificati; dialogo reale fra agenti ancora da osservare.
