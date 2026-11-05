@@ -1,10 +1,19 @@
 {
+  ".claude/rules/anonymization.md": {
+    "testa": "558e96e2b9d86a73fd445dd3644b1e67ae518fad",
+    "locale_sha256_lf": "9fd7986d4924a64bff6bbcbd47a3b18e741a92a664e0465a5db223e8b751f7a5",
+    "motivo": "Variante locale preesistente documentata nel CLAUDE del progetto: conservati perimetro, convenzione scripts, eccezioni del dominio e cronaca; il contratto non impone identita byte per byte. La firma non attesta equivalenza di tutte le categorie del riconoscitore.",
+    "il": "2026-11-05"
+  },
   "tools/Test-Anonymization.py": {
-    "testa": "d4daa4623dd27bb0e52159c0a3007c46d37ffb47",
-    "il": "2026-10-08"
+    "testa": "2a3c9b91bf25f7fce670fd1df0549ed740609c90",
+    "locale_sha256_lf": "8a49d0cc9dfcde84f692e6d3b8cabc7e4e94ca0441db568e41a528f3f3a39355",
+    "il": "2026-11-05",
+    "motivo": "Delta pubblicato 3443d6c integrato e provato sui confini dei nomi; estensioni e cronaca locali conservate. La firma certifica il contenuto revisionato, non la parita di tutte le categorie."
   },
   "tools/docx-to-md.py": {
     "testa": "b4920472d1764bad9ff3126898d87571bde04b8a",
-    "il": "2026-10-28"
+    "il": "2026-11-04",
+    "locale_sha256_lf": "5e3eda8f351473ab307c32226c794022b2e1c601604eec83a13146dcc3fea831"
   }
 }

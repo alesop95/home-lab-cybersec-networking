@@ -348,8 +348,10 @@ def analizza(pat, files):
     nomi = pat["nomi_propri"]
     nomi_ctx = pat.get("nomi_ammessi_in_contesto", [])
     segreti = pat.get("segreti_letterali", [])
+    servizi_cloud = pat.get("servizi_cloud_personali", [])
+    percorso_personale = re.compile(r"(?:[A-Za-z]:[\\/]Users[\\/][^\\/\s`<>]+|/(?:home|Users)/[^/\s`<>]+)")
     # estensione del progetto
-    nomi_rx = [(n, re.compile(r"\b" + re.escape(n) + r"\b", re.I)) for n in nomi if n]
+    nomi_rx = [(n, re.compile(r"(?<!\w)" + re.escape(n) + r"(?!\w)", re.I)) for n in nomi if n]
     seriali = pat.get("seriali_e_id", [])
     telefoni = pat.get("telefoni_reali", [])
     ubicazione = pat.get("ubicazione", [])
@@ -373,6 +375,10 @@ def analizza(pat, files):
             continue
 
         for ln, riga in enumerate(contenuto.split("\n"), 1):
+            for match in percorso_personale.finditer(riga):
+                aggiungi("RIFERIMENTO PERSONALE da valutare", f, ln, riga, "<percorso personale>", origine)
+            if any(service.casefold() in riga.casefold() for service in servizi_cloud if service):
+                aggiungi("RIFERIMENTO PERSONALE da valutare", f, ln, riga, "<servizio cloud personale>", origine)
             for m in IPV4.finditer(riga):
                 ip = m.group(0)
                 base = ip.split("/")[0]
@@ -599,7 +605,7 @@ def main():
     ordine = ["IP REALE", "MAC REALE", "SERIALE/ID MACCHINA", "UBICAZIONE",
               "ORGANIZZAZIONE PRIVATA", "SEGRETO LETTERALE", "NOME PROPRIO", "EMAIL PERSONALE",
               "TELEFONO", "IBAN", "CARTA DI PAGAMENTO", "PIVA/CF", CATEGORIA_IMPORTO,
-              "IP privato fuori schema", "IP pubblico da valutare"]
+              "IP privato fuori schema", "IP pubblico da valutare", "RIFERIMENTO PERSONALE da valutare"]
 
     bloccanti = 0
     da_guardare = 0

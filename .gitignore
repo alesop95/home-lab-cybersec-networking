@@ -61,3 +61,7 @@ tools/redactions.json
 # documentazione sotto docs/ e gli strumenti sotto tools/ e scripts/ sono tracciati
 # senza bisogno di eccezioni. Le immagini estratte in docs/**/assets/ restano invece
 # escluse da *.png e *.jpeg, che e' il comportamento voluto.
+
+# Dati pubblici degli strumenti tipografici, copiati dal template.
+!/tools/accents-exclude.txt
+!/tools/dashes-exclude.txt
