@@ -4,8 +4,8 @@
 Ogni prova costruisce un repository git finto come template, con la storia che
 riproduce un meccanismo osservato nella propagazione del 2026-09-28, e una
 cartella come progetto. Le storie non sono inventate: le due forme del difetto
-sono state misurate sui file veri di holiday-template a 50fa52b e di
-rodrainaudio-reverse-eng a f656c53, e da li vengono le proporzioni fra i blocchi,
+sono state misurate sui file veri di un progetto a 50fa52b e di
+un altro a f656c53, e da li vengono le proporzioni fra i blocchi,
 che sono cio che decide quale base la somiglianza sceglie.
 """
 
@@ -78,7 +78,7 @@ class ParagrafoDuplicato(BaseDelMerge):
     contenuto e allora la copia vecchia, che il paragrafo non lo contiene: la
     differenza base->testa dice "aggiungi il paragrafo", il merge la applica a chi
     ce l'ha già e ne escono due copie senza un conflitto. E il caso di
-    holiday-template e local-audio-transcriptor, dove la base scelta era il blob
+    due progetti, dove la base scelta era il blob
     del 2026-07-01 e il paragrafo era quello di studio-didattico. Qui nessuna base
     evita il difetto, ed è la ragione per cui la sola scelta della base non basta:
     prenderne una che il paragrafo ce l'ha fa perdere il materiale che il progetto
@@ -118,7 +118,7 @@ class CorrezionePersa(BaseDelMerge):
     """La base scelta per somiglianza contiene già una correzione di una riga che
     il file locale non ha: quella correzione non entra nella differenza
     base->testa e non arriva a nessuno, mentre il blocco grande arriva. E il caso
-    di rodrainaudio-reverse-eng, dove fix-accents.py ha ricevuto le righe nuove
+    di un progetto, dove fix-accents.py ha ricevuto le righe nuove
     ma non la guardia RESIDUO_DOPPIA_CORREZIONE del 2026-09-09."""
 
     GUARDIA = "RESIDUO_DOPPIA_CORREZIONE = compila(guardia)"
@@ -209,7 +209,7 @@ class RigaAdattata(BaseDelMerge):
     """Il progetto ha adattato una riga del template, un percorso, e il template
     ha poi aggiunto materiale altrove. Il merge tiene la variante locale e porta
     l'aggiunta: e il caso di lint-md-tables.py e test-tipografia.py su
-    retrogame-mod-pok-dev, classificati CONFLITTO fino al 2026-09-29 perché la
+    un progetto, classificati CONFLITTO fino al 2026-09-29 perché la
     riga della testa sostituita contava come persa."""
 
     ORIGINALE = '    cartella = os.path.join(ROOT, "_notes", "tmp")'
@@ -310,7 +310,7 @@ class Innesco(BaseDelMerge):
         self.assertEqual(self.corri(), [], "la seconda corsa non deve riscrivere")
 
     def test_claude_md_sotto_la_cartella_claude(self):
-        """blog-alessio tiene il CLAUDE.md in .claude/: la prima corsa del 2026-09-29 lo
+        """un progetto tiene il CLAUDE.md in .claude/: la prima corsa del 2026-09-29 lo
         dava per assente e lasciava il progetto senza innesco."""
         f = self.prj / ".claude/CLAUDE.md"
         f.parent.mkdir(parents=True, exist_ok=True)
@@ -601,6 +601,51 @@ class Somiglianza(unittest.TestCase):
                     self.assertEqual(q >= soglia, piena >= soglia, (v[:20], r[:20], soglia))
                     if piena >= soglia:
                         self.assertEqual(q, piena)
+
+
+class ConsegnaSegnalataAlProgetto(BaseDelMerge):
+    """Dal 2026-11-12. La passata tiene il proprio blocco nel template, dove il progetto non lo
+    vede: una sessione aperta nel progetto poteva lanciare `chiudi` prima di
+    `chiudi-allineamento` e committare i file del template con il proprio lavoro. La corsa lascia
+    nella cartella di git del progetto l'elenco di ciò che ha scritto, e lo strumento del
+    perimetro di `chiudi` si ferma se il commit ne comprende uno."""
+
+    def progetto_git(self):
+        for args in (("init", "-q", "-b", "main"), ("config", "user.name", "prova"),
+                     ("config", "user.email", "prova@example.invalid")):
+            subprocess.run(["git", "-C", str(self.prj), *args], check=True, capture_output=True)
+        (self.prj / "proprio.txt").write_text("base\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(self.prj), "add", "-A"], check=True, capture_output=True)
+        subprocess.run(["git", "-C", str(self.prj), "commit", "-q", "-m", "Base"], check=True, capture_output=True)
+
+    def perimetro(self):
+        return subprocess.run([sys.executable, str(STRUMENTO.with_name("verifica-milestone.py")),
+                               "--radice", str(self.prj)], capture_output=True, text=True, encoding="utf-8")
+
+    def test_la_corsa_lascia_l_elenco_e_chiudi_si_ferma(self):
+        self.commit(righe("riga", 6), "Regola")
+        self.progetto_git()
+        self.assertEqual(self.allinea()["esito"], "NUOVO")
+        marcatore = self.prj / ".git" / "allineamento-in-sospeso.json"
+        self.assertTrue(marcatore.is_file(), self.uscita)
+        self.assertIn(REGOLA, json.loads(marcatore.read_text(encoding="utf-8"))["file"])
+        r = self.perimetro()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn("chiudi-allineamento", r.stderr)
+
+    def test_negativo_senza_consegna_chiudi_non_si_ferma(self):
+        self.progetto_git()
+        (self.prj / "proprio.txt").write_text("lavoro della sessione\n", encoding="utf-8")
+        r = self.perimetro()
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertFalse((self.prj / ".git" / "allineamento-in-sospeso.json").exists())
+
+    def test_una_corsa_a_vuoto_non_lascia_l_elenco(self):
+        self.commit(righe("riga", 6), "Regola")
+        self.progetto_git()
+        subprocess.run([sys.executable, str(STRUMENTO), "--template", str(self.tpl), "--progetto", str(self.prj)],
+                       capture_output=True, text=True)
+        self.assertFalse((self.prj / ".git" / "allineamento-in-sospeso.json").exists())
 
 
 if __name__ == "__main__":

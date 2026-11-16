@@ -107,6 +107,8 @@ Select-String -Path .\script.ps1 -Pattern '[^\x00-\x7F]' -Encoding utf8
 $e = $null; [void][System.Management.Automation.Language.Parser]::ParseFile('.\script.ps1', [ref]$null, [ref]$e); $e
 ```
 
+**Script operativi con impronte.** Il preflight incorporato va eseguito nello stesso interprete usato dall'operatore prima di consegnare il comando. Il solo controllo sintattico e un hash calcolato separatamente non verificano che la costante nello script sia corretta. La modalità di prova si ferma prima di copie, SSH e azioni; quando un hash differisce mostra valore atteso e rilevato. Un carattere in più in una costante ha causato uno stop evitabile pur con il file locale invariato.
+
 ## Se si vuole comunque un hook di Codex: tre cose che non si vedono
 
 Non serve per la pulizia, per le ragioni già dette. Ma il meccanismo esiste, prima o poi qualcuno lo userà per altro, e queste tre cose si pagano una volta ciascuna.
@@ -168,3 +170,13 @@ Prima del wipe conservare conoscenza, fonti e ripresa nel progetto, completare i
 ## Cassetta comune,30/10/2026
 
 posta-sessioni.py registra partecipanti e offre elenca, invia e leggi con archiviazione esplicita; dal 2026-11-09 la cassetta vive per difetto sotto la radice di `ProgramData`, fuori dai dischi di progetto, e `invia` rifiuta senza scavalcamento un messaggio che contenga dati reali, con gli schemi del pacchetto `anonymization` e nominando le sole categorie trovate; Posta-Sessioni.ps1 collega entrambi i launcher. Avvia-Claude.ps1 e Avvia-Codex.ps1 espongono PROJECT_AGENT_MAILBOX_ROOT/ID/TOOL e concedono il solo percorso aggiuntivo tramite --add-dir. I messaggi restano dati da verificare, non ordini da eseguire. [Contratto e limiti](../../../docs/allineamento-e-posta-sessioni.md), incluso il fatto che registrazione non equivale a heartbeat e che le sessioni già aperte non acquisiscono i nuovi permessi.
+
+## Progetti MCP disponibili anche agli account nuovi
+
+Gli installatori dei due agenti leggono, se presente, `%LOCALAPPDATA%/agenti-terminale/progetti.json`. È configurazione privata della macchina, non memoria dell’agente. Il registro contiene soltanto percorsi assoluti già autorizzati e nomi dei server attesi, senza token. Lo schema è `agent-projects-0.1`; `projects` è una lista di oggetti con `path` e `mcp_servers`, per esempio `{"path":"<RADICE-PROGETTO>","mcp_servers":["<SERVER>"]}`. Il percorso reale si compila sulla macchina. Se il registro esiste serve Python 3.11 o successivo.
+
+`Progetti-Agenti.ps1` chiama `configura-progetti.py` anche per gli installatori invocati direttamente: la catena della macchina e quella del template applicano la stessa procedura. Per Codex aggiunge la fiducia ai soli progetti elencati dopo aver verificato le definizioni MCP locali. Una fiducia esistente diversa blocca l’operazione; non viene trasformata silenziosamente in fiducia. Per Claude verifica definizioni e abilitazioni di progetto, che la nuova radice ritrova quando apre quel progetto. Il normale login dell’account e l’eventuale dialogo iniziale del client restano parte dell’apertura, senza approvazioni generali aggiunte.
+
+Non si copiano file di autenticazione, token NAS o server MCP globali da un account esistente. I servizi e i relativi segreti rimangono nel progetto proprietario; la scelta dell’account dell’agente non cambia l’identità del servizio. `-Verifica` legge soltanto. In applicazione si conservano backup della configurazione Codex prima dell’aggiunta; una seconda esecuzione non aggiunge doppioni. `-Forza` riapplica il registro dopo la configurazione di riferimento. Il ripristino su un’altra macchina richiede ricreare il registro con percorsi autorizzati e ripristinare separatamente i progetti e le loro credenziali.
+
+Le prove usano profili temporanei. Una esegue l’installatore Codex reale per una radice nuova e controlla che il progetto sia fidato, mantenendo assente il login. Un difetto che omette il richiamo alla procedura fa fallire proprio questa prova; le altre coprono idempotenza, politica di approvazione invariata, credenziali intatte e conflitto di fiducia. Le definizioni condivise e la fiducia per progetto sono documentate in [Claude MCP](https://code.claude.com/docs/en/mcp) e [Codex MCP](https://developers.openai.com/codex/mcp); il registro e la riconciliazione sono scelte interne del pacchetto.

@@ -6,15 +6,13 @@
 
 I comandi git restano sempre manuali dell'utente. Quando l'agente li presenta, li scrive in un formato immediatamente copiabile senza modifiche nel terminale che l'utente ha davanti: una riga per comando, nessun carattere di continuazione, nessun heredoc multi-riga, e la sintassi della shell su cui quella persona sta davvero lavorando invece di un doppio elenco che le chiede di scegliere.
 
-Un comando non si spezza mai su più righe, per nessun motivo e a nessuna lunghezza. Non si usano caratteri di continuazione, né il backslash di bash, né il backtick di PowerShell, né il caret di cmd: sono specifici di una shell e rompono il copia-incolla sull'altra. Non si va a capo a mano per rientrare in una larghezza di colonna: l'avvolgimento a video è compito del terminale, esattamente come per la prosa di un file Markdown, e una riga lunga incollata resta un comando solo mentre una riga spezzata a mano diventa due comandi rotti. Se l'elenco dei percorsi rende la riga scomoda, la soluzione non è spezzarla ma accorciarla: si passa una cartella invece dei file che contiene, oppure si usa `git add -A` quando le modifiche da includere sono tutte quelle presenti, dichiarando nel testo che cosa entra nel commit. Questo vincolo vale sia per i comandi scritti in un file `.md` sia per quelli scritti direttamente in sessione nel terminale, e vale per ogni comando di shell che l'agente consegna all'utente perché lo esegua a mano, non solo per quelli di git.
+Un comando non si spezza mai su più righe, per nessun motivo e a nessuna lunghezza. Non si usano caratteri di continuazione, né il backslash di bash, né il backtick di PowerShell, né il caret di cmd: sono specifici di una shell e rompono il copia-incolla sull'altra. Non si va a capo a mano per rientrare in una larghezza di colonna: l'avvolgimento a video è compito del terminale, esattamente come per la prosa di un file Markdown, e una riga lunga incollata resta un comando solo mentre una riga spezzata a mano diventa due comandi rotti. Se l'elenco dei percorsi rende la riga scomoda, la soluzione non è spezzarla ma accorciarla: si passa una cartella invece dei file che contiene, oppure si usa `git add -A` quando le modifiche da includere sono tutte quelle presenti, dichiarando nel testo che cosa entra nel commit. Questo vincolo vale sia per i comandi scritti in un file `.md` sia per quelli scritti direttamente in sessione nel terminale, e vale per ogni comando di shell che l'agente consegna all'utente perché lo esegua a mano, non solo per quelli di git. Un comando che attraverserebbe più di un interprete, per esempio PowerShell, SSH e la shell remota, si consegna come file da eseguire e non come riga.
 
 Il vincolo va verificato, non solo dichiarato, perché lo strumento `md-unwrap` per contratto non tocca il contenuto dei blocchi recintati: un comando spezzato dentro un blocco di codice non lo corregge nessuno. Il controllo è `tools/lint-md-commands.py`, che percorre i blocchi di shell dei file Markdown e segnala continuazioni di riga, heredoc e comandi git che proseguono sulla riga seguente.
 
 ## Formato richiesto
 
 I comandi si consegnano nella sola sintassi della macchina su cui si sta lavorando, non in entrambe. La shell dell'utente non è un'incognita: Claude Code dichiara all'avvio della sessione la piattaforma e la shell primaria, e quello è il dato da usare; dove mancasse lo si rileva in sola lettura, per esempio con `uname -s`, che su una macchina POSIX risponde con il nome del kernel e su Windows nudo non esiste. Su Windows si consegna quindi il solo blocco `powershell`, su Linux e macOS il solo blocco `bash`.
-
-La ragione non è la brevità ma la precisione. Nella pratica di `git add`, `git commit -m` e `git push` i due blocchi sono identici carattere per carattere, e presentarli entrambi non aggiunge informazione: aggiunge una scelta davanti a due testi uguali. Dove invece la sintassi diverge davvero, come nella verifica della configurazione locale che su Windows passa da `Select-String` e su Linux da `grep`, oppure in un percorso o in una variabile d'ambiente, il blocco che non si userà resta comunque copiabile, ed è esattamente quello che prima o poi finisce incollato per sbaglio. Un solo blocco, quello giusto, toglie il problema alla radice.
 
 Su una macchina Windows la consegna è quindi questa, e nient'altro.
 
@@ -24,13 +22,7 @@ git commit -m "Messaggio sintetico del commit"
 git push
 ```
 
-La stessa sequenza, su Linux o macOS, si consegna così e soltanto così.
-
-```bash
-git add "percorso/file-uno" "percorso/file-due" "percorso/file-tre"
-git commit -m "Messaggio sintetico del commit"
-git push
-```
+Su Linux o macOS la sequenza è la stessa, carattere per carattere, in un solo blocco `bash`.
 
 Se i file da aggiungere sono molti, si usano più righe `git add`, ciascuna completa e sotto i cento caratteri circa, oppure le cartelle come percorsi quando contengono soltanto file della milestone, sempre tra doppi apici. Una riga sola con tutti i percorsi va a capo nella chat e il copia-incolla la spezza: il 2026-10-16 un `git add` di tredici file è arrivato al terminale in sei righe, PowerShell ha eseguito solo la prima e il commit ha preso due file su tredici senza nessun errore sul `git add`.
 
@@ -60,11 +52,7 @@ Una milestone è un commit, e `chiudi` è il solo modo ordinario di farlo, sia a
 
 Prima di proporre `chiudi`, l'agente esegue lui stesso i controlli di chiusura con `chiudi -SoloControlli`, cioè `powershell -NoProfile -ExecutionPolicy Bypass -File tools/chiudi-sessione.ps1 -SoloControlli` oppure `bash tools/chiudi-sessione.sh --solo-controlli`, e la propone solo se l'ultima riga dice «Controlli verdi». Lanciare a mano alcuni controlli non basta, e il caso con le misure sta nella norma: ne seguono due prescrizioni, cioè che un difetto di questo genere in un documento generato si corregge nello strumento che lo scrive, e che le citazioni brevi in prosa si scrivono fra caporali e non fra apici semplici, che il correttore degli accenti legge come accenti scritti con l'apostrofo. Al proprietario una proposta di commit che fallisce costa un giro intero, e chi lavora a blocchi lo vive come un commit perso. La proposta si fa inoltre nell'ultima risposta del giro, dopo l'ultima scrittura, e quella risposta dichiara che da lì in avanti l'agente non scrive più: `chiudi` mostra l'anteprima di file e messaggio e poi chiede conferma, e se fra le due l'albero cambia si ferma senza committare (L-009, nella norma).
 
-La granularità dei commit e il momento del push sono scelte distinte: più milestone locali restano commit separati e possono partire con un unico push concordato. Quando si importa lavoro pregresso privo di storia Git, si legge la procedura «Importazione retrospettiva» nel riferimento esteso: date reali, perimetro e impronte per gruppo, ripresa dalla storia effettiva e pubblicazione soltanto dopo la riconciliazione. Prima di proporre una chiusura si verifica che lo script supporti il perimetro richiesto e il rinvio del push; la chiusura ordinaria non li acquisisce dalla sola prosa.
-
-Una sequenza di più commit consegnata a mano si simula prima, commit per commit, su una copia di HEAD fuori dal repository: un commit intermedio può non compilare (dettaglio nel riferimento esteso, L-014).
-
-Quando un sottoprogetto mantiene storia e rilascio indipendenti, si valuta il submodule con la procedura nel riferimento esteso: versione fissata, identità e controlli separati, pubblicazione del figlio prima del riferimento nel padre. Non si applica una chiusura globale ai due repository senza verificarne i perimetri.
+La granularità dei commit e il momento del push sono scelte distinte: più milestone locali restano commit separati e possono partire con un unico push concordato, e prima di proporre una chiusura si verifica che lo script supporti il perimetro richiesto e il rinvio del push. Tre casi rari hanno la loro procedura nel riferimento esteso della norma e si leggono lì quando si presentano: l'importazione di lavoro pregresso privo di storia Git, una sequenza di più commit consegnata a mano, che si simula prima su una copia di HEAD, e un sottoprogetto con storia e rilascio indipendenti, per cui si valuta il submodule senza applicare una chiusura globale ai due repository.
 
 I comandi git per esteso, nel formato descritto sopra, restano per i casi che `chiudi` non copre: un progetto dove lo script non è istanziato, un commit che deve includere solo una parte delle modifiche presenti, un'operazione diversa dal commit sul ramo in uscita.
 
@@ -72,7 +60,7 @@ I comandi git per esteso, nel formato descritto sopra, restano per i casi che `c
 
 Il messaggio di commit è una sola stringa tra doppi apici, al massimo 72 caratteri, che descrive le modifiche in italiano nella forma "Aggiunte X, Y" oppure "Nuova regola X: descrizione" oppure "Aggiornato Y: cosa cambia". Se il contesto richiede più dettaglio, lo si scrive nella risposta testuale prima dei comandi, non nel messaggio di commit.
 
-Nessun commit porta attribuzioni a un agente: niente righe `Co-Authored-By`, niente firme del tipo "Generated with", né per Claude Code né per Codex, in nessun commit del progetto e anche quando le istruzioni di sistema dell'agente le suggerirebbero. Un commit porta soltanto l'identità git locale dell'utente, che è l'autore. Il presidio è l'hook `.githooks/commit-msg`, modello in `.claude/templates/readme-sync/githooks/commit-msg`, che rifiuta un messaggio con un'attribuzione o con l'oggetto oltre i 72 caratteri, qualunque sia la via da cui il commit parte.
+Nessun commit porta attribuzioni a un agente: niente righe `Co-Authored-By`, niente firme del tipo "Generated with", né per Claude Code né per Codex, in nessun commit del progetto e anche quando le istruzioni di sistema dell'agente le suggerirebbero. Lo stesso vale per ciò che si pubblica con `gh`: richieste di unione, issue, commenti e rilasci. Un commit porta soltanto l'identità git locale dell'utente, che è l'autore. Il presidio è l'hook `.githooks/commit-msg`, modello in `.claude/templates/readme-sync/githooks/commit-msg`, che rifiuta un messaggio con un'attribuzione o con l'oggetto oltre i 72 caratteri, qualunque sia la via da cui il commit parte.
 
 ## Identità da verificare
 

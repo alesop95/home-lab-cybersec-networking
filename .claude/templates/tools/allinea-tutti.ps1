@@ -86,7 +86,7 @@ soli -Ssh indicati; -SoloLocali li salta tutti) e cerca .claude/PROJECT-SYSTEM.m
 sotto -RadiciRemote fino a -ProfonditaRemota livelli. Un progetto remoto si scrive
 ssh://<alias>/<percorso> e passa per le stesse guardie, la stessa misura e la
 stessa scrittura di uno locale, attraverso trasporto-ssh.ps1; il template gli
-arriva come git bundle in ~/.cache/template-claude-developing della macchina.
+arriva come git bundle sotto ~/.cache della macchina, in una cartella col nome di quella del template.
 Un progetto remoto si tratta solo se il proprietario lo ha approvato in
 _notes/allineamento/remoti-approvati.txt: uno nuovo resta da-confermare, si
 elenca e non si tocca, perche' una macchina nuova con progetti di sviluppo e' una
@@ -690,6 +690,16 @@ try {
             if (-not $causa) { $causa = ($mis | Select-String 'progetto [0-9.]+ caratteri' | Select-Object -First 1) }
             $o.avvisi += 'carico istruzioni' + $(if ($causa) { ": $($causa.Line.Trim())" } else { ' oltre soglia' })
           }
+        }
+        # Dal 2026-11-12 (L-004 di un progetto istanziato): quando il controllo delle identita' si
+        # estende, cio' che e' entrato prima in un progetto non lo vede nessun commit finche' quel
+        # file non cambia. La passata lo ripassa su tutti i file tracciati e dice quante occorrenze
+        # stanno in file consegnati e quante in file del progetto. Solo quando applica e solo in
+        # locale: in misura rallenterebbe l'apertura, e in remoto l'elenco della macchina non c'e'.
+        if ($Applica -and (Test-Path -LiteralPath $identita) -and -not (Test-Remoto $prj)) {
+          $idn = @(& python $identita --radice $prj --tracciati 2>&1)
+          $rigaId = $idn | Select-String 'di cui \d+ in file consegnati' | Select-Object -First 1
+          if ($rigaId) { $o.avvisi += 'identita nei file tracciati: ' + (($rigaId.Line -replace '^identita personali: ', '').Trim()) }
         }
       }
     }
