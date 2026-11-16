@@ -10,6 +10,14 @@ last-verified-commit: ee63b19
 
 # Lavoro corrente
 
+Chiusura preparata il16/11/2026: priorità alla riorganizzazione hardware, senza proseguire utenti e condivisioni TrueNAS. Samsung850EVO M.2 SATA250GB già posseduto, proposto per Windows quotidiano tramite collegamento M.2 SATA verso SATA appropriato alla H97; BX5001TB verso NAS dopo migrazione e avvio verificati. Nessun disco migrato o cancellato. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Corsair2x8GB e Atlantis recuperati da PC-03. Coppia8GB della seconda Z97-P ancora da riconfermare. Memoria NAS8GB DDR4, server16GB DDR4; i tre moduli con errori restano esclusi. Due NVMe1TB assegnati al server. Le esclusioni definitive restano chiuse e non si ripropongono nei recap.
+
+Consegna finale: [ricognizione13](../../docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/13-ricognizione-hardware-novembre-2026.md), ADR-050 e precisazione successiva. La ripresa privata è aggiornata per entrambi gli agenti; non eseguire il vecchio passo SMB prima di concludere il piano hardware.
+
+Priorità del16/11/2026: riorganizzazione hardware prima di proseguire TrueNAS, ADR-050. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Atlantis e due Corsair DDR3 da8GB di PC-03 recuperati. PC-07 Windows quotidiano aggiunto: H97 Anniversary/i7-4790,16GB DDR3 e BX500 SATA1TB ancora in uso. Alternative Windows16/24/32GB e SSD più piccolo soltanto allo studio; NAS invariato. La ricognizione hardware13 conserva report sintetizzato, limiti, fonti e verifiche mancanti. Nessuna clonazione, prova RAM o modifica al pool eseguita.
+
+Riferimento: [ricognizione hardware13](../../docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/13-ricognizione-hardware-novembre-2026.md). La ripresa SMB descritta sotto è sospesa per questa priorità, non annullata.
+
 > Scheda tecnica del lavoro aperto. Va riletta a inizio sessione e riscritta quando il lavoro cambia, non accresciuta all'infinito: il registro storico è `.claude/memory/progress.md`, questa scheda descrive solo ciò che è aperto adesso. Riscritta il 07/10/2026, aggiornata l'8/10/2026.
 
 ## Versionamento concluso il 20/10/2026

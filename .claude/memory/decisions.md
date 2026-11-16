@@ -604,3 +604,17 @@ Data:30/10/2026. Stato: requisito esplicito, implementazione del template prepar
 Decisione. Codex-account1/2/3 devono avere la stessa pulizia automatica dal launcher comune. Claude e Codex leggono istruzioni, memoria e procedure canoniche comuni, con cassetta condivisa nel solo perimetro esplicito aggiuntivo per scambiare evidenze. L’avvio deve mostrare quando il template è avanti e la passata lascia una ricevuta leggibile; esclusioni temporanee con scadenza o condizione, senza rimozione automatica. Le differenze interne dei runtime sono documentate e non giustificano una procedura persa in uno dei due agenti.
 
 Conseguenze. Nessun protocollo privato del demone usato come bus e nessun comando ricevuto eseguito automaticamente. La cassetta richiede lettura ai giri di lavoro e non notifica una sessione inattiva. Le sessioni già aperte ripartono dal nuovo launcher per acquisire il perimetro. L-039/L-040 e la nota della sessione esterna sono integrate nel template; commit e passata restano al proprietario.
+
+
+## ADR-050, riallocare l’hardware prima delle condivisioni NAS
+
+Data:16/11/2026. Stato: priorità richiesta; combinazione finale da scegliere.
+
+Decisione. L’utente sospende il seguito utenti/ACL/share per rivalutare l’hardware disponibile. PC-02/Xubuntu e PC-03/AnduinOS sono smembrati. Il PC Windows quotidiano rimane Windows e utilizzabile; può ricevere SSD più piccolo per liberare il BX5001TB verso il NAS. L’aumento DDR3 a32GB è un’ipotesi, non un montaggio deciso.
+
+Conseguenze. Inventario e allocazione registrano recuperati Atlantis e kit Corsair2x8GB di PC-03, senza doppio conteggio. PC-07 aggiunto, report e foto acquisiti privatamente con hash; originale report eliminato dopo lettura completa e verifica della copia. Studio e alternative nella ricognizione hardware13. Restano scelta RAM e ruolo laboratorio, identificazione degli SSD liberi, SMART completo, migrazione e secondo membro del mirror. Non si prelevano implicitamente DDR4 del server né si ricrea tank.
+
+
+### Precisazione di ADR-050 del16/11/2026
+
+L’utente esclude definitivamente i quattro HDD del QNAP da ogni piano futuro. Propone il Samsung850EVO M.2 SATA250GB già censito come disco del Windows quotidiano, per destinare il BX5001TB al NAS dopo migrazione verificata. La vecchia nota sull’ubicazione non equivale a componente non posseduto. Destinazione proposta, nessun montaggio o trasferimento già attestato.

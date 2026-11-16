@@ -1,5 +1,7 @@
 # Storage di rete (NAS)
 
+La [ricognizione hardware del 16/11/2026](13-ricognizione-hardware-novembre-2026.md) precede ora il lavoro su utenti e condivisioni.
+
 ## Contenuti
 
 - [Gestire dati su disco e renderli disponibili in modo ordinato, sicuro e persistente](01-gestire-dati-su-disco-e-renderli-disponibili-in-modo-ordinat.md)

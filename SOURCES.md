@@ -317,6 +317,10 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S282 | https://www.raspberrypi.com/products/raspberry-pi-pico/ | specifiche produttore lette29/10/2026 | Pico/RP2040 MCU e Pico W radio distinti da Raspberry Linux; nessun acquisto audio dedotto |
 | S283 | https://docs.opnsense.org/manual/updates.html | guida ufficiale letta29/10/2026 | Production, Firmware Status e upgrade principali con console; esecuzione futura |
 | S284 | https://www.espressif.com/en/products/socs/esp32-s3 | specifiche produttore lette29/10/2026 | MCU con Wi-Fi, I2S e supporto DSP; non dimostra host Linux o Hermes completo |
+| S285 | https://www.asrock.com/mb/intel/h97%20anniversary/ | produttore letto16/11/2026 | H97 Anniversary, quattro slot DDR3/DDR3L, massimo32GB; PC-07 |
+| S286 | https://www.corsair.com/ca/en/p/memory/cmv16gx3m2a1600c11/corsair-memory-a-16gb-dual-channel-ddr3-memory-kit-cmv16gx3m2a1600c11 | produttore letto16/11/2026 | ValueSelect2x8GB DDR3,1,5V, SPD1333 e prova1600; kit recuperato PC-03 |
+| S287 | https://www.truenas.com/docs/scale/25.10/scaletutorials/storage/disks/replacingdisks/ | guida25.10 riletta16/11/2026 | capacità sostitutivo almeno uguale, cancellazione del sostitutivo e resilver; nessuna operazione eseguita |
+| S288 | https://www.samsung.com/es/support/model/MZ-N5E250BW/ | produttore consultato16/11/2026 | identifica850EVO250GB nel formato M.2 SATA; H97 e necessità di adattamento confrontate conS285 |
 
 ## Materiali locali che non devono sparire dal quadro
 

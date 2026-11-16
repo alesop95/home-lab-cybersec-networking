@@ -75,3 +75,19 @@ Il template ora normalizza i trattini nella sola descrizione generata, preserva 
 Un autotest terminava con PermissionError prima di completare la fixture temporanea nella sandbox Windows. Il risultato non misurava il comportamento del guard-rail e non provava un difetto funzionale del controllo. Eseguito nell'ambiente consentito, con approvazione del runtime, conclude22 casi con0 errori. Le prove su copie temporanee dell'allineatore avevano incontrato lo stesso vincolo.
 
 Si distingue esecuzione impedita dall'ambiente da prova funzionale fallita. Si conserva comando e punto di arresto e si riesegue nel contesto consentito; niente esclusioni generiche o verde presunto. Un'esecuzione fuori sandbox non ripara o prova la sandbox originaria. Il caso e la prescrizione sono ora nel riferimento della skill prove-che-misurano del template.
+
+## L-011 - 2026-11-16 - Uno stato incerto non annulla le altre proprietà accertate
+
+Un inventario aveva già documentato l'esistenza di un componente; una nota successiva chiedeva soltanto dove fosse stato riposto. Il recap ha presentato quel componente come non disponibile. Nello stesso giro ha richiamato un lotto escluso definitivamente, come se fosse ancora un'opportunità futura. Entrambe le conclusioni richiedevano una correzione del proprietario, pur essendo le evidenze già su disco.
+
+La proprietà incerta non si propaga alle proprietà già accertate: possesso, ubicazione, salute, assegnazione e montaggio sono campi distinti. Un componente censito ma non localizzato non diventa inesistente o da acquistare. Una decisione di esclusione definitiva non torna in un recap di possibilità, salvo nuova istruzione esplicita del proprietario. Prima di consigliare acquisti o trasferimenti si riscontra il campo preciso su cui poggia la proposta.
+
+Il principio si applica anche a documenti acquisiti ma non letti, servizi installati ma non verificati e prove disponibili ma non rieseguite. Non duplica la prescrizione di cercare i fatti: precisa quale conclusione è lecita una volta trovate evidenze riferite ad attributi diversi.
+
+## L-012 - 2026-11-16 - Un carattere di controllo non ne dimostra la causa
+
+Il controllo dei caratteri non stampabili segnalava otto U+0000 in due report hardware importati e spiegava che nascevano da una barra rovesciata interpretata come escape. La lettura delle righe reali mostra invece campi DriveLetter senza lettera nelle tabelle PowerShell delle partizioni. Il rilevatore aveva misurato correttamente i byte, ma il messaggio dichiarava una causa che non aveva verificato.
+
+Una diagnostica distingue rilevamento e attribuzione: un carattere di controllo può essere un errore di scrittura oppure appartenere alla fonte importata. Il controllo resta bloccante e non esclude intere cartelle per ottenere verde. Prima di correggere una fonte se ne conserva una copia byte per byte con SHA-256; se serve una copia testuale leggibile, i caratteri si rappresentano esplicitamente e la trasformazione si verifica invertendola contro l'originale.
+
+Nel caso reale sono stati archiviati i due originali, resi visibili quattro NUL per copia come sequenza letterale e verificata l'identità della ricostruzione. Nessun byte originale perduto, nessuna guardia allentata. La correzione generalizzabile nel template riguarda il messaggio causale, non una nuova eccezione al controllo.

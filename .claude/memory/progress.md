@@ -1970,3 +1970,68 @@ Il proprietario ha pubblicato832bdc0 e interrotto la corsa sospesa20261030-17220
 **Didattica:** nessuna, ripresa operativa di una distribuzione già documentata.
 
 **Template:** nessuna nuova lezione; diagnosi della connessione sospesa conservata nel livello privato.
+
+
+## Ripresa verificata 2026-11-16T10:19:22+01:00
+
+Ripresa su main a 4ae866c, un solo worktree. Rispetto all'impronta del 02/11 risultano nove commit di allineamento del 05-10/11, non riportati nel work-log; nessun nuovo avanzamento del NAS attestato da questi commit. Due file preesistenti non tracciati, tools/accents-exclude.txt e tools/dashes-exclude.txt, conservati senza modifiche e in attesa di chiarimento del proprietario. Wrapper Codex allineati. Verifica schede: 20 con copertura, 19 superate rispetto alle ancore, zero difetti strutturali; nessuna ancora aggiornata senza revisione. Fonti a monte: zero sorvegliate, quindi nessuna verifica esterna attestata. Sicurezza non verificata: rapporto assente; nessuna scansione dal vivo eseguita. Template avanti di 25 commit con 23 modifiche locali a monte non propagabili; ultima consegna senza conflitti. Cassetta dell'identificativo esportato vuota; il registro associa tale identificativo a un'altra directory, senza correggere registrazioni altrui. Nessun messaggio inviato e zero subagent avviati.
+
+Punto NAS confermato soltanto dai documenti: tank/documenti creato e cifrato, ACL SMB/NFSv4 e Restricted già letti; Save finale e utente SMB non osservati. Copia indipendente e recupero restano aperti. Prossimo passo: il proprietario conferma il punto e la destinazione dei due file non tracciati, poi si riprende dall'utente SMB. Decisioni eventualmente prese fuori dai file non sono ricostruibili da Git. La sola ripresa non avvia allineamenti, aggiornamenti o configurazioni.
+
+**Didattica:** nessuna, ricostruzione dello stato senza nuova scelta progettuale.
+
+**Template:** nessuna nuova lezione; limiti già coperti dalle regole di ripresa.
+
+
+## Ricognizione hardware 2026-11-16T10:41:43+01:00
+
+Priorità del16/11/2026: riorganizzazione hardware prima di proseguire TrueNAS, ADR-050. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Atlantis e due Corsair DDR3 da8GB di PC-03 recuperati. PC-07 Windows quotidiano aggiunto: H97 Anniversary/i7-4790,16GB DDR3 e BX500 SATA1TB ancora in uso. Alternative Windows16/24/32GB e SSD più piccolo soltanto allo studio; NAS invariato. La ricognizione hardware13 conserva report sintetizzato, limiti, fonti e verifiche mancanti. Nessuna clonazione, prova RAM o modifica al pool eseguita.
+
+Report letto integralmente e tre immagini lette; quattro copie private SHA-256 identiche. Originale report eliminato dopo confronto, immagini originali conservate. Mappa e pattern privati aggiornati prima della pubblicazione. Corretto ValueSelect al posto di Vengeance; identificato nuovo PC-07 senza nome host pubblico. Fonti produttori ASRock/Corsair e procedura TrueNAS lette. Richiesta utente recepita in ADR-050; ipotesi di assegnazione ancora da scegliere.
+
+**Didattica:** nessuna nuova scelta di allocazione ancora conclusa; ricognizione preliminare, principi di crescita già nella scheda08.
+
+**Template:** nessuna. Zero subagent; cassetta letta, nessun messaggio.
+
+
+Verifiche della ricognizione 2026-11-16T10:43:54+01:00:186 documenti tutti raggiungibili,zero collegamenti rotti/orfani; tabelle della nuova scheda senza difetti; anonimizzazione su802 file,zero riscontri bloccanti e149 da valutare manualmente. Autotest anonimizzazione fuori sandbox:22 casi,zero errori; nella sandbox falliva per accesso alla fixture temporanea. Chiusura SoloControlli non superata: check-eol rileva otto caratteri nulli in due report hardware locali ignorati, con data file08/10,non modificati in questa sessione. Zero file con terminatori misti. Questi controlli non attestano compatibilità RAM,salute SSD o migrazione riuscita. Nessun commit dichiarato pronto.
+
+
+## Recap complessivo hardware 2026-11-16T11:01:27+01:00
+
+Su richiesta del proprietario ricomposto il quadro di nove macchine nella ricognizione hardware13: NAS, futuro server, Windows quotidiano, Ubuntu Studio, scorta B150, seconda Z97-P storica, AnduinOS e Xubuntu smembrati, firewall. Nessuna nuova assegnazione approvata. La coppia Corsair8GB della seconda Z97-P resta da riconfermare; distinti i due HDD Samsung500GB omonimi. Due NVMe1TB assegnati al server, BX5001TB ancora Windows,850EVO M.2 da localizzare, HDD QNAP non disponibili. NAS32GB DDR3 richiederebbe cambio piattaforma, non semplice aggiunta di memoria. Controlli sulla scheda: Markdown e tabelle positivi;186 documenti raggiungibili,zero link rotti/orfani. Chiusura generale resta sospesa per i problemi locali documentati nel giro precedente. Nessun subagent.
+
+**Didattica:** nessuna, recap delle alternative ancora da scegliere.
+
+**Template:** nessuna.
+
+
+## Chiarimento SSD e perimetro del magazzino 2026-11-16T11:20:52+01:00
+
+Correzione del recap 2026-11-16T11:20:52+01:00: i quattro HDD2TB del vecchio QNAP sono esclusi definitivamente, come era già scritto nella scheda storica dal07/10; non riproporli né richiamarli nei futuri inventari disponibili. Il Samsung850EVO M.2 SATA250GB di AnduinOS è già posseduto e censito: la pendenza del17/10 riguarda soltanto ubicazione/prelievo, non assenza del componente. L’utente propone ora850EVO per Windows quotidiano e BX5001TB per NAS dopo migrazione. Non è un ritrovamento fisico o una migrazione già verificata. H97 Anniversary senza M.2 integrato: previsto collegamento tramite adattatore M.2 SATA verso SATA appropriato; nessun acquisto eseguito. Dettaglio aggiornato nella ricognizione hardware13.
+
+**Didattica:** nessuna nuova scelta attuata; correzione dello stato e destinazione proposta, compatibilità fisica da predisporre.
+
+**Template:** nessuna.
+
+
+## Chiusura e consegna fra agenti 2026-11-16T11:42:11+01:00
+
+Chiusura preparata il16/11/2026: priorità alla riorganizzazione hardware, senza proseguire utenti e condivisioni TrueNAS. Samsung850EVO M.2 SATA250GB già posseduto, proposto per Windows quotidiano tramite collegamento M.2 SATA verso SATA appropriato alla H97; BX5001TB verso NAS dopo migrazione e avvio verificati. Nessun disco migrato o cancellato. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Corsair2x8GB e Atlantis recuperati da PC-03. Coppia8GB della seconda Z97-P ancora da riconfermare. Memoria NAS8GB DDR4, server16GB DDR4; i tre moduli con errori restano esclusi. Due NVMe1TB assegnati al server. Le esclusioni definitive restano chiuse e non si ripropongono nei recap.
+
+Consegna locale del template 2ff62ab:75 file vecchi,31 nuovi,2 merge e nessun conflitto; ricevuta registra107 file interessati, distinta dalla propria scrittura. Guardia anonimizzazione adattata conservata con estensioni; allineata la sola variazione del commento e registrata la risoluzione. Nessuna distribuzione di modifiche non committate a monte. Originali di due report hardware archiviati privatamente con SHA-256; otto NUL resi visibili nelle copie di lettura con trasformazione inversa identica. Nessuna esclusione aggiunta al controllo. Manifest preventivo dei file di lavoro e consegna conservato nel checkpoint privato.
+
+**Didattica:** applicati i principi di evidenza e recupero già documentati; nessuna nuova assegnazione hardware attuata.
+
+**Template:** L-011 e L-012, recepite nel sorgente del template con copie preventive e lavoro altrui conservato; pubblicazione e propagazione non ancora eseguite. Nessun commit/push/wipe dell’agente; zero subagent.
+
+
+## Verifica finale della consegna 2026-11-16T12:20:54+01:00
+
+Chiusura in sola verifica positiva sul progetto reale dopo correzione del titolo L-011. Simulati separatamente gli alberi della consegna template112 file e del lavoro hardware12 file in clone locale isolato: controlli e albero documentale positivi in entrambe le fasi; nessun commit nemmeno nella copia. La prima simulazione evidenziava soltanto78 riferimenti a materiali ignorati mancanti nel clone: copiate le fonti effettive con confronto delle impronte, senza nuove esclusioni. Due report originali e relative trasformazioni reversibili, quattro evidenze hardware e ripresa precedente integrale verificati. Quattro casi della diagnostica prima/dopo confermano che il rilevamento resta bloccante e cambia soltanto l’attribuzione della causa. Carico istruzioni del template positivo.
+
+La consegna al proprietario prepara due fasi manuali: allineamento locale senza push/wipe, poi hardware con push verificato, impronta e pulizia dell’account3. Ramo, HEAD, stage, perimetro e impronte controllati prima dei comandi. Nessun commit,push,registrazione finale o wipe eseguito dall’agente. Le nuove lezioni a monte restano non pubblicate.
+
+**Didattica:** nessuna nuova scelta hardware; verifica della conservazione e della sequenza di chiusura.
+
+**Template:** L-011 e L-012 preparate e recepite nel sorgente, pubblicazione ancora manuale.

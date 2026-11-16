@@ -2,6 +2,12 @@
 
 > Da leggere per primo a inizio sessione. Fotografa lo stato del progetto al commit di riferimento e mappa ogni scheda al suo stato di verifica. È la fonte di verità su cosa è fatto, non la lettura affrettata dei documenti tecnici, che descrivono in larga parte ciò che si intende costruire.
 
+## Verifica di apertura 2026-11-16T10:19:22+01:00
+
+Ripresa su main a 4ae866c, un solo worktree. Rispetto all'impronta del 02/11 risultano nove commit di allineamento del 05-10/11, non riportati nel work-log; nessun nuovo avanzamento del NAS attestato da questi commit. Due file preesistenti non tracciati, tools/accents-exclude.txt e tools/dashes-exclude.txt, conservati senza modifiche e in attesa di chiarimento del proprietario. Wrapper Codex allineati. Verifica schede: 20 con copertura, 19 superate rispetto alle ancore, zero difetti strutturali; nessuna ancora aggiornata senza revisione. Fonti a monte: zero sorvegliate, quindi nessuna verifica esterna attestata. Sicurezza non verificata: rapporto assente; nessuna scansione dal vivo eseguita. Template avanti di 25 commit con 23 modifiche locali a monte non propagabili; ultima consegna senza conflitti. Cassetta dell'identificativo esportato vuota; il registro associa tale identificativo a un'altra directory, senza correggere registrazioni altrui. Nessun messaggio inviato e zero subagent avviati.
+
+Il blocco storico sotto conserva il precedente riferimento; HEAD osservato ora è 4ae866c. Stato NAS invariato rispetto all'ultima evidenza, non verificato dal vivo. Dettaglio e limiti nel work-log della ripresa.
+
 ## Stato
 
 ```
@@ -181,3 +187,20 @@ L’anteprima reale ha scoperto e poi verificato la correzione di chiudi-allinea
 Direttiva di conservazione: quanto serve può vivere soltanto nel progetto, nel livello privato non versionato; conservarlo non richiede un commit. Il wipe elimina soltanto elementi superflui o duplicati dopo assorbimento verificato, anche nel solo livello privato. Export, chiavi e prove utili restano. Sono già state eliminate copie ridondanti della chat e della ripresa; nessuna ulteriore cancellazione in questo giro. Dettaglio privato in `_notes/template-final-2026-10-30/regola-conservazione-progetto.md`.
 
 NAS invariato:8GB RAM-03/A2, tank/documenti creato e cifrato, SMB/NFSv4 e Restricted corretti, prossimo utente SMB poi ACL/share. Tre export con seed e chiave JSON conservati privatamente; copia indipendente e ripristino ancora aperti. Jev da chiedere solo alla recezione del brain nel template; altre pendenze nei registri esistenti. Launcher comuni per i tre account, protezione delle sessioni vive e posta su file verificati; dialogo reale fra agenti ancora da osservare.
+
+
+## Priorità hardware del16/11/2026
+
+Priorità del16/11/2026: riorganizzazione hardware prima di proseguire TrueNAS, ADR-050. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Atlantis e due Corsair DDR3 da8GB di PC-03 recuperati. PC-07 Windows quotidiano aggiunto: H97 Anniversary/i7-4790,16GB DDR3 e BX500 SATA1TB ancora in uso. Alternative Windows16/24/32GB e SSD più piccolo soltanto allo studio; NAS invariato. La ricognizione hardware13 conserva report sintetizzato, limiti, fonti e verifiche mancanti. Nessuna clonazione, prova RAM o modifica al pool eseguita.
+
+
+## Correzione prioritaria del recap hardware
+
+Correzione del recap 2026-11-16T11:20:52+01:00: i quattro HDD2TB del vecchio QNAP sono esclusi definitivamente, come era già scritto nella scheda storica dal07/10; non riproporli né richiamarli nei futuri inventari disponibili. Il Samsung850EVO M.2 SATA250GB di AnduinOS è già posseduto e censito: la pendenza del17/10 riguarda soltanto ubicazione/prelievo, non assenza del componente. L’utente propone ora850EVO per Windows quotidiano e BX5001TB per NAS dopo migrazione. Non è un ritrovamento fisico o una migrazione già verificata. H97 Anniversary senza M.2 integrato: previsto collegamento tramite adattatore M.2 SATA verso SATA appropriato; nessun acquisto eseguito. Dettaglio aggiornato nella ricognizione hardware13.
+
+
+## Consegna finale 2026-11-16T11:42:11+01:00
+
+Chiusura preparata il16/11/2026: priorità alla riorganizzazione hardware, senza proseguire utenti e condivisioni TrueNAS. Samsung850EVO M.2 SATA250GB già posseduto, proposto per Windows quotidiano tramite collegamento M.2 SATA verso SATA appropriato alla H97; BX5001TB verso NAS dopo migrazione e avvio verificati. Nessun disco migrato o cancellato. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Corsair2x8GB e Atlantis recuperati da PC-03. Coppia8GB della seconda Z97-P ancora da riconfermare. Memoria NAS8GB DDR4, server16GB DDR4; i tre moduli con errori restano esclusi. Due NVMe1TB assegnati al server. Le esclusioni definitive restano chiuse e non si ripropongono nei recap.
+
+HEAD osservato 4ae866c, un solo worktree main; consegna locale del template al commit 2ff62ab applicata senza conflitti. L-011 e L-012 preparate e recepite nel sorgente a monte, non ancora pubblicate o distribuite. La memoria operativa corrente e la ricognizione13 sono aggiornate; le altre schede mantengono le precedenti ancore e non si dichiarano integralmente riconciliate. Rapporto sicurezza assente, nessuna scansione dal vivo. Chiusura, push, impronta finale e wipe ancora da eseguire dal proprietario dopo i controlli.

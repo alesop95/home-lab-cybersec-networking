@@ -1328,3 +1328,10 @@ Registrato 2026-10-29T12:21:49+01:00. Tre immagini archiviate prima della lettur
 Chiusa la lettura del tipo e della modalità ACL nel modulo identificato; i precedenti POSIX/Discard senza nome non sono proprietà accertate di documenti. Nessun nuovo Save osservato in queste immagini. Indicazione operativa: Save per confermare, poi Credentials > Users > Add e lettura del modulo utente; nessun utente, permesso finale o share ancora creati. Nessun nuovo export richiesto per una lettura senza cambi di configurazione. Tre export e chiave JSON restano acquisiti e verificati; copia indipendente e restore aperti.
 
 Richiesta di stile ribadita dall’utente: in un solo messaggio indicare soltanto i settings che cambiano; tutti i valori, le ragioni e lo stato nel progetto. Qui i cambi necessari sono nessuno.
+
+
+## Ricognizione hardware 2026-11-16T10:41:43+01:00
+
+Priorità del16/11/2026: riorganizzazione hardware prima di proseguire TrueNAS, ADR-050. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Atlantis e due Corsair DDR3 da8GB di PC-03 recuperati. PC-07 Windows quotidiano aggiunto: H97 Anniversary/i7-4790,16GB DDR3 e BX500 SATA1TB ancora in uso. Alternative Windows16/24/32GB e SSD più piccolo soltanto allo studio; NAS invariato. La ricognizione hardware13 conserva report sintetizzato, limiti, fonti e verifiche mancanti. Nessuna clonazione, prova RAM o modifica al pool eseguita.
+
+Report PC-07 letto integralmente; tre foto lette e quattro originali acquisiti con SHA-256 identico. Originale report eliminato su richiesta dopo verifica; evidenze private conservate. Kit CMV16GX3M2A1600C11 identificato come ValueSelect2x8GB, conferma Corsair; targa Atlantis riletta, nessuna prova elettrica. PC-07 ha circa140,49GiB su C:, due alternative di aumento RAM senza acquisti già decisi e SSD1TB candidato dopo migrazione. HDD PC-07 non confuso col Samsung omonimo di PC-02. Dettaglio nella [13-ricognizione-hardware-novembre-2026.md](13-ricognizione-hardware-novembre-2026.md). Nessuna azione sui dischi NAS o sui dati Windows.

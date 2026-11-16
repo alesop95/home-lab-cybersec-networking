@@ -226,3 +226,13 @@ Ponte AGENTS e istruzioni canoniche comuni aggiornati; verifica-ripresa ora può
 Il pacchetto agenti-terminale espone una cassetta comune su file atomici ai launcher Claude e Codex, con perimetro aggiuntivo limitato e visibile. I tre account Codex usano lo stesso finally di pulizia; tutte le sessioni vive restano protette. Nessun push dei messaggi o ricezione retroattiva nelle sessioni già avviate sono promessi. Le prove del trasporto e i test dei launcher sono distinti dal collaudo di un dialogo fra agenti reali. Persistenza e punto NAS nelle sezioni precedenti restano invariati; prossimo utente SMB/ACL/share.
 
 Versionamento del progetto e del template, passata ufficiale e pulizia dopo l’uscita restano operazioni manuali del proprietario secondo le regole. Nessun commit, push o wipe dell’agente. La ripresa privata è consolidata e la versione precedente conservata integralmente nel checkpoint; chiavi, export e fotografie restano nel livello ignorato. La nota da un’altra sessione è stata letta e le richieste integrate, senza sovrascrivere i suoi documenti pendenti.
+
+
+## Riorganizzazione hardware del16/11/2026
+
+Aperta, ADR-050. Prima di riprendere utenti/ACL/share NAS: confermare ruolo residuo del laboratorio e disponibilità della coppia8GB di linux-desktop-B; scegliere Windows16/24/32GB; identificare SSD SATA più piccolo libero e secondo SSD adeguato al futuro mirror NAS; acquisire SMART completo e predisporre migrazione con avvio indipendente verificato. PC-02 e PC-03 smembrati, Atlantis e Corsair di PC-03 recuperati; il loro recupero non è più pendente. PC-07 resta in uso con BX5001TB e HDD500GB contenente dati. Nessuna prova RAM, clonazione, sostituzione o nuova capacità del pool attestata. Dettagli nella [ricognizione hardware13](03-spunti-di-sviluppo/02-storage-di-rete-nas/13-ricognizione-hardware-novembre-2026.md). Copia indipendente e recupero della configurazione NAS restano aperti.
+
+
+## Precisazione del16/11/2026 sulla migrazione Windows
+
+Il Samsung850EVO M.2 SATA250GB è già censito, non un disco da acquistare per presunta assenza. La vecchia pendenza riguarda ubicazione e recupero fisico; ora candidato scelto dall’utente per il confronto Windows/BX500. Prima del trasferimento riscontrare disco, salute e collegamento: H97 Anniversary non ha M.2 integrato, quindi serve adattatore M.2 SATA verso SATA appropriato. Verificare migrazione e avvio prima di liberare il BX500. I dischi QNAP sono esclusi definitivamente, non costituiscono una disponibilità attesa o una pendenza.
