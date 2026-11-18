@@ -1803,7 +1803,7 @@ Le tre schermate Advanced Settings del28/10 sono archiviate SHA-256 prima della 
 
 Alla domanda sulle molte impostazioni, il quadro tecnico distingue preparazione locale, dipendenze della rete domestica e personalizzazioni giustificate da un bisogno. Dataset, utenti e permessi si preparano ora; indirizzi finali, DNS, VLAN e restrizione degli accessi seguono la topologia domestica; syslog segue la disponibilità del ricevitore. NTP effettivo e recupero precedono l’eventuale2FA NAS. Nessun debug, script, Sysctl o GPU aggiunti per riempire pannelli vuoti. Nuova guida tecnica10, matrice aggiornata e sviluppo didattico della scheda03; fonti S241/S242.
 
-Il29/10 l’utente chiede di procedere. Prossimo cliccare Datasets nella barra sinistra e leggere la struttura di tank prima di creare dataset utente. Il nuovo export non va riscaricato per questa sola lettura. Filtro Log NAS, seconda copia indipendente, inclusione Veeam, restore, rete finale e obiettivo16GB restano aperti. Nessuna nuova email o nuova osservazione dal NAS il29/10 viene inventata; le letture fisiche restano del28/10.
+Il29/10 l’utente chiede di procedere. Prossimo cliccare Datasets nella barra sinistra e leggere la struttura di tank prima di creare dataset utente. Il nuovo export non va riscaricato per questa sola lettura. Filtro Log NAS, seconda copia indipendente, inclusione Veeam, restore, rete finale e obiettivo 16GB restano aperti. Nessuna nuova email o nuova osservazione dal NAS il29/10 viene inventata; le letture fisiche restano del28/10.
 
 **Didattica:** sviluppo della [scheda03](../context/refactor-03-preparazione-nas-e-rete-temporanea.md), capability del pannello distinta dal bisogno di configurarla; stessa separazione banco/rete di ADR-040.
 
@@ -1999,7 +1999,7 @@ Verifiche della ricognizione 2026-11-16T10:43:54+01:00:186 documenti tutti raggi
 
 ## Recap complessivo hardware 2026-11-16T11:01:27+01:00
 
-Su richiesta del proprietario ricomposto il quadro di nove macchine nella ricognizione hardware13: NAS, futuro server, Windows quotidiano, Ubuntu Studio, scorta B150, seconda Z97-P storica, AnduinOS e Xubuntu smembrati, firewall. Nessuna nuova assegnazione approvata. La coppia Corsair8GB della seconda Z97-P resta da riconfermare; distinti i due HDD Samsung500GB omonimi. Due NVMe1TB assegnati al server, BX5001TB ancora Windows,850EVO M.2 da localizzare, HDD QNAP non disponibili. NAS32GB DDR3 richiederebbe cambio piattaforma, non semplice aggiunta di memoria. Controlli sulla scheda: Markdown e tabelle positivi;186 documenti raggiungibili,zero link rotti/orfani. Chiusura generale resta sospesa per i problemi locali documentati nel giro precedente. Nessun subagent.
+Su richiesta del proprietario ricomposto il quadro di nove macchine nella ricognizione hardware13: NAS, futuro server, Windows quotidiano, Ubuntu Studio, scorta B150, seconda Z97-P storica, AnduinOS e Xubuntu smembrati, firewall. Nessuna nuova assegnazione approvata. La coppia Corsair8GB della seconda Z97-P resta da riconfermare; distinti i due HDD Samsung500GB omonimi. Due NVMe1TB assegnati al server, BX500 1 TB ancora Windows,850EVO M.2 da localizzare, HDD QNAP non disponibili. NAS32GB DDR3 richiederebbe cambio piattaforma, non semplice aggiunta di memoria. Controlli sulla scheda: Markdown e tabelle positivi;186 documenti raggiungibili,zero link rotti/orfani. Chiusura generale resta sospesa per i problemi locali documentati nel giro precedente. Nessun subagent.
 
 **Didattica:** nessuna, recap delle alternative ancora da scegliere.
 
@@ -2008,7 +2008,7 @@ Su richiesta del proprietario ricomposto il quadro di nove macchine nella ricogn
 
 ## Chiarimento SSD e perimetro del magazzino 2026-11-16T11:20:52+01:00
 
-Correzione del recap 2026-11-16T11:20:52+01:00: i quattro HDD2TB del vecchio QNAP sono esclusi definitivamente, come era già scritto nella scheda storica dal07/10; non riproporli né richiamarli nei futuri inventari disponibili. Il Samsung850EVO M.2 SATA250GB di AnduinOS è già posseduto e censito: la pendenza del17/10 riguarda soltanto ubicazione/prelievo, non assenza del componente. L’utente propone ora850EVO per Windows quotidiano e BX5001TB per NAS dopo migrazione. Non è un ritrovamento fisico o una migrazione già verificata. H97 Anniversary senza M.2 integrato: previsto collegamento tramite adattatore M.2 SATA verso SATA appropriato; nessun acquisto eseguito. Dettaglio aggiornato nella ricognizione hardware13.
+Correzione del recap 2026-11-16T11:20:52+01:00: i quattro HDD2TB del vecchio QNAP sono esclusi definitivamente, come era già scritto nella scheda storica dal07/10; non riproporli né richiamarli nei futuri inventari disponibili. Il Samsung850EVO M.2 SATA250GB di AnduinOS è già posseduto e censito: la pendenza del17/10 riguarda soltanto ubicazione/prelievo, non assenza del componente. L’utente propone ora850EVO per Windows quotidiano e BX500 1 TB per NAS dopo migrazione. Non è un ritrovamento fisico o una migrazione già verificata. H97 Anniversary senza M.2 integrato: previsto collegamento tramite adattatore M.2 SATA verso SATA appropriato; nessun acquisto eseguito. Dettaglio aggiornato nella ricognizione hardware13.
 
 **Didattica:** nessuna nuova scelta attuata; correzione dello stato e destinazione proposta, compatibilità fisica da predisporre.
 
@@ -2017,7 +2017,7 @@ Correzione del recap 2026-11-16T11:20:52+01:00: i quattro HDD2TB del vecchio QNA
 
 ## Chiusura e consegna fra agenti 2026-11-16T11:42:11+01:00
 
-Chiusura preparata il16/11/2026: priorità alla riorganizzazione hardware, senza proseguire utenti e condivisioni TrueNAS. Samsung850EVO M.2 SATA250GB già posseduto, proposto per Windows quotidiano tramite collegamento M.2 SATA verso SATA appropriato alla H97; BX5001TB verso NAS dopo migrazione e avvio verificati. Nessun disco migrato o cancellato. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Corsair2x8GB e Atlantis recuperati da PC-03. Coppia8GB della seconda Z97-P ancora da riconfermare. Memoria NAS8GB DDR4, server16GB DDR4; i tre moduli con errori restano esclusi. Due NVMe1TB assegnati al server. Le esclusioni definitive restano chiuse e non si ripropongono nei recap.
+Chiusura preparata il16/11/2026: priorità alla riorganizzazione hardware, senza proseguire utenti e condivisioni TrueNAS. Samsung850EVO M.2 SATA250GB già posseduto, proposto per Windows quotidiano tramite collegamento M.2 SATA verso SATA appropriato alla H97; BX500 1 TB verso NAS dopo migrazione e avvio verificati. Nessun disco migrato o cancellato. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Corsair2x8GB e Atlantis recuperati da PC-03. Coppia8GB della seconda Z97-P ancora da riconfermare. Memoria NAS8GB DDR4, server16GB DDR4; i tre moduli con errori restano esclusi. Due NVMe1TB assegnati al server. Le esclusioni definitive restano chiuse e non si ripropongono nei recap.
 
 Consegna locale del template 2ff62ab:75 file vecchi,31 nuovi,2 merge e nessun conflitto; ricevuta registra107 file interessati, distinta dalla propria scrittura. Guardia anonimizzazione adattata conservata con estensioni; allineata la sola variazione del commento e registrata la risoluzione. Nessuna distribuzione di modifiche non committate a monte. Originali di due report hardware archiviati privatamente con SHA-256; otto NUL resi visibili nelle copie di lettura con trasformazione inversa identica. Nessuna esclusione aggiunta al controllo. Manifest preventivo dei file di lavoro e consegna conservato nel checkpoint privato.
 
@@ -2035,3 +2035,98 @@ La consegna al proprietario prepara due fasi manuali: allineamento locale senza 
 **Didattica:** nessuna nuova scelta hardware; verifica della conservazione e della sequenza di chiusura.
 
 **Template:** L-011 e L-012 preparate e recepite nel sorgente, pubblicazione ancora manuale.
+
+## Ripresa e SSD di AnduinOS ritrovato 2026-11-18T09:45:46+01:00
+
+Main a 752c5cc, un solo worktree, albero inizialmente pulito. Il solo commit dopo l’impronta del 16/11 è752c5cc, allineamento template al 3755559 del 17/11,87 file interessati; non attestava avanzamenti del NAS e non compariva nel work-log, raccordato ora. Wrapper Codex allineati;20 schede con copertura,19 superate e nessun difetto, ancore generali non rinnovate. Fonti a monte0 sorvegliate; sicurezza non verificata per rapporto assente, nessuna scansione dal vivo. Cassetta esportata vuota, nessun messaggio inviato e zero subagent.
+
+Il proprietario dichiara il ritrovamento dell’SSD di AnduinOS. Due viste lette identificano Samsung 850 EVO M.2 SATA 250 GB, modello MZ-N5E250; due copie private SHA-256 identiche, originali conservati. Ubicazione chiusa, salute, dati e collegamento ancora da verificare. Ricognizione 13 aggiornata con mappa attuale/proposta; inventario 06, allocazione 12, censimento PC-03, registro 09, ADR-050, pendenze e contesto raccordati. Corretto anche il residuo Vengeance della scheda PC-03 in ValueSelect, già riscontrato il 16/11. Direzione del proprietario resta 850 EVO verso Windows e BX500 verso NAS dopo migrazione e avvio indipendente verificati. Windows 24 GB è una proposta con i moduli già recuperati;32 GB richiede altri due 8 GB da riconfermare. NAS 8 GB DDR4 e server 16 GB mantenuti; secondo SSD mirror aperto. Nessun acquisto, clonazione, cancellazione o montaggio eseguiti.
+
+**Didattica:** nessuna nuova architettura approvata; mappa di lavoro e prova discriminante dell’avvio indipendente nella ricognizione 13 applicano i principi di evidenza e crescita già documentati.
+
+**Template:** nessuna nuova lezione; distinzione fra possesso, ubicazione, salute ed esecuzione già recepita. App Craft rilevate localmente; sole fonti Markdown aggiornate direttamente secondo CLAUDE.md, nessun export o artefatto visivo prodotto.
+
+## Chiarimento sul Windows e sull’adattatore 2026-11-18T09:51:32+01:00
+
+Il proprietario ha chiesto prima un esempio visivo dell’adattatore; dopo la visualizzazione dichiara che probabilmente non lo possiede e chiede se la configurazione del Windows sia stata compresa dal report. Report del 15/11 riletto integralmente: H97 Anniversary/i7-4790,4×4GB Kingston, BX500 SATA1TB con sistema GPT/UEFI, HD502HJ500GB dati e controller SATA AHCI. Chiarita la distinzione tra inventario software e cablaggio fisico: l’assenza di M.2 integrato è riscontrata nelle specifiche ASRock, non dedotta dal solo elenco SMBIOS. StarTech SAT32M225 mostrato come esempio di categoria; PDF primario letto, supporta M.2 SATA2280 con uscita SATA dati e alimentazione. Disponibilità dell’adattatore ancora da verificare; nessuna scelta commerciale o acquisto autorizzati da questa risposta.
+
+**Didattica:** nessuna nuova assegnazione; spiegazione del percorso M.2 SATA verso SATA nella ricognizione13.
+
+**Template:** nessuna. Zero subagent, nessun messaggio ad altri agenti.
+
+Verifiche del giro SSD, 2026-11-18T09:53:35+01:00:186 documenti raggiungibili, zero collegamenti rotti/orfani; tabelle dei tre documenti hardware senza difetti;14 file Markdown verificati senza riscritture. Anonimizzazione su 850 file tracciati:zero riscontri bloccanti e149 avvisi da valutare, senza promuovere questi avvisi a dati verificati. Chiusura SoloControlli positiva fuori sandbox, ultima riga «Controlli verdi». Prima esecuzione in sandbox fallita sull’accesso alla fixture temporanea dell’autotest anonimizzazione; riesecuzione completa autorizzata fuori sandbox positiva. CRLF/LF conservati secondo l’indice; diff --check positivo con riconoscimento CRLF. Due copie delle immagini e originali nuovamente verificati per SHA-256. Le prove verificano documenti e conservazione, non salute SSD, stabilità RAM o migrazione. Nessun commit o push eseguiti.
+
+## HDD Windows, capacità e fonti hardware persistite 2026-11-18T10:24:14+01:00
+
+Richiesta del proprietario: valutare se lasciare o riutilizzare l’HDD meccanico dopo Windows su 850 EVO e conservare tutte le specifiche/fonti hardware come conoscenza stabile. Report15/11 già letto: C: 929,89-789,40=140,49 GiB; G: 465,22-189,94=275,28 GiB; totale415,77 GiB. Calcolo deterministico250 GB=232,83 GiB grezzi e margine 92,34 GiB rispetto al solo C:. Tank213,19 GiB inferiore di 62,09 GiB al solo G:, prima di spazio già usato e margine operativo. L’HDD-PC07 non è libero; altro HD502HJ di PC-02 distinto e sua data di fabbricazione non trasferita.43616 ore non dimostrano guasto o vita residua.
+
+Scheda14 con fatti, calcoli e opzioni; inventario, allocazione, pendenze, registro 09, ADR-050 e contesto aggiornati. Proposta dell’agente: lasciare l’HDD durante la transizione, poi scollegarlo se i dati hanno destinazione e copie verificate; uso supplementare a freddo o per prove soltanto come opzioni, non assegnazioni approvate. Nessun acquisto, trasferimento, cancellazione o nuovo test fisico.
+
+Sei PDF acquisiti, intestazionePDF e SHA-256 verificati; metadati versionati con S289-S294 e copie private. ManualeH97,850 EVO e StarTech dal produttore; Samsung F3/HD502HJ e Micron BX500 in copie storiche del produttore presso distributori. HTML Micron269byte rifiutato, download content.crucial errore TLS e Seagate ciclo di redirect non dichiarati letture. PdfCraft0.21.1 locale usato per testo mirato e vista tabella Samsung, verificata visivamente. I due datasheet HDD differiscono nei consumi lettura/scrittura; revisioni e limiti conservati anziché inventare un valore unico. Cassetta esportata vuota, nessun messaggio inviato; zero subagent.
+
+**Didattica:** valutazione e dati nella scheda 14; nessuna nuova assegnazione architetturale approvata. Si applicano i principi già documentati di separazione fra specifica, misura e recupero.
+
+**Template:** nessuna nuova lezione; stato e autenticità delle fonti già regolati. Controlli finali del giro ancora da eseguire.
+
+Verifiche del giro HDD e fonti, 2026-11-18T10:28:19+01:00:187 documenti esaminati e raggiungibili, zero collegamenti rotti/orfani;284 URL rilevati e nessuno non registrato dopo il censimento del riferimento ASUS storico. Tabelle di scheda14, allocazione eSOURCES senza difetti;14 Markdown verificati senza riscritture. 852 file esaminati: 850 tracciati, 2 non tracciati, 0 ignorati. Riscontri bloccanti: 0.  Da valutare a mano: 149. Chiusura SoloControlli completa fuori sandbox positiva, ultima riga «Controlli verdi». Sei PDF riletti per intestazione e SHA-256 identico al manifest; tabella Samsung anche verificata visivamente. I controlli riguardano documenti e fonti conservate, non SMART, migrazione, capacità libera odierna o vita residua dell’HDD. Nessun commit o push eseguiti.
+
+## Chiarimento sul ruolo dell’HDD dei corsi 2026-11-18T11:59:12+01:00
+
+Il proprietario precisa che i dati dell’HDD sono corsi di cybersecurity da aprire soltanto in ambiente Windows 11 sandboxato e propone di lasciarlo nel PC quotidiano. Aggiornato il piano: 850 EVO 250 GB sistema/programmi, HD502HJ 500 GB locale per i corsi, BX500 1 TB candidato NAS dopo migrazione del solo C: e avvio verificato. Superata la raccomandazione precedente dell’agente di trasferire G: per poi scollegare l’HDD. Il limite NAS 213,19 GiB rimane per eventuali copie, non obbliga a trasferire i 275,28 GiB per liberare il BX500. Tecnologia dell’isolamento e stato reale non attestati; domanda puntuale al proprietario su Windows Sandbox, VM o ambiente ancora da predisporre. Nessun file dei corsi aperto o eseguito, nessun nuovo test o configurazione hardware. Salute e copie restano aperte. Fonti hardware archiviate riusate senza ricerche ripetute; cassetta esportata vuota, nessun messaggio inviato, zero subagent.
+
+**Didattica:** chiarita nella scheda 14 la distinzione fra supporto dei corsi e ambiente di esecuzione; nessuna nuova tecnologia di isolamento scelta o configurata.
+
+**Template:** nessuna nuova lezione. Controlli documentali da ripetere sul giro corrente.
+
+Verifiche del chiarimento corsi, 2026-11-18T12:00:24+01:00:187 documenti tutti raggiungibili, zero collegamenti rotti/orfani; tabelle della scheda14 e dell’allocazione senza difetti,14 Markdown verificati senza riscritture. Anonimizzazione852 file:zero bloccanti e149 avvisi. SoloControlli completo fuori sandbox positivo, ultima riga «Controlli verdi»; terminatori conservati e diff verificato. Le prove riguardano i documenti: nessuna sandbox del PC o macchina virtuale è stata osservata o configurata. Risposta sul tipo di ambiente ancora attesa; nessun contenuto dei corsi letto o eseguito, nessun commit/push.
+
+## Windows Sandbox nativa probabilmente presente 2026-11-18T12:04:02+01:00
+
+Il proprietario risponde di ritenere già installata la Sandbox nativa Windows. Registrato grado di certezza: tecnologia probabile identificata, presenza e avvio ancora da confermare. Riletto il report del 15/11 come testo anche in presenza di NUL: Windows 11 Pro e Hypervisor present True, nessuna voce Sandbox/Containers-DisposableClientVM. Confronto locale con il PC del report negativo, senza pubblicare identificativi; un controllo sulla macchina della sessione non confermerebbe PC-07. Fonti Microsoft S295/S296 lette e annotate nel progetto: Pro supportata, requisiti e avvio dal menu Start. Primo passo proposto: avvio vuoto sul PC quotidiano. Nessuna installazione, modifica firmware o configurazione di condivisioni; nessun corso letto/eseguito. Piano 850 EVO sistema, HDD corsi locale e BX500 candidato NAS invariato. Cassetta esportata vuota, zero subagent.
+
+**Didattica:** distinzione nella scheda14 fra funzione ricordata, componente opzionale e avvio osservato; nessuna nuova architettura implementata.
+
+**Template:** nessuna nuova lezione. Controlli del giro da eseguire.
+
+Verifiche della precisazione Windows Sandbox, 2026-11-18T12:05:52+01:00:187 documenti raggiungibili, zero link rotti/orfani;286 URL rilevati e zero non registrati;9 Markdown verificati senza riscritture. Anonimizzazione852 file,zero bloccanti; SoloControlli completo fuori sandbox positivo, ultima riga «Controlli verdi». Verifiche documentali soltanto; installazione e avvio della Sandbox sul PC quotidiano restano da confermare dall’utente. Nessuna lettura dei corsi o installazione eseguite, nessun commit/push.
+
+## Punto complessivo hardware, rete e pendenze 2026-11-18T12:53:54+01:00
+
+Il proprietario conferma presenza e avvio della Windows Sandbox nativa e richiede il quadro di allocazione hardware, topologia, pendenze, skill recepite e progettazione futura. La conferma chiude il riscontro base su dichiarazione del proprietario; file/rete/isolamento restano da collaudare. Nessun nuovo software, acquisto o configurazione in questa ricognizione.
+
+Piano 04 aggiornato come punto operativo con hardware di nove macchine, topologia prevista e31 gruppi di lavoro P01-P31. Priorità: allocazione hardware, NAS/recuperabilità, firewall e linea, switch/AP/VLAN, calcolo/DNS, monitoraggio/accessi e poi prototipi/app. Distinti studi, decisioni adottate e installazioni. Raccordati pendenze, memo acquisti, roadmap, ingressi README e avvertenza reale di CLAUDE.md: NAS già preparato, non soltanto firewall storico. Le vecchie varianti10E, server 24 GB e laboratorio già assemblato restano storia, non istruzioni correnti. Salvataggi e ripristini NAS non si ricreano dal piano.
+
+Ricognizione filesystem:18 skill canoniche presenti e wrapper Codex allineati. ISO27001/GDPR recepite; Hermes e knowledge-wiki presenti nel catalogo ma non istanziati qui. Il registro pacchetti registra formalmente solo anonymization e non è un inventario esaustivo: lacuna da riconciliare sulle evidenze, senza attivazioni dedotte. Sync-context20 schede con copertura,19 superate e zero difetti; ancore generali non rinnovate in blocco. Jev rimane legato alla futura tappa brain concordata, non alla semplice presenza nel catalogo. Nessuna installazione di pacchetti, nessun messaggio esterno, zero subagent.
+
+**Didattica:** riconciliazione dello stato con i principi già adottati di evidenza e dipendenze; nessuna nuova architettura decisa. Piano 04 e scheda 14 esplicitano perché la conferma dell’avvio non prova i confini di isolamento.
+
+**Template:** nessuna nuova lezione; lacune documentali e registro delle adozioni registrati come lavoro di questo progetto. Controlli del punto da eseguire.
+
+Verifiche del punto complessivo, 2026-11-18T12:57:33+01:00:187 documenti raggiungibili, zero rotture/orfani;286 URL rilevati e zero non registrati;852 file esaminati dal guard-rail, zero bloccanti e153 avvisi. I quattro avvisi nuovi sono le reti RFC1918 di progetto40/50/60/99 nel nuovo quadro, consentite dalla regola e controllate contro la topologia già documentata; nessuna esclusione aggiunta. Tabelle del piano, pendenze e memo senza difetti;13 Markdown verificati senza riscritture, terminatori conservati. SoloControlli completo fuori sandbox positivo, ultima riga «Controlli verdi». Nessuna nuova osservazione sul funzionamento della rete deriva dai controlli documentali. Conferma Windows Sandbox attribuita al proprietario; isolamento di file e rete ancora da collaudare. Nessun commit o push dell’agente.
+
+## 18/11/2026, consegna per chiusura e raccordo audio (2026-11-18T14:12:06+01:00)
+
+Il proprietario chiede chiusura pulita, ripartenza esatta e coordinamento con i progetti audio. Riscontrata la fonte canonica DIY e il vincolo di cascata; `sync-ambiente.py --check` trova20 file allineati, nessuna deriva. La postazione musicale conserva16 GB DDR4 e P2 500 GB; SoundCraft rimane PA-034/PA-003, ruolo/fork aperti. Richiesta consegnata alla sessione audio autorizzata, risposta non ancora acquisita; lavoro concorrente conservato. La registrazione della cassetta esportata mancava: ripristinata prima dell'invio, usando il PID del launcher del progetto già censito.
+
+Allineamento dal template3755559 a b47c915:11 file di perimetro più ricevuta. Il confronto iniziale segnala la condizione email adattata del controllo di anonimizzazione: integrata la correzione OData e la sua prova upstream mantenendo le estensioni del progetto. Autotest23 casi, zero errori; successivo confronto senza conflitti né file vecchi. Le105 scelte di pacchetto non censite restano una pendenza documentale, non un permesso di attivazione. Nessuna riscrittura della memoria di altre branch del template.
+
+**Template:** nessuna nuova lezione. Distinzione fra esistenza, assegnazione, montaggio e salute già coperta da L-011; diagnosi dei NUL da L-012; fixture negata dalla sandbox da L-010. Il registro parziale di adozioni è già trattato da cerca-pacchetto e dal gate. Fatti hardware e dipendenza tra progetti audio restano qui e nelle rispettive sedi canoniche. Ribadita la risalita nello stesso giro di ogni futura lezione nuova e qualificata verso il template.
+
+Conservati riprese precedenti, fonti hardware, immagini e backup delle modifiche. Preparati file privati di consegna e archivio della conversazione, con verifica byte per byte del contenuto decompresso. Questo archivio è uno snapshot fino all'istante di acquisizione, non comprende eventi futuri. Controlli conclusivi riportati nel paragrafo seguente. Nessun git add, commit, push, wipe o deploy eseguito dall'agente; l'impronta verrà prodotta dalla chiusura manuale.
+
+Verifiche della consegna 2026-11-18T14:14:28.093483+01:00: albero documentale, registro fonti, tabelle modificate, SoloControlli completo e diff senza errori; log e impronte in `_notes/chiusura-2026-11-18/verifiche.json`. Wrapper allineati e confronto col template senza conflitti né file vecchi. Queste prove documentali non verificano installazioni o isolamento del laboratorio. Riscontro della sessione audio ancora atteso. Chiusura effettiva, commit/push, impronta e wipe ancora manuali del proprietario.
+
+## 18/11/2026, chiusura fermata e consegna riconciliata (2026-11-18T14:35:27+01:00)
+
+Il primo `chiudi` del proprietario si è fermato prima dello stage: la consegna del template va chiusa separatamente. Il precedente SoloControlli verde non aveva esercitato verifica-milestone. Inoltre il registro centrale puntava al17/11: la sua anteprima avrebbe incluso5 dei12 file della consegna puntuale. Recuperati i rapporti originali di applicazione/verifica nel registro delle corse, con impronte dei12 file identiche; eseguita la sola registrazione canonica allinea-tutti limitata a home-lab, senza SSH. Registro corrente b47c915, nuovo marcatore del progetto. Anteprima reale:13 file di allineamento e22 file di lavoro lasciati fuori. Nessuno stage, commit o push dell'agente, presidio non rimosso.
+
+Nuova lezione L-013 registrata e consegnata al template: il verde dei controlli non dimostra l'ammissibilità del commit. La correzione del preflight e del raccordo con applicazioni puntuali non è ancora attuata;1 lezione aperta e12 recepite. Il materiale e la prova sono in `_notes/chiusura-2026-11-18/L013-corpo.md` e nella consegna privata del template. Le valutazioni precedenti di zero lezioni nuove sono storia superata da questo riscontro reale.
+
+Il proprietario esce dall'agente e lancia `_notes/chiusura-2026-11-18/Chiudi-HomeLab.ps1`: chiudi-allineamento canonico sul solo home-lab, quindi chiudi-sessione del progetto solo se il primo riesce. Il primo commit riguarda13 file della passata; il secondo i22 file del progetto, con conferma del proprietario, impronta e wipe. Un push fallito ferma la sequenza. Nessun annullamento della protezione e nessun COMMIT-SCOPE artificiale. Hardware, rete, corsi in Sandbox e raccordo audio restano quelli del piano04; il riscontro della sessione audio è ancora atteso.
+
+
+**Template:** L-013, nuova lezione aperta. Ricevuta privata consegnata al template, non dichiarata recepita. Il comportamento è riproducibile senza stage o commit: SoloControlli uscita0, verifica-milestone uscita1 sullo stesso albero con consegna attiva. Anteprima centrale precedente5 file contro12 consegnati; dopo riconciliazione13 file inclusi,22 esclusi. Il tredicesimo è il marcatore aggiornato. Il presidio locale continua a bloccare correttamente il commit misto.
+
+File: `.claude/memory/lezioni-template.md`, `.claude/memory/index.md`, `.claude/memory/progress.md`, `.claude/context/current-work.md`, `.claude/allineamento-template.json`; registri privati della corsa nel template e consegna privata; `_notes/RESUME-PROMPT.md`, `_notes/COMMIT-MSG.txt` e `_notes/chiusura-2026-11-18/`. Nessun cambio allo stato hardware o ai documenti audio. Prova e snapshot conclusivi da rileggere dopo questa scrittura.
+
+Verifica della correzione 2026-11-18T14:36:51+01:00: anteprima del wrapper13 file della passata e22 lasciati fuori, presidio della milestone ancora attivo e bloccante sul commit misto (uscita1 attesa); albero documentale, fonti, tabelle, SoloControlli completo e diff senza errori. HEAD e stage invariati; log in `_notes/chiusura-2026-11-18/verifica-correzione/`. Il verde di SoloControlli non chiude la passata: serve la sequenza manuale a due fasi. Da questa consegna l’agente non modifica più i file prima dell’esecuzione del proprietario.

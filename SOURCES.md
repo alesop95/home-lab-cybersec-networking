@@ -321,6 +321,14 @@ Le voci seguenti sono consultate il 22/09/2026 salvo indicazione diversa. La let
 | S286 | https://www.corsair.com/ca/en/p/memory/cmv16gx3m2a1600c11/corsair-memory-a-16gb-dual-channel-ddr3-memory-kit-cmv16gx3m2a1600c11 | produttore letto16/11/2026 | ValueSelect2x8GB DDR3,1,5V, SPD1333 e prova1600; kit recuperato PC-03 |
 | S287 | https://www.truenas.com/docs/scale/25.10/scaletutorials/storage/disks/replacingdisks/ | guida25.10 riletta16/11/2026 | capacità sostitutivo almeno uguale, cancellazione del sostitutivo e resilver; nessuna operazione eseguita |
 | S288 | https://www.samsung.com/es/support/model/MZ-N5E250BW/ | produttore consultato16/11/2026 | identifica850EVO250GB nel formato M.2 SATA; H97 e necessità di adattamento confrontate conS285 |
+| S289 | https://download.asrock.com/Manual/H97%20Anniversary.pdf | documento del produttore letto18/11/2026 | H97 Anniversary, manuale 1.0 agosto2014, pagine specifiche e layout; sei SATA3, quattro DDR3, nessun M.2 nativo |
+| S290 | https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_SSD_850_EVO_M2_Data_Sheet_Rev2.pdf | documento del produttore letto18/11/2026 | 850 EVO M.2, Rev.2.0 maggio2016;2280/SATA 6 Gb/s,250 GB,512 MB DRAM e75 TBW di specifica |
+| S291 | https://media.startech.com/cms/pdfs/sat32m225_datasheet.pdf | documento del produttore letto18/11/2026 | SAT32M225; M.2 SATA B/B+M e2280, SATA7+15 pin; esempio non acquistato |
+| S292 | https://media.dustin.eu/media/d200001002269883/spinpoint-f3-desktop-class-hd502hj-document.pdf | documento del produttore in copia storica presso terzi, letto18/11/2026 | Samsung Spinpoint F3 Desktop Class Rev.1.0, copia Dustin; HD502HJ 500 GB/16 MB,7200rpm, SATA 3 Gb/s; tabella vista |
+| S293 | https://www.kabelfreak.de/info/datenblaetter/12700465.pdf | documento del produttore in copia storica presso terzi, letto18/11/2026 | Stampa pagina Samsung 29/09/2009, copia Kabelfreak; HD502HJ 500 GB,16 MB e7200rpm; differenze consumo fra revisioni conservate |
+| S294 | https://www.simms.co.uk/PDFS/Products/SSD/Crucial-BX500.pdf | documento del produttore in copia storica presso terzi, letto18/11/2026 | Micron/Crucial B2B Setup Sheet24/09/2019, copia Simms; CT1000BX500SSD1, 1 TB SATA2,5pollici7 mm e360 TBW dichiarati |
+| S295 | https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/ | Microsoft Learn, corpo letto18/11/2026 | Windows Sandbox in Windows Pro; ambiente temporaneo isolato tramite hypervisor; non prova installazione su PC-07 |
+| S296 | https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-install | Microsoft Learn, corpo letto18/11/2026 | requisiti RAM/virtualizzazione e avvio dal menu Start; verifica del PC quotidiano ancora aperta |
 
 ## Materiali locali che non devono sparire dal quadro
 
@@ -349,6 +357,7 @@ Il censimento include le citazioni storiche e i risultati individuati durante la
 | H-47bx60dxc44x603 | https://cybersecsentinel.com/short-lived-certs-long-term-security-lets-encrypt-secures-ips/ | `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/05-uscire-con-la-lan-fuori.md` | censita; lettura e contenuto da verificare |
 | H-a12xfaax686xac9 | https://deno.com/deploy | `docs/03-spunti-di-sviluppo/22-sviluppi-interni-aggiuntivi/01-hosting-di-un-bot-python-telegram.md` | censita; lettura e contenuto da verificare |
 | H-089x283x425x8e7 | https://deno.com/deploy/pricing | `docs/03-spunti-di-sviluppo/22-sviluppi-interni-aggiuntivi/01-hosting-di-un-bot-python-telegram.md` | censita; lettura e contenuto da verificare |
+| H-82fx0dcx35cx820 | https://dlcdnet.asus.com/pub/ASUS/mb/LGA1151/H170-PRO/E12046_H170-PRO_UM_V2_WEB.pdf | `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/13-ricognizione-hardware-novembre-2026.md` | censita; lettura e contenuto da verificare |
 | H-009x32fxd46xb6a | https://dlcdnets.asus.com/pub/ASUS/mb/LGA1151/H170-PRO/E12046_H170-PRO_UM_V2_WEB.pdf | `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/09-registro-del-montaggio.md`; `docs/fonti-web-consultate.md` | scheda curata sopra |
 | H-528x6f6xb0cx68e | https://docs.nethsecurity.org/en/latest/download.html | `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/04-tbc-l-alternativa-ulteriore-nethsecurity8.md` | censita; lettura e contenuto da verificare |
 | H-8d2x3f0xcccxa0f | https://docs.opnsense.org/firewall.html | `docs/03-spunti-di-sviluppo/10-firewall-before-the-switch/02-soluzione-professionale-con-opnsense-25-7.md` | censita; lettura e contenuto da verificare |
@@ -473,7 +482,7 @@ Il censimento include le citazioni storiche e i risultati individuati durante la
 | H-43exa83x3b5xdf5 | https://www.truenas.com/docs/core/13.0/coretutorials/systemconfiguration/mirroringthebootpool/ | `docs/fonti-web-consultate.md` | censita; lettura e contenuto da verificare |
 | H-3a1xd7bx258x46d | https://www.truenas.com/docs/scale/25.10/gettingstarted/install/installingscale/ | `docs/fonti-web-consultate.md` | scheda curata sopra |
 | H-46bx273xe93x220 | https://www.truenas.com/docs/scale/25.10/gettingstarted/versionnotes/ | `docs/fonti-web-consultate.md` | censita; lettura e contenuto da verificare |
-| H-795x579x45dx702 | https://www.truenas.com/docs/scale/25.10/scaletutorials/storage/managepoolsscale/ | `docs/fonti-web-consultate.md` | censita; lettura e contenuto da verificare |
+| H-795x579x45dx702 | https://www.truenas.com/docs/scale/25.10/scaletutorials/storage/managepoolsscale/ | `docs/03-spunti-di-sviluppo/02-storage-di-rete-nas/11-crescita-del-nas-e-indipendenza-dall-hardware.md`; `docs/fonti-web-consultate.md` | scheda curata sopra |
 | H-598xa54x1ccxf03 | https://www.truenas.com/docs/scale/scaletutorials/dataprotection/scrubtasksscale/ | `docs/fonti-web-consultate.md` | censita; lettura e contenuto da verificare |
 | H-1e3xb1fx612x968 | https://www.truenas.com/docs/softwarestatus/ | `docs/fonti-web-consultate.md` | scheda curata sopra |
 | H-d65x349xc5bxe65 | https://www.udemy.com/course/proxmox-per-comuni-mortali/?couponCode=KEEPLEARNING | `docs/03-spunti-di-sviluppo/21-idee-setup-da-profili-linkedin-interessanti/02-home-lab-cybersecurity-infrastructure-autore-linkedin-b.md` | censita; lettura e contenuto da verificare |

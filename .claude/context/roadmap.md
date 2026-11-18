@@ -9,6 +9,20 @@ last-verified-commit: ee63b19
 
 # Roadmap
 
+## Consegna per la chiusura del18/11/2026
+
+Stato letto su main, HEAD752c5cc; modifiche in lavorazione del18/11.
+
+Ubuntu Studio: ambiente canonico nel progetto `diy-2way-monitors-home`, poi cascata a `home-recording-training-mixing-setup` tramite `sync-ambiente.py`. Controllo18/11:20 file allineati, nessuna deriva. Conservare i16 GB DDR4 e il P2 500 GB della postazione musicale; distinto dal P2 1 TB del server. SoundCraft PA-034/PA-003 ancora aperto. Richiesta consegnata alla sessione audio, riscontro non ancora acquisito.
+
+Template allineato a b47c915, nessun conflitto residuo; estensioni di anonimizzazione conservate e autotest23 casi/zero errori. Registro formale pacchetti ancora parziale:105 scelte non censite, zero istanze adottate incomplete. Lezioni del giro ricondotte a L-010/011/012 e alle norme esistenti: nessuna nuova lezione generalizzabile da duplicare nel template. Le modifiche altrui nel template e nei progetti audio sono state conservate.
+
+Chiusura preparata nel progetto; commit, push, impronta e wipe effettivi spettano al proprietario dopo l'uscita. Non registrare in anticipo l'impronta. La prossima sessione usa `/riprendi` in Claude o `$riprendi` in Codex e verifica l'esito reale della chiusura, quindi riparte dal piano04/P01-P31 senza ripetere le conferme già acquisite. Consegna privata in `_notes/chiusura-2026-11-18/`.
+
+## Raccordo operativo del 18/11/2026
+
+Il [piano complessivo corrente](../../docs/03-spunti-di-sviluppo/23-studio-home-lab/04-piano-di-lavoro.md) riconcilia le fasi storiche con gli avanzamenti al banco: TrueNAS/tank/documenti sono già creati, NAS 8 GB e server 16 GB restano i valori correnti; PC-03 è smembrato,850 EVO ritrovato, HDD Windows conservato per i corsi e Windows Sandbox avviabile confermata dal proprietario. Prima si chiude la riallocazione hardware, poi NAS/recuperabilità e rete, con servizi e studi successivi secondo dipendenze. Questa revisione è mirata al punto operativo: non certifica integralmente le vecchie ancore di tutte le schede. Le fasi datate sotto conservano la storia e non riaprono test o assegnazioni superate.
+
 > Scheda tecnica. Fasi del progetto in ordine di dipendenza, non di preferenza: ogni fase assume che la precedente sia chiusa, e saltarne una produce lavoro da rifare. Le date non sono impegni: sono l'ordine in cui le cose possono accadere.
 
 ## Fase 0, conclusa: raccolta e studio

@@ -10,7 +10,7 @@ La documentazione si scrive e si mantiene qui dentro, a mano, sessione dopo sess
 
 ## Avvertenza sullo stato reale
 
-Quasi tutto ciò che si legge è progettazione, non stato di fatto. Di realizzato c'è l'installazione del sistema operativo del firewall del 16/01/2026, senza configurazione di rete, e l'indirizzo pubblico statico ottenuto dall'operatore. Lo switch non è acquistato, gli access point non esistono, nessun servizio interno è in esercizio. Trattare le schede tecniche come descrizione di un sistema funzionante è l'errore più facile da fare su questo repository.
+La rete domestica segmentata resta progettazione: firewall installato storicamente ma rete non collaudata, indirizzo pubblico statico ottenuto, switch e AP non acquistati secondo i documenti. Il NAS è invece già assemblato e preparato al banco con TrueNAS 25.10.7, tank e documenti creati; utenti/share e recupero restano aperti. Windows e Ubuntu Studio sono in uso. Il punto aggiornato è il piano 04 dello studio; non scambiare procedure e destinazioni future per configurazioni eseguite.
 
 ## Procedura di ripresa in una sessione nuova
 

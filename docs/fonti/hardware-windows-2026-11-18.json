@@ -1,0 +1,85 @@
+{
+  "schema": "fonti-hardware-1",
+  "ambito": "H97 Anniversary, 850 EVO M.2, adattatore, HD502HJ e BX500; dati personali esclusi",
+  "fonti": [
+    {
+      "id": "S289",
+      "autore": "ASRock",
+      "url": "https://download.asrock.com/Manual/H97%20Anniversary.pdf",
+      "provenienza": "produttore",
+      "revisione": "Versione1.0, agosto2014",
+      "acquisito_il": "2026-11-18T10:15:26+01:00",
+      "verificato_il": "2026-11-18T10:24:14+01:00",
+      "lettura": "PDF7,9,11; pagine stampate2,4,6",
+      "nome_file_archivio_privato": "h97-anniversary-manuale.pdf",
+      "byte": 1612252,
+      "sha256": "852c9055ab7965eeb1870a751cfd4108abf6ddfc07669a93ef0fd7aa4178e872"
+    },
+    {
+      "id": "S290",
+      "autore": "Samsung",
+      "url": "https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_SSD_850_EVO_M2_Data_Sheet_Rev2.pdf",
+      "provenienza": "produttore",
+      "revisione": "Rev.2.0, maggio2016",
+      "acquisito_il": "2026-11-18T10:15:28+01:00",
+      "verificato_il": "2026-11-18T10:24:14+01:00",
+      "lettura": "PDF1,3",
+      "nome_file_archivio_privato": "samsung-850-evo-m2-rev2.pdf",
+      "byte": 156502,
+      "sha256": "8ede2c3d60fcf5499d6a0d9ac96e5099c0d38be5f871e71cf478055124f7f642"
+    },
+    {
+      "id": "S291",
+      "autore": "StarTech",
+      "url": "https://media.startech.com/cms/pdfs/sat32m225_datasheet.pdf",
+      "provenienza": "produttore",
+      "revisione": "datasheet acquisito18/11/2026",
+      "acquisito_il": "2026-11-18T10:15:31+01:00",
+      "verificato_il": "2026-11-18T10:24:14+01:00",
+      "lettura": "PDF1-4, caratteristiche e connettori",
+      "nome_file_archivio_privato": "startech-sat32m225.pdf",
+      "byte": 96986,
+      "sha256": "64a0c64182f92868c11bc6065bfc787af146c117cce4deb1f304e92e666f0047"
+    },
+    {
+      "id": "S292",
+      "autore": "Samsung",
+      "url": "https://media.dustin.eu/media/d200001002269883/spinpoint-f3-desktop-class-hd502hj-document.pdf",
+      "provenienza": "copia presso distributore Dustin",
+      "revisione": "Specifiche3,5pollici Rev.1.0",
+      "acquisito_il": "2026-11-18T10:15:35+01:00",
+      "verificato_il": "2026-11-18T10:24:14+01:00",
+      "lettura": "PDF1, tabella verificata anche visivamente",
+      "nome_file_archivio_privato": "samsung-spinpoint-f3-rev1.pdf",
+      "byte": 23253,
+      "sha256": "47f41d8c342826023e2b66fde0ac77e47ca2b846c5bf1da7c0fac51773512640"
+    },
+    {
+      "id": "S293",
+      "autore": "Samsung",
+      "url": "https://www.kabelfreak.de/info/datenblaetter/12700465.pdf",
+      "provenienza": "stampa storica del sito Samsung conservata da Kabelfreak",
+      "revisione": "Stampa pagina Samsung29/09/2009",
+      "acquisito_il": "2026-11-18T10:15:38+01:00",
+      "verificato_il": "2026-11-18T10:24:14+01:00",
+      "lettura": "PDF1-2, specifiche del modello",
+      "nome_file_archivio_privato": "samsung-hd502hj-pagina-2009.pdf",
+      "byte": 127768,
+      "sha256": "f85642d8e9e0ce9229e4f2567a7d627f6d216ef7cbf70f4a43363b8af11b3fc1"
+    },
+    {
+      "id": "S294",
+      "autore": "Micron/Crucial",
+      "url": "https://www.simms.co.uk/PDFS/Products/SSD/Crucial-BX500.pdf",
+      "provenienza": "copia presso distributore Simms",
+      "revisione": "B2B Setup Sheet24/09/2019",
+      "acquisito_il": "2026-11-18T10:15:41+01:00",
+      "verificato_il": "2026-11-18T10:24:14+01:00",
+      "lettura": "PDF1,3,4, modello e specifiche",
+      "nome_file_archivio_privato": "crucial-bx500-b2b.pdf",
+      "byte": 145795,
+      "sha256": "3e0e976d1240d1236054178ee7cb3b1ab7e377c4671ee5f222d1a9edb0dfbebd"
+    }
+  ],
+  "limiti": "Specifiche riferite al modello e alla revisione; stato degli esemplari e cablaggio non certificati."
+}

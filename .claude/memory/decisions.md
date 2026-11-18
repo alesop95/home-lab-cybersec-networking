@@ -465,7 +465,7 @@ Contesto. Il NAS monta ancora solaRAM-03 inA2,8192 MB cioè8 GB, con circa22 ore
 
 Decisione. Obiettivo NAS16 GB senza sottrarre i quattroCrucial4 GB al server. Prossima configurazione da provare: RAM-03 restaA2 eRAM-01 viene aggiuntaB2, ultimo slot dalla CPU. RAM-02/04 sono conservate come scorte fisiche con errori registrati. Verifica BIOS16384 MB,2133 MHz,XMP disabilitato; Memtest86+8.10,quattro passaggi completi senza errori o stop al primo errore. Nessuna prova o installazione della coppia è ancora osservata.
 
-Ratio. Questa coppia e disposizione non risultano già provate; misura direttamente se il sistema desiderato16 GB funziona, mantenendo il modulo senza fail nella posizione già usata. Non ripete la coppia03/A2+04/B2 già fallita. S204 conferma8 GB come minimo base della release25.10, utile a spiegare l'avvio attuale ma distinto dall'obiettivo16 GB dell'utente.
+Ratio. Questa coppia e disposizione non risultano già provate; misura direttamente se il sistema desiderato16 GB funziona, mantenendo il modulo senza fail nella posizione già usata. Non ripete la coppia03/A2+04/B2 già fallita. S204 conferma8 GB come minimo base della release25.10, utile a spiegare l'avvio attuale ma distinto dall'obiettivo 16 GB dell'utente.
 
 Conseguenze. Stato fisico ancora NAS8 GB e server16 GB Crucial censiti. I vecchi errori dei moduli non scompaiono dalla documentazione, né le scorte sono dichiarate ricambi funzionanti. Nessun acquisto, trasferimento Crucial o smaltimento eseguito. Il precedente server24 GB è sospeso. Le alternative12/12 e16/8 discusse prima non sono adottate.
 
@@ -523,7 +523,7 @@ Avanzamento operativo ADR-041/042 del28/10/2026: Gmail OAuth del nuovo account s
 
 Avanzamento ADR-042 del28/10/2026: verifica in due passaggi della nuova identità Google attivata, con conferma nel dialogo e nel corpo dell’email. La precedente richiesta di completarla ora è soddisfatta. Codici backup rinviati, verifica email recupero ancora aperta. Direttiva aggiuntiva dell’utente: tracciare gli orari degli avvisi per ritrovarli; indice nel livello privato, con campo ricezione non valorizzato se l’header non è visibile. Nessun automatismo di invio o accesso alla posta introdotto.
 
-Chiarimento ADR-026 del28/10/2026, su richiesta esplicita dell’utente: la motivazione corrente è la gestione integrata di ZFS e delle attività di protezione in TrueNAS per archivio e copie del server. OMV può usare lo stesso ZFS con plugin e relativo percorso kernel, incluse attività di snapshot/scrub/replica: non viene presentato come incapace o privo automaticamente di integrità. ADR-033 ha superato il vantaggio dello specchio di avvio; la memoria reale è8GB con obiettivo16GB, non32GB. Il confronto08 e la scheda didattica05 sono riallineati, anche correggendo la generalizzazione su Btrfs. La decisione TrueNAS resta invariata e OMV rimane rivalutabile se prevalgono base più leggera e manutenzione modulare consapevole. Nessun nuovo acquisto, benchmark o migrazione autorizzati o eseguiti da questa spiegazione.
+Chiarimento ADR-026 del28/10/2026, su richiesta esplicita dell’utente: la motivazione corrente è la gestione integrata di ZFS e delle attività di protezione in TrueNAS per archivio e copie del server. OMV può usare lo stesso ZFS con plugin e relativo percorso kernel, incluse attività di snapshot/scrub/replica: non viene presentato come incapace o privo automaticamente di integrità. ADR-033 ha superato il vantaggio dello specchio di avvio; la memoria reale è8GB con obiettivo 16GB, non32GB. Il confronto08 e la scheda didattica05 sono riallineati, anche correggendo la generalizzazione su Btrfs. La decisione TrueNAS resta invariata e OMV rimane rivalutabile se prevalgono base più leggera e manutenzione modulare consapevole. Nessun nuovo acquisto, benchmark o migrazione autorizzati o eseguiti da questa spiegazione.
 
 ## ADR-043, le personalizzazioni TrueNAS devono sopravvivere alla macchina
 
@@ -541,7 +541,7 @@ Avanzamento operativo di ADR-033 del28/10/2026: alla domanda sui dati ancora da 
 
 Avanzamento operativo di ADR-033/043 del28/10/2026: nel wizard sono ora osservati Name tank, Encryption None e Layout Mirror; un unico VDEV MIRROR ancora vuoto nella selezione manuale. Si indica di usare nello stesso VDEV soltanto WD sda e SanDisk sdc, Kingston di avvio escluso. La raccomandazione S240 è mantenere non cifrato il dataset radice del pool e valutare separatamente la cifratura dei dataset figli con la loro custodia dei materiali di sblocco. Nessuna cifratura già applicata, pool creato o scelta definitiva sui dataset attribuita all’utente. Nuovo export configurazione dopo la creazione effettiva, conservando il precedente.
 
-Attuazione osservata di ADR-033 del28/10/2026: dopo conferma di cancellazione e formattazione il pool tank è creato sul singolo mirror dei due SSD dati selezionati, SanDisk e WD. Dashboard1xMIRROR2wideMixed Capacity, Online no errors e213.19GiB utilizzabili; Kingston di avvio escluso. L’obiettivo16GB resta aperto, NAS con RAM-03/A2 da8GB. ADR-043 richiede ora una nuova generazione dell’export con seed, mantenendo il file precedente; nuova acquisizione non ancora osservata. Dataset, condivisioni e prove dei backup restano passi distinti, nessuna copertura dati già attribuita alla sola creazione.
+Attuazione osservata di ADR-033 del28/10/2026: dopo conferma di cancellazione e formattazione il pool tank è creato sul singolo mirror dei due SSD dati selezionati, SanDisk e WD. Dashboard1xMIRROR2wideMixed Capacity, Online no errors e213.19GiB utilizzabili; Kingston di avvio escluso. L’obiettivo 16GB resta aperto, NAS con RAM-03/A2 da8GB. ADR-043 richiede ora una nuova generazione dell’export con seed, mantenendo il file precedente; nuova acquisizione non ancora osservata. Dataset, condivisioni e prove dei backup restano passi distinti, nessuna copertura dati già attribuita alla sola creazione.
 
 Raccordo operativo di ADR-040/043 del29/10/2026: l’export post-pool acquisito e verificato il28/10 chiude la copia della nuova tappa; prima generazione conservata, seconda destinazione indipendente e restore aperti. La domanda dell’utente sui pannelli avanzati viene collegata alle dipendenze: preparazione dei dataset e permessi locale; rete e accesso amministrativo da completare nella topologia domestica; syslog con ricevitore disponibile; parametri speciali solo con bisogno concreto. Non sono autorizzate o dichiarate modifiche massive. Global2FA TrueNAS Disabled è distinta dalla2FA Google attiva; ora e recupero vanno verificati prima dell’eventuale configurazione NAS. Prossimo leggere Datasets, non riaprire i flussi Google o i test hardware.
 
@@ -549,7 +549,7 @@ Raccordo operativo di ADR-040/043 del29/10/2026: l’export post-pool acquisito 
 
 Data:29/10/2026. Stato: accettata, requisito esplicito dell’utente.
 
-Contesto. Prima di creare i dataset utente, l’utente richiede che il lavoro rimanga scalabile con SSD di taglia maggiore, RAM e configurazione complessiva. Il NAS attuale ha un mirror piccolo e8GB; queste sono misure del banco, non limiti permanenti del disegno.
+Contesto. Prima di creare i dataset utente, l’utente richiede che il lavoro rimanga scalabile con SSD di taglia maggiore, RAM e configurazione complessiva. Il NAS attuale ha un mirror piccolo e 8 GB; queste sono misure del banco, non limiti permanenti del disegno.
 
 Decisione. Separare struttura logica e componenti: nomi del pool, dataset e ruoli dei contenuti stabili; accessi e condivisioni collegati a quelle identità; quote e conservazione rivedibili con la capacità reale. Crescita dello stesso mirror tramite sostituzione dei membri uno per volta, resilver completato prima del successivo ed espansione finale, con copie e configurazione recuperabili. L’aumento di RAM compatibile non richiede ricreazione dei dataset; compatibilità e stabilità si verificano al relativo intervento, senza riaprire ora i test della configurazione attuale. Cambio completo della macchina tramite ADR-043 e verifiche di rete/dischi/servizi, non ricreazione indiscriminata del pool.
 
@@ -610,11 +610,31 @@ Conseguenze. Nessun protocollo privato del demone usato come bus e nessun comand
 
 Data:16/11/2026. Stato: priorità richiesta; combinazione finale da scegliere.
 
-Decisione. L’utente sospende il seguito utenti/ACL/share per rivalutare l’hardware disponibile. PC-02/Xubuntu e PC-03/AnduinOS sono smembrati. Il PC Windows quotidiano rimane Windows e utilizzabile; può ricevere SSD più piccolo per liberare il BX5001TB verso il NAS. L’aumento DDR3 a32GB è un’ipotesi, non un montaggio deciso.
+Decisione. L’utente sospende il seguito utenti/ACL/share per rivalutare l’hardware disponibile. PC-02/Xubuntu e PC-03/AnduinOS sono smembrati. Il PC Windows quotidiano rimane Windows e utilizzabile; può ricevere SSD più piccolo per liberare il BX500 1 TB verso il NAS. L’aumento DDR3 a32GB è un’ipotesi, non un montaggio deciso.
 
 Conseguenze. Inventario e allocazione registrano recuperati Atlantis e kit Corsair2x8GB di PC-03, senza doppio conteggio. PC-07 aggiunto, report e foto acquisiti privatamente con hash; originale report eliminato dopo lettura completa e verifica della copia. Studio e alternative nella ricognizione hardware13. Restano scelta RAM e ruolo laboratorio, identificazione degli SSD liberi, SMART completo, migrazione e secondo membro del mirror. Non si prelevano implicitamente DDR4 del server né si ricrea tank.
 
 
 ### Precisazione di ADR-050 del16/11/2026
 
-L’utente esclude definitivamente i quattro HDD del QNAP da ogni piano futuro. Propone il Samsung850EVO M.2 SATA250GB già censito come disco del Windows quotidiano, per destinare il BX5001TB al NAS dopo migrazione verificata. La vecchia nota sull’ubicazione non equivale a componente non posseduto. Destinazione proposta, nessun montaggio o trasferimento già attestato.
+L’utente esclude definitivamente i quattro HDD del QNAP da ogni piano futuro. Propone il Samsung850EVO M.2 SATA250GB già censito come disco del Windows quotidiano, per destinare il BX500 1 TB al NAS dopo migrazione verificata. La vecchia nota sull’ubicazione non equivale a componente non posseduto. Destinazione proposta, nessun montaggio o trasferimento già attestato.
+
+### Riscontro di ADR-050 del 18/11/2026
+
+Il proprietario ha ritrovato l’SSD di AnduinOS; due nuove viste identificano Samsung 850 EVO M.2 SATA 250 GB, modello MZ-N5E250. Si chiude la sola ubicazione. La direzione già proposta resta Windows sull’850 EVO e BX500 1 TB verso NAS dopo migrazione e avvio indipendente verificati. Disponibilità dell’adattatore M.2 SATA verso SATA, salute SSD, scelta RAM e secondo membro del mirror restano aperti. La mappa aggiornata della ricognizione 13 è una proposta e non registra nuovi montaggi o approvazioni implicite.
+
+### Precisazione di ADR-050 del 18/11/2026 sui dati e sulle fonti
+
+L’utente richiede di conservare nel progetto le specifiche oggettive e le fonti hardware per riusarle senza ricerca ripetuta. Sei PDF archiviati privatamente con impronte; metadati versionati, copie storiche dichiarate. Il riuso riguarda modello e revisione; occupazione, salute e stato operativo restano misure datate. Il ruolo finale dell’HDD Windows è ancora da scegliere. Il report 15/11 mostra140,49 GiB su C: e275,28 GiB su G:, non trasferibili insieme sull’850 EVO250 GB; neppure il NAS attuale213,19 GiB riceve il solo G:. Nessuna scelta di cancellazione, conferimento o riutilizzo come backup unico è acquisita. Dettaglio tecnico nella scheda 14.
+
+### Chiarimento di ADR-050 del 18/11/2026: HDD locale per i corsi
+
+Il proprietario precisa che il Samsung HD502HJ 500 GB di PC-07 contiene corsi di cybersecurity da aprire soltanto in un ambiente Windows 11 sandboxato e propone di mantenerlo nel PC. Il piano adotta questo orientamento per la riallocazione:850 EVO 250 GB per Windows e programmi, HDD 500 GB per i corsi, BX500 1 TB candidato NAS dopo migrazione del sistema. Superata la precedente raccomandazione dell’agente di liberare e poi scollegare l’HDD. I 275,28 GiB di G: non devono essere trasferiti sul NAS per liberare il BX500. Salute, copie e isolamento effettivo restano da verificare; funzione Windows Sandbox o VM non assunte come configurate. Nessun contenuto dei corsi letto o eseguito.
+
+### Precisazione di ADR-050: Windows Sandbox nativa probabile
+
+Il proprietario ritiene già installata Windows Sandbox nativa sul Windows quotidiano. Registrata come indicazione probabile della tecnologia, non come installazione o isolamento verificati. Report Windows 11 Pro con hypervisor presente, senza stato della funzionalità opzionale; nessuna deduzione di sandbox attiva da questi campi. Piano HDD locale per corsi e migrazione del solo sistema invariato. Primo riscontro proposto: avvio vuoto dal menu Start sul PC quotidiano.
+
+### Raccordo di ADR-050 e conferma Windows Sandbox,18/11/2026
+
+Il proprietario conferma presenza e avvio della Sandbox nativa e richiede un punto complessivo su hardware, topologia, pendenze, skill e progettazione futura. Riscontro di avvio registrato come conferma dell’utente; configurazione e isolamento restano da provare. Il piano 04 aggrega lo stato corrente senza adottare nuovi prodotti: prima riallocazione hardware, poi NAS/recuperabilità, firewall/switch/AP e servizi per dipendenze. La conferma non autorizza installazioni, acquisti, configurazioni o riattivazione di precedenti mandati autonomi.

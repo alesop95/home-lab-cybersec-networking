@@ -2,6 +2,10 @@
 
 > Che cosa resta disponibile nelle macchine dismesse una volta che il NAS[^1] ha preso i pezzi che gli servono. Risponde a una domanda sola: se fra sei mesi serve mettere insieme un'altra macchina, con che cosa la si fa. Il materiale di lavoro con i valori reali, cioè nomi macchina, numeri di serie, indirizzi e utenze, vive fuori dall'albero versionato e non è riferito qui: in questa scheda le macchine hanno segnaposto, gli stessi della scheda di consolidamento.
 
+## Aggiornamento del 18/11/2026
+
+Samsung 850 EVO M.2 SATA 250 GB di PC-03 ritrovato: ubicazione chiusa, componente recuperato senza doppio conteggio. Candidato al Windows quotidiano, non ancora collegato o collaudato. Il BX500 resta montato in Windows fino alla migrazione verificata. Mappa e limiti nella [ricognizione aggiornata](13-ricognizione-hardware-novembre-2026.md).
+
 ## Aggiornamento del 16/11/2026
 
 PC-03/AnduinOS e PC-02/Xubuntu sono dichiarati smembrati. Atlantis e kit Corsair 2 × 8 GB di PC-03 sono recuperati, non nuovi pezzi aggiuntivi. Il kit è ValueSelect, non Vengeance; le vecchie collocazioni sotto sono storiche dove divergono. Nuovo PC-07 Windows quotidiano: H97 Anniversary/i7-4790, 16 GB DDR3 e BX500 SATA 1 TB ancora in uso. Non si conta il suo HDD Samsung da500GB come quello di PC-02. La [13-ricognizione-hardware-novembre-2026.md](13-ricognizione-hardware-novembre-2026.md) distingue componenti in uso, recuperati e ipotesi di riallocazione. Nessun trasferimento o smaltimento ulteriore attestato; DVD PC-02 ancora da confermare.
@@ -82,12 +86,12 @@ L'8/10/2026 l'utente aveva proposto di prendere da uno dei due la memoria DDR4 p
 
 ### PC-03, anduinOS: una seconda Z97-P
 
-La scheda madre è una ASUS Z97-P revisione 2.02, lo stesso modello di `linux-desktop-B`, ma è un'altra macchina: i moduli di memoria hanno codici diversi da quelli di `linux-desktop-B`, e nelle foto del 09/10 nell'alloggiamento M.2 era presente un SSD Samsung, dove `linux-desktop-B` aveva il Crucial P3. Il 17/10 l'utente dichiara PC-03 senza SSD: il Samsung va localizzato prima di considerarlo disponibile per il laboratorio. Il processore è sotto un dissipatore Intel di serie per LGA1150, e il modello non si legge.
+La scheda madre è una ASUS Z97-P revisione 2.02, lo stesso modello di `linux-desktop-B`, ma è un'altra macchina: i moduli di memoria hanno codici diversi da quelli di `linux-desktop-B`, e nelle foto del 09/10 nell'alloggiamento M.2 era presente un SSD Samsung, dove `linux-desktop-B` aveva il Crucial P3. Il17/10 l’utente dichiarava PC-03 senza SSD; il 18/11 conferma il ritrovamento del Samsung, identificato da due nuove viste. È recuperato, ancora da collaudare, ora candidato per Windows secondo ADR-050. Il processore è sotto un dissipatore Intel di serie per LGA1150, e il modello non si legge.
 
 | Pezzo | Che cosa è |
 |---|---|
 | memoria | kit Corsair ValueSelect `CMV16GX3M2A1600C11`, 2 × 8 GB DDR3-1600 |
-| disco previsto | Samsung 850 EVO M.2, `MZ-N5E250`, 250 GB, SATA: nelle foto del 09/10 era montato, il 17/10 è dichiarato assente; ubicazione da verificare |
+| disco recuperato | Samsung 850 EVO M.2 SATA 2280, `MZ-N5E250`,250 GB: ritrovato il 18/11/2026, candidato per Windows; salute e collegamento ancora da verificare |
 | alimentatore | Atlantis P016-MPW-6000-W, 600 W massimi dichiarati; targa letta dalla foto del 17/10, installazione in PC-03 dichiarata dall'utente |
 | processore | LGA1150, modello da leggere con la raccolta |
 
@@ -199,3 +203,7 @@ I codici data dei moduli di memoria. Vanno annotati per i due moduli che si prel
 [^3]: *UEFI*, Unified Extensible Firmware Interface - firmware di avvio che ha sostituito il BIOS legacy, con cui una macchina può avviare da dischi partizionati in GPT e superare i limiti dello schema di avvio precedente.
 
 [^4]: *SMART*, Self-Monitoring, Analysis and Reporting Technology - sistema di autodiagnosi dei dischi, che registra contatori di usura ed errori e può eseguire un test di superficie lungo; su Linux si legge con `smartctl` del pacchetto smartmontools.
+
+## HDD Samsung di PC-07,18/11/2026
+
+L’HD502HJ 500 GB del Windows quotidiano contiene G: con 275,28 GiB occupati al 15/11; non è una scorta e non è l’omonimo recuperato da PC-02. Il passaggio Windows all’850 EVO non libera automaticamente quei dati. Il proprietario chiarisce che contiene corsi di cybersecurity da aprire solo in ambiente Windows 11 sandboxato: orientamento a mantenerlo nel PC per quel ruolo. Non è una scorta disponibile al NAS; salute e copie restano da verificare. Specifiche e fonti nella [scheda dischi Windows](14-dischi-windows-dati-e-fonti-hardware.md).

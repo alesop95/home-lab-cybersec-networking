@@ -1,4 +1,6 @@
-# Studio integrato dell'home lab
+# Studio integrato dell’home lab
+
+Punto corrente del 18/11/2026 nel [piano complessivo](04-piano-di-lavoro.md): allocazione hardware, rete prevista,31 gruppi di pendenze e18 skill locali.10EP e due NWA130BE sono scelti; TrueNAS è installato al banco, ma la rete segmentata e i servizi del server restano da mettere in esercizio. I paragrafi datati seguenti conservano lo studio iniziale.
 
 Studio del 22/09/2026: architettura proposta, servizi senza canoni obbligatori, acquisto Zyxel e inventario. È progettazione documentale; non certifica installazioni, copertura radio o prestazioni. Il consolidamento NAS procede in una sessione distinta: i suoi file operativi e l'avanzamento fisico non sono stati modificati.
 

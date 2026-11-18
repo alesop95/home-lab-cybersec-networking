@@ -1,6 +1,6 @@
 # Storage di rete (NAS)
 
-La [ricognizione hardware del 16/11/2026](13-ricognizione-hardware-novembre-2026.md) precede ora il lavoro su utenti e condivisioni.
+La [ricognizione hardware del16-18/11/2026](13-ricognizione-hardware-novembre-2026.md) precede il lavoro su utenti e condivisioni. La [scheda dei dischi Windows](14-dischi-windows-dati-e-fonti-hardware.md) conserva capacità, opzioni per l’HDD e fonti hardware archiviate.
 
 ## Contenuti
 

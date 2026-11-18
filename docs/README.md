@@ -2,7 +2,7 @@
 
 > Home della documentazione. Dal 25/08/2026 questo albero è scritto e manutenuto a mano: non si rigenera più dal documento Word, che è stato eliminato il 07/10/2026 dopo la verifica di ADR-019: questo albero è l'unica fonte. Si modifica direttamente qui, si verifica con i controlli descritti in `../.claude/context/deployment.md`, si committa. Il razionale della scelta è in ADR-010, `../.claude/memory/decisions.md`.
 
-Per orientarsi conviene partire da `DEVELOPMENT.md`, che spiega come è organizzato l'albero e propone i percorsi di lettura per argomento. Per sapere che cosa manca, `pendenze-aperte.md`.
+Per il punto operativo corrente si parte dal [piano complessivo del lab](03-spunti-di-sviluppo/23-studio-home-lab/04-piano-di-lavoro.md): hardware, topologia, pendenze e skill. `DEVELOPMENT.md` spiega i percorsi di lettura; `pendenze-aperte.md` mantiene stato e cronologia del lavoro residuo.
 
 ## Documenti trasversali
 

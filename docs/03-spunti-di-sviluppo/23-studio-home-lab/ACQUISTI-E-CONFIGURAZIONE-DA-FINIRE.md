@@ -1,4 +1,23 @@
-# Home lab: prossimi acquisti e configurazione da finire
+# Acquisti e preparazione del lab
+
+Stato al 18/11/2026. Il [piano complessivo](04-piano-di-lavoro.md) e l’[allocazione hardware](12-allocazione-dell-hardware.md) prevalgono sulle alternative storiche sotto. Nessun prezzo di ottobre viene presentato come preventivo attuale.
+
+| Priorità | Oggetto | Stato e condizione |
+|---|---|---|
+|adesso|adattatore M.2 SATA 2280 verso SATA per 850 EVO|probabilmente non posseduto; verificare prima di acquistare; serve supporto SATA, alimentazione e fissaggio|
+|adesso|RAM Windows/NAS e pezzi recuperati|prima scegliere fra16/24/32 GB Windows e verificare moduli; obiettivoNAS 16 GB richiede altri 8 GB DDR4 affidabili; nessun acquisto RAM già deciso|
+|dopo migrazione|secondo SSD adeguato al mirror futuro|BX500 1 TB candidato dopo rilascio da Windows; il secondo membro resta da definire, nessun pool ricreato|
+|rete|Zyxel XMG1915-10EP e due NWA130BE|scelti, non acquistati secondo i documenti; attendere/confrontare preventivo, budget porte/PoE e supporti; niente iniettori nella scelta corrente|
+|successivamente|UPS, eventuale NIC NAS 2,5 GbE e moduli SFP rame|UPS su consumi/autonomia; NIC e moduli solo se servono e risultano compatibili|
+|studio|SBC/miniPC, GPU e schede MCU|prototipo e misure prima di scegliere o acquistare; nessun hardware già assegnato|
+
+I cavi ai due AP sono già posati. Il Samsung850 EVO è ritrovato, l’HDD Windows resta per i corsi e la Sandbox nativa è confermata dal proprietario. Resta il collegamento dell’SSD e la migrazione verificata. Booster da disattivare solo dopo collaudo dei due AP e risposta dell’operatore sulla restituzione.
+
+---
+
+## Memo storico
+
+Le righe seguenti conservano confronto e prezzi datati;10E/iniettori e terzoAP non sono le scelte correnti.
 
 ## Topologia di riferimento
 

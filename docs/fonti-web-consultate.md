@@ -102,3 +102,19 @@ Una fonte si aggiunge quando viene consultata, non a posteriori quando serve giu
 Le voci di grado commerciale portano una data e vanno considerate scadute dopo poche settimane. Non si cancellano, perché documentano su che base è stata presa una decisione di spesa in quel momento, ma non si citano come attuali.
 
 Quando una fonte smentisce un'affermazione già scritta nel repository, la smentita si annota qui accanto alla fonte e la correzione si applica al documento. Le tre occasioni in cui è accaduto in questa sessione sono segnalate nel testo sopra, e sono la ragione principale per cui questo registro vale il suo costo: senza di esso, un'affermazione corretta e una mai verificata hanno lo stesso aspetto.
+
+## 18/11/2026: SSD ritrovato e collegamento al Windows quotidiano
+
+Grado ufficiale. [Samsung, supporto MZ-N5E250](https://www.samsung.com/es/support/model/MZ-N5E250BW/), pagina letta: identifica850 EVO SATAIII M.2 da250 GB. [Samsung850EVO M.2, datasheet Rev.2.0, maggio2016](https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_SSD_850_EVO_M2_Data_Sheet_Rev2.pdf), letto: conferma SATA 6 Gb/s e formato 2280. [ASRock H97 Anniversary](https://www.asrock.com/mb/intel/h97%20anniversary/), specifiche rilette: sei SATA3 e nessun M.2 nativo, quattro slot DDR3/DDR3L fino32 GB. Ne segue il requisito di adattatore M.2 SATA verso SATA per il componente ritrovato; il supporto massimo di memoria non attesta la stabilità dei moduli mescolati. La salute dell’esemplare e la migrazione non sono proprietà verificate da queste fonti; fonti locali e stato nella [ricognizione hardware](03-spunti-di-sviluppo/02-storage-di-rete-nas/13-ricognizione-hardware-novembre-2026.md).
+
+### Esempio visivo dell’adattatore M.2 SATA, 18/11/2026
+
+Grado ufficiale. [StarTech SAT32M225, datasheet](https://media.startech.com/cms/pdfs/sat32m225_datasheet.pdf), letto: supporto M.2 SATA B/B+M fino2280, connettore host SATA7+15pin e kit di montaggio. Usato per illustrare la categoria richiesta; nessun prezzo rilevato, acquisto o scelta di marca conclusi. La pagina prodotto web restituisce essenzialmente la navigazione: le caratteristiche sono ricavate dal PDF ufficiale. Immagine commerciale mostrata dal risultato pubblico di ricerca, senza modifica o acquisizione di dati personali.
+
+## 18/11/2026: fonti hardware archiviate e destinazione dell’HDD Windows
+
+FontiS289-S294 e metadati SHA-256 aggiunti al registro unico; sei copie PDF conservate privatamente. Manuale ASRock, datasheet Samsung 850 EVO e StarTech dal produttore; Samsung Spinpoint F3 e vecchia pagina HD502HJ presso Dustin/Kabelfreak; scheda Micron/Crucial BX500 presso Simms. Lettura e revisione distinte dalla provenienza. Micron corrente ha restituito HTML di rifiuto, content.crucial errore TLS e Seagate ciclo di redirect: nessuna di queste vie è dichiarata letta. La [scheda dischi](03-spunti-di-sviluppo/02-storage-di-rete-nas/14-dischi-windows-dati-e-fonti-hardware.md) mantiene caratteristiche, limiti e calcoli; le misure del report locale non derivano dai datasheet.
+
+## 18/11/2026: Windows Sandbox nativa del PC quotidiano
+
+[Microsoft Learn, panoramica](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/) e [installazione](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-install), S295/S296: corpi delle pagine letti, incluse edizioni supportate, isolamento, requisiti e modalità di avvio. Il sito mostra anche un avviso di autorizzazione, ma il corpo usato è visibile e leggibile. L’indicazione del proprietario resta probabile installazione, senza conferma di presenza o avvio. Report Windows privo dello stato della funzionalità opzionale. Note di lettura persistite privatamente; nessuna installazione eseguita.

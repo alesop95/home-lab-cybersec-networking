@@ -993,7 +993,7 @@ TrueNAS25.10 usa Email Recipients nelle impostazioni di sistema e permette il te
 
 Log NAS è il nome concordato per raccogliere avvisi e rapporti di salute nella casella. Cartella o etichetta e filtro Proton saranno impostati dopo avere letto un messaggio reale, usando mittente e un criterio specifico del NAS per non classificare tutta la posta personale. Verificare che il messaggio venga raccolto e che gli avvisi restino visibili; nessuna regola di eliminazione o lettura automatica è prevista. Fonti S215-S216. La conservazione dei log completi e lo studio generale della posta dai server interni sono rinviati, come richiesto: questa preparazione non attiva un server di posta domestico.
 
-Restano RAM-03/A2 da8GB, obiettivo16GB, dati SanDisk da chiarire prima del pool, lettura del boot-pool ed export privato con seed dopo le impostazioni.
+Restano RAM-03/A2 da8GB, obiettivo 16GB, dati SanDisk da chiarire prima del pool, lettura del boot-pool ed export privato con seed dopo le impostazioni.
 
 ## 27/10/2026: localizzazione Europe/Rome e Italian (it) salvata
 
@@ -1267,7 +1267,7 @@ Le tre schermate Advanced Settings del28/10 sono archiviate SHA-256 prima della 
 
 Alla domanda sulle molte impostazioni, il quadro tecnico distingue preparazione locale, dipendenze della rete domestica e personalizzazioni giustificate da un bisogno. Dataset, utenti e permessi si preparano ora; indirizzi finali, DNS, VLAN e restrizione degli accessi seguono la topologia domestica; syslog segue la disponibilità del ricevitore. NTP effettivo e recupero precedono l’eventuale2FA NAS. Nessun debug, script, Sysctl o GPU aggiunti per riempire pannelli vuoti. Nuova guida tecnica10, matrice aggiornata e sviluppo didattico della scheda03; fonti S241/S242.
 
-Il29/10 l’utente chiede di procedere. Prossimo cliccare Datasets nella barra sinistra e leggere la struttura di tank prima di creare dataset utente. Il nuovo export non va riscaricato per questa sola lettura. Filtro Log NAS, seconda copia indipendente, inclusione Veeam, restore, rete finale e obiettivo16GB restano aperti. Nessuna nuova email o nuova osservazione dal NAS il29/10 viene inventata; le letture fisiche restano del28/10.
+Il29/10 l’utente chiede di procedere. Prossimo cliccare Datasets nella barra sinistra e leggere la struttura di tank prima di creare dataset utente. Il nuovo export non va riscaricato per questa sola lettura. Filtro Log NAS, seconda copia indipendente, inclusione Veeam, restore, rete finale e obiettivo 16GB restano aperti. Nessuna nuova email o nuova osservazione dal NAS il29/10 viene inventata; le letture fisiche restano del28/10.
 
 ## 29/10/2026: Datasets letto, requisito di crescita SSD/RAM/configurazione
 
@@ -1335,3 +1335,17 @@ Richiesta di stile ribadita dall’utente: in un solo messaggio indicare soltant
 Priorità del16/11/2026: riorganizzazione hardware prima di proseguire TrueNAS, ADR-050. PC-02/Xubuntu e PC-03/AnduinOS smembrati; Atlantis e due Corsair DDR3 da8GB di PC-03 recuperati. PC-07 Windows quotidiano aggiunto: H97 Anniversary/i7-4790,16GB DDR3 e BX500 SATA1TB ancora in uso. Alternative Windows16/24/32GB e SSD più piccolo soltanto allo studio; NAS invariato. La ricognizione hardware13 conserva report sintetizzato, limiti, fonti e verifiche mancanti. Nessuna clonazione, prova RAM o modifica al pool eseguita.
 
 Report PC-07 letto integralmente; tre foto lette e quattro originali acquisiti con SHA-256 identico. Originale report eliminato su richiesta dopo verifica; evidenze private conservate. Kit CMV16GX3M2A1600C11 identificato come ValueSelect2x8GB, conferma Corsair; targa Atlantis riletta, nessuna prova elettrica. PC-07 ha circa140,49GiB su C:, due alternative di aumento RAM senza acquisti già decisi e SSD1TB candidato dopo migrazione. HDD PC-07 non confuso col Samsung omonimo di PC-02. Dettaglio nella [13-ricognizione-hardware-novembre-2026.md](13-ricognizione-hardware-novembre-2026.md). Nessuna azione sui dischi NAS o sui dati Windows.
+
+## SSD di AnduinOS ritrovato, 2026-11-18T09:45:46+01:00
+
+L’utente conferma il ritrovamento del Samsung 850 EVO M.2 SATA 250 GB di PC-03. Lette due viste del componente: modello MZ-N5E250,250 GB e Serial ATA. Due copie private confrontate per SHA-256 identico e originali conservati; identificativi univoci restano nel livello privato. Ubicazione chiusa, nessun collegamento, SMART, lettura del contenuto o avvio attestati. Samsung conferma formato 2280/SATA 6 Gb/s; H97 Anniversary ha sei SATA3 e nessun M.2 integrato. Fonti e mappa nella [ricognizione13](13-ricognizione-hardware-novembre-2026.md).
+
+La direzione del 16/11 resta 850 EVO verso Windows e BX500 1 TB verso NAS dopo migrazione verificata. La proposta Windows 24 GB usa due Corsair 8 GB recuperati e due Kingston 4 GB attuali, ma non è una combinazione approvata o collaudata. NAS 8 GB DDR4 e server 16 GB restano nello stato documentato; secondo SSD per crescita mirror ancora da definire. Primo passo fisico: verificare disponibilità dell’adattatore M.2 SATA verso SATA con alimentazione e fissaggio. Nessuna clonazione, cancellazione, spostamento RAM o modifica tank eseguiti.
+
+## Destinazione dei dati Windows e HDD, 2026-11-18T10:24:14+01:00
+
+Il proprietario chiede che fare dell’HD502HJ 500 GB dopo il passaggio Windows sull’850 EVO e dispone la conservazione delle fonti hardware nel progetto. Report15/11: C: 140,49 GiB occupati, G: 275,28 GiB, totale415,77 GiB;250 GB nominali offrono232,83 GiB grezzi, tank attuale213,19 GiB. Nessun trasferimento ancora possibile per ipotesi di capacità; ruolo HDD da scegliere dopo destinazione e copie. Proposta di lasciarlo in posto nella transizione e poi eventualmente scollegarlo. Sei PDF tecnici acquisiti e verificati per formato e SHA-256; provenienza storica dichiarata, pagina di rifiuto non scambiata per datasheet. PdfCraft0.21.1 usato localmente per estrazioni e vista della tabella Samsung. [Dettaglio e fonti](14-dischi-windows-dati-e-fonti-hardware.md). Nessun test SMART dal vivo, clonazione o cancellazione eseguiti.
+
+## HDD locale per materiale dei corsi, 2026-11-18T11:59:12+01:00
+
+Chiarimento del proprietario: l’HDD-PC07 conserva corsi di cybersecurity da aprire solo in ambiente Windows 11 sandboxato; mantenerlo nel PC appare la soluzione più semplice. Registrato come orientamento del piano, con 850 EVO per sistema/programmi e BX500 candidato NAS dopo migrazione verificata. Nessuno spostamento di G: richiesto da questo piano. Salute HDD, copie e isolamento effettivo ancora da verificare; tipo di ambiente non dedotto dalla parola sandboxato. Nessun file dei corsi aperto o eseguito e nessuna modifica hardware.
