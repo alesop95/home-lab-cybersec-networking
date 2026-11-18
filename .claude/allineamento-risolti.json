@@ -6,9 +6,9 @@
     "il": "2026-11-05"
   },
   "tools/Test-Anonymization.py": {
-    "testa": "b2d67e53b5f315bd3e839092dfebc534d0241395",
-    "il": "2026-11-16",
-    "locale_sha256_lf": "d88c496dfe9d4a09691d313d09646d3568a68a663003dabb0d0bb49913e93fcb"
+    "testa": "8349b7237c977ea38fa3e521996d8237a566cf7a",
+    "il": "2026-11-18",
+    "locale_sha256_lf": "2f4bb4a48b3b9eba6862902bd872a81698a0eecfafb9d05c17dfa9e900674d40"
   },
   "tools/docx-to-md.py": {
     "testa": "b4920472d1764bad9ff3126898d87571bde04b8a",
