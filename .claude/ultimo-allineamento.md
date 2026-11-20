@@ -2,20 +2,33 @@
 
 <!-- generato da allinea-dal-template.py -->
 
-Commit a monte: `b47c915ef4d2b108661ad2b41b8f93723d4b4c10`. File interessati dalla passata: 11. Commit e push del progetto restano manuali.
+Commit a monte: `4d722ade6eba9d653b72dc107b2137a5bb748c40`. File interessati dalla passata: 16. Commit e push del progetto restano manuali.
 
 | Esito | File |
 |---|---|
+| VECCHIO | `.claude/PROJECT-SYSTEM.md` |
+| VECCHIO | `.claude/norme/git-commands-format.md` |
+| VECCHIO | `.claude/rules/git-commands-format.md` |
+| VECCHIO | `.claude/skills/alberi-di-lavoro/RIFERIMENTO.md` |
+| VECCHIO | `.claude/skills/gate-pacchetti/SKILL.md` |
+| VECCHIO | `.claude/skills/riprendi/SKILL.md` |
+| VECCHIO | `.claude/templates/CLAUDE.md` |
 | VECCHIO | `.claude/templates/agenti-terminale/README.md` |
-| VECCHIO | `.claude/templates/agenti-terminale/tools/Avvia-Claude.ps1` |
-| VECCHIO | `.claude/templates/agenti-terminale/tools/Avvia-Codex.ps1` |
-| VECCHIO | `.claude/templates/agenti-terminale/tools/Posta-Sessioni.ps1` |
+| VECCHIO | `.claude/templates/agenti-terminale/tools/Pulisci-Codex.ps1` |
 | VECCHIO | `.claude/templates/agenti-terminale/tools/posta-sessioni.py` |
-| VECCHIO | `.claude/templates/anonymization/tools/Test-Anonymization.py` |
-| VECCHIO | `.claude/templates/tools/guida-grafica.py` |
-| VECCHIO | `.claude/templates/tools/session-end-wipe.ps1` |
-| VECCHIO | `.claude/templates/tools/test-identita-personali.py` |
-| RISOLTO | `tools/Test-Anonymization.py` |
-| VECCHIO | `.claude/allineamento-risolti.json` |
+| VECCHIO | `.claude/templates/lezioni-recepite.json` |
+| VECCHIO | `.claude/templates/tools/allinea-dal-template.py` |
+| VECCHIO | `.claude/templates/tools/stato-template.py` |
+| NUOVO | `.claude/templates/tools/tests/test_gate_dovuto.py` |
+| VECCHIO | `.claude/templates/tools/verifica-pacchetti.py` |
+| INNESCO | `CLAUDE.md` |
 
 Conflitti ancora da risolvere: 0.
+
+## Gate dei pacchetti
+
+Gate dovuto: 105 voci del catalogo su 106 non sono mai state viste dal gate né decise (nessuna tornata registrata). Lanciare /gate-pacchetti.
+
+La riga si ricalcola in ogni momento con `python .claude/templates/tools/verifica-pacchetti.py --gate`. Una tornata dovuta si dice al proprietario nella prima risposta della sessione, perché l'agente non può lanciare `/gate-pacchetti` da sé.
+
+Voci mai viste: `academic-researcher`, `academix`, `agent-catalog`, `agenti-terminale`, `alignment`, `anatomy`, `andrej-karpathy-skills`, `anki-mcp`, `anti-slop`, `arxiv-cli`, `automation-starter`, `blender-skills`, `book-bib-extract`, `book-to-skill`, `caveman`, `ccusage`, `claude-code-handoff`, `claude-code-router`, `claude-mem`, `code-context`, `code-simplifier`, `codebase-learning`, `codebase-memory-mcp`, `comandi-ragionamento`, `community-sources`, `context-mode`, `context7`, `craft-apps`, `cyber-lab`, `deepwiki-mcp`, `deepwiki-skill`, `dev-skills`, `diagram-design`, `diagrams`, `discord-mcp`, `doc-ingest`, `documentazione-didattica`, `docx-to-docs`, `drawio-skill`, `feynman`, `figma-mcp`, `fix-typography`, `gancio-globale`, `github-mcp`, `graphify`, `grc-skills`, `grobid`, `guardia-pubblicazione`, `hallmark`, `headroom`, `hermes-agent`, `hooks-starter`, `humanizer`, `impeccable`, `instradamento-modelli`, `knowledge-mcp`, `knowledge-wiki`, `latex`, `lavoro-a-lotti`, `learning-agent`, `linear-mcp`, `llm-local`, `matt-pocock-skills`, `md-unwrap`, `memoria-di-progetto`, `micro-passi`, `mods-claude-code`, `multiclaude`, `nimbalyst`, `notebooklm-bridge`, `openalex`, `operations-log`, `paperqa2`, `pipeline-app`, `playwright-mcp`, `ponytail`, `psmux`, `rea`, `readme-sync`, `refchecker-mcp`, `repomix`, `roadmap`, `rtk`, `scientific-skills`, `security-audit`, `semantic-scholar-mcp`, `sentry-mcp`, `separazione-ambienti`, `serena`, `stack-profiles`, `subagent-template`, `superpowers`, `taste-skill`, `timeline-progetto`, `tmux-claude-hatch`, `vault-di-progetto`, `veeam-linux`, `vercel-mcp`, `verifica-link`, `voicestudio`, `voicestudio-mcp`, `voltagent-subagents`, `vps-baseline`, `wshobson-agents`, `zotero-mcp`.
